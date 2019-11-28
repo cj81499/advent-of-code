@@ -1,9 +1,10 @@
 # Advent of Code 2019
 
+<!-- | 01  | [TBD](https://adventofcode.com/2019/day/1)  | :star: | :star: | :heavy_check_mark: | -->
+
 | Day | Title                                       |  1  |  2  | Tests |
 | :-: | ------------------------------------------- | :-: | :-: | :---: |
 | 01  | [TBD](https://adventofcode.com/2019/day/1)  | :x: | :x: |  :x:  |
-<!-- | 01  | [TBD](https://adventofcode.com/2019/day/1)  | :star: | :star: | :heavy_check_mark: | -->
 | 02  | [TBD](https://adventofcode.com/2019/day/2)  | :x: | :x: |  :x:  |
 | 03  | [TBD](https://adventofcode.com/2019/day/3)  | :x: | :x: |  :x:  |
 | 04  | [TBD](https://adventofcode.com/2019/day/4)  | :x: | :x: |  :x:  |
