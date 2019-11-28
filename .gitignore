@@ -1,0 +1,13 @@
+# Python
+.venv/
+.pytest_cache/
+__pycache__/
+
+# Editor files
+.vscode/
+
+# Input files
+input/*.txt
+
+# Env variables
+.env
