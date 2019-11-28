@@ -13,9 +13,9 @@ load_dotenv()
 INPUT_DIR = "input"
 INPUT_PREFIX = "input-"
 
-SESSION = os.getenv("ADVENT_SESSION")
+SESSION = os.getenv("SESSION_COOKIE")
 if SESSION is None:
-    Logger.error("ADVENT_SESSION environment variable is not set")
+    Logger.error("SESSION_COOKIE environment variable is not set")
 
 
 def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
