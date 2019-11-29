@@ -16,8 +16,8 @@
 | 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | :star: | :star: | :heavy_check_mark: |
 | 13  | [Knights of the Dinner Table](https://adventofcode.com/2015/day/13)           | :star: | :star: | :heavy_check_mark: |
 | 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     | :star: | :star: | :heavy_check_mark: |
-| 15  | [---](https://adventofcode.com/2015/day/15)                                   |  :x:   |  :x:   |        :x:         |
-| 16  | [---](https://adventofcode.com/2015/day/16)                                   |  :x:   |  :x:   |        :x:         |
+| 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             | :star: | :star: | :heavy_check_mark: |
+| 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              | :star: | :star: |        n/a         |
 | 17  | [---](https://adventofcode.com/2015/day/17)                                   |  :x:   |  :x:   |        :x:         |
 | 18  | [---](https://adventofcode.com/2015/day/18)                                   |  :x:   |  :x:   |        :x:         |
 | 19  | [---](https://adventofcode.com/2015/day/19)                                   |  :x:   |  :x:   |        :x:         |
