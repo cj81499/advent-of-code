@@ -39,6 +39,7 @@ def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
         Logger.warn(f"{puzzle_path.name} doesn't exist")
         input_txt = _download_puzzle(target)
         save_puzzle(input_txt, puzzle_path)
+    input_txt = input_txt.strip()
 
     input_lines = input_txt.splitlines()
 
