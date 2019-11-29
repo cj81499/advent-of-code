@@ -24,8 +24,7 @@ def part2(secret_key: str):
 
 
 def main():
-    input_txt, _ = helpers.get_puzzle(
-        date(2015, 12, 4), "The Ideal Stocking Stuffer")
+    input_txt, _ = helpers.get_puzzle(date(2015, 12, 4), "The Ideal Stocking Stuffer")  # noqa
 
     print(f"part1: {part1(input_txt.strip())}")
     print(f"part2: {part2(input_txt.strip())}")

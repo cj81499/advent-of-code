@@ -57,8 +57,7 @@ def part2(lines: list):
 
 
 def main():
-    _, input_lines = helpers.get_puzzle(
-        date(2015, 12, 5), "Doesn't He Have Intern-Elves For This?")
+    _, input_lines = helpers.get_puzzle(date(2015, 12, 5), "Doesn't He Have Intern-Elves For This?")  # noqa
 
     print(f"part1: {part1(input_lines)}")
     print(f"part2: {part2(input_lines)}")

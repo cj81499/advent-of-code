@@ -34,8 +34,7 @@ def part2(directions: str):
 
 
 def main():
-    input_txt, _ = helpers.get_puzzle(
-        date(2015, 12, 3), "Perfectly Spherical Houses in a Vacuum")
+    input_txt, _ = helpers.get_puzzle(date(2015, 12, 3), "Perfectly Spherical Houses in a Vacuum")  # noqa
 
     print(f"part1: {part1(input_txt)}")
     print(f"part2: {part2(input_txt)}")

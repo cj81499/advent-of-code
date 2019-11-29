@@ -29,8 +29,7 @@ def part2(boxes: list):
 
 
 def main():
-    _, input_lines = helpers.get_puzzle(
-        date(2015, 12, 2), "I Was Told There Would Be No Math")
+    _, input_lines = helpers.get_puzzle(date(2015, 12, 2), "I Was Told There Would Be No Math")  # noqa
 
     print(f"part1: {part1(input_lines)}")
     print(f"part2: {part2(input_lines)}")

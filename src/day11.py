@@ -56,7 +56,7 @@ def is_valid_password(txt: str) -> bool:
 
 
 def main():
-    input_txt, _ = helpers.get_puzzle(date(2015, 12, 11), "Corporate Policy")
+    input_txt, _ = helpers.get_puzzle(date(2015, 12, 11), "Corporate Policy")  # noqa
 
     part1 = next_valid_password(input_txt)
     print(f"part1: {part1}")

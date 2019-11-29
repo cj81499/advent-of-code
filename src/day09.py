@@ -54,8 +54,7 @@ def find_paths(lines: list):
 
 
 def main():
-    _, input_lines = helpers.get_puzzle(
-        date(2015, 12, 9), "All in a Single Night")
+    _, input_lines = helpers.get_puzzle(date(2015, 12, 9), "All in a Single Night")  # noqa
 
     shortest, longest = find_paths(input_lines)
     print(f"part1: {shortest}")

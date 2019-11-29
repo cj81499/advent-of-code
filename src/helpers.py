@@ -62,10 +62,8 @@ def _get_puzzle_path(target: date) -> Path:
 def _download_puzzle(target: date) -> str:
     Logger.info(f"Downloading puzzle input for {target}")
     try:
-        response = requests.get(
-            f"http://adventofcode.com/{target.year}/day/{target.day}/input",
-            cookies={"session": SESSION}
-        )
+        url = f"http://adventofcode.com/{target.year}/day/{target.day}/input"
+        response = requests.get(url, cookies={"session": SESSION})
         input_txt = response.text
         Logger.success("Puzzle input downloaded")
         return input_txt

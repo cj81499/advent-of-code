@@ -43,8 +43,7 @@ def max_points_after_t(reindeers: List[str], t: int = 2503):
 
 
 def main():
-    _, input_lines = helpers.get_puzzle(
-        date(2015, 12, 14), "Reindeer Olympics")
+    _, input_lines = helpers.get_puzzle(date(2015, 12, 14), "Reindeer Olympics")  # noqa
 
     print(f"part1: {max_distance_after_t(input_lines)}")
     print(f"part2: {max_points_after_t(input_lines)}")

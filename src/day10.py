@@ -32,8 +32,7 @@ def part2(txt: str):
 
 
 def main():
-    input_txt, _ = helpers.get_puzzle(
-        date(2015, 12, 10), "Elves Look, Elves Say")
+    input_txt, _ = helpers.get_puzzle(date(2015, 12, 10), "Elves Look, Elves Say")  # noqa
 
     print(f"part1: {part1(input_txt)}")
     print(f"part2: {part2(input_txt)}")

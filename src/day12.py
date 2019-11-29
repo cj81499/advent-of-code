@@ -17,8 +17,7 @@ def sum_of_all_numbers(input_json, ignore_red=False):
 
 
 def main():
-    input_txt, _ = helpers.get_puzzle(
-        date(2015, 12, 12), "JSAbacusFramework.io")
+    input_txt, _ = helpers.get_puzzle(date(2015, 12, 12), "JSAbacusFramework.io")  # noqa
 
     input_json = json.loads(input_txt)
 

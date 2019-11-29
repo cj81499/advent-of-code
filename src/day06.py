@@ -66,8 +66,7 @@ def part2(lines: list):
 
 
 def main():
-    _, input_lines = helpers.get_puzzle(
-        date(2015, 12, 6), "Probably a Fire Hazard")
+    _, input_lines = helpers.get_puzzle(date(2015, 12, 6), "Probably a Fire Hazard")  # noqa
 
     print(f"part1: {part1(input_lines)}")
     print(f"part2: {part2(input_lines)}")

@@ -52,8 +52,7 @@ def add_self_to_prefs(prefs: Dict[str, Dict[str, int]]):
 
 
 def main():
-    _, input_lines = helpers.get_puzzle(
-        date(2015, 12, 13), "Knights of the Dinner Table")
+    _, input_lines = helpers.get_puzzle(date(2015, 12, 13), "Knights of the Dinner Table")  # noqa
 
     print(f"part1: {optimal_happiness(build_prefs(input_lines))}")
     print(
