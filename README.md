@@ -18,7 +18,7 @@
 | 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     | :star: | :star: | :heavy_check_mark: |
 | 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             | :star: | :star: | :heavy_check_mark: |
 | 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              | :star: | :star: |        n/a         |
-| 17  | [---](https://adventofcode.com/2015/day/17)                                   |  :x:   |  :x:   |        :x:         |
+| 17  | [No Such Thing as Too Much](https://adventofcode.com/2015/day/17)             | :star: | :star: | :heavy_check_mark: |
 | 18  | [---](https://adventofcode.com/2015/day/18)                                   |  :x:   |  :x:   |        :x:         |
 | 19  | [---](https://adventofcode.com/2015/day/19)                                   |  :x:   |  :x:   |        :x:         |
 | 20  | [---](https://adventofcode.com/2015/day/20)                                   |  :x:   |  :x:   |        :x:         |
