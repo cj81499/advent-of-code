@@ -34,16 +34,16 @@ def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
     puzzle_path = _get_puzzle_path(target)
 
     if puzzle_path.exists():
-        input_txt = read_puzzle(puzzle_path)
+        txt = read_puzzle(puzzle_path)
     else:
         Logger.warn(f"{puzzle_path.name} doesn't exist")
-        input_txt = _download_puzzle(target)
-        save_puzzle(input_txt, puzzle_path)
-    input_txt = input_txt.strip()
+        txt = _download_puzzle(target)
+        save_puzzle(txt, puzzle_path)
 
-    input_lines = input_txt.splitlines()
+    txt = txt.strip()
+    lines = txt.splitlines()
 
-    return input_txt, input_lines
+    return txt, lines
 
 
 def _print_puzzle_message(d: date, name: str) -> None:
@@ -67,9 +67,9 @@ def _download_puzzle(target: date) -> str:
             f"http://adventofcode.com/{target.year}/day/{target.day}/input",
             cookies={"session": SESSION}
         )
-        input_txt = response.text
+        txt = response.text
         Logger.success("Puzzle input downloaded")
-        return input_txt
+        return txt
     except requests.exceptions.RequestException as e:
         Logger.error("Failed to download puzzle input")
         raise e
