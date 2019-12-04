@@ -13,7 +13,7 @@ def part2(txt: str, lines: List[str]):
 
 
 def main():
-    txt, lines = helpers.get_puzzle(date(2019, 12, 0), )
+    txt, lines = helpers.get_puzzle(date(2019, 12, 0), "")
 
     print(f"part1: {part1(txt, lines)}")
     print(f"part2: {part2(txt, lines)}")
