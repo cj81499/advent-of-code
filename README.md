@@ -4,7 +4,7 @@
 | :-: | ------------------------------------------------------------------------- | :----: | :----: | :----------------: |
 | 01  | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | :star: | :star: | :heavy_check_mark: |
 | 02  | [1202 Program Alarm](https://adventofcode.com/2019/day/2)                 | :star: | :star: | :heavy_check_mark: |
-| 03  | [TBD](https://adventofcode.com/2019/day/3)                                |  :x:   |  :x:   |        :x:         |
+| 03  | [Crossed Wires](https://adventofcode.com/2019/day/3)                      | :star: | :star: | :heavy_check_mark: |
 | 04  | [TBD](https://adventofcode.com/2019/day/4)                                |  :x:   |  :x:   |        :x:         |
 | 05  | [TBD](https://adventofcode.com/2019/day/5)                                |  :x:   |  :x:   |        :x:         |
 | 06  | [TBD](https://adventofcode.com/2019/day/6)                                |  :x:   |  :x:   |        :x:         |
