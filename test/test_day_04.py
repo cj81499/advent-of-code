@@ -3,36 +3,45 @@ import day_04
 
 
 def test_adjacent_same():
-    assert day_04.adj_repeat(122345) is True
+    digits = day_04.get_digits(122345)
+    assert day_04.adj_repeat(digits) is True
 
 
 def test_increasing_digits_0():
-    assert day_04.increasing_digits(111123) is True
+    digits = day_04.get_digits(111123)
+    assert day_04.increasing_digits(digits) is True
 
 
 def test_increasing_digits_1():
-    assert day_04.increasing_digits(135679) is True
+    digits = day_04.get_digits(135679)
+    assert day_04.increasing_digits(digits) is True
 
 
 def test_day_04_part1_0():
-    assert day_04.is_valid_part1(112233) is True
+    digits = day_04.get_digits(112233)
+    assert day_04.is_valid_part1(digits) is True
 
 
 def test_day_04_part1_1():
-    assert day_04.is_valid_part1(223450) is False  # decreasing pair
+    digits = day_04.get_digits(223450)
+    assert day_04.is_valid_part1(digits) is False  # decreasing pair
 
 
 def test_day_04_part1_2():
-    assert day_04.is_valid_part1(123789) is False  # no double
+    digits = day_04.get_digits(123789)
+    assert day_04.is_valid_part1(digits) is False  # no double
 
 
 def test_day_04_part2_0():
-    assert day_04.is_valid_part2(112233) is True
+    digits = day_04.get_digits(112233)
+    assert day_04.is_valid_part2(digits) is True
 
 
 def test_day_04_part2_1():
-    assert day_04.is_valid_part2(123444) is False
+    digits = day_04.get_digits(123444)
+    assert day_04.is_valid_part2(digits) is False
 
 
 def test_day_04_part2_2():
-    assert day_04.is_valid_part2(111122) is True
+    digits = day_04.get_digits(111122)
+    assert day_04.is_valid_part2(digits) is True
