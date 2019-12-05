@@ -1,9 +1,7 @@
 from datetime import date
-from typing import List, Callable, Iterable
+from typing import Callable, Iterable
 
 import helpers
-
-from collections import Counter
 
 
 def pairwise(iterable: Iterable):

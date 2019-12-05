@@ -1,4 +1,4 @@
-from typing import Iterable, Tuple
+from typing import Iterable
 
 from intcode_interpreter import run_intcode_program
 
