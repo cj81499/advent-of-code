@@ -1,4 +1,4 @@
-from test import path_fix
+import path_fix
 
 from test_intcode_interpreter import run_intcode_test
 

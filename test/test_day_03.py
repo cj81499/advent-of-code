@@ -1,4 +1,4 @@
-from test import path_fix
+import path_fix
 import day_03
 
 INPUT_0 = """R8,U5,L5,D3

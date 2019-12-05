@@ -1,4 +1,4 @@
-from test import path_fix
+import path_fix
 import day_00
 
 
