@@ -1,5 +1,4 @@
 import cmath
-import math
 from datetime import date
 from typing import List
 
@@ -20,12 +19,14 @@ def get_asteroids(lines):
 
 def part1(lines: List[str]):
     asteroids = get_asteroids(lines)
-    angle_sets = []
-    for a in asteroids:
-        angle_sets.append(set(
-            math.degrees(cmath.phase(a - x)) for x in asteroids if x != a
-        ))
-    return max(len(a) for a in angle_sets)
+    return max(
+        len(
+            set(
+                cmath.phase(a1 - a2)
+                for a2 in asteroids if a2 != a1
+            )
+        ) for a1 in asteroids
+    )
 
 
 def part2(lines: List[str]):
