@@ -14,8 +14,8 @@
 | 10  | [Monitoring Station](https://adventofcode.com/2019/day/10)                | :star: |  :x:   | :heavy_check_mark: |
 | 11  | [Space Police](https://adventofcode.com/2019/day/11)                      |  :x:   |  :x:   |        :x:         |
 | 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: |  :x:   | :heavy_check_mark: |
-| 13  | [TBD](https://adventofcode.com/2019/day/13)                               |  :x:   |  :x:   |        :x:         |
-| 14  | [TBD](https://adventofcode.com/2019/day/14)                               |  :x:   |  :x:   |        :x:         |
+| 13  | [Care Package](https://adventofcode.com/2019/day/13)                      |  :x:   |  :x:   |        :x:         |
+| 14  | [Space Stoichiometry](https://adventofcode.com/2019/day/14)               |  :x:   |  :x:   |        :x:         |
 | 15  | [TBD](https://adventofcode.com/2019/day/15)                               |  :x:   |  :x:   |        :x:         |
 | 16  | [TBD](https://adventofcode.com/2019/day/16)                               |  :x:   |  :x:   |        :x:         |
 | 17  | [TBD](https://adventofcode.com/2019/day/17)                               |  :x:   |  :x:   |        :x:         |
