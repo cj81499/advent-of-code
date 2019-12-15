@@ -1,13 +1,12 @@
 import os
 from datetime import date
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 import requests
 from dotenv import load_dotenv
 
-from logger import Logger
-
+from util.logger import Logger
 load_dotenv()
 
 INPUT_DIR = "input"
@@ -34,11 +33,11 @@ def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
     puzzle_path = _get_puzzle_path(target)
 
     if puzzle_path.exists():
-        txt = read_puzzle(puzzle_path)
+        txt = _read_puzzle(puzzle_path)
     else:
         Logger.warn(f"{puzzle_path.name} doesn't exist")
         txt = _download_puzzle(target)
-        save_puzzle(txt, puzzle_path)
+        _save_puzzle(txt, puzzle_path)
 
     txt = txt.strip()
     lines = txt.splitlines()
@@ -46,7 +45,7 @@ def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
     return txt, lines
 
 
-def _print_puzzle_message(d: date, name: str) -> None:
+def _print_puzzle_message(d: date, name: Optional[str]) -> None:
     body = f"--- Day {d.day}: {name if name else '????'} ---"
     fn = Logger.info if name else Logger.warn
     fn(body)
@@ -54,7 +53,8 @@ def _print_puzzle_message(d: date, name: str) -> None:
 
 def _get_puzzle_path(target: date) -> Path:
     current_file = Path(__file__).absolute()
-    src_dir = current_file.parent
+    util_dir = current_file.parent
+    src_dir = util_dir.parent
     proj_dir = src_dir.parent
     input_filename = f"{INPUT_PREFIX}{target}.txt"
     return proj_dir / INPUT_DIR / input_filename
@@ -75,10 +75,10 @@ def _download_puzzle(target: date) -> str:
         raise e
 
 
-def save_puzzle(puzzle: str, puzzle_path: Path) -> None:
+def _save_puzzle(puzzle: str, puzzle_path: Path) -> None:
     puzzle_path.write_text(puzzle)
     Logger.success(f"Puzzle input saved as {puzzle_path.name}")
 
 
-def read_puzzle(puzzle: Path) -> str:
+def _read_puzzle(puzzle: Path) -> str:
     return puzzle.read_text().strip()
