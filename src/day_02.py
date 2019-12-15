@@ -2,8 +2,8 @@ from datetime import date
 from itertools import combinations
 from typing import List
 
-import helpers
-from intcode_interpreter import run_intcode_program
+from src.intcode_interpreter import run_intcode_program
+from src.util.helpers import get_puzzle
 
 
 def part1(memory: List[int]):
@@ -25,7 +25,7 @@ def part2(memory: List[int]):
 
 
 def main():
-    txt, _ = helpers.get_puzzle(date(2019, 12, 2), "1202 Program Alarm")
+    txt, _ = get_puzzle(date(2019, 12, 2), "1202 Program Alarm")
 
     nums = [int(x) for x in txt.split(",")]
 

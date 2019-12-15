@@ -1,8 +1,8 @@
 from datetime import date
 from typing import Tuple
 
-import helpers
-from intcode_interpreter import run_intcode_program
+from src.intcode_interpreter import run_intcode_program
+from src.util.helpers import get_puzzle
 
 
 def part1(nums: Tuple[int]):
@@ -14,7 +14,7 @@ def part1(nums: Tuple[int]):
 
 
 def main():
-    txt, lines = helpers.get_puzzle(date(2019, 12, 5), "Sunny with a Chance of Asteroids")  # noqa
+    txt, lines = get_puzzle(date(2019, 12, 5), "Sunny with a Chance of Asteroids")  # noqa
     nums = tuple(int(x) for x in txt.split(","))
 
     print("part1:")

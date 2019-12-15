@@ -1,10 +1,9 @@
 from datetime import date
-from typing import List, Dict, Callable
+from typing import Callable, Dict, List
 
-import helpers
+from src.util.helpers import get_puzzle
 
 START = 0 + 0j
-
 MOVEMENTS = {"U":  0 + 1j, "D":  0 - 1j, "R":  1 + 0j, "L": -1 + 0j}
 
 
@@ -46,7 +45,7 @@ def part2(lines: List[str]) -> int:
 
 
 def main():
-    _, lines = helpers.get_puzzle(date(2019, 12, 3), "Crossed Wires")
+    _, lines = get_puzzle(date(2019, 12, 3), "Crossed Wires")
 
     print(f"part1: {part1(lines)}")
     print(f"part2: {part2(lines)}")

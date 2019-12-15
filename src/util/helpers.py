@@ -6,7 +6,7 @@ from typing import List, Tuple, Optional
 import requests
 from dotenv import load_dotenv
 
-from util.logger import Logger
+from src.util.logger import Logger
 load_dotenv()
 
 INPUT_DIR = "input"

@@ -1,8 +1,8 @@
 from datetime import date
-from typing import List, Iterable
 from itertools import permutations
+from typing import Iterable, List
 
-import helpers
+from src.util.helpers import get_puzzle
 
 
 class Vector():
@@ -99,7 +99,7 @@ def part1(lines: List[str]):
 
 
 def main():
-    _, lines = helpers.get_puzzle(date(2019, 12, 12), "The N-Body Problem")
+    _, lines = get_puzzle(date(2019, 12, 12), "The N-Body Problem")
 
     print(f"part1: {part1(lines)}")
     # print(f"part2: {part2(lines)}")

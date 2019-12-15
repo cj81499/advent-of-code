@@ -1,10 +1,9 @@
-import path_fix
-import day_00
+import src.day_00 as d
 
 
 def test_day_00_part1_0():
-    assert day_00.part1("", []) == 0
+    assert d.part1("", []) == 0
 
 
 def test_day_00_part2_0():
-    assert day_00.part2("", []) == 0
+    assert d.part2("", []) == 0

@@ -1,7 +1,7 @@
 from datetime import date
 from typing import Callable, Iterable
 
-import helpers
+from src.util.helpers import get_puzzle
 
 
 def pairwise(iterable: Iterable):
@@ -49,7 +49,7 @@ def part2(low: int, high: int):
 
 
 def main():
-    txt, _ = helpers.get_puzzle(date(2019, 12, 4), "Secure Container")
+    txt, _ = get_puzzle(date(2019, 12, 4), "Secure Container")
 
     low, high = (int(x) for x in txt.split("-"))
 

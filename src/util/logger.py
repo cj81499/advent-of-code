@@ -3,7 +3,7 @@ import colorama
 colorama.init()
 
 
-class Logger:
+class Logger():
     SUCCESS_COLOR = colorama.Fore.GREEN
     WARN_COLOR = colorama.Fore.YELLOW
     ERROR_COLOR = colorama.Fore.RED

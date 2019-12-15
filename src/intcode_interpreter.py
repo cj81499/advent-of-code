@@ -1,9 +1,12 @@
-from typing import Callable, Dict, List
 from collections import deque
+from typing import Callable, Dict
+
 EXIT_OPCODE = 99
 
 POSITION_MODE = 0
 IMMEDIATE_MODE = 1
+
+inputs = None
 
 
 def get_param(n, memory, ip, mode):
@@ -41,8 +44,8 @@ def _handle_opcode_2(memory, ip, modes):
 
 
 def _handle_opcode_3(memory, ip, modes):
-    global ins
-    val = ins.popleft()
+    global inputs
+    val = inputs.popleft()
     p_1 = get_param(1, memory, ip, IMMEDIATE_MODE)
     return [val if i == p_1 else x for i, x in enumerate(memory)]
 
@@ -56,10 +59,9 @@ def _handle_opcode_4(memory, ip, modes):
 # def _handle_opcode_5(memory, ip, modes):
 #     p_1 = get_param(1, memory, ip, modes[0])
 #     return memory
-
-def run_intcode_program(memory, inputs=None):
-    global ins
-    ins = deque(inputs) if inputs else deque()
+def run_intcode_program(memory, prog_inputs=None):
+    global inputs
+    inputs = deque(prog_inputs) if prog_inputs else deque()
     # handler, param_count
     OPCODE_INFO: Dict[int, Callable] = {
         1: (_handle_opcode_1, 3),

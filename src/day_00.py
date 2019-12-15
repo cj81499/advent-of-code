@@ -1,7 +1,7 @@
 from datetime import date
 from typing import List
 
-from util.helpers import get_puzzle
+from src.util.helpers import get_puzzle
 
 
 def part1(txt: str, lines: List[str]) -> int:

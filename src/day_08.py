@@ -2,7 +2,7 @@ from collections import Counter
 from datetime import date
 from typing import List
 
-import helpers
+from src.util.helpers import get_puzzle
 
 WIDTH = 25
 HEIGHT = 6
@@ -50,7 +50,7 @@ def part2(nums: List[int]):
 
 
 def main():
-    txt, _ = helpers.get_puzzle(date(2019, 12, 8), "Space Image Format")
+    txt, _ = get_puzzle(date(2019, 12, 8), "Space Image Format")
     nums = [int(c) for c in txt]
 
     print(f"part1: {part1(nums)}")

@@ -1,7 +1,7 @@
 from datetime import date
 from typing import List
 
-import helpers
+from src.util.helpers import get_puzzle
 
 
 def fuel_req(mass: int) -> int:
@@ -22,7 +22,7 @@ def part2(nums: List[int]):
 
 
 def main():
-    _, lines = helpers.get_puzzle(date(2019, 12, 1), "The Tyranny of the Rocket Equation")  # noqa
+    _, lines = get_puzzle(date(2019, 12, 1), "The Tyranny of the Rocket Equation")  # noqa
     nums = [int(x) for x in lines]
 
     print(f"part1: {part1(nums)}")
