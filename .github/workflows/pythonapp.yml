@@ -27,6 +27,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest
-      env:
-        PYTHONPATH: src
+        python -m pytest
