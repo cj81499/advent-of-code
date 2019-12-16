@@ -1,3 +1,5 @@
+import pytest
+
 import src.day_10 as d
 
 EXAMPLE_0 = """.#..#
@@ -62,25 +64,12 @@ EXAMPLE_4 = """.#..##.###...#######
 ###.##.####.##.#..##""".splitlines()
 
 
-def test_day_10_part1_0():
-    assert d.part1(EXAMPLE_0) == 8
-
-
-def test_day_10_part1_1():
-    assert d.part1(EXAMPLE_1) == 33
-
-
-def test_day_10_part1_2():
-    assert d.part1(EXAMPLE_2) == 35
-
-
-def test_day_10_part1_3():
-    assert d.part1(EXAMPLE_3) == 41
-
-
-def test_day_10_part1_4():
-    assert d.part1(EXAMPLE_4) == 210
-
-
-# def test_day_10_part2_0():
-#     assert d.part2([]) is None
+@pytest.mark.parametrize("input_val,expected", [
+    (EXAMPLE_0, 8),
+    (EXAMPLE_1, 33),
+    (EXAMPLE_2, 35),
+    (EXAMPLE_3, 41),
+    (EXAMPLE_4, 210),
+])
+def test_part1(input_val, expected):
+    assert d.part1(input_val) == expected

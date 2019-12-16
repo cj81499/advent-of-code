@@ -1,7 +1,7 @@
 import src.day_08 as d
 
 
-def test_day_08_part1_0():
+def test_part1():
     nums = [int(x) for x in "123456789012"]
     assert d.get_layers(nums, 3, 2) == [
         [1, 2, 3, 4, 5, 6],
@@ -9,7 +9,7 @@ def test_day_08_part1_0():
     ]
 
 
-def test_day_08_part2_0():
+def test_part2():
     nums = [int(x) for x in "0222112222120000"]
     layers = d.get_layers(nums, 2, 2)
     assert layers == [

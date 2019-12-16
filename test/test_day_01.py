@@ -1,39 +1,28 @@
-# import path_fix
+import pytest
+
 import src.day_01 as d
 
-INPUT_0 = 12
-INPUT_1 = 14
-INPUT_2 = 1969
-INPUT_3 = 100756
+EXAMPLE_0 = 12
+EXAMPLE_1 = 14
+EXAMPLE_2 = 1969
+EXAMPLE_3 = 100756
 
 
-def test_day_01_part1_0():
-    assert d.fuel_req(INPUT_0) == 2
+@pytest.mark.parametrize("input_val,expected", [
+    (EXAMPLE_0, 2),
+    (EXAMPLE_1, 2),
+    (EXAMPLE_2, 654),
+    (EXAMPLE_3, 33583),
+])
+def test_part1(input_val, expected):
+    assert d.fuel_req(input_val) == expected
 
 
-def test_day_01_part1_1():
-    assert d.fuel_req(INPUT_1) == 2
-
-
-def test_day_01_part1_2():
-    assert d.fuel_req(INPUT_2) == 654
-
-
-def test_day_01_part1_3():
-    assert d.fuel_req(INPUT_3) == 33583
-
-
-def test_day_01_part2_0():
-    assert d.fuel_req_rec(INPUT_0) == 2
-
-
-def test_day_01_part2_1():
-    assert d.fuel_req_rec(INPUT_1) == 2
-
-
-def test_day_01_part2_2():
-    assert d.fuel_req_rec(INPUT_2) == 966
-
-
-def test_day_01_part2_3():
-    assert d.fuel_req_rec(INPUT_3) == 50346
+@pytest.mark.parametrize("input_val,expected", [
+    (EXAMPLE_0, 2),
+    (EXAMPLE_1, 2),
+    (EXAMPLE_2, 966),
+    (EXAMPLE_3, 50346),
+])
+def test_part2(input_val, expected):
+    assert d.fuel_req_rec(input_val) == expected

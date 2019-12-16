@@ -1,46 +1,55 @@
+import pytest
+
 import src.day_04 as d
 
 
-def test_adjacent_same():
-    digits = d.get_digits(122345)
-    assert d.adj_repeat(digits) is True
+@pytest.mark.parametrize("input_val,expected", [
+    (1, [1]),
+    (123, [1, 2, 3]),
+    (290875, [2, 9, 0, 8, 7, 5]),
+    (65789543, [6, 5, 7, 8, 9, 5, 4, 3]),
+])
+def test_get_digits(input_val, expected):
+    assert d.get_digits(input_val) == expected
 
 
-def test_increasing_digits_0():
-    digits = d.get_digits(111123)
-    assert d.increasing_digits(digits) is True
+@pytest.mark.parametrize("input_val,expected", [
+    (122345, True),  # 2
+    (123456, False),
+    (98234, False),
+    (11, True),  # 1
+    (111, True),  # 1
+    (34928462923759214785230897132461234098, False),
+    (349284629237592147855230897132461234098, True),  # 5
+])
+def test_adj_repeat(input_val, expected):
+    assert d.adj_repeat(d.get_digits(input_val)) == expected
 
 
-def test_increasing_digits_1():
-    digits = d.get_digits(135679)
-    assert d.increasing_digits(digits) is True
+@pytest.mark.parametrize("input_val,expected", [
+    (111123, True),
+    (135679, True),
+    (912345, False),
+    (123456, True),
+    (654321, False),
+])
+def test_increasing_digits(input_val, expected):
+    assert d.increasing_digits(d.get_digits(input_val)) == expected
 
 
-def test_day_04_part1_0():
-    digits = d.get_digits(112233)
-    assert d.is_valid_part1(digits) is True
+@pytest.mark.parametrize("input_val,expected", [
+    (112233, True),
+    (223450, False),  # decreasing pair (50)
+    (123789, False),  # no double
+])
+def test_part1(input_val, expected):
+    assert d.is_valid_part1(d.get_digits(input_val)) == expected
 
 
-def test_day_04_part1_1():
-    digits = d.get_digits(223450)
-    assert d.is_valid_part1(digits) is False  # decreasing pair
-
-
-def test_day_04_part1_2():
-    digits = d.get_digits(123789)
-    assert d.is_valid_part1(digits) is False  # no double
-
-
-def test_day_04_part2_0():
-    digits = d.get_digits(112233)
-    assert d.is_valid_part2(digits) is True
-
-
-def test_day_04_part2_1():
-    digits = d.get_digits(123444)
-    assert d.is_valid_part2(digits) is False
-
-
-def test_day_04_part2_2():
-    digits = d.get_digits(111122)
-    assert d.is_valid_part2(digits) is True
+@pytest.mark.parametrize("input_val,expected", [
+    (112233, True),
+    (123444, False),  # triple 4
+    (111122, True),
+])
+def test_part2(input_val, expected):
+    assert d.is_valid_part2(d.get_digits(input_val)) == expected

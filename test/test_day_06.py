@@ -1,6 +1,6 @@
 import src.day_06 as d
 
-INPUT_1 = """COM)B
+EXAMPLE_0 = """COM)B
 B)C
 C)D
 D)E
@@ -12,7 +12,7 @@ E)J
 J)K
 K)L""".splitlines()
 
-INPUT_2 = """COM)B
+EXAMPLE_1 = """COM)B
 B)C
 C)D
 D)E
@@ -27,9 +27,9 @@ K)YOU
 I)SAN""".splitlines()
 
 
-def test_day_06_part1_0():
-    assert d.part1(INPUT_1) == 42
+def test_part1():
+    assert d.part1(EXAMPLE_0) == 42
 
 
-def test_day_06_part2_0():
-    assert d.part2(INPUT_2) == 4
+def test_part2():
+    assert d.part2(EXAMPLE_1) == 4
