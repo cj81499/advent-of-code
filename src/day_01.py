@@ -13,15 +13,15 @@ def fuel_req_rec(mass: int) -> int:
     return 0 if 0 >= r else r + fuel_req_rec(r)
 
 
-def part1(nums: List[int]):
+def part1(nums: List[int]) -> int:
     return sum(fuel_req(x) for x in nums)
 
 
-def part2(nums: List[int]):
+def part2(nums: List[int]) -> int:
     return sum(fuel_req_rec(x) for x in nums)
 
 
-def main():
+def main() -> None:
     _, lines = get_puzzle(date(2019, 12, 1), "The Tyranny of the Rocket Equation")  # noqa
     nums = [int(x) for x in lines]
 

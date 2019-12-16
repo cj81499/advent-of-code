@@ -1,28 +1,28 @@
 from datetime import date
-from typing import List
+from typing import Dict, List, Set
 
 from src.util.helpers import get_puzzle
 
 
-def get_masses(lines):
+def get_masses(lines: List[str]) -> Dict[str, str]:
     return {mass: parent for parent, mass in (l.split(")") for l in lines)}
 
 
-def depth(masses, mass):
+def depth(masses: Dict[str, str], mass: str) -> int:
     return len(ancestors(masses, mass))
 
 
-def ancestors(masses, mass):
+def ancestors(masses: Dict[str, str], mass: str) -> Set[str]:
     parent = masses.get(mass)
     return set() if not parent else ancestors(masses, parent) | {parent}
 
 
-def part1(lines: List[str]):
+def part1(lines: List[str]) -> int:
     masses = get_masses(lines)
     return sum(depth(masses, m) for m in masses)
 
 
-def part2(lines: List[str]):
+def part2(lines: List[str]) -> int:
     masses = get_masses(lines)
 
     y_ancestors = ancestors(masses, "YOU")
@@ -33,7 +33,7 @@ def part2(lines: List[str]):
     return len(y_ancestors) + len(s_ancestors) - 2 * len(common_ancestors)
 
 
-def main():
+def main() -> None:
     _, lines = get_puzzle(date(2019, 12, 6), "Universal Orbit Map")
 
     print(f"part1: {part1(lines)}")

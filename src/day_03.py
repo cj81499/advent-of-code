@@ -7,8 +7,8 @@ START = 0 + 0j
 MOVEMENTS = {"U":  0 + 1j, "D":  0 - 1j, "R":  1 + 0j, "L": -1 + 0j}
 
 
-def get_points(wire: List[str]) -> Dict[complex, int]:
-    points = {}
+def get_points(wire: str) -> Dict[complex, int]:
+    points: Dict[complex, int] = {}
     commands = wire.split(",")
     pos = START
     steps = 1
@@ -23,7 +23,12 @@ def get_points(wire: List[str]) -> Dict[complex, int]:
     return points
 
 
-def wire_evaluator(lines: List[str], evaluator_func: Callable) -> int:
+def wire_evaluator(
+    lines: List[str],
+    evaluator_func: Callable[
+        [complex, Dict[complex, int], Dict[complex, int]], int
+    ]
+) -> int:
     first, second = (get_points(wire) for wire in lines)
     intersections = first.keys() & second.keys()
     measurements = [evaluator_func(p, first, second) for p in intersections]
@@ -31,20 +36,28 @@ def wire_evaluator(lines: List[str], evaluator_func: Callable) -> int:
 
 
 def part1(lines: List[str]) -> int:
-    def manhattan_distance(p, f, s) -> int:
+    def manhattan_distance(
+        p: complex,
+        f: Dict[complex, int],
+        s: Dict[complex, int]
+    ) -> int:
         return int(abs(p.real) + abs(p.imag))
 
     return wire_evaluator(lines, manhattan_distance)
 
 
 def part2(lines: List[str]) -> int:
-    def step_count(p, f, s) -> int:
+    def step_count(
+        p: complex,
+        f: Dict[complex, int],
+        s: Dict[complex, int]
+    ) -> int:
         return f[p] + s[p]
 
     return wire_evaluator(lines, step_count)
 
 
-def main():
+def main() -> None:
     _, lines = get_puzzle(date(2019, 12, 3), "Crossed Wires")
 
     print(f"part1: {part1(lines)}")

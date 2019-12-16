@@ -1,13 +1,13 @@
 import cmath
 from datetime import date
-from typing import List
+from typing import List, Set
 
 from src.util.helpers import get_puzzle
 
 ASTEROID = "#"
 
 
-def get_asteroids(lines):
+def get_asteroids(lines: List[str]) -> Set[complex]:
     asteroids = set()
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
@@ -17,7 +17,7 @@ def get_asteroids(lines):
     return asteroids
 
 
-def part1(lines: List[str]):
+def part1(lines: List[str]) -> int:
     asteroids = get_asteroids(lines)
     return max(
         len(
@@ -29,15 +29,15 @@ def part1(lines: List[str]):
     )
 
 
-def part2(lines: List[str]):
-    pass
+# def part2(lines: List[str]) -> None:
+#     pass
 
 
-def main():
+def main() -> None:
     _, lines = get_puzzle(date(2019, 12, 10), "Monitoring Station")
 
     print(f"part1: {part1(lines)}")
-    print(f"part2: {part2(lines)}")
+    # print(f"part2: {part2(lines)}")
 
 
 if __name__ == "__main__":

@@ -1,12 +1,13 @@
 import os
 from datetime import date
 from pathlib import Path
-from typing import List, Tuple, Optional
+from typing import List, Tuple
 
 import requests
 from dotenv import load_dotenv
 
 from src.util.logger import Logger
+
 load_dotenv()
 
 INPUT_DIR = "input"
@@ -17,7 +18,7 @@ if SESSION is None:
     Logger.error("SESSION_COOKIE environment variable is not set")
 
 
-def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
+def get_puzzle(target: date, puzzle_name: str = "") -> Tuple[str, List[str]]:
     assert target.month == 12, "Advent of Code is only in December"
     assert 1 <= target.day, "Day must be at least 1"
     assert target.day <= 25, "Day must be at most 25"
@@ -45,7 +46,7 @@ def get_puzzle(target: date, puzzle_name: str = None) -> Tuple[str, List[str]]:
     return txt, lines
 
 
-def _print_puzzle_message(d: date, name: Optional[str]) -> None:
+def _print_puzzle_message(d: date, name: str) -> None:
     body = f"--- Day {d.day}: {name if name else '????'} ---"
     fn = Logger.info if name else Logger.warn
     fn(body)
