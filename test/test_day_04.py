@@ -3,7 +3,7 @@ import pytest
 import src.day_04 as d
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (1, [1]),
     (123, [1, 2, 3]),
     (290875, [2, 9, 0, 8, 7, 5]),
@@ -13,7 +13,7 @@ def test_get_digits(input_val, expected):
     assert d.get_digits(input_val) == expected
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (122345, True),  # 2
     (123456, False),
     (98234, False),
@@ -26,7 +26,7 @@ def test_adj_repeat(input_val, expected):
     assert d.adj_repeat(d.get_digits(input_val)) == expected
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (111123, True),
     (135679, True),
     (912345, False),
@@ -37,7 +37,7 @@ def test_increasing_digits(input_val, expected):
     assert d.increasing_digits(d.get_digits(input_val)) == expected
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (112233, True),
     (223450, False),  # decreasing pair (50)
     (123789, False),  # no double
@@ -46,7 +46,7 @@ def test_part1(input_val, expected):
     assert d.is_valid_part1(d.get_digits(input_val)) == expected
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (112233, True),
     (123444, False),  # triple 4
     (111122, True),

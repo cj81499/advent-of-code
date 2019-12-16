@@ -64,7 +64,7 @@ EXAMPLE_4 = """.#..##.###...#######
 ###.##.####.##.#..##""".splitlines()
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (EXAMPLE_0, 8),
     (EXAMPLE_1, 33),
     (EXAMPLE_2, 35),

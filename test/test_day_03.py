@@ -14,7 +14,7 @@ EXAMPLE_2 = """R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51
 U98,R91,D20,R16,D67,R40,U7,R15,U6,R7""".splitlines()
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (EXAMPLE_0, 6),
     (EXAMPLE_1, 159),
     (EXAMPLE_2, 135),
@@ -23,7 +23,7 @@ def test_part1(input_val, expected):
     assert d.part1(input_val) == expected
 
 
-@pytest.mark.parametrize("input_val,expected", [
+@pytest.mark.parametrize("input_val, expected", [
     (EXAMPLE_0, 30),
     (EXAMPLE_1, 610),
     (EXAMPLE_2, 410),

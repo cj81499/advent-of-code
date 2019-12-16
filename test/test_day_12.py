@@ -33,7 +33,7 @@ def test_step():
     assert moons == expected
 
 
-@pytest.mark.parametrize("input_val,step_count,expected", [
+@pytest.mark.parametrize("input_val, step_count, expected", [
     (EXAMPLE_0, 10, 179),
     (EXAMPLE_1, 100, 1940),
 ])
