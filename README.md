@@ -6,12 +6,12 @@
 | 02  | [1202 Program Alarm](https://adventofcode.com/2019/day/2)                 | :star: | :star: | :heavy_check_mark: |
 | 03  | [Crossed Wires](https://adventofcode.com/2019/day/3)                      | :star: | :star: | :heavy_check_mark: |
 | 04  | [Secure Container](https://adventofcode.com/2019/day/4)                   | :star: | :star: | :heavy_check_mark: |
-| 05  | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5)   | :star: |  :x:   |        :x:         |
+| 05  | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5)   |  :x:   |  :x:   |        :x:         |
 | 06  | [Universal Orbit Map](https://adventofcode.com/2019/day/6)                | :star: | :star: | :heavy_check_mark: |
 | 07  | [Amplification Circuit](https://adventofcode.com/2019/day/7)              |  :x:   |  :x:   |        :x:         |
 | 08  | [Space Image Format](https://adventofcode.com/2019/day/8)                 | :star: | :star: | :heavy_check_mark: |
 | 09  | [Sensor Boost](https://adventofcode.com/2019/day/9)                       |  :x:   |  :x:   |        :x:         |
-| 10  | [Monitoring Station](https://adventofcode.com/2019/day/10)                | :star: |  :x:   | :heavy_check_mark: |
+| 10  | [Monitoring Station](https://adventofcode.com/2019/day/10)                | :star: | :star: | :heavy_check_mark: |
 | 11  | [Space Police](https://adventofcode.com/2019/day/11)                      |  :x:   |  :x:   |        :x:         |
 | 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: |  :x:   | :heavy_check_mark: |
 | 13  | [Care Package](https://adventofcode.com/2019/day/13)                      |  :x:   |  :x:   |        :x:         |
