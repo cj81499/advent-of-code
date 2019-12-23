@@ -27,7 +27,7 @@ def get_asteroids(lines: List[str]) -> Set[complex]:
     return asteroids
 
 
-def count_observable(candidate: complex, asteroids: Set[complex]):
+def count_observable(candidate: complex, asteroids: Set[complex]) -> int:
     angles = set(deg(candidate, a) for a in asteroids if a != candidate)
     return len(angles)
 
@@ -42,7 +42,7 @@ def best_asteroid(asteroids: Set[complex]) -> complex:
     return max(asteroids, key=lambda a: count_observable(a, asteroids))
 
 
-def dist(a: complex, b: complex):
+def dist(a: complex, b: complex) -> float:
     diff = a - b
     return (diff.real**2 + diff.imag**2)**0.5
 
@@ -56,7 +56,7 @@ def vaporize_order(lines: List[str]) -> List[complex]:
     angles = {a: deg(base_location, a) for a in asteroids}
 
     order = []
-    angle = -1
+    angle = -1.0
     while asteroids:
         after_last_angle = set(a for a in asteroids if angles[a] > angle)
         if len(after_last_angle) == 0:
@@ -73,7 +73,8 @@ def vaporize_order(lines: List[str]) -> List[complex]:
 
 def part2(lines: List[str]) -> int:
     order = vaporize_order(lines)
-    return order[200 - 1]
+    bet_result = order[200 - 1]
+    return int(bet_result.real*100 + bet_result.imag)
 
 
 def main() -> None:
