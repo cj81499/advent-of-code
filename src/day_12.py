@@ -41,13 +41,13 @@ def simulate(
     current = (*positions, *velocities)
     while (step < step_count) if step_count < inf else (current not in seen):
         seen.add(current)
-        step(positions, velocities)
+        do_step(positions, velocities)
         current = (*positions, *velocities)
         step += 1
     return step
 
 
-def step(positions: List[int], velocities: List[int]) -> None:
+def do_step(positions: List[int], velocities: List[int]) -> None:
     for i, pos in enumerate(positions):
         velocities[i] += sum(compare(pos, other) for other in positions)
     for i in range(len(positions)):
