@@ -13,7 +13,7 @@
 | 09  | [Sensor Boost](https://adventofcode.com/2019/day/9)                       |  :x:   |  :x:   |        :x:         |
 | 10  | [Monitoring Station](https://adventofcode.com/2019/day/10)                | :star: | :star: | :heavy_check_mark: |
 | 11  | [Space Police](https://adventofcode.com/2019/day/11)                      |  :x:   |  :x:   |        :x:         |
-| 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: |  :x:   | :heavy_check_mark: |
+| 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: | :star: | :heavy_check_mark: |
 | 13  | [Care Package](https://adventofcode.com/2019/day/13)                      |  :x:   |  :x:   |        :x:         |
 | 14  | [Space Stoichiometry](https://adventofcode.com/2019/day/14)               |  :x:   |  :x:   |        :x:         |
 | 15  | [TBD](https://adventofcode.com/2019/day/15)                               |  :x:   |  :x:   |        :x:         |

@@ -1,117 +1,81 @@
 from __future__ import annotations
 
 from datetime import date
-from itertools import permutations
-from typing import Iterable, Iterator, List, Optional
+from math import gcd, inf
+from typing import List, Set, Tuple, Union
 
-from src.util.helpers import get_puzzle
-
-
-class Vector():
-    def __init__(self, vector: Iterable[int]) -> None:
-        self._vec = tuple(vector)
-
-    def __repr__(self) -> str:
-        return ", ".join(str(x) for x in self._vec)
-
-    def __len__(self) -> int:
-        return len(self._vec)
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, Vector) and self._vec == other._vec
-
-    def __add__(self, other: Vector) -> Vector:
-        assert len(self) == len(other)
-        return Vector(self[i] + other[i] for i in range(len(self)))
-
-    def __getitem__(self, index: int) -> int:
-        return self._vec[index]
-
-    def __iter__(self) -> Iterator[int]:
-        return iter(self._vec)
+from src.util.helpers import get_puzzle, nums
 
 
-class Moon():
-    def __init__(
-        self, x: int, y: int, z: int, vel: Optional[Vector] = None
-    ) -> None:
-        self.pos = Vector((x, y, z))
-        self.vel = vel if vel else Vector((0, 0, 0))
-
-    def __repr__(self) -> str:
-        return f"Moon(pos: {self.pos}, vel: {self.vel})"
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, Moon) and \
-            self.pos == other.pos and \
-            self.vel == other.vel
-
-    def apply_gravity(self, other: Moon) -> None:
-        deltas = (self._grav_helper(other, d) for d in range(3))
-        self.vel += Vector(deltas)
-
-    def _grav_helper(self, other: Moon, dimension: int) -> int:
-        # TODO: Clean
-        if self.pos[dimension] == other.pos[dimension]:
-            return 0
-        return 1 if self.pos[dimension] < other.pos[dimension] else - 1
-
-    def apply_velocity(self) -> None:
-        self.pos += self.vel
-
-    @staticmethod
-    def parse_pos(position: str) -> Moon:
-        body: str = position[1:-1]
-        coordinate_strs = body.split(", ")
-        x, y, z = [int(s[2:]) for s in coordinate_strs]
-        return Moon(x, y, z)
+def part1(lines: List[str], step_count: int = 1000) -> int:
+    positions, velocities = pos_vel(lines)
+    for p, v in zip(positions, velocities):
+        simulate(p, v, step_count)
+    return sum(nrg(moon) for moon in zip(zip(*positions), zip(*velocities)))
 
 
-def step(moons: List[Moon]) -> None:
-    # Apply gravity
-    for m1, m2 in permutations(moons, 2):
-        m1.apply_gravity(m2)
-
-    # Apply velocity
-    for m in moons:
-        m.apply_velocity()
+def part2(lines: List[str]) -> int:
+    positions, velocities = pos_vel(lines)
+    steps_by_coord = (simulate(p, v) for p, v in zip(positions, velocities))
+    return lcm(*steps_by_coord)
 
 
-def total_energy(moons: List[Moon]) -> int:
-    def energy(moon: Moon) -> int:
-        def pot_energy(moon: Moon) -> int:
-            return sum(abs(v) for v in moon.pos)
-
-        def kin_energy(moon: Moon) -> int:
-            return sum(abs(v) for v in moon.vel)
-
-        return kin_energy(moon) * pot_energy(moon)
-
-    return sum(energy(m) for m in moons)
+def pos_vel(lines: List[str]) -> Tuple[List[List[int]], List[List[int]]]:
+    numbers = [nums(l) for l in lines]
+    positions: List[List[int]] = list(map(list, zip(*numbers)))
+    velocities = [[0] * len(numbers) for _ in range(3)]  # 3 for x, y, z
+    return positions, velocities
 
 
-def parse_moons(lines: List[str]) -> List[Moon]:
-    return [Moon.parse_pos(l) for l in lines]
+def simulate(
+    positions: List[int],
+    velocities: List[int],
+    step_count: Union[int, float] = inf
+) -> int:
+    seen: Set[Tuple[int, ...]] = set()
+    step = 0
+    current = (*positions, *velocities)
+    while (step < step_count) if step_count < inf else (current not in seen):
+        seen.add(current)
+        step(positions, velocities)
+        current = (*positions, *velocities)
+        step += 1
+    return step
 
 
-def part1(lines: List[str]) -> int:
-    moons = parse_moons(lines)
-
-    for i in range(1000):
-        step(moons)
-
-    return total_energy(moons)
+def step(positions: List[int], velocities: List[int]) -> None:
+    for i, pos in enumerate(positions):
+        velocities[i] += sum(compare(pos, other) for other in positions)
+    for i in range(len(positions)):
+        positions[i] += velocities[i]
 
 
-# def part2(lines: List[str]):
-#     pass
+def compare(a: int, b: int) -> int:
+    if a < b:
+        return 1
+    if a > b:
+        return -1
+    return 0
+
+
+def nrg(moon: Tuple[Tuple[int, ...], ...]) -> int:
+    pos, vel = moon
+    p_nrg = sum(abs(n) for n in pos)
+    k_nrg = sum(abs(n) for n in vel)
+    return p_nrg * k_nrg
+
+
+def lcm(*nums: int) -> int:
+    if len(nums) == 2:
+        return nums[0] * nums[1] // gcd(nums[0], nums[1])
+    return lcm(nums[0], lcm(*nums[1:]))
 
 
 def main() -> None:
     _, lines = get_puzzle(date(2019, 12, 12), "The N-Body Problem")
 
     print(f"part1: {part1(lines)}")
-    # print(f"part2: {part2(lines)}")
+    print(f"part2: {part2(lines)}")
 
 
 if __name__ == "__main__":

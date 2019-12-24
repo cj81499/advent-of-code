@@ -1,4 +1,4 @@
-import colorama
+import colorama  # type: ignore
 
 colorama.init()
 

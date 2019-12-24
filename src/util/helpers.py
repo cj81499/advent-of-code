@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import date
 from pathlib import Path
 from typing import List, Tuple
@@ -83,3 +84,7 @@ def _save_puzzle(puzzle: str, puzzle_path: Path) -> None:
 
 def _read_puzzle(puzzle: Path) -> str:
     return puzzle.read_text().strip()
+
+
+def nums(line: str) -> List[int]:
+    return [int(x) for x in re.findall(r"-?\d+", line)]
