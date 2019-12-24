@@ -1,3 +1,7 @@
+# HEAVLIY inspired by:
+# https://github.com/kresimir-lukin/AdventOfCode2019/blob/master/day12.py
+
+
 from __future__ import annotations
 
 from datetime import date
