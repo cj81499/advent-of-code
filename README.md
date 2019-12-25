@@ -16,14 +16,14 @@
 | 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: | :star: | :heavy_check_mark: |
 | 13  | [Care Package](https://adventofcode.com/2019/day/13)                      |  :x:   |  :x:   |        :x:         |
 | 14  | [Space Stoichiometry](https://adventofcode.com/2019/day/14)               |  :x:   |  :x:   |        :x:         |
-| 15  | [TBD](https://adventofcode.com/2019/day/15)                               |  :x:   |  :x:   |        :x:         |
-| 16  | [TBD](https://adventofcode.com/2019/day/16)                               |  :x:   |  :x:   |        :x:         |
-| 17  | [TBD](https://adventofcode.com/2019/day/17)                               |  :x:   |  :x:   |        :x:         |
-| 18  | [TBD](https://adventofcode.com/2019/day/18)                               |  :x:   |  :x:   |        :x:         |
-| 19  | [TBD](https://adventofcode.com/2019/day/19)                               |  :x:   |  :x:   |        :x:         |
-| 20  | [TBD](https://adventofcode.com/2019/day/20)                               |  :x:   |  :x:   |        :x:         |
-| 21  | [TBD](https://adventofcode.com/2019/day/21)                               |  :x:   |  :x:   |        :x:         |
-| 22  | [TBD](https://adventofcode.com/2019/day/22)                               |  :x:   |  :x:   |        :x:         |
-| 23  | [TBD](https://adventofcode.com/2019/day/23)                               |  :x:   |  :x:   |        :x:         |
-| 24  | [TBD](https://adventofcode.com/2019/day/24)                               |  :x:   |  :x:   |        :x:         |
-| 25  | [TBD](https://adventofcode.com/2019/day/25)                               |  :x:   |  :x:   |        :x:         |
+| 15  | [Oxygen System](https://adventofcode.com/2019/day/15)                     |  :x:   |  :x:   |        :x:         |
+| 16  | [Flawed Frequency Transmission](https://adventofcode.com/2019/day/16)     |  :x:   |  :x:   |        :x:         |
+| 17  | [Set and Forget](https://adventofcode.com/2019/day/17)                    |  :x:   |  :x:   |        :x:         |
+| 18  | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18)        |  :x:   |  :x:   |        :x:         |
+| 19  | [Tractor Beam](https://adventofcode.com/2019/day/19)                      |  :x:   |  :x:   |        :x:         |
+| 20  | [Donut Maze](https://adventofcode.com/2019/day/20)                        |  :x:   |  :x:   |        :x:         |
+| 21  | [Springdroid Adventure](https://adventofcode.com/2019/day/21)             |  :x:   |  :x:   |        :x:         |
+| 22  | [Slam Shuffle](https://adventofcode.com/2019/day/22)                      |  :x:   |  :x:   |        :x:         |
+| 23  | [Category Six](https://adventofcode.com/2019/day/23)                      |  :x:   |  :x:   |        :x:         |
+| 24  | [Planet of Discord](https://adventofcode.com/2019/day/24)                 | :star: |  :x:   | :heavy_check_mark: |
+| 25  | [Cryostasis](https://adventofcode.com/2019/day/25)                        |  :x:   |  :x:   |        :x:         |
