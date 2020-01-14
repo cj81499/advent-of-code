@@ -4,7 +4,7 @@ from typing import Callable, Dict, List
 from src.util.helpers import get_puzzle
 
 START = 0 + 0j
-MOVEMENTS = {"U":  0 + 1j, "D":  0 - 1j, "R":  1 + 0j, "L": -1 + 0j}
+MOVEMENTS = {"U": 0 + 1j, "D": 0 - 1j, "R": 1 + 0j, "L": -1 + 0j}
 
 
 def get_points(wire: str) -> Dict[complex, int]:
@@ -23,12 +23,7 @@ def get_points(wire: str) -> Dict[complex, int]:
     return points
 
 
-def wire_evaluator(
-    lines: List[str],
-    evaluator_func: Callable[
-        [complex, Dict[complex, int], Dict[complex, int]], int
-    ]
-) -> int:
+def wire_evaluator(lines: List[str], evaluator_func: Callable[[complex, Dict[complex, int], Dict[complex, int]], int]) -> int:
     first, second = (get_points(wire) for wire in lines)
     intersections = first.keys() & second.keys()
     measurements = [evaluator_func(p, first, second) for p in intersections]

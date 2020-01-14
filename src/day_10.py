@@ -74,7 +74,7 @@ def vaporize_order(lines: List[str]) -> List[complex]:
 def part2(lines: List[str]) -> int:
     order = vaporize_order(lines)
     bet_result = order[200 - 1]
-    return int(bet_result.real*100 + bet_result.imag)
+    return int(bet_result.real * 100 + bet_result.imag)
 
 
 def main() -> None:

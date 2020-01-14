@@ -115,14 +115,14 @@ def test_get_asteroids():
 def test_part2():
     order = d.vaporize_order(EXAMPLE_4)
 
-    assert order[1-1] == 11 + 12j
-    assert order[2-1] == 12 + 1j
-    assert order[3-1] == 12 + 2j
-    assert order[10-1] == 12 + 8j
-    assert order[20-1] == 16 + 0j
-    assert order[50-1] == 16 + 9j  # good
-    assert order[100-1] == 10 + 16j  # broken
-    assert order[199-1] == 9 + 6j
-    assert order[200-1] == 8 + 2j
-    assert order[201-1] == 10 + 9j
+    assert order[1 - 1] == 11 + 12j
+    assert order[2 - 1] == 12 + 1j
+    assert order[3 - 1] == 12 + 2j
+    assert order[10 - 1] == 12 + 8j
+    assert order[20 - 1] == 16 + 0j
+    assert order[50 - 1] == 16 + 9j
+    assert order[100 - 1] == 10 + 16j
+    assert order[199 - 1] == 9 + 6j
+    assert order[200 - 1] == 8 + 2j
+    assert order[201 - 1] == 10 + 9j
     assert order[299 - 1] == 11 + 1j

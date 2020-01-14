@@ -38,9 +38,7 @@ def is_valid_part2(digits: List[int]) -> bool:
     return increasing_digits(digits) and exact_adj_repeat_in_increasing(digits)
 
 
-def solver(
-        low: int, high: int, valid_func: Callable[[List[int]], bool]
-) -> int:
+def solver(low: int, high: int, valid_func: Callable[[List[int]], bool]) -> int:
     return sum(valid_func(get_digits(n)) for n in range(low, high))
 
 
