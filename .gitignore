@@ -13,4 +13,4 @@ input/*.txt
 .env
 
 # Project files
-AOC_2019.egg-info/
+advent2019.egg-info/
