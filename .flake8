@@ -1,2 +1,2 @@
 [flake8]
-ignore = E501 # Ignore
+ignore = E501 # Don't check line lengths

@@ -27,3 +27,15 @@
 | 23  | [Category Six](https://adventofcode.com/2019/day/23)                      |  :x:   |  :x:   |        :x:         |
 | 24  | [Planet of Discord](https://adventofcode.com/2019/day/24)                 | :star: |  :x:   | :heavy_check_mark: |
 | 25  | [Cryostasis](https://adventofcode.com/2019/day/25)                        |  :x:   |  :x:   |        :x:         |
+
+## Install
+
+```shell
+pip install -e .
+```
+
+## Test
+
+```shell
+pytest
+```

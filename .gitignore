@@ -11,3 +11,6 @@ input/*.txt
 
 # Env variables
 .env
+
+# Project files
+AOC_2019.egg-info/
