@@ -1,3 +1,5 @@
+from typing import List
+
 import pytest
 
 import src.day_10 as d
@@ -71,11 +73,11 @@ EXAMPLE_4 = """.#..##.###...#######
     (EXAMPLE_3, 41),
     (EXAMPLE_4, 210),
 ])
-def test_part1(input_val, expected):
+def test_part1(input_val: List[str], expected: int) -> None:
     assert d.part1(input_val) == expected
 
 
-def test_get_asteroids():
+def test_get_asteroids() -> None:
     asteroids = d.get_asteroids(EXAMPLE_4)
     # first row
     assert 0 + 0j not in asteroids
@@ -112,7 +114,7 @@ def test_get_asteroids():
     assert 11 + 1j in asteroids
 
 
-def test_part2():
+def test_part2() -> None:
     order = d.vaporize_order(EXAMPLE_4)
 
     assert order[1 - 1] == 11 + 12j

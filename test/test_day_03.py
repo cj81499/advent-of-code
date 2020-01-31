@@ -1,3 +1,5 @@
+from typing import List
+
 import pytest
 
 import src.day_03 as d
@@ -17,7 +19,7 @@ U98,R91,D20,R16,D67,R40,U7,R15,U6,R7""".splitlines()
     (EXAMPLE_1, 159),
     (EXAMPLE_2, 135),
 ])
-def test_part1(input_val, expected):
+def test_part1(input_val: List[str], expected: int) -> None:
     assert d.part1(input_val) == expected
 
 
@@ -26,5 +28,5 @@ def test_part1(input_val, expected):
     (EXAMPLE_1, 610),
     (EXAMPLE_2, 410),
 ])
-def test_part2(input_val, expected):
+def test_part2(input_val: List[str], expected: int) -> None:
     assert d.part2(input_val) == expected

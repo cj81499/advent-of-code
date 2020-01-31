@@ -27,9 +27,9 @@ K)YOU
 I)SAN""".splitlines()
 
 
-def test_part1():
+def test_part1() -> None:
     assert d.part1(EXAMPLE_0) == 42
 
 
-def test_part2():
+def test_part2() -> None:
     assert d.part2(EXAMPLE_1) == 4

@@ -1,5 +1,8 @@
-import src.day_14 as d
+from typing import List
+
 import pytest
+
+import src.day_14 as d
 
 EXAMPLE_0 = """9 ORE => 2 A
 8 ORE => 3 B
@@ -57,7 +60,7 @@ EXAMPLE_3 = """171 ORE => 8 CNZTR
     (EXAMPLE_2, 180697),
     (EXAMPLE_3, 2210736),
 ])
-def test_part1(input_val, expected):
+def test_part1(input_val: List[str], expected: int) -> None:
     assert d.part1(input_val) == expected
 
 
@@ -66,5 +69,5 @@ def test_part1(input_val, expected):
     (EXAMPLE_2, 5586022),
     (EXAMPLE_3, 460664),
 ])
-def test_part2(input_val, expected):
+def test_part2(input_val: List[str], expected: int) -> None:
     assert d.part2(input_val) == expected

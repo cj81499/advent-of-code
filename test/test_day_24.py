@@ -38,7 +38,7 @@ FIRST_REPEAT = """.....
 .#...""".splitlines()
 
 
-def test_parse_bugs():
+def test_parse_bugs() -> None:
     bugs = d.parse_bugs(INITIAL)
 
     assert 0 + 0j not in bugs
@@ -68,7 +68,7 @@ def test_parse_bugs():
     assert 4 + 4j not in bugs
 
 
-def test_step():
+def test_step() -> None:
     initial = d.parse_bugs(INITIAL)
     one = d.step(initial)
     assert one == d.parse_bugs(AFTER_1_MINS)
@@ -80,20 +80,20 @@ def test_step():
     assert four == d.parse_bugs(AFTER_4_MINS)
 
 
-def test_find_first_repeat():
+def test_find_first_repeat() -> None:
     bugs = d.parse_bugs(INITIAL)
     repeat = d.find_first_repeat(bugs)
     assert repeat == d.parse_bugs(FIRST_REPEAT)
 
 
-def test_biodiversity():
+def test_biodiversity() -> None:
     bugs = d.parse_bugs(FIRST_REPEAT)
     assert d.biodiversity(bugs) == 2129920
 
 
-def test_part1():
+def test_part1() -> None:
     assert d.part1(INITIAL) == 2129920
 
 
-# def test_part2():
+# def test_part2() -> None:
 #     assert d.part2([]) == 0
