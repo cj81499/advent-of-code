@@ -1,5 +1,5 @@
 from datetime import date
-from typing import List
+from typing import List, Set, Tuple
 
 from src.util.helpers import get_puzzle
 
@@ -7,13 +7,16 @@ BUG = "#"
 
 GRID_SIZE = 5
 
+Bugs = Set[complex]
+State = Tuple[Tuple[int, int], ...]
 
-def adj(pos: complex):
+
+def adj(pos: complex) -> List[complex]:
     adjustments = (1 + 0j, -1 + 0j, 0 + 1j, 0 - 1j)
     return [pos + adjust for adjust in adjustments]
 
 
-def step(bugs):
+def step(bugs: Bugs) -> Bugs:
     new_bugs = set()
     for y in range(GRID_SIZE):
         for x in range(GRID_SIZE):
@@ -24,7 +27,7 @@ def step(bugs):
     return new_bugs
 
 
-def parse_bugs(lines):
+def parse_bugs(lines: List[str]) -> Bugs:
     bugs = set()
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
@@ -33,12 +36,12 @@ def parse_bugs(lines):
     return bugs
 
 
-def bugs_to_state(bugs):
+def bugs_to_state(bugs: Bugs) -> State:
     return tuple(sorted((int(c.real), int(c.imag)) for c in bugs))
 
 
-def find_first_repeat(bugs):
-    seen = set()
+def find_first_repeat(bugs: Bugs) -> Bugs:
+    seen: Set[State] = set()
     state = bugs_to_state(bugs)
     while state not in seen:
         seen.add(state)
@@ -47,7 +50,7 @@ def find_first_repeat(bugs):
     return bugs
 
 
-def biodiversity(bugs):
+def biodiversity(bugs: Bugs) -> int:
     total_points = 0
     point_at_pos = 1
     for y in range(GRID_SIZE):
