@@ -1,5 +1,7 @@
 # Advent of Code 2019
 
+[![CodeFactor](https://www.codefactor.io/repository/github/cj81499/advent-of-code-2019/badge)](https://www.codefactor.io/repository/github/cj81499/advent-of-code-2019)
+
 | Day | Title                                                                     |   1    |   2    |       Tests        |
 | :-: | ------------------------------------------------------------------------- | :----: | :----: | :----------------: |
 | 01  | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | :star: | :star: | :heavy_check_mark: |
