@@ -50,8 +50,8 @@ def simulate(
 def do_step(positions: List[int], velocities: List[int]) -> None:
     for i, pos in enumerate(positions):
         velocities[i] += sum(compare(pos, other) for other in positions)
-    for i in range(len(positions)):
-        positions[i] += velocities[i]
+    for i, vel in enumerate(velocities):
+        positions[i] += vel
 
 
 def compare(a: int, b: int) -> int:
