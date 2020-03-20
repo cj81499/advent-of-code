@@ -1,5 +1,6 @@
 # Advent of Code 2019
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/008e4c7b9f1d463587fd0ccf79b6e8bb)](https://app.codacy.com/manual/cj81499/Advent-Of-Code-2019?utm_source=github.com&utm_medium=referral&utm_content=cj81499/Advent-Of-Code-2019&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/cj81499/advent-of-code-2019/badge)](https://www.codefactor.io/repository/github/cj81499/advent-of-code-2019)
 
 | Day | Title                                                                     |   1    |   2    |       Tests        |
