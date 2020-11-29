@@ -1,3 +1,14 @@
-.env
+# Python
 .venv/
+.*_cache/
+__pycache__/
 *.pyc
+build/
+dist/
+*.egg-info/
+
+# Env variables
+.env
+
+# Logs
+*.log
