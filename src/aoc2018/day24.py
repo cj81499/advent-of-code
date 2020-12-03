@@ -74,7 +74,8 @@ class Army:
         army_name = group_str_list.pop(0)[:-1]
         group_number = 1
         for group_str in group_str_list:
-            group = Group.parseGroup(group_str, army_name, group_number, immune_boost)
+            group = Group.parseGroup(
+                group_str, army_name, group_number, immune_boost)
             group_list.append(group)
             group_number += 1
         return cls(group_list, army_name)
@@ -89,7 +90,8 @@ class Battle:
 
     @classmethod
     def parseBattle(cls, battle_str, immune_boost=0):
-        armies = [Army.parseArmy(army_str, immune_boost) for army_str in battle_str.split("\n\n")]
+        armies = [Army.parseArmy(army_str, immune_boost)
+                  for army_str in battle_str.split("\n\n")]
         return cls(armies)
 
     def fight(self):
@@ -99,7 +101,8 @@ class Battle:
             if result == "No deaths":
                 return ("None", -1)
             for i, army in enumerate(self.armies):
-                alive_count = sum([1 if group.alive_unit_count > 0 else 0 for group in army.groups])
+                alive_count = sum(
+                    [1 if group.alive_unit_count > 0 else 0 for group in army.groups])
                 if (alive_count == 0):
                     return army.name, sum([x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups])
 
@@ -128,7 +131,8 @@ class Battle:
                         best_targets.append(target)
             if len(best_targets) > 0:
                 best_targets.sort(key=lambda x: x.initiative, reverse=True)
-                best_targets.sort(key=lambda x: x.effective_power(), reverse=True)
+                best_targets.sort(
+                    key=lambda x: x.effective_power(), reverse=True)
                 best_target = best_targets.pop(0)
                 remaining_targets.remove(best_target)
                 attacks[attacker.initiative] = (attacker, best_target)
@@ -163,8 +167,8 @@ def main():
     input_txt, _ = helpers.load_input(24, "Immune System Simulator 20XX")
 
     battle = Battle.parseBattle(input_txt)
-    print(f"part1: {battle.fight()[1]}")
-    print(f"part2: {remaining_immune_with_min_boost(input_txt)}")
+    print(f"parta: {battle.fight()[1]}")
+    print(f"partb: {remaining_immune_with_min_boost(input_txt)}")
 
 
 if __name__ == "__main__":

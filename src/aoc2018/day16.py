@@ -25,7 +25,7 @@ def run_cmd(name, registers, a, b, c):
     registers[c] = OPERATIONS[name](registers, a, b)
 
 
-def part1(samples):
+def parta(samples):
     samples = samples.split("\n\n")
     sample_count = 0
     for s in samples:
@@ -53,7 +53,7 @@ def opcodes_solved(opcodes):
     return True
 
 
-def part2(samples, program):
+def partb(samples, program):
     opcodes = {i: CMDS.copy() for i in range(16)}
     samples = samples.split("\n\n")
     for s in samples:
@@ -93,8 +93,8 @@ def main():
 
     sections = input_txt.split("\n\n\n\n")
 
-    print(f"part1: {part1(sections[0])}")
-    print(f"part2: {part2(sections[0], sections[1])}")
+    print(f"parta: {parta(sections[0])}")
+    print(f"partb: {partb(sections[0], sections[1])}")
 
 
 if __name__ == "__main__":

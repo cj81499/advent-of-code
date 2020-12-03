@@ -76,7 +76,7 @@ class Simulation:
         except KeyError:
             return crash
 
-    def move_carts(self, part2=False):
+    def move_carts(self, partb=False):
         crashes = []
         new_carts = {}
         for y in range(self.height):
@@ -111,7 +111,7 @@ class Simulation:
         return s
 
 
-def part1(lines):
+def parta(lines):
     s = Simulation(lines)
     crashes = []
     while len(crashes) != 1:
@@ -119,21 +119,22 @@ def part1(lines):
     return crashes[0]
 
 
-def part2(lines):
+def partb(lines):
     s = Simulation(lines)
     carts = [0, 0]
     while len(carts) > 1:
-        crashes, carts = s.move_carts(part2=True)
+        crashes, carts = s.move_carts(partb=True)
         if len(crashes) > 0:
-            print(f"Number of remaining carts: {len(carts)}, Crash(es): {crashes}")
+            print(
+                f"Number of remaining carts: {len(carts)}, Crash(es): {crashes}")
     return [x for x in carts][0]
 
 
 def main():
     _, input_lines = helpers.load_input(13, "Mine Cart Madness")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

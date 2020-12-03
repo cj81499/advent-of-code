@@ -42,23 +42,25 @@ txt_presorted = """[1518-11-01 00:00] Guard #10 begins shift
 
 class TestDay04(unittest.TestCase):
 
-    def test_day04_part1_unsorted(self):
-        self.assertEqual(240, day04.part1(day04.events_list(txt_unsorted)))
+    def test_day04_parta_unsorted(self):
+        self.assertEqual(240, day04.parta(day04.events_list(txt_unsorted)))
 
-    def test_day04_part2_unsorted(self):
-        self.assertEqual(4455, day04.part2(day04.events_list(txt_unsorted)))
+    def test_day04_partb_unsorted(self):
+        self.assertEqual(4455, day04.partb(day04.events_list(txt_unsorted)))
 
-    def test_day04_part1_presorted(self):
-        self.assertEqual(240, day04.part1(day04.events_list(txt_presorted)))
+    def test_day04_parta_presorted(self):
+        self.assertEqual(240, day04.parta(day04.events_list(txt_presorted)))
 
-    def test_day04_part2_presorted(self):
-        self.assertEqual(4455, day04.part2(day04.events_list(txt_presorted)))
+    def test_day04_partb_presorted(self):
+        self.assertEqual(4455, day04.partb(day04.events_list(txt_presorted)))
 
     def test_day04_unsorted_polished(self):
-        self.assertEqual((240, 4455), day04_polished.run(day04_polished.events_list(txt_unsorted)))
+        self.assertEqual((240, 4455), day04_polished.run(
+            day04_polished.events_list(txt_unsorted)))
 
     def test_day04_presorted_polished(self):
-        self.assertEqual((240, 4455), day04_polished.run(day04_polished.events_list(txt_presorted)))
+        self.assertEqual((240, 4455), day04_polished.run(
+            day04_polished.events_list(txt_presorted)))
 
 
 if __name__ == "__main__":

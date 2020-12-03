@@ -63,7 +63,7 @@ def add_new_tasks_if_possible(tasks, workers):
             workers[i] = startable.pop(0)
 
 
-def part1(lines: list):
+def parta(lines: list):
     tasks = lines_to_tasks(lines)
 
     # Find order
@@ -76,7 +76,7 @@ def part1(lines: list):
     return "".join(order)
 
 
-def part2(lines: list, offset=60, helper_count=4):
+def partb(lines: list, offset=60, helper_count=4):
     tasks = lines_to_tasks(lines, offset)
 
     workers = [None for _ in range(helper_count + 1)]
@@ -99,8 +99,8 @@ def part2(lines: list, offset=60, helper_count=4):
 def main():
     _, input_lines = helpers.load_input(7, "The Sum of Its Parts")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

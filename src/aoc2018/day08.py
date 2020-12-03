@@ -9,7 +9,7 @@ def sum_all_meta_entries(tokens):
     return sum_of_meta
 
 
-def part1(txt):
+def parta(txt):
     tokens = list(map(int, txt.split()))
     return sum_all_meta_entries(tokens)
 
@@ -32,7 +32,7 @@ def node_value(tokens):
     return value
 
 
-def part2(txt):
+def partb(txt):
     tokens = list(map(int, txt.split()))
     return node_value(tokens)
 
@@ -40,8 +40,8 @@ def part2(txt):
 def main():
     input_txt, _ = helpers.load_input(8, "Memory Maneuver")
 
-    print(f"part1: {part1(input_txt)}")
-    print(f"part2: {part2(input_txt)}")
+    print(f"parta: {parta(input_txt)}")
+    print(f"partb: {partb(input_txt)}")
 
 
 if __name__ == "__main__":

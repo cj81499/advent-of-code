@@ -19,7 +19,7 @@ def build_fuel_cells(serial):
     return fuel_cells
 
 
-def part1(serial):
+def parta(serial):
     fuel_cells = build_fuel_cells(serial)
 
     max_power = 0
@@ -34,7 +34,7 @@ def part1(serial):
     return ",".join([str(x) for x in max_coords])
 
 
-def part2(serial):
+def partb(serial):
     fuel_cells = build_fuel_cells(serial)
 
     max_power = 0
@@ -77,7 +77,7 @@ def sum_of_area(t, x, y, sq_size):
     return top_left + bottom_right - (top_right + bottom_left)
 
 
-def part2_polished(serial):
+def partb_polished(serial):
     fuel_cells = build_fuel_cells(serial)
     part_sum_table = partial_sum_table(fuel_cells)
     max_coords = None
@@ -97,9 +97,9 @@ def main():
 
     serial = int(input_txt)
 
-    print(f"part1: {part1(serial)}")
-    # print(f"part2: {part2(serial)}")
-    print(f"part2_polished: {part2_polished(serial)}")
+    print(f"parta: {parta(serial)}")
+    # print(f"partb: {partb(serial)}")
+    print(f"partb_polished: {partb_polished(serial)}")
 
 
 if __name__ == "__main__":

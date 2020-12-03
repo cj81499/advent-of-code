@@ -13,7 +13,7 @@ def str_to_swarm(s):
 
 
 class TestDay23(unittest.TestCase):
-    def test_day23_part1(self):
+    def test_day23_parta(self):
         s = """
 pos=<0,0,0>, r=4
 pos=<1,0,0>, r=1
@@ -28,7 +28,7 @@ pos=<1,3,1>, r=1
 
         self.assertEqual(7, str_to_swarm(s).in_range_of_strongest())
 
-    def test_day23_part2(self):
+    def test_day23_partb(self):
         s = """
 pos=<10,12,12>, r=2
 pos=<12,14,12>, r=2

@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-def part1(input_lines: list):
+def parta(input_lines: list):
     c2 = 0
     c3 = 0
     for l in input_lines:
@@ -13,7 +13,7 @@ def part1(input_lines: list):
     return c2 * c3
 
 
-def part2(input_lines: list):
+def partb(input_lines: list):
     for i, s1 in enumerate(input_lines):
         for s2 in input_lines[i:]:
             if sum([1 for k in range(len(s1)) if s1[k] != s2[k]]) == 1:
@@ -23,8 +23,8 @@ def part2(input_lines: list):
 def main():
     _, input_lines = helpers.load_input(2, "Inventory Management System")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

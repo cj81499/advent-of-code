@@ -11,11 +11,11 @@ lines = """1, 1
 
 
 class TestDay06(unittest.TestCase):
-    def test_day06_part1(self):
-        self.assertEqual(17, day06.part1(lines))
+    def test_day06_parta(self):
+        self.assertEqual(17, day06.parta(lines))
 
-    def test_day06_part2(self):
-        self.assertEqual(16, day06.part2(lines, 32))
+    def test_day06_partb(self):
+        self.assertEqual(16, day06.partb(lines, 32))
 
 
 if __name__ == "__main__":

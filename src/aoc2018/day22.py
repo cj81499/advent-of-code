@@ -15,7 +15,8 @@ class Cave:
             elif x == 0:
                 self.geo_index = y * 48271
             else:
-                self.geo_index = Cave.regions[(x - 1, y)].erosion_level * Cave.regions[(x, y - 1)].erosion_level
+                self.geo_index = Cave.regions[(
+                    x - 1, y)].erosion_level * Cave.regions[(x, y - 1)].erosion_level
             self.erosion_level = (self.geo_index + Cave.depth) % 20183
             self.type_num = self.erosion_level % 3
 
@@ -90,7 +91,7 @@ def main():
     target_x, target_y = map(int, input_lines[1][8:].split(","))
 
     c = Cave(depth, (target_x, target_y))
-    print("part1:", c.risk_level())
+    print("parta:", c.risk_level())
 
 
 if __name__ == "__main__":

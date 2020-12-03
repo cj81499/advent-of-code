@@ -1,7 +1,7 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
-def part1(txt: str):
+def parta(txt: str):
     prev_len = 0
     while prev_len != len(txt):
         prev_len = len(txt)
@@ -10,10 +10,10 @@ def part1(txt: str):
     return len(txt)
 
 
-def part2(txt):
+def partb(txt):
     d = {}
     for c in alphabet:
-        d[c] = part1(txt.replace(c, "").replace(c.upper(), ""))
+        d[c] = parta(txt.replace(c, "").replace(c.upper(), ""))
     shortest_length = d["a"]
     for c in alphabet:
         if d[c] < shortest_length:
@@ -21,10 +21,10 @@ def part2(txt):
     return shortest_length
 
 
-def part2_polished(txt):
-    shortest_length = part1(txt)
+def partb_polished(txt):
+    shortest_length = parta(txt)
     for c in alphabet:
-        length = part1(txt.replace(c, "").replace(c.upper(), ""))
+        length = parta(txt.replace(c, "").replace(c.upper(), ""))
         if length < shortest_length:
             shortest_length = length
     return shortest_length
@@ -33,9 +33,9 @@ def part2_polished(txt):
 def main():
     input_txt, _ = helpers.load_input(5, "Alchemical Reduction")
 
-    print(f"part1: {part1(input_txt)}")
-    print(f"part2: {part2(input_txt)}")
-    print(f"part2_polished: {part2_polished(input_txt)}")
+    print(f"parta: {parta(input_txt)}")
+    print(f"partb: {partb(input_txt)}")
+    print(f"partb_polished: {partb_polished(input_txt)}")
 
 
 if __name__ == "__main__":

@@ -43,7 +43,7 @@ class Constellation:
         return connected
 
 
-def part1(lines: list):
+def parta(lines: list):
     constellations = set([Constellation(Point(line)) for line in lines])
     combinations_made = True
     while combinations_made:
@@ -56,15 +56,15 @@ def part1(lines: list):
     return len(constellations)
 
 
-def part2(lines: list):
+def partb(lines: list):
     raise NotImplementedError
 
 
 def main():
     _, input_lines = helpers.load_input(25, "Four-Dimensional Adventure")
 
-    print(f"part1: {part1(input_lines)}")
-    # print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    # print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

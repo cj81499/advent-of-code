@@ -16,24 +16,24 @@ class TestDay11(unittest.TestCase):
     def test_day11_power_level_3(self):
         self.assertEqual(4, day11.power_level(101, 153, 71))
 
-    def test_day11_part1_0(self):
-        self.assertEqual("33,45", day11.part1(18))
+    def test_day11_parta_0(self):
+        self.assertEqual("33,45", day11.parta(18))
 
-    def test_day11_part1_1(self):
-        self.assertEqual("21,61", day11.part1(42))
+    def test_day11_parta_1(self):
+        self.assertEqual("21,61", day11.parta(42))
 
     # Unpolished day 11 runs super slow
-    # def test_day11_part2_0(self):
-    #     self.assertEqual("90,269,16", day11.part2(18))
+    # def test_day11_partb_0(self):
+    #     self.assertEqual("90,269,16", day11.partb(18))
 
-    # def test_day11_part2_1(self):
-    #     self.assertEqual("232,251,12", day11.part2(42))
+    # def test_day11_partb_1(self):
+    #     self.assertEqual("232,251,12", day11.partb(42))
 
-    def test_day11_part2_polished_0(self):
-        self.assertEqual("90,269,16", day11.part2_polished(18))
+    def test_day11_partb_polished_0(self):
+        self.assertEqual("90,269,16", day11.partb_polished(18))
 
-    def test_day11_part2_polished_1(self):
-        self.assertEqual("232,251,12", day11.part2_polished(42))
+    def test_day11_partb_polished_1(self):
+        self.assertEqual("232,251,12", day11.partb_polished(42))
 
 
 if __name__ == "__main__":

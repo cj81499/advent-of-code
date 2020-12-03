@@ -6,7 +6,7 @@ import parse
 p = parse.compile("[{:d}-{:d}-{:d} {:d}:{:d}] {}")
 
 
-def part1(events: list):
+def parta(events: list):
     d = {}
     active_guard = None
     sleep_start = None
@@ -41,7 +41,7 @@ def part1(events: list):
     return sleep_counter.index(max(sleep_counter)) * max_sleep_guard
 
 
-def part2(events: list):
+def partb(events: list):
     d = {}
     active_guard = None
     sleep_start = None
@@ -69,7 +69,8 @@ def part2(events: list):
 
 def events_list(lines):
     events = [p.parse(l).fixed for l in lines]
-    events = [(datetime.datetime(e[0], e[1], e[2], e[3], e[4]), e[5]) for e in events]
+    events = [(datetime.datetime(e[0], e[1], e[2], e[3], e[4]), e[5])
+              for e in events]
     events.sort(key=lambda e: e[0])
     return events
 
@@ -79,8 +80,8 @@ def main():
 
     events = events_list(input_lines)
 
-    print(f"part1: {part1(events)}")
-    print(f"part2: {part2(events)}")
+    print(f"parta: {parta(events)}")
+    print(f"partb: {partb(events)}")
 
 
 if __name__ == "__main__":

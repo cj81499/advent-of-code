@@ -41,12 +41,12 @@ def run(events: list):
                 s2[0] = active_guard
 
     s1_max_sleep_minute = guards[s1[0]].index(max(guards[s1[0]]))
-    part1 = s1_max_sleep_minute * s1[0]
+    parta = s1_max_sleep_minute * s1[0]
 
     s2_max_sleep_minute = guards[s2[0]].index(s2[1])
-    part2 = s2[0] * s2_max_sleep_minute
+    partb = s2[0] * s2_max_sleep_minute
 
-    return part1, part2
+    return parta, partb
 
 
 def events_list(lines):
@@ -58,10 +58,10 @@ def events_list(lines):
 def main():
     _, input_lines = helpers.load_input(4, "Repose Record")
 
-    part1, part2 = run(events_list(input_lines))
+    parta, partb = run(events_list(input_lines))
 
-    print(f"part1: {part1}")
-    print(f"part2: {part2}")
+    print(f"parta: {parta}")
+    print(f"partb: {partb}")
 
 
 if __name__ == "__main__":

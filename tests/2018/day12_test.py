@@ -4,7 +4,7 @@ import day12
 
 
 class TestDay12(unittest.TestCase):
-    def test_day12_part1(self):
+    def test_day12_parta(self):
         input_lines = """initial state: #..#.#..##......###...###
 
 ...## => #
@@ -30,7 +30,8 @@ class TestDay12(unittest.TestCase):
 
         # Set of rules that make plants
         # Rules that don't make plants don't matter b/c no plant is the default for each generation
-        rules = set([rule_txt[:5] for rule_txt in input_lines if rule_txt[-1] == "#"])
+        rules = set([rule_txt[:5]
+                     for rule_txt in input_lines if rule_txt[-1] == "#"])
 
         print(rules)
         self.assertEqual(325, day12.run(initial_pots, rules, 20))

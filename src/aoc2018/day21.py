@@ -5,21 +5,22 @@ def run(lines: list, ip):
     seen = set()
     last = None
     registers = [0, 0, 0, 0, 0, 0]
-    part1_solved = False
+    parta_solved = False
     while registers[ip] >= 0 and registers[ip] < len(lines):
-        cmd, a, b, c = [x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split()]
+        cmd, a, b, c = [x if len(str(x)) == 4 else int(x)
+                        for x in lines[registers[ip]].split()]
         run_cmd(cmd, registers, a, b, c)
         if registers[ip] == 28:
             m = max(registers)
             if m not in seen:
-                if not part1_solved:
-                    print(f"part1: {m}")
-                    part1_solved = True
+                if not parta_solved:
+                    print(f"parta: {m}")
+                    parta_solved = True
                 seen.add(m)
                 last = m
                 print(len(seen))
             else:
-                print(f"part2: {last}")
+                print(f"partb: {last}")
                 # return seen[-1]
                 return
         registers[ip] += 1

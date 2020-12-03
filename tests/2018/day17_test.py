@@ -14,11 +14,11 @@ y=13, x=498..504
 
 
 class TestDay17(unittest.TestCase):
-    def test_day17_part1(self):
-        self.assertEqual(57, day17.part1(lines))
+    def test_day17_parta(self):
+        self.assertEqual(57, day17.parta(lines))
 
-    def test_day17_part2(self):
-        self.assertEqual(29, day17.part2(lines))
+    def test_day17_partb(self):
+        self.assertEqual(29, day17.partb(lines))
 
 
 if __name__ == "__main__":

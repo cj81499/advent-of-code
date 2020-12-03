@@ -40,7 +40,8 @@ Point.LEFT = Point(-1, 0, 0)
 Point.RIGHT = Point(1, 0, 0)
 Point.FRONT = Point(0, 1, 0)
 Point.BACK = Point(0, -1, 0)
-Point.TRANSFORMS = set([Point.UP, Point.DOWN, Point.LEFT, Point.RIGHT, Point.FRONT, Point.BACK])
+Point.TRANSFORMS = set([Point.UP, Point.DOWN, Point.LEFT,
+                        Point.RIGHT, Point.FRONT, Point.BACK])
 
 
 @dataclass
@@ -77,7 +78,8 @@ class Swarm:
             for y in tqdm(range(min_corner[1], max_corner[1]), leave=False):
                 for z in tqdm(range(min_corner[2], max_corner[2]), leave=False):
                     point = Point(x, y, z)  # print(x, y, z)
-                    in_range_of = [bot.can_reach(point) for bot in self.nanobots].count(True)
+                    in_range_of = [bot.can_reach(point)
+                                   for bot in self.nanobots].count(True)
                     if in_range_of > best_in_range_of:
                         best_in_range_of = in_range_of
                         best_points = set([point])
@@ -99,8 +101,8 @@ def main():
 
     swarm = Swarm(nanobots)
 
-    print(f"part1: {swarm.in_range_of_strongest()}")
-    print(f"part2: {swarm.coords_in_range_of_most_bots()}")
+    print(f"parta: {swarm.in_range_of_strongest()}")
+    print(f"partb: {swarm.coords_in_range_of_most_bots()}")
 
 
 if __name__ == "__main__":

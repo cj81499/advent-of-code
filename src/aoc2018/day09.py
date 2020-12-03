@@ -11,7 +11,8 @@ def run(player_count, last_marble_value):
             if marble_num > last_marble_value:
                 break
             if marble_num % 23 != 0:
-                current_marble_index = (current_marble_index + 1) % len(circle) + 1
+                current_marble_index = (
+                    current_marble_index + 1) % len(circle) + 1
                 circle.insert(current_marble_index, marble_num)
             else:
                 current_marble_index -= 7
@@ -30,7 +31,8 @@ def run_polished(player_count: int, last_marble_value: int) -> int:
     for marble_num in range(1, last_marble_value + 1):
         if marble_num % 23 == 0:
             circle.rotate(7)
-            scores[(marble_num % player_count) - 1] += marble_num + circle.pop()
+            scores[(marble_num % player_count) -
+                   1] += marble_num + circle.pop()
             circle.rotate(-1)
         else:
             circle.rotate(-1)
@@ -45,8 +47,8 @@ def main():
     player_count = int(split[0])
     last_marble_value = int(split[6])
 
-    print(f"part1: {run(player_count, last_marble_value)}")
-    print(f"part2: {run_polished(player_count, 100 * last_marble_value)}")
+    print(f"parta: {run(player_count, last_marble_value)}")
+    print(f"partb: {run_polished(player_count, 100 * last_marble_value)}")
 
 
 if __name__ == "__main__":

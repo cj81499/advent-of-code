@@ -77,28 +77,28 @@ class TestDay20(unittest.TestCase):
 #.#.|.|.|.#.|.#
 ###############""", str(fac))
 
-    def test_day20_part1_1(self):
+    def test_day20_parta_1(self):
         fac = day20.Facility(regex1)
         self.assertEqual(3, fac.furthest_room_dist())
 
-    def test_day20_part1_2(self):
+    def test_day20_parta_2(self):
         fac = day20.Facility(regex2)
         self.assertEqual(10, fac.furthest_room_dist())
 
-    def test_day20_part1_3(self):
+    def test_day20_parta_3(self):
         fac = day20.Facility(regex3)
         self.assertEqual(18, fac.furthest_room_dist())
 
-    def test_day20_part1_4(self):
+    def test_day20_parta_4(self):
         fac = day20.Facility(regex4)
         self.assertEqual(23, fac.furthest_room_dist())
 
-    def test_day20_part1_5(self):
+    def test_day20_parta_5(self):
         fac = day20.Facility(regex5)
         self.assertEqual(31, fac.furthest_room_dist())
 
-    # def test_day20_part2(self):
-    #     self.assertEqual(0, day20.part2(lines))
+    # def test_day20_partb(self):
+    #     self.assertEqual(0, day20.partb(lines))
 
 
 if __name__ == "__main__":

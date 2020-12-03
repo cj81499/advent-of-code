@@ -38,7 +38,8 @@ class grid:
 
     def update_grid(self):
         self.update_dims()
-        self.grid = np.zeros((self.max_y - self.min_y + 1, self.max_x - self.min_x + 1), dtype=int)
+        self.grid = np.zeros((self.max_y - self.min_y + 1,
+                              self.max_x - self.min_x + 1), dtype=int)
         for p in self.points:
             self.grid[p.pos[1] - self.min_y, p.pos[0] - self.min_x] = 1
 
@@ -63,21 +64,23 @@ class Point:
 def run(lines: list):
     g = grid()
     for l in lines:
-        pos, vel = [[int(y) for y in x.split(",")] for x in parser.parse(l).fixed]
+        pos, vel = [[int(y) for y in x.split(",")]
+                    for x in parser.parse(l).fixed]
         g.points.append(Point(pos, vel))
     prev_size = g.size()
     g.step(1)
-    part2 = 0
+    partb = 0
     while prev_size > g.size():
         prev_size = g.size()
-        step_size = int(.085 * (prev_size ** (.5)))  # This is kinda weird. Explained in day10.md
+        # This is kinda weird. Explained in day10.md
+        step_size = int(.085 * (prev_size ** (.5)))
         if step_size < 50:
             step_size = 1
         g.step(step_size)
-        part2 += step_size
+        partb += step_size
 
     g.step(-1)
-    return f"part1:\n{str(g)}\npart2: {part2}"
+    return f"parta:\n{str(g)}\npartb: {partb}"
 
 
 def main():

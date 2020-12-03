@@ -7,7 +7,8 @@ class LumberArea:
         self.area = [[x for x in l] for l in lines]
 
     def adj_in_area(self, x, y):
-        s = set([(x + _x, y + _y) for _x in range(-1, 2) for _y in range(-1, 2)])
+        s = set([(x + _x, y + _y) for _x in range(-1, 2)
+                 for _y in range(-1, 2)])
         if x - 1 < 0:
             s -= set([(x - 1, y + _y) for _y in range(-1, 2)])
         if y - 1 < 0:
@@ -41,7 +42,7 @@ class LumberArea:
         return "\n".join(["".join([acre for acre in row]) for row in self.area])
 
 
-def part1(lines: list):
+def parta(lines: list):
     lumber = LumberArea(lines)
     for _ in range(10):
         lumber.magic()
@@ -49,7 +50,7 @@ def part1(lines: list):
     return count["|"] * count["#"]
 
 
-def part2(lines: list):
+def partb(lines: list):
     lumber = LumberArea(lines)
     seen = []
     minutes = 1000000000
@@ -72,8 +73,8 @@ def part2(lines: list):
 def main():
     _, input_lines = helpers.load_input(18, "Settlers of The North Pole")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

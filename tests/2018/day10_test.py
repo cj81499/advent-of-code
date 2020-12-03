@@ -36,7 +36,7 @@ position=<-6,  0> velocity=< 2,  0>
 position=< 5,  9> velocity=< 1, -2>
 position=<14,  7> velocity=<-2,  0>
 position=<-3,  6> velocity=< 2, -1>""".splitlines()
-        expected = """part1:\n#   #  ###\n#   #   # \n#   #   # \n#####   # \n#   #   # \n#   #   # \n#   #   # \n#   #  ###\npart2: 3"""
+        expected = """parta:\n#   #  ###\n#   #   # \n#   #   # \n#####   # \n#   #   # \n#   #   # \n#   #   # \n#   #  ###\npartb: 3"""
         actual = day10.run(input_lines).strip()
         self.assertEqual(expected, actual)
 

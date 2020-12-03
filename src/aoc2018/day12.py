@@ -29,7 +29,8 @@ def run(pots, rules, loops):
     for generation in range(loops):
         next_pots_state = ""
         for i in range(- 2,  len(pots) + 2):
-            slice_of_five = "".join([pots[pots.first_pot_index() + i + x] for x in range(-2, 3)])
+            slice_of_five = "".join(
+                [pots[pots.first_pot_index() + i + x] for x in range(-2, 3)])
             # print(str(i).rjust(2), slice_of_five, str(pots))
             next_pots_state += "#" if slice_of_five in rules else "."
         pots = Pots(next_pots_state, pots.first_pot_index() - 2)
@@ -57,10 +58,11 @@ def main():
 
     # Set of rules that make plants
     # Rules that don't make plants don't matter b/c no plant is the default for each generation
-    rules = set([rule_txt[:5] for rule_txt in input_lines if rule_txt[-1] == "#"])
+    rules = set([rule_txt[:5]
+                 for rule_txt in input_lines if rule_txt[-1] == "#"])
 
-    print(f"part1: {run(initial_pots, rules, 20)}")
-    print(f"part2: {run(initial_pots, rules, 50000000000)}")
+    print(f"parta: {run(initial_pots, rules, 20)}")
+    print(f"partb: {run(initial_pots, rules, 50000000000)}")
 
 
 if __name__ == "__main__":

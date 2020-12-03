@@ -14,8 +14,8 @@ seti 9 0 5
 
 class TestDay19(unittest.TestCase):
 
-    def test_day19_part1(self):
-        self.assertEqual(7, day19.part1(lines, 0))
+    def test_day19_parta(self):
+        self.assertEqual(7, day19.parta(lines, 0))
 
 
 if __name__ == "__main__":

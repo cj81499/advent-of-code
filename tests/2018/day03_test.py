@@ -9,17 +9,17 @@ claims = [day03_polished.Claim(x) for x in s]
 
 
 class TestDay03(unittest.TestCase):
-    def test_day03_part1(self):
-        self.assertEqual(4, day03.part1(s))
+    def test_day03_parta(self):
+        self.assertEqual(4, day03.parta(s))
 
-    def test_day03_part2(self):
-        self.assertEqual(3, day03.part2(s))
+    def test_day03_partb(self):
+        self.assertEqual(3, day03.partb(s))
 
-    def test_day03_polished_part1(self):
-        self.assertEqual(4, day03_polished.part1(claims))
+    def test_day03_polished_parta(self):
+        self.assertEqual(4, day03_polished.parta(claims))
 
-    def test_day03_polished_part2(self):
-        self.assertEqual(3, day03_polished.part2(claims))
+    def test_day03_polished_partb(self):
+        self.assertEqual(3, day03_polished.partb(claims))
 
 
 if __name__ == "__main__":

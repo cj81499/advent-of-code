@@ -20,7 +20,8 @@ class Scan:
             second_coord_nums = list(map(int, second_coord[2:].split("..")))
             area = {
                 first_coord[0]: range(first_coord_num, first_coord_num+1),
-                second_coord[0]: range(second_coord_nums[0], second_coord_nums[1] + 1)
+                second_coord[0]: range(
+                    second_coord_nums[0], second_coord_nums[1] + 1)
             }
             for x in area["x"]:
                 for y in area["y"]:
@@ -46,9 +47,11 @@ class Scan:
         for d in self.dimensions:
             if self.dimensions[d] is not None:
                 if d[:3] == "min":
-                    self.dimensions[d] = min((self.dimensions[d], area_dimensions[d]))
+                    self.dimensions[d] = min(
+                        (self.dimensions[d], area_dimensions[d]))
                 else:
-                    self.dimensions[d] = max((self.dimensions[d], area_dimensions[d]))
+                    self.dimensions[d] = max(
+                        (self.dimensions[d], area_dimensions[d]))
             else:
                 self.dimensions[d] = area_dimensions[d]
 
@@ -65,11 +68,13 @@ class Scan:
         while not left_done or not right_done:
             if not left_done:
                 left_hit_wall = x-i+1 if self.scan[x - i, y] == "#" else 0
-                left_reached_clif = x-i+1 if self.scan[x - i, y + 1] not in "~#" else 0
+                left_reached_clif = x-i + \
+                    1 if self.scan[x - i, y + 1] not in "~#" else 0
                 left_done = left_hit_wall or left_reached_clif
             if not right_done:
                 right_hit_wall = x+i-1 if self.scan[x + i, y] == "#" else 0
-                right_reached_clif = x+i-1 if self.scan[x + i, y + 1] not in "~#" else 0
+                right_reached_clif = x+i - \
+                    1 if self.scan[x + i, y + 1] not in "~#" else 0
                 right_done = right_hit_wall or right_reached_clif
 
             if not left_done:
@@ -106,13 +111,13 @@ class Scan:
         return c["~"] + c["|"]
 
 
-def part1(lines: list):
+def parta(lines: list):
     s = Scan(lines)
     s.pour()
     return s.count_all_water_tiles() - (s.dimensions["min_y"] - 1)
 
 
-def part2(lines: list):
+def partb(lines: list):
     s = Scan(lines)
     s.pour()
     # with open("water.txt", "w") as f:
@@ -123,8 +128,8 @@ def part2(lines: list):
 def main():
     _, input_lines = helpers.load_input(17, "Reservoir Research")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

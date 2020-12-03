@@ -14,10 +14,10 @@ Infection:
 
 
 class TestDay24(unittest.TestCase):
-    def test_day24_part1(self):
+    def test_day24_parta(self):
         self.assertEqual(5216, day24.Battle.parseBattle(s).fight()[1])
 
-    def test_day24_part2(self):
+    def test_day24_partb(self):
         self.assertEqual(51, day24.remaining_immune_with_min_boost(s))
 
 

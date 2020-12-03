@@ -47,7 +47,8 @@ class Cave:
 
     def _adj_units(self, pos):
         x, y = pos
-        adj_grid_entries = [self.grid[y + b][x + a] for (a, b) in Cave.Unit.ADJ_MOVES]
+        adj_grid_entries = [self.grid[y + b][x + a]
+                            for (a, b) in Cave.Unit.ADJ_MOVES]
         adj_units = [x for x in adj_grid_entries if isinstance(x, Cave.Unit)]
         return adj_units
 
@@ -92,11 +93,11 @@ class Cave:
             i += 1
 
 
-def part1(cave: Cave):
+def parta(cave: Cave):
     cave.combat()
 
 
-def part2():
+def partb():
     pass
 
 
@@ -116,8 +117,8 @@ def main():
 """.strip().split("\n")
 
     cave = Cave(input_lines)
-    print(f"part1: {part1(cave)}")
-    # print(f"part2: {part2()}")
+    print(f"parta: {parta(cave)}")
+    # print(f"partb: {partb()}")
 
 
 if __name__ == "__main__":

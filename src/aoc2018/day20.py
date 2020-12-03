@@ -207,8 +207,8 @@ def main():
     input_txt, _ = helpers.load_input(20, "A Regular Map")
 
     fac = Facility(input_txt)
-    print(f"part1: {fac.furthest_room_dist()}")
-    print(f"part2: {fac.count_rooms_at_least_dist_far(1000)}")
+    print(f"parta: {fac.furthest_room_dist()}")
+    print(f"partb: {fac.count_rooms_at_least_dist_far(1000)}")
 
 
 if __name__ == "__main__":

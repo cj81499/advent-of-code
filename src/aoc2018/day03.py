@@ -1,4 +1,4 @@
-def part1(lines: list):
+def parta(lines: list):
     d = 1000
     x = [0 for i in range(d)]
     grid = [x.copy() for i in range(d)]
@@ -17,7 +17,7 @@ def part1(lines: list):
     return count
 
 
-def part2(lines: list):
+def partb(lines: list):
     d = 1000
     x = ["0" for i in range(d)]
     grid = [x.copy() for i in range(d)]
@@ -51,8 +51,8 @@ def part2(lines: list):
 def main():
     _, input_lines = helpers.load_input(3, "No Matter How You Slice It")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

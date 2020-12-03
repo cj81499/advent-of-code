@@ -46,7 +46,7 @@ def expand(grid, seeds):
         filled_in = all([True if -1 not in row else False for row in grid])
 
 
-def part1(lines: list):
+def parta(lines: list):
     max_x, max_y = 0, 0
     seeds = set()
     for l in lines:
@@ -70,7 +70,8 @@ def part1(lines: list):
     items_in_last_row = grid[len(grid) - 1]
     items_in_first_col = [r[0] for r in grid]
     items_in_last_col = [r[len(r) - 1] for r in grid]
-    disqualified.update(items_in_first_row, items_in_last_row, items_in_first_col, items_in_last_col)
+    disqualified.update(items_in_first_row, items_in_last_row,
+                        items_in_first_col, items_in_last_col)
 
     flat_grid = [item for row in grid for item in row]
 
@@ -87,7 +88,7 @@ def dist_to_seed(x, y, seed):
     return abs(seed[0] - x) + abs(seed[1] - y)
 
 
-def part2(lines: list, region_dist):
+def partb(lines: list, region_dist):
     seeds = set()
     max_x, max_y = 0, 0
     for l in lines:
@@ -112,8 +113,8 @@ def part2(lines: list, region_dist):
 def main():
     _, input_lines = helpers.load_input(6, "Chronal Coordinates")
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines, 10000)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines, 10000)}")
 
 
 if __name__ == "__main__":
