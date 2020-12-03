@@ -1,8 +1,5 @@
 """Wim's solutions for https://adventofcode.com/"""
 import importlib
-import io
-import runpy
-import sys
 from pathlib import Path
 
 
