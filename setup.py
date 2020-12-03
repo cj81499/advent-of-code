@@ -19,7 +19,7 @@ setup(
         # list your other requirements here, for example:
         # "numpy", "parse", "networkx",
     ],
-    packages=find_packages(),
+    packages=find_packages(where=".", exclude="tests"),
     entry_points={
         "adventofcode.user": ["myusername=src:solve"],
     },
