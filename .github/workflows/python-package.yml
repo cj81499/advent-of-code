@@ -16,6 +16,9 @@ jobs:
       matrix:
         python-version: ["3.9"]
 
+    env:
+      AOC_SESSION: "53616c7465645f5f6809fd65d7cd4c0110b34007e11e16c07aab2699b26768b85077c03e1f7b40b5e344f5302c87ef8e"
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
