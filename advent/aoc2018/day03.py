@@ -2,8 +2,8 @@ def parta(lines: list):
     d = 1000
     x = [0 for i in range(d)]
     grid = [x.copy() for i in range(d)]
-    for l in lines:
-        s = l.split(" ")
+    for line in lines:
+        s = line.split(" ")
         left, top = [int(x) for x in s[2][:-1].split(",")]
         width, height = [int(x) for x in s[3].split("x")]
         for y in range(height):
@@ -17,12 +17,12 @@ def parta(lines: list):
     return count
 
 
-def partb(lines: list):
+def partb(lines: list): # noqa
     d = 1000
     x = ["0" for i in range(d)]
     grid = [x.copy() for i in range(d)]
-    for l in lines:
-        s = l.split(" ")
+    for line in lines:
+        s = line.split(" ")
         claim_num = int(s[0][1:])
         left, top = [int(x) for x in s[2][:-1].split(",")]
         width, height = [int(x) for x in s[3].split("x")]
@@ -32,8 +32,8 @@ def partb(lines: list):
                     grid[top + y][left + x] = claim_num
                 else:
                     grid[top + y][left + x] = "X"
-    for l in lines:
-        s = l.split(" ")
+    for line in lines:
+        s = line.split(" ")
         claim_num = int(s[0][1:])
         left, top = [int(x) for x in s[2][:-1].split(",")]
         width, height = [int(x) for x in s[3].split("x")]

@@ -28,7 +28,7 @@ def partb(txt: str) -> int:
 
 
 def pos_vel(lines: List[str]) -> Tuple[List[List[int]], List[List[int]]]:
-    numbers = [(int(s) for s in re.findall(r"-?\d+", l)) for l in lines]
+    numbers = [(int(s) for s in re.findall(r"-?\d+", line)) for line in lines]
     positions: List[List[int]] = list(map(list, zip(*numbers)))
     velocities = [[0] * len(numbers) for _ in range(3)]  # 3 for x, y, z
     return positions, velocities

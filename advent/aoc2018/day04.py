@@ -2,11 +2,10 @@ import datetime
 
 import parse
 
-
 p = parse.compile("[{:d}-{:d}-{:d} {:d}:{:d}] {}")
 
 
-def parta(events: list):
+def parta(events: list): # noqa
     d = {}
     active_guard = None
     sleep_start = None
@@ -68,7 +67,7 @@ def partb(events: list):
 
 
 def events_list(lines):
-    events = [p.parse(l).fixed for l in lines]
+    events = [p.parse(line).fixed for line in lines]
     events = [(datetime.datetime(e[0], e[1], e[2], e[3], e[4]), e[5])
               for e in events]
     events.sort(key=lambda e: e[0])

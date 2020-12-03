@@ -19,7 +19,11 @@ def simulate_slope(txt, right, down):
 
 
 def partb(txt):
-    return simulate_slope(txt, 1, 1) * simulate_slope(txt, 3, 1) * simulate_slope(txt, 5, 1) * simulate_slope(txt, 7, 1) * simulate_slope(txt, 1, 2)
+    return simulate_slope(txt, 1, 1) \
+        * simulate_slope(txt, 3, 1) \
+        * simulate_slope(txt, 5, 1) \
+        * simulate_slope(txt, 7, 1) \
+        * simulate_slope(txt, 1, 2)
 
 
 def main(txt):
@@ -28,5 +32,5 @@ def main(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data, submit
+    from aocd import data
     main(data)

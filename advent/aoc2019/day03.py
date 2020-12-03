@@ -31,6 +31,7 @@ def wire_evaluator(lines: List[str], evaluator_func: Callable[[complex, Dict[com
 
 def parta(txt: str) -> int:
     lines = txt.splitlines()
+
     def manhattan_distance(
         p: complex,
         f: Dict[complex, int],
@@ -43,6 +44,7 @@ def parta(txt: str) -> int:
 
 def partb(txt: str) -> int:
     lines = txt.splitlines()
+
     def step_count(
         p: complex,
         f: Dict[complex, int],

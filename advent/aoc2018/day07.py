@@ -33,8 +33,8 @@ def lines_to_tasks(lines, offset=60):
     tasks = {}
 
     # Fill in tasks dictionary
-    for l in lines:
-        before, after = parser.parse(l).fixed
+    for line in lines:
+        before, after = parser.parse(line).fixed
         tasks.setdefault(before, Task(before, offset))
         tasks.setdefault(after, Task(after, offset))
         tasks[before].after.add(after)

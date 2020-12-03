@@ -12,8 +12,7 @@ class Claim:
     validity = []
 
     def __init__(self, s: str):
-        self.claim_id, self.left, self.top, self.width, self.height = Claim.p.parse(
-            s)
+        self.claim_id, self.left, self.top, self.width, self.height = Claim.p.parse(s)
         Claim.validity.append(True)
 
     def parta(self):

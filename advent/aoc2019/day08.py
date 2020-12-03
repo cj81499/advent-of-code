@@ -20,7 +20,7 @@ def parta(txt: str) -> int:
     nums = [int(c) for c in txt]
 
     layers = get_layers(nums, WIDTH, HEIGHT)
-    counts = [Counter(l) for l in layers]
+    counts = [Counter(line) for line in layers]
     least_zeros = min(counts, key=lambda c: c[0])
     return least_zeros[1] * least_zeros[2]
 

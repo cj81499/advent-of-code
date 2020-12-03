@@ -23,7 +23,7 @@ class Reaction():
 
 
 def parse_reactions(lines: List[str]) -> Set[Reaction]:
-    return {Reaction(l) for l in lines}
+    return {Reaction(line) for line in lines}
 
 
 def ore_req(

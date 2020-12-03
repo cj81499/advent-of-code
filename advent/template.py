@@ -12,5 +12,5 @@ def main(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data, submit
+    from aocd import data
     main(data)

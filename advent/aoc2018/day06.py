@@ -49,16 +49,16 @@ def expand(grid, seeds):
 def parta(lines: list):
     max_x, max_y = 0, 0
     seeds = set()
-    for l in lines:
-        x, y = [int(x) for x in l.split(", ")]
+    for line in lines:
+        x, y = [int(x) for x in line.split(", ")]
         if x > max_x:
             max_x = x
         if y > max_y:
             max_y = y
     grid = [[-1 for x in range(max_x + 2)] for y in range(max_y + 2)]
     i = 1
-    for l in lines:
-        x, y = [int(x) for x in l.split(", ")]
+    for line in lines:
+        x, y = [int(x) for x in line.split(", ")]
         grid[y][x] = i
         seeds.add((x, y))
         i += 1
@@ -91,8 +91,8 @@ def dist_to_seed(x, y, seed):
 def partb(lines: list, region_dist):
     seeds = set()
     max_x, max_y = 0, 0
-    for l in lines:
-        x, y = [int(x) for x in l.split(", ")]
+    for line in lines:
+        x, y = [int(x) for x in line.split(", ")]
         seeds.add((x, y))
         if x > max_x:
             max_x = x

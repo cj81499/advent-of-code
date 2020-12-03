@@ -4,7 +4,7 @@ from aocd import data
 
 
 def get_masses(lines: List[str]) -> Dict[str, str]:
-    return {mass: parent for parent, mass in (l.split(")") for l in lines)}
+    return {mass: parent for parent, mass in (line.split(")") for line in lines)}
 
 
 def depth(masses: Dict[str, str], mass: str) -> int:
@@ -35,8 +35,6 @@ def partb(txt: str) -> int:
 
 
 def main() -> None:
-
-
     print(f"parta: {parta(data)}")
     print(f"partb: {partb(data)}")
 

@@ -1,5 +1,5 @@
-from collections import defaultdict, Counter
 import sys
+from collections import Counter, defaultdict
 
 sys.setrecursionlimit(2000)
 
@@ -14,8 +14,8 @@ class Scan:
             "min_y": None,
             "max_y": None
         }
-        for l in lines:
-            first_coord, second_coord = l.split(", ")
+        for line in lines:
+            first_coord, second_coord = line.split(", ")
             first_coord_num = int(first_coord[2:])
             second_coord_nums = list(map(int, second_coord[2:].split("..")))
             area = {
@@ -55,7 +55,7 @@ class Scan:
             else:
                 self.dimensions[d] = area_dimensions[d]
 
-    def spread(self, x, y):
+    def spread(self, x, y): # noqa
         if not self.scan[(x, y + 1)] in "~#":
             return
         left_done = False

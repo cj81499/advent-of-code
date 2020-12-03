@@ -63,9 +63,8 @@ class Point:
 
 def run(lines: list):
     g = grid()
-    for l in lines:
-        pos, vel = [[int(y) for y in x.split(",")]
-                    for x in parser.parse(l).fixed]
+    for line in lines:
+        pos, vel = [[int(y) for y in x.split(",")] for x in parser.parse(line).fixed]
         g.points.append(Point(pos, vel))
     prev_size = g.size()
     g.step(1)

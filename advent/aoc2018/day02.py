@@ -4,8 +4,8 @@ from collections import Counter
 def parta(input_lines: list):
     c2 = 0
     c3 = 0
-    for l in input_lines:
-        s = set(Counter(l).values())
+    for line in input_lines:
+        s = set(Counter(line).values())
         if 2 in s:
             c2 += 1
         if 3 in s:

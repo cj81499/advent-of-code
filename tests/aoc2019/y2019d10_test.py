@@ -1,5 +1,3 @@
-from typing import List
-
 import advent.aoc2019.day10 as d
 import pytest
 

@@ -1,5 +1,5 @@
 def parta(txt):
-    nums = set(int(l) for l in txt.splitlines())
+    nums = set(int(line) for line in txt.splitlines())
 
     for n in nums:
         remaining = 2020 - n
@@ -8,7 +8,7 @@ def parta(txt):
 
 
 def partb(txt):
-    nums = set(int(l) for l in txt.splitlines())
+    nums = set(int(line) for line in txt.splitlines())
 
     for x in nums:
         for y in nums:
@@ -23,5 +23,5 @@ def main(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data, submit
+    from aocd import data
     main(data)

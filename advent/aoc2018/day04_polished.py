@@ -1,4 +1,5 @@
 from collections import defaultdict
+
 import parse
 
 p = parse.compile("[{}] {}")
@@ -50,7 +51,7 @@ def run(events: list):
 
 
 def events_list(lines):
-    events = [p.parse(l).fixed for l in lines]
+    events = [p.parse(line).fixed for line in lines]
     events.sort(key=lambda e: e[0])
     return events
 

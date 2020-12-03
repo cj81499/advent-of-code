@@ -1,10 +1,10 @@
-from collections import Counter
 import copy
+from collections import Counter
 
 
 class LumberArea:
     def __init__(self, lines):
-        self.area = [[x for x in l] for l in lines]
+        self.area = [[x for x in line] for line in lines]
 
     def adj_in_area(self, x, y):
         s = set([(x + _x, y + _y) for _x in range(-1, 2)

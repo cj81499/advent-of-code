@@ -106,7 +106,7 @@ class Battle:
                 if (alive_count == 0):
                     return army.name, sum([x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups])
 
-    def round(self):
+    def round(self): # noqa
         fighting_groups = []
         for army in self.armies:
             for group in army.groups:
