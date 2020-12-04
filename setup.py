@@ -21,6 +21,6 @@ setup(
     ],
     packages=find_packages(where=".", exclude="tests"),
     entry_points={
-        "adventofcode.user": ["myusername=advent:solve"],
+        "adventofcode.user": ["cj81499 = advent:solve"],
     },
 )
