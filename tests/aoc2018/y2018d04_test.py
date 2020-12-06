@@ -1,7 +1,7 @@
 import unittest
 
 import advent.aoc2018.day04 as day04
-import advent.aoc2018.day04 as day04_polished
+import advent.aoc2018.day04_polished as day04_polished
 
 txt_unsorted = """[1518-11-01 00:00] Guard #10 begins shift
 [1518-11-03 00:05] Guard #10 begins shift
