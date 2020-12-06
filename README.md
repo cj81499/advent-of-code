@@ -74,6 +74,7 @@ source .venv/bin/activate
 ### Install the project
 
 ```shell
+pip install -r requirements.txt
 pip install -e .
 ```
 
