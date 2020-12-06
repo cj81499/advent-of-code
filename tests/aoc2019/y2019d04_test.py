@@ -1,8 +1,7 @@
 from typing import List
 
-import pytest
-
 import advent.aoc2019.day04 as d
+import pytest
 
 
 @pytest.mark.parametrize("input_val, expected", [

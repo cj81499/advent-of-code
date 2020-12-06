@@ -1,6 +1,5 @@
-import pytest
-
 import advent.aoc2019.day03 as d
+import pytest
 
 EXAMPLE_0 = """R8,U5,L5,D3
 U7,R6,D4,L4"""

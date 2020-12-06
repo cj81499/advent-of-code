@@ -17,7 +17,7 @@ def parta(lines: list):
     return count
 
 
-def partb(lines: list): # noqa
+def partb(lines: list):  # noqa
     d = 1000
     x = ["0" for i in range(d)]
     grid = [x.copy() for i in range(d)]
@@ -56,5 +56,6 @@ def main():
 
 
 if __name__ == "__main__":
-    import helpers
+    import advent.aoc2018.helpers as helpers
+
     main()

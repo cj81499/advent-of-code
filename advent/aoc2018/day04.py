@@ -5,7 +5,7 @@ import parse
 p = parse.compile("[{:d}-{:d}-{:d} {:d}:{:d}] {}")
 
 
-def parta(events: list): # noqa
+def parta(events: list):  # noqa
     d = {}
     active_guard = None
     sleep_start = None
@@ -84,5 +84,6 @@ def main():
 
 
 if __name__ == "__main__":
-    import helpers
+    import advent.aoc2018.helpers as helpers
+
     main()

@@ -55,7 +55,7 @@ class Scan:
             else:
                 self.dimensions[d] = area_dimensions[d]
 
-    def spread(self, x, y): # noqa
+    def spread(self, x, y):  # noqa
         if not self.scan[(x, y + 1)] in "~#":
             return
         left_done = False
@@ -133,5 +133,6 @@ def main():
 
 
 if __name__ == "__main__":
-    import helpers
+    import advent.aoc2018.helpers as helpers
+
     main()

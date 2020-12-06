@@ -106,7 +106,7 @@ class Battle:
                 if (alive_count == 0):
                     return army.name, sum([x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups])
 
-    def round(self): # noqa
+    def round(self):  # noqa
         fighting_groups = []
         for army in self.armies:
             for group in army.groups:
@@ -172,5 +172,6 @@ def main():
 
 
 if __name__ == "__main__":
-    import helpers
+    import advent.aoc2018.helpers as helpers
+
     main()

@@ -89,5 +89,6 @@ def main():
 
 
 if __name__ == "__main__":
-    import helpers
+    import advent.aoc2018.helpers as helpers
+
     main()

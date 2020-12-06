@@ -122,5 +122,5 @@ def main():
 
 
 if __name__ == "__main__":
-    from helpers import load_input
+    from advent.aoc2018.helpers import load_input
     main()

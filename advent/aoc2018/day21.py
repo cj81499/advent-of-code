@@ -1,4 +1,4 @@
-from day16 import run_cmd
+from advent.aoc2018.day16 import run_cmd
 
 
 def run(lines: list, ip):
@@ -37,5 +37,6 @@ def main():
 
 
 if __name__ == "__main__":
-    import helpers
+    import advent.aoc2018.helpers as helpers
+
     main()

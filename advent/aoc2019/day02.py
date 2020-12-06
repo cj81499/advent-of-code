@@ -1,7 +1,7 @@
 from itertools import combinations
 
+from advent.aoc2019.intcode_interpreter import run_intcode_program
 from aocd import data
-from src.aoc2019.intcode_interpreter import run_intcode_program
 
 
 def parta(txt: str) -> int:

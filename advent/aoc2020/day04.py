@@ -10,7 +10,7 @@ def is_valid_a(passport):
     return len(missing) == 0
 
 
-def is_valid_b(passport): # noqa
+def is_valid_b(passport):  # noqa
     lines = passport.splitlines()
     missing = set(("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"))
     for line in lines:
