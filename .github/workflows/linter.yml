@@ -50,5 +50,6 @@ jobs:
         uses: github/super-linter@v3
         env:
           VALIDATE_ALL_CODEBASE: true # enable linting all files (rather than just new//edited files)
+          VALIDATE_PYTHON_BLACK: false # turn off black. it's too opinionated for my taste
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

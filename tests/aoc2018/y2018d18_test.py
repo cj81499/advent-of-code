@@ -1,6 +1,6 @@
 import unittest
-import advent.aoc2018.day18 as day18
 
+import advent.aoc2018.day18 as day18
 
 lines = """
 .#.#...|#.

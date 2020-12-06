@@ -1,5 +1,6 @@
-import advent.aoc2018.day17 as day17
 import unittest
+
+import advent.aoc2018.day17 as day17
 
 lines = """
 x=495, y=2..7

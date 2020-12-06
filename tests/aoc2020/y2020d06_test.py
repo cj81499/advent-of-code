@@ -1,5 +1,6 @@
-import advent.aoc2020.day06 as d
 import pytest
+
+import advent.aoc2020.day06 as d
 
 EXAMPLE_INPUT = """
 abc

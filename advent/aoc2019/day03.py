@@ -1,13 +1,11 @@
-from typing import Callable, Dict, List
-
 from aocd import data
 
 START = 0 + 0j
 MOVEMENTS = {"U": 0 + 1j, "D": 0 - 1j, "R": 1 + 0j, "L": -1 + 0j}
 
 
-def get_points(wire: str) -> Dict[complex, int]:
-    points: Dict[complex, int] = {}
+def get_points(wire: str) -> dict[complex, int]:
+    points: dict[complex, int] = {}
     commands = wire.split(",")
     pos = START
     steps = 1
@@ -22,10 +20,10 @@ def get_points(wire: str) -> Dict[complex, int]:
     return points
 
 
-def wire_evaluator(lines: List[str], evaluator_func: Callable[[complex, Dict[complex, int], Dict[complex, int]], int]) -> int:
+def wire_evaluator(lines, evaluator):
     first, second = (get_points(wire) for wire in lines)
     intersections = first.keys() & second.keys()
-    measurements = [evaluator_func(p, first, second) for p in intersections]
+    measurements = [evaluator(p, first, second) for p in intersections]
     return min(measurements)
 
 
@@ -34,8 +32,8 @@ def parta(txt: str) -> int:
 
     def manhattan_distance(
         p: complex,
-        f: Dict[complex, int],
-        s: Dict[complex, int]
+        f: dict[complex, int],
+        s: dict[complex, int]
     ) -> int:
         return int(abs(p.real) + abs(p.imag))
 
@@ -47,8 +45,8 @@ def partb(txt: str) -> int:
 
     def step_count(
         p: complex,
-        f: Dict[complex, int],
-        s: Dict[complex, int]
+        f: dict[complex, int],
+        s: dict[complex, int]
     ) -> int:
         return f[p] + s[p]
 

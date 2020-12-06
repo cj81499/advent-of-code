@@ -1,4 +1,5 @@
 import unittest
+
 import advent.aoc2018.day19 as day19
 
 lines = """

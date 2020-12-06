@@ -1,7 +1,8 @@
-from dataclasses import dataclass
-import parse
-from functools import total_ordering
 from collections import deque
+from dataclasses import dataclass
+from functools import total_ordering
+
+import parse
 
 parser = parse.compile("pos=<{:d},{:d},{:d}>, r={:d}")
 

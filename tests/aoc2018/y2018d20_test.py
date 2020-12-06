@@ -1,4 +1,5 @@
 import unittest
+
 import advent.aoc2018.day20 as day20
 
 regex1 = "^WNE$"
