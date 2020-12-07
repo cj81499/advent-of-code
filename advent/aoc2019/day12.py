@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 from math import gcd, inf
-from typing import List, Set, Tuple, Union
 
 from aocd import data
 
@@ -27,19 +26,19 @@ def partb(txt: str) -> int:
     return lcm(*steps_by_coord)
 
 
-def pos_vel(lines: List[str]) -> Tuple[List[List[int]], List[List[int]]]:
+def pos_vel(lines: list[str]) -> tuple[list[list[int]], list[list[int]]]:
     numbers = [(int(s) for s in re.findall(r"-?\d+", line)) for line in lines]
-    positions: List[List[int]] = list(map(list, zip(*numbers)))
+    positions: list[list[int]] = list(map(list, zip(*numbers)))
     velocities = [[0] * len(numbers) for _ in range(3)]  # 3 for x, y, z
     return positions, velocities
 
 
 def simulate(
-    positions: List[int],
-    velocities: List[int],
-    step_count: Union[int, float] = inf
+    positions: list[int],
+    velocities: list[int],
+    step_count=inf
 ) -> int:
-    seen: Set[Tuple[int, ...]] = set()
+    seen: set[tuple[int, ...]] = set()
     step = 0
     current = (*positions, *velocities)
     while (step < step_count) if step_count < inf else (current not in seen):
@@ -50,7 +49,7 @@ def simulate(
     return step
 
 
-def do_step(positions: List[int], velocities: List[int]) -> None:
+def do_step(positions: list[int], velocities: list[int]) -> None:
     for i, pos in enumerate(positions):
         velocities[i] += sum(compare(pos, other) for other in positions)
     for i, vel in enumerate(velocities):
@@ -65,7 +64,7 @@ def compare(a: int, b: int) -> int:
     return 0
 
 
-def nrg(moon: Tuple[Tuple[int, ...], ...]) -> int:
+def nrg(moon: tuple[tuple[int, ...], ...]) -> int:
     pos, vel = moon
     p_nrg = sum(abs(n) for n in pos)
     k_nrg = sum(abs(n) for n in vel)

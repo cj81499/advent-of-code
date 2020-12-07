@@ -1,5 +1,3 @@
-from typing import Dict, List, Optional, Set
-
 from aocd import data
 
 
@@ -22,13 +20,13 @@ class Reaction():
         return f"{', '.join(str(i) for i in self.inputs)} => {self.output}"
 
 
-def parse_reactions(lines: List[str]) -> Set[Reaction]:
+def parse_reactions(lines: list[str]) -> set[Reaction]:
     return {Reaction(line) for line in lines}
 
 
 def ore_req(
-    chemical: str, rxns: Set[Reaction], count: int = 1,
-    leftover: Optional[Dict[str, int]] = None
+    chemical: str, rxns: set[Reaction], count: int = 1,
+    leftover=None
 ) -> int:
     # inspired by u/tinyhurricanes' solution
     # https://www.reddit.com/r/adventofcode/comments/eafj32/2019_day_14_solutions/fax5izj
