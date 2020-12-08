@@ -4,15 +4,16 @@ def parse_instructions(txt):
     return [(cmd, int(n)) for cmd, n in instructions]
 
 
-def simulate(instructions, stop_on_loop=False, loop_limit=None):
-    loops = 0
-    accumulator = 0
+def simulate(instructions, stop_on_loop=False):
     ip = 0
-    seen = set()
-    while loop_limit is None or loops < loop_limit and ip < len(instructions):
-        if stop_on_loop and ip in seen:
-            return accumulator
-        seen.add(ip)
+    accumulator = 0
+    seen_ips = set()
+    while ip < len(instructions):
+        # if we've executed this instruction before
+        if ip in seen_ips:
+            # part a: we found the answer; part b: we're in a loop
+            return accumulator if stop_on_loop else None
+        seen_ips.add(ip)
         cmd, n = instructions[ip]
         if cmd == "acc":
             accumulator += n
@@ -21,8 +22,7 @@ def simulate(instructions, stop_on_loop=False, loop_limit=None):
             ip += n
         elif cmd == "nop":
             ip += 1
-        loops += 1
-    return accumulator if (loop_limit is None or loops < loop_limit) else None
+    return accumulator
 
 
 def parta(txt):
@@ -35,10 +35,9 @@ def partb(txt):
     for i, (cmd, n) in enumerate(instructions):
         if cmd in ("jmp", "nop"):
             new_cmd = "jmp" if cmd == "nop" else "nop"
-            instructions_copy = [x for x in instructions]
+            instructions_copy = instructions.copy()
             instructions_copy[i] = (new_cmd, n)
-            res = simulate(instructions_copy, loop_limit=10000)
-            if res is not None:
+            if (res := simulate(instructions_copy)) is not None:
                 return res
     return -1
 
