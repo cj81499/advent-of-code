@@ -1,4 +1,10 @@
+import collections  # noqa
+import itertools  # noqa
+import re  # noqa
+
+
 def parta(txt):
+    print(txt)
     return -1
 
 
