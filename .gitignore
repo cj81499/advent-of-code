@@ -7,8 +7,8 @@ build/
 dist/
 *.egg-info/
 
-# Env variables
-.env
+# Editor settings
+.vscode/
 
 # Logs
 *.log

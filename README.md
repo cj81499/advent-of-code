@@ -74,16 +74,15 @@ source .venv/bin/activate
 ### Install the project
 
 ```shell
-pip install -r requirements.txt
 pip install -e .
 ```
+
+Make sure that [aocd](https://github.com/wimglenn/advent-of-code-data) knows where to find your session token.
 
 ### Test
 
 ```shell
-python -m pytest
+pytest tests
 ```
 
-```shell
-aoc --years 2019 2018
-```
+Supports [aoc test runner](https://github.com/wimglenn/advent-of-code-data#verify-your-code-against-multiple-different-inputs).
