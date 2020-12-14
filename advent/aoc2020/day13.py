@@ -29,7 +29,7 @@ def lcm(nums):
     first, *rest = nums
     if len(rest) == 0:
         return first
-    l = lcm(rest)
+    l = lcm(rest)  # noqa
     return (first * l) // math.gcd(first, l)
 
 
