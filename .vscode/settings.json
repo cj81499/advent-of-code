@@ -16,5 +16,6 @@
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": ["--max-line-length=127", "--max-complexity=10"],
   "python.formatting.autopep8Args": ["--max-line-length=127"],
-  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "python.linting.pylintEnabled": false
 }
