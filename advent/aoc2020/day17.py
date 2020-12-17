@@ -6,68 +6,61 @@ ACTIVE = "#"
 INACTIVE = "."
 
 
-def neighbors3D(pos):
-    deltas = (-1, 0, 1)
-    x, y, z = pos
-    return ((x + dx, y + dy, z + dz) for dx in deltas for dy in deltas for dz in deltas if (dx, dy, dz) != (0, 0, 0))
+def neighbors(pos):
+    for delta in itertools.product(*itertools.repeat((-1, 0, 1), len(pos))):
+        if not all(x == 0 for x in delta):
+            yield tuple(x + dx for x, dx in zip(pos, delta))
 
 
-def neighbors4D(pos):
-    deltas = (-1, 0, 1)
-    w, x, y, z = pos
-    return ((w + dw, x + dx, y + dy, z + dz) for dw in deltas for dx in deltas for dy in deltas for dz in deltas if (dw, dx, dy, dz) != (0, 0, 0, 0))
+def simulate(txt, dimensions):
+    # initialize space
+    space = collections.defaultdict(lambda: INACTIVE)
+    space.update({
+        (x, y, *itertools.repeat(0, dimensions - 2)): c
+        for y, row in enumerate(txt.splitlines()) for x, c in enumerate(row)
+    })
+
+    # run 6 iterations of the simulation
+    for _ in range(6):
+        # get min and max coordinates
+        mins, maxes = minmax_tuple(set(space))
+        # count active neighbors for each position
+        active_neighbors = collections.defaultdict(int)
+        for p in expand_points(mins, maxes):
+            if space[p] == ACTIVE:
+                for n in neighbors(p):
+                    active_neighbors[n] += 1
+
+        # calculate the contents of the new space
+        new_space = collections.defaultdict(lambda: INACTIVE)
+        new_space.update({
+            p: ACTIVE
+            for p in expand_points(mins, maxes)
+            if active_neighbors[p] == 3 or (active_neighbors[p] == 2 and space[p] == ACTIVE)
+        })
+        space = new_space
+
+    return sum(v == ACTIVE for v in new_space.values())
+
+
+def minmax_tuple(tuples):
+    return tuple(min(x) for x in zip(*tuples)), tuple(max(x) for x in zip(*tuples))
+
+
+def expand_points(mins, maxes):
+    assert len(mins) == len(maxes)
+    return itertools.product(*(range(start - 1, stop + 2) for start, stop in zip(mins, maxes)))
 
 
 def parta(txt):
-    space = collections.defaultdict(lambda: INACTIVE)
-    for y, row in enumerate(txt.splitlines()):
-        for x, c in enumerate(row):
-            space[(x, y, 0)] = c
-
-    for _ in range(6):
-        points_to_consider = []
-        for p in space:
-            points_to_consider.extend(neighbors3D(p))
-        new_space = collections.defaultdict(lambda: INACTIVE)
-        for p in points_to_consider:
-            active_neighbors = sum(space[n] == ACTIVE for n in neighbors3D(p))
-            if space[p] == ACTIVE:
-                new_space[p] = ACTIVE if active_neighbors in (2, 3) else INACTIVE
-            else:
-                new_space[p] = ACTIVE if active_neighbors == 3 else INACTIVE
-        space = new_space
-
-    return sum(v == ACTIVE for v in new_space.values())
+    return simulate(txt, 3)
 
 
 def partb(txt):
-    space = collections.defaultdict(lambda: INACTIVE)
-    for y, row in enumerate(txt.splitlines()):
-        for x, c in enumerate(row):
-            space[(0, x, y, 0)] = c
-
-    for _ in range(6):
-        points_to_consider = []
-        for p in space:
-            points_to_consider.extend(neighbors4D(p))
-        new_space = collections.defaultdict(lambda: INACTIVE)
-        for p in points_to_consider:
-            active_neighbors = sum(space[n] == ACTIVE for n in neighbors4D(p))
-            if space[p] == ACTIVE:
-                new_space[p] = ACTIVE if active_neighbors in (2, 3) else INACTIVE
-            else:
-                new_space[p] = ACTIVE if active_neighbors == 3 else INACTIVE
-        space = new_space
-
-    return sum(v == ACTIVE for v in new_space.values())
+    return simulate(txt, 4)
 
 
 def main(txt):
-    #     txt = """
-    # .#.
-    # ..#
-    # ###
-    # """.strip()
     print(f"parta: {parta(txt)}")
     print(f"partb: {partb(txt)}")
 
