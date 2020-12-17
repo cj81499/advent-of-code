@@ -37,14 +37,11 @@ def partb(txt):
     return node_value(tokens)
 
 
-def main():
-    input_txt, _ = helpers.load_input(8, "Memory Maneuver")
-
-    print(f"parta: {parta(input_txt)}")
-    print(f"partb: {partb(input_txt)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

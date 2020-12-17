@@ -1,10 +1,11 @@
 from collections import Counter
 
 
-def parta(input_lines: list):
+def parta(txt):
+    lines = txt.splitlines()
     c2 = 0
     c3 = 0
-    for line in input_lines:
+    for line in lines:
         s = set(Counter(line).values())
         if 2 in s:
             c2 += 1
@@ -13,21 +14,19 @@ def parta(input_lines: list):
     return c2 * c3
 
 
-def partb(input_lines: list):
-    for i, s1 in enumerate(input_lines):
-        for s2 in input_lines[i:]:
+def partb(txt):
+    lines = txt.splitlines()
+    for i, s1 in enumerate(lines):
+        for s2 in lines[i:]:
             if sum([1 for k in range(len(s1)) if s1[k] != s2[k]]) == 1:
                 return "".join([s1[k] for k in range(len(s1)) if s1[k] == s2[k]])
 
 
-def main():
-    _, input_lines = helpers.load_input(2, "Inventory Management System")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

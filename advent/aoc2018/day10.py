@@ -4,7 +4,7 @@ import parse
 parser = parse.compile("position=<{}> velocity=<{}>")
 
 
-class grid:
+class Grid:
     def __init__(self):
         self.points = []
         self.grid = None
@@ -62,7 +62,7 @@ class Point:
 
 
 def run(lines: list):
-    g = grid()
+    g = Grid()
     for line in lines:
         pos, vel = [[int(y) for y in x.split(",")] for x in parser.parse(line).fixed]
         g.points.append(Point(pos, vel))

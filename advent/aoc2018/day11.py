@@ -19,8 +19,8 @@ def build_fuel_cells(serial):
     return fuel_cells
 
 
-def parta(serial):
-    fuel_cells = build_fuel_cells(serial)
+def parta(txt):
+    fuel_cells = build_fuel_cells(int(txt))
 
     max_power = 0
     max_coords = None
@@ -34,8 +34,8 @@ def parta(serial):
     return ",".join([str(x) for x in max_coords])
 
 
-def partb(serial):
-    fuel_cells = build_fuel_cells(serial)
+def partb(txt):
+    fuel_cells = build_fuel_cells(int(txt))
 
     max_power = 0
     max_coords = None
@@ -92,17 +92,11 @@ def partb_polished(serial):
     return ",".join([str(x) for x in max_coords])
 
 
-def main():
-    input_txt, _ = helpers.load_input(11, "Chronal Charge")
-
-    serial = int(input_txt)
-
-    print(f"parta: {parta(serial)}")
-    # print(f"partb: {partb(serial)}")
-    print(f"partb_polished: {partb_polished(serial)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

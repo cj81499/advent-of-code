@@ -84,17 +84,26 @@ class Cave:
         return risk
 
 
-def main():
-    input_txt, input_lines = helpers.load_input(22, "Mode Maze")
+def parta(txt):
+    from aocd import data
+    lines = data.splitlines()
 
-    depth = int(input_lines[0][7:])
-    target_x, target_y = map(int, input_lines[1][8:].split(","))
+    depth = int(lines[0][7:])
+    target_x, target_y = map(int, lines[1][8:].split(","))
 
     c = Cave(depth, (target_x, target_y))
-    print("parta:", c.risk_level())
+    return c.risk_level()
+
+
+def partb(txt):
+    return -1
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

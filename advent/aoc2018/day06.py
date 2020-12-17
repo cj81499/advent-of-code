@@ -46,7 +46,8 @@ def expand(grid, seeds):
         filled_in = all([True if -1 not in row else False for row in grid])
 
 
-def parta(lines: list):
+def parta(txt):
+    lines = txt.splitlines()
     max_x, max_y = 0, 0
     seeds = set()
     for line in lines:
@@ -88,7 +89,8 @@ def dist_to_seed(x, y, seed):
     return abs(seed[0] - x) + abs(seed[1] - y)
 
 
-def partb(lines: list, region_dist):
+def partb(txt, region_dist=10000):
+    lines = txt.splitlines()
     seeds = set()
     max_x, max_y = 0, 0
     for line in lines:
@@ -110,14 +112,11 @@ def partb(lines: list, region_dist):
     return within_region_count
 
 
-def main():
-    _, input_lines = helpers.load_input(6, "Chronal Coordinates")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines, 10000)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

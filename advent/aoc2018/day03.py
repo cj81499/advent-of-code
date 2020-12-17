@@ -1,4 +1,5 @@
-def parta(lines: list):
+def parta(txt):
+    lines = txt.splitlines()
     d = 1000
     x = [0 for i in range(d)]
     grid = [x.copy() for i in range(d)]
@@ -17,7 +18,8 @@ def parta(lines: list):
     return count
 
 
-def partb(lines: list):  # noqa
+def partb(txt):  # noqa
+    lines = txt.splitlines()
     d = 1000
     x = ["0" for i in range(d)]
     grid = [x.copy() for i in range(d)]
@@ -48,14 +50,11 @@ def partb(lines: list):  # noqa
             return claim_num
 
 
-def main():
-    _, input_lines = helpers.load_input(3, "No Matter How You Slice It")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)
