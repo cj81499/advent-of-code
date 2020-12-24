@@ -1,5 +1,3 @@
-from typing import List
-
 import advent.aoc2019.day04 as d
 import pytest
 
@@ -10,7 +8,7 @@ import pytest
     (290875, [2, 9, 0, 8, 7, 5]),
     (65789543, [6, 5, 7, 8, 9, 5, 4, 3]),
 ])
-def test_get_digits(input_val: int, expected: List[int]) -> None:
+def test_get_digits(input_val: int, expected: list[int]) -> None:
     assert d.get_digits(input_val) == expected
 
 

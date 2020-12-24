@@ -1,7 +1,4 @@
 import math
-from typing import List, Set
-
-from aocd import data
 
 ASTEROID = "#"
 
@@ -16,7 +13,7 @@ def deg(origin: complex, point: complex) -> float:
     return deg
 
 
-def get_asteroids(lines: List[str]) -> Set[complex]:
+def get_asteroids(lines: list[str]) -> set[complex]:
     asteroids = set()
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
@@ -26,7 +23,7 @@ def get_asteroids(lines: List[str]) -> Set[complex]:
     return asteroids
 
 
-def count_observable(candidate: complex, asteroids: Set[complex]) -> int:
+def count_observable(candidate: complex, asteroids: set[complex]) -> int:
     angles = set(deg(candidate, a) for a in asteroids if a != candidate)
     return len(angles)
 
@@ -39,7 +36,7 @@ def parta(txt: str) -> int:
     return count_observable(base_location, asteroids)
 
 
-def best_asteroid(asteroids: Set[complex]) -> complex:
+def best_asteroid(asteroids: set[complex]) -> complex:
     return max(asteroids, key=lambda a: count_observable(a, asteroids))
 
 
@@ -48,7 +45,7 @@ def dist(a: complex, b: complex) -> float:
     return (diff.real**2 + diff.imag**2)**0.5
 
 
-def vaporize_order(lines: List[str]) -> List[complex]:
+def vaporize_order(lines: list[str]) -> list[complex]:
     asteroids = get_asteroids(lines)
     base_location = best_asteroid(asteroids)
     asteroids.remove(base_location)
@@ -80,10 +77,11 @@ def partb(txt: str) -> int:
     return int(bet_result.real * 100 + bet_result.imag)
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

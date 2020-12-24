@@ -1,16 +1,12 @@
-from typing import List, Set, Tuple
-
-from aocd import data
-
 BUG = "#"
 
 GRID_SIZE = 5
 
-Bugs = Set[complex]
-State = Tuple[Tuple[int, int], ...]
+Bugs = set[complex]
+State = tuple[tuple[int, int], ...]
 
 
-def adj(pos: complex) -> List[complex]:
+def adj(pos: complex) -> list[complex]:
     adjustments = (1 + 0j, -1 + 0j, 0 + 1j, 0 - 1j)
     return [pos + adjust for adjust in adjustments]
 
@@ -26,7 +22,7 @@ def step(bugs: Bugs) -> Bugs:
     return new_bugs
 
 
-def parse_bugs(lines: List[str]) -> Bugs:
+def parse_bugs(lines: list[str]) -> Bugs:
     bugs = set()
     for y, line in enumerate(lines):
         for x, c in enumerate(line):
@@ -40,7 +36,7 @@ def bugs_to_state(bugs: Bugs) -> State:
 
 
 def find_first_repeat(bugs: Bugs) -> Bugs:
-    seen: Set[State] = set()
+    seen: set[State] = set()
     state = bugs_to_state(bugs)
     while state not in seen:
         seen.add(state)
@@ -69,14 +65,15 @@ def parta(txt: str) -> int:
     return biodiversity(first_repeat)
 
 
-# def partb(lines: List[str]) -> int:
+# def partb(lines: list[str]) -> int:
 #     return 0
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
     # print(f"partb: {partb(lines)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

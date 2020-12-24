@@ -1,9 +1,5 @@
-from __future__ import annotations
-
 import re
 from math import gcd, inf
-
-from aocd import data
 
 # HEAVLIY inspired by:
 # https://github.com/kresimir-lukin/AdventOfCode2019/blob/master/day12.py
@@ -77,10 +73,11 @@ def lcm(*nums: int) -> int:
     return lcm(nums[0], lcm(*nums[1:]))
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

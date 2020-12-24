@@ -1,7 +1,6 @@
 from itertools import combinations
 
 from advent.aoc2019.intcode_interpreter import run_intcode_program
-from aocd import data
 
 
 def parta(txt: str) -> int:
@@ -25,10 +24,11 @@ def partb(txt: str) -> int:
     return -1
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

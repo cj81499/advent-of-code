@@ -1,5 +1,3 @@
-from aocd import data
-
 START = 0 + 0j
 MOVEMENTS = {"U": 0 + 1j, "D": 0 - 1j, "R": 1 + 0j, "L": -1 + 0j}
 
@@ -53,10 +51,11 @@ def partb(txt: str) -> int:
     return wire_evaluator(lines, step_count)
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)
