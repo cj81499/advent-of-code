@@ -42,16 +42,16 @@ class LumberArea:
         return "\n".join(["".join([acre for acre in row]) for row in self.area])
 
 
-def parta(lines: list):
-    lumber = LumberArea(lines)
+def parta(txt):
+    lumber = LumberArea(txt.splitlines())
     for _ in range(10):
         lumber.magic()
     count = Counter(str(lumber))
     return count["|"] * count["#"]
 
 
-def partb(lines: list):
-    lumber = LumberArea(lines)
+def partb(txt):
+    lumber = LumberArea(txt.splitlines())
     seen = []
     minutes = 1000000000
     for i in range(minutes):
@@ -70,14 +70,11 @@ def partb(lines: list):
     return count["|"] * count["#"]
 
 
-def main():
-    _, input_lines = helpers.load_input(18, "Settlers of The North Pole")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

@@ -93,34 +93,20 @@ class Cave:
             i += 1
 
 
-def parta(cave: Cave):
+def parta(txt):
+    cave = Cave(txt.splitlines())
     cave.combat()
 
 
-def partb():
+def partb(txt):
     pass
 
 
-def main():
-    _, input_lines = load_input(15, "Subterranean Sustainability")
-
-    input_lines = """
-#########
-#GE.G..G#
-#E......#
-#.......#
-#G..E..G#
-#.......#
-#.......#
-#G..G..G#
-#########
-""".strip().split("\n")
-
-    cave = Cave(input_lines)
-    print(f"parta: {parta(cave)}")
-    # print(f"partb: {partb()}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    # print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    from advent.aoc2018.helpers import load_input
-    main()
+    from aocd import data
+    main(data)

@@ -203,15 +203,21 @@ class Facility:
         return count
 
 
-def main():
-    input_txt, _ = helpers.load_input(20, "A Regular Map")
+def parta(txt):
+    fac = Facility(txt)
+    return fac.furthest_room_dist()
 
-    fac = Facility(input_txt)
-    print(f"parta: {fac.furthest_room_dist()}")
-    print(f"partb: {fac.count_rooms_at_least_dist_far(1000)}")
+
+def partb(txt):
+    fac = Facility(txt)
+    return fac.count_rooms_at_least_dist_far(1000)
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

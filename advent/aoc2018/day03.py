@@ -1,53 +1,48 @@
-def parta(txt):
-    lines = txt.splitlines()
-    d = 1000
-    x = [0 for i in range(d)]
-    grid = [x.copy() for i in range(d)]
-    for line in lines:
-        s = line.split(" ")
-        left, top = [int(x) for x in s[2][:-1].split(",")]
-        width, height = [int(x) for x in s[3].split("x")]
-        for y in range(height):
-            for x in range(width):
-                grid[top + y][left + x] += 1
+import numpy as np
+import parse
+
+
+class Claim:
+    p = parse.compile("#{:d} @ {:d},{:d}: {:d}x{:d}")
+
+    gridA = np.zeros((1000, 1000), dtype=int)
     count = 0
-    for y in grid:
-        for x in y:
-            if x >= 2:
-                count += 1
-    return count
+
+    gridB = np.zeros((1000, 1000), dtype=int)
+    validity = []
+
+    def __init__(self, s: str):
+        self.claim_id, self.left, self.top, self.width, self.height = Claim.p.parse(s)
+        Claim.validity.append(True)
+
+    def parta(self):
+        for y in range(self.top, self.top + self.height):
+            for x in range(self.left, self.left + self.width):
+                Claim.gridA[y, x] += 1
+                if Claim.gridA[y, x] == 2:
+                    Claim.count += 1
+
+    def partb(self):
+        for y in range(self.top, self.top + self.height):
+            for x in range(self.left, self.left + self.width):
+                if Claim.gridB[y, x] != 0:
+                    Claim.validity[self.claim_id - 1] = False
+                    Claim.validity[Claim.gridB[y, x] - 1] = False
+                Claim.gridB[y, x] = self.claim_id
 
 
-def partb(txt):  # noqa
-    lines = txt.splitlines()
-    d = 1000
-    x = ["0" for i in range(d)]
-    grid = [x.copy() for i in range(d)]
-    for line in lines:
-        s = line.split(" ")
-        claim_num = int(s[0][1:])
-        left, top = [int(x) for x in s[2][:-1].split(",")]
-        width, height = [int(x) for x in s[3].split("x")]
-        for y in range(height):
-            for x in range(width):
-                if grid[top + y][left + x] == "0":
-                    grid[top + y][left + x] = claim_num
-                else:
-                    grid[top + y][left + x] = "X"
-    for line in lines:
-        s = line.split(" ")
-        claim_num = int(s[0][1:])
-        left, top = [int(x) for x in s[2][:-1].split(",")]
-        width, height = [int(x) for x in s[3].split("x")]
-        claim_valid = True
-        for y in range(height):
-            for x in range(width):
-                if grid[top + y][left + x] != claim_num:
-                    claim_valid = False
-                if not claim_valid:
-                    break
-        if claim_valid:
-            return claim_num
+def parta(txt):
+    claims = [Claim(s) for s in txt.splitlines()]
+    for c in claims:
+        c.parta()
+    return Claim.count
+
+
+def partb(txt):
+    claims = [Claim(s) for s in txt.splitlines()]
+    for c in claims:
+        c.partb()
+    return Claim.validity.index(True) + 1
 
 
 def main(txt):

@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 
 
 def power_level(x, y, serial):
@@ -34,30 +33,6 @@ def parta(txt):
     return ",".join([str(x) for x in max_coords])
 
 
-def partb(txt):
-    fuel_cells = build_fuel_cells(int(txt))
-
-    max_power = 0
-    max_coords = None
-    no_change_counter = 0
-    for z in range(1, 300):
-        prev_max_coords = max_coords
-        if no_change_counter > 5:
-            break
-        for y in range(300 - z):
-            for x in range(300 - z):
-                power = np.sum(fuel_cells[y:y + z, x:x + z])
-                if power > max_power:
-                    max_power = power
-                    max_coords = (x, y, z)
-        if prev_max_coords == max_coords:
-            no_change_counter += 1
-        else:
-            no_change_counter = 0
-        # print(f"{z}: {max_power} @ {max_coords}")
-    return ",".join([str(x) for x in max_coords])
-
-
 def partial_sum_table(table):
     par_sum_tab = np.zeros_like(table)
     for y, row in enumerate(table):
@@ -77,12 +52,12 @@ def sum_of_area(t, x, y, sq_size):
     return top_left + bottom_right - (top_right + bottom_left)
 
 
-def partb_polished(serial):
-    fuel_cells = build_fuel_cells(serial)
+def partb(txt):
+    fuel_cells = build_fuel_cells(int(txt))
     part_sum_table = partial_sum_table(fuel_cells)
     max_coords = None
     max_power = 0
-    for sq_size in tqdm(range(1, 301), leave=False, ascii=True):
+    for sq_size in range(1, 301):
         for y in range(300 - sq_size):
             for x in range(300 - sq_size):
                 s = sum_of_area(part_sum_table, x, y, sq_size)

@@ -111,28 +111,25 @@ class Scan:
         return c["~"] + c["|"]
 
 
-def parta(lines: list):
-    s = Scan(lines)
+def parta(txt):
+    s = Scan(txt.splitlines())
     s.pour()
     return s.count_all_water_tiles() - (s.dimensions["min_y"] - 1)
 
 
-def partb(lines: list):
-    s = Scan(lines)
+def partb(txt):
+    s = Scan(txt.splitlines())
     s.pour()
     # with open("water.txt", "w") as f:
     #     f.write(str(s))
     return s.count_settled_water_tiles()
 
 
-def main():
-    _, input_lines = helpers.load_input(17, "Reservoir Research")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

@@ -85,9 +85,7 @@ class Cave:
 
 
 def parta(txt):
-    from aocd import data
-    lines = data.splitlines()
-
+    lines = txt.splitlines()
     depth = int(lines[0][7:])
     target_x, target_y = map(int, lines[1][8:].split(","))
 
@@ -96,7 +94,7 @@ def parta(txt):
 
 
 def partb(txt):
-    return -1
+    return None
 
 
 def main(txt):
