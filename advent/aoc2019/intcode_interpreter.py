@@ -1,5 +1,5 @@
 from collections import deque
-from typing import Callable, Dict
+from typing import Callable
 
 EXIT_OPCODE = 99
 
@@ -63,7 +63,7 @@ def run_intcode_program(memory, prog_inputs=None):
     global inputs
     inputs = deque(prog_inputs) if prog_inputs else deque()
     # handler, param_count
-    OPCODE_INFO: Dict[int, Callable] = {
+    OPCODE_INFO: dict[int, Callable] = {
         1: (_handle_opcode_1, 3),
         2: (_handle_opcode_2, 3),
         3: (_handle_opcode_3, 1),

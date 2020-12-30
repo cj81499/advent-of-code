@@ -1,5 +1,4 @@
 from advent.aoc2019.intcode_interpreter import run_intcode_program
-from aocd import data
 
 
 def parta(txt: str):
@@ -11,14 +10,15 @@ def parta(txt: str):
 #     run_intcode_program(nums, [5])
 
 
-def main() -> None:
+def main(txt) -> None:
 
     print("parta:")
-    parta(data)
+    parta(txt)
 
     # print("partb:")
     # partb(nums)
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

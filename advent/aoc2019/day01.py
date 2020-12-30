@@ -1,6 +1,3 @@
-from aocd import data
-
-
 def fuel_req(mass: int) -> int:
     return mass // 3 - 2
 
@@ -18,10 +15,11 @@ def partb(txt: str) -> int:
     return sum(fuel_req_rec(x) for x in [int(x) for x in txt.splitlines()])
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

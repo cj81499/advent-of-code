@@ -1,7 +1,4 @@
 from collections import Counter
-from typing import List
-
-from aocd import data
 
 WIDTH = 25
 HEIGHT = 6
@@ -11,7 +8,7 @@ WHITE = 1
 TRANSPARENT = 2
 
 
-def get_layers(nums: List[int], width: int, height: int) -> List[List[int]]:
+def get_layers(nums: list[int], width: int, height: int) -> list[list[int]]:
     layer_size = width * height
     return [nums[i:i + layer_size] for i in range(0, len(nums), layer_size)]
 
@@ -25,15 +22,15 @@ def parta(txt: str) -> int:
     return least_zeros[1] * least_zeros[2]
 
 
-def render(layers: List[List[int]], row_len: int) -> str:
-    def render_pos(layers: List[List[int]], pos: int) -> int:
+def render(layers: list[list[int]], row_len: int) -> str:
+    def render_pos(layers: list[list[int]], pos: int) -> int:
         for lay in layers:
             val = lay[pos]
             if val != TRANSPARENT:
                 return val
         return -1
 
-    def row_to_str(row: List[int]) -> str:
+    def row_to_str(row: list[int]) -> str:
         return "".join(" " if x == BLACK else "X" for x in row)
 
     pixels = [render_pos(layers, i) for i in range(len(layers[0]))]
@@ -53,11 +50,11 @@ def partb(txt: str) -> str:
     return f"\n{rendered}"
 
 
-def main() -> None:
-
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

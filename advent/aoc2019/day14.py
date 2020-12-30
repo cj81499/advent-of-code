@@ -1,6 +1,3 @@
-from aocd import data
-
-
 class Chemical():
     def __init__(self, chem_str: str) -> None:
         qty, self.name = chem_str.split(" ")
@@ -70,10 +67,11 @@ def partb(txt: str) -> int:
     return low
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

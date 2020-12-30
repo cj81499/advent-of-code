@@ -1,17 +1,12 @@
-from typing import Dict, List, Set
-
-from aocd import data
-
-
-def get_masses(lines: List[str]) -> Dict[str, str]:
+def get_masses(lines: list[str]) -> dict[str, str]:
     return {mass: parent for parent, mass in (line.split(")") for line in lines)}
 
 
-def depth(masses: Dict[str, str], mass: str) -> int:
+def depth(masses: dict[str, str], mass: str) -> int:
     return len(ancestors(masses, mass))
 
 
-def ancestors(masses: Dict[str, str], mass: str) -> Set[str]:
+def ancestors(masses: dict[str, str], mass: str) -> set[str]:
     parent = masses.get(mass)
     return set() if not parent else ancestors(masses, parent) | {parent}
 
@@ -34,10 +29,11 @@ def partb(txt: str) -> int:
     return len(y_ancestors) + len(s_ancestors) - 2 * len(common_ancestors)
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

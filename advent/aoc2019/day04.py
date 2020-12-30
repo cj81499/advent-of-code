@@ -1,6 +1,3 @@
-from aocd import data
-
-
 def pairwise(iterable):
     prev = None
     for current in iterable:
@@ -47,10 +44,11 @@ def partb(txt: str) -> int:
     return solver(low, high, is_valid_partb)
 
 
-def main() -> None:
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+def main(txt) -> None:
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

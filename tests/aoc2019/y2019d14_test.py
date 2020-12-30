@@ -1,5 +1,3 @@
-from typing import List
-
 import advent.aoc2019.day14 as d
 import pytest
 
@@ -59,7 +57,7 @@ EXAMPLE_3 = """171 ORE => 8 CNZTR
     (EXAMPLE_2, 180697),
     (EXAMPLE_3, 2210736),
 ])
-def test_parta(input_val: List[str], expected: int) -> None:
+def test_parta(input_val: list[str], expected: int) -> None:
     assert d.parta(input_val) == expected
 
 
@@ -68,5 +66,5 @@ def test_parta(input_val: List[str], expected: int) -> None:
     (EXAMPLE_2, 5586022),
     (EXAMPLE_3, 460664),
 ])
-def test_partb(input_val: List[str], expected: int) -> None:
+def test_partb(input_val: list[str], expected: int) -> None:
     assert d.partb(input_val) == expected
