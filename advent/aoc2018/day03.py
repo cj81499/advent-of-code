@@ -1,48 +1,55 @@
-import numpy as np
-import parse
+import collections  # noqa
+import itertools  # noqa
+import re  # noqa
+from dataclasses import dataclass
 
 
+@dataclass
 class Claim:
-    p = parse.compile("#{:d} @ {:d},{:d}: {:d}x{:d}")
+    claim_id: int
+    x: int
+    y: int
+    width: int
+    height: int
 
-    gridA = np.zeros((1000, 1000), dtype=int)
-    count = 0
+    _PARSE_REGEX = re.compile(r"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)")
 
-    gridB = np.zeros((1000, 1000), dtype=int)
-    validity = []
+    @staticmethod
+    def parse(claim: str):
+        match = Claim._PARSE_REGEX.match(claim)
+        nums = map(int, match.groups())
+        return Claim(*nums)
 
-    def __init__(self, s: str):
-        self.claim_id, self.left, self.top, self.width, self.height = Claim.p.parse(s)
-        Claim.validity.append(True)
 
-    def parta(self):
-        for y in range(self.top, self.top + self.height):
-            for x in range(self.left, self.left + self.width):
-                Claim.gridA[y, x] += 1
-                if Claim.gridA[y, x] == 2:
-                    Claim.count += 1
+def build_grid(claims):
+    grid = collections.defaultdict(set)
 
-    def partb(self):
-        for y in range(self.top, self.top + self.height):
-            for x in range(self.left, self.left + self.width):
-                if Claim.gridB[y, x] != 0:
-                    Claim.validity[self.claim_id - 1] = False
-                    Claim.validity[Claim.gridB[y, x] - 1] = False
-                Claim.gridB[y, x] = self.claim_id
+    for c in claims:
+        for y in range(c.height):
+            for x in range(c.width):
+                grid[(c.x + x, c.y + y)].add(c.claim_id)
+
+    return grid
 
 
 def parta(txt):
-    claims = [Claim(s) for s in txt.splitlines()]
-    for c in claims:
-        c.parta()
-    return Claim.count
+    claims = [Claim.parse(line) for line in txt.splitlines()]
+    grid = build_grid(claims)
+    return sum(len(c) > 1 for p, c in grid.items())
+
+
+def no_overlap(grid, claim):
+    for y in range(claim.height):
+        for x in range(claim.width):
+            if len(grid[(claim.x + x, claim.y + y)]) > 1:
+                return False
+    return True
 
 
 def partb(txt):
-    claims = [Claim(s) for s in txt.splitlines()]
-    for c in claims:
-        c.partb()
-    return Claim.validity.index(True) + 1
+    claims = [Claim.parse(line) for line in txt.splitlines()]
+    grid = build_grid(claims)
+    return next(c for c in claims if no_overlap(grid, c)).claim_id
 
 
 def main(txt):
