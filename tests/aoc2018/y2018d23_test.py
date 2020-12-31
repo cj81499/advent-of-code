@@ -1,4 +1,3 @@
-
 import advent.aoc2018.day23 as d
 
 EXAMPLE_INPUT_0 = """
@@ -23,9 +22,9 @@ pos=<10,10,10>, r=5
 """.strip()
 
 
-def test_day23_parta():
+def test_a():
     assert 7 == d.parta(EXAMPLE_INPUT_0)
 
 
-def test_day23_partb():
+def test_b():
     assert 36 == d.partb(EXAMPLE_INPUT_1)

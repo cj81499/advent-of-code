@@ -1,7 +1,10 @@
 from advent.aoc2018.day16 import run_cmd
 
 
-def parta(lines: list, ip):
+def parta(txt):
+    ip, *lines = txt.splitlines()
+    ip = int(ip[4:])
+
     registers = [0, 0, 0, 0, 0, 0]
     while registers[ip] < len(lines):
         cmd, a, b, c = [x if len(str(x)) == 4 else int(x)
@@ -20,7 +23,10 @@ def factors(n):
     return results
 
 
-def partb(lines: list, ip):
+def partb(txt):
+    ip, *lines = txt.splitlines()
+    ip = int(ip[4:])
+
     registers = [1, 0, 0, 0, 0, 0]
     i = 0
     # 100 times is enough to find the number the main loop will find the sum of the factors of
@@ -33,16 +39,11 @@ def partb(lines: list, ip):
     return sum(factors(max(registers)))
 
 
-def main():
-    _, input_lines = helpers.load_input(19, "Go With The Flow")
-
-    ip = int(input_lines.pop(0)[4:])
-
-    print(f"parta: {parta(input_lines, ip)}")
-    print(f"partb: {partb(input_lines, ip)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

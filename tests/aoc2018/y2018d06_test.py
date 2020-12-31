@@ -1,22 +1,17 @@
-import unittest
+import advent.aoc2018.day06 as d
 
-import advent.aoc2018.day06 as day06
-
-lines = """1, 1
+EXAMPLE_INPUT = """1, 1
 1, 6
 8, 3
 3, 4
 5, 5
-8, 9""".split("\n")
+8, 9
+""".strip()
 
 
-class TestDay06(unittest.TestCase):
-    def test_day06_parta(self):
-        self.assertEqual(17, day06.parta(lines))
-
-    def test_day06_partb(self):
-        self.assertEqual(16, day06.partb(lines, 32))
+def test_a():
+    assert d.parta(EXAMPLE_INPUT) == 17
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb(EXAMPLE_INPUT, region_dist=32) == 16

@@ -1,17 +1,29 @@
-import unittest
+import advent.aoc2018.day02 as d
 
-import advent.aoc2018.day02 as day02
+EXAMPLE_INPUT_0 = """
+abcdef
+bababc
+abbcde
+abcccd
+aabcdd
+abcdee
+ababab
+""".strip()
+
+EXAMPLE_INPUT_1 = """
+abcde
+fghij
+klmno
+pqrst
+fguij
+axcye
+wvxyz
+""".strip()
 
 
-class TestDay02(unittest.TestCase):
-    def test_day02_parta(self):
-        self.assertEqual(12, day02.parta(
-            ["abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab"]))
-
-    def test_day02_partb(self):
-        self.assertEqual("fgij", day02.partb(
-            ["abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz"]))
+def test_a():
+    assert d.parta(EXAMPLE_INPUT_0) == 12
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb(EXAMPLE_INPUT_1) == "fgij"

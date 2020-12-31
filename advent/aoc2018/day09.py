@@ -7,8 +7,7 @@ def run(player_count: int, last_marble_value: int) -> int:
     for marble_num in range(1, last_marble_value + 1):
         if marble_num % 23 == 0:
             circle.rotate(7)
-            scores[(marble_num % player_count) -
-                   1] += marble_num + circle.pop()
+            scores[(marble_num % player_count) - 1] += marble_num + circle.pop()
             circle.rotate(-1)
         else:
             circle.rotate(-1)

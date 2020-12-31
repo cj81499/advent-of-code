@@ -1,8 +1,6 @@
-import unittest
+import advent.aoc2018.day18 as d
 
-import advent.aoc2018.day18 as day18
-
-lines = """
+EXAMPLE_INPUT = """
 .#.#...|#.
 .....#|##|
 .|..|...#.
@@ -13,16 +11,12 @@ lines = """
 ||...#|.#|
 |.||||..|.
 ...#.|..|.
-""".strip().split("\n")
+""".strip()
 
 
-class TestDay18(unittest.TestCase):
-    def test_day18_parta(self):
-        self.assertEqual(1147, day18.parta(lines))
-
-    def test_day18_partb(self):
-        self.assertEqual(0, day18.partb(lines))
+def test_a():
+    assert d.parta(EXAMPLE_INPUT) == 1147
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb(EXAMPLE_INPUT) == 0

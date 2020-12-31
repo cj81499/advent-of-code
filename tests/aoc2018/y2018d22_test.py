@@ -1,17 +1,14 @@
-import unittest
+import advent.aoc2018.day22 as d
 
-import advent.aoc2018.day22 as day22
-
-cave = day22.Cave(510, (10, 10))
-
-
-class TestDay22(unittest.TestCase):
-    def test_day22_parta(self):
-        self.assertEqual(114, cave.risk_level())
-
-    # def test_day22_partb(self):
-    #     self.assertEqual(45, cave.fastest_time_to_target())
+EXAMPLE_INPUT = """
+depth: 510
+target: 10,10
+""".strip()
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_a():
+    assert d.parta(EXAMPLE_INPUT) == 114
+
+
+# def test_b():
+#     assert d.partb(EXAMPLE_INPUT) == 45

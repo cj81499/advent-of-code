@@ -1,8 +1,7 @@
-import unittest
+import advent.aoc2018.day19 as d
 
-import advent.aoc2018.day19 as day19
-
-lines = """
+EXAMPLE_INPUT = """
+# ip 0
 seti 5 0 1
 seti 6 0 2
 addi 0 1 0
@@ -10,14 +9,8 @@ addr 1 2 3
 setr 1 0 0
 seti 8 0 4
 seti 9 0 5
-""".strip().split("\n")
+""".strip()
 
 
-class TestDay19(unittest.TestCase):
-
-    def test_day19_parta(self):
-        self.assertEqual(7, day19.parta(lines, 0))
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_a():
+    assert d.parta(EXAMPLE_INPUT) == 7

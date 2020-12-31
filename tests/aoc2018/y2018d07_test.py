@@ -1,23 +1,19 @@
-import unittest
+import advent.aoc2018.day07 as d
 
-import advent.aoc2018.day07 as day07
-
-input_lines = """Step C must be finished before step A can begin.
+EXAMPLE_INPUT = """
+Step C must be finished before step A can begin.
 Step C must be finished before step F can begin.
 Step A must be finished before step B can begin.
 Step A must be finished before step D can begin.
 Step B must be finished before step E can begin.
 Step D must be finished before step E can begin.
-Step F must be finished before step E can begin.""".split("\n")
+Step F must be finished before step E can begin.
+""".strip()
 
 
-class TestDay07(unittest.TestCase):
-    def test_day07_parta(self):
-        self.assertEqual("CABDFE", day07.parta(input_lines))
-
-    def test_day07_partb(self):
-        self.assertEqual(15, day07.partb(input_lines, 0, 1))
+def test_a():
+    assert d.parta(EXAMPLE_INPUT) == "CABDFE"
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb(EXAMPLE_INPUT, offset=0, helper_count=1) == 15
