@@ -1,7 +1,5 @@
 # Advent Of Code
 
-[![GitHub Super-Linter](https://github.com/cj81499/advent-of-code/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-
 ## Development
 
 ### Create (and activate) a virtual environment

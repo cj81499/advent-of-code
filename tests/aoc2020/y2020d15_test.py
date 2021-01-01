@@ -1,5 +1,6 @@
-import advent.aoc2020.day15 as d
 import pytest
+
+import advent.aoc2020.day15 as d
 
 EXAMPLE_INPUT_0 = "0,3,6"
 EXAMPLE_INPUT_1 = "1,3,2"

@@ -1,5 +1,6 @@
-import advent.aoc2019.day12 as d
 import pytest
+
+import advent.aoc2019.day12 as d
 
 EXAMPLE_0 = """<x=-1, y=0, z=2>
 <x=2, y=-10, z=-7>

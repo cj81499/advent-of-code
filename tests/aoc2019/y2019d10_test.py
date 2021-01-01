@@ -1,5 +1,6 @@
-import advent.aoc2019.day10 as d
 import pytest
+
+import advent.aoc2019.day10 as d
 
 EXAMPLE_0 = """.#..#
 .....

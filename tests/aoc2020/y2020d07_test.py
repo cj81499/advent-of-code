@@ -1,5 +1,6 @@
-import advent.aoc2020.day07 as d
 import pytest
+
+import advent.aoc2020.day07 as d
 
 EXAMPLE_INPUT_0 = """
 light red bags contain 1 bright white bag, 2 muted yellow bags.
