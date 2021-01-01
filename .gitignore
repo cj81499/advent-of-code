@@ -8,8 +8,8 @@ dist/
 *.egg-info/
 .pytest_cache/
 
-# Env variables
-.env
+# Editor settings
+.vscode/
 
 # Logs
 *.log
