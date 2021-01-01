@@ -1,100 +1,162 @@
-class Cave:
-    regions = {}
-    depth = 0
+import collections  # noqa
+import heapq
+import itertools  # noqa
+import re  # noqa
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Any
 
-    class Region:
-        def __init__(self, x, y, target_pos):
-            self.x = x
-            self.y = y
-            if x == 0 and y == 0:
-                self.geo_index = 0
-            elif x == target_pos[0] and y == target_pos[1]:
-                self.geo_index = 0
-            elif y == 0:
-                self.geo_index = x * 16807
-            elif x == 0:
-                self.geo_index = y * 48271
-            else:
-                self.geo_index = Cave.regions[(
-                    x - 1, y)].erosion_level * Cave.regions[(x, y - 1)].erosion_level
-            self.erosion_level = (self.geo_index + Cave.depth) % 20183
-            self.type_num = self.erosion_level % 3
 
-        # def type
-        @staticmethod
-        def type_str(type_num):
-            if type_num == 0:
-                return "rocky"
-            elif type_num == 1:
-                return "wet"
-            elif type_num == 2:
-                return "narrow"
-            else:
-                raise Exception  # FIXME What kind of exception
+def adj(x, y):
+    yield from ((x + dx, y + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)))
 
-        def __repr__(self):
-            return f"x: {self.x}, y: {self.y}, geo: {self.geo_index}, ero: {self.erosion_level}, type: {self.type_str(self.type_num)}"  # noqa
 
-        def __str__(self):
-            if self.type_num == 0:
-                return "."
-            elif self.type_num == 1:
-                return "="
-            elif self.type_num == 2:
-                return "|"
-            else:
-                raise Exception  # FIXME What kind of exception
+class Item(Enum):
+    NEITHER = 0
+    TORCH = 1
+    CLIMBING_GEAR = 2
 
-    def __init__(self, depth, target_pos):
-        Cave.depth = depth
-        self.target_pos = target_pos
 
-        Cave.regions[(0, 0)] = Cave.Region(0, 0, target_pos)
-        for y in range(self.target_pos[1] + 1):
-            for x in range(self.target_pos[0] + 1):
-                Cave.regions[(x, y)] = Cave.Region(x, y, target_pos)
-            # Cave.regions[(0, y)] = Cave.Region(0, y, target_pos)
+@dataclass(frozen=True, eq=True, order=True)
+class PrioritizedData:
+    priority: int
+    data: Any = field(compare=False)
 
-        # for region in Cave.regions:
-        # print(repr(Cave.regions[(0, 0)]))
-        # print(repr(Cave.regions[(1, 0)]))
-        # print(repr(Cave.regions[(0, 1)]))
-        # print(repr(Cave.regions[(1, 1)]))
-        # print(repr(Cave.regions[(10, 10)]))
 
-        # print(self)
+@dataclass(frozen=True, eq=True)
+class Node:
+    pos: tuple[int, int]
+    item: Item
+
+
+class Type(Enum):
+    ROCKY = 0
+    WET = 1
+    NARROW = 2
 
     def __str__(self):
-        cave = []
-        for y in range(self.target_pos[1] + 1):
-            row = []
-            for x in range(self.target_pos[0] + 1):
-                if x == 0 and y == 0:
-                    row.append("M")
-                else:
-                    row.append(str(self.regions[(x, y)]))
-            cave.append("".join(row))
-        return "\n".join(cave)
+        return Type._STR_MAP[self]
+
+
+Type._STR_MAP = {Type.ROCKY: ".", Type.NARROW: "|", Type.WET: "=", }
+
+
+class Region:
+    def __init__(self, x, y, cave_system):
+        self.x = x
+        self.y = y
+        self.cave_system = cave_system
+        self.geologic_index = Region.geologic_index(x, y, cave_system)
+        self.erosion_level = (self.geologic_index + cave_system.depth) % 20183
+        self.type = Type(self.erosion_level % 3)
+
+    @staticmethod
+    def geologic_index(x, y, cave_system):
+        if (x, y) == CaveSystem.MOUTH:
+            return 0
+        if (x, y) == cave_system.target:
+            return 0
+        if y == 0:
+            return x * 16807
+        if x == 0:
+            return y * 48271
+        return cave_system.at(x-1, y).erosion_level * cave_system.at(x, y-1).erosion_level
 
     def risk_level(self):
-        risk = 0
-        for y in range(self.target_pos[1] + 1):
-            for x in range(self.target_pos[0] + 1):
-                risk += self.regions[(x, y)].type_num
-        return risk
+        return self.type.value
+
+    def can_use(self, item):
+        return item.value != self.type.value
+
+    def __str__(self):
+        if (self.x, self.y) == CaveSystem.MOUTH:
+            return "M"
+        if (self.x, self.y) == self.cave_system.target:
+            return "T"
+        return str(self.type)
+
+
+class CaveSystem:
+    MOUTH = (0, 0)
+
+    def __init__(self, depth, target):
+        self.depth = depth
+        self.target = target
+        self.grid: dict[tuple[int, int], Region] = {}
+
+    def at(self, x, y) -> Region:
+        p = (x, y)
+        if p not in self.grid:
+            self.grid[p] = Region(x, y, self)
+        return self.grid[p]
+
+    @staticmethod
+    def parse(cave_system: str):
+        depth, target = [x.split(": ")[1] for x in cave_system.splitlines()]
+        target = tuple(map(int, target.split(",")))
+        return CaveSystem(int(depth), target)
+
+    def __str__(self, size=None):
+        if size is None:
+            size = (self.target[0] + 5, self.target[1] + 5)
+
+        rows = []
+        for y in range(size[1] + 1):
+            row = []
+            for x in range(size[0] + 1):
+                row.append(str(self.at(x, y)))
+            rows.append("".join(row))
+        return "\n".join(rows)
+
+    def risk_level(self):
+        return sum(
+            self.at(x, y).risk_level()
+            for x, y in itertools.product(
+                range(self.target[0] + 1),
+                range(self.target[1] + 1)
+            )
+        )
+
+    def min_time_to_target(self):
+        best_time: dict[Node, float] = {}
+        time_to_target = float("inf")
+        heap: list[PrioritizedData] = []
+
+        node = PrioritizedData(0, Node(CaveSystem.MOUTH, Item.TORCH))
+        heapq.heappush(heap, node)
+        while node.priority < time_to_target:
+            node = heapq.heappop(heap)
+            # if we've been at this point with a lower time, we can't do better
+            if node.priority < best_time.get(node.data, float("inf")):
+                best_time[node.data] = node.priority
+                if node.data.pos == self.target and node.data.item == Item.TORCH:
+                    time_to_target = min(time_to_target, node.priority)
+                for move in self.moves(node):
+                    heapq.heappush(heap, move)
+
+        return time_to_target
+
+    def moves(self, move: PrioritizedData):
+        # move by switching items
+        region = self.at(*move.data.pos)
+        can_switch_to = next(filter(lambda i: i != move.data.item and region.can_use(i), Item))
+        yield PrioritizedData(move.priority + 7, Node(move.data.pos, can_switch_to))
+
+        # move by changing positions
+        for new_pos in adj(*move.data.pos):
+            # if we can move to the location without changing items
+            if all(n >= 0 for n in new_pos) and self.at(*new_pos).can_use(move.data.item):
+                yield PrioritizedData(move.priority + 1, Node(new_pos, move.data.item))
 
 
 def parta(txt):
-    lines = txt.splitlines()
-    depth = int(lines[0][7:])
-    target_x, target_y = map(int, lines[1][8:].split(","))
-
-    c = Cave(depth, (target_x, target_y))
-    return c.risk_level()
+    cave_system = CaveSystem.parse(txt)
+    return cave_system.risk_level()
 
 
 def partb(txt):
-    return None
+    cave_system = CaveSystem.parse(txt)
+    return cave_system.min_time_to_target()
 
 
 def main(txt):
