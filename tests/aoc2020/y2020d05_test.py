@@ -1,5 +1,6 @@
-import advent.aoc2020.day05 as d
 import pytest
+
+import advent.aoc2020.day05 as d
 
 EXAMPLE_INPUT = """
 """.strip()

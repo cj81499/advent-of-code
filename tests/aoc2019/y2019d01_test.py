@@ -1,5 +1,6 @@
-import advent.aoc2019.day01 as d
 import pytest
+
+import advent.aoc2019.day01 as d
 
 EXAMPLE_0 = 12
 EXAMPLE_1 = 14

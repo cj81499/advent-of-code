@@ -1,5 +1,6 @@
-import advent.aoc2019.day14 as d
 import pytest
+
+import advent.aoc2019.day14 as d
 
 EXAMPLE_0 = """9 ORE => 2 A
 8 ORE => 3 B
