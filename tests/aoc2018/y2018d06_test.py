@@ -14,4 +14,4 @@ def test_a():
 
 
 def test_b():
-    assert d.partb(EXAMPLE_INPUT, region_dist=32) == 16
+    assert d.partb(EXAMPLE_INPUT, total_dist=32) == 16
