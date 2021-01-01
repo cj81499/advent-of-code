@@ -23,7 +23,7 @@
 | 19  | [Go With The Flow](https://adventofcode.com/2018/day/19)                     | :star: | :star: | :heavy_check_mark: |
 | 20  | [A Regular Map](https://adventofcode.com/2018/day/20)                        | :star: | :star: | :heavy_check_mark: |
 | 21  | [Chronal Conversion](https://adventofcode.com/2018/day/21)                   | :star: | :star: |        n/a         |
-| 22  | [Mode Maze](https://adventofcode.com/2018/day/22)                            | :star: |  :x:   | :heavy_check_mark: |
-| 23  | [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) | :star: |  :x:   | :heavy_check_mark: |
+| 22  | [Mode Maze](https://adventofcode.com/2018/day/22)                            | :star: | :star: | :heavy_check_mark: |
+| 23  | [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) | :star: | :star: | :heavy_check_mark: |
 | 24  | [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24)         | :star: | :star: | :heavy_check_mark: |
 | 25  | [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25)           | :star: |  :x:   | :heavy_check_mark: |
