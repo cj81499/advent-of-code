@@ -58,33 +58,23 @@ class Cluster:
         return "\n".join(rows)
 
 
-def parta(txt):
-    start_cluster = Cluster.parse(txt)
-
-    prev_area = start_cluster.area
+def find_optimal(initial_cluster):
+    prev = initial_cluster
     for t in itertools.count():
-        area = start_cluster.after(t).area
-        if area > prev_area:
-            break
-        prev_area = area
+        cluster = initial_cluster.after(t)
+        if cluster.area > prev.area:
+            return prev, t - 1
+        prev = cluster
 
-    optimal_t = t - 1
-    optimal_cluster = start_cluster.after(optimal_t)
-    return f"\n{optimal_cluster}"
+
+def parta(txt):
+    cluster = Cluster.parse(txt)
+    return f"\n{find_optimal(cluster)[0]}"
 
 
 def partb(txt):
-    start_cluster = Cluster.parse(txt)
-
-    prev_area = start_cluster.area
-    for t in itertools.count():
-        area = start_cluster.after(t).area
-        if area > prev_area:
-            break
-        prev_area = area
-
-    optimal_t = t - 1
-    return optimal_t
+    cluster = Cluster.parse(txt)
+    return find_optimal(cluster)[1]
 
 
 def main(txt):

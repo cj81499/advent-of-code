@@ -90,10 +90,9 @@ def dist_to_seed(x, y, seed):
 
 
 def partb(txt, region_dist=10000):
-    lines = txt.splitlines()
     seeds = set()
     max_x, max_y = 0, 0
-    for line in lines:
+    for line in txt.splitlines():
         x, y = [int(x) for x in line.split(", ")]
         seeds.add((x, y))
         if x > max_x:
