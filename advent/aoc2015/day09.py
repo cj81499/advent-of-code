@@ -2,8 +2,6 @@ import itertools
 from datetime import date
 from typing import Dict
 
-import helpers
-
 
 class Location():
     def __init__(self, name):
@@ -57,8 +55,8 @@ def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 9), "All in a Single Night")  # noqa
 
     shortest, longest = find_paths(input_lines)
-    print(f"part1: {shortest}")
-    print(f"part2: {longest}")
+    print(f"parta: {shortest}")
+    print(f"partb: {longest}")
 
 
 if __name__ == "__main__":

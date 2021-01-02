@@ -2,8 +2,6 @@ from datetime import date
 from functools import reduce
 from typing import Iterable, List
 
-import helpers
-
 RECIPIE_TEASPOONS = 100
 CALORIE_REQUIREMENT = 500
 
@@ -51,12 +49,12 @@ def calculate_property_score(ingredients, recipie, property_name):
     return max(0, sum(recipie[i] * ingredient.properties[property_name] for i, ingredient in enumerate(ingredients)))
 
 
-def part1(lines: list):
+def parta(lines: list):
     ingredients = [Ingredient(x) for x in lines]
     return max(score_cookie(ingredients, recipie) for recipie in recipie_generator(len(ingredients), RECIPIE_TEASPOONS))
 
 
-def part2(lines: list):
+def partb(lines: list):
     ingredients = [Ingredient(x) for x in lines]
     return max(
         score_cookie(ingredients, recipie)
@@ -68,8 +66,8 @@ def part2(lines: list):
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 15), "Science for Hungry People")  # noqa
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,6 @@
 from collections import deque
 from datetime import date
 
-import helpers
-
 NAUGHTY_SUBSTRINGS = set(("ab", "cd", "pq", "xy"))
 VOWELS = set(x for x in "aeiou")
 
@@ -48,19 +46,19 @@ def is_nice2(s: str):
     return sandwich and repeating_pair
 
 
-def part1(lines: list):
+def parta(lines: list):
     return sum(is_nice1(s) for s in lines)
 
 
-def part2(lines: list):
+def partb(lines: list):
     return sum(is_nice2(s) for s in lines)
 
 
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 5), "Doesn't He Have Intern-Elves For This?")  # noqa
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

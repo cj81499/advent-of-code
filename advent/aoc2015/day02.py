@@ -1,9 +1,7 @@
 from datetime import date
 
-import helpers
 
-
-def part1(boxes: list):
+def parta(boxes: list):
     total_paper = 0
     for b in boxes:
         l, w, h = (int(x) for x in b.split("x"))
@@ -13,7 +11,7 @@ def part1(boxes: list):
     return total_paper
 
 
-def part2(boxes: list):
+def partb(boxes: list):
     total_ribbon = 0
     for b in boxes:
         l, w, h = (int(x) for x in b.split("x"))
@@ -31,8 +29,8 @@ def part2(boxes: list):
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 2), "I Was Told There Would Be No Math")  # noqa
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

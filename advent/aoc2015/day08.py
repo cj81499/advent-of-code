@@ -1,7 +1,5 @@
 from datetime import date
 
-import helpers
-
 
 def decode(s: str) -> int:
     str_in_mem = []
@@ -42,7 +40,7 @@ def encode(s: str) -> int:
     return "".join(str_in_mem)
 
 
-def part1(lines: list):
+def parta(lines: list):
     total_chars_of_code = 0
     total_chars_in_memory = 0
     for s in lines:
@@ -52,7 +50,7 @@ def part1(lines: list):
     return total_chars_of_code - total_chars_in_memory
 
 
-def part2(lines: list):
+def partb(lines: list):
     total_chars_of_original = 0
     total_chars_of_encoded = 0
     for s in lines:
@@ -65,8 +63,8 @@ def part2(lines: list):
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 8), "Matchsticks")  # noqa
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

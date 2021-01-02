@@ -1,8 +1,6 @@
 import json
 from datetime import date
 
-import helpers
-
 
 def sum_of_all_numbers(input_json, ignore_red=False):
     if isinstance(input_json, int):
@@ -21,8 +19,8 @@ def main():
 
     input_json = json.loads(input_txt)
 
-    print(f"part1: {sum_of_all_numbers(input_json)}")
-    print(f"part2: {sum_of_all_numbers(input_json, ignore_red=True)}")
+    print(f"parta: {sum_of_all_numbers(input_json)}")
+    print(f"partb: {sum_of_all_numbers(input_json, ignore_red=True)}")
 
 
 if __name__ == "__main__":

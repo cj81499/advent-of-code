@@ -2,8 +2,6 @@ from datetime import date
 from itertools import permutations
 from typing import Dict, List, Set
 
-import helpers
-
 
 def build_prefs(pref_str_list: List[str]) -> Dict[str, Dict[str, int]]:
     """Save attendee seating preferences"""
@@ -57,9 +55,9 @@ def add_self_to_prefs(prefs: Dict[str, Dict[str, int]]):
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 13), "Knights of the Dinner Table")  # noqa
 
-    print(f"part1: {optimal_happiness(build_prefs(input_lines))}")
+    print(f"parta: {optimal_happiness(build_prefs(input_lines))}")
     print(
-        f"part2: {optimal_happiness(add_self_to_prefs(build_prefs(input_lines)))}")
+        f"partb: {optimal_happiness(add_self_to_prefs(build_prefs(input_lines)))}")
 
 
 if __name__ == "__main__":

@@ -2,8 +2,6 @@ from collections import deque
 from datetime import date
 from typing import Deque
 
-import helpers
-
 
 def is_int(s: str):
     try:
@@ -82,12 +80,12 @@ class Instruction():
         return self._instruction_str
 
 
-def build_instructions_deque(lines: str, part2=False) -> Deque[Instruction]:
+def build_instructions_deque(lines: str, partb=False) -> Deque[Instruction]:
     instructions: Deque[Instruction] = deque()
 
     for instruction in lines:
         i = Instruction(instruction)
-        if not part2 or i.destination != "b":
+        if not partb or i.destination != "b":
             instructions.append(i)
 
     return instructions
@@ -102,23 +100,23 @@ def run(instructions: Deque[Instruction], wires: dict):
             instructions.append(i)
 
 
-def part1(lines: list):
+def parta(lines: list):
     wires = {}
     run(build_instructions_deque(lines), wires)
     return wires
 
 
-def part2(lines: list):
-    wires = {"b": part1(lines)["a"]}
-    run(build_instructions_deque(lines, part2=True), wires)
+def partb(lines: list):
+    wires = {"b": parta(lines)["a"]}
+    run(build_instructions_deque(lines, partb=True), wires)
     return wires
 
 
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 7), "Some Assembly Required")  # noqa
 
-    print(f"part1: {part1(input_lines)['a']}")
-    print(f"part2: {part2(input_lines)['a']}")
+    print(f"parta: {parta(input_lines)['a']}")
+    print(f"partb: {partb(input_lines)['a']}")
 
 
 if __name__ == "__main__":

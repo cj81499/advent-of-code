@@ -1,7 +1,5 @@
 from datetime import date
 
-import helpers
-
 
 def look_and_say(txt: str, count: int):
     chars = txt
@@ -23,19 +21,19 @@ def look_and_say(txt: str, count: int):
     return ''.join(chars)
 
 
-def part1(txt: str):
+def parta(txt: str):
     return len(look_and_say(txt, 40))
 
 
-def part2(txt: str):
+def partb(txt: str):
     return len(look_and_say(txt, 50))
 
 
 def main():
     input_txt, _ = helpers.get_puzzle(date(2015, 12, 10), "Elves Look, Elves Say")  # noqa
 
-    print(f"part1: {part1(input_txt)}")
-    print(f"part2: {part2(input_txt)}")
+    print(f"parta: {parta(input_txt)}")
+    print(f"partb: {partb(input_txt)}")
 
 
 if __name__ == "__main__":

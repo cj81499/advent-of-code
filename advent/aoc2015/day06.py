@@ -1,7 +1,5 @@
 from datetime import date
 
-import helpers
-
 
 class Grid():
     def __init__(self, dimensions, default_value=None):
@@ -23,7 +21,7 @@ class Grid():
 
 # TODO Revist b/c this is slow
 
-def part1(lines: list):
+def parta(lines: list):
     g = Grid((1000, 1000), default_value=False)
     for instruction in lines:
         words = instruction.split()
@@ -44,7 +42,7 @@ def part1(lines: list):
     return count
 
 
-def part2(lines: list):
+def partb(lines: list):
     g = Grid((1000, 1000), default_value=0)
     for instruction in lines:
         words = instruction.split()
@@ -68,8 +66,8 @@ def part2(lines: list):
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 6), "Probably a Fire Hazard")  # noqa
 
-    print(f"part1: {part1(input_lines)}")
-    print(f"part2: {part2(input_lines)}")
+    print(f"parta: {parta(input_lines)}")
+    print(f"partb: {partb(input_lines)}")
 
 
 if __name__ == "__main__":

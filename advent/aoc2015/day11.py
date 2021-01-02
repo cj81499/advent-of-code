@@ -1,7 +1,5 @@
 from datetime import date
 
-import helpers
-
 CONFUSING = {"i", "o", "l"}
 
 
@@ -36,8 +34,8 @@ def increment_password(txt: str) -> str:
 def is_valid_password(txt: str) -> bool:
     # Passwords must include one increasing straight of at least three letters,
     # like abc, bcd, cde, and so on, up to xyz. They cannot skip letters; abd doesn't count.
-    # Passwords may not contain the letters i, o, or l, as these letters can be mistaken
-    # for other characters and are therefore confusing.
+    # Passwords may not contain the letters i, o, or l, as these letters can
+    # be mistaken for other characters and are therefore confusing.
     # Passwords must contain at least two different, non-overlapping pairs of letters, like aa, bb, or zz.
     straight = False
     pairs = set()
@@ -60,9 +58,9 @@ def is_valid_password(txt: str) -> bool:
 def main():
     input_txt, _ = helpers.get_puzzle(date(2015, 12, 11), "Corporate Policy")  # noqa
 
-    part1 = next_valid_password(input_txt)
-    print(f"part1: {part1}")
-    print(f"part2: {next_valid_password(part1)}")
+    parta = next_valid_password(input_txt)
+    print(f"parta: {parta}")
+    print(f"partb: {next_valid_password(parta)}")
 
 
 if __name__ == "__main__":

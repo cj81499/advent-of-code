@@ -1,8 +1,6 @@
 from datetime import date
 from typing import Dict, List
 
-import helpers
-
 
 def distance_after_t(speed: int, flight_t: int, rest_t: int, t: int):
     return sum(speed for i in range(t) if i % (flight_t + rest_t) < flight_t)
@@ -45,8 +43,8 @@ def max_points_after_t(reindeers: List[str], t: int = 2503):
 def main():
     _, input_lines = helpers.get_puzzle(date(2015, 12, 14), "Reindeer Olympics")  # noqa
 
-    print(f"part1: {max_distance_after_t(input_lines)}")
-    print(f"part2: {max_points_after_t(input_lines)}")
+    print(f"parta: {max_distance_after_t(input_lines)}")
+    print(f"partb: {max_points_after_t(input_lines)}")
 
 
 if __name__ == "__main__":

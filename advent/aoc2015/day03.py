@@ -1,7 +1,6 @@
 from datetime import date
 
-import helpers
-from point import Point
+from .point import Point
 
 MOVES = {
     "^": Point(0, 1),
@@ -11,7 +10,7 @@ MOVES = {
 }
 
 
-def part1(directions: str):
+def parta(directions: str):
     pos = Point(0, 0)
     visited = set()
     visited.add(pos)
@@ -21,7 +20,7 @@ def part1(directions: str):
     return len(visited)
 
 
-def part2(directions: str):
+def partb(directions: str):
     pos = [Point(0, 0), Point(0, 0)]
     i = 0
     visited = set()
@@ -36,8 +35,8 @@ def part2(directions: str):
 def main():
     input_txt, _ = helpers.get_puzzle(date(2015, 12, 3), "Perfectly Spherical Houses in a Vacuum")  # noqa
 
-    print(f"part1: {part1(input_txt)}")
-    print(f"part2: {part2(input_txt)}")
+    print(f"parta: {parta(input_txt)}")
+    print(f"partb: {partb(input_txt)}")
 
 
 if __name__ == "__main__":
