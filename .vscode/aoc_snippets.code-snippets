@@ -27,11 +27,11 @@
       "",
       "def parta(txt):",
       "\t$0print(txt)",
-      "\treturn -1",
+      "\treturn None",
       "",
       "",
       "def partb(txt):",
-      "\treturn -1",
+      "\treturn None",
       "",
       "",
       "def main(txt):",
@@ -57,11 +57,11 @@
       "",
       "",
       "def test_a():",
-      "    assert d.parta(EXAMPLE_INPUT) == ${3:-1}",
+      "    assert d.parta(EXAMPLE_INPUT) == ${3:None}",
       "",
       "",
       "def test_b():",
-      "    assert d.partb(EXAMPLE_INPUT) == ${4:-1}"
+      "    assert d.partb(EXAMPLE_INPUT) == ${4:None}"
     ]
   }
 }
