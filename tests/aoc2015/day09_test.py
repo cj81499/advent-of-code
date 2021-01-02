@@ -1,22 +1,15 @@
-import unittest
-
-import path_fix
-import day09
+import advent.aoc2015.day09 as d
 
 
-class TestDay09(unittest.TestCase):
-    def test_day09_part1(self):
-        lines = """London to Dublin = 464
+def test_a():
+    lines = """London to Dublin = 464
 London to Belfast = 518
 Dublin to Belfast = 141""".splitlines()
-        self.assertEqual(605, day09.find_paths(lines)[0])
+    assert 605, d.find_paths(lines)[0]
 
-    def test_day09_part2(self):
-        lines = """London to Dublin = 464
+
+def test_b():
+    lines = """London to Dublin = 464
 London to Belfast = 518
 Dublin to Belfast = 141""".splitlines()
-        self.assertEqual(982, day09.find_paths(lines)[1])
-
-
-if __name__ == "__main__":
-    unittest.main()
+    assert 982, d.find_paths(lines)[1]

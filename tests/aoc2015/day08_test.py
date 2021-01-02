@@ -1,22 +1,15 @@
-import unittest
-
-import path_fix
-import day08
+import advent.aoc2015.day08 as d
 
 
-class TestDay08(unittest.TestCase):
-    def test_day08_part1(self):
-        self.assertEqual("", day08.decode("\"\""))
-        self.assertEqual("abc", day08.decode("\"abc\""))
-        self.assertEqual("aaa\"aaa", day08.decode("\"aaa\\\"aaa\""))
-        self.assertEqual("'", day08.decode("\"\\x27\""))
-
-    def test_day08_part2(self):
-        self.assertEqual("\"\\\"\\\"\"", day08.encode("\"\""))
-        self.assertEqual("\"\\\"abc\\\"\"", day08.encode("\"abc\""))
-        self.assertEqual("\"\\\"aaa\\\\\\\"aaa\\\"\"", day08.encode("\"aaa\\\"aaa\""))
-        self.assertEqual("\"\\\"\\\\x27\\\"\"", day08.encode("\"\\x27\""))
+def test_a():
+    assert d.decode("\"\"") == ""
+    assert d.decode("\"abc\"") == "abc"
+    assert d.decode("\"aaa\\\"aaa\"") == "aaa\"aaa"
+    assert d.decode("\"\\x27\"") == "'"
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.encode("\"\"") == "\"\\\"\\\"\""
+    assert d.encode("\"abc\"") == "\"\\\"abc\\\"\""
+    assert d.encode("\"aaa\\\"aaa\"") == "\"\\\"aaa\\\\\\\"aaa\\\"\""
+    assert d.encode("\"\\x27\"") == "\"\\\"\\\\x27\\\"\""

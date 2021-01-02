@@ -1,5 +1,4 @@
 from collections import deque
-from datetime import date
 
 NAUGHTY_SUBSTRINGS = set(("ab", "cd", "pq", "xy"))
 VOWELS = set(x for x in "aeiou")
@@ -46,20 +45,19 @@ def is_nice2(s: str):
     return sandwich and repeating_pair
 
 
-def parta(lines: list):
-    return sum(is_nice1(s) for s in lines)
+def parta(txt):
+    return sum(is_nice1(s) for s in txt.splitlines())
 
 
-def partb(lines: list):
-    return sum(is_nice2(s) for s in lines)
+def partb(txt):
+    return sum(is_nice2(s) for s in txt.splitlines())
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 5), "Doesn't He Have Intern-Elves For This?")  # noqa
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

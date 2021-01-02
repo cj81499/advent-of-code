@@ -1,31 +1,24 @@
-import unittest
-
-import path_fix
-import day01
+import advent.aoc2015.day01 as d
 
 
-class TestDay01(unittest.TestCase):
-    def test_day01_part1(self):
-        self.assertEqual(0, day01.part1("(())"))
-        self.assertEqual(0, day01.part1("()()"))
+def test_a():
+    assert d.parta("(())") == 0
+    assert d.parta("()()") == 0
 
-        self.assertEqual(3, day01.part1("((("))
-        self.assertEqual(3, day01.part1("(()(()("))
-        self.assertEqual(3, day01.part1("))((((("))
+    assert d.parta("(((") == 3
+    assert d.parta("(()(()(") == 3
+    assert d.parta("))(((((") == 3
 
-        self.assertEqual(-1, day01.part1("())"))
-        self.assertEqual(-1, day01.part1("))("))
+    assert d.parta("())") == -1
+    assert d.parta("))(") == -1
 
-        self.assertEqual(-3, day01.part1(")))"))
-        self.assertEqual(-3, day01.part1(")())())"))
+    assert d.parta(")))") == -3
+    assert d.parta(")())())") == -3
 
-        self.assertEqual(-3, day01.part1(")))"))
-        self.assertEqual(-3, day01.part1(")())())"))
-
-    def test_day01_part2(self):
-        self.assertEqual(1, day01.part2(")"))
-        self.assertEqual(5, day01.part2("()())"))
+    assert d.parta(")))") == -3
+    assert d.parta(")())())") == -3
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb(")") == 1
+    assert d.partb("()())") == 5

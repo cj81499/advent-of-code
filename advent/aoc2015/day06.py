@@ -1,6 +1,3 @@
-from datetime import date
-
-
 class Grid():
     def __init__(self, dimensions, default_value=None):
         self.grid = {}
@@ -21,9 +18,9 @@ class Grid():
 
 # TODO Revist b/c this is slow
 
-def parta(lines: list):
+def parta(txt):
     g = Grid((1000, 1000), default_value=False)
-    for instruction in lines:
+    for instruction in txt.splitlines():
         words = instruction.split()
         if words[0] == "toggle":
             start = [int(x) for x in words[1].split(",")]
@@ -42,9 +39,9 @@ def parta(lines: list):
     return count
 
 
-def partb(lines: list):
+def partb(txt):
     g = Grid((1000, 1000), default_value=0)
-    for instruction in lines:
+    for instruction in txt.splitlines():
         words = instruction.split()
         if words[0] == "toggle":
             start = [int(x) for x in words[1].split(",")]
@@ -63,12 +60,11 @@ def partb(lines: list):
     return count
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 6), "Probably a Fire Hazard")  # noqa
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

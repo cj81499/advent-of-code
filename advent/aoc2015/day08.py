@@ -1,6 +1,3 @@
-from datetime import date
-
-
 def decode(s: str) -> int:
     str_in_mem = []
 
@@ -40,32 +37,31 @@ def encode(s: str) -> int:
     return "".join(str_in_mem)
 
 
-def parta(lines: list):
+def parta(txt):
     total_chars_of_code = 0
     total_chars_in_memory = 0
-    for s in lines:
+    for s in txt.splitlines():
         total_chars_of_code += len(s)
         total_chars_in_memory += len(decode(s))
 
     return total_chars_of_code - total_chars_in_memory
 
 
-def partb(lines: list):
+def partb(txt):
     total_chars_of_original = 0
     total_chars_of_encoded = 0
-    for s in lines:
+    for s in txt.splitlines():
         total_chars_of_original += len(s)
         total_chars_of_encoded += len(encode(s))
 
     return total_chars_of_encoded - total_chars_of_original
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 8), "Matchsticks")  # noqa
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

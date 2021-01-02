@@ -1,6 +1,4 @@
-from datetime import date
-
-from .point import Point
+from advent.aoc2015.point import Point
 
 MOVES = {
     "^": Point(0, 1),
@@ -32,12 +30,11 @@ def partb(directions: str):
     return len(visited)
 
 
-def main():
-    input_txt, _ = helpers.get_puzzle(date(2015, 12, 3), "Perfectly Spherical Houses in a Vacuum")  # noqa
-
-    print(f"parta: {parta(input_txt)}")
-    print(f"partb: {partb(input_txt)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

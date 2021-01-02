@@ -1,4 +1,3 @@
-from datetime import date
 from itertools import permutations
 from typing import Dict, List, Set
 
@@ -52,14 +51,19 @@ def add_self_to_prefs(prefs: Dict[str, Dict[str, int]]):
     return prefs
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 13), "Knights of the Dinner Table")  # noqa
+def parta(txt):
+    return optimal_happiness(build_prefs(txt.splitlines()))
 
-    print(f"parta: {optimal_happiness(build_prefs(input_lines))}")
-    print(
-        f"partb: {optimal_happiness(add_self_to_prefs(build_prefs(input_lines)))}")
+
+def partb(txt):
+    return optimal_happiness(add_self_to_prefs(build_prefs(txt.splitlines())))
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-
-    main()
+    from aocd import data
+    main(data)

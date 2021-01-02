@@ -1,5 +1,4 @@
 import itertools
-from datetime import date
 from typing import Dict
 
 
@@ -51,13 +50,19 @@ def find_paths(lines: list):
     return min_dist, max_dist
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 9), "All in a Single Night")  # noqa
+def parta(txt):
+    return find_paths(txt.splitlines())[0]
 
-    shortest, longest = find_paths(input_lines)
-    print(f"parta: {shortest}")
-    print(f"partb: {longest}")
+
+def partb(txt):
+    return find_paths(txt.splitlines())[1]
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

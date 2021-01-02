@@ -1,4 +1,3 @@
-from datetime import date
 from typing import Dict, List
 
 
@@ -40,13 +39,19 @@ def max_points_after_t(reindeers: List[str], t: int = 2503):
     return max(r["points"] for r in reindeers.values())
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 14), "Reindeer Olympics")  # noqa
+def parta(txt):
+    return max_distance_after_t(txt.splitlines())
 
-    print(f"parta: {max_distance_after_t(input_lines)}")
-    print(f"partb: {max_points_after_t(input_lines)}")
+
+def partb(txt):
+    return max_points_after_t(txt.splitlines())
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-
-    main()
+    from aocd import data
+    main(data)

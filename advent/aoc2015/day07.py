@@ -1,5 +1,4 @@
 from collections import deque
-from datetime import date
 from typing import Deque
 
 
@@ -80,10 +79,10 @@ class Instruction():
         return self._instruction_str
 
 
-def build_instructions_deque(lines: str, partb=False) -> Deque[Instruction]:
+def build_instructions_deque(txt, partb=False) -> Deque[Instruction]:
     instructions: Deque[Instruction] = deque()
 
-    for instruction in lines:
+    for instruction in txt.splitlines():
         i = Instruction(instruction)
         if not partb or i.destination != "b":
             instructions.append(i)
@@ -100,24 +99,23 @@ def run(instructions: Deque[Instruction], wires: dict):
             instructions.append(i)
 
 
-def parta(lines: list):
+def parta(txt):
     wires = {}
-    run(build_instructions_deque(lines), wires)
-    return wires
+    run(build_instructions_deque(txt), wires)
+    return wires["a"]
 
 
-def partb(lines: list):
-    wires = {"b": parta(lines)["a"]}
-    run(build_instructions_deque(lines, partb=True), wires)
-    return wires
+def partb(txt):
+    wires = {"b": parta(txt)}
+    run(build_instructions_deque(txt, partb=True), wires)
+    return wires["a"]
 
 
-def main():
-    _, input_lines = helpers.get_puzzle(date(2015, 12, 7), "Some Assembly Required")  # noqa
-
-    print(f"parta: {parta(input_lines)['a']}")
-    print(f"partb: {partb(input_lines)['a']}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

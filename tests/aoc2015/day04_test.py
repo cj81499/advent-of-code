@@ -1,14 +1,6 @@
-import unittest
-
-import path_fix
-import day04
+import advent.aoc2015.day04 as d
 
 
-class TestDay04(unittest.TestCase):
-    def test_day04(self):
-        self.assertEqual(609043, day04.part1("abcdef"))
-        self.assertEqual(1048970, day04.part1("pqrstuv"))
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_a():
+    assert d.parta("abcdef") == 609043
+    assert d.parta("pqrstuv") == 1048970

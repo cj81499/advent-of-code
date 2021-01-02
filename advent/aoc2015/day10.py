@@ -1,6 +1,3 @@
-from datetime import date
-
-
 def look_and_say(txt: str, count: int):
     chars = txt
     for _ in range(count):
@@ -29,12 +26,11 @@ def partb(txt: str):
     return len(look_and_say(txt, 50))
 
 
-def main():
-    input_txt, _ = helpers.get_puzzle(date(2015, 12, 10), "Elves Look, Elves Say")  # noqa
-
-    print(f"parta: {parta(input_txt)}")
-    print(f"partb: {partb(input_txt)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

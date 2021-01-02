@@ -1,5 +1,4 @@
 import json
-from datetime import date
 
 
 def sum_of_all_numbers(input_json, ignore_red=False):
@@ -14,14 +13,21 @@ def sum_of_all_numbers(input_json, ignore_red=False):
     return 0
 
 
-def main():
-    input_txt, _ = helpers.get_puzzle(date(2015, 12, 12), "JSAbacusFramework.io")  # noqa
+def parta(txt):
+    j = json.loads(txt)
+    return sum_of_all_numbers(j)
 
-    input_json = json.loads(input_txt)
 
-    print(f"parta: {sum_of_all_numbers(input_json)}")
-    print(f"partb: {sum_of_all_numbers(input_json, ignore_red=True)}")
+def partb(txt):
+    j = json.loads(txt)
+    return sum_of_all_numbers(j, ignore_red=True)
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

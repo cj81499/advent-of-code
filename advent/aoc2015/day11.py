@@ -1,5 +1,3 @@
-from datetime import date
-
 CONFUSING = {"i", "o", "l"}
 
 
@@ -55,13 +53,19 @@ def is_valid_password(txt: str) -> bool:
     return (straight and len(pairs) >= 2)
 
 
-def main():
-    input_txt, _ = helpers.get_puzzle(date(2015, 12, 11), "Corporate Policy")  # noqa
+def parta(txt):
+    return next_valid_password(txt)
 
-    parta = next_valid_password(input_txt)
-    print(f"parta: {parta}")
-    print(f"partb: {next_valid_password(parta)}")
+
+def partb(txt):
+    return next_valid_password(next_valid_password(txt))
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)

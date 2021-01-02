@@ -1,20 +1,13 @@
-import unittest
-
-import path_fix
-import day03
+import advent.aoc2015.day03 as d
 
 
-class TestDay03(unittest.TestCase):
-    def test_day03_part1(self):
-        self.assertEqual(2, day03.part1(">"))
-        self.assertEqual(4, day03.part1("^>v<"))
-        self.assertEqual(2, day03.part1("^v^v^v^v^v"))
-
-    def test_day03_part2(self):
-        self.assertEqual(3, day03.part2("^v"))
-        self.assertEqual(3, day03.part2("^>v<"))
-        self.assertEqual(11, day03.part2("^v^v^v^v^v"))
+def test_a():
+    assert d.parta(">") == 2
+    assert d.parta("^>v<") == 4
+    assert d.parta("^v^v^v^v^v") == 2
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb("^v") == 3
+    assert d.partb("^>v<") == 3
+    assert d.partb("^v^v^v^v^v") == 11

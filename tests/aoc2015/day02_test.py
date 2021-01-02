@@ -1,18 +1,11 @@
-import unittest
-
-import path_fix
-import day02
+import advent.aoc2015.day02 as d
 
 
-class TestDay02(unittest.TestCase):
-    def test_day02_part1(self):
-        self.assertEqual(58, day02.part1(["2x3x4"]))
-        self.assertEqual(43, day02.part1(["1x1x10"]))
-
-    def test_day02_part2(self):
-        self.assertEqual(34, day02.part2(["2x3x4"]))
-        self.assertEqual(14, day02.part2(["1x1x10"]))
+def test_a():
+    assert d.parta("2x3x4") == 58
+    assert d.parta("1x1x10") == 43
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb("2x3x4") == 34
+    assert d.partb("1x1x10") == 14

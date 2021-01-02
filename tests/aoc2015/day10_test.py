@@ -1,22 +1,14 @@
-import unittest
-
-import path_fix
-import day10
+import advent.aoc2015.day10 as d
 
 
-class TestDay10(unittest.TestCase):
-    def test_day10(self):
-        self.assertEqual("11", day10.look_and_say("1", 1))
-        self.assertEqual("21", day10.look_and_say("1", 2))
-        self.assertEqual("1211", day10.look_and_say("1", 3))
-        self.assertEqual("111221", day10.look_and_say("1", 4))
-        self.assertEqual("312211", day10.look_and_say("1", 5))
-        self.assertEqual("13112221", day10.look_and_say("1", 6))
-        self.assertEqual("1113213211", day10.look_and_say("1", 7))
-        self.assertEqual("31131211131221", day10.look_and_say("1", 8))
-        self.assertEqual("13211311123113112211", day10.look_and_say("1", 9))
-        self.assertEqual("11131221133112132113212221", day10.look_and_say("1", 10))
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_day10():
+    assert d.look_and_say("1", 1) == "11"
+    assert d.look_and_say("1", 2) == "21"
+    assert d.look_and_say("1", 3) == "1211"
+    assert d.look_and_say("1", 4) == "111221"
+    assert d.look_and_say("1", 5) == "312211"
+    assert d.look_and_say("1", 6) == "13112221"
+    assert d.look_and_say("1", 7) == "1113213211"
+    assert d.look_and_say("1", 8) == "31131211131221"
+    assert d.look_and_say("1", 9) == "13211311123113112211"
+    assert d.look_and_say("1", 10) == "11131221133112132113212221"

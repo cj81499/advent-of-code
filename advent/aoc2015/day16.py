@@ -1,5 +1,3 @@
-from datetime import date
-
 TARGET_QUALITIES = {
     "children": 3,
     "cats": 7,
@@ -17,16 +15,16 @@ GT_QUALITIES = set(("cats", "trees"))
 LT_QUALITIES = set(("pomeranians", "goldfish"))
 
 
-def parta(s, lines):
-    return helper(lines)
+def parta(txt):
+    return helper(txt)
 
 
-def partb(s, lines):
-    return helper(lines, True)
+def partb(txt):
+    return helper(txt, True)
 
 
-def helper(lines, partb=False):
-    sues = parse_sues(lines)
+def helper(txt, partb=False):
+    sues = parse_sues(txt)
 
     for qual in TARGET_QUALITIES:
         n = TARGET_QUALITIES[qual]
@@ -38,8 +36,8 @@ def helper(lines, partb=False):
     return sues[0]["SUE_ID"]
 
 
-def parse_sues(lines):
-    return [parse_sue(line) for line in lines]
+def parse_sues(txt):
+    return [parse_sue(line) for line in txt.splitlines()]
 
 
 def parse_sue(sue_str):
@@ -72,12 +70,11 @@ def check_sue(sue, qual, n, partb=False):
     return comparison(sue[qual], n)
 
 
-def main():
-    input_txt, input_lines = helpers.get_puzzle(date(2015, 12, 16), "Aunt Sue")  # noqa
-
-    print(f"parta: {parta(input_txt, input_lines)}")
-    print(f"partb: {partb(input_txt, input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    main()
+    from aocd import data
+    main(data)
