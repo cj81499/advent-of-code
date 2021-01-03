@@ -20,9 +20,9 @@
     "description": "Scaffold Advent of Code",
     "prefix": "aoc-day",
     "body": [
-      "import collections  # noqa",
       "import itertools  # noqa",
       "import re  # noqa",
+      "from collections import Counter, defaultdict, deque  # noqa",
       "",
       "",
       "def parta(txt):",
