@@ -6,3 +6,4 @@ parse>=1.18.0
 numpy>=1.19.4
 tqdm>=4.54.1
 z3-solver>=4.8.9.0
+lark-parser>=0.11.1
