@@ -12,7 +12,8 @@ source .venv/bin/activate
 ### Install the project
 
 ```shell
-pip install -e .
+pre-commit install # install pre-commit git hook
+pip install -e .   # install the python project
 ```
 
 Make sure that [aocd](https://github.com/wimglenn/advent-of-code-data) knows where to find your session token.
