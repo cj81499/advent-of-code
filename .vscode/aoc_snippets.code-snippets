@@ -57,11 +57,11 @@
       "",
       "",
       "def test_a():",
-      "    assert d.parta(EXAMPLE_INPUT) == ${3:None}",
+      "    assert d.parta(EXAMPLE_INPUT) is ${3:None}",
       "",
       "",
       "def test_b():",
-      "    assert d.partb(EXAMPLE_INPUT) == ${4:None}"
+      "    assert d.partb(EXAMPLE_INPUT) is ${4:None}"
     ]
   }
 }
