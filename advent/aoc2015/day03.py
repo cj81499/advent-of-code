@@ -1,32 +1,27 @@
-from advent.aoc2015.point import Point
-
 MOVES = {
-    "^": Point(0, 1),
-    "v": Point(0, -1),
-    "<": Point(-1, 0),
-    ">": Point(1, 0)
+    "^": (0, 1),
+    "v": (0, -1),
+    "<": (-1, 0),
+    ">": (1, 0)
 }
 
 
 def parta(directions: str):
-    pos = Point(0, 0)
-    visited = set()
-    visited.add(pos)
-    for c in directions:
-        pos += MOVES[c]
+    pos = (0, 0)
+    visited = {pos}
+    for d in directions:
+        pos = (pos[0] + MOVES[d][0], pos[1] + MOVES[d][1])
         visited.add(pos)
     return len(visited)
 
 
 def partb(directions: str):
-    pos = [Point(0, 0), Point(0, 0)]
-    i = 0
-    visited = set()
-    visited.add(pos[0])
-    for c in directions:
-        pos[i] += MOVES[c]
-        visited.add(pos[i])
-        i = (i+1) % 2
+    active, inactive = (0, 0), (0, 0)
+    visited = {active}
+    for d in directions:
+        active = (active[0] + MOVES[d][0], active[1] + MOVES[d][1])
+        visited.add(active)
+        active, inactive = inactive, active
     return len(visited)
 
 
