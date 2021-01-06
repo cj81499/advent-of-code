@@ -1,5 +1,6 @@
-import advent.aoc2018.day14 as d
 import pytest
+
+import advent.aoc2018.day14 as d
 
 
 @pytest.mark.parametrize("input, expected", [

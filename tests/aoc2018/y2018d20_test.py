@@ -1,5 +1,6 @@
-import advent.aoc2018.day20 as d
 import pytest
+
+import advent.aoc2018.day20 as d
 
 EXAMPLE_INPUT_0 = "^WNE$"
 EXAMPLE_INPUT_1 = "^ENWWW(NEEE|SSE(EE|N))$"
