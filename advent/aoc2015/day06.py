@@ -1,63 +1,72 @@
-class Grid():
-    def __init__(self, dimensions, default_value=None):
-        self.grid = {}
-        self._default_value = default_value
-        for y in range(dimensions[1]):
-            for x in range(dimensions[0]):
-                self.grid[(x, y)] = self._default_value
-
-    def __getitem__(self, key):
-        return self.grid[key]
-
-    def __setitem__(self, key, value):
-        self.grid[key] = value
-
-    def __delitem__(self, key):
-        self.grid[key] = self._default_value
+import dataclasses
+import itertools  # noqa
+import re  # noqa
+from collections import Counter, defaultdict, deque  # noqa
+from enum import Enum
+from typing import Tuple
 
 
-# TODO Revist b/c this is slow
+class Action(Enum):
+    TURN_ON = "turn on"
+    TURN_OFF = "turn off"
+    TOGGLE = "toggle"
+
+
+ON = True
+OFF = False
+
+
+@dataclasses.dataclass(frozen=True)
+class Instruction:
+    action: Action
+    start: Tuple[int, int]
+    end: Tuple[int, int]
+
+    _PARSE_REGEX = re.compile(r"(.*) (\d+),(\d+) through (\d+),(\d+)")
+
+    @staticmethod
+    def parse(instruction: str):
+        action, start_x, start_y, end_x, end_y = Instruction._PARSE_REGEX.match(instruction).groups()
+        return Instruction(Action(action), (int(start_x), int(start_y)), (int(end_x), int(end_y)))
+
+    def __repr__(self):
+        return f"{self.action} {self.start}-{self.end}"
+
 
 def parta(txt):
-    g = Grid((1000, 1000), default_value=False)
-    for instruction in txt.splitlines():
-        words = instruction.split()
-        if words[0] == "toggle":
-            start = [int(x) for x in words[1].split(",")]
-            stop = [int(x) for x in words[3].split(",")]
-            for y in range(start[1], stop[1] + 1):
-                for x in range(start[0], stop[0] + 1):
-                    g[(x, y)] = not g[(x, y)]
-        else:
-            start = [int(x) for x in words[2].split(",")]
-            stop = [int(x) for x in words[4].split(",")]
-            value = words[1] == "on"
-            for y in range(start[1], stop[1] + 1):
-                for x in range(start[0], stop[0] + 1):
-                    g[(x, y)] = value
-    count = sum(g[(x, y)] for x in range(1000) for y in range(1000))
-    return count
+    instructions = [Instruction.parse(line) for line in txt.splitlines()]
+    grid = defaultdict(lambda: False)
+    for instruction in instructions:
+        for x in range(instruction.start[0], instruction.end[0] + 1):
+            for y in range(instruction.start[1], instruction.end[1] + 1):
+                if instruction.action is Action.TURN_ON:
+                    grid[(x, y)] = ON
+                elif instruction.action is Action.TURN_OFF:
+                    grid[(x, y)] = OFF
+                elif instruction.action is Action.TOGGLE:
+                    grid[(x, y)] = not grid[(x, y)]
+                else:
+                    raise Exception("unknown action")
+
+    return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 
 
 def partb(txt):
-    g = Grid((1000, 1000), default_value=0)
-    for instruction in txt.splitlines():
-        words = instruction.split()
-        if words[0] == "toggle":
-            start = [int(x) for x in words[1].split(",")]
-            stop = [int(x) for x in words[3].split(",")]
-            for y in range(start[1], stop[1] + 1):
-                for x in range(start[0], stop[0] + 1):
-                    g[(x, y)] += 2
-        else:
-            start = [int(x) for x in words[2].split(",")]
-            stop = [int(x) for x in words[4].split(",")]
-            value = 1 if words[1] == "on" else -1
-            for y in range(start[1], stop[1] + 1):
-                for x in range(start[0], stop[0] + 1):
-                    g[(x, y)] = max(g[(x, y)] + value, 0)
-    count = sum(g[(x, y)] for x in range(1000) for y in range(1000))
-    return count
+    instructions = [Instruction.parse(line) for line in txt.splitlines()]
+    grid = Counter()
+    for instruction in instructions:
+        for x in range(instruction.start[0], instruction.end[0] + 1):
+            for y in range(instruction.start[1], instruction.end[1] + 1):
+                if instruction.action is Action.TURN_ON:
+                    grid[(x, y)] += 1
+                elif instruction.action is Action.TURN_OFF:
+                    grid[(x, y)] = max(0, grid[(x, y)] - 1)
+                elif instruction.action is Action.TOGGLE:
+                    grid[(x, y)] += 2
+                else:
+                    raise Exception("unknown action")
+
+    return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 
 
 def main(txt):
