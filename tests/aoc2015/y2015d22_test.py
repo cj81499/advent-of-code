@@ -19,7 +19,3 @@ Damage: 8
 ])
 def test_a(input, expected):
     assert d.parta(input, player_hp=10, player_mana=250) == expected
-
-
-def test_b():
-    assert d.partb(EXAMPLE_INPUT_0) is None
