@@ -16,20 +16,17 @@ jobs:
       AOC_SESSION: ${{ secrets.AOC_SESSION }}
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: run pre-commit checks
+        uses: pre-commit/action@v2.0.0
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e .
-      - name: Lint with flake8
-        run: |
-          # stop the build if there are Python syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # exit-zero treats all errors as warnings
-          flake8 . --count --exit-zero --statistics
       - name: Test with pytest
         run: pytest
