@@ -1,23 +1,20 @@
 import hashlib
+import itertools
 
-# TODO: Revisit? Slow.
 
-
-def find_hash(secret_key: str, zeros: int):
+def find_hash(secret_key: str, zeros: int = 5):
     zeros_str = '0' * zeros
-    i = 0
-    while True:
+    for i in itertools.count():
         if hashlib.md5(f"{secret_key}{i}".encode("utf-8")).hexdigest().startswith(zeros_str):
             return i
-        i += 1
 
 
 def parta(secret_key: str):
-    return find_hash(secret_key, 5)
+    return find_hash(secret_key)
 
 
 def partb(secret_key: str):
-    return find_hash(secret_key, 6)
+    return find_hash(secret_key, zeros=6)
 
 
 def main(txt):

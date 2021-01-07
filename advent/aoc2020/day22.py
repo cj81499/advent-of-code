@@ -43,7 +43,6 @@ class CombatGame:
     @classmethod
     def parse(cls, game_str):
         decks = [Deck.parse(d) for d in game_str.split("\n\n")]
-        # print(cls)
         return cls(decks)
 
     def __repr__(self): return f"{type(self)}({self.decks})"
@@ -83,24 +82,15 @@ class RecursiveCombatGame(CombatGame):
         self._round_n = 1
 
     def play(self):
-        # print(f"\n=== Game {self._game_n} ===")
         super().play()
-        # print(f"The winner of game {self._game_n} is player {self.winning_deck().n}!")
 
     def _round(self):
-        # print(f"\n-- Round {self._round_n} (Game {self._game_n}) --")
-        # for d in self.decks:
-        #     print(d)
         r = repr(self)
-        # print(r)
         if r in self.seen:
             self.loop = True
-            # print("LOOP FOUND")
             return
         self.seen.add(r)
         draw_deck_pairs = [(d.draw(), d) for d in self.decks]
-        # for card, deck in draw_deck_pairs:
-        #     print(f"Player {deck.n} plays: {card}")
 
         can_recurse = all(n <= len(deck) for n, deck in draw_deck_pairs)
         if can_recurse:
@@ -113,16 +103,13 @@ class RecursiveCombatGame(CombatGame):
             _winning_draw, winning_deck = max(draw_deck_pairs)
             to_put_on_bottom = list(sorted((n for n, _deck in draw_deck_pairs), reverse=True))
             winning_deck.put_on_bottom(*to_put_on_bottom)
-        # print(f"Player {winning_deck.n} wins round {self._round_n} of game {self._game_n}!")
         self._round_n += 1
 
     def _play_subgame(self, draw_deck_pairs):
-        # TODO: DON'T COPY FULL DECKS! Just the first n cards where n was that player's draw
+        # copy first n cards of each deck where n was that player's draw
         subdecks = [deck.subdeck(n) for n, deck in draw_deck_pairs]
-        # print("Playing a sub-game to determine the winner...")
         subgame = RecursiveCombatGame(subdecks)
         subgame.play()
-        # print(f"\n...anyway, back to game {self._game_n}.")
         return subgame.winning_deck().n
 
     def winning_deck(self):
@@ -147,34 +134,9 @@ def partb(txt):
 
 def main(txt):
     print(f"parta: {parta(txt)}")
-#     txt = """
-# Player 1:
-# 43
-# 19
-
-# Player 2:
-# 2
-# 29
-# 14
-# """.strip()
     print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
     from aocd import data
-#     data = """Player 1:
-# 9
-# 2
-# 6
-# 3
-# 1
-
-# Player 2:
-# 5
-# 8
-# 4
-# 7
-# 10
-# """.strip()
-
     main(data)

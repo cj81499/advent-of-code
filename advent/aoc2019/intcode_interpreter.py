@@ -82,13 +82,10 @@ def run_intcode_program(memory, prog_inputs=None):
         param_2_mode = int(instruction[-4:-3] or 0)
         param_3_mode = int(instruction[-5:-4] or 0)
         modes = (param_1_mode, param_2_mode, param_3_mode)
-        # print(opcode, modes)
-        # exit()
 
         if opcode == EXIT_OPCODE:
             return memory
 
-        # print(instruction, opcode)
         handler, param_count = OPCODE_INFO.get(opcode)
         if handler:
             memory = handler(memory, ip, modes)

@@ -28,10 +28,6 @@ SEA_MONSTER = [
 ]
 
 SEA_MONSTER_POINTS = {(y, x) for y, row in enumerate(SEA_MONSTER) for x, c in enumerate(row) if c == "#"}
-# print(SEA_MONSTER_POINTS)
-
-# print(SEA_MONSTER)
-# exit()
 
 
 class Tile:
