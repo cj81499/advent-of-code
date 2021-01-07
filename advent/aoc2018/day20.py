@@ -161,10 +161,6 @@ class Facility:
         self.f[pos] = Facility.Room("X")
         parsed_regex = Facility.parse_regex(self.regex)
         self._explore_chunk_list([pos], parsed_regex)
-        # print((self.min_x, self.min_y), (self.max_x, self.max_y))
-        # print(str(self).replace("?", "#"))
-        # with open("map.txt", "w") as f:
-        #     f.write(str(self).replace("?", "#"))
 
     def __str__(self):
         s = "#" + "?#" * (self.max_x - self.min_x + 1) + "\n"

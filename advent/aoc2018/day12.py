@@ -31,7 +31,6 @@ def run(pots, rules, loops):
         for i in range(- 2,  len(pots) + 2):
             slice_of_five = "".join(
                 [pots[pots.first_pot_index() + i + x] for x in range(-2, 3)])
-            # print(str(i).rjust(2), slice_of_five, str(pots))
             next_pots_state += "#" if slice_of_five in rules else "."
         pots = Pots(next_pots_state, pots.first_pot_index() - 2)
 

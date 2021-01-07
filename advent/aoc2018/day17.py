@@ -120,8 +120,6 @@ def parta(txt):
 def partb(txt):
     s = Scan(txt.splitlines())
     s.pour()
-    # with open("water.txt", "w") as f:
-    #     f.write(str(s))
     return s.count_settled_water_tiles()
 
 

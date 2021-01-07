@@ -65,16 +65,6 @@ def main(txt):
     print(f"partb: {partb(txt)}")
 
 
-SAMPLE = """
-1, 1
-1, 6
-8, 3
-3, 4
-5, 5
-8, 9
-""".strip()
 if __name__ == "__main__":
     from aocd import data
-
-    # data = SAMPLE
     main(data)
