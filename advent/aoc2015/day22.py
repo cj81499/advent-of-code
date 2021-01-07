@@ -14,7 +14,7 @@ class Spell:
     healing: int = 0
     armor: int = 0
     mana: int = 0
-    duration: int = 1  # TODO: or 0?
+    duration: int = 1
 
 
 SPELLS = [
@@ -58,7 +58,6 @@ def after_effects(player: Unit, boss: Unit, effects):
     armor = 0
     mana = 0
     for e in effects:
-        # TODO: apply effect
         damage += e.damage
         healing += e.healing
         armor += e.armor
