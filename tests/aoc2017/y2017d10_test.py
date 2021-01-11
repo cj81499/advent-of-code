@@ -2,9 +2,6 @@ import pytest
 
 import advent.aoc2017.day10 as d
 
-EXAMPLE_INPUT = """
-""".strip()
-
 
 def test_a():
     assert d.parta("3, 4, 1, 5", list_size=5) == 12

@@ -2,9 +2,6 @@ import pytest
 
 import advent.aoc2017.day09 as d
 
-EXAMPLE_INPUT = """
-""".strip()
-
 
 @pytest.mark.parametrize("input, expected", [
     (r"{}", 1),
