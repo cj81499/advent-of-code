@@ -1,30 +1,29 @@
-from itertools import combinations
+from __future__ import annotations
 
-from advent.aoc2019.intcode_interpreter import run_intcode_program
+import itertools
 
-
-def parta(txt: str) -> int:
-    memory = [int(x) for x in txt.split(",")]
-    # work with a copy of memory to avoid side effects
-    memory = memory.copy()
-    memory[1] = 12
-    memory[2] = 2
-    return run_intcode_program(memory)[0]
+from advent.aoc2019.intcode_computer import IntcodeProgram
 
 
-def partb(txt: str) -> int:
-    memory = [int(x) for x in txt.split(",")]
-    GOAL = 19690720
-    # work with a copy of memory to avoid side effects
-    memory = memory.copy()
-    for noun, verb in combinations(range(0, 100), 2):
-        memory[1], memory[2] = noun, verb
-        if run_intcode_program(memory)[0] == GOAL:
+def parta(txt: str):
+    p = IntcodeProgram.parse(txt)
+    p[1] = 12
+    p[2] = 2
+    p.run()
+    return p[0]
+
+
+def partb(txt: str):
+    for noun, verb in itertools.product(range(0, 100), repeat=2):
+        p = IntcodeProgram.parse(txt)
+        p[1] = noun
+        p[2] = verb
+        p.run()
+        if p[0] == 19690720:
             return 100 * noun + verb
-    return -1
 
 
-def main(txt) -> None:
+def main(txt: str):
     print(f"parta: {parta(txt)}")
     print(f"partb: {partb(txt)}")
 
