@@ -1,4 +1,4 @@
-class Chemical():
+class Chemical:
     def __init__(self, chem_str: str) -> None:
         qty, self.name = chem_str.split(" ")
         self.qty = int(qty)
@@ -7,7 +7,7 @@ class Chemical():
         return f"{self.qty} {self.name}"
 
 
-class Reaction():
+class Reaction:
     def __init__(self, rxn_str: str) -> None:
         input_chems_str, output_chem_str = rxn_str.split(" => ")
         self.output = Chemical(output_chem_str)

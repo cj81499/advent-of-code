@@ -2,7 +2,7 @@ import itertools
 from typing import Dict
 
 
-class Location():
+class Location:
     def __init__(self, name):
         self.name = name
         self.distances = {}

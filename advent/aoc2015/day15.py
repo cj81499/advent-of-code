@@ -5,7 +5,7 @@ RECIPIE_TEASPOONS = 100
 CALORIE_REQUIREMENT = 500
 
 
-class Ingredient():
+class Ingredient:
     def __init__(self, ingredient_str: str):
         self.name, properties_str = ingredient_str.split(": ")
         properties: List[str] = properties_str.split(", ")
