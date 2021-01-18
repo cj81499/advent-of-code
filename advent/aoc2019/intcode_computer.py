@@ -30,7 +30,7 @@ class IntcodeProgram:
 
     def run(self, max_steps=None):  # max_steps is useful for debugging infinite loops
         steps = itertools.count()
-        while not self.terminated:
+        while not self.terminated and not self.is_waiting_for_input():
             if max_steps is not None and next(steps) > max_steps:
                 raise Exception("too many steps")
             self.run_next()
@@ -38,6 +38,8 @@ class IntcodeProgram:
     def run_next(self):  # noqa: C901
         if self.terminated:
             raise ProgramTerminatedException()
+        if self.is_waiting_for_input():
+            return
         op = self.opcode
         if op == 1:
             self._add()
@@ -59,6 +61,9 @@ class IntcodeProgram:
             self._halt()
         else:
             raise UnknownOpcodeException()
+
+    def is_waiting_for_input(self):
+        return self.opcode == 3 and len(self._input_queue) == 0
 
     @property
     def opcode(self):
