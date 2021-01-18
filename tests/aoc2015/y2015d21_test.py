@@ -1,9 +1,5 @@
 import advent.aoc2015.day21 as d
 
-EXAMPLE_INPUT = """
-sample input
-""".strip()
-
 
 def test_battle():
     player = d.Unit(8, 5, 5)
