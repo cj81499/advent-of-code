@@ -9,10 +9,8 @@ from advent.aoc2019.intcode_computer import IntcodeProgram
 def helper(program, input, expected):
     p = IntcodeProgram.parse(program)
     p.write_input(input)
-    outputs = []
-    p.set_output(outputs.append)
     p.run()
-    assert len(outputs) == 1 and outputs[0] == expected
+    assert len(p.outputs) == 1 and p.outputs[0] == expected
 
 
 @pytest.mark.parametrize("n", range(10))

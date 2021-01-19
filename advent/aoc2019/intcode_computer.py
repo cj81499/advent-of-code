@@ -1,6 +1,6 @@
 import itertools
 from collections import defaultdict, deque
-from typing import Callable, List
+from typing import List
 
 
 class UnknownOpcodeException(Exception):
@@ -17,13 +17,11 @@ class IntcodeProgram:
         self._ip = 0
         self.terminated = False
         self._input_queue = deque()
+        self._output_history = []
         self._relative_base = 0
 
     def write_input(self, n: int):
         self._input_queue.append(n)
-
-    def set_output(self, f: Callable[[int], None]):
-        self._write_output = f
 
     @staticmethod
     def parse(program: str):
@@ -102,7 +100,7 @@ class IntcodeProgram:
         self._ip += 2
 
     def _output(self):
-        self._write_output(self[self._parameter(1)])
+        self._output_history.append(self[self._parameter(1)])
         self._ip += 2
 
     def _jump_if_true(self):
@@ -148,3 +146,7 @@ class IntcodeProgram:
     @property
     def state(self):
         return [self._memory[i] for i in range(max(self._memory) + 1)]
+
+    @property
+    def outputs(self):
+        return [*self._output_history]

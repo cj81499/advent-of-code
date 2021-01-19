@@ -15,10 +15,8 @@ def parta(txt: str):
         for a, n in zip(amplifiers, phase_setting_seq):
             a.write_input(n)
             a.write_input(prev)
-            output = []
-            a.set_output(output.append)
             a.run()
-            prev = output[0]
+            prev = a.outputs[0]
         m = max(m, prev)
     return m
 
@@ -33,10 +31,8 @@ def partb(txt: str):
         while not amplifiers[-1].terminated:
             for a in amplifiers:
                 a.write_input(prev)
-                output = deque()
-                a.set_output(output.append)
                 a.run()
-                prev = output.popleft()
+                prev = a.outputs[-1]
         m = max(m, prev)
     return m
 
