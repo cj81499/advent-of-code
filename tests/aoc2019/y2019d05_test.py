@@ -53,10 +53,13 @@ def test_jumps(n, program):
     helper(program, n, 0 if n == 0 else 1)
 
 
-@pytest.mark.parametrize("n", range(10))
-def test_larger_example(n):
-    program = """3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+LARGER_EXAMPLE = """
+3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
 1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,
 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99
 """.strip().replace("\n", "")
-    helper(program, n, 999 if n < 8 else (1000 if n == 8 else 1001))
+
+
+@pytest.mark.parametrize("n", range(10))
+def test_larger_example(n):
+    helper(LARGER_EXAMPLE, n, 999 if n < 8 else (1000 if n == 8 else 1001))

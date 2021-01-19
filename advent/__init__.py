@@ -6,6 +6,7 @@ ADVENT_DIR = Path(__file__).parent
 
 
 def solve(year, day, data):
+    pkg = None
     ans_a, ans_b = None, None
     year_str = f"aoc{year}"
     day_str = f"day{day:02d}"

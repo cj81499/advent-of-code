@@ -1,6 +1,7 @@
 import advent.aoc2019.day06 as d
 
-EXAMPLE_0 = """COM)B
+EXAMPLE_0 = """
+COM)B
 B)C
 C)D
 D)E
@@ -10,9 +11,12 @@ G)H
 D)I
 E)J
 J)K
-K)L"""
+K)L
+""".strip()
 
-EXAMPLE_1 = """COM)B
+
+EXAMPLE_1 = """
+COM)B
 B)C
 C)D
 D)E
@@ -24,7 +28,8 @@ E)J
 J)K
 K)L
 K)YOU
-I)SAN"""
+I)SAN
+""".strip()
 
 
 def test_parta() -> None:
