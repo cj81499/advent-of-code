@@ -1,5 +1,5 @@
 import itertools
-from collections import deque
+from collections import defaultdict, deque
 from typing import Callable, List
 
 
@@ -13,10 +13,11 @@ class ProgramTerminatedException(Exception):
 
 class IntcodeProgram:
     def __init__(self, program: List[int]):
-        self._memory = program
+        self._memory = defaultdict(int, dict(enumerate(program)))
         self._ip = 0
         self.terminated = False
         self._input_queue = deque()
+        self._relative_base = 0
 
     def write_input(self, n: int):
         self._input_queue.append(n)
@@ -57,6 +58,8 @@ class IntcodeProgram:
             self._less_than()
         elif op == 8:
             self._equals()
+        elif op == 9:
+            self._adjust_relative_base()
         elif op == 99:
             self._halt()
         else:
@@ -74,7 +77,12 @@ class IntcodeProgram:
 
     def _parameter(self, n: int):
         i = self._ip + n
-        return self[i] if self._parameter_mode(n) == 0 else i
+        mode = self._parameter_mode(n)
+        if mode == 1:
+            return i
+        elif mode == 2:
+            return self._relative_base + self[i]
+        return self[i]
 
     def _parameter_mode(self, n: int):
         return self[self._ip] // 10**(n+1) % 10
@@ -121,16 +129,22 @@ class IntcodeProgram:
         self[p3] = 1 if self[p1] == self[p2] else 0
         self._ip += 4
 
+    def _adjust_relative_base(self):
+        self._relative_base += self[self._parameter(1)]
+        self._ip += 2
+
     def _halt(self):
         self.terminated = True
         # self._ip += 1
 
-    def __getitem__(self, item: int):
-        return self._memory[item]
+    def __getitem__(self, i: int):
+        assert i >= 0
+        return self._memory[i]
 
-    def __setitem__(self, idx: int, item: int):
-        self._memory[idx] = item
+    def __setitem__(self, i: int, item: int):
+        assert i >= 0
+        self._memory[i] = item
 
     @property
     def state(self):
-        return [*self._memory]
+        return [self._memory[i] for i in range(max(self._memory) + 1)]
