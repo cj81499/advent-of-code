@@ -2,10 +2,6 @@ import pytest
 
 import advent.aoc2018.day09 as d
 
-EXAMPLE_INPUT = """
-sample input
-""".strip()
-
 
 @pytest.mark.parametrize("players, last_marble_value, expected", [
     (9, 25, 32),

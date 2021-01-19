@@ -1,6 +1,7 @@
 import advent.aoc2018.day06 as d
 
-EXAMPLE_INPUT = """1, 1
+EXAMPLE_INPUT = """
+1, 1
 1, 6
 8, 3
 3, 4
