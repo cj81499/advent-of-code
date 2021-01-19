@@ -1,8 +1,9 @@
-def parta(nums: list):
-    return sum(nums)
+def parta(txt):
+    return sum(int(x) for x in txt.splitlines())
 
 
-def partb(nums: list):
+def partb(txt):
+    nums = [int(x) for x in txt.splitlines()]
     seen_freqs = set()
     i = 0
     while True:
@@ -13,15 +14,11 @@ def partb(nums: list):
                 return i
 
 
-def main():
-    _, input_lines = helpers.load_input(1, "Chronal Calibration")
-
-    input_lines = [int(x) for x in input_lines]
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-    main()
+    from aocd import data
+    main(data)

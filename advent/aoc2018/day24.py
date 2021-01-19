@@ -151,7 +151,12 @@ class Battle:
             return "No deaths"
 
 
-def remaining_immune_with_min_boost(s: str):
+def parta(txt):
+    battle = Battle.parseBattle(txt)
+    return battle.fight()[1]
+
+
+def partb(s: str):
     boost = 1
     immune_wins = False
     while not immune_wins:
@@ -163,15 +168,11 @@ def remaining_immune_with_min_boost(s: str):
     return remaining
 
 
-def main():
-    input_txt, _ = helpers.load_input(24, "Immune System Simulator 20XX")
-
-    battle = Battle.parseBattle(input_txt)
-    print(f"parta: {battle.fight()[1]}")
-    print(f"partb: {remaining_immune_with_min_boost(input_txt)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

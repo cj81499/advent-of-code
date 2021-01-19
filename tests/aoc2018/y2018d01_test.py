@@ -1,36 +1,24 @@
-import unittest
+import pytest
 
-import advent.aoc2018.day01 as day01
-
-
-class TestDay01(unittest.TestCase):
-    def test_day01_parta_0(self):
-        self.assertEqual(3, day01.parta([+1, -2, +3, +1]))
-
-    def test_day01_parta_1(self):
-        self.assertEqual(3, day01.parta([+1, +1, +1]))
-
-    def test_day01_parta_2(self):
-        self.assertEqual(0, day01.parta([+1, +1, -2]))
-
-    def test_day01_parta_3(self):
-        self.assertEqual(-6, day01.parta([-1, -2, -3]))
-
-    def test_day01_partb_0(self):
-        self.assertEqual(2, day01.partb([+1, -2, +3, +1]))
-
-    def test_day01_partb_1(self):
-        self.assertEqual(0, day01.partb([+1, -1]))
-
-    def test_day01_partb_2(self):
-        self.assertEqual(10, day01.partb([+3, +3, +4, -2, -4]))
-
-    def test_day01_partb_3(self):
-        self.assertEqual(5, day01.partb([-6, +3, +8, +5, -6]))
-
-    def test_day01_partb_4(self):
-        self.assertEqual(14, day01.partb([+7, +7, -2, -7, -4]))
+import advent.aoc2018.day01 as d
 
 
-if __name__ == "__main__":
-    unittest.main()
+@pytest.mark.parametrize("input, expected", [
+    ("+1\n-2\n+3\n+1", 3),
+    ("+1\n+1\n+1", 3),
+    ("+1\n+1\n-2", 0),
+    ("-1\n-2\n-3", -6),
+])
+def test_a(input, expected):
+    assert d.parta(input) == expected
+
+
+@pytest.mark.parametrize("input, expected", [
+    ("+1\n-2\n+3\n+1", 2),
+    ("+1\n-1", 0),
+    ("+3\n+3\n+4\n-2\n-4", 10),
+    ("-6\n+3\n+8\n+5\n-6", 5),
+    ("+7\n+7\n-2\n-7\n-4", 14),
+])
+def test_b(input, expected):
+    assert d.partb(input) == expected

@@ -5,7 +5,8 @@ import parse
 p = parse.compile("[{:d}-{:d}-{:d} {:d}:{:d}] {}")
 
 
-def parta(events: list):  # noqa
+def parta(txt):  # noqa
+    events = events_list(txt.splitlines())
     d = {}
     active_guard = None
     sleep_start = None
@@ -40,7 +41,8 @@ def parta(events: list):  # noqa
     return sleep_counter.index(max(sleep_counter)) * max_sleep_guard
 
 
-def partb(events: list):
+def partb(txt):
+    events = events_list(txt.splitlines())
     d = {}
     active_guard = None
     sleep_start = None
@@ -68,22 +70,16 @@ def partb(events: list):
 
 def events_list(lines):
     events = [p.parse(line).fixed for line in lines]
-    events = [(datetime.datetime(e[0], e[1], e[2], e[3], e[4]), e[5])
-              for e in events]
+    events = [(datetime.datetime(e[0], e[1], e[2], e[3], e[4]), e[5]) for e in events]
     events.sort(key=lambda e: e[0])
     return events
 
 
-def main():
-    _, input_lines = helpers.load_input(4, "Repose Record")
-
-    events = events_list(input_lines)
-
-    print(f"parta: {parta(events)}")
-    print(f"partb: {partb(events)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

@@ -17,13 +17,13 @@
 | 13  | [Mine Cart Madness](https://adventofcode.com/2018/day/13)                    | :star: | :star: | :heavy_check_mark: |
 | 14  | [Chocolate Charts](https://adventofcode.com/2018/day/14)                     | :star: | :star: | :heavy_check_mark: |
 | 15  | [Beverage Bandits](https://adventofcode.com/2018/day/15)                     |  :x:   |  :x:   |        :x:         |
-| 16  | [Chronal Classification](https://adventofcode.com/2018/day/16)               | :star: | :star: | :heavy_check_mark: |
+| 16  | [Chronal Classification](https://adventofcode.com/2018/day/16)               | :star: | :star: |        :x:         |
 | 17  | [Reservoir Research](https://adventofcode.com/2018/day/17)                   | :star: | :star: | :heavy_check_mark: |
 | 18  | [Settlers of The North Pole](https://adventofcode.com/2018/day/18)           | :star: | :star: | :heavy_check_mark: |
 | 19  | [Go With The Flow](https://adventofcode.com/2018/day/19)                     | :star: | :star: | :heavy_check_mark: |
 | 20  | [A Regular Map](https://adventofcode.com/2018/day/20)                        | :star: | :star: | :heavy_check_mark: |
 | 21  | [Chronal Conversion](https://adventofcode.com/2018/day/21)                   | :star: | :star: |        n/a         |
-| 22  | [Mode Maze](https://adventofcode.com/2018/day/22)                            | :star: |  :x:   | :heavy_check_mark: |
-| 23  | [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) | :star: |  :x:   | :heavy_check_mark: |
+| 22  | [Mode Maze](https://adventofcode.com/2018/day/22)                            | :star: | :star: | :heavy_check_mark: |
+| 23  | [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) | :star: | :star: | :heavy_check_mark: |
 | 24  | [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24)         | :star: | :star: | :heavy_check_mark: |
 | 25  | [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25)           | :star: |  :x:   | :heavy_check_mark: |

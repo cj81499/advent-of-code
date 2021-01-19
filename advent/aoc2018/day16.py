@@ -25,7 +25,8 @@ def run_cmd(name, registers, a, b, c):
     registers[c] = OPERATIONS[name](registers, a, b)
 
 
-def parta(samples):
+def parta(txt):
+    samples, _program = txt.split("\n\n\n\n")
     samples = samples.split("\n\n")
     sample_count = 0
     for s in samples:
@@ -53,7 +54,8 @@ def opcodes_solved(opcodes):
     return True
 
 
-def partb(samples, program):
+def partb(txt):
+    samples, program = txt.split("\n\n\n\n")
     opcodes = {i: CMDS.copy() for i in range(16)}
     samples = samples.split("\n\n")
     for s in samples:
@@ -88,16 +90,11 @@ def partb(samples, program):
     return registers[0]
 
 
-def main():
-    input_txt, _ = helpers.load_input(16, "Chronal Classification")
-
-    sections = input_txt.split("\n\n\n\n")
-
-    print(f"parta: {parta(sections[0])}")
-    print(f"partb: {partb(sections[0], sections[1])}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

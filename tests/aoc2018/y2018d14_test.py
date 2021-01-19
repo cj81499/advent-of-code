@@ -1,33 +1,23 @@
-import unittest
+import pytest
 
-import advent.aoc2018.day14 as day14
-
-
-class TestDay14(unittest.TestCase):
-    def test_day14_parta_0(self):
-        self.assertEqual("5158916779", day14.parta("9"))
-
-    def test_day14_parta_1(self):
-        self.assertEqual("0124515891", day14.parta("5"))
-
-    def test_day14_parta_2(self):
-        self.assertEqual("9251071085", day14.parta("18"))
-
-    def test_day14_parta_3(self):
-        self.assertEqual("5941429882", day14.parta("2018"))
-
-    def test_day14_partb_0(self):
-        self.assertEqual(9, day14.partb("51589"))
-
-    def test_day14_partb_1(self):
-        self.assertEqual(5, day14.partb("01245"))
-
-    def test_day14_partb_2(self):
-        self.assertEqual(18, day14.partb("92510"))
-
-    def test_day14_partb_3(self):
-        self.assertEqual(2018, day14.partb("59414"))
+import advent.aoc2018.day14 as d
 
 
-if __name__ == "__main__":
-    unittest.main()
+@pytest.mark.parametrize("input, expected", [
+    ("9", "5158916779"),
+    ("5", "0124515891"),
+    ("18", "9251071085"),
+    ("2018", "5941429882"),
+])
+def test_a(input, expected):
+    assert d.parta(input) == expected
+
+
+@pytest.mark.parametrize("input, expected", [
+    ("51589", 9),
+    ("01245", 5),
+    ("92510", 18),
+    ("59414", 2018),
+])
+def test_b(input, expected):
+    assert d.partb(input) == expected

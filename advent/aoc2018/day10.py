@@ -1,94 +1,87 @@
-import numpy as np
-import parse
-
-parser = parse.compile("position=<{}> velocity=<{}>")
-
-
-class grid:
-    def __init__(self):
-        self.points = []
-        self.grid = None
-        self.width = 0
-        self.height = 0
-        self.max_x = 0
-        self.max_y = 0
-        self.min_x = 0
-        self.min_y = 0
-
-    def size(self):
-        self.update_dims()
-        return self.height * self.width
-
-    def step(self, count):
-        for p in self.points:
-            p.step(count)
-
-    def update_dims(self):
-        self.max_x = self.points[0].pos[0]
-        self.max_y = self.points[0].pos[1]
-        self.min_x = self.points[0].pos[0]
-        self.min_y = self.points[0].pos[1]
-        for p in self.points:
-            self.max_x = max(p.pos[0], self.max_x)
-            self.max_y = max(p.pos[1], self.max_y)
-            self.min_x = min(p.pos[0], self.min_x)
-            self.min_y = min(p.pos[1], self.min_y)
-        self.height = self.max_y - self.min_y
-        self.width = self.max_x - self.min_x
-
-    def update_grid(self):
-        self.update_dims()
-        self.grid = np.zeros((self.max_y - self.min_y + 1,
-                              self.max_x - self.min_x + 1), dtype=int)
-        for p in self.points:
-            self.grid[p.pos[1] - self.min_y, p.pos[0] - self.min_x] = 1
-
-    def __str__(self):
-        self.update_grid()
-        s = ""
-        for row in self.grid:
-            s += "".join([("#" if x == 1 else " ") for x in list(row)]) + "\n"
-        return s.rstrip()
+import collections  # noqa
+import itertools  # noqa
+import re  # noqa
 
 
 class Point:
-    def __init__(self, pos, vel):
-        self.pos = pos
-        self.vel = vel
+    _PARSE_REGEX = re.compile(r"position=< *(-?\d+), +(-?\d+)> velocity=< *(-?\d+), +(-?\d+)>")
 
-    def step(self, count=1):
-        self.pos[0] += count * self.vel[0]
-        self.pos[1] += count * self.vel[1]
+    def __init__(self, x, y, dx, dy):
+        self.x = x
+        self.y = y
+        self.dx = dx
+        self.dy = dy
 
+    @staticmethod
+    def parse(point: str):
+        match = Point._PARSE_REGEX.match(point)
+        nums = map(int, match.groups())
+        return Point(*nums)
 
-def run(lines: list):
-    g = grid()
-    for line in lines:
-        pos, vel = [[int(y) for y in x.split(",")] for x in parser.parse(line).fixed]
-        g.points.append(Point(pos, vel))
-    prev_size = g.size()
-    g.step(1)
-    partb = 0
-    while prev_size > g.size():
-        prev_size = g.size()
-        # This is kinda weird. Explained in day10.md
-        step_size = int(.085 * (prev_size ** (.5)))
-        if step_size < 50:
-            step_size = 1
-        g.step(step_size)
-        partb += step_size
+    def __repr__(self):
+        return f"Point(pos({self.x},{self.y}), vel({self.dx},{self.dy}))"
 
-    g.step(-1)
-    return f"parta:\n{str(g)}\npartb: {partb}"
+    def after(self, s=1):
+        new_x = self.x + s*self.dx
+        new_y = self.y + s*self.dy
+        return Point(new_x, new_y, self.dx, self.dy)
 
 
-def main():
-    _, input_lines = helpers.load_input(10, "The Stars Align")
+class Cluster:
+    def __init__(self, points):
+        self.points = points
+        self._min_x = min(self.points, key=lambda p: p.x).x
+        self._max_x = max(self.points, key=lambda p: p.x).x
+        self._min_y = min(self.points, key=lambda p: p.y).y
+        self._max_y = max(self.points, key=lambda p: p.y).y
+        self.area = (self._max_x - self._min_x) * (self._max_y - self._min_y)
 
-    print(run(input_lines))
+    @staticmethod
+    def parse(cluster: str):
+        points = [Point.parse(line) for line in cluster.splitlines()]
+        return Cluster(points)
+
+    def after(self, s=1):
+        if s == 0:
+            return self
+        new_points = [p.after(s) for p in self.points]
+        return Cluster(new_points)
+
+    def __str__(self):
+        point_locations = {(p.x, p.y) for p in self.points}
+        rows = []
+        for y in range(self._min_y, self._max_y + 1):
+            row = []
+            for x in range(self._min_x, self._max_x + 1):
+                row.append("#" if (x, y) in point_locations else ".")
+            rows.append("".join(row))
+        return "\n".join(rows)
+
+
+def find_optimal(initial_cluster):
+    prev = initial_cluster
+    for t in itertools.count():
+        cluster = initial_cluster.after(t)
+        if cluster.area > prev.area:
+            return prev, t - 1
+        prev = cluster
+
+
+def parta(txt):
+    cluster = Cluster.parse(txt)
+    return f"\n{find_optimal(cluster)[0]}"
+
+
+def partb(txt):
+    cluster = Cluster.parse(txt)
+    return find_optimal(cluster)[1]
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 
 
 def power_level(x, y, serial):
@@ -19,8 +18,8 @@ def build_fuel_cells(serial):
     return fuel_cells
 
 
-def parta(serial):
-    fuel_cells = build_fuel_cells(serial)
+def parta(txt):
+    fuel_cells = build_fuel_cells(int(txt))
 
     max_power = 0
     max_coords = None
@@ -31,30 +30,6 @@ def parta(serial):
                 max_power = power
                 max_coords = (x, y)
 
-    return ",".join([str(x) for x in max_coords])
-
-
-def partb(serial):
-    fuel_cells = build_fuel_cells(serial)
-
-    max_power = 0
-    max_coords = None
-    no_change_counter = 0
-    for z in range(1, 300):
-        prev_max_coords = max_coords
-        if no_change_counter > 5:
-            break
-        for y in range(300 - z):
-            for x in range(300 - z):
-                power = np.sum(fuel_cells[y:y + z, x:x + z])
-                if power > max_power:
-                    max_power = power
-                    max_coords = (x, y, z)
-        if prev_max_coords == max_coords:
-            no_change_counter += 1
-        else:
-            no_change_counter = 0
-        # print(f"{z}: {max_power} @ {max_coords}")
     return ",".join([str(x) for x in max_coords])
 
 
@@ -77,12 +52,12 @@ def sum_of_area(t, x, y, sq_size):
     return top_left + bottom_right - (top_right + bottom_left)
 
 
-def partb_polished(serial):
-    fuel_cells = build_fuel_cells(serial)
+def partb(txt):
+    fuel_cells = build_fuel_cells(int(txt))
     part_sum_table = partial_sum_table(fuel_cells)
     max_coords = None
     max_power = 0
-    for sq_size in tqdm(range(1, 301), leave=False, ascii=True):
+    for sq_size in range(1, 301):
         for y in range(300 - sq_size):
             for x in range(300 - sq_size):
                 s = sum_of_area(part_sum_table, x, y, sq_size)
@@ -92,17 +67,11 @@ def partb_polished(serial):
     return ",".join([str(x) for x in max_coords])
 
 
-def main():
-    input_txt, _ = helpers.load_input(11, "Chronal Charge")
-
-    serial = int(input_txt)
-
-    print(f"parta: {parta(serial)}")
-    # print(f"partb: {partb(serial)}")
-    print(f"partb_polished: {partb_polished(serial)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

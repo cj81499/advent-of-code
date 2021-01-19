@@ -31,7 +31,6 @@ def run(pots, rules, loops):
         for i in range(- 2,  len(pots) + 2):
             slice_of_five = "".join(
                 [pots[pots.first_pot_index() + i + x] for x in range(-2, 3)])
-            # print(str(i).rjust(2), slice_of_five, str(pots))
             next_pots_state += "#" if slice_of_five in rules else "."
         pots = Pots(next_pots_state, pots.first_pot_index() - 2)
 
@@ -48,24 +47,35 @@ def run(pots, rules, loops):
     return pots.sum_of_pots_with_plants()
 
 
-def main():
-    _, input_lines = helpers.load_input(12, "Subterranean Sustainability")
+def parse_input(txt):
+    lines = txt.splitlines()
+    initial_pots = Pots(lines[0][15:], 0)
 
-    initial_pots = Pots(input_lines[0][15:], 0)
-
-    input_lines.pop(0)
-    input_lines.pop(0)
+    lines.pop(0)
+    lines.pop(0)
 
     # Set of rules that make plants
     # Rules that don't make plants don't matter b/c no plant is the default for each generation
-    rules = set([rule_txt[:5]
-                 for rule_txt in input_lines if rule_txt[-1] == "#"])
+    rules = set(rule_txt[:5] for rule_txt in lines if rule_txt[-1] == "#")
 
-    print(f"parta: {run(initial_pots, rules, 20)}")
-    print(f"partb: {run(initial_pots, rules, 50000000000)}")
+    return initial_pots, rules
+
+
+def parta(txt):
+    pots, rules = parse_input(txt)
+    return run(pots, rules, 20)
+
+
+def partb(txt):
+    pots, rules = parse_input(txt)
+    return run(pots, rules, 50000000000)
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

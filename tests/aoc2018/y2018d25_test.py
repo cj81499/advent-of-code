@@ -1,11 +1,8 @@
-import unittest
+import pytest
 
-import advent.aoc2018.day25 as day25
+import advent.aoc2018.day25 as d
 
-
-class TestDay25(unittest.TestCase):
-    def test_day25_parta_0(self):
-        s = """
+EXAMPLE_INPUT_0 = """
 0,0,0,0
 3,0,0,0
 0,3,0,0
@@ -14,11 +11,9 @@ class TestDay25(unittest.TestCase):
 0,0,0,6
 9,0,0,0
 12,0,0,0
-""".strip().split("\n")
-        self.assertEqual(2, day25.parta(s))
+""".strip()
 
-    def test_day25_parta_1(self):
-        s = """
+EXAMPLE_INPUT_1 = """
 -1,2,2,0
 0,0,2,-2
 0,0,0,-2
@@ -29,11 +24,10 @@ class TestDay25(unittest.TestCase):
 -1,0,-1,0
 0,2,1,-2
 3,0,0,0
-""".strip().split("\n")
-        self.assertEqual(4, day25.parta(s))
+""".strip()
 
-    def test_day25_parta_2(self):
-        s = """
+
+EXAMPLE_INPUT_2 = """
 1,-1,0,1
 2,0,-1,0
 3,2,-1,0
@@ -44,11 +38,10 @@ class TestDay25(unittest.TestCase):
 2,-2,0,-1
 1,-1,0,-1
 3,2,0,2
-""".strip().split("\n")
-        self.assertEqual(3, day25.parta(s))
+""".strip()
 
-    def test_day25_parta_3(self):
-        s = """
+
+EXAMPLE_INPUT_3 = """
 1,-1,-1,-2
 -2,-2,0,1
 0,2,1,3
@@ -59,12 +52,17 @@ class TestDay25(unittest.TestCase):
 -2,2,3,-1
 1,2,2,0
 -1,-2,0,-2
-""".strip().split("\n")
-        self.assertEqual(8, day25.parta(s))
-
-    # def test_day25_partb(self):
-    #     self.assertEqual(51, day25.remaining_immune_with_min_boost(s))
+""".strip()
 
 
-if __name__ == "__main__":
-    unittest.main()
+@pytest.mark.parametrize("input, expected", [
+    (EXAMPLE_INPUT_0, 2),
+    (EXAMPLE_INPUT_1, 4),
+    (EXAMPLE_INPUT_2, 3),
+    (EXAMPLE_INPUT_3, 8),
+])
+def test_a(input, expected):
+    assert d.parta(input) == expected
+    assert d.parta(input) == expected
+    assert d.parta(input) == expected
+    assert d.parta(input) == expected

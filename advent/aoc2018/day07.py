@@ -29,11 +29,11 @@ def remove_task(tasks: dict, t):
     del tasks[t]
 
 
-def lines_to_tasks(lines, offset=60):
+def parse_tasks(txt, offset=60):
     tasks = {}
 
     # Fill in tasks dictionary
-    for line in lines:
+    for line in txt.splitlines():
         before, after = parser.parse(line).fixed
         tasks.setdefault(before, Task(before, offset))
         tasks.setdefault(after, Task(after, offset))
@@ -63,8 +63,8 @@ def add_new_tasks_if_possible(tasks, workers):
             workers[i] = startable.pop(0)
 
 
-def parta(lines: list):
-    tasks = lines_to_tasks(lines)
+def parta(txt):
+    tasks = parse_tasks(txt)
 
     # Find order
     order = []
@@ -76,8 +76,8 @@ def parta(lines: list):
     return "".join(order)
 
 
-def partb(lines: list, offset=60, helper_count=4):
-    tasks = lines_to_tasks(lines, offset)
+def partb(txt, offset=60, helper_count=4):
+    tasks = parse_tasks(txt, offset)
 
     workers = [None for _ in range(helper_count + 1)]
     elapsed_time = 0
@@ -96,14 +96,11 @@ def partb(lines: list, offset=60, helper_count=4):
     return elapsed_time
 
 
-def main():
-    _, input_lines = helpers.load_input(7, "The Sum of Its Parts")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

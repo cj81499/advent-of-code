@@ -1,11 +1,7 @@
-import unittest
+import advent.aoc2018.day10 as d
 
-import advent.aoc2018.day10 as day10
-
-
-class TestDay10(unittest.TestCase):
-    def test_day10(self):
-        input_lines = """position=< 9,  1> velocity=< 0,  2>
+EXAMPLE_INPUT = """
+position=< 9,  1> velocity=< 0,  2>
 position=< 7,  0> velocity=<-1,  0>
 position=< 3, -2> velocity=<-1,  1>
 position=< 6, 10> velocity=<-2, -1>
@@ -35,11 +31,24 @@ position=< 5,  0> velocity=< 1,  0>
 position=<-6,  0> velocity=< 2,  0>
 position=< 5,  9> velocity=< 1, -2>
 position=<14,  7> velocity=<-2,  0>
-position=<-3,  6> velocity=< 2, -1>""".splitlines()
-        expected = """parta:\n#   #  ###\n#   #   # \n#   #   # \n#####   # \n#   #   # \n#   #   # \n#   #   # \n#   #  ###\npartb: 3"""  # noqa
-        actual = day10.run(input_lines).strip()
-        self.assertEqual(expected, actual)
+position=<-3,  6> velocity=< 2, -1>
+""".strip()
+
+EXAMPLE_OUTPUT = """
+#...#..###
+#...#...#.
+#...#...#.
+#####...#.
+#...#...#.
+#...#...#.
+#...#...#.
+#...#..###
+""".strip()
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_a():
+    assert d.parta(EXAMPLE_INPUT) == "\n" + EXAMPLE_OUTPUT
+
+
+def test_b():
+    assert d.partb(EXAMPLE_INPUT) == 3

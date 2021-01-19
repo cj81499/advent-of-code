@@ -1,42 +1,46 @@
 from advent.aoc2018.day16 import run_cmd
 
 
-def run(lines: list, ip):
-    seen = set()
-    last = None
+def parta(txt):
+    ip, *lines = txt.splitlines()
+    ip = int(ip[4:])
+
     registers = [0, 0, 0, 0, 0, 0]
-    parta_solved = False
     while registers[ip] >= 0 and registers[ip] < len(lines):
         cmd, a, b, c = [x if len(str(x)) == 4 else int(x)
                         for x in lines[registers[ip]].split()]
         run_cmd(cmd, registers, a, b, c)
         if registers[ip] == 28:
-            m = max(registers)
-            if m not in seen:
-                if not parta_solved:
-                    print(f"parta: {m}")
-                    parta_solved = True
-                seen.add(m)
-                last = m
-                print(len(seen))
-            else:
-                print(f"partb: {last}")
-                # return seen[-1]
-                return
+            return max(registers)
         registers[ip] += 1
-    print(registers)
 
 
-def main():
-    _, input_lines = helpers.load_input(21, "Chronal Conversion")
+def partb(txt):
+    ip, *lines = txt.splitlines()
+    ip = int(ip[4:])
 
-    ip = int(input_lines.pop(0)[4:])
+    cmds = [[x if len(str(x)) == 4 else int(x) for x in line.split()] for line in lines]
 
-    # WARNING: PART 2 IS SUPER SUPER SLOW
-    run(input_lines, ip)
+    seen = set()
+    last = None
+    registers = [0, 0, 0, 0, 0, 0]
+    while registers[ip] >= 0 and registers[ip] < len(lines):
+        cmd, a, b, c = cmds[registers[ip]]
+        run_cmd(cmd, registers, a, b, c)
+        if registers[ip] == 28:
+            m = max(registers)
+            if m in seen:
+                return last
+            seen.add(m)
+            last = m
+        registers[ip] += 1
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")  # SLOWWWWWW. (a few minutes, with pypy)
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

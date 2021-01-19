@@ -161,10 +161,6 @@ class Facility:
         self.f[pos] = Facility.Room("X")
         parsed_regex = Facility.parse_regex(self.regex)
         self._explore_chunk_list([pos], parsed_regex)
-        # print((self.min_x, self.min_y), (self.max_x, self.max_y))
-        # print(str(self).replace("?", "#"))
-        # with open("map.txt", "w") as f:
-        #     f.write(str(self).replace("?", "#"))
 
     def __str__(self):
         s = "#" + "?#" * (self.max_x - self.min_x + 1) + "\n"
@@ -203,15 +199,21 @@ class Facility:
         return count
 
 
-def main():
-    input_txt, _ = helpers.load_input(20, "A Regular Map")
+def parta(txt):
+    fac = Facility(txt)
+    return fac.furthest_room_dist()
 
-    fac = Facility(input_txt)
-    print(f"parta: {fac.furthest_room_dist()}")
-    print(f"partb: {fac.count_rooms_at_least_dist_far(1000)}")
+
+def partb(txt):
+    fac = Facility(txt)
+    return fac.count_rooms_at_least_dist_far(1000)
+
+
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

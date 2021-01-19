@@ -110,33 +110,27 @@ class Simulation:
         return s
 
 
-def parta(lines):
-    s = Simulation(lines)
+def parta(txt):
+    s = Simulation(txt.splitlines())
     crashes = []
     while len(crashes) != 1:
         crashes, _ = s.move_carts()
-    return crashes[0]
+    return ",".join(map(str, crashes[0]))
 
 
-def partb(lines):
-    s = Simulation(lines)
-    carts = [0, 0]
+def partb(txt):
+    s = Simulation(txt.splitlines())
+    carts = [None, None]
     while len(carts) > 1:
         crashes, carts = s.move_carts(partb=True)
-        if len(crashes) > 0:
-            print(
-                f"Number of remaining carts: {len(carts)}, Crash(es): {crashes}")
-    return [x for x in carts][0]
+    return ",".join(map(str, [*carts][0]))
 
 
-def main():
-    _, input_lines = helpers.load_input(13, "Mine Cart Madness")
-
-    print(f"parta: {parta(input_lines)}")
-    print(f"partb: {partb(input_lines)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

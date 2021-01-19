@@ -30,15 +30,11 @@ def partb_polished(txt):
     return shortest_length
 
 
-def main():
-    input_txt, _ = helpers.load_input(5, "Alchemical Reduction")
-
-    print(f"parta: {parta(input_txt)}")
-    print(f"partb: {partb(input_txt)}")
-    print(f"partb_polished: {partb_polished(input_txt)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

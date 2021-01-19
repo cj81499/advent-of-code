@@ -29,14 +29,11 @@ def partb(txt: str):
     return len(board) - len(digits) - (0 if "".join(map(str, board[-len(digits):])) == txt else 1)
 
 
-def main():
-    input_txt, _ = helpers.load_input(14, "Chocolate Charts")
-
-    print(f"parta: {parta(input_txt)}")
-    print(f"partb: {partb(input_txt)}")
+def main(txt):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
-    import advent.aoc2018.helpers as helpers
-
-    main()
+    from aocd import data
+    main(data)

@@ -1,17 +1,28 @@
-import unittest
+import advent.aoc2018.day13 as d
 
-import advent.aoc2018.day13 as day13
+EXAMPLE_INPUT_0 = r"""
+/->-\
+|   |  /----\
+| /-+--+-\  |
+| | |  | v  |
+\-+-/  \-+--/
+  \------/
+""".strip()
+
+EXAMPLE_INPUT_1 = r"""
+/>-<\
+|   |
+| /<+-\
+| | | v
+\>+</ |
+  |   ^
+  \<->/
+""".strip()
 
 
-class TestDay13(unittest.TestCase):
-    def test_day13_parta(self):
-        lines = "/->-\\        \n|   |  /----\\\n| /-+--+-\\  |\n| | |  | v  |\n\\-+-/  \\-+--/\n  \\------/   ".splitlines()  # noqa
-        self.assertEqual((7, 3), day13.parta(lines))
-
-    def test_day13_partb(self):
-        lines = "/>-<\\  \n|   |  \n| /<+-\\\n| | | v\n\\>+</ |\n  |   ^\n  \\<->/".splitlines()
-        self.assertEqual((6, 4), day13.partb(lines))
+def test_a():
+    assert d.parta(EXAMPLE_INPUT_0) == "7,3"
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_b():
+    assert d.partb(EXAMPLE_INPUT_1) == "6,4"
