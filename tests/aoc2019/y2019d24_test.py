@@ -1,41 +1,53 @@
 import advent.aoc2019.day24 as d
 
-INITIAL = """....#
+INITIAL = """
+....#
 #..#.
 #..##
 ..#..
-#...."""
+#....
+""".strip()
 
 
-AFTER_1_MINS = """#..#.
+AFTER_1_MINS = """
+#..#.
 ####.
 ###.#
 ##.##
-.##.."""
+.##..
+""".strip()
 
-AFTER_2_MINS = """#####
+AFTER_2_MINS = """
+#####
 ....#
 ....#
 ...#.
-#.###"""
+#.###
+""".strip()
 
-AFTER_3_MINS = """#....
+AFTER_3_MINS = """
+#....
 ####.
 ...##
 #.##.
-.##.#"""
+.##.#
+""".strip()
 
-AFTER_4_MINS = """####.
+AFTER_4_MINS = """
+####.
 ....#
 ##..#
 .....
-##..."""
+##...
+""".strip()
 
-FIRST_REPEAT = """.....
+FIRST_REPEAT = """
+.....
 .....
 .....
 #....
-.#..."""
+.#...
+""".strip()
 
 
 def test_parse_bugs() -> None:

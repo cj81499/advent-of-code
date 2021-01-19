@@ -1,22 +1,27 @@
-from advent.aoc2019.intcode_interpreter import run_intcode_program
+from __future__ import annotations
+
+from advent.aoc2019.intcode_computer import IntcodeProgram
 
 
 def parta(txt: str):
-    nums = tuple(int(x) for x in txt.split(","))
-    run_intcode_program(nums, [1])
+    p = IntcodeProgram.parse(txt)
+    p.write_input(1)
+    p.run()
+    assert all(n == 0 for n in p.outputs[:-1])
+    return p.outputs[-1]
 
 
-# def partb(nums: Tuple[int]):
-#     run_intcode_program(nums, [5])
+def partb(txt: str):
+    p = IntcodeProgram.parse(txt)
+    p.write_input(5)
+    p.run()
+    assert len(p.outputs) == 1
+    return p.outputs[0]
 
 
-def main(txt) -> None:
-
-    print("parta:")
-    parta(txt)
-
-    # print("partb:")
-    # partb(nums)
+def main(txt: str):
+    print(f"parta: {parta(txt)}")
+    print(f"partb: {partb(txt)}")
 
 
 if __name__ == "__main__":
