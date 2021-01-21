@@ -13,4 +13,4 @@ import advent.aoc2019.day02 as d
 def test_a(input, expected):
     p = d.IntcodeProgram.parse(input)
     p.run()
-    assert ",".join(map(str, p.state)) == expected
+    assert ",".join(map(str, p.memory)) == expected

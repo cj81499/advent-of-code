@@ -17,7 +17,7 @@ class IntcodeProgram:
         self._ip = 0
         self.terminated = False
         self._input_queue = deque()
-        self._output_history = []
+        self.outputs = deque()
         self._relative_base = 0
 
     def write_input(self, n: int):
@@ -100,7 +100,7 @@ class IntcodeProgram:
         self._ip += 2
 
     def _output(self):
-        self._output_history.append(self[self._parameter(1)])
+        self.outputs.append(self[self._parameter(1)])
         self._ip += 2
 
     def _jump_if_true(self):
@@ -144,15 +144,5 @@ class IntcodeProgram:
         self._memory[i] = item
 
     @property
-    def state(self):
+    def memory(self):
         return [self._memory[i] for i in range(max(self._memory) + 1)]
-
-    @property
-    def outputs(self):
-        return [*self._output_history]
-
-    def output_history_length(self):
-        return len(self._output_history)
-
-    def last_n_outputs(self, n):
-        return self._output_history[-n:]

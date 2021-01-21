@@ -13,7 +13,7 @@ def parta(txt: str):
     screen = {}
     p = IntcodeProgram.parse(txt)
     p.run()
-    for x, y, tile_id in chunk(p.outputs, 3):
+    for x, y, tile_id in chunk([*p.outputs], 3):
         screen[(x, y)] = tile_id
     return Counter(screen.values())[2]
 
@@ -50,8 +50,8 @@ def partb(txt: str):
     ball_x, paddle_x = None, None
     while not p.terminated:
         p.run_next()
-        if p.output_history_length() > 0 and p.output_history_length() % 3 == 0:
-            x, y, tile_id = p.last_n_outputs(3)
+        if len(p.outputs) > 0 and len(p.outputs) % 3 == 0:
+            x, y, tile_id = (p.outputs.popleft() for _ in range(3))
             if (x, y) == (-1, 0):
                 score = tile_id
             else:

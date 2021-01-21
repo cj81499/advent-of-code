@@ -21,7 +21,7 @@ def test_input_output(n):
 def test_parameter_modes():
     p = IntcodeProgram.parse("1002,4,3,4,33")
     p.run()
-    assert ",".join(map(str, p.state)) == "1002,4,3,4,99"
+    assert ",".join(map(str, p.memory)) == "1002,4,3,4,99"
 
 
 def test_negative_int():

@@ -7,7 +7,7 @@ def parta(txt: str):
     p = IntcodeProgram.parse(txt)
     p.write_input(1)
     p.run()
-    assert all(n == 0 for n in p.outputs[:-1])
+    assert all(n == 0 for n in [*p.outputs][:-1])
     return p.outputs[-1]
 
 
