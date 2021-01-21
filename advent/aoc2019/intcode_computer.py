@@ -150,3 +150,9 @@ class IntcodeProgram:
     @property
     def outputs(self):
         return [*self._output_history]
+
+    def output_history_length(self):
+        return len(self._output_history)
+
+    def last_n_outputs(self, n):
+        return self._output_history[-n:]
