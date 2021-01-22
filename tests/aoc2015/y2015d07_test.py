@@ -25,7 +25,10 @@ y: 456
 """.strip()
 
 
-@pytest.mark.parametrize("input, expected", (line.split(": ") for line in EXAMPLE_OUTPUT.splitlines()))
+@pytest.mark.parametrize(
+    "input, expected",
+    (line.split(": ") for line in EXAMPLE_OUTPUT.splitlines())
+)
 def test_a(input, expected):
     wires = d.HashableDict(d.parse_wires(EXAMPLE_INPUT))
     assert d.signal_on(input, wires) == int(expected)

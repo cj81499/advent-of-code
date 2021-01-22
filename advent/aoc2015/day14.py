@@ -5,7 +5,7 @@ def distance_after_t(speed: int, flight_t: int, rest_t: int, t: int):
     return sum(speed for i in range(t) if i % (flight_t + rest_t) < flight_t)
 
 
-def max_distance_after_t(reindeers: List[str], t: int = 2503):
+def max_distance_after_t(reindeers: List[str], t: int):
     return max(distance_after_t(int(r[3]), int(r[6]), int(r[13]), t) for r in map(lambda r: r.split(), reindeers))
 
 
@@ -21,7 +21,7 @@ def advance_reindeers(reindeers: Dict[str, Dict[str, int]], t: int):
             reindeers[r]["points"] += 1
 
 
-def max_points_after_t(reindeers: List[str], t: int = 2503):
+def max_points_after_t(reindeers: List[str], t: int):
     reindeers = {
         r[0]: {
             "speed": int(r[3]),
@@ -39,12 +39,12 @@ def max_points_after_t(reindeers: List[str], t: int = 2503):
     return max(r["points"] for r in reindeers.values())
 
 
-def parta(txt):
-    return max_distance_after_t(txt.splitlines())
+def parta(txt, t: int = 2503):
+    return max_distance_after_t(txt.splitlines(), t)
 
 
-def partb(txt):
-    return max_points_after_t(txt.splitlines())
+def partb(txt, t: int = 2503):
+    return max_points_after_t(txt.splitlines(), t)
 
 
 def main(txt):

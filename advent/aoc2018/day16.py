@@ -30,7 +30,7 @@ def parta(txt):
     samples = samples.split("\n\n")
     sample_count = 0
     for s in samples:
-        lines = s.split("\n")
+        lines = s.splitlines()
         before = list(map(int, lines[0][9:-1].split(", ")))
         _, a, b, c = list(map(int, lines[1].split(" ")))
         after = list(map(int, lines[2][9:-1].split(", ")))
@@ -59,7 +59,7 @@ def partb(txt):
     opcodes = {i: CMDS.copy() for i in range(16)}
     samples = samples.split("\n\n")
     for s in samples:
-        lines = s.split("\n")
+        lines = s.splitlines()
         before = list(map(int, lines[0][9:-1].split(", ")))
         cmd_num, a, b, c = list(map(int, lines[1].split(" ")))
         after = list(map(int, lines[2][9:-1].split(", ")))

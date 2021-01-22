@@ -70,7 +70,7 @@ class Army:
     @classmethod
     def parseArmy(cls, army_str: str, immune_boost=0):
         group_list = []
-        group_str_list = army_str.strip().split("\n")
+        group_str_list = army_str.strip().splitlines()
         army_name = group_str_list.pop(0)[:-1]
         group_number = 1
         for group_str in group_str_list:
