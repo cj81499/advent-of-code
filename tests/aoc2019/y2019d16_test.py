@@ -4,10 +4,6 @@ import pytest
 
 import advent.aoc2019.day16 as d
 
-EXAMPLE_INPUT = """
-sample input
-""".strip()
-
 
 def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
