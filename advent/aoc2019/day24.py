@@ -53,7 +53,6 @@ def biodiversity(bugs: Bugs) -> int:
 
 
 def partb(txt: str, minutes=200):
-    print(txt)
     bugs: Bugs = str_to_bugs(txt, recursive=True)
     for _ in range(minutes):
         bugs = step_recursive(bugs)
