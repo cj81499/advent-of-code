@@ -51,19 +51,19 @@
     "description": "Scaffold Advent of Code Test",
     "prefix": "aoc-test",
     "body": [
-      "import advent.aoc20${5:20}.day${1:n} as d",
+      "import advent.aoc20${2:20}.day${1:n} as d",
       "",
       "EXAMPLE_INPUT = \"\"\"",
-      "${2:sample input}",
+      "${3:sample input}",
       "\"\"\".strip()",
       "",
       "",
       "def test_a():",
-      "    assert d.parta(EXAMPLE_INPUT) is ${3:None}",
+      "    assert d.parta(EXAMPLE_INPUT) is ${4:None}",
       "",
       "",
       "def test_b():",
-      "    assert d.partb(EXAMPLE_INPUT) is ${4:None}"
+      "    assert d.partb(EXAMPLE_INPUT) is ${5:None}"
     ]
   }
 }
