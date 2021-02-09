@@ -1,62 +1,53 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
-
 ONE_BILLION = 1_000_000_000
 
 
-class Programs:
-    def __init__(self, num_programs):
-        self._programs = [chr(ord("a") + i) for i in range(num_programs)]
-
-    def spin(self, n: int):
-        self._programs = [*self._programs[-n:], *self._programs[:-n]]
-
-    def exchange(self, a: int, b: int):
-        self._programs[a], self._programs[b] = self._programs[b], self._programs[a]
-
-    def partner(self, a: str, b: str):
-        a_i = self._programs.index(a)
-        b_i = self._programs.index(b)
-        self.exchange(a_i, b_i)
-
-    def __str__(self):
-        return "".join(self._programs)
-
-    def dance(self, moves, repetitions=1):
-        seen = {}
-        for i in range(repetitions):
-            if str(self) in seen:
-                loop_size = i - seen[str(self)]
-                remaining = repetitions % loop_size
-                for s, n in seen.items():
-                    if n == remaining:
-                        self._programs = [*s]
-                        return
-            seen[str(self)] = i
-
-            for move in moves:
-                move_type = move[0]
-                if move_type == "s":
-                    self.spin(int(move[1:]))
-                elif move_type == "x":
-                    self.exchange(*map(int, move[1:].split("/")))
-                elif move_type == "p":
-                    self.partner(move[1], move[3])
-                else:
-                    raise Exception("unknown move")
-
-
 def parta(txt: str, num_programs=16, repetitions=1):
-    p = Programs(num_programs)
-    p.dance(txt.split(","), repetitions)
-    return str(p)
+    programs = [chr(ord("a") + i) for i in range(num_programs)]
+    return dance(programs, txt.split(","), repetitions)
 
 
 def partb(txt: str):
     return parta(txt, repetitions=ONE_BILLION)
+
+
+def dance(programs, moves, repetitions):
+    seen = {}
+    for i in range(repetitions):
+        p_str = "".join(programs)
+        if p_str in seen:
+            loop_size = i - seen[p_str]
+            remaining = repetitions % loop_size
+            return next(state for state, n in seen.items() if n == remaining)
+        seen[p_str] = i
+
+        for move in moves:
+            move_type = move[0]
+            if move_type == "s":
+                programs = spin(programs, int(move[1:]))
+            elif move_type == "x":
+                programs = exchange(programs, *map(int, move[1:].split("/")))
+            elif move_type == "p":
+                programs = partner(programs, move[1], move[3])
+            else:
+                raise Exception("unknown move")
+    return "".join(programs)
+
+
+def spin(programs, n: int):
+    return [*programs[-n:], *programs[:-n]]
+
+
+def exchange(programs, a: int, b: int):
+    programs[a], programs[b] = programs[b], programs[a]
+    return programs
+
+
+def partner(programs, a: str, b: str):
+    a_i = programs.index(a)
+    b_i = programs.index(b)
+    return exchange(programs, a_i, b_i)
 
 
 def main(txt: str):
