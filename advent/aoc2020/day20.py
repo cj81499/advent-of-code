@@ -7,7 +7,7 @@ import numpy as np
 
 
 @enum.unique
-class Directions(enum.Enum):
+class Direction(enum.Enum):
     TOP = enum.auto()
     RIGHT = enum.auto()
     BOTTOM = enum.auto()
@@ -15,10 +15,10 @@ class Directions(enum.Enum):
 
 
 OPPOSITE_DIRECTIONS = {
-    Directions.TOP: Directions.BOTTOM,
-    Directions.RIGHT: Directions.LEFT,
-    Directions.BOTTOM: Directions.TOP,
-    Directions.LEFT: Directions.RIGHT,
+    Direction.TOP: Direction.BOTTOM,
+    Direction.RIGHT: Direction.LEFT,
+    Direction.BOTTOM: Direction.TOP,
+    Direction.LEFT: Direction.RIGHT,
 }
 
 SEA_MONSTER = [
@@ -40,7 +40,7 @@ class Tile:
         shape = self._grid.shape
         assert shape[0] == shape[1]
 
-        self.connections = {d: None for d in Directions}
+        self.connections = {d: None for d in Direction}
         self.is_aligned = False
 
     def border(self, direction):
@@ -48,10 +48,10 @@ class Tile:
 
     def borders(self):
         return {
-            Directions.TOP: "".join(self._grid[0, :]),
-            Directions.RIGHT: "".join(self._grid[:, -1]),
-            Directions.BOTTOM: "".join(self._grid[-1, :]),
-            Directions.LEFT: "".join(self._grid[:, 0]),
+            Direction.TOP: "".join(self._grid[0, :]),
+            Direction.RIGHT: "".join(self._grid[:, -1]),
+            Direction.BOTTOM: "".join(self._grid[-1, :]),
+            Direction.LEFT: "".join(self._grid[:, 0]),
         }
 
     def connect(self, other):
@@ -72,24 +72,24 @@ class Tile:
     def _rotate(self):
         self._grid = np.rot90(self._grid, k=-1)
         self.connections = {
-            Directions.TOP: self.connections[Directions.LEFT],
-            Directions.RIGHT: self.connections[Directions.TOP],
-            Directions.BOTTOM: self.connections[Directions.RIGHT],
-            Directions.LEFT: self.connections[Directions.BOTTOM],
+            Direction.TOP: self.connections[Direction.LEFT],
+            Direction.RIGHT: self.connections[Direction.TOP],
+            Direction.BOTTOM: self.connections[Direction.RIGHT],
+            Direction.LEFT: self.connections[Direction.BOTTOM],
         }
 
     def _flipud(self):
         self._grid = np.flipud(self._grid)
         c = self.connections
-        c[Directions.TOP], c[Directions.BOTTOM] = c[Directions.BOTTOM], c[Directions.TOP]
+        c[Direction.TOP], c[Direction.BOTTOM] = c[Direction.BOTTOM], c[Direction.TOP]
 
     def _fliplr(self):
         self._grid = np.fliplr(self._grid)
         c = self.connections
-        c[Directions.LEFT], c[Directions.RIGHT] = c[Directions.RIGHT], c[Directions.LEFT]
+        c[Direction.LEFT], c[Direction.RIGHT] = c[Direction.RIGHT], c[Direction.LEFT]
 
     def _is_top_left(self):
-        return self.connections[Directions.TOP] is None and self.connections[Directions.LEFT] is None
+        return self.connections[Direction.TOP] is None and self.connections[Direction.LEFT] is None
 
     def make_top_left(self):
         assert self.empty_connections() == 2
@@ -101,7 +101,7 @@ class Tile:
 
     def _cascade_match(self, other, direction):
         self._match(other, direction)
-        for direction in (Directions.BOTTOM, Directions.RIGHT):
+        for direction in (Direction.BOTTOM, Direction.RIGHT):
             t = self.connections[direction]
             if t is not None:
                 t._cascade_match(self, direction)
@@ -114,7 +114,7 @@ class Tile:
             self._rotate()
         # if the borders don't match, we need to flip
         if other.border(direction) != self.border(OPPOSITE_DIRECTIONS[direction]):
-            if direction in (Directions.LEFT, Directions.RIGHT):
+            if direction in (Direction.LEFT, Direction.RIGHT):
                 self._flipud()
             else:
                 self._fliplr()
@@ -165,22 +165,30 @@ def partb(txt):
         row = []
         while col_traverse is not None:
             row.append(col_traverse)
-            col_traverse = col_traverse.connections[Directions.RIGHT]
-        row_traverse = row_traverse.connections[Directions.BOTTOM]
+            col_traverse = col_traverse.connections[Direction.RIGHT]
+        row_traverse = row_traverse.connections[Direction.BOTTOM]
         grid.append(row)
 
     picture = np.vstack([np.hstack([t.center() for t in row]) for row in grid])
-
-    # TODO: it's possible the picture gets built with the wrong orientation and this won't work.
-    # for my input, I got lucky (1/8 chance(!) b/c 8 orientations).
-    # I'll (probably) come back and do this later.
-
-    height, width = picture.shape
-    sea_monsters_found = sum(sea_monster_at(picture, y, x) for (y, x) in itertools.product(range(height), range(width)))
-
     pound_count = sum(c == "#" for c in "".join("".join(row) for row in picture))
+    sea_monster_pound_count = count_sea_monsters(picture) * len(SEA_MONSTER_POINTS)
+    return pound_count - sea_monster_pound_count
 
-    return pound_count - (sea_monsters_found * len(SEA_MONSTER_POINTS))
+
+def count_sea_monsters(picture):
+    # it's possible the picture gets built with the wrong orientation.
+    # try them all until we find the one with sea monsters
+    for _ in range(2):
+        for _ in range(4):
+            height, width = picture.shape
+            result = sum(
+                sea_monster_at(picture, y, x)
+                for (y, x) in itertools.product(range(height), range(width))
+            )
+            if result > 0:
+                return result
+            picture = np.rot90(picture)
+        picture = np.fliplr(picture)
 
 
 def main(txt):
