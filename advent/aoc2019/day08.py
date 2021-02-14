@@ -31,7 +31,7 @@ def render(layers: list[list[int]], row_len: int) -> str:
         return -1
 
     def row_to_str(row: list[int]) -> str:
-        return "".join(" " if x == BLACK else "X" for x in row)
+        return "".join(" " if x == BLACK else "#" for x in row)
 
     pixels = [render_pos(layers, i) for i in range(len(layers[0]))]
 
