@@ -7,3 +7,6 @@ addopts = "-m 'not slow'"
 markers = [
     "slow: marks tests as slow"
 ]
+
+[tool.autopep8]
+max_line_length = 120
