@@ -1,0 +1,9 @@
+[tool.pycln]
+all = true
+
+[tool.pytest.ini_options]
+# skip slow tests by default
+addopts = "-m 'not slow'"
+markers = [
+    "slow: marks tests as slow"
+]
