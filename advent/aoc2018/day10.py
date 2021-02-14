@@ -52,7 +52,7 @@ class Cluster:
         for y in range(self._min_y, self._max_y + 1):
             row = []
             for x in range(self._min_x, self._max_x + 1):
-                row.append("#" if (x, y) in point_locations else ".")
+                row.append("#" if (x, y) in point_locations else " ")
             rows.append("".join(row))
         return "\n".join(rows)
 
