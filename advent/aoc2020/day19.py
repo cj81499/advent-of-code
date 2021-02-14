@@ -1,6 +1,3 @@
-import collections  # noqa
-import itertools  # noqa
-import re  # noqa
 
 
 class Option:

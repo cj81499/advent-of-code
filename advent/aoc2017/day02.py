@@ -1,6 +1,4 @@
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import itertools
 
 
 def parta(txt):

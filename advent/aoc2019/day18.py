@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import itertools
+from collections import deque
 
 
 def next_nodes_a(tunnels, node):

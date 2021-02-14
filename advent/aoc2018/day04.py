@@ -5,7 +5,7 @@ import parse
 p = parse.compile("[{:d}-{:d}-{:d} {:d}:{:d}] {}")
 
 
-def parta(txt):  # noqa
+def parta(txt):  # noqa: C901
     events = events_list(txt.splitlines())
     d = {}
     active_guard = None

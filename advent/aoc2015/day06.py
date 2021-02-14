@@ -1,7 +1,6 @@
 import dataclasses
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import re
+from collections import Counter, defaultdict
 from enum import Enum
 from typing import Tuple
 

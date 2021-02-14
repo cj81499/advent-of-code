@@ -1,6 +1,5 @@
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import itertools
+import re
 from dataclasses import dataclass
 
 

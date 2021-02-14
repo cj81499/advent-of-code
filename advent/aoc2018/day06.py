@@ -1,6 +1,5 @@
-import collections  # noqa
-import itertools  # noqa
-import re  # noqa
+import collections
+import itertools
 
 
 def man_dist(p1, p2):

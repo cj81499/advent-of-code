@@ -1,6 +1,3 @@
-import collections  # noqa
-import itertools  # noqa
-import re  # noqa
 
 NORTH = (0, -1)
 SOUTH = (0, 1)

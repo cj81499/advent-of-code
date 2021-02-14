@@ -141,7 +141,7 @@ def partb(txt: str):
     # while not p.terminated:
     #     try:
     #         p.run(max_steps=100)
-    #     except:  # noqa
+    #     except:
     #         pass
 
     #     if len(p.outputs) > 0:

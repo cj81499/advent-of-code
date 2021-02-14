@@ -7,7 +7,7 @@ from typing import Dict, Optional
 
 from advent.aoc2019.intcode_computer import IntcodeProgram
 
-r = re.compile(r"== (?P<location>.*) ==\n(?P<description>.*)\n\nDoors here lead:\n(?P<doors>(?:- .*\n)+)\n(?:Items here:\n(?P<items>(?:- .*\n)+)\n)?Command\?")  # noqa
+r = re.compile(r"== (?P<location>.*) ==\n(?P<description>.*)\n\nDoors here lead:\n(?P<doors>(?:- .*\n)+)\n(?:Items here:\n(?P<items>(?:- .*\n)+)\n)?Command\?")  # noqa: E501
 
 
 def send_cmd(p: IntcodeProgram, cmd: Optional[str]):

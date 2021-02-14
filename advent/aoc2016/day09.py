@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import re
 
 MARKER_REGEX = re.compile(r"^\((\d+)x(\d+)\)")
 

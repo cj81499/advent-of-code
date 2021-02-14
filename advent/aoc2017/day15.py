@@ -1,9 +1,5 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
-
 DIVISOR = 2147483647
 FACTOR_A = 16807
 FACTOR_B = 48271

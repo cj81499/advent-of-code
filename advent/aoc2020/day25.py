@@ -1,6 +1,4 @@
-import collections  # noqa
-import itertools  # noqa
-import re  # noqa
+import itertools
 
 
 def n_th_element(n, gen):

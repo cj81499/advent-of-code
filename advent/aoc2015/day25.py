@@ -1,6 +1,4 @@
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import re
 
 FIRST_CODE = 20151125
 

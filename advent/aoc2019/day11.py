@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+from collections import defaultdict
 
 from advent.aoc2019.intcode_computer import IntcodeProgram
 

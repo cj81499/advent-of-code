@@ -1,10 +1,5 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
-from typing import Deque, Generator, Set, Tuple  # noqa
-
 
 def helper(txt):
     x, y, z = 0, 0, 0

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import heapq
-from collections import deque  # noqa
+from collections import deque
 from functools import total_ordering
 
 

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+from collections import deque
 
 TWO_THOUSAND_SEVENTEEN = 2017
 

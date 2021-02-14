@@ -1,7 +1,5 @@
-import collections  # noqa
 import enum
-import itertools  # noqa
-import re  # noqa
+import itertools
 
 import numpy as np
 

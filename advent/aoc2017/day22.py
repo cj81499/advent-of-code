@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 import enum
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+from collections import defaultdict
 
 
 class NodeState(enum.Enum):

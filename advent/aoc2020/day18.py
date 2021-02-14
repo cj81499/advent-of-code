@@ -1,7 +1,5 @@
-import collections  # noqa
+import collections
 import functools
-import itertools  # noqa
-import re  # noqa
 from operator import mul
 
 

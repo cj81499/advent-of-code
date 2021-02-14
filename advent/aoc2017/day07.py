@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import re
+from collections import Counter
 from typing import Dict, List, Tuple
 
 REGEX = re.compile(r"([a-z]*) \((\d+)\)( -> (.*)|)")

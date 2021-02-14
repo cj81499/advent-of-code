@@ -1,6 +1,4 @@
-import collections  # noqa
-import itertools  # noqa
-import re  # noqa
+import collections
 
 
 class Deck:

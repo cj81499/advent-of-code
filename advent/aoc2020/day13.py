@@ -1,7 +1,4 @@
-import collections  # noqa
-import itertools  # noqa
 import math
-import re  # noqa
 
 
 def parta(txt):
@@ -29,8 +26,8 @@ def lcm(nums):
     first, *rest = nums
     if len(rest) == 0:
         return first
-    l = lcm(rest)  # noqa
-    return (first * l) // math.gcd(first, l)
+    lcm_rest = lcm(rest)
+    return (first * lcm_rest) // math.gcd(first, lcm_rest)
 
 
 def partb(txt):

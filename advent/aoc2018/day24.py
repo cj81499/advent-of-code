@@ -43,7 +43,7 @@ class Group:
                     immunities = modifier.split(", ")
         if army_name == "Immune System":
             nums[2] += immune_boost
-        return cls(nums[0], nums[1], nums[2], nums[3], attack_type, weaknesses, immunities, army_name, number)  # noqa
+        return cls(nums[0], nums[1], nums[2], nums[3], attack_type, weaknesses, immunities, army_name, number)
 
     def calculate_dmg(self, defender):
         dmg_dealt = self.effective_power()
@@ -106,18 +106,24 @@ class Battle:
                 if (alive_count == 0):
                     return army.name, sum([x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups])
 
-    def round(self):  # noqa
+    def round(self):
+        fighting_groups = self._get_fighting_groups()
+        attacks = self._select_targets(fighting_groups)
+        return self._attack(fighting_groups, attacks)
+
+    def _get_fighting_groups(self):
         fighting_groups = []
         for army in self.armies:
             for group in army.groups:
                 if group.alive_unit_count > 0:
                     fighting_groups.append(group)
-
-        # Target Selection
-        remaining_targets = set(fighting_groups)
-        attacks = {}
         fighting_groups.sort(key=lambda x: x.initiative, reverse=True)
         fighting_groups.sort(key=lambda x: x.effective_power(), reverse=True)
+        return fighting_groups
+
+    def _select_targets(self, fighting_groups):
+        remaining_targets = set(fighting_groups)
+        attacks = {}
         for attacker in fighting_groups:
             best_targets = []
             best_dmg = 0
@@ -131,13 +137,13 @@ class Battle:
                         best_targets.append(target)
             if len(best_targets) > 0:
                 best_targets.sort(key=lambda x: x.initiative, reverse=True)
-                best_targets.sort(
-                    key=lambda x: x.effective_power(), reverse=True)
+                best_targets.sort(key=lambda x: x.effective_power(), reverse=True)
                 best_target = best_targets.pop(0)
                 remaining_targets.remove(best_target)
                 attacks[attacker.initiative] = (attacker, best_target)
+        return attacks
 
-        # Attack
+    def _attack(self, fighting_groups, attacks):
         round_death_count = 0
         fighting_groups.sort(key=lambda x: x.initiative, reverse=True)
         for step in sorted(attacks.keys(), reverse=True):
@@ -145,8 +151,7 @@ class Battle:
             attacker = attack[0]
             defender = attack[1]
             if attacker.alive_unit_count > 0:
-                death_count = defender.take_dmg_from(attacker)
-                round_death_count += death_count
+                round_death_count += defender.take_dmg_from(attacker)
         if round_death_count == 0:
             return "No deaths"
 

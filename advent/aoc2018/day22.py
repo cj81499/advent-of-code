@@ -1,7 +1,5 @@
-import collections  # noqa
 import heapq
-import itertools  # noqa
-import re  # noqa
+import itertools
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any

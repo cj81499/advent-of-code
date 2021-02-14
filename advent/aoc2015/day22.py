@@ -1,6 +1,3 @@
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
 from dataclasses import dataclass, replace
 # from functools import cache
 from functools import lru_cache

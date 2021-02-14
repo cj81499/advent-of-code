@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
-from typing import Dict, Tuple  # noqa
+from typing import Dict, Tuple
 
 
 def parse(txt: str):

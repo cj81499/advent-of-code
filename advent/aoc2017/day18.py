@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+from collections import defaultdict, deque
 
 
 class RcvException(Exception):
@@ -92,7 +90,7 @@ def val(registers, a):
     return registers[a] if a.isalpha() else int(a)
 
 
-def parta(txt: str):  # noqa
+def parta(txt: str):
     instructions = [line.split() for line in txt.splitlines()]
     p = Program(instructions)
     try:

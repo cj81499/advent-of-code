@@ -55,7 +55,7 @@ class Scan:
             else:
                 self.dimensions[d] = area_dimensions[d]
 
-    def spread(self, x, y):  # noqa
+    def spread(self, x, y):  # noqa: C901
         if not self.scan[(x, y + 1)] in "~#":
             return
         left_done = False

@@ -1,6 +1,3 @@
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
 
 
 def is_valid(passphrase: str):

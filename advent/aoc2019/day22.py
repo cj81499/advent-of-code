@@ -1,9 +1,5 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
-
 
 def deck_of_size(n):
     return [x for x in range(n)]

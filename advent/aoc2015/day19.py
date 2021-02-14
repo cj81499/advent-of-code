@@ -1,6 +1,4 @@
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+from collections import defaultdict
 
 from lark import Lark
 

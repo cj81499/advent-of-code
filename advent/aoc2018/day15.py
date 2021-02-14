@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 import dataclasses
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
+import itertools
+from collections import deque
 from enum import Enum
 from typing import Set
 

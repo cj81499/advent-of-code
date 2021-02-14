@@ -1,9 +1,5 @@
 from __future__ import annotations
 
-import itertools  # noqa
-import re  # noqa
-from collections import Counter, defaultdict, deque  # noqa
-
 
 def bridges_helper(components, bridge_so_far):
     yield bridge_so_far
