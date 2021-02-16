@@ -43,7 +43,7 @@ EXAMPLE_OUTPUT = """
 #...#...#.
 #...#...#.
 #...#..###
-""".replace(".", " ").strip()
+""".replace(".", " ").strip("\n")
 
 
 def test_a():
