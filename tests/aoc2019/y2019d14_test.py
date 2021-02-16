@@ -66,7 +66,7 @@ EXAMPLE_3 = """
     (EXAMPLE_2, 180697),
     (EXAMPLE_3, 2210736),
 ])
-def test_parta(input_val: list[str], expected: int) -> None:
+def test_a(input_val: list[str], expected: int) -> None:
     assert d.parta(input_val) == expected
 
 
@@ -75,5 +75,5 @@ def test_parta(input_val: list[str], expected: int) -> None:
     (EXAMPLE_2, 5586022),
     (EXAMPLE_3, 460664),
 ])
-def test_partb(input_val: list[str], expected: int) -> None:
+def test_b(input_val: list[str], expected: int) -> None:
     assert d.partb(input_val) == expected

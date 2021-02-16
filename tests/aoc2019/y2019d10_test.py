@@ -81,7 +81,7 @@ EXAMPLE_4 = """
     (EXAMPLE_3, 41),
     (EXAMPLE_4, 210),
 ])
-def test_parta(input_val, expected: int) -> None:
+def test_a(input_val, expected: int) -> None:
     assert d.parta(input_val) == expected
 
 
@@ -122,7 +122,7 @@ def test_get_asteroids() -> None:
     assert 11 + 1j in asteroids
 
 
-def test_partb() -> None:
+def test_b() -> None:
     order = d.vaporize_order(EXAMPLE_4.splitlines())
 
     assert order[1 - 1] == 11 + 12j

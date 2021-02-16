@@ -42,7 +42,7 @@ def test_increasing_digits(input_val: int, expected: bool) -> None:
     (223450, False),  # decreasing pair (50)
     (123789, False),  # no double
 ])
-def test_parta(input_val: int, expected: bool) -> None:
+def test_a(input_val: int, expected: bool) -> None:
     assert d.is_valid_parta(d.get_digits(input_val)) == expected
 
 
@@ -51,5 +51,5 @@ def test_parta(input_val: int, expected: bool) -> None:
     (123444, False),  # triple 4
     (111122, True),
 ])
-def test_partb(input_val: int, expected: bool) -> None:
+def test_b(input_val: int, expected: bool) -> None:
     assert d.is_valid_partb(d.get_digits(input_val)) == expected

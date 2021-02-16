@@ -32,9 +32,9 @@ I)SAN
 """.strip()
 
 
-def test_parta() -> None:
+def test_a() -> None:
     assert d.parta(EXAMPLE_0) == 42
 
 
-def test_partb() -> None:
+def test_b() -> None:
     assert d.partb(EXAMPLE_1) == 4

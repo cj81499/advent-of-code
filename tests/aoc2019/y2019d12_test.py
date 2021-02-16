@@ -29,5 +29,5 @@ def test_energy(input_val, step_count: int, expected: int) -> None:
     (EXAMPLE_0, 2772),
     (EXAMPLE_1, 4686774924),
 ])
-def test_partb(input_val, required_steps: int) -> None:
+def test_b(input_val, required_steps: int) -> None:
     assert d.partb(input_val) == required_steps

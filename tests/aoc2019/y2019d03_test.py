@@ -23,7 +23,7 @@ U98,R91,D20,R16,D67,R40,U7,R15,U6,R7
     (EXAMPLE_1, 159),
     (EXAMPLE_2, 135),
 ])
-def test_parta(input_val, expected: int) -> None:
+def test_a(input_val, expected: int) -> None:
     assert d.parta(input_val) == expected
 
 
@@ -32,5 +32,5 @@ def test_parta(input_val, expected: int) -> None:
     (EXAMPLE_1, 610),
     (EXAMPLE_2, 410),
 ])
-def test_partb(input_val, expected: int) -> None:
+def test_b(input_val, expected: int) -> None:
     assert d.partb(input_val) == expected
