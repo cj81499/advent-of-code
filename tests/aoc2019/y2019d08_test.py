@@ -18,4 +18,4 @@ def test_partb() -> None:
         [2, 2, 1, 2],
         [0, 0, 0, 0]
     ]
-    assert d.render(layers, 2) == " X\nX "
+    assert d.render(layers, 2) == " #\n# "
