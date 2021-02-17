@@ -6,8 +6,7 @@ NUMBER_OF_ZEROS = 5
 
 def password_generator(door_id: str, index_mode=False):
     for i in itertools.count():
-        h = hashlib.md5(f"{door_id}{i}".encode())
-        hd = h.hexdigest()
+        hd = hashlib.md5(f"{door_id}{i}".encode()).hexdigest()
         if hd.startswith("0" * NUMBER_OF_ZEROS):
             x = hd[NUMBER_OF_ZEROS]
             if not index_mode:  # part a
