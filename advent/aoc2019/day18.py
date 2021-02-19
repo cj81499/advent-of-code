@@ -3,110 +3,84 @@ from __future__ import annotations
 import itertools
 from collections import deque
 
+from advent.util import PriorityQueue
 
-def next_nodes_a(tunnels, node):
-    initial_steps, initial_pos, keys = node
-    # search from initial_pos.
-    # treat uppercase as wall if we haven't collected their key
-    # treat lowercase as empty if we have collected the key, otherwise, yield node
+
+def parse(txt: str):
+    grid = {
+        complex(x, y): c
+        for y, line in enumerate(txt.splitlines())
+        for x, c in enumerate(line)
+    }
+
+    start_pos = next(p for p, c in grid.items() if c == "@")
+    num_keys = sum(1 for c in grid.values() if c.islower())
+    return grid, start_pos, num_keys
+
+
+def next_states_a(grid, state):
+    steps, pos, collected = state
     q = deque()
+    q.append((pos, steps))
     seen = set()
-    q.append((initial_pos, initial_steps))
     while len(q) > 0:
         pos, steps = q.popleft()
-        if pos not in seen:
-            at_pos = tunnels.get(pos)
-            if at_pos == "@" or at_pos == "." or at_pos in keys \
-                    or (at_pos.isupper() and at_pos.lower() in keys):
-                q.extend((p, steps + 1) for p in adj(pos))
-            elif at_pos.islower():
-                yield (steps, pos, "".join(sorted(keys + at_pos)))
-            seen.add(pos)
+        if pos in seen:
+            continue
+        val: str = grid.get(pos)
+        if val in ".@" or val.lower() in collected:
+            q.extend((pos + delta, steps + 1) for delta in (-1j, 1, 1j, -1))
+        elif val != "#" and val.islower():
+            yield (steps, pos, frozenset((*collected, val)))
+        seen.add(pos)
 
 
-def adj(pos):
-    yield pos - 1j
-    yield pos + 1
-    yield pos + 1j
-    yield pos - 1
+def next_states_b(grid, state):
+    steps, positions, collected = state
+    for i, pos in enumerate(positions):
+        for s in next_states_a(grid, (steps, pos, collected)):
+            new_steps, new_pos, new_collected = s
+            new_positions = list(positions)
+            new_positions[i] = new_pos
+            yield (new_steps, tuple(new_positions), new_collected)
+
+
+def search(initial, num_keys, grid, next_states=next_states_a):
+    q = PriorityQueue()
+    q.push(0, initial)
+    seen = set()
+    while len(q) > 0:
+        state = q.pop()
+        steps, pos, collected = state
+        if len(collected) == num_keys:
+            return steps
+        if (pos, collected) in seen:
+            continue
+        for s in next_states(grid, state):
+            q.push(s[0], s)
+        seen.add((pos, collected))
+    return -1
 
 
 def parta(txt: str):
-    tunnels = get_tunnels(txt)
-    start = get_start(tunnels)
-    return search(tunnels, start)
-
-
-def get_tunnels(txt):
-    return {
-        complex(x, y): c
-        for y, row in enumerate(txt.splitlines())
-        for x, c in enumerate(row)
-    }
-
-
-def get_start(tunnels):
-    positions = [p for p, c in tunnels.items() if c == "@"]
-    start_x = sum(p.real for p in positions) / len(positions)
-    start_y = sum(p.imag for p in positions) / len(positions)
-    return complex(start_x, start_y)
-
-
-def search(tunnels, start, next_nodes=next_nodes_a):
-    num_keys = sum(1 for c in tunnels.values() if c.islower())
-    min_steps = float("inf")
-    bests = {}
-    q = deque()
-    q.append((0, start, ""))
-    while len(q) > 0:
-        node = q.popleft()
-        steps, pos, keys = node
-        best = bests.get((pos, keys), float("inf"))
-        if steps < best:
-            bests[(pos, keys)] = steps
-            if len(keys) < num_keys:
-                q.extend(next_nodes(tunnels, node))
-            else:
-                min_steps = min(min_steps, steps)
-    return min_steps
-
-
-def next_nodes_b(tunnels, node):
-    steps, positions, keys = node
-    for i, p in enumerate(positions):
-        for n in next_nodes_a(tunnels, (steps, p, keys)):
-            n_s, n_p, n_k = n
-            new_positions = tuple(p if i != j else n_p for j, p in enumerate(positions))
-            yield (n_s, new_positions, n_k)
+    grid, start_pos, num_keys = parse(txt)
+    initial = (0, start_pos, frozenset())
+    return search(initial, num_keys, grid)
 
 
 def partb(txt: str):
-    tunnels = get_tunnels(txt)
-    start = get_start(tunnels)
+    grid, start_pos, num_keys = parse(txt)
 
-    # update the map
-    for ((dx, dy), c) in zip(itertools.product(range(-1, 2), repeat=2), "@#@###@#@"):
-        tunnels[start + complex(dx, dy)] = c
+    # update the cave entrance
+    replace = "@#@\n###\n@#@".splitlines()
+    for x, y in itertools.product(range(3), repeat=2):
+        grid[start_pos + complex(x - 1, y - 1)] = replace[y][x]
 
-    starts = tuple((start + d) for d in (-1j-1, -1j+1, 1j+1, 1j-1))
-    return search(tunnels, starts, next_nodes=next_nodes_b)
-
-
-SAMPLE = """
-#################
-#i.G..c...e..H.p#
-####.###.###.####
-#j.A..b...f..D.o#
-#######.@.#######
-#k.E..a...g..B.n#
-####.###.###.####
-#l.F..d...h..C.m#
-#################
-""".strip()
+    initial = (0, tuple(start_pos + delta for delta in (-1-1j, 1-1j, 1+1j, -1+1j)), frozenset())
+    return search(initial, num_keys, grid, next_states_b)
 
 
 def main(txt: str):
-    txt = SAMPLE
     print(f"parta: {parta(txt)}")
     print(f"partb: {partb(txt)}")
 
