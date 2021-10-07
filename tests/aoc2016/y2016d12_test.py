@@ -11,4 +11,6 @@ dec a
 
 
 def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 42
+    c = d.AssemBunnyComputer(EXAMPLE_INPUT)
+    c.run()
+    assert c["a"] == 42

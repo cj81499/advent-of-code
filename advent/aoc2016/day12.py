@@ -20,7 +20,11 @@ class AssemBunnyComputer:
             self.pc += 1
 
     def arg(self, x):
-        return int(x) if x.isnumeric() else self._registers[x]
+        try:
+            return int(x)
+        except ValueError:
+            assert x.isalpha()
+            return self._registers[x]
 
     def cpy(self, x, y):
         self._registers[y] = self.arg(x)
@@ -33,7 +37,7 @@ class AssemBunnyComputer:
 
     def jnz(self, x, y):
         if self.arg(x) != 0:
-            self.pc += int(y) - 1
+            self.pc += self.arg(y) - 1
 
     def __getitem__(self, item: str):
         return self._registers[item]
