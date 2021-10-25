@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-          
+
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
@@ -36,7 +36,7 @@ jobs:
 
       - name: Use latest pip
         run: python -m pip install --upgrade pip
-        
+
       - name: Install advent-of-code
         run: python -m pip install -e .
 
