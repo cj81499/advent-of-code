@@ -1,5 +1,7 @@
 # Advent of Code
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/cj81499/advent-of-code/main.svg)](https://results.pre-commit.ci/latest/github/cj81499/advent-of-code/main)
+
 ## Development
 
 ### Create (and activate) a virtual environment
