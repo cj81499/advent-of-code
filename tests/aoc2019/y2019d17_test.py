@@ -1,4 +1,4 @@
-import advent.aoc2019.day17 as d
+import aoc_cj.aoc2019.day17 as d
 
 EXAMPLE_INPUT_0 = """
 ..#..........
@@ -44,7 +44,12 @@ def test_plan_route():
     # at most 20 characters
     plan = d.plan_route(FULL_ROUTE)
     assert all(len(p) <= 20 for p in plan)
-    main, a, b, c, = plan
+    (
+        main,
+        a,
+        b,
+        c,
+    ) = plan
     print(main)
     fns = {"A": a, "B": b, "C": c}
     main = [fns[x] for x in main]

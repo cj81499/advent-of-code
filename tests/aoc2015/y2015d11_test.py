@@ -1,4 +1,4 @@
-import advent.aoc2015.day11 as d
+import aoc_cj.aoc2015.day11 as d
 
 
 def test_day11_is_valid_password():
@@ -49,6 +49,7 @@ def test_day11_fast_increment_password():
 def test_a():
     assert "abcdffaa" == d.next_valid_password("abcdefgh")
     assert "ghjaabcc" == d.next_valid_password("ghijklmn")
+
 
 # def test_b():
 #     assert d.partb([]) == None

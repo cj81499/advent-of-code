@@ -1,4 +1,4 @@
-import advent.aoc2016.day10 as d
+import aoc_cj.aoc2016.day10 as d
 
 EXAMPLE_INPUT = """
 value 5 goes to bot 2

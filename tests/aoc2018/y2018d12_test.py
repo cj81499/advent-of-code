@@ -1,4 +1,4 @@
-import advent.aoc2018.day12 as d
+import aoc_cj.aoc2018.day12 as d
 
 EXAMPLE_INPUT = """
 initial state: #..#.#..##......###...###

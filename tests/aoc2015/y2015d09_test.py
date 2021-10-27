@@ -1,4 +1,4 @@
-import advent.aoc2015.day09 as d
+import aoc_cj.aoc2015.day09 as d
 
 EXAMPLE_INPUT = """
 London to Dublin = 464

@@ -1,4 +1,4 @@
-import advent.aoc2015.day13 as d
+import aoc_cj.aoc2015.day13 as d
 
 EXAMPLE_INPUT = """
 Alice would gain 54 happiness units by sitting next to Bob.

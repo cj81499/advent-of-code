@@ -1,4 +1,4 @@
-import advent.aoc2018.day07 as d
+import aoc_cj.aoc2018.day07 as d
 
 EXAMPLE_INPUT = """
 Step C must be finished before step A can begin.

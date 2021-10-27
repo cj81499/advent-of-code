@@ -1,4 +1,4 @@
-import advent.aoc2016.day11 as d
+import aoc_cj.aoc2016.day11 as d
 
 EXAMPLE_INPUT = """
 The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.

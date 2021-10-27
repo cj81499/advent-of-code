@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2020.day07 as d
+import aoc_cj.aoc2020.day07 as d
 
 EXAMPLE_INPUT_0 = """
 light red bags contain 1 bright white bag, 2 muted yellow bags.
@@ -27,17 +27,20 @@ dark violet bags contain no other bags.
 """.strip()
 
 
-@pytest.mark.parametrize("input, expected", [
-    ("bright white", True),
-    ("muted yellow", True),
-    ("dark orange", True),
-    ("light red", True),
-    ("shiny gold", False),
-    ("dark olive", False),
-    ("vibrant plum", False),
-    ("faded blue", False),
-    ("dotted black", False),
-])
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        ("bright white", True),
+        ("muted yellow", True),
+        ("dark orange", True),
+        ("light red", True),
+        ("shiny gold", False),
+        ("dark olive", False),
+        ("vibrant plum", False),
+        ("faded blue", False),
+        ("dotted black", False),
+    ],
+)
 def test_can_hold_shiny_gold(input, expected):
     assert expected == d.can_hold_shiny_gold(RULES_0, input)
 
@@ -46,12 +49,15 @@ def test_a():
     assert 4 == d.parta(EXAMPLE_INPUT_0)
 
 
-@pytest.mark.parametrize("input, expected", [
-    ("faded blue", 0),
-    ("dotted black", 0),
-    ("vibrant plum", 11),
-    ("dark olive", 7),
-])
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        ("faded blue", 0),
+        ("dotted black", 0),
+        ("vibrant plum", 11),
+        ("dark olive", 7),
+    ],
+)
 def test_number_of_bags_inside_of(input, expected):
     assert expected == d.number_of_bags_inside_of(RULES_0, input)
 

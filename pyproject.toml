@@ -1,3 +1,30 @@
+[tool.poetry]
+name = "aoc-cj"
+version = "0.1.0"
+description = "cj81499's solutions for https://adventofcode.com/"
+authors = ["Cal Jacobson <cj81499@users.noreply.github.com>"]
+homepage = "https://github.com/cj81499/advent-of-code-cj81499"
+
+[tool.poetry.dependencies]
+python = ">=3.9, <3.11"
+advent-of-code-data = "^1.0.0"
+lark-parser = "^0.12.0"
+numpy = "^1.21.3"
+parse = "^1.19.0"
+z3-solver = "^4.8.12"
+
+[tool.poetry.dev-dependencies]
+black = "^21.9b0"
+pre-commit = "^2.15.0"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+
+[tool.poetry.plugins."adventofcode.user"]
+"cj81499" = "aoc_cj:solve"
+
+[tool.black]
+line_length = 120
+
 [tool.pycln]
 all = true
 
@@ -9,5 +36,6 @@ markers = [
 ]
 xfail_strict=true
 
-[tool.autopep8]
-max_line_length = 120
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

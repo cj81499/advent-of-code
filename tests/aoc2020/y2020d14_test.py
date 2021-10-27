@@ -1,4 +1,4 @@
-import advent.aoc2020.day14 as d
+import aoc_cj.aoc2020.day14 as d
 
 EXAMPLE_INPUT_0 = """
 mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X

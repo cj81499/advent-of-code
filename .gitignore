@@ -1,5 +1,5 @@
 # Python
-venv/
+.venv/
 .*_cache/
 __pycache__/
 *.pyc
@@ -7,9 +7,6 @@ build/
 dist/
 *.egg-info/
 .pytest_cache/
-
-# Editor settings
-.vscode/
 
 # Logs
 *.log

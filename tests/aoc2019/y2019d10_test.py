@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2019.day10 as d
+import aoc_cj.aoc2019.day10 as d
 
 EXAMPLE_0 = """
 .#..#
@@ -74,13 +74,16 @@ EXAMPLE_4 = """
 """.strip()
 
 
-@pytest.mark.parametrize("input_val, expected", [
-    (EXAMPLE_0, 8),
-    (EXAMPLE_1, 33),
-    (EXAMPLE_2, 35),
-    (EXAMPLE_3, 41),
-    (EXAMPLE_4, 210),
-])
+@pytest.mark.parametrize(
+    "input_val, expected",
+    [
+        (EXAMPLE_0, 8),
+        (EXAMPLE_1, 33),
+        (EXAMPLE_2, 35),
+        (EXAMPLE_3, 41),
+        (EXAMPLE_4, 210),
+    ],
+)
 def test_a(input_val, expected: int) -> None:
     assert d.parta(input_val) == expected
 

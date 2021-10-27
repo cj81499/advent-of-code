@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2016.day14 as d
+import aoc_cj.aoc2016.day14 as d
 
 
 def test_a():

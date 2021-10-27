@@ -1,4 +1,4 @@
-from advent.aoc2019.intcode_computer import IntcodeProgram
+from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
 
 def test_quine():

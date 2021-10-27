@@ -1,4 +1,4 @@
-import advent.aoc2015.day15 as d
+import aoc_cj.aoc2015.day15 as d
 
 EXAMPLE_INPUT = """
 Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8

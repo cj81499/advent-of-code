@@ -1,4 +1,4 @@
-import advent.aoc2016.day15 as d
+import aoc_cj.aoc2016.day15 as d
 
 EXAMPLE_INPUT = """
 Disc #1 has 5 positions; at time=0, it is at position 4.
