@@ -1,4 +1,4 @@
-import advent.aoc2017.day17 as d
+import aoc_cj.aoc2017.day17 as d
 
 
 def test_a():

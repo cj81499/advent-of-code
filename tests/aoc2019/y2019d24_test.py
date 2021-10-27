@@ -2,7 +2,7 @@ import itertools
 
 import pytest
 
-import advent.aoc2019.day24 as d
+import aoc_cj.aoc2019.day24 as d
 
 INITIAL = """
 ....#
@@ -61,18 +61,21 @@ def pairwise(iterable):
 
 
 def test_str_to_bugs():
-    assert d.str_to_bugs(INITIAL) == frozenset([
-        (4, 0),
-        (0, 1), (3, 1),
-        (0, 2), (3, 2), (4, 2),
-        (2, 3),
-        (0, 4),
-    ])
+    assert d.str_to_bugs(INITIAL) == frozenset(
+        [
+            (4, 0),
+            (0, 1),
+            (3, 1),
+            (0, 2),
+            (3, 2),
+            (4, 2),
+            (2, 3),
+            (0, 4),
+        ]
+    )
 
 
-@pytest.mark.parametrize("before, after", pairwise([
-    INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4
-]))
+@pytest.mark.parametrize("before, after", pairwise([INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4]))
 def test_step(before, after):
     print(f"{before=}, {after=}")
     before = d.str_to_bugs(before)

@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2016.day04 as d
+import aoc_cj.aoc2016.day04 as d
 
 ROOM_1 = "aaaaa-bbb-z-y-x-123[abxyz]"
 ROOM_2 = "a-b-c-d-e-f-g-h-987[abcde]"
@@ -10,12 +10,15 @@ ROOM_4 = "totally-real-room-200[decoy]"
 ROOMS = (ROOM_1, ROOM_2, ROOM_3, ROOM_4)
 
 
-@pytest.mark.parametrize("input, expected", [
-    (ROOM_1, True),
-    (ROOM_2, True),
-    (ROOM_3, True),
-    (ROOM_4, False),
-])
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        (ROOM_1, True),
+        (ROOM_2, True),
+        (ROOM_3, True),
+        (ROOM_4, False),
+    ],
+)
 def test_is_real_room(input, expected):
     assert d.is_real_room(input) is expected
 

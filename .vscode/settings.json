@@ -10,12 +10,7 @@
     "source.organizeImports": true
   },
   "python.testing.pytestArgs": ["tests"],
-  "python.testing.unittestEnabled": false,
-  "python.testing.nosetestsEnabled": false,
   "python.testing.pytestEnabled": true,
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
   "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "python.linting.pylintEnabled": false
+  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }

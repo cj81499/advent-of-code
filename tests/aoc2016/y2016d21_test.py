@@ -1,4 +1,4 @@
-import advent.aoc2016.day21 as d
+import aoc_cj.aoc2016.day21 as d
 
 EXAMPLE_INPUT = """
 swap position 4 with position 0

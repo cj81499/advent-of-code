@@ -1,4 +1,4 @@
-import advent.aoc2017.day08 as d
+import aoc_cj.aoc2017.day08 as d
 
 EXAMPLE_INPUT = """
 b inc 5 if a > 1

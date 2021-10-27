@@ -1,4 +1,4 @@
-import advent.aoc2018.day17 as d
+import aoc_cj.aoc2018.day17 as d
 
 EXAMPLE_INPUT = """
 x=495, y=2..7

@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2019.day22 as d
+import aoc_cj.aoc2019.day22 as d
 
 EXAMPLE_INPUT_0 = """
 deal with increment 7
@@ -50,11 +50,14 @@ def test_deal_with_increment():
     assert d.deal_with_increment(d.deck_of_size(10), 3) == [0, 7, 4, 1, 8, 5, 2, 9, 6, 3]
 
 
-@pytest.mark.parametrize("input, expected", [
-    (EXAMPLE_INPUT_0, "0 3 6 9 2 5 8 1 4 7"),
-    (EXAMPLE_INPUT_1, "3 0 7 4 1 8 5 2 9 6"),
-    (EXAMPLE_INPUT_2, "6 3 0 7 4 1 8 5 2 9"),
-    (EXAMPLE_INPUT_3, "9 2 5 8 1 4 7 0 3 6"),
-])
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        (EXAMPLE_INPUT_0, "0 3 6 9 2 5 8 1 4 7"),
+        (EXAMPLE_INPUT_1, "3 0 7 4 1 8 5 2 9 6"),
+        (EXAMPLE_INPUT_2, "6 3 0 7 4 1 8 5 2 9"),
+        (EXAMPLE_INPUT_3, "9 2 5 8 1 4 7 0 3 6"),
+    ],
+)
 def test_perform_shuffle(input, expected):
     assert d.perform_shuffle(input, deck_size=10) == [int(n) for n in expected.split()]

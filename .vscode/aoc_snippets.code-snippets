@@ -17,7 +17,7 @@
   // }
   "Advent of Code Day": {
     "scope": "python",
-    "description": "Scaffold Advent of Code",
+    "description": "Scaffold Advent of Code Day",
     "prefix": "aoc-day",
     "body": [
       "from __future__ import annotations",
@@ -43,6 +43,7 @@
       "",
       "if __name__ == \"__main__\":",
       "\tfrom aocd import data",
+      "",
       "\tmain(data)"
     ]
   },
@@ -51,7 +52,7 @@
     "description": "Scaffold Advent of Code Test",
     "prefix": "aoc-test",
     "body": [
-      "import advent.aoc20${2:20}.day${1:n} as d",
+      "import aoc_cj.aoc20${2:21}.day${1:n} as d",
       "",
       "EXAMPLE_INPUT = \"\"\"",
       "${3:sample input}",

@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2016.day18 as d
+import aoc_cj.aoc2016.day18 as d
 
 EXAMPLE_INPUT_1 = "..^^."
 EXAMPLE_INPUT_2 = ".^^.^.^^^^"
@@ -26,10 +26,13 @@ EXAMPLE_MAP_2 = """
 """.strip()
 
 
-@pytest.mark.parametrize("first_row, expected", (
-    (EXAMPLE_INPUT_1, EXAMPLE_MAP_1),
-    (EXAMPLE_INPUT_2, EXAMPLE_MAP_2),
-))
+@pytest.mark.parametrize(
+    "first_row, expected",
+    (
+        (EXAMPLE_INPUT_1, EXAMPLE_MAP_1),
+        (EXAMPLE_INPUT_2, EXAMPLE_MAP_2),
+    ),
+)
 def test_next_row(first_row, expected):
     prev = first_row
     for row in expected.splitlines():

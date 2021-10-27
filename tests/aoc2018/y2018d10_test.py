@@ -1,4 +1,4 @@
-import advent.aoc2018.day10 as d
+import aoc_cj.aoc2018.day10 as d
 
 EXAMPLE_INPUT = """
 position=< 9,  1> velocity=< 0,  2>
@@ -43,7 +43,11 @@ EXAMPLE_OUTPUT = """
 #...#...#.
 #...#...#.
 #...#..###
-""".replace(".", " ").strip("\n")
+""".replace(
+    ".", " "
+).strip(
+    "\n"
+)
 
 
 def test_a():

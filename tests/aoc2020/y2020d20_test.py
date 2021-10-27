@@ -1,4 +1,4 @@
-import advent.aoc2020.day20 as d
+import aoc_cj.aoc2020.day20 as d
 
 EXAMPLE_INPUT = """
 Tile 2311:

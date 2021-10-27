@@ -1,4 +1,4 @@
-import advent.aoc2020.day04 as d
+import aoc_cj.aoc2020.day04 as d
 
 EXAMPLE_INPUT = """
 ecl:gry pid:860033327 eyr:2020 hcl:#fffffd

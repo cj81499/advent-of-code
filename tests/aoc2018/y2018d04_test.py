@@ -1,4 +1,4 @@
-import advent.aoc2018.day04 as d
+import aoc_cj.aoc2018.day04 as d
 
 EXAMPLE_INPUT = """
 [1518-11-01 00:00] Guard #10 begins shift

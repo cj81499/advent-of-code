@@ -1,4 +1,4 @@
-import advent.aoc2019.day06 as d
+import aoc_cj.aoc2019.day06 as d
 
 EXAMPLE_0 = """
 COM)B

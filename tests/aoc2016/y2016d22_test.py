@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2016.day22 as d
+import aoc_cj.aoc2016.day22 as d
 
 EXAMPLE_INPUT = """
 Filesystem            Size  Used  Avail  Use%

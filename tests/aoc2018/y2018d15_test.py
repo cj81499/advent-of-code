@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2018.day15 as d
+import aoc_cj.aoc2018.day15 as d
 
 EXAMPLE_INPUT_0 = """
 #######
@@ -65,24 +65,30 @@ EXAMPLE_INPUT_5 = """
 """.strip()
 
 
-@pytest.mark.parametrize("input, expected", [
-    (EXAMPLE_INPUT_0, 27730),
-    (EXAMPLE_INPUT_1, 36334),
-    (EXAMPLE_INPUT_2, 39514),
-    (EXAMPLE_INPUT_3, 27755),
-    (EXAMPLE_INPUT_4, 28944),
-    (EXAMPLE_INPUT_5, 18740),
-])
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        (EXAMPLE_INPUT_0, 27730),
+        (EXAMPLE_INPUT_1, 36334),
+        (EXAMPLE_INPUT_2, 39514),
+        (EXAMPLE_INPUT_3, 27755),
+        (EXAMPLE_INPUT_4, 28944),
+        (EXAMPLE_INPUT_5, 18740),
+    ],
+)
 def test_a(input, expected):
     assert d.parta(input) == expected
 
 
-@pytest.mark.parametrize("input, expected", [
-    (EXAMPLE_INPUT_0, 4988),
-    (EXAMPLE_INPUT_2, 31284),
-    (EXAMPLE_INPUT_3, 3478),
-    (EXAMPLE_INPUT_4, 6474),
-    (EXAMPLE_INPUT_5, 1140),
-])
+@pytest.mark.parametrize(
+    "input, expected",
+    [
+        (EXAMPLE_INPUT_0, 4988),
+        (EXAMPLE_INPUT_2, 31284),
+        (EXAMPLE_INPUT_3, 3478),
+        (EXAMPLE_INPUT_4, 6474),
+        (EXAMPLE_INPUT_5, 1140),
+    ],
+)
 def test_b(input, expected):
     assert d.partb(input) == expected

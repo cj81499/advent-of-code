@@ -1,4 +1,4 @@
-import advent.aoc2018.day19 as d
+import aoc_cj.aoc2018.day19 as d
 
 EXAMPLE_INPUT = """
 # ip 0

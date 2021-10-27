@@ -1,4 +1,4 @@
-import advent.aoc2017.day05 as d
+import aoc_cj.aoc2017.day05 as d
 
 EXAMPLE_INPUT_0 = "0 3 0 1 -3".replace(" ", "\n")
 

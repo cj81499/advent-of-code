@@ -1,6 +1,6 @@
 import pytest
 
-import advent.aoc2020.day23 as d
+import aoc_cj.aoc2020.day23 as d
 
 EXAMPLE_INPUT = "389125467"
 

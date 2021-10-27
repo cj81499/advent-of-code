@@ -1,4 +1,4 @@
-import advent.aoc2015.day14 as d
+import aoc_cj.aoc2015.day14 as d
 
 EXAMPLE_INPUT = """
 Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.

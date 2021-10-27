@@ -1,4 +1,4 @@
-import advent.aoc2017.day07 as d
+import aoc_cj.aoc2017.day07 as d
 
 EXAMPLE_INPUT = """
 pbga (66)

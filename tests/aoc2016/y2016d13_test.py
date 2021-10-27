@@ -1,4 +1,4 @@
-import advent.aoc2016.day13 as d
+import aoc_cj.aoc2016.day13 as d
 
 EXAMPLE_SPACE = """
 .#.####.##

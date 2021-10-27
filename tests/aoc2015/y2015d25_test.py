@@ -1,4 +1,4 @@
-import advent.aoc2015.day25 as d
+import aoc_cj.aoc2015.day25 as d
 
 
 def test_next_code():
