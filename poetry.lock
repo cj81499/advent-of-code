@@ -1,6 +1,6 @@
 [[package]]
 name = "advent-of-code-data"
-version = "1.0.0"
+version = "1.1.0"
 description = "Get your puzzle data with a single import"
 category = "main"
 optional = false
@@ -536,12 +536,12 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9, <3.11"
-content-hash = "c0a1a67c571304500ec6f0a12d326be83c2bdbc1246cf9f5acbb5e4ad29877ef"
+content-hash = "729bbd6b09f5d1caa2bfa3b3de61012027dc950ad3e5cd5f01bc0a7fcefd68a3"
 
 [metadata.files]
 advent-of-code-data = [
-    {file = "advent-of-code-data-1.0.0.tar.gz", hash = "sha256:c4c0cd41f163e86cfaf2ab3bb223ebaf4a75757f62040f0a5bc8fb50bded6ebd"},
-    {file = "advent_of_code_data-1.0.0-py2.py3-none-any.whl", hash = "sha256:0102e04f9d8a58ea7c43a7eda0bea340526cffe50b2c6fd7d05de6012931c8c8"},
+    {file = "advent-of-code-data-1.1.0.tar.gz", hash = "sha256:aa90b3d975a7e9ba515ec1a57079ad44de2dbaade60c3c741389976a826495d8"},
+    {file = "advent_of_code_data-1.1.0-py2.py3-none-any.whl", hash = "sha256:bd6e233ac4b8b2e4572b7d3b6f0d3975a2347cc74ab46e1de6eb9347eeb88046"},
 ]
 atomicwrites = [
     {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
