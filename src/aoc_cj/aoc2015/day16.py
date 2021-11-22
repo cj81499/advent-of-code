@@ -11,8 +11,8 @@ TARGET_QUALITIES = {
     "perfumes": 1,
 }
 
-GT_QUALITIES = set(("cats", "trees"))
-LT_QUALITIES = set(("pomeranians", "goldfish"))
+GT_QUALITIES = {"cats", "trees"}
+LT_QUALITIES = {"pomeranians", "goldfish"}
 
 
 def parta(txt):

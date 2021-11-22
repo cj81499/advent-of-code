@@ -7,7 +7,7 @@ def parta(txt):
 
     registers = [0, 0, 0, 0, 0, 0]
     while registers[ip] >= 0 and registers[ip] < len(lines):
-        cmd, a, b, c = [x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split()]
+        cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
         run_cmd(cmd, registers, a, b, c)
         if registers[ip] == 28:
             return max(registers)

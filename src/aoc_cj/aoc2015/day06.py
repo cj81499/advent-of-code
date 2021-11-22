@@ -2,7 +2,6 @@ import dataclasses
 import re
 from collections import Counter, defaultdict
 from enum import Enum
-from typing import Tuple
 
 
 class Action(Enum):
@@ -18,8 +17,8 @@ OFF = False
 @dataclasses.dataclass(frozen=True)
 class Instruction:
     action: Action
-    start: Tuple[int, int]
-    end: Tuple[int, int]
+    start: tuple[int, int]
+    end: tuple[int, int]
 
     _PARSE_REGEX = re.compile(r"(.*) (\d+),(\d+) through (\d+),(\d+)")
 

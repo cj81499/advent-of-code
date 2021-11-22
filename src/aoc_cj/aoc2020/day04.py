@@ -1,6 +1,6 @@
 def is_valid_a(passport):
     lines = passport.splitlines()
-    missing = set(("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"))
+    missing = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
     for line in lines:
         pairs = line.split(" ")
         for pair in pairs:
@@ -10,9 +10,9 @@ def is_valid_a(passport):
     return len(missing) == 0
 
 
-def is_valid_b(passport):  # noqa: C901
+def is_valid_b(passport):
     lines = passport.splitlines()
-    missing = set(("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"))
+    missing = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
     for line in lines:
         pairs = line.split(" ")
         for pair in pairs:

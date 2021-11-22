@@ -1,5 +1,5 @@
 from functools import reduce
-from typing import Iterable, List
+from typing import Iterable
 
 RECIPIE_TEASPOONS = 100
 CALORIE_REQUIREMENT = 500
@@ -8,7 +8,7 @@ CALORIE_REQUIREMENT = 500
 class Ingredient:
     def __init__(self, ingredient_str: str):
         self.name, properties_str = ingredient_str.split(": ")
-        properties: List[str] = properties_str.split(", ")
+        properties: list[str] = properties_str.split(", ")
         self.properties = {name: int(value) for name, value in map(lambda p: p.split(), properties)}
 
     def __repr__(self):

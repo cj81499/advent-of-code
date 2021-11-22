@@ -8,7 +8,7 @@ def next_row(row):
     return "".join(TRAP if is_trap(pos, row) else SAFE for pos in range(len(row)))
 
 
-TRAP_PATTERNS = set(("^^.", ".^^", "^..", "..^"))
+TRAP_PATTERNS = {"^^.", ".^^", "^..", "..^"}
 
 
 def is_trap(pos, prev_row):

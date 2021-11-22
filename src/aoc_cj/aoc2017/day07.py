@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 from collections import Counter
-from typing import Dict, List, Tuple
 
 REGEX = re.compile(r"([a-z]*) \((\d+)\)( -> (.*)|)")
 
@@ -11,7 +10,7 @@ class TreeNode:
     def __init__(self, name: str, weight: int):
         self.name = name
         self.weight = weight
-        self.children: List[TreeNode] = []
+        self.children: list[TreeNode] = []
         self.parent = None
 
     def add_child(self, child: TreeNode):
@@ -24,12 +23,12 @@ class TreeNode:
         return self.weight + sum(c.total_weight for c in self.children)
 
     def children_are_balanced(self):
-        return len(set(c.total_weight for c in self.children)) == 1
+        return len({c.total_weight for c in self.children}) == 1
 
 
 def build_tree(txt: str) -> TreeNode:
-    nodes: Dict[str, TreeNode] = {}
-    children: Dict[str, Tuple[str]] = {}
+    nodes: dict[str, TreeNode] = {}
+    children: dict[str, tuple[str]] = {}
 
     for line in txt.splitlines():
         name, num, _, children_str = REGEX.match(line).groups()

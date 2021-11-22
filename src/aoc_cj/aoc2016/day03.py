@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import itertools
-from typing import Any, Iterable, List
+from typing import Any, Iterable
 
 
 def parta(txt: str):
@@ -24,7 +24,7 @@ def is_valid_triangle(candidate: Iterable[int]):
     return all(a + b > c for a, b, c in itertools.permutations(candidate))
 
 
-def chunks(to_chunk: List[Any], chunk_size: int):
+def chunks(to_chunk: list[Any], chunk_size: int):
     for i in range(0, len(to_chunk), chunk_size):
         yield to_chunk[i : i + chunk_size]
 

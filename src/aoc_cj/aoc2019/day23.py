@@ -1,12 +1,10 @@
 from __future__ import annotations
 
-from typing import List
-
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
 
 def parta(txt: str):
-    network: List[IntcodeProgram] = []
+    network: list[IntcodeProgram] = []
     for network_address in range(50):
         p = IntcodeProgram.parse(txt)
         p.write_input(network_address)
@@ -29,7 +27,7 @@ def parta(txt: str):
 
 
 def partb(txt: str):
-    network: List[IntcodeProgram] = []
+    network: list[IntcodeProgram] = []
     for network_address in range(50):
         p = IntcodeProgram.parse(txt)
         p.write_input(network_address)

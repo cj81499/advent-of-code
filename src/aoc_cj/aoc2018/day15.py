@@ -4,7 +4,6 @@ import dataclasses
 import itertools
 from collections import deque
 from enum import Enum
-from typing import Set
 
 
 class Node:
@@ -138,7 +137,7 @@ class Unit(CavePiece):
         if self.in_range_of_target():
             self.attack()
 
-    def move(self, in_range: Set[Location]):
+    def move(self, in_range: set[Location]):
         to_explore = deque(StartNode(self.loc).adjacent_nodes())
         explored = set()
 

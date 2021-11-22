@@ -22,7 +22,7 @@ def parta(txt):
 
 
 def valid_next_adapters(joltage, adapters):
-    return set(joltage + i for i in range(1, 4)).intersection(adapters)
+    return {joltage + i for i in range(1, 4)}.intersection(adapters)
 
 
 @cache

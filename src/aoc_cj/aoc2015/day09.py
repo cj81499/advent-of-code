@@ -1,5 +1,4 @@
 import itertools
-from typing import Dict
 
 
 class Location:
@@ -25,7 +24,7 @@ class Location:
 
 def find_paths(lines: list):
     # Save locations and the distances between them
-    locations: Dict[str, Location] = {}
+    locations: dict[str, Location] = {}
     for line in lines:
         locA, _, locB, _, dist = line.split()
         dist = int(dist)

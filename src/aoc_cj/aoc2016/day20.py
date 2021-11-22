@@ -15,11 +15,9 @@ def valid_ips(txt: str, max_ip=MAX_32_BIT_INTEGER):
     sorted_blacklist = tuple(sorted(tuple(int(n) for n in line.split("-")) for line in txt.splitlines()))
     ip = 0
     for start, stop in sorted_blacklist:
-        for valid_ip in range(ip, start):
-            yield valid_ip
+        yield from range(ip, start)
         ip = max(ip, stop + 1)
-    for valid_id in range(ip, max_ip):
-        yield valid_id
+    yield from range(ip, max_ip)
 
 
 def main(txt: str):

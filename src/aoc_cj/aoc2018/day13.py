@@ -51,7 +51,7 @@ class Simulation:
         self.track = {}
         self.carts = {}
         self.height = len(lines)
-        self.width = max([len(line) for line in lines])
+        self.width = max(len(line) for line in lines)
         for y, line in enumerate(lines):
             for x, c in enumerate(line):
                 p = (x, y)

@@ -1,10 +1,9 @@
 from itertools import permutations
-from typing import Dict, List, Set
 
 
-def build_prefs(pref_str_list: List[str]) -> Dict[str, Dict[str, int]]:
+def build_prefs(pref_str_list: list[str]) -> dict[str, dict[str, int]]:
     """Save attendee seating preferences"""
-    prefs: Dict[str, Dict[str, int]] = {}
+    prefs: dict[str, dict[str, int]] = {}
 
     # Save attendee preferences
     for pref in pref_str_list:
@@ -20,7 +19,7 @@ def build_prefs(pref_str_list: List[str]) -> Dict[str, Dict[str, int]]:
     return prefs
 
 
-def attendee_happiness(attendee_prefs: Dict[str, int], neighbors: Set[str]):
+def attendee_happiness(attendee_prefs: dict[str, int], neighbors: set[str]):
     """Calculate happiness for an attendee with given neighbors"""
     return sum(attendee_prefs[n] for n in neighbors)
 
@@ -37,12 +36,12 @@ def seating_arangement_happiness(prefs, arangement):
     )
 
 
-def optimal_happiness(prefs: Dict[str, Dict[str, int]]):
+def optimal_happiness(prefs: dict[str, dict[str, int]]):
     """Calculate optimal happiness"""
     return max(seating_arangement_happiness(prefs, perm) for perm in permutations(prefs))
 
 
-def add_self_to_prefs(prefs: Dict[str, Dict[str, int]]):
+def add_self_to_prefs(prefs: dict[str, dict[str, int]]):
     """Add an apathetic individual named "Me" to prefs"""
     for attendee in prefs:
         prefs[attendee]["Me"] = 0

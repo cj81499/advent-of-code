@@ -37,8 +37,7 @@ class Rule:
 
     def _matches(self, message, rules):
         for option in self.options:
-            for match in option._matches(message, rules):
-                yield match
+            yield from option._matches(message, rules)
 
     def is_valid(self, message, rules):
         return len(message) in self._matches(message, rules)

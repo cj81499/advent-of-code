@@ -1,23 +1,21 @@
-CMDS = set(
-    [
-        "addr",
-        "addi",
-        "mulr",
-        "muli",
-        "banr",
-        "bani",
-        "borr",
-        "bori",
-        "setr",
-        "seti",
-        "gtir",
-        "gtri",
-        "gtrr",
-        "eqir",
-        "eqri",
-        "eqrr",
-    ]
-)
+CMDS = {
+    "addr",
+    "addi",
+    "mulr",
+    "muli",
+    "banr",
+    "bani",
+    "borr",
+    "bori",
+    "setr",
+    "seti",
+    "gtir",
+    "gtri",
+    "gtrr",
+    "eqir",
+    "eqri",
+    "eqrr",
+}
 
 OPERATIONS = {
     "addr": lambda r, a, b: r[a] + r[b],
@@ -100,7 +98,7 @@ def partb(txt):
     registers = [0, 0, 0, 0]
     program = program.splitlines()
     for cmd in program:
-        cmd_num, a, b, c = [int(x) for x in cmd.split()]
+        cmd_num, a, b, c = (int(x) for x in cmd.split())
         # cmd_num, a, b, c = [int(x) for x in cmd.strip().split(" ")]
         # _, a, b, c = list(map(int, cmd.split(" ")))
 

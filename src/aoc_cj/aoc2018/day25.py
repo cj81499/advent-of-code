@@ -21,7 +21,7 @@ class Constellation:
     def __init__(self, point):
         self.number = Constellation.number
         Constellation.number += 1
-        self.points = set([point])
+        self.points = {point}
 
     def __hash__(self):
         return hash(self.number)
@@ -40,13 +40,13 @@ class Constellation:
 
 
 def parta(txt):
-    constellations = set(Constellation(Point(line)) for line in txt.splitlines())
+    constellations = {Constellation(Point(line)) for line in txt.splitlines()}
     combinations_made = True
     while combinations_made:
         combinations_made = False
         for a, b in itertools.combinations(constellations, 2):
             combinations_made = a.join(b) or combinations_made
-        constellations = set(c for c in constellations if c.points is not None)
+        constellations = {c for c in constellations if c.points is not None}
     return len(constellations)
 
 

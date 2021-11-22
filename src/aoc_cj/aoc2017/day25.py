@@ -2,15 +2,15 @@ from __future__ import annotations
 
 import dataclasses
 from collections import defaultdict
-from typing import DefaultDict, List, Tuple
+from typing import DefaultDict
 
 
 @dataclasses.dataclass
 class State:
     letter: str
-    write_value: Tuple[int, int]
-    move: Tuple[int, int]
-    next_state: Tuple[str, str]
+    write_value: tuple[int, int]
+    move: tuple[int, int]
+    next_state: tuple[str, str]
 
     @staticmethod
     def parse(state: str):
@@ -24,7 +24,7 @@ class State:
 
 
 class TurningMachine:
-    def __init__(self, start_state: str, states: List[State]):
+    def __init__(self, start_state: str, states: list[State]):
         self._tape: DefaultDict[int, str] = defaultdict(int)
         self._states = {s.letter: s for s in states}
         self._state = self._states[start_state]

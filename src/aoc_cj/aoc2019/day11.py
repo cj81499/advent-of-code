@@ -39,7 +39,7 @@ def partb(txt: str):
         panels[pos] = to_paint  # paint panel
         dx, dy = (dy, -dx) if turn == 0 else (-dy, dx)  # turn
         x, y = x + dx, y + dy  # move forward
-    white_panels = set(p for p, color in panels.items() if color == 1)
+    white_panels = {p for p, color in panels.items() if color == 1}
     min_x = min(x for x, _y in white_panels)
     max_x = max(x for x, _y in white_panels)
     min_y = min(y for _x, y in white_panels)
