@@ -17,7 +17,7 @@ Generator B starts with 8921
     ],
 )
 def test_a(num_loops, expected):
-    assert d.parta(EXAMPLE_INPUT, num_loops=num_loops) == expected
+    assert d.parta(EXAMPLE_INPUT, num_loops) == expected
 
 
 @pytest.mark.slow
@@ -34,7 +34,7 @@ def test_a_slow():
     ],
 )
 def test_b(num_loops, expected):
-    assert d.partb(EXAMPLE_INPUT, num_loops=num_loops) == expected
+    assert d.partb(EXAMPLE_INPUT, num_loops) == expected
 
 
 @pytest.mark.slow

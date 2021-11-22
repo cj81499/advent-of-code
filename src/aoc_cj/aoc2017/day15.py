@@ -1,41 +1,39 @@
-from __future__ import annotations
-
-DIVISOR = 2147483647
-FACTOR_A = 16807
-FACTOR_B = 48271
-
-MASK = 0xFFFF
+import itertools
+from typing import Generator
 
 FOURTY_MILLION = 40_000_000
 FIVE_MILLION = 5_000_000
 
+DIVISOR = 2147483647
+FACTORS = (16807, 48271)
+DIVISORS = (4, 8)
 
-def parta(txt: str, num_loops=FOURTY_MILLION):
-    a, b = [int(line.split()[-1]) for line in txt.splitlines()]
-    matches = 0
-    for _ in range(num_loops):
-        a = (a * FACTOR_A) % DIVISOR
-        b = (b * FACTOR_B) % DIVISOR
-        # bitwise and to get last 16 bits
-        if (a & MASK) == (b & MASK):
-            matches += 1
-    return matches
+LOW_16_MASK = 0xFFFF
 
 
-def partb(txt: str, num_loops=FIVE_MILLION):
-    a, b = [int(line.split()[-1]) for line in txt.splitlines()]
-    matches = 0
-    for _ in range(num_loops):
-        a = (a * FACTOR_A) % DIVISOR
-        while a % 4 != 0:
-            a = (a * FACTOR_A) % DIVISOR
-        b = (b * FACTOR_B) % DIVISOR
-        while b % 8 != 0:
-            b = (b * FACTOR_B) % DIVISOR
-        # bitwise and to mask
-        if (a & MASK) == (b & MASK):
-            matches += 1
-    return matches
+def parta(txt: str, loop_count: int = FOURTY_MILLION) -> int:
+    return run(txt, loop_count)
+
+
+def partb(txt: str, loop_count: int = FIVE_MILLION) -> int:
+    return run(txt, loop_count, True)
+
+
+def run(txt: str, loop_count: int, partb=False) -> int:
+    seeds = tuple(int(line.split()[-1]) for line in txt.splitlines())
+    args = (seeds, FACTORS, DIVISORS) if partb else (seeds, FACTORS)
+    generators = tuple(create_generator(*a) for a in zip(*args))
+    pairs = zip(*generators)
+    return sum(a & LOW_16_MASK == b & LOW_16_MASK for a, b in itertools.islice(pairs, loop_count))
+
+
+def create_generator(seed: int, factor: int, denominator: int = 1) -> Generator[int, None, None]:
+    n = seed
+    while True:
+        n *= factor
+        n %= DIVISOR
+        if denominator == 1 or n % denominator == 0:
+            yield n
 
 
 def main(txt: str):
