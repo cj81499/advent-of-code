@@ -1,34 +1,36 @@
 # Day 23
 
-| assembunny | translate             | interpret gotos      | simplify |
-| ---------- | --------------------- | -------------------- | -------- |
-| cpy a b    | b = a                 | b = 7 (or 12)        |
-| dec b      | label6: b--           | while (true) {       |
-|            |                       | b = 6 (or 11)        |
-| cpy a d    | d = a                 | d = 7 (or 12)        |
-| cpy 0 a    | a = 0                 | a = 0                |
-| cpy b c    | label2: c = b         | while (d != 0) {     |
-|            |                       | c = b                |
-| inc a      | label1: a++           | while (c != 0) {     |
-|            |                       | a++                  |
-| dec c      | c--                   | c--                  |
-| jnz c -2   | goto label1 if c != 0 | }                    |
-| dec d      | d--                   | d--                  |
-| jnz d -5   | goto label2 if d != 0 | }                    |
-| dec b      | b--                   | b--                  |
-| cpy b c    | c = b                 | c = b                |
-| cpy c d    | d = c                 | d = c                |
-| dec d      | label3: d--           | while (d != 0) {     |
-|            |                       | d--                  |
-| inc c      | c++                   | c++                  |
-| jnz d -2   | goto label3 if d != 0 | }                    |
-| tgl c      | tgl c                 | tgl c å              |
-| cpy -16 c  | c = -16               | c = -16              |
-| jnz 1 c    | goto c                | } // assume c == -16 |
-| cpy 96 c   | c = 96                |
-| jnz 79 d   | label5: goto d        |
-| inc a      | label4: a++           |
-| inc d      | d++                   |
-| jnz d -2   | goto label4 if d != 0 |
-| inc c      | c++                   |
-| jnz c -5   | goto label5 if c != 0 |
+| assembunny | translate          | interpret gotos     | simplify           |
+| ---------- | ------------------ | ------------------- | ------------------ |
+|            | a = parta ? 7 : 12 | a = parta ? 7 : 12  | a = parta ? 7 : 12 |
+| cpy a b    | b = a              | b = a               |                    |
+| dec b      | b -= 1             | b -= 1              | b = a - 1          |
+| cpy a d    | d = a              | d = a               | d = a              |
+| cpy 0 a    | a = 0              | a = 0               | a = 0              |
+|            |                    | while (d != 0) {    |
+| cpy b c    | c = b              | c = b               |
+|            |                    | while (c != 0) {    |
+| inc a      | a += 1             | a += 1              |
+| dec c      | c -= 1             | c -= 1              |
+| jnz c -2   | goto -2 if c != 0  | }                   |
+| dec d      | d -= 1             | d -= 1              |
+| jnz d -5   | goto -5 if d != 0  | }                   |
+| dec b      | b -= 1             | b -= 1              |
+| cpy b c    | c = b              | c = b               |
+| cpy c d    | d = c              | d = c               |
+|            |                    | while (d != 0) {    |
+| dec d      | d -= 1             | d -= 1              |
+| inc c      | c += 1             | c += 1              |
+| jnz d -2   | goto -2 if d != 0  | }                   |
+| tgl c      | toggle c           | toggle c            |
+| cpy -16 c  | c = -16            | c = -16             |
+| jnz 1 c    | goto c if 1 != 0   | ??????????????????? |
+| cpy 96 c   | c = 96             | c= 96               |
+|            |                    | while (c != 0) {    |
+| jnz 79 d   | goto d if 79 != 0  | ??????????????????? |
+|            |                    | while (d != 0) {    |
+| inc a      | a += 1             | a += 1              |
+| inc d      | d += 1             | d += 1              |
+| jnz d -2   | goto -2 if d != 0  | }                   |
+| inc c      | c += 1             | c += 1              |
+| jnz c -5   | goto -5 if c != 0  | }                   |

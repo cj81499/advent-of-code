@@ -5,19 +5,13 @@ from aoc_cj.aoc2016.day12 import AssemBunnyComputer
 
 class Day23AssemBunnyComputer(AssemBunnyComputer):
     def tgl(self, x):
-        # print(self._registers)
-        idx = self.pc + self.arg(x)
-        try:
-            ins = self._program[idx]
-            # old_ins = [x for x in ins]
+        addr = self.pc + self.arg(x)
+        if addr < len(self._program):
+            ins = self._program[addr]
             if len(ins) == 2:  # one arg instruction
                 ins[0] = "dec" if ins[0] == "inc" else "inc"
             elif len(ins) == 3:  # two arg instruction
                 ins[0] = "cpy" if ins[0] == "jnz" else "jnz"
-            # print(f"tgl at {idx}. {old_ins} -> {ins}")
-        except IndexError:
-            # print(f"tgl at {idx} failed")
-            pass
 
 
 def parta(txt: str):
