@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Dict, Tuple
-
 
 def parse(txt: str):
     m = {}
@@ -13,9 +11,9 @@ def parse(txt: str):
     return m
 
 
-def group_containing(connections: Dict[int, Tuple[int, ...]], n: int):
+def group_containing(connections: dict[int, tuple[int, ...]], n: int):
     assert n in connections
-    group = set([n])
+    group = {n}
     prev_size = 0
     while prev_size != len(group):
         prev_size = len(group)

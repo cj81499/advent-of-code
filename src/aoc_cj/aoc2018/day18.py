@@ -7,15 +7,15 @@ class LumberArea:
         self.area = [[x for x in line] for line in lines]
 
     def adj_in_area(self, x, y):
-        s = set([(x + _x, y + _y) for _x in range(-1, 2) for _y in range(-1, 2)])
+        s = {(x + _x, y + _y) for _x in range(-1, 2) for _y in range(-1, 2)}
         if x - 1 < 0:
-            s -= set([(x - 1, y + _y) for _y in range(-1, 2)])
+            s -= {(x - 1, y + _y) for _y in range(-1, 2)}
         if y - 1 < 0:
-            s -= set([(x + _x, y - 1) for _x in range(-1, 2)])
+            s -= {(x + _x, y - 1) for _x in range(-1, 2)}
         if x + 1 >= len(self.area):
-            s -= set([(x + 1, y + _y) for _y in range(-1, 2)])
+            s -= {(x + 1, y + _y) for _y in range(-1, 2)}
         if y + 1 >= len(self.area):
-            s -= set([(x + _x, y + 1) for _x in range(-1, 2)])
+            s -= {(x + _x, y + 1) for _x in range(-1, 2)}
         s.remove((x, y))
         return s
 

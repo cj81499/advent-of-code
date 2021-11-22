@@ -7,7 +7,7 @@ def parta(txt):
 
     registers = [0, 0, 0, 0, 0, 0]
     while registers[ip] < len(lines):
-        cmd, a, b, c = [x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split()]
+        cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
         run_cmd(cmd, registers, a, b, c)
         registers[ip] += 1
     return registers[0]
@@ -30,7 +30,7 @@ def partb(txt):
     i = 0
     # 100 times is enough to find the number the main loop will find the sum of the factors of
     while registers[ip] < len(lines) and i < 100:
-        cmd, a, b, c = [x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split()]
+        cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
         run_cmd(cmd, registers, a, b, c)
         registers[ip] += 1
         i += 1

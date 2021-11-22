@@ -1,11 +1,11 @@
 import heapq
-from typing import Generic, List, TypeVar
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
 
 class Heap(Generic[T]):
-    def __init__(self, items: List[T] = []):
+    def __init__(self, items: list[T] = []):
         self.heap = items.copy()
         heapq.heapify(self.heap)
 
@@ -29,9 +29,9 @@ class Heap(Generic[T]):
         return heapq.merge(*iterables, key=key, reverse=reverse)
 
     @staticmethod
-    def nlargest(n, iterable, key=None) -> List[T]:
+    def nlargest(n, iterable, key=None) -> list[T]:
         return heapq.nlargest(n, iterable, key=key)
 
     @staticmethod
-    def nsmallest(n, iterable, key=None) -> List[T]:
+    def nsmallest(n, iterable, key=None) -> list[T]:
         return heapq.nsmallest(n, iterable, key=key)

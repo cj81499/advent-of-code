@@ -94,7 +94,7 @@ class CaveSystem:
 
     @staticmethod
     def parse(cave_system: str):
-        depth, target = [x.split(": ")[1] for x in cave_system.splitlines()]
+        depth, target = (x.split(": ")[1] for x in cave_system.splitlines())
         target = tuple(map(int, target.split(",")))
         return CaveSystem(int(depth), target)
 

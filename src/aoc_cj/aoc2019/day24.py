@@ -1,19 +1,18 @@
 from __future__ import annotations
 
 import itertools
-from typing import FrozenSet, Tuple
 
-Bug = Tuple[int, ...]
-Bugs = FrozenSet[Bug]
+Bug = tuple[int, ...]
+Bugs = frozenset[Bug]
 
 
 def str_to_bugs(s: str, recursive=False) -> Bugs:
-    bugs = set(
+    bugs = {
         (x, y, 0) if recursive else (x, y)
         for y, line in enumerate(s.splitlines())
         for x, c in enumerate(line)
         if c == "#"
-    )
+    }
     if recursive:
         bugs.discard((2, 2, 0))
     return frozenset(bugs)

@@ -3,14 +3,13 @@ from __future__ import annotations
 import dataclasses
 import re
 from collections import Counter
-from typing import Tuple
 
 
 @dataclasses.dataclass(frozen=True, eq=True)
 class Particle:
-    pos: Tuple[int, int, int]
-    vel: Tuple[int, int, int]
-    acc: Tuple[int, int, int]
+    pos: tuple[int, int, int]
+    vel: tuple[int, int, int]
+    acc: tuple[int, int, int]
 
     _PARSE_REGEX = re.compile(
         r"p=< *(-?\d+), *(-?\d+), *(-?\d+)>, v=< *(-?\d+), *(-?\d+), *(-?\d+)>, a=< *(-?\d+), *(-?\d+), *(-?\d+)>"
@@ -46,15 +45,15 @@ def parta(txt: str):
 
 
 def partb(txt: str):
-    particles = set(Particle.parse(line) for line in txt.splitlines())
+    particles = {Particle.parse(line) for line in txt.splitlines()}
     for _step in range(STEPS):
-        particles = set(p.advance() for p in particles)
+        particles = {p.advance() for p in particles}
         position_counts = Counter(p.pos for p in particles)
         for pos, n in position_counts.most_common():
             # once we reach a position with only 1 particle, there's no more to remove
             if n == 1:
                 break
-            particles = set(p for p in particles if p.pos != pos)
+            particles = {p for p in particles if p.pos != pos}
     return len(particles)
 
 

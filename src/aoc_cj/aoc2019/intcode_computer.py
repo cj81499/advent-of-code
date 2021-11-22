@@ -1,6 +1,5 @@
 import itertools
 from collections import defaultdict, deque
-from typing import List
 
 
 class UnknownOpcodeException(Exception):
@@ -12,7 +11,7 @@ class ProgramTerminatedException(Exception):
 
 
 class IntcodeProgram:
-    def __init__(self, program: List[int]):
+    def __init__(self, program: list[int]):
         self._memory = defaultdict(int, dict(enumerate(program)))
         self._ip = 0
         self.terminated = False
@@ -34,7 +33,7 @@ class IntcodeProgram:
                 raise Exception("too many steps")
             self.run_next()
 
-    def run_next(self):  # noqa: C901
+    def run_next(self):
         if self.terminated:
             raise ProgramTerminatedException()
         if self.is_waiting_for_input():

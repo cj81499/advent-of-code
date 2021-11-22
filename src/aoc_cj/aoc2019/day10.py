@@ -24,7 +24,7 @@ def get_asteroids(lines: list[str]) -> set[complex]:
 
 
 def count_observable(candidate: complex, asteroids: set[complex]) -> int:
-    angles = set(deg(candidate, a) for a in asteroids if a != candidate)
+    angles = {deg(candidate, a) for a in asteroids if a != candidate}
     return len(angles)
 
 
@@ -56,12 +56,12 @@ def vaporize_order(lines: list[str]) -> list[complex]:
     order = []
     angle = -1.0
     while asteroids:
-        after_last_angle = set(a for a in asteroids if angles[a] > angle)
+        after_last_angle = {a for a in asteroids if angles[a] > angle}
         if len(after_last_angle) == 0:
             angle = -1
             continue
         angle = min(angles[a] for a in after_last_angle)
-        asteroids_at_angle = set(a for a in after_last_angle if angles[a] == angle)
+        asteroids_at_angle = {a for a in after_last_angle if angles[a] == angle}
         vaporize = min(asteroids_at_angle, key=lambda a: distances[a])
         order.append(vaporize)
         asteroids.remove(vaporize)

@@ -21,9 +21,7 @@ def adj_pos(p):
 
 
 def partb(txt: str):
-    not_in_group = set(
-        (x, y) for y in range(GRID_SIZE) for x, c in enumerate(binary_knot_hash(f"{txt}-{y}")) if c == "1"
-    )
+    not_in_group = {(x, y) for y in range(GRID_SIZE) for x, c in enumerate(binary_knot_hash(f"{txt}-{y}")) if c == "1"}
     group_count = 0
     q = deque()
     while len(not_in_group) > 0:

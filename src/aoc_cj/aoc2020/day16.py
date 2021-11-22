@@ -26,7 +26,7 @@ def parse_input(txt):
     fields_str, my_ticket, nearby_tickets = txt.split("\n\n")
     fields = {name: ranges for name, ranges in [parse_field(f) for f in fields_str.splitlines()]}
     my_ticket = parse_ticket(my_ticket.splitlines()[1])
-    nearby_tickets = set(parse_ticket(t) for t in nearby_tickets.splitlines()[1:])
+    nearby_tickets = {parse_ticket(t) for t in nearby_tickets.splitlines()[1:]}
     return fields, my_ticket, nearby_tickets
 
 
@@ -39,7 +39,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     position_possibile_fields = tuple(set(fields) for _ in range(len(my_ticket)))
 
     # for each valid ticket
-    for t in set(t for t in nearby_tickets if is_valid_ticket(t, fields)[0]):
+    for t in {t for t in nearby_tickets if is_valid_ticket(t, fields)[0]}:
         # for each value on the ticket and list of possible fields at the location of that value
         for (ticket_value, possibile_fields) in zip(t, position_possibile_fields):
             for f in set(possibile_fields):

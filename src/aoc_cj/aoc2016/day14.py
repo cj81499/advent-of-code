@@ -38,7 +38,7 @@ def keys(salt, hash_fn=standard_hash):
 
         if (c := n_repeat_character(h, 5)) is not None:
             # remove pairs that are too old to be valid
-            old_pairs = set(p for p in idx_chr_pairs if i - p[0] >= 1000)
+            old_pairs = {p for p in idx_chr_pairs if i - p[0] >= 1000}
             idx_chr_pairs -= old_pairs
 
             # update validated with the pairs that are made valid by the new hash
@@ -46,7 +46,7 @@ def keys(salt, hash_fn=standard_hash):
             idx_chr_pairs -= validated
 
             # yield values only once that are guaranteed to NOT have other valid values before them
-            ready_to_yield = set(p for p in validated if i - p[0] >= 1000)
+            ready_to_yield = {p for p in validated if i - p[0] >= 1000}
             yield from sorted(p[0] for p in ready_to_yield)  # yield in increasing order
             validated -= ready_to_yield
 

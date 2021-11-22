@@ -25,7 +25,7 @@ def nearest_points(point, points):
 
 
 def parta(txt):
-    points = set(tuple(map(int, line.split(", "))) for line in txt.splitlines())
+    points = {tuple(map(int, line.split(", "))) for line in txt.splitlines()}
     min_x, max_x, min_y, max_y = corners(points)
 
     areas = collections.Counter()
@@ -51,7 +51,7 @@ def dist_to_all(point, points):
 
 
 def partb(txt, total_dist=10000):
-    points = set(tuple(map(int, line.split(", "))) for line in txt.splitlines())
+    points = {tuple(map(int, line.split(", "))) for line in txt.splitlines()}
     min_x, max_x, min_y, max_y = corners(points)
     return sum(
         dist_to_all(p, points) < total_dist for p in itertools.product(range(min_x, max_x + 1), range(min_y, max_y + 1))

@@ -99,7 +99,7 @@ class Army:
         return cls(group_list, army_name)
 
     def __repr__(self):
-        return "Army(name: {}, group count: {})".format(self.name, len(self.groups))
+        return f"Army(name: {self.name}, group count: {len(self.groups)})"
 
 
 class Battle:
@@ -118,9 +118,9 @@ class Battle:
             if result == "No deaths":
                 return ("None", -1)
             for i, army in enumerate(self.armies):
-                alive_count = sum([1 if group.alive_unit_count > 0 else 0 for group in army.groups])
+                alive_count = sum(1 if group.alive_unit_count > 0 else 0 for group in army.groups)
                 if alive_count == 0:
-                    return army.name, sum([x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups])
+                    return army.name, sum(x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups)
 
     def round(self):
         fighting_groups = self._get_fighting_groups()

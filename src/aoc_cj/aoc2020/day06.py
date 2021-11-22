@@ -10,7 +10,7 @@ def parta(txt):
 
 
 def parta_helper(group):
-    return len(set(c for person in group for c in person))
+    return len({c for person in group for c in person})
 
 
 def partb(txt):
@@ -18,7 +18,7 @@ def partb(txt):
 
 
 def partb_helper(group):
-    return len(set(letter for letter in ascii_lowercase if all(letter in person for person in group)))
+    return len({letter for letter in ascii_lowercase if all(letter in person for person in group)})
 
 
 def main(txt):

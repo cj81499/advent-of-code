@@ -83,7 +83,7 @@ class Facility:
             end_positions = set()
             for p in start_positions:
                 if isinstance(chunk_part, str):
-                    end_positions.add((self._explore_dir_str(p, chunk_part)))
+                    end_positions.add(self._explore_dir_str(p, chunk_part))
                 else:
                     for end_p in self._explore_chunk_list([p], chunk_part):
                         end_positions.add(end_p)

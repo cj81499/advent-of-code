@@ -5,7 +5,7 @@ import itertools
 def find_hash(secret_key: str, zeros: int = 5):
     zeros_str = "0" * zeros
     for i in itertools.count():
-        if hashlib.md5(f"{secret_key}{i}".encode("utf-8")).hexdigest().startswith(zeros_str):
+        if hashlib.md5(f"{secret_key}{i}".encode()).hexdigest().startswith(zeros_str):
             return i
 
 
