@@ -20,8 +20,6 @@
     "description": "Scaffold Advent of Code Day",
     "prefix": "aoc-day",
     "body": [
-      "from __future__ import annotations",
-      "",
       "import itertools",
       "import re",
       "from collections import Counter, defaultdict, deque",

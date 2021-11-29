@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 NUMPAD_A = """
 123
 456

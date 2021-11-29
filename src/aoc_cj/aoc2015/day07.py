@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from functools import cache
 from operator import and_, lshift, or_, rshift
 

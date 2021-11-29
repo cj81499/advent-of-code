@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 ONE_BILLION = 1_000_000_000
 
 

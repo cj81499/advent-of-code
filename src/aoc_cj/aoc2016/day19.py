@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import itertools
 
 # Explanation: notice a pattern in the first few outputs (when they're still easy to compute)

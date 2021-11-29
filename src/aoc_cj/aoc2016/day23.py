@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from aoc_cj.aoc2016.day12 import AssemBunnyComputer
 
 

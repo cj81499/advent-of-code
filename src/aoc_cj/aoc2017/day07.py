@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import re
 from collections import Counter
 
@@ -13,7 +11,7 @@ class TreeNode:
         self.children: list[TreeNode] = []
         self.parent = None
 
-    def add_child(self, child: TreeNode):
+    def add_child(self, child: "TreeNode"):
         assert child.parent is None
         child.parent = self
         self.children.append(child)

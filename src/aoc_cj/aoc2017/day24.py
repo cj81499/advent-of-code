@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 def bridges_helper(components, bridge_so_far):
     yield bridge_so_far
     free_port = bridge_so_far[-1][-1]

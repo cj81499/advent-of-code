@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 def helper(txt):
     score = 0
     depth = 0

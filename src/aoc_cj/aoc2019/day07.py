@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import itertools
 
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram

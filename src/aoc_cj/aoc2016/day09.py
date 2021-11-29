@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import re
 
 MARKER_REGEX = re.compile(r"^\((\d+)x(\d+)\)")

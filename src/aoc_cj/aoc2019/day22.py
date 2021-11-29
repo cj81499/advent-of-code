@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 def deck_of_size(n):
     return [x for x in range(n)]
 

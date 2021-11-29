@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 def helper(txt):
     x, y, z = 0, 0, 0
     all_time_max = 0
