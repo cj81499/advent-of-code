@@ -3,7 +3,7 @@ from __future__ import annotations
 import itertools
 from collections import deque
 
-from aoc_cj.util import PriorityQueue
+from aoc_cj.util.priority_queue import PriorityQueue
 
 
 def parse(txt: str):
