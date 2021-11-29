@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import re
 
 TEXT_IN_BRACKET_REGEX = re.compile(r"\[(\w+)\]")

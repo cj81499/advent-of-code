@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 def parse(txt: str):
     m = {}
     for line in txt.splitlines():

@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 def step(data):
     a = data
     b = "".join("1" if c == "0" else "0" for c in reversed(a))

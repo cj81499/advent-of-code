@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 FIFTY_BILLION = 50_000_000_000
 
 

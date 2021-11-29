@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 MAX_32_BIT_INTEGER = 0xFFFF_FFFF
 
 

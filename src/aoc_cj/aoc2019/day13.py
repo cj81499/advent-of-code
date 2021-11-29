@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections import Counter
 
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram

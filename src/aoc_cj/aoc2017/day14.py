@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections import deque
 
 from aoc_cj.aoc2017.day10 import knot_hash
