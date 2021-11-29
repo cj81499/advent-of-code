@@ -1,102 +1,97 @@
-import parse
+import dataclasses
+import re
+from typing import Optional
 
-parser = parse.compile("Step {} must be finished before step {} can begin.")
-
-
-class Task:
-    def __init__(self, name, offset):
-        self.name = name
-        self.before = set()
-        self.after = set()
-        self.running = False
-        self.remaining_time = ord(name) - ord("A") + 1 + offset
-
-    def __str__(self):
-        return str(f"{self.name}: ({self.running}, {self.remaining_time}) ({self.before}, {self.after})")
+PATTERN = re.compile(r" ([A-Z]) ")
 
 
-def get_first(tasks: dict):
-    no_before = set()
-    for n in tasks:
-        if len(tasks[n].before) == 0:
-            no_before.add(n)
-    return min(no_before)
+class StepManager:
+    _unstarted_requirements: dict[str, set[str]]
+    _in_progress: set[str]
+    _finished: set[str]
+
+    def __init__(self) -> None:
+        self._unstarted_requirements = {}
+        self._in_progress = set()
+        self._finished = set()
+
+    def __bool__(self) -> bool:
+        return not self._finished_steps()
+
+    def next_step(self) -> Optional[str]:
+        return min((k for k, blocked_by in self._unstarted_requirements.items() if len(blocked_by) == 0), default=None)
+
+    def start(self, step: str) -> None:
+        self._unstarted_requirements.pop(step)
+        self._in_progress.add(step)
+
+    def finish(self, step: str) -> None:
+        self._unstarted_requirements.pop(step, None)
+        self._in_progress.discard(step)
+        self._finished.add(step)
+        for blockers in self._unstarted_requirements.values():
+            blockers.discard(step)
+
+    def _require(self, step: str, requirement: str) -> None:
+        self._unstarted_requirements.setdefault(step, set()).add(requirement)
+        self._unstarted_requirements.setdefault(requirement, set())
+
+    def _finished_steps(self):
+        return len(self._unstarted_requirements) == 0 and len(self._in_progress) == 0
+
+    @staticmethod
+    def parse(txt: str):
+        r = StepManager()
+        for line in txt.splitlines():
+            requirement, step = PATTERN.findall(line)
+            r._require(step, requirement)
+        return r
 
 
-def remove_task(tasks: dict, t):
-    for n in tasks[t].after:
-        tasks[n].before.remove(t)
-    del tasks[t]
+def parta(txt: str):
+    steps = StepManager.parse(txt)
 
-
-def parse_tasks(txt, offset=60):
-    tasks = {}
-
-    # Fill in tasks dictionary
-    for line in txt.splitlines():
-        before, after = parser.parse(line).fixed
-        tasks.setdefault(before, Task(before, offset))
-        tasks.setdefault(after, Task(after, offset))
-        tasks[before].after.add(after)
-        tasks[after].before.add(before)
-
-    return tasks
-
-
-def startable_tasks(tasks, workers):
-    startable = []
-    for t in tasks:
-        if len(tasks[t].before) == 0 and t not in workers:
-            startable.append(t)
-    # NOTE: I'm not certain this needs to be sorted. It"s a pretty
-    # insignificant operation in the context of the problem, so I"ll
-    # leave it cuz it works.
-    return sorted(startable)
-
-
-def add_new_tasks_if_possible(tasks, workers):
-    startable = startable_tasks(tasks, workers)
-    for i, w in enumerate(workers):
-        if len(startable) == 0:
-            break
-        if w is None:
-            workers[i] = startable.pop(0)
-
-
-def parta(txt):
-    tasks = parse_tasks(txt)
-
-    # Find order
     order = []
-    while len(tasks) > 0:
-        first = get_first(tasks)
-        order.append(first)
-        remove_task(tasks, first)
+    while steps:
+        selected_step = steps.next_step()
+        order.append(selected_step)
+        steps.finish(selected_step)
 
     return "".join(order)
 
 
-def partb(txt, offset=60, helper_count=4):
-    tasks = parse_tasks(txt, offset)
+def partb(txt: str, num_workers: int = 5, base_duration: int = 60):
+    @dataclasses.dataclass
+    class Worker:
+        working_on: Optional[str] = None
+        remaining_time: int = 0
 
-    workers = [None for _ in range(helper_count + 1)]
-    elapsed_time = 0
-    add_new_tasks_if_possible(tasks, workers)
-    incomplete = True
-    while incomplete:
-        for i, t in enumerate(workers):
-            if t is not None:
-                tasks[t].remaining_time -= 1
-                if tasks[t].remaining_time == 0:
-                    remove_task(tasks, t)
-                    workers[i] = None
-        add_new_tasks_if_possible(tasks, workers)
-        elapsed_time += 1
-        incomplete = not all([tasks[t].remaining_time == 0 for t in tasks])
-    return elapsed_time
+    workers = [Worker() for _ in range(num_workers)]
+
+    steps = StepManager.parse(txt)
+
+    duration = 0
+    while steps:
+        available_workers = (w for w in workers if w.working_on is None)
+        for w in available_workers:
+            if selected_step := steps.next_step():
+                steps.start(selected_step)
+                w.working_on = selected_step
+                w.remaining_time = ord(selected_step) - ord("A") + 1 + base_duration
+
+        assigned_workers = (w for w in workers if w.working_on is not None)
+        for w in assigned_workers:
+            w.remaining_time -= 1
+            if w.remaining_time == 0:
+                steps.finish(w.working_on)
+                w.working_on = None
+
+        duration += 1
+
+    return duration
 
 
-def main(txt):
+def main(txt: str):
     print(f"parta: {parta(txt)}")
     print(f"partb: {partb(txt)}")
 
