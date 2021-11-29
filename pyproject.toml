@@ -3,7 +3,7 @@ name = "aoc-cj"
 version = "0.1.0"
 description = "cj81499's solutions for https://adventofcode.com/"
 authors = ["Cal Jacobson <cj81499@users.noreply.github.com>"]
-homepage = "https://github.com/cj81499/advent-of-code-cj81499"
+homepage = "https://github.com/cj81499/advent-of-code"
 
 [tool.poetry.dependencies]
 python = ">=3.9, <3.11"
