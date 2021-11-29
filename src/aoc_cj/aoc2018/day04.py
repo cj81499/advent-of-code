@@ -1,8 +1,7 @@
 import datetime
+import re
 
-import parse
-
-p = parse.compile("[{:d}-{:d}-{:d} {:d}:{:d}] {}")
+PATTERN = re.compile(r"^\[(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})\] (.*)$")
 
 
 def parta(txt):
@@ -69,10 +68,10 @@ def partb(txt):
 
 
 def events_list(lines):
-    events = [p.parse(line).fixed for line in lines]
-    events = [(datetime.datetime(e[0], e[1], e[2], e[3], e[4]), e[5]) for e in events]
-    events.sort(key=lambda e: e[0])
-    return events
+    return sorted(
+        (datetime.datetime(*map(int, numbers)), event_str)
+        for *numbers, event_str in (PATTERN.match(line).groups() for line in lines)
+    )
 
 
 def main(txt):

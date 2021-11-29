@@ -16,4 +16,4 @@ def test_a():
 
 
 def test_b():
-    assert d.partb(EXAMPLE_INPUT, offset=0, helper_count=1) == 15
+    assert d.partb(EXAMPLE_INPUT, num_workers=2, base_duration=0) == 15
