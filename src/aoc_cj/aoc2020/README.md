@@ -30,7 +30,7 @@
 
 ## Results
 
-<pre>
+```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
  25   00:33:43   2418      0   00:34:08   2008      0
@@ -58,4 +58,4 @@ Day       Time   Rank  Score       Time   Rank  Score
   3   00:03:38    299      0   00:05:51    199      0
   2   00:04:04    410      0   00:15:17   2119      0
   1   00:06:59     63     38   00:09:17    862      0
-</pre>
+```
