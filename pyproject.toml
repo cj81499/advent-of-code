@@ -14,7 +14,7 @@ z3-solver = "^4.8.13"
 
 [tool.poetry.dev-dependencies]
 black = "^21.11b1"
-pre-commit = "^2.15.0"
+pre-commit = "^2.16.0"
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
 
