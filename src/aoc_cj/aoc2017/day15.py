@@ -1,5 +1,5 @@
 import itertools
-from typing import Generator
+from typing import Iterable
 
 FOURTY_MILLION = 40_000_000
 FIVE_MILLION = 5_000_000
@@ -27,7 +27,7 @@ def run(txt: str, loop_count: int, partb=False) -> int:
     return sum(a & LOW_16_MASK == b & LOW_16_MASK for a, b in itertools.islice(pairs, loop_count))
 
 
-def create_generator(seed: int, factor: int, denominator: int = 1) -> Generator[int, None, None]:
+def create_generator(seed: int, factor: int, denominator: int = 1) -> Iterable[int]:
     n = seed
     while True:
         n *= factor
