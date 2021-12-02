@@ -3,7 +3,7 @@
 | Day | Title                                              |   1    |   2    |       Tests        |
 | :-: | -------------------------------------------------- | :----: | :----: | :----------------: |
 | 01  | [Sonar Sweep](https://adventofcode.com/2021/day/1) | :star: | :star: | :heavy_check_mark: |
-| 02  | [?](https://adventofcode.com/2021/day/2)           |  :x:   |  :x:   |        :x:         |
+| 02  | [Dive!](https://adventofcode.com/2021/day/2)       | :star: | :star: | :heavy_check_mark: |
 | 03  | [?](https://adventofcode.com/2021/day/3)           |  :x:   |  :x:   |        :x:         |
 | 04  | [?](https://adventofcode.com/2021/day/4)           |  :x:   |  :x:   |        :x:         |
 | 05  | [?](https://adventofcode.com/2021/day/5)           |  :x:   |  :x:   |        :x:         |
