@@ -7,7 +7,7 @@
 | 03  | [Binary Diagnostic](https://adventofcode.com/2021/day/3)    | :star: | :star: | :heavy_check_mark: |
 | 04  | [Giant Squid](https://adventofcode.com/2021/day/4)          | :star: | :star: | :heavy_check_mark: |
 | 05  | [Hydrothermal Venture](https://adventofcode.com/2021/day/5) | :star: | :star: | :heavy_check_mark: |
-| 06  | [?](https://adventofcode.com/2021/day/6)                    |  :x:   |  :x:   |        :x:         |
+| 06  | [Lanternfish](https://adventofcode.com/2021/day/6)          | :star: | :star: | :heavy_check_mark: |
 | 07  | [?](https://adventofcode.com/2021/day/7)                    |  :x:   |  :x:   |        :x:         |
 | 08  | [?](https://adventofcode.com/2021/day/8)                    |  :x:   |  :x:   |        :x:         |
 | 09  | [?](https://adventofcode.com/2021/day/9)                    |  :x:   |  :x:   |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  6   00:04:23   403      0   00:07:40   235      0
   5   00:27:16  3699      0   00:35:43  2661      0
   4   00:10:17   203      0   00:15:59   302      0
   3   00:04:57   503      0   00:15:41   438      0
