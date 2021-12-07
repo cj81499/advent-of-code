@@ -1,38 +1,39 @@
 # Advent of Code 2021
 
-| Day | Title                                                       |   1    |   2    |       Tests        |
-| :-: | ----------------------------------------------------------- | :----: | :----: | :----------------: |
-| 01  | [Sonar Sweep](https://adventofcode.com/2021/day/1)          | :star: | :star: | :heavy_check_mark: |
-| 02  | [Dive!](https://adventofcode.com/2021/day/2)                | :star: | :star: | :heavy_check_mark: |
-| 03  | [Binary Diagnostic](https://adventofcode.com/2021/day/3)    | :star: | :star: | :heavy_check_mark: |
-| 04  | [Giant Squid](https://adventofcode.com/2021/day/4)          | :star: | :star: | :heavy_check_mark: |
-| 05  | [Hydrothermal Venture](https://adventofcode.com/2021/day/5) | :star: | :star: | :heavy_check_mark: |
-| 06  | [Lanternfish](https://adventofcode.com/2021/day/6)          | :star: | :star: | :heavy_check_mark: |
-| 07  | [?](https://adventofcode.com/2021/day/7)                    |  :x:   |  :x:   |        :x:         |
-| 08  | [?](https://adventofcode.com/2021/day/8)                    |  :x:   |  :x:   |        :x:         |
-| 09  | [?](https://adventofcode.com/2021/day/9)                    |  :x:   |  :x:   |        :x:         |
-| 10  | [?](https://adventofcode.com/2021/day/10)                   |  :x:   |  :x:   |        :x:         |
-| 11  | [?](https://adventofcode.com/2021/day/11)                   |  :x:   |  :x:   |        :x:         |
-| 12  | [?](https://adventofcode.com/2021/day/12)                   |  :x:   |  :x:   |        :x:         |
-| 13  | [?](https://adventofcode.com/2021/day/13)                   |  :x:   |  :x:   |        :x:         |
-| 14  | [?](https://adventofcode.com/2021/day/14)                   |  :x:   |  :x:   |        :x:         |
-| 15  | [?](https://adventofcode.com/2021/day/15)                   |  :x:   |  :x:   |        :x:         |
-| 16  | [?](https://adventofcode.com/2021/day/16)                   |  :x:   |  :x:   |        :x:         |
-| 17  | [?](https://adventofcode.com/2021/day/17)                   |  :x:   |  :x:   |        :x:         |
-| 18  | [?](https://adventofcode.com/2021/day/18)                   |  :x:   |  :x:   |        :x:         |
-| 19  | [?](https://adventofcode.com/2021/day/19)                   |  :x:   |  :x:   |        :x:         |
-| 20  | [?](https://adventofcode.com/2021/day/20)                   |  :x:   |  :x:   |        :x:         |
-| 21  | [?](https://adventofcode.com/2021/day/21)                   |  :x:   |  :x:   |        :x:         |
-| 22  | [?](https://adventofcode.com/2021/day/22)                   |  :x:   |  :x:   |        :x:         |
-| 23  | [?](https://adventofcode.com/2021/day/23)                   |  :x:   |  :x:   |        :x:         |
-| 24  | [?](https://adventofcode.com/2021/day/24)                   |  :x:   |  :x:   |        :x:         |
-| 25  | [?](https://adventofcode.com/2021/day/25)                   |  :x:   |  :x:   |        :x:         |
+| Day | Title                                                          |   1    |   2    |       Tests        |
+| :-: | -------------------------------------------------------------- | :----: | :----: | :----------------: |
+| 01  | [Sonar Sweep](https://adventofcode.com/2021/day/1)             | :star: | :star: | :heavy_check_mark: |
+| 02  | [Dive!](https://adventofcode.com/2021/day/2)                   | :star: | :star: | :heavy_check_mark: |
+| 03  | [Binary Diagnostic](https://adventofcode.com/2021/day/3)       | :star: | :star: | :heavy_check_mark: |
+| 04  | [Giant Squid](https://adventofcode.com/2021/day/4)             | :star: | :star: | :heavy_check_mark: |
+| 05  | [Hydrothermal Venture](https://adventofcode.com/2021/day/5)    | :star: | :star: | :heavy_check_mark: |
+| 06  | [Lanternfish](https://adventofcode.com/2021/day/6)             | :star: | :star: | :heavy_check_mark: |
+| 07  | [The Treachery of Whales](https://adventofcode.com/2021/day/7) | :star: | :star: | :heavy_check_mark: |
+| 08  | [?](https://adventofcode.com/2021/day/8)                       |  :x:   |  :x:   |        :x:         |
+| 09  | [?](https://adventofcode.com/2021/day/9)                       |  :x:   |  :x:   |        :x:         |
+| 10  | [?](https://adventofcode.com/2021/day/10)                      |  :x:   |  :x:   |        :x:         |
+| 11  | [?](https://adventofcode.com/2021/day/11)                      |  :x:   |  :x:   |        :x:         |
+| 12  | [?](https://adventofcode.com/2021/day/12)                      |  :x:   |  :x:   |        :x:         |
+| 13  | [?](https://adventofcode.com/2021/day/13)                      |  :x:   |  :x:   |        :x:         |
+| 14  | [?](https://adventofcode.com/2021/day/14)                      |  :x:   |  :x:   |        :x:         |
+| 15  | [?](https://adventofcode.com/2021/day/15)                      |  :x:   |  :x:   |        :x:         |
+| 16  | [?](https://adventofcode.com/2021/day/16)                      |  :x:   |  :x:   |        :x:         |
+| 17  | [?](https://adventofcode.com/2021/day/17)                      |  :x:   |  :x:   |        :x:         |
+| 18  | [?](https://adventofcode.com/2021/day/18)                      |  :x:   |  :x:   |        :x:         |
+| 19  | [?](https://adventofcode.com/2021/day/19)                      |  :x:   |  :x:   |        :x:         |
+| 20  | [?](https://adventofcode.com/2021/day/20)                      |  :x:   |  :x:   |        :x:         |
+| 21  | [?](https://adventofcode.com/2021/day/21)                      |  :x:   |  :x:   |        :x:         |
+| 22  | [?](https://adventofcode.com/2021/day/22)                      |  :x:   |  :x:   |        :x:         |
+| 23  | [?](https://adventofcode.com/2021/day/23)                      |  :x:   |  :x:   |        :x:         |
+| 24  | [?](https://adventofcode.com/2021/day/24)                      |  :x:   |  :x:   |        :x:         |
+| 25  | [?](https://adventofcode.com/2021/day/25)                      |  :x:   |  :x:   |        :x:         |
 
 ## Results
 
 ```text
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  7   ??:??:??     ?      ?   ??:??:??     ?      ? (personal stats is down)
   6   00:04:23   403      0   00:07:40   235      0
   5   00:27:16  3699      0   00:35:43  2661      0
   4   00:10:17   203      0   00:15:59   302      0
