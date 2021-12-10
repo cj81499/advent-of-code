@@ -10,7 +10,7 @@
 | 06  | [Lanternfish](https://adventofcode.com/2021/day/6)             | :star: | :star: | :heavy_check_mark: |
 | 07  | [The Treachery of Whales](https://adventofcode.com/2021/day/7) | :star: | :star: | :heavy_check_mark: |
 | 08  | [Seven Segment Search](https://adventofcode.com/2021/day/8)    | :star: | :star: | :heavy_check_mark: |
-| 09  | [?](https://adventofcode.com/2021/day/9)                       |  :x:   |  :x:   |        :x:         |
+| 09  | [Smoke Basin](https://adventofcode.com/2021/day/9)             | :star: | :star: | :heavy_check_mark: |
 | 10  | [?](https://adventofcode.com/2021/day/10)                      |  :x:   |  :x:   |        :x:         |
 | 11  | [?](https://adventofcode.com/2021/day/11)                      |  :x:   |  :x:   |        :x:         |
 | 12  | [?](https://adventofcode.com/2021/day/12)                      |  :x:   |  :x:   |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   --------Part 2--------
 Day       Time  Rank  Score       Time   Rank  Score
+  9   00:05:14   351      0   00:24:05   1176      0
   8   00:07:48  1024      0   18:58:49  37833      0
   7   00:04:19  1038      0   00:07:47   1035      0
   6   00:04:23   403      0   00:07:40    235      0
