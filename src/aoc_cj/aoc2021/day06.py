@@ -5,7 +5,7 @@ def parse(txt: str) -> list[int]:
     return list(map(int, txt.split(",")))
 
 
-def solve(fish: list[int], days=80):
+def solve(fish: list[int], days: int = 80) -> int:
     fish_counts = Counter(fish)
     for _day in range(days):
         # all fish w/ timer 0 become fish w/ timer 6 and new fish w/ timer 8
@@ -17,11 +17,11 @@ def solve(fish: list[int], days=80):
     return sum(fish_counts.values())
 
 
-def parta(txt: str) -> None:
+def parta(txt: str) -> int:
     return solve(parse(txt))
 
 
-def partb(txt: str) -> None:
+def partb(txt: str) -> int:
     return solve(parse(txt), 256)
 
 

@@ -24,8 +24,7 @@ def parta(txt: str) -> int:
 
 
 def partb(txt: str) -> int:
-    windows = sliding_window(nums(txt), 3)
-    sums = map(sum, windows)
+    sums = (sum(w) for w in sliding_window(nums(txt), 3))
     return sum(b > a for a, b in sliding_window(sums, 2))
 
 

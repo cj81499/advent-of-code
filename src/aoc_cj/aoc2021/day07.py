@@ -1,13 +1,13 @@
-def parta(txt: str) -> None:
+def parta(txt: str) -> int:
     nums = list(map(int, txt.split(",")))
     return min(sum(abs(i - n) for n in nums) for i in range(min(nums), max(nums) + 1))
 
 
-def sum_of_naturals(n: int):
+def sum_of_naturals(n: int) -> int:
     return n * (n + 1) // 2
 
 
-def partb(txt: str) -> None:
+def partb(txt: str) -> int:
     nums = list(map(int, txt.split(",")))
     return min(sum(sum_of_naturals(abs(i - n)) for n in nums) for i in range(min(nums), max(nums) + 1))
 
