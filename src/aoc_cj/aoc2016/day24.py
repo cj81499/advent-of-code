@@ -1,6 +1,7 @@
 import itertools
 from collections import deque
-from collections.abc import Iterable
+
+from more_itertools import pairwise
 
 WALL = "#"
 OPEN = "."
@@ -15,13 +16,6 @@ def is_wall(grid: Grid, pos: Pos):
 
 def adj_pos(x: int, y: int):
     yield from ((x + dx, y + dy) for (dx, dy) in ((0, -1), (0, 1), (-1, 0), (1, 0)))
-
-
-def pairwise(iterable: Iterable):
-    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
-    a, b = itertools.tee(iterable)
-    next(b, None)
-    return zip(a, b)
 
 
 def path_distance(edges, possible_path):

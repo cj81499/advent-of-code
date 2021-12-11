@@ -1,17 +1,15 @@
 from collections import Counter
 
+from more_itertools import ichunked
+
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
-
-
-def chunk(li: list, n: int):
-    yield from (li[i : i + n] for i in range(0, len(li), n))
 
 
 def parta(txt: str):
     screen = {}
     p = IntcodeProgram.parse(txt)
     p.run()
-    for x, y, tile_id in chunk([*p.outputs], 3):
+    for x, y, tile_id in ichunked(p.outputs, 3):
         screen[(x, y)] = tile_id
     return Counter(screen.values())[2]
 

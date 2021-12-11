@@ -1,6 +1,5 @@
-import itertools
-
 import pytest
+from more_itertools import pairwise
 
 import aoc_cj.aoc2019.day24 as d
 
@@ -53,13 +52,6 @@ FIRST_REPEAT = """
 """.strip()
 
 
-def pairwise(iterable):
-    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
-    a, b = itertools.tee(iterable)
-    next(b, None)
-    return zip(a, b)
-
-
 def test_str_to_bugs():
     assert d.str_to_bugs(INITIAL) == frozenset(
         [
@@ -75,7 +67,7 @@ def test_str_to_bugs():
     )
 
 
-@pytest.mark.parametrize("before, after", pairwise([INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4]))
+@pytest.mark.parametrize("before, after", pairwise((INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4)))
 def test_step(before, after):
     print(f"{before=}, {after=}")
     before = d.str_to_bugs(before)

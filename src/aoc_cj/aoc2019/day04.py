@@ -1,9 +1,4 @@
-def pairwise(iterable):
-    prev = None
-    for current in iterable:
-        if prev:
-            yield (prev, current)
-        prev = current
+from more_itertools import pairwise
 
 
 def get_digits(n: int) -> list[int]:

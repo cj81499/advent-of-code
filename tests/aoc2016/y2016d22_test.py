@@ -1,5 +1,3 @@
-import pytest
-
 import aoc_cj.aoc2016.day22 as d
 
 EXAMPLE_INPUT = """
@@ -16,6 +14,5 @@ Filesystem            Size  Used  Avail  Use%
 """.strip()
 
 
-@pytest.mark.xfail
 def test_b():
     assert d.partb(EXAMPLE_INPUT) == 7

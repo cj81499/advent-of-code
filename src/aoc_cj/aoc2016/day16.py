@@ -1,16 +1,14 @@
+from more_itertools import ichunked
+
+
 def step(data):
     a = data
     b = "".join("1" if c == "0" else "0" for c in reversed(a))
     return f"{a}0{b}"
 
 
-def chunks(to_chunk, chunk_size):
-    for i in range(0, len(to_chunk), chunk_size):
-        yield to_chunk[i : i + chunk_size]
-
-
 def checksum(data):
-    cs = "".join("1" if len(set(pair)) == 1 else "0" for pair in chunks(data, 2))
+    cs = "".join("1" if len(set(pair)) == 1 else "0" for pair in ichunked(data, 2))
     return checksum(cs) if len(cs) % 2 == 0 else cs
 
 

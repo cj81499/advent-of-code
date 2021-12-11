@@ -1,19 +1,4 @@
-import itertools
-from collections.abc import Iterable
-from typing import TypeVar
-
-T = TypeVar("T")
-
-
-def sliding_window(iterable: Iterable[T], n: int) -> Iterable[tuple[T, ...]]:
-    """https://napsterinblue.github.io/notes/python/internals/itertools_sliding_window/"""
-    iterables = itertools.tee(iterable, n)
-
-    for iterable, num_skipped in zip(iterables, itertools.count()):
-        for _ in range(num_skipped):
-            next(iterable, None)
-
-    return zip(*iterables)
+from more_itertools import pairwise, triplewise
 
 
 def nums(txt: str) -> list[int]:
@@ -21,12 +6,12 @@ def nums(txt: str) -> list[int]:
 
 
 def parta(txt: str) -> int:
-    return sum(b > a for a, b in sliding_window(nums(txt), 2))
+    return sum(b > a for a, b in pairwise(nums(txt)))
 
 
 def partb(txt: str) -> int:
-    sums = (sum(w) for w in sliding_window(nums(txt), 3))
-    return sum(b > a for a, b in sliding_window(sums, 2))
+    sums = (sum(w) for w in triplewise(nums(txt)))
+    return sum(b > a for a, b in pairwise(sums))
 
 
 def main(txt: str) -> None:

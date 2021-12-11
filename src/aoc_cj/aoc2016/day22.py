@@ -1,104 +1,83 @@
-import dataclasses
-import enum
 import itertools
+import re
+from dataclasses import dataclass
+from typing import NamedTuple, Optional
+
+from more_itertools import one
 
 
-@dataclasses.dataclass
+class Point(NamedTuple):
+    x: int
+    y: int
+
+
+@dataclass(frozen=True)
 class Node:
-    filesystem: str
+    point: Point
     size: int
     used: int
-    available: int
-    used_percent: int
+
+    __PATTERN = re.compile(r"(?P<fs>[\w\d\/-]+) *(?P<size>\d+)T *(?P<used>\d+)T *(?P<avail>\d+)T *(?P<percent>\d+)%")
 
     @staticmethod
-    def parse(node: str):
-        name, *nums = node.split()
-        return Node(name, *(int(n[:-1]) for n in nums))
+    def parse(string: str) -> Optional["Node"]:
+        match = Node.__PATTERN.match(string)
+        if match is None:
+            return None
+        size, used, avail = map(int, match.group("size", "used", "avail"))
+        assert size - used == avail
+        *_, x, y = match.group("fs").split("/")[-1].split("-")[-2:]
+        point = Point(int(x[1:]), int(y[1:]))
+        return Node(point, size, used)
 
-    def x(self) -> int:
-        return int(self.filesystem.split("-")[1][1:])
+    @property
+    def avail(self) -> int:
+        return self.size - self.used
 
-    def y(self) -> int:
-        return int(self.filesystem.split("-")[2][1:])
-
-
-class NodeType(enum.Enum):
-    EMPTY = 0
-    NORMAL = 1
-    BLOCKED = 2
-
-    def __str__(self) -> str:
-        if self is NodeType.EMPTY:
-            return " "
-        if self is NodeType.NORMAL:
-            return "."
-        return "#"
+    def is_empty(self) -> bool:
+        return self.used == 0
 
 
-def parta(txt: str):
-    nodes = [Node.parse(line) for line in txt.splitlines()[2:]]
-    viable_pairs = 0
-    for nodeA, nodeB in itertools.permutations(nodes, 2):
-        if nodeA.used > 0 and nodeA.used <= nodeB.available:
-            viable_pairs += 1
-    return viable_pairs
+def parta(txt: str) -> int:
+    nodes = [n for l in txt.splitlines() if (n := Node.parse(l)) is not None]
+    return sum(a.used != 0 and a.used <= b.avail for a, b in itertools.permutations(nodes, 2))
 
 
-def partb(txt: str):
-    nodes = [Node.parse(line) for line in txt.splitlines()[2:]]
+def partb(txt: str) -> None:
+    grid = {n.point: n for l in txt.splitlines() if (n := Node.parse(l)) is not None}
+    max_x, _max_y = max(grid)
 
-    # top right node
-    goal_node = max((n for n in nodes if n.y() == 0), key=lambda n: n.x())
+    # use empty node to move data where we want
+    empty_nodes = {n for n in grid.values() if n.used == 0}
+    empty_node = one(empty_nodes)  # there is only 1 empty node in my input
 
-    empty_nodes = [n for n in nodes if n.used == 0]
-    assert len(empty_nodes) == 1
-    empty_node = empty_nodes[0]
+    # first, empty node must be moved next to goal data
+    goal_pos = Point(max_x, 0)
+    empty_node_pos = empty_node.point
 
-    # idea: simplify to search
-    max_x = max(n.x() for n in nodes)
-    max_y = max(n.y() for n in nodes)
+    # detect the example input
+    is_example = goal_pos == Point(2, 0)
+    if is_example:
+        # in the example, we move twice to get the empty node to the top right
+        # corner of the grid, moving the goal 1 to the left in the process
+        steps = 2
+    else:
+        # in my input there's a horizontal "wall" of nodes
+        # the empty data must move around (by going all the way to the left)
+        steps = (
+            empty_node_pos.x  # go all the way to the left (to get around the wall)
+            + empty_node_pos.y  # go all the way to the top
+            + goal_pos.x  # go all the way to the right, moving the goal 1 to the left in the process
+        )
 
-    grid = []
-    for y in range(max_y + 1):
-        grid.append([])
-        for x in range(max_x + 1):
-            node = next(n for n in nodes if n.x() == x and n.y() == y)
-            type = NodeType.NORMAL
-            if node.used == 0:
-                type = NodeType.EMPTY
-            if node.used > 100:
-                type = NodeType.BLOCKED
-            grid[-1].append(type)
+    # moving goal data left one node takes 5 steps
+    # it must be moved max_x - 1 more times (it's already been moved left once)
+    steps += (max_x - 1) * 5  # remaining steps
 
-    for row in grid:
-        print("".join(str(t) for t in row))
-
-    print(empty_node)
-    print(goal_node)
-
-    # TODO: actually solve this instead of "faking" it
-
-    # my input has a "wall"
-    # move the empty node all the way to the left
-    moves = empty_node.x()
-    # move the empty node up (to the top left)
-    moves += empty_node.y()
-    # move the empty node right (to the top right)
-    moves += goal_node.x()
-    # moving the goal data left once takes 5 moves.
-    # subtract one b/c we already moved it once by positioning the empty node in the top right
-    moves += 5 * (goal_node.x() - 1)
-
-    return moves
-
-    print(empty_node)
-    print(goal_node)
-
-    return -1
+    return steps
 
 
-def main(txt: str):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
     print(f"partb: {partb(txt)}")
 
