@@ -9,7 +9,7 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "python.testing.pytestArgs": ["tests"],
+  "python.testing.pytestArgs": ["tests", "--capture=no"],
   "python.testing.pytestEnabled": true,
   "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
