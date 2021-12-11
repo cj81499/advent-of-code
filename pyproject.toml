@@ -42,6 +42,37 @@ markers = [
 ]
 xfail_strict=true
 
+[tool.mypy]
+strict = true
+# TODO: type check tests too
+exclude = [
+  '^tests\/aoc2015\/',
+  '^tests\/aoc2016\/',
+  '^tests\/aoc2017\/',
+  '^tests\/aoc2018\/',
+  '^tests\/aoc2019\/',
+  '^tests\/aoc2020\/',
+  '^tests\/aoc2021\/',
+]
+
+[[tool.mypy.overrides]]
+module = ['aocd', 'z3']
+ignore_missing_imports = true
+
+# Opt out of type checking for old years.
+# I may eventually go back and add types to these.
+[[tool.mypy.overrides]]
+module = [
+    'aoc_cj.aoc2015.*',
+    'aoc_cj.aoc2016.*',
+    'aoc_cj.aoc2017.*',
+    'aoc_cj.aoc2018.*',
+    'aoc_cj.aoc2019.*',
+    'aoc_cj.aoc2020.*',
+]
+ignore_errors = true
+
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
