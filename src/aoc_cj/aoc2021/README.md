@@ -14,7 +14,7 @@
 | 10  | [Syntax Scoring](https://adventofcode.com/2021/day/10)         | :star: | :star: | :heavy_check_mark: |
 | 11  | [Dumbo Octopus](https://adventofcode.com/2021/day/11)          | :star: | :star: | :heavy_check_mark: |
 | 12  | [Passage Pathing](https://adventofcode.com/2021/day/12)        | :star: | :star: | :heavy_check_mark: |
-| 13  | [?](https://adventofcode.com/2021/day/13)                      |  :x:   |  :x:   |        :x:         |
+| 13  | [Transparent Origami](https://adventofcode.com/2021/day/13)    | :star: | :star: | :heavy_check_mark: |
 | 14  | [?](https://adventofcode.com/2021/day/14)                      |  :x:   |  :x:   |        :x:         |
 | 15  | [?](https://adventofcode.com/2021/day/15)                      |  :x:   |  :x:   |        :x:         |
 | 16  | [?](https://adventofcode.com/2021/day/16)                      |  :x:   |  :x:   |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   --------Part 2--------
 Day       Time  Rank  Score       Time   Rank  Score
+ 13   00:09:51   350      0   00:14:21    341      0
  12   00:12:45   591      0   00:37:36   1799      0
  11   00:32:08  2813      0   00:34:19   2542      0
  10   00:04:56   222      0   00:11:02    323      0
