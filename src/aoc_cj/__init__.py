@@ -32,8 +32,8 @@ def solve(year, day, data) -> tuple[Answer, Answer]:
 
     try:
         module = importlib.import_module(f"aoc_cj.aoc{year}.day{day_str}")
-        ans_a = getattr(module, f"parta", _NULL)(data)
-        ans_b = getattr(module, f"partb", _NULL)(data)
+        ans_a = getattr(module, "parta", _NULL)(data)
+        ans_b = getattr(module, "partb", _NULL)(data)
     except ModuleNotFoundError as e:
         raise NotImplementedError() from e
     except Exception as e:

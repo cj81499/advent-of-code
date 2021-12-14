@@ -48,12 +48,12 @@ class Region:
         self.x = x
         self.y = y
         self.cave_system = cave_system
-        self.geologic_index = Region.geologic_index(x, y, cave_system)
+        self.geologic_index = Region._geologic_index(x, y, cave_system)
         self.erosion_level = (self.geologic_index + cave_system.depth) % 20183
         self.type = Type(self.erosion_level % 3)
 
     @staticmethod
-    def geologic_index(x, y, cave_system):
+    def _geologic_index(x, y, cave_system):
         if (x, y) == CaveSystem.MOUTH:
             return 0
         if (x, y) == cave_system.target:

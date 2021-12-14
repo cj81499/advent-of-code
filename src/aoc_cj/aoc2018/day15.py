@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import dataclasses
 import itertools
 from collections import deque
@@ -7,7 +5,7 @@ from enum import Enum
 
 
 class Node:
-    def __init__(self, to: Location):
+    def __init__(self, to: "Location"):
         self.to = to
 
     def adjacent_nodes(self):
@@ -15,12 +13,12 @@ class Node:
 
 
 class StartNode(Node):
-    def __init__(self, start: Location):
+    def __init__(self, start: "Location"):
         super().__init__(start)
 
 
 class MoveNode(Node):
-    def __init__(self, from_: Node, direction: Direction):
+    def __init__(self, from_: Node, direction: "Direction"):
         super().__init__(from_.to.add(direction))
         self.from_ = from_
         self.direction = direction
@@ -64,7 +62,7 @@ class Direction(Enum):
 @dataclasses.dataclass
 class CavePiece:
     cave_string: str
-    cave: Cave
+    cave: "Cave"
     loc: Location
 
     def __str__(self):
@@ -72,12 +70,12 @@ class CavePiece:
 
 
 class Wall(CavePiece):
-    def __init__(self, cave: Cave, loc: Location):
+    def __init__(self, cave: "Cave", loc: Location):
         super().__init__("#", cave, loc)
 
 
 class Open(CavePiece):
-    def __init__(self, cave: Cave, loc: Location):
+    def __init__(self, cave: "Cave", loc: Location):
         super().__init__(".", cave, loc)
 
 
@@ -85,12 +83,12 @@ class Unit(CavePiece):
     DEFAULT_ATTACK_POWER = 3
     DEFAULT_HIT_POINTS = 200
 
-    def __init__(self, board_string: str, cave: Cave, loc: Location, attack_power: int = DEFAULT_ATTACK_POWER):
+    def __init__(self, board_string: str, cave: "Cave", loc: Location, attack_power: int = DEFAULT_ATTACK_POWER):
         super().__init__(board_string, cave, loc)
         self.attack_power = attack_power
         self.hit_points = Unit.DEFAULT_HIT_POINTS
 
-    def deal_damage(self, other: Unit):
+    def deal_damage(self, other: "Unit"):
         other.hit_points -= self.attack_power
         if other.is_dead():
             other.die()
@@ -188,12 +186,12 @@ class Unit(CavePiece):
 
 
 class Goblin(Unit):
-    def __init__(self, cave: Cave, loc: Location):
+    def __init__(self, cave: "Cave", loc: Location):
         super().__init__("G", cave, loc)
 
 
 class Elf(Unit):
-    def __init__(self, cave: Cave, loc: Location, attack_power: int):
+    def __init__(self, cave: "Cave", loc: Location, attack_power: int):
         super().__init__("E", cave, loc, attack_power)
 
 
@@ -201,7 +199,7 @@ class CavePieceFactory:
     def __init__(self, elf_attack_power: int):
         self.elf_attack_power = elf_attack_power
 
-    def get_cave_piece(self, c: str, cave: Cave, loc: Location):
+    def get_cave_piece(self, c: str, cave: "Cave", loc: Location):
         if c == "#":
             return Wall(cave, loc)
         elif c == "G":
