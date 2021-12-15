@@ -23,11 +23,10 @@ def min_risk(grid: dict[Point, int]) -> int:
             continue
 
         for adj_p in adj(p):
-            if adj_p in grid:
-                if adj_p not in risk_of_path_to_point:
-                    new_risk = risk_so_far + grid[adj_p]
-                    risk_of_path_to_point[adj_p] = new_risk
-                    h.push((new_risk, adj_p))
+            if adj_p in grid and adj_p not in risk_of_path_to_point:
+                new_risk = risk_so_far + grid[adj_p]
+                risk_of_path_to_point[adj_p] = new_risk
+                h.push((new_risk, adj_p))
 
     return risk_of_path_to_point[goal]
 
