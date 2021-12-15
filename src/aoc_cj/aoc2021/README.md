@@ -16,7 +16,7 @@
 | 12  | [Passage Pathing](https://adventofcode.com/2021/day/12)         | :star: | :star: | :heavy_check_mark: |
 | 13  | [Transparent Origami](https://adventofcode.com/2021/day/13)     | :star: | :star: | :heavy_check_mark: |
 | 14  | [Extended Polymerization](https://adventofcode.com/2021/day/14) | :star: | :star: | :heavy_check_mark: |
-| 15  | [?](https://adventofcode.com/2021/day/15)                       |  :x:   |  :x:   |        :x:         |
+| 15  | [Chiton](https://adventofcode.com/2021/day/15)                  | :star: | :star: | :heavy_check_mark: |
 | 16  | [?](https://adventofcode.com/2021/day/16)                       |  :x:   |  :x:   |        :x:         |
 | 17  | [?](https://adventofcode.com/2021/day/17)                       |  :x:   |  :x:   |        :x:         |
 | 18  | [?](https://adventofcode.com/2021/day/18)                       |  :x:   |  :x:   |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   --------Part 2--------
 Day       Time  Rank  Score       Time   Rank  Score
+ 15   00:12:43   591      0   00:20:28    246      0
  14   00:13:28  1627      0   00:52:17   2352      0
  13   00:09:51   350      0   00:14:21    341      0
  12   00:12:45   591      0   00:37:36   1799      0
