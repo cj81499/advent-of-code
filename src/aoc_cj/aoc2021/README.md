@@ -17,7 +17,7 @@
 | 13  | [Transparent Origami](https://adventofcode.com/2021/day/13)     | :star: | :star: | :heavy_check_mark: |
 | 14  | [Extended Polymerization](https://adventofcode.com/2021/day/14) | :star: | :star: | :heavy_check_mark: |
 | 15  | [Chiton](https://adventofcode.com/2021/day/15)                  | :star: | :star: | :heavy_check_mark: |
-| 16  | [Packet Decoder](https://adventofcode.com/2021/day/16)          |  :x:   |  :x:   |        :x:         |
+| 16  | [Packet Decoder](https://adventofcode.com/2021/day/16)          | :star: | :star: | :heavy_check_mark: |
 | 17  | [Trick Shot](https://adventofcode.com/2021/day/17)              | :star: | :star: | :heavy_check_mark: |
 | 18  | [?](https://adventofcode.com/2021/day/18)                       |  :x:   |  :x:   |        :x:         |
 | 19  | [?](https://adventofcode.com/2021/day/19)                       |  :x:   |  :x:   |        :x:         |
@@ -34,6 +34,7 @@
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
  17   00:29:52   1893      0   00:31:33   1140      0
+ 16   16:16:08  17662      0       >24h  22415      0
  15   00:12:43    591      0   00:20:28    246      0
  14   00:13:28   1627      0   00:52:17   2352      0
  13   00:09:51    350      0   00:14:21    341      0
