@@ -4,7 +4,7 @@ import itertools
 from math import ceil, floor
 from typing import Iterable, Iterator, Optional
 
-from more_itertools import first, peekable
+from more_itertools import peekable
 
 
 @dataclasses.dataclass
@@ -20,10 +20,10 @@ class TreeNode(abc.ABC):
         return self
 
     def reduce_once(self) -> bool:
-        if to_explode := first(self._explodable(), None):
+        if to_explode := next(self._explodable(), None):
             to_explode.explode()
             return True
-        if to_split := first(self._splitable(), None):
+        if to_split := next(self._splitable(), None):
             to_split.split()
             return True
         return False
@@ -153,11 +153,11 @@ def parse(txt: str):
 
 
 def parse_pair(it: "peekable[str]") -> PairNode:
-    assert first(it) == "["
+    assert next(it) == "["
     left = (parse_pair if it.peek() == "[" else parse_int)(it)
-    assert first(it) == ","
+    assert next(it) == ","
     right = (parse_pair if it.peek() == "[" else parse_int)(it)
-    assert first(it) == "]"
+    assert next(it) == "]"
     return PairNode(None, left, right)
 
 
@@ -167,7 +167,7 @@ def parse_int(it: Iterator[str]) -> ValueNode:
 
 def sum_lines(lines: list[str]):
     it = iter(lines)
-    total = parse(first(it))
+    total = parse(next(it))
     for line in it:
         total = total.add(parse(line))
     return total

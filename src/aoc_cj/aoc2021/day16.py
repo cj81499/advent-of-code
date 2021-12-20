@@ -3,7 +3,7 @@ import dataclasses
 from typing import Iterable, Literal, Sequence, cast
 
 from more_itertools import chunked, take
-from more_itertools.more import first, peekable
+from more_itertools.more import peekable
 
 from aoc_cj.util import prod
 
@@ -97,7 +97,7 @@ def parse_packet(binary: Iterable[Binary]) -> Packet:
         return LiteralValuePacket(version, type_id, value)
 
     # operator packet
-    length_type_id = first(binary)
+    length_type_id = next(binary)
 
     children = []
     if length_type_id == 0:
