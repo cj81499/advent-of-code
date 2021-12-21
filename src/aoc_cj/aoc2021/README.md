@@ -20,8 +20,8 @@
 | 16  | [Packet Decoder](https://adventofcode.com/2021/day/16)          | :star: | :star: | :heavy_check_mark: |
 | 17  | [Trick Shot](https://adventofcode.com/2021/day/17)              | :star: | :star: | :heavy_check_mark: |
 | 18  | [Snailfish](https://adventofcode.com/2021/day/18)               | :star: | :star: | :heavy_check_mark: |
-| 19  | [?](https://adventofcode.com/2021/day/19)                       |  :x:   |  :x:   |        :x:         |
-| 20  | [?](https://adventofcode.com/2021/day/20)                       |  :x:   |  :x:   |        :x:         |
+| 19  | [Beacon Scanner](https://adventofcode.com/2021/day/19)          |  :x:   |  :x:   |        :x:         |
+| 20  | [Trench Map](https://adventofcode.com/2021/day/20)              | :star: | :star: |        :x:         |
 | 21  | [?](https://adventofcode.com/2021/day/21)                       |  :x:   |  :x:   |        :x:         |
 | 22  | [?](https://adventofcode.com/2021/day/22)                       |  :x:   |  :x:   |        :x:         |
 | 23  | [?](https://adventofcode.com/2021/day/23)                       |  :x:   |  :x:   |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 20   00:21:36    253      0   00:24:11    239      0
  18       >24h  15803      0       >24h  15761      0
  17   00:29:52   1893      0   00:31:33   1140      0
  16   16:16:08  17662      0       >24h  22415      0
