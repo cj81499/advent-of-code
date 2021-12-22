@@ -23,7 +23,7 @@
 | 19  | [Beacon Scanner](https://adventofcode.com/2021/day/19)          |  :x:   |  :x:   |        :x:         |
 | 20  | [Trench Map](https://adventofcode.com/2021/day/20)              | :star: | :star: |        :x:         |
 | 21  | [Dirac Dice](https://adventofcode.com/2021/day/21)              | :star: | :star: | :heavy_check_mark: |
-| 22  | [?](https://adventofcode.com/2021/day/22)                       |  :x:   |  :x:   |        :x:         |
+| 22  | [Reactor Reboot](https://adventofcode.com/2021/day/22)          | :star: | :star: | :heavy_check_mark: |
 | 23  | [?](https://adventofcode.com/2021/day/23)                       |  :x:   |  :x:   |        :x:         |
 | 24  | [?](https://adventofcode.com/2021/day/24)                       |  :x:   |  :x:   |        :x:         |
 | 25  | [?](https://adventofcode.com/2021/day/25)                       |  :x:   |  :x:   |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 22   00:11:16    660      0       >24h  15620      0
  21   00:14:15   1328      0   00:38:33    649      0
  20   00:21:36    253      0   00:24:11    239      0
  18       >24h  15803      0       >24h  15761      0
