@@ -4,7 +4,7 @@ from typing import Iterable
 
 from more_itertools import ilen
 
-PATTERN = re.compile(r"target area: x=(-?\d+)..(-?\d+), y=(-?\d+)..(-?\d+)")
+PATTERN = re.compile(r"target area: x=(-?\d+)\.\.(-?\d+), y=(-?\d+)\.\.(-?\d+)")
 INF = float("inf")
 VELOCITY_RANGE = range(-500, 500)  # this should probably be enough...
 
