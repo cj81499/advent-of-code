@@ -42,7 +42,7 @@ def best_asteroid(asteroids: set[complex]) -> complex:
 
 def dist(a: complex, b: complex) -> float:
     diff = a - b
-    return (diff.real ** 2 + diff.imag ** 2) ** 0.5
+    return (diff.real**2 + diff.imag**2) ** 0.5
 
 
 def vaporize_order(lines: list[str]) -> list[complex]:

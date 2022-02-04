@@ -69,7 +69,7 @@ def get_output_for_line(line: str) -> int:
     pattern_to_digit[zero_pattern] = 0
 
     output_digits = [pattern_to_digit["".join(sorted(output_value))] for output_value in output_values]
-    return sum(10 ** i * n for i, n in enumerate(reversed(output_digits)))
+    return sum(10**i * n for i, n in enumerate(reversed(output_digits)))
 
 
 def main(txt: str) -> None:

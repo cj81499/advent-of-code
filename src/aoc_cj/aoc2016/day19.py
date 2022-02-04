@@ -7,7 +7,7 @@ import itertools
 def parta(txt: str):
     def pattern():
         for i in itertools.count():
-            yield from range(1, 2 ** i, 2)
+            yield from range(1, 2**i, 2)
 
     return next(itertools.islice(pattern(), int(txt) - 1, None))
 
@@ -15,7 +15,7 @@ def parta(txt: str):
 def partb(txt: str):
     def pattern():
         for i in itertools.count():
-            yield from (n for n in range(1, 3 ** i + 1) if n < 3 ** (i - 1) or n % 2 != 0)
+            yield from (n for n in range(1, 3**i + 1) if n < 3 ** (i - 1) or n % 2 != 0)
 
     return next(itertools.islice(pattern(), int(txt) - 1, None))
 

@@ -15,7 +15,7 @@ def parta(txt):
 
 def factors(n):
     results = set()
-    for i in range(1, int(n ** 0.5) + 1):
+    for i in range(1, int(n**0.5) + 1):
         if not n % i:
             results.add(i)
             results.add(n // i)
