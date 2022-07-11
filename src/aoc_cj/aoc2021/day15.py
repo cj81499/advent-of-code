@@ -1,5 +1,5 @@
 import itertools
-from typing import Iterator
+from collections.abc import Iterator
 
 from aoc_cj.util.heap import Heap
 

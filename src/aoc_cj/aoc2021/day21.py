@@ -1,7 +1,7 @@
 import dataclasses
 import itertools
+from collections.abc import Iterator
 from functools import cache
-from typing import Iterator
 
 from more_itertools import pairwise, take
 

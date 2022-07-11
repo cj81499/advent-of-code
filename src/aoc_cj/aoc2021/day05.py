@@ -2,7 +2,7 @@ import dataclasses
 import itertools
 import re
 from collections import Counter
-from typing import Iterator
+from collections.abc import Iterator
 
 from aoc_cj.util import clamp
 

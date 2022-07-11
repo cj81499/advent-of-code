@@ -1,5 +1,5 @@
+from collections.abc import Iterable
 from functools import reduce
-from typing import Iterable
 
 RECIPIE_TEASPOONS = 100
 CALORIE_REQUIREMENT = 500

@@ -1,4 +1,4 @@
-from typing import Iterable
+from collections.abc import Iterable
 
 
 def parse(txt: str) -> Iterable[tuple[str, int]]:

@@ -1,8 +1,9 @@
 import abc
 import dataclasses
 import itertools
+from collections.abc import Iterable, Iterator
 from math import ceil, floor
-from typing import Iterable, Iterator, Optional
+from typing import Optional
 
 from more_itertools import peekable
 

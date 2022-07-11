@@ -1,5 +1,5 @@
 import itertools
-from typing import Iterable
+from collections.abc import Iterable
 
 FOURTY_MILLION = 40_000_000
 FIVE_MILLION = 5_000_000
