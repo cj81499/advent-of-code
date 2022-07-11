@@ -1,6 +1,6 @@
 import itertools
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
 from more_itertools import ilen
 

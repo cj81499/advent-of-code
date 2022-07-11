@@ -1,5 +1,6 @@
 from collections import Counter, defaultdict
-from typing import Callable, Iterable, Sequence
+from collections.abc import Iterable, Sequence
+from typing import Callable
 
 Path = Sequence[str]
 Edges = dict[str, set[str]]

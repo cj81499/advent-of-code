@@ -1,6 +1,7 @@
 import abc
 import dataclasses
-from typing import Iterable, Literal, Sequence, cast
+from collections.abc import Iterable, Sequence
+from typing import Literal, cast
 
 from more_itertools import chunked, take
 from more_itertools.more import peekable
