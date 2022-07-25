@@ -10,7 +10,7 @@ python = ">=3.9, <3.11"
 advent-of-code-data = "^1.1.2"
 lark-parser = "^0.12.0"
 numpy = "^1.23.1" # remove me
-z3-solver = "^4.9.1"
+z3-solver = "^4.10.1"
 more-itertools = "^8.13.0"
 
 [tool.poetry.dev-dependencies]
