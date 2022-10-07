@@ -1,8 +1,3 @@
-import itertools
-import re
-from collections import Counter, defaultdict, deque
-
-
 def parta(txt: str) -> None:
     print(txt)
     return None
