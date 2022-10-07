@@ -50,7 +50,7 @@
     "description": "Scaffold Advent of Code Test",
     "prefix": "aoc-test",
     "body": [
-      "import aoc_cj.aoc20${2:21}.day${1:n} as d",
+      "import aoc_cj.aoc20${2:22}.day${1:n} as d",
       "",
       "EXAMPLE_INPUT = \"\"\"",
       "${3:sample input}",
