@@ -1,9 +1,10 @@
-def deck_of_size(n):
-    return [x for x in range(n)]
+DEAL_INTO_NEW_STACK = "deal into new stack"
+CUT_N_CARDS = "cut "
+DEAL_WITH_INCREMENT_N = "deal with increment "
 
 
 def deal_into_new_stack(deck):
-    return list(reversed(deck))
+    return tuple(reversed(deck))
 
 
 def cut(deck, n):
@@ -12,34 +13,29 @@ def cut(deck, n):
 
 def deal_with_increment(deck, n):
     new_deck = [None] * len(deck)
-    for i, x in enumerate(deck):
-        new_deck[(i * n) % len(new_deck)] = x
-    return new_deck
+    for i, card in enumerate(deck):
+        new_deck[(i * n) % len(new_deck)] = card
+    return tuple(new_deck)
 
 
-def perform_shuffle(txt: str, deck_size=10007, repeat=1):
-    deck = deck_of_size(deck_size)
-    for _ in range(repeat):
-        for instruction in txt.splitlines():
-            if instruction == "deal into new stack":
-                deck = deal_into_new_stack(deck)
-            elif instruction.startswith("cut "):
-                deck = cut(deck, int(instruction.split()[-1]))
-            elif instruction.startswith("deal with increment "):
-                deck = deal_with_increment(deck, int(instruction.split()[-1]))
-            else:
-                print("unrecognized shuffle instruction:", instruction)
-                exit(1)
+def shuffle(txt: str, deck_size: int):
+    deck = list(range(deck_size))
+    for move in txt.splitlines():
+        if move == DEAL_INTO_NEW_STACK:
+            deck = deal_into_new_stack(deck)
+        elif move.startswith(CUT_N_CARDS):
+            deck = cut(deck, int(move.split()[-1]))
+        elif move.startswith(DEAL_WITH_INCREMENT_N):
+            deck = deal_with_increment(deck, int(move.split()[-1]))
     return deck
 
 
 def parta(txt: str):
-    return perform_shuffle(txt).index(2019)
+    return shuffle(txt, 10007).index(2019)
 
 
 def partb(txt: str):
-    pass
-    # return perform_shuffle(txt, deck_size=119315717514047, repeat=101741582076661)[2020]
+    return None
 
 
 if __name__ == "__main__":
