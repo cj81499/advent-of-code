@@ -14,11 +14,11 @@ jobs:
         python-version: ["3.9", "3.10"]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
 
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v4.2.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -27,7 +27,7 @@ jobs:
 
       - name: Cache
         id: poetry-venv-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v3.0.10
         with:
           path: .venv
           key: venv-${{ hashFiles('**/poetry.lock') }}
