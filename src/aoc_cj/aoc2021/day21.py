@@ -62,13 +62,7 @@ def helper(state: State):
 
 def partb(txt: str) -> None:
     players = [Player(int(line.split()[-1])) for line in txt.splitlines()]
-    state = State(
-        players[0].position,
-        0,
-        players[1].position,
-        0,
-        0,
-    )
+    state = State(players[0].position, 0, players[1].position, 0, 0)
 
     return max(helper(state))
 
