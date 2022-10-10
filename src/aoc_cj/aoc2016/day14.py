@@ -1,16 +1,13 @@
 import itertools
 from hashlib import md5
 
+from more_itertools import windowed
+
 REQUIRED_KEYS = 64
 
 
-def groupwise(iterable, n):
-    for i in range(len(iterable) - n + 1):
-        yield iterable[i : i + n]
-
-
 def n_repeat_character(h: str, n):
-    for chars in groupwise(h, n):  # for each view of size n
+    for chars in windowed(h, n):  # for each view of size n
         if len(set(chars)) == 1:  # if the view only contains one character repeated n times
             return chars[0]  # return the character
     return None  # if no such repeat exists, return None

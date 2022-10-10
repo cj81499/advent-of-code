@@ -1,6 +1,8 @@
 from functools import reduce
 from operator import xor
 
+from more_itertools import ichunked
+
 SUFFIX = (17, 31, 73, 47, 23)
 DEFAULT_LIST_SIZE = 256
 
@@ -17,13 +19,8 @@ def do_round(nums, lengths, pos=0, skip_size=0):
     return pos, skip_size
 
 
-def chunks(to_chunk, chunk_size):
-    for i in range(0, len(to_chunk), chunk_size):
-        yield to_chunk[i : i + chunk_size]
-
-
 def dense_hash(sparse_hash):
-    return "".join(hex(reduce(xor, c))[2:].zfill(2) for c in chunks(sparse_hash, 16))
+    return "".join(hex(reduce(xor, c))[2:].zfill(2) for c in ichunked(sparse_hash, 16))
 
 
 def knot_hash(txt: str):

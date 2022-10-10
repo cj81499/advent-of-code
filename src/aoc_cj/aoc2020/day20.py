@@ -1,5 +1,6 @@
 import enum
 import itertools
+from math import prod
 
 import numpy as np
 
@@ -145,7 +146,7 @@ def sea_monster_at(picture, y, x):
 def parta(txt):
     tiles = parse_tiles(txt)
     corners = [t for t in tiles if t.empty_connections() == 2]
-    return np.prod([t.n for t in corners])
+    return prod(t.n for t in corners)
 
 
 def partb(txt):

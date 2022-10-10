@@ -1,3 +1,5 @@
+from more_itertools import ilen
+
 MAX_32_BIT_INTEGER = 0xFFFF_FFFF
 
 
@@ -6,7 +8,7 @@ def parta(txt: str):
 
 
 def partb(txt: str, max_ip=MAX_32_BIT_INTEGER):
-    return sum(1 for _ in valid_ips(txt, max_ip))
+    return ilen(valid_ips(txt, max_ip))
 
 
 def valid_ips(txt: str, max_ip=MAX_32_BIT_INTEGER):

@@ -1,12 +1,11 @@
 import abc
 import dataclasses
 from collections.abc import Iterable, Sequence
+from math import prod
 from typing import Literal, cast
 
-from more_itertools import chunked, take
+from more_itertools import ichunked, take
 from more_itertools.more import peekable
-
-from aoc_cj.util import prod
 
 Binary = Literal[0, 1]
 
@@ -89,11 +88,12 @@ def parse_packet(binary: Iterable[Binary]) -> Packet:
 
     if type_id == 4:  # literal value
         value = 0
-        for c in chunked(binary, 5):
-            for b in c[1:]:
+        for c in ichunked(binary, 5):
+            first = next(c)
+            for b in c:
                 value <<= 1
                 value |= b
-            if c[0] == 0:
+            if first == 0:
                 break
         return LiteralValuePacket(version, type_id, value)
 
