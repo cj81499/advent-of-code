@@ -16,7 +16,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3.1.0
 
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4.3.0
         with:
@@ -30,7 +29,7 @@ jobs:
         uses: actions/cache@v3.0.11
         with:
           path: .venv
-          key: venv-${{ hashFiles('**/poetry.lock') }}
+          key: venv-python${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install Dependencies
         run: poetry install
@@ -39,6 +38,7 @@ jobs:
       - name: Test
         run: poetry run pytest --cov=./ --cov-report=xml
 
-      # TODO: only upload for 3.9
+      # TODO: fix coverage "jitter" on PRs
+      # consider uploading only for one python version
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v3
