@@ -1,6 +1,6 @@
 [[package]]
 name = "advent-of-code-data"
-version = "1.1.4"
+version = "1.2.0"
 description = "Get your puzzle data with a single import"
 category = "main"
 optional = false
@@ -522,12 +522,12 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9, <4"
-content-hash = "a65329525adf54bbe127a5eee73b58b6aa57603c24224e798f6a96a29d168743"
+content-hash = "87359cf178e8f3bb78bcab63826ebb512d8609094eb0241f585f836d3c9034af"
 
 [metadata.files]
 advent-of-code-data = [
-    {file = "advent-of-code-data-1.1.4.tar.gz", hash = "sha256:02ef14b3fc8277126276f801046977a38d72967ae8ee4b5004258676f947270b"},
-    {file = "advent_of_code_data-1.1.4-py2.py3-none-any.whl", hash = "sha256:33ef04caef00e2691bc977b9870a2884857acaaf6816144b4a87940a620a10ec"},
+    {file = "advent-of-code-data-1.2.0.tar.gz", hash = "sha256:f0eb52a4b7f09dada2835d0b0fd7892636b1583b3c9caa7cab31886f3ff90450"},
+    {file = "advent_of_code_data-1.2.0-py2.py3-none-any.whl", hash = "sha256:38186c6833dc07d331515ce5825137a62f8f58bdb4e9b60def11ab84202c3909"},
 ]
 attrs = [
     {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
