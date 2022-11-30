@@ -1,6 +1,6 @@
 [[package]]
 name = "advent-of-code-data"
-version = "1.2.1"
+version = "1.2.2"
 description = "Get your puzzle data with a single import"
 category = "main"
 optional = false
@@ -57,8 +57,6 @@ click = ">=8.0.0"
 mypy-extensions = ">=0.4.3"
 pathspec = ">=0.9.0"
 platformdirs = ">=2"
-tomli = {version = ">=1.1.0", markers = "python_full_version < \"3.11.0a7\""}
-typing-extensions = {version = ">=3.10.0.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
 colorama = ["colorama (>=0.4.3)"]
@@ -120,9 +118,6 @@ category = "dev"
 optional = false
 python-versions = ">=3.7"
 
-[package.dependencies]
-tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.11.0a6\" and extra == \"toml\""}
-
 [package.extras]
 toml = ["tomli"]
 
@@ -133,17 +128,6 @@ description = "Distribution utilities"
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "exceptiongroup"
-version = "1.0.0"
-description = "Backport of PEP 654 (exception groups)"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[package.extras]
-test = ["pytest (>=6)"]
 
 [[package]]
 name = "filelock"
@@ -321,11 +305,9 @@ python-versions = ">=3.7"
 [package.dependencies]
 attrs = ">=19.2.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
-exceptiongroup = {version = ">=1.0.0rc8", markers = "python_version < \"3.11\""}
 iniconfig = "*"
 packaging = "*"
 pluggy = ">=0.12,<2.0"
-tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 
 [package.extras]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
@@ -442,22 +424,6 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
-name = "tomli"
-version = "2.0.1"
-description = "A lil' TOML parser"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
-name = "typing-extensions"
-version = "4.4.0"
-description = "Backported and Experimental Type Hints for Python 3.7+"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
 name = "tzdata"
 version = "2022.6"
 description = "Provider of IANA time zone data"
@@ -521,13 +487,13 @@ python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">=3.9, <4"
-content-hash = "76e090e8a1ddb71071698d2e07605ba83ae0327ecd876d1c3785bc8aa4c8b32f"
+python-versions = "~3.11"
+content-hash = "199a856d6a8bbfb93fc77230c57dd8b6331860fc861b00b425e564f77b05973a"
 
 [metadata.files]
 advent-of-code-data = [
-    {file = "advent-of-code-data-1.2.1.tar.gz", hash = "sha256:239550c6ee7a5dfec32749df4bce71443489e0a18c8dbb4b8312bcf4952ad89f"},
-    {file = "advent_of_code_data-1.2.1-py2.py3-none-any.whl", hash = "sha256:de0f80f3e6ce9ee6ce41d32ca8528c840aa3b6848c11f00ebfb539b6b2247a5b"},
+    {file = "advent-of-code-data-1.2.2.tar.gz", hash = "sha256:f2bd130d5589a35aec31b4c4cfdc081f7deb73ee749f9daf4bb35c5c1ceee072"},
+    {file = "advent_of_code_data-1.2.2-py2.py3-none-any.whl", hash = "sha256:688aa9d2ae22c157c3a3b622b8f5bd3ee80303834038d26524396e068fcd42ba"},
 ]
 attrs = [
     {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
@@ -635,10 +601,6 @@ coverage = [
 distlib = [
     {file = "distlib-0.3.6-py2.py3-none-any.whl", hash = "sha256:f35c4b692542ca110de7ef0bea44d73981caeb34ca0b9b6b2e6d7790dda8f80e"},
     {file = "distlib-0.3.6.tar.gz", hash = "sha256:14bad2d9b04d3a36127ac97f30b12a19268f211063d8f8ee4f47108896e11b46"},
-]
-exceptiongroup = [
-    {file = "exceptiongroup-1.0.0-py3-none-any.whl", hash = "sha256:2ac84b496be68464a2da60da518af3785fff8b7ec0d090a581604bc870bdee41"},
-    {file = "exceptiongroup-1.0.0.tar.gz", hash = "sha256:affbabf13fb6e98988c38d9c5650e701569fe3c1de3233cfb61c5f33774690ad"},
 ]
 filelock = [
     {file = "filelock-3.8.0-py3-none-any.whl", hash = "sha256:617eb4e5eedc82fc5f47b6d61e4d11cb837c56cb4544e39081099fa17ad109d4"},
@@ -811,14 +773,6 @@ termcolor = [
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
-]
-tomli = [
-    {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
-    {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
-]
-typing-extensions = [
-    {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},
-    {file = "typing_extensions-4.4.0.tar.gz", hash = "sha256:1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa"},
 ]
 tzdata = [
     {file = "tzdata-2022.6-py2.py3-none-any.whl", hash = "sha256:04a680bdc5b15750c39c12a448885a51134a27ec9af83667663f0b3a1bf3f342"},
