@@ -18,9 +18,9 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_a():
+def test_a() -> None:
     assert d.parta(EXAMPLE_INPUT) == 24000
 
 
-def test_b():
+def test_b() -> None:
     assert d.partb(EXAMPLE_INPUT) == 45000
