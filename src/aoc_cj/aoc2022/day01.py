@@ -1,22 +1,17 @@
-def parta(txt: str) -> None:
-    chunks = txt.split("\n\n")
-
-    chunk_sums = [sum(int(n) for n in chunk.splitlines()) for chunk in chunks]
-    print(chunk_sums)
-    return max(chunk_sums)
+import heapq
+from collections.abc import Iterable
 
 
-def partb(txt: str) -> None:
-    chunks = txt.split("\n\n")
+def elf_calories(txt: str) -> Iterable[int]:
+    return (sum(map(int, c.split())) for c in txt.split("\n\n"))
 
-    chunk_sums = [sum(int(n) for n in chunk.splitlines()) for chunk in chunks]
-    print(chunk_sums)
-    a = max(chunk_sums)
-    chunk_sums.remove(a)
-    b = max(chunk_sums)
-    chunk_sums.remove(b)
-    c = max(chunk_sums)
-    return a + b + c
+
+def parta(txt: str) -> int:
+    return max(elf_calories(txt))
+
+
+def partb(txt: str) -> int:
+    return sum(heapq.nlargest(3, elf_calories(txt)))
 
 
 def main(txt: str) -> None:
