@@ -35,6 +35,9 @@ jobs:
         run: poetry install
         if: steps.poetry-venv-cache.outputs.cache-hit != 'true'
 
+      - name: Check types
+        run: poetry run mypy .
+
       - name: Test
         run: poetry run pytest --cov=./ --cov-report=xml
 

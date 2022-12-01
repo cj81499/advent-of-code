@@ -1,8 +1,10 @@
+from collections.abc import Iterable
+
 from more_itertools import pairwise, triplewise
 
 
-def nums(txt: str) -> list[int]:
-    return list(map(int, txt.splitlines()))
+def nums(txt: str) -> Iterable[int]:
+    return map(int, txt.splitlines())
 
 
 def parta(txt: str) -> int:

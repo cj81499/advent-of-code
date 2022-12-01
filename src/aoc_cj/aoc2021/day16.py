@@ -1,6 +1,6 @@
 import abc
 import dataclasses
-from collections.abc import Iterable, Sequence
+from collections.abc import Iterable, Iterator, Sequence
 from math import prod
 from typing import Literal, cast
 
@@ -18,6 +18,7 @@ class Packet(abc.ABC):
     def version_sum(self) -> int:
         return self.version
 
+    @abc.abstractmethod
     def evaluate(self) -> int:
         pass
 
@@ -82,7 +83,7 @@ def binary_to_int(binary: Iterable[Binary]) -> int:
     return n
 
 
-def parse_packet(binary: Iterable[Binary]) -> Packet:
+def parse_packet(binary: Iterator[Binary]) -> Packet:
     version = binary_to_int(take(3, binary))
     type_id = binary_to_int(take(3, binary))
 
@@ -118,7 +119,7 @@ def parse_packet(binary: Iterable[Binary]) -> Packet:
     return OperatorPacket(version, type_id, children)
 
 
-def hex_to_binary(hex: str) -> Iterable[Binary]:
+def hex_to_binary(hex: str) -> Iterator[Binary]:
     for nibble in (int(c, 16) for c in hex):  # a nibble is 4 bits
         # TODO: clean up
         for _ in range(4):
