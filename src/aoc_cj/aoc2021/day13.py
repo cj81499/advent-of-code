@@ -11,7 +11,7 @@ def parta(txt: str) -> int:
 
 def parse(txt: str) -> tuple[set[Point], list[str]]:
     points_s, folds = txt.split("\n\n")
-    points = {tuple(map(int, line.split(","))) for line in points_s.splitlines()}
+    points = {(int(a), int(b)) for a, b in (line.split(",") for line in points_s.splitlines())}
     return points, folds.splitlines()
 
 

@@ -1,5 +1,5 @@
 from collections import Counter, defaultdict
-from collections.abc import Iterable, Sequence
+from collections.abc import Sequence
 from typing import Callable
 
 Path = Sequence[str]
@@ -40,7 +40,7 @@ def parse(txt: str) -> Edges:
     return edges
 
 
-def count_paths(edges: Edges, can_explore: Callable[[Path, str], bool]) -> Iterable[Path]:
+def count_paths(edges: Edges, can_explore: Callable[[Path, str], bool]) -> int:
     count = 0
     to_explore: set[Path] = {("start",)}
     while to_explore:

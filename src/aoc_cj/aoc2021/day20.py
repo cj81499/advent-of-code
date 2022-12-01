@@ -3,16 +3,18 @@ from collections import defaultdict
 
 from more_itertools import minmax
 
+Pixels = defaultdict[tuple[int, int], bool]
 
-def parta(txt: str) -> None:
+
+def parta(txt: str) -> int:
     return solve(txt)
 
 
-def partb(txt: str) -> None:
+def partb(txt: str) -> int:
     return solve(txt, loops=50)
 
 
-def solve(txt, loops=2):
+def solve(txt: str, loops: int = 2) -> int:
     image_enhancement_algorithm, lit_pixels = parse(txt)
 
     assert loops % 2 == 0, "odd number of loops will result in image w/ infinitely many lit pixels"
@@ -23,7 +25,7 @@ def solve(txt, loops=2):
     return sum(is_lit for pos, is_lit in lit_pixels.items())
 
 
-def parse(txt):
+def parse(txt: str) -> tuple[str, Pixels]:
     image_enhancement_algorithm, input_image_s = txt.split("\n\n")
 
     # assert image is flashing between lit/dark (like it is in my input)
@@ -38,9 +40,11 @@ def parse(txt):
     return image_enhancement_algorithm, lit_pixels
 
 
-def enhance(image_enhancement_algorithm, lit_pixels):
-    new_default = not lit_pixels.default_factory()
-    new_lit_pixels = defaultdict(lambda: new_default)
+def enhance(image_enhancement_algorithm: str, lit_pixels: Pixels) -> Pixels:
+    df = lit_pixels.default_factory
+    assert df is not None
+    new_default = not df()
+    new_lit_pixels: Pixels = defaultdict(lambda: new_default)
 
     min_x, max_x = minmax(x for x, y in lit_pixels.keys())
     min_y, max_y = minmax(y for x, y in lit_pixels.keys())

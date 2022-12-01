@@ -6,7 +6,7 @@ from typing import Optional
 PATTERN = re.compile(r"(on|off) x=(-?\d+)\.\.(-?\d+),y=(-?\d+)\.\.(-?\d+),z=(-?\d+)\.\.(-?\d+)")
 
 
-def parse(line) -> tuple[str, int, int, int, int, int, int]:
+def parse(line: str) -> tuple[str, int, int, int, int, int, int]:
     match = PATTERN.match(line)
     assert match is not None
     status, *nums = match.groups()

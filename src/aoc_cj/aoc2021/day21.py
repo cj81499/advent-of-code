@@ -11,7 +11,7 @@ class Player:
     position: int
     score: int = 0
 
-    def turn(self, die: Iterator[int]):
+    def turn(self, die: Iterator[int]) -> None:
         rolls = take(3, die)
         self.position = (self.position - 1 + sum(rolls)) % 10 + 1
         self.score += self.position
@@ -26,6 +26,7 @@ def parta(txt: str) -> int:
         roll_count += 3
         if active_player.score >= 1000:
             return inactive_player.score * roll_count
+    assert False, "unreachable"
 
 
 @dataclasses.dataclass(frozen=True)
@@ -38,7 +39,7 @@ class State:
 
 
 @cache
-def helper(state: State):
+def helper(state: State) -> list[int]:
     wins = [0, 0]
     possible_rolls = itertools.product(range(1, 4), range(1, 4), range(1, 4))
     for rolls in possible_rolls:
@@ -60,7 +61,7 @@ def helper(state: State):
     return wins
 
 
-def partb(txt: str) -> None:
+def partb(txt: str) -> int:
     players = [Player(int(line.split()[-1])) for line in txt.splitlines()]
     state = State(players[0].position, 0, players[1].position, 0, 0)
 

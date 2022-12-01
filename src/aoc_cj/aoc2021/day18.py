@@ -1,7 +1,7 @@
 import abc
 import dataclasses
 import itertools
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterator
 from math import ceil, floor
 from typing import Optional
 
@@ -12,6 +12,7 @@ from more_itertools import peekable
 class TreeNode(abc.ABC):
     parent: Optional["PairNode"]
 
+    @abc.abstractmethod
     def magnitude(self) -> int:
         pass
 
@@ -43,16 +44,19 @@ class TreeNode(abc.ABC):
         elif p.right is self:
             p.right = other
 
-    def add(self, other: "TreeNode") -> "PairNode":
+    def add(self, other: "TreeNode") -> "TreeNode":
         return PairNode(None, self, other).reduce()
 
-    def _explodable(self, depth: int = 0) -> Iterable["PairNode"]:
+    @abc.abstractmethod
+    def _explodable(self, depth: int = 0) -> Iterator["PairNode"]:
         pass
 
+    @abc.abstractmethod
     def _in_order_traverse(self) -> Iterator["TreeNode"]:
         pass
 
-    def _splitable(self) -> Iterable["ValueNode"]:
+    @abc.abstractmethod
+    def _splitable(self) -> Iterator["ValueNode"]:
         pass
 
 
@@ -68,7 +72,7 @@ class PairNode(TreeNode):
     def magnitude(self) -> int:
         return 3 * self.left.magnitude() + 2 * self.right.magnitude()
 
-    def _explodable(self, depth: int = 0) -> Iterable["PairNode"]:
+    def _explodable(self, depth: int = 0) -> Iterator["PairNode"]:
         if depth > 4:
             return  # too deep
         yield from self.left._explodable(depth + 1)
@@ -76,7 +80,7 @@ class PairNode(TreeNode):
             yield self
         yield from self.right._explodable(depth + 1)
 
-    def _splitable(self) -> Iterable["ValueNode"]:
+    def _splitable(self) -> Iterator["ValueNode"]:
         yield from self.left._splitable()
         yield from self.right._splitable()
 
@@ -123,10 +127,10 @@ class ValueNode(TreeNode):
     def magnitude(self) -> int:
         return self.value
 
-    def _explodable(self, depth: int = 0) -> Iterable[PairNode]:
+    def _explodable(self, depth: int = 0) -> Iterator[PairNode]:
         yield from ()  # ValueNodes are never explodable
 
-    def _splitable(self) -> Iterable["ValueNode"]:
+    def _splitable(self) -> Iterator["ValueNode"]:
         if self.value >= 10:
             yield self
 
@@ -148,7 +152,7 @@ class ValueNode(TreeNode):
         return str(self.value)
 
 
-def parse(txt: str):
+def parse(txt: str) -> TreeNode:
     it = peekable(txt)
     return (parse_pair if it.peek() == "[" else parse_int)(it)
 
@@ -166,7 +170,7 @@ def parse_int(it: Iterator[str]) -> ValueNode:
     return ValueNode(None, int(next(it)))
 
 
-def sum_lines(lines: list[str]):
+def sum_lines(lines: list[str]) -> TreeNode:
     it = iter(lines)
     total = parse(next(it))
     for line in it:
@@ -178,7 +182,7 @@ def parta(txt: str) -> int:
     return sum_lines(txt.splitlines()).magnitude()
 
 
-def partb(txt: str) -> None:
+def partb(txt: str) -> int:
     return max(parse(a).add(parse(b)).magnitude() for a, b in itertools.permutations(txt.splitlines(), 2))
 
 
