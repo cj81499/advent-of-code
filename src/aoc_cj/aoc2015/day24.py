@@ -1,6 +1,5 @@
 import itertools
-
-from numpy import prod
+from math import prod
 
 
 def groups(weights: set[int], weight_per_group: int):
