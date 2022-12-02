@@ -26,23 +26,23 @@
       "",
       "",
       "def parta(txt: str) -> None:",
-      "\t$0print(txt)",
-      "\treturn None",
+      "    $0print(txt)",
+      "    return None",
       "",
       "",
       "def partb(txt: str) -> None:",
-      "\treturn None",
+      "    return None",
       "",
       "",
       "def main(txt: str) -> None:",
-      "\tprint(f\"parta: {parta(txt)}\")",
-      "\tprint(f\"partb: {partb(txt)}\")",
+      "    print(f\"parta: {parta(txt)}\")",
+      "    print(f\"partb: {partb(txt)}\")",
       "",
       "",
       "if __name__ == \"__main__\":",
-      "\tfrom aocd import data",
+      "    from aocd import data",
       "",
-      "\tmain(data)"
+      "    main(data)"
     ]
   },
   "Advent of Code Test": {
@@ -57,11 +57,11 @@
       "\"\"\".strip()",
       "",
       "",
-      "def test_a():",
+      "def test_a() -> None:",
       "    assert d.parta(EXAMPLE_INPUT) is ${4:None}",
       "",
       "",
-      "def test_b():",
+      "def test_b() -> None:",
       "    assert d.partb(EXAMPLE_INPUT) is ${5:None}"
     ]
   }
