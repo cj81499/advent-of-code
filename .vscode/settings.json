@@ -10,11 +10,18 @@
     "**/*.egg-info": true
   },
   "python.formatting.provider": "black",
-  "python.testing.pytestArgs": ["tests"],
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
   "python.testing.pytestEnabled": true,
   "[jsonc][markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "python.linting.mypyEnabled": true,
-  "python.linting.enabled": true
+  "python.linting.enabled": true,
+  "cSpell.words": [
+    "aocd",
+    "parta",
+    "partb"
+  ]
 }
