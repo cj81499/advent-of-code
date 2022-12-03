@@ -28,10 +28,10 @@ def parta(txt: str) -> int:
 
 
 def partb(txt: str) -> int:
-    # TODO: idea shown in 2D, should be able to generalize to 3D
+    # idea shown in 2D, solution takes this approach, but generalized to 3D
     #
     # rather than adding each point, keep track of many rectangles (when we move to 3D, this'll be cubiods)
-    # of regions that are on  at the end, we can simply sum the area of each rectangle (cubiod)
+    # of regions that are on. at the end, we can simply sum the area of each rectangle (cubiod)
     #
     # For handling off, do something like this (for every on region)
     #
@@ -161,12 +161,8 @@ class CuboidCollection:
         self._cuboids = set(itertools.chain.from_iterable(c.subtract(cuboid) for c in self._cuboids))
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

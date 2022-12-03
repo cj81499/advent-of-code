@@ -134,7 +134,7 @@ def parta(txt: str):
                 return next(int(x) for x in result.split() if x.isnumeric())
 
 
-def main(txt: str):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
 
 

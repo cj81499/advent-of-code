@@ -35,7 +35,7 @@ def partb(txt):
         registers[ip] += 1
 
 
-def main(txt):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
     print(f"partb: {partb(txt)}")  # SLOWWWWWW. (a few minutes, with pypy)
 

@@ -25,12 +25,8 @@ def partb(txt: str):
     return next(d for d in itertools.count() if all(not caught_at(scanners, pos, delay=d) for pos in scanners))
 
 
-def main(txt: str):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

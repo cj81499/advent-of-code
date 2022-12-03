@@ -186,12 +186,8 @@ def partb(txt: str) -> int:
     return max(parse(a).add(parse(b)).magnitude() for a, b in itertools.permutations(txt.splitlines(), 2))
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

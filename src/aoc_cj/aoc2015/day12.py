@@ -23,12 +23,8 @@ def partb(txt):
     return sum_of_all_numbers(j, ignore_red=True)
 
 
-def main(txt):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

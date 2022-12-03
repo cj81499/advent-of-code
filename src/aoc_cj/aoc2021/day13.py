@@ -35,12 +35,8 @@ def do_fold(points: set[Point], fold: str) -> set[Point]:
     return {(fold_n - abs(fold_n - x), y) if direction == "x" else (x, fold_n - abs(fold_n - y)) for x, y in points}
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

@@ -32,12 +32,8 @@ def solve(txt, target_pos=None, max_steps=None):
     return -1 if max_steps is None else len(seen)
 
 
-def main(txt: str):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

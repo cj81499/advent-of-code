@@ -28,7 +28,7 @@ def parta(txt):
     return code_at(col, row)
 
 
-def main(txt):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
 
 

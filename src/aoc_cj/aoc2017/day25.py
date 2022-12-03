@@ -53,7 +53,7 @@ def parta(txt: str):
     return tm.checksum()
 
 
-def main(txt: str):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
 
 

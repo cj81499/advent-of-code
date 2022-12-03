@@ -67,12 +67,8 @@ def partb(txt):
     return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 
 
-def main(txt):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

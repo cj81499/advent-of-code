@@ -91,12 +91,8 @@ def partb(txt: str, num_workers: int = 5, base_duration: int = 60):
     return duration
 
 
-def main(txt: str):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

@@ -50,7 +50,7 @@ def parta(txt):
     return len(constellations)
 
 
-def main(txt):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
 
 

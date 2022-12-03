@@ -39,7 +39,7 @@ def parta(txt):
     return n_th_element(card_loop_size, transform(door_pk))
 
 
-def main(txt):
+def main(txt: str) -> None:
     print(f"parta: {parta(txt)}")
 
 

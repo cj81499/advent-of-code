@@ -1,96 +1,85 @@
-from collections import defaultdict
+import itertools
+import re
+from dataclasses import dataclass
 
-from lark import Lark
+import lark
+from more_itertools import bucket
 
-
-def parse_replacements(txt):
-    replacements = defaultdict(set)
-    for line in txt.splitlines():
-        from_atom, to_molecule = line.split(" => ")
-        replacements[from_atom].add(to_molecule)
-    return replacements
+ELEMENT_PATTERN = re.compile(r"[A-Z][a-z]*")
 
 
-def split_molecule_into_atoms(molecule: str):
-    atoms = []
-    start = 0
-    for i, c in enumerate(molecule):
-        if c.isupper():
-            if i != start:
-                atoms.append(molecule[start:i])
-            start = i
-    atoms.append(molecule[start:])
-    return atoms
+@dataclass(frozen=True)
+class Replacement:
+    input: str
+    output_molecule: str
+    output_elements: tuple[str]
+
+    @staticmethod
+    def parse(txt: str) -> "Replacement":
+        left, right = txt.split(" => ")
+        return Replacement(left, right, tuple(ELEMENT_PATTERN.findall(right)))
 
 
-def parta(txt):
-    replacements, medicine = txt.split("\n\n")
-    replacements = parse_replacements(replacements)
-    medicine_atoms = split_molecule_into_atoms(medicine)
-    distinct_molecules = set()
-    new_molecule_atoms = medicine_atoms.copy()
-    for i, atom in enumerate(medicine_atoms):
-        for replacement in replacements[atom]:
-            new_molecule_atoms[i] = replacement
-            distinct_molecules.add("".join(new_molecule_atoms))
-        new_molecule_atoms[i] = atom  # reset new_molecule_atoms for next loop
-    return len(distinct_molecules)
+def parse(txt: str) -> tuple[set[Replacement], str]:
+    replacements, medicine_molecule = txt.split("\n\n")
+    return {Replacement.parse(r) for r in replacements.splitlines()}, medicine_molecule
 
 
-def is_leaf(node):
-    return len(node.children) == 0
+def parta(txt: str) -> int:
+    replacements, medicine_molecule = parse(txt)
+    medicine_elements = ELEMENT_PATTERN.findall(medicine_molecule)
+    molecules = {
+        "".join((*medicine_elements[:i], r.output_molecule, *medicine_elements[i + 1 :]))
+        for (i, element), r in itertools.product(enumerate(medicine_elements), replacements)
+        if r.input == element
+    }
+    return len(molecules)
 
 
-def leaf_count(tree):
-    return 1 if is_leaf(tree) else sum(leaf_count(c) for c in tree.children)
+def leaf_count(tree: lark.Tree) -> int:
+    return 1 if len(tree.children) == 0 else 0 + sum(map(leaf_count, tree.children))
 
 
-def node_count(tree):
-    return 1 + sum(node_count(c) for c in tree.children)
+def node_count(tree: lark.Tree):
+    return 1 + sum(map(node_count, tree.children))
 
 
-def partb(txt):
+def partb(txt: str) -> None:
     """
-    https://www.reddit.com/r/adventofcode/comments/3xflz8/day_19_solutions/cy4p1td?utm_source=share&utm_medium=web2x&context=3
+    https://www.reddit.com/r/adventofcode/comments/3xflz8/comment/cy4p1td/?utm_source=share&utm_medium=web2x&context=3
     "this is actually the production rules for an unambiguous grammar"
+    so let's generate one and parse the molecule!
     """
-    replacements, medicine = txt.split("\n\n")
-    replacements = parse_replacements(replacements)
-    replacements = {k: [split_molecule_into_atoms(v) for v in vals] for k, vals in replacements.items()}
+    replacements, medicine_molecule = parse(txt)
 
-    all_atoms = set()
-    for from_atom, to_molecules in replacements.items():
-        all_atoms.add(from_atom)
-        for m in to_molecules:
-            all_atoms.update(m)
+    buckets = bucket(replacements, key=lambda r: r.input)
+    replacements_by_input = {i: set(buckets[i]) for i in buckets}
 
-    # convert replacements into a grammar (for Lark)
+    all_elements = {
+        *(r.input for r in replacements),
+        *itertools.chain.from_iterable(r.output_elements for r in replacements),
+    }
+
+    # create a lark grammar
     rules = []
-    for atom in all_atoms:
-        rule_parts = []
-        if atom in replacements:
-            for m in replacements[atom]:
-                rule_parts.append(" ".join(a.lower() for a in m))  # rule names must be lowercase
-        if atom != "e":
-            rule_parts.append(f'"{atom}"')  # add terminal
-        rule_parts = " | ".join(rule_parts)
-        rules.append(f"{atom.lower()}: {rule_parts}")
+    for element in all_elements:
+        rule_parts = [
+            *(" ".join(e.lower() for e in rep.output_elements) for rep in replacements_by_input.get(element, set())),
+            f'"{element}"',
+        ]
+        rules.append(f"{element.lower()}: {' | '.join(rule_parts)}")
     grammar = "\n".join(rules)
 
-    # parse the medicine string using the grammar
-    parser = Lark(grammar, start="e")
-    tree = parser.parse(medicine)
+    # parse the medicine
+    parser = lark.Lark(grammar, start="e")
+    tree = parser.parse(medicine_molecule)
 
     # the number of transforms is the number of non-leaf nodes
     return node_count(tree) - leaf_count(tree)
 
 
-def main(txt):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")
