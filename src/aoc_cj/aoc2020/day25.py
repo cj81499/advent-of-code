@@ -39,11 +39,7 @@ def parta(txt):
     return n_th_element(card_loop_size, transform(door_pk))
 
 
-def main(txt):
-    print(f"parta: {parta(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")

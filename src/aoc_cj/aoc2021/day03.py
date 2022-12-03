@@ -45,12 +45,8 @@ def bitwise_filter(numbers: list[str], choose_to_keep: Callable[[Counter[str]], 
     return bitwise_filter(filtered, choose_to_keep, i + 1)  # keep going!
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

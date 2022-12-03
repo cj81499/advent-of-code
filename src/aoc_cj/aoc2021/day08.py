@@ -66,12 +66,8 @@ def get_output_for_line(line: str) -> int:
     return sum(10**i * n for i, n in enumerate(reversed(output_digits)))
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")
