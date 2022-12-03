@@ -39,7 +39,7 @@ jobs:
         run: poetry run mypy .
 
       - name: Test
-        run: poetry run pytest --cov=./ --cov-report=xml
+        run: poetry run pytest --cov=. --cov-report=xml
 
       # TODO: fix coverage "jitter" on PRs
       # consider uploading only for one python version
