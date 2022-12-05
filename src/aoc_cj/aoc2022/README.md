@@ -6,7 +6,7 @@
 | 02  | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)     | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 03  | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 04  | [Camp Cleanup](https://adventofcode.com/2022/day/4)            | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 05  | [?](https://adventofcode.com/2022/day/5)                       |        :x:         |        :x:         |        :x:         |
+| 05  | [Supply Stacks](https://adventofcode.com/2022/day/5)           | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 06  | [?](https://adventofcode.com/2022/day/6)                       |        :x:         |        :x:         |        :x:         |
 | 07  | [?](https://adventofcode.com/2022/day/7)                       |        :x:         |        :x:         |        :x:         |
 | 08  | [?](https://adventofcode.com/2022/day/8)                       |        :x:         |        :x:         |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  5   00:15:38  1595      0   00:17:06  1260      0
   4   00:04:28  1030      0   00:06:05   789      0
   3   00:21:36  7789      0   00:25:49  5486      0
   2   00:06:47  1114      0   00:10:15   812      0
