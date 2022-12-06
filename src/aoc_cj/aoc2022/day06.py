@@ -2,10 +2,7 @@ import more_itertools as mi
 
 
 def parta(txt: str, n: int = 4) -> int:
-    for i, chars in enumerate(mi.windowed(txt, n), start=n):
-        if mi.all_unique(chars):
-            return i
-    assert False, "unreachable"
+    return mi.first(i for i, chars in enumerate(mi.windowed(txt, n), start=n) if mi.all_unique(chars))
 
 
 def partb(txt: str) -> int:
