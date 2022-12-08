@@ -9,7 +9,7 @@
 | 05  | [Supply Stacks](https://adventofcode.com/2022/day/5)           | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 06  | [Tuning Trouble](https://adventofcode.com/2022/day/6)          | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 07  | [No Space Left On Device](https://adventofcode.com/2022/day/7) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 08  | [?](https://adventofcode.com/2022/day/8)                       |        :x:         |        :x:         |        :x:         |
+| 08  | [Treetop Tree House](https://adventofcode.com/2022/day/8)      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 09  | [?](https://adventofcode.com/2022/day/9)                       |        :x:         |        :x:         |        :x:         |
 | 10  | [?](https://adventofcode.com/2022/day/10)                      |        :x:         |        :x:         |        :x:         |
 | 11  | [?](https://adventofcode.com/2022/day/11)                      |        :x:         |        :x:         |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  8   00:08:01   530      0   00:33:25  2657      0
   7   00:28:46  1871      0   00:34:31  1645      0
   6   00:05:19  2268      0   00:05:47  1644      0
   5   00:15:38  1595      0   00:17:06  1260      0
