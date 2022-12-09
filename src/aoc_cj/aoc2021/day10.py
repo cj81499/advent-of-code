@@ -1,6 +1,6 @@
 import enum
 from functools import reduce
-from statistics import median
+from statistics import median_low
 from typing import NamedTuple
 
 PAIRS = {
@@ -63,11 +63,8 @@ def partb(txt: str) -> int:
     ]
 
     assert len(scores) % 2 != 0  # assert odd number of scores
-    med = median(scores)  # get median
-    # median must be an int b/c scores is list[int] and there is an odd number of scores,
-    # but mypy needs convincing
-    assert isinstance(med, int)
-    return med
+    med = median_low(scores)  # get median
+    return int(med)
 
 
 def autocomplete_score(unclosed: list[str]) -> int:

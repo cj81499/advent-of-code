@@ -54,6 +54,7 @@ exclude = [
   '^tests\/aoc2020\/',
   '^tests\/aoc2021\/',
 ]
+warn_unreachable = true
 
 [[tool.mypy.overrides]]
 module = ['aocd', 'z3']
