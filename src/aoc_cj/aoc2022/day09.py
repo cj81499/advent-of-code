@@ -1,83 +1,64 @@
-DIRECTIONS = {
-    "U": 0 + 1j,  # positive imag -> up
-    "D": 0 - 1j,  # negative imag -> down
-    "L": -1 + 0j,  # negative real -> left
-    "R": 1 + 0j,  # positive real -> right
-}
+from collections.abc import Generator
 
 ORIGIN = 0 + 0j
 
+UP = 0 + 1j  # positive imag -> up
+DOWN = 0 - 1j  # negative imag -> down
+LEFT = -1 + 0j  # negative real -> left
+RIGHT = 1 + 0j  # positive real -> right
 
-def move(head: complex, tail: complex, direction: complex) -> tuple[complex, complex]:
-    new_head = head + direction
-    new_tail = tail
-
-    # if change in real >= 2 or change in imag >= 2, tail will move to "old" head
-    if abs(new_head.real - tail.real) >= 2 or abs(new_head.imag - tail.imag) >= 2:
-        new_tail = head
-
-    return new_head, new_tail
+DIRECTIONS = {"U": UP, "D": DOWN, "L": LEFT, "R": RIGHT}
 
 
-def pull(head: complex, tail: complex) -> complex:
-    # if head is far enough away, tail moves to where head used to be
-    if abs(head.real - tail.real) >= 2 or abs(head.imag - tail.imag) >= 2:
-        new_tail = tail
-
-        if abs(head.real - tail.real) != 0:
-            new_tail += (head.real - tail.real) / abs(head.real - tail.real)
-        if abs(head.imag - tail.imag) != 0:
-            new_tail += 1j * ((head.imag - tail.imag) / abs(head.imag - tail.imag))
-        return new_tail
-    return tail
+def parse_motions(txt: str) -> Generator[tuple[complex, int], None, None]:
+    for line in txt.splitlines():
+        direction, distance = line.split()
+        yield DIRECTIONS[direction], int(distance)
 
 
-def parta(txt: str) -> int:
+def pull(lead_knot: complex, trail_knot: complex) -> complex:
+    new_back_knot = trail_knot
 
-    head_pos = ORIGIN
-    tail_pos = ORIGIN
+    # if front_knot is far enough away, back_knot moves up to 1 position in each direction towards front_knot
+    real_difference = lead_knot.real - trail_knot.real
+    imag_difference = lead_knot.imag - trail_knot.imag
+    if abs(real_difference) >= 2 or abs(imag_difference) >= 2:
+        if real_difference != 0:
+            new_back_knot += real_difference / abs(real_difference)
+        if imag_difference != 0:
+            new_back_knot += 1j * imag_difference / abs(imag_difference)
 
-    tail_positions = {ORIGIN}
-
-    for motion in txt.splitlines():
-        direction_s, distance_s = motion.split()
-        direction = DIRECTIONS[direction_s]
-        distance = int(distance_s)
-
-        for _ in range(distance):
-            head_pos, tail_pos = move(head_pos, tail_pos, direction)
-            tail_positions.add(tail_pos)
-
-    return len(tail_positions)
+    return new_back_knot
 
 
-def partb(txt: str) -> int:
+def parta(txt: str, rope_length: int = 2) -> int:
     # knot @ start is head, knot @ end is tail
-    knot_positions = [ORIGIN for _ in range(10)]
+    knot_positions = [ORIGIN for _ in range(rope_length)]
 
-    tail_positions = {ORIGIN}
+    # keep track of where the tail has been
+    tail_visited = {ORIGIN}
 
-    for motion in txt.splitlines():
-        direction_s, distance_s = motion.split()
-        direction = DIRECTIONS[direction_s]
-        distance = int(distance_s)
-
+    for direction, distance in parse_motions(txt):
         for _ in range(distance):
-            # pull the rope
+            head_of_rope, *rest_of_rope = knot_positions
 
             # move head in selected direction
-            new_knot_positions = []
-            new_knot_positions.append(knot_positions[0] + direction)
-            # move the rest of the rope behind it
-            for i, k in enumerate(knot_positions[1:], start=1):
-                new_knot_positions.append(pull(new_knot_positions[-1], k))
+            new_knot_positions = [head_of_rope + direction]
+
+            # pull the rest of the rope behind it
+            for knot_position in rest_of_rope:
+                new_knot_positions.append(pull(new_knot_positions[-1], knot_position))
 
             knot_positions = new_knot_positions
 
             # the tail may have moved
-            tail_positions.add(knot_positions[-1])
+            tail_visited.add(knot_positions[-1])
 
-    return len(tail_positions)
+    return len(tail_visited)
+
+
+def partb(txt: str) -> int:
+    return parta(txt, 10)
 
 
 def main(txt: str) -> None:
