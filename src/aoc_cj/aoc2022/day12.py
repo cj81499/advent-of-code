@@ -1,73 +1,58 @@
 from collections import deque
 from collections.abc import Generator
+from typing import Literal
 
 import more_itertools as mi
 
 
-def adj(p: complex) -> Generator[complex, None, None]:
-    for dir in (1j, -1j, 1, -1):
-        yield p + dir
-
-
-def height(p: complex, grid: dict[complex, str]) -> str:
-    val = grid[p]
-    if val == "S":
-        return "a"
-    if val == "E":
-        return "z"
-    assert val.isalpha() and val.islower()
-    return val
-
-
-def parta(txt: str) -> int:
+def parta(txt: str, part: Literal[1, 2] = 1) -> int:
     grid = {x + (y * 1j): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
 
-    start_pos = mi.only(p for p, c in grid.items() if c == "S")
-    assert start_pos is not None
-    end_pos = mi.only(p for p, c in grid.items() if c == "E")
-    assert end_pos is not None
+    def adj(p: complex) -> Generator[complex, None, None]:
+        yield from (adj_p for dir in (1j, -1j, 1, -1) if (adj_p := p + dir) in grid)
 
-    to_explore = deque((start_pos,))
-    reached = {start_pos: 0}
+    def elevation(p: complex) -> int:
+        c = grid[p]
+        assert len(c) == 1
+        if c == "S":
+            return ord("a") - ord("a")  # 0
+        if c == "E":
+            return ord("z") - ord("a")  # 26
+        assert c.isalpha() and c.islower()
+        return ord(c) - ord("a")
+
+    def can_move(current: complex, destination: complex) -> bool:
+        if part == 2:
+            current, destination = destination, current
+        # elevation of destination can be at most one higher than the elevation of current
+        return elevation(current) + 1 >= elevation(destination)
+
+    explore_from = "S" if part == 1 else "E"
+    start_point = mi.only(p for p, c in grid.items() if c == explore_from)
+    assert start_point is not None
+
+    end_at = "E" if part == 1 else "aS"
+    possible_end_points = {p for p, c in grid.items() if c in end_at}
+
+    to_explore = deque((start_point,))
+    steps_to_reach = {start_point: 0}
 
     while to_explore:
-        exploring = to_explore.popleft()
-        next_cost = reached[exploring] + 1
-        height_p = height(exploring, grid)
-        for adj_p in adj(exploring):
-            if adj_p in grid:
-                height_adj = height(adj_p, grid)
-                if ord(height_adj) <= ord(height_p) + 1:
-                    if adj_p not in reached or next_cost < reached[adj_p]:
-                        reached[adj_p] = next_cost
-                        to_explore.append(adj_p)
+        current = to_explore.popleft()
+        next_cost = steps_to_reach[current] + 1
+        # for each adj position on the grid
+        for adj_p in adj(current):
+            # if we found a way to reach adj_p for the first time or by taking fewer steps
+            if can_move(current, adj_p) and (adj_p not in steps_to_reach or next_cost < steps_to_reach[adj_p]):
+                steps_to_reach[adj_p] = next_cost
+                to_explore.append(adj_p)
 
-    return reached[end_pos]
+    # in part 1, there's only one possible end point
+    return min(steps_to_reach[p] for p in possible_end_points if p in steps_to_reach)
 
 
 def partb(txt: str) -> int:
-    grid = {x + (y * 1j): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
-
-    end_pos = mi.only(p for p, c in grid.items() if c == "E")
-    assert end_pos is not None
-    possible_starts = {p for p, c in grid.items() if c in ("a", "S")}
-
-    to_explore = deque((end_pos,))
-    reached = {end_pos: 0}
-
-    while to_explore:
-        exploring = to_explore.popleft()
-        next_cost = reached[exploring] + 1
-        height_p = height(exploring, grid)
-        for adj_p in adj(exploring):
-            if adj_p in grid:
-                height_adj = height(adj_p, grid)
-                if ord(height_p) <= ord(height_adj) + 1:
-                    if adj_p not in reached or next_cost < reached[adj_p]:
-                        reached[adj_p] = next_cost
-                        to_explore.append(adj_p)
-
-    return min(reached[s] for s in possible_starts if s in reached)
+    return parta(txt, part=2)
 
 
 def main(txt: str) -> None:
