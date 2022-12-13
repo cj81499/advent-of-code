@@ -47,12 +47,8 @@ def parse(txt: str) -> tuple[str, dict[str, str]]:
     return polymer_template, {k: v for k, v in (l.split(" -> ") for l in pair_insertion_rules.splitlines())}
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

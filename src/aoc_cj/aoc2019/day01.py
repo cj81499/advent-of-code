@@ -15,12 +15,8 @@ def partb(txt: str) -> int:
     return sum(fuel_req_rec(x) for x in [int(x) for x in txt.splitlines()])
 
 
-def main(txt) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

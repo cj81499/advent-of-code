@@ -11,12 +11,8 @@ def partb(txt):
     return sum(m // n for row in spreadsheet for m, n in itertools.permutations(row, r=2) if m % n == 0)
 
 
-def main(txt):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

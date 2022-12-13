@@ -47,12 +47,8 @@ def get_pos_to_char(numpad: str):
     }
 
 
-def main(txt: str):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

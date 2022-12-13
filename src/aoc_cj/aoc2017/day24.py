@@ -33,12 +33,8 @@ def partb(txt: str):
     return max((len(b), strength(b)) for b in bridges(components))[1]
 
 
-def main(txt: str):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

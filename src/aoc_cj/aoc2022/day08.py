@@ -48,12 +48,8 @@ def partb(txt: str) -> int:
     return max(scenic_score(x, y, grid) for y, row in enumerate(grid) for x, _n in enumerate(row))
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

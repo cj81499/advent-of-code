@@ -34,11 +34,7 @@ def parta(txt: str) -> int:
     return i
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")

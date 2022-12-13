@@ -42,12 +42,8 @@ def partb(txt):
     return ",".join(a_to_i[a] for a in sorted(a_to_i))
 
 
-def main(txt):
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

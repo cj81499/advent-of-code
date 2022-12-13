@@ -69,12 +69,8 @@ def lcm(*nums: int) -> int:
     return lcm(nums[0], lcm(*nums[1:]))
 
 
-def main(txt) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

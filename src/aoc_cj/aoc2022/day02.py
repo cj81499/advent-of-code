@@ -50,12 +50,8 @@ def partb(txt: str) -> int:
     return sum(outcome.my_move(op_move).score() + outcome.score() for op_move, outcome in turns)
 
 
-def main(txt: str) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")

@@ -23,12 +23,8 @@ def check_pass_b(num_1, num_2, letter, paswd):
     return False if len(paswd) < num_2 else (letter == paswd[num_1 - 1]) ^ (letter == paswd[num_2 - 1])
 
 
-def main(txt) -> None:
-    print(f"parta: {parta(txt)}")
-    print(f"partb: {partb(txt)}")
-
-
 if __name__ == "__main__":
     from aocd import data
 
-    main(data)
+    print(f"parta: {parta(data)}")
+    print(f"partb: {partb(data)}")
