@@ -1,5 +1,7 @@
 from collections import defaultdict
 
+from aoc_cj import util
+
 
 class Program:
     def __init__(self, instructions):
@@ -47,17 +49,11 @@ def parta(txt: str):
     return p.mul_count
 
 
-def is_prime(n):
-    # A positive integer that is greater than 1 and is not divisible without
-    # a remainder by any positive integer other than itself and 1.
-    return n > 1 and n % 1 == 0 and not any(n % i == 0 for i in range(2, (n // 2) + 1))
-
-
 def partb(txt: str):
     # after setup, the program counts how many numbers are not prime between
     # b and c (inclusive) with a step of 17 .
     b, c = 106500, 123500
-    return sum(not is_prime(n) for n in range(b, c + 1, 17))
+    return sum(not util.is_prime(n) for n in range(b, c + 1, 17))
 
 
 if __name__ == "__main__":
