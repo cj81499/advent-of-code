@@ -15,7 +15,7 @@
 | 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)    | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 13  | [Distress Signal](https://adventofcode.com/2022/day/13)         | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 14  | [?](https://adventofcode.com/2022/day/14)                       |        :x:         |        :x:         |        :x:         |
+| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 15  | [?](https://adventofcode.com/2022/day/15)                       |        :x:         |        :x:         |        :x:         |
 | 16  | [?](https://adventofcode.com/2022/day/16)                       |        :x:         |        :x:         |        :x:         |
 | 17  | [?](https://adventofcode.com/2022/day/17)                       |        :x:         |        :x:         |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   --------Part 2--------
 Day       Time  Rank  Score       Time   Rank  Score
+ 14   00:20:30   676      0   00:25:16    705      0
  13   00:24:30  1427      0   00:32:16   1338      0
  12   00:25:04  1560      0   00:29:50   1488      0
  11   00:32:37  2103      0   15:57:10  32836      0
