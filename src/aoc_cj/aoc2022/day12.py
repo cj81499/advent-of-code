@@ -6,7 +6,7 @@ import more_itertools as mi
 
 
 def parta(txt: str, part: Literal[1, 2] = 1) -> int:
-    grid = {x + (y * 1j): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
+    grid = {complex(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
 
     def adj(p: complex) -> Generator[complex, None, None]:
         yield from (adj_p for dir in (1j, -1j, 1, -1) if (adj_p := p + dir) in grid)
