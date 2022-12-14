@@ -1,3 +1,4 @@
+import ast
 import enum
 from collections.abc import Sequence
 from functools import cmp_to_key
@@ -40,8 +41,8 @@ def parta(txt: str) -> int:
 
     count = 0
     for i, (left_s, right_s) in enumerate((l.splitlines() for l in pairs), start=1):
-        left: L = eval(left_s)
-        right: L = eval(right_s)
+        left: L = ast.literal_eval(left_s)
+        right: L = ast.literal_eval(right_s)
 
         if compare(left, right) in (CompareResult.CORRECT, CompareResult.EQ):
             count += i
@@ -60,7 +61,7 @@ def cmpb(left: L, right: L) -> int:
 def partb(txt: str) -> int:
     sep1 = [[2]]
     sep2 = [[6]]
-    packets: list[L] = [sep1, sep2, *(eval(line) for line in txt.splitlines() if line != "")]
+    packets: list[L] = [sep1, sep2, *(ast.literal_eval(line) for line in txt.splitlines() if line != "")]
 
     packets.sort(key=cmp_to_key(cmpb))
 
