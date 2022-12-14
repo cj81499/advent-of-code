@@ -24,16 +24,8 @@ jobs:
       - name: Set up Poetry
         uses: snok/install-poetry@v1.3.3
 
-      - name: Cache
-        id: poetry-venv-cache
-        uses: actions/cache@v3.0.11
-        with:
-          path: .venv
-          key: venv-python${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
       - name: Install Dependencies
         run: poetry install
-        if: steps.poetry-venv-cache.outputs.cache-hit != 'true'
 
       - name: Check types
         run: poetry run mypy .
