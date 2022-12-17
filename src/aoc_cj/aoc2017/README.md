@@ -2,31 +2,31 @@
 
 | Day | Title                                                                          |   1    |   2    |       Tests        |
 | :-: | ------------------------------------------------------------------------------ | :----: | :----: | :----------------: |
-| 01  | [Inverse Captcha](https://adventofcode.com/2017/day/1)                         | :star: | :star: | :heavy_check_mark: |
-| 02  | [Corruption Checksum](https://adventofcode.com/2017/day/2)                     | :star: | :star: | :heavy_check_mark: |
-| 03  | [Spiral Memory](https://adventofcode.com/2017/day/3)                           | :star: | :star: | :heavy_check_mark: |
-| 04  | [High-Entropy Passphrases](https://adventofcode.com/2017/day/4)                | :star: | :star: | :heavy_check_mark: |
-| 05  | [A Maze of Twisty Trampolines, All Alike](https://adventofcode.com/2017/day/5) | :star: | :star: | :heavy_check_mark: |
-| 06  | [Memory Reallocation](https://adventofcode.com/2017/day/6)                     | :star: | :star: | :heavy_check_mark: |
-| 07  | [Recursive Circus](https://adventofcode.com/2017/day/7)                        | :star: | :star: | :heavy_check_mark: |
-| 08  | [I Heard You Like Registers](https://adventofcode.com/2017/day/8)              | :star: | :star: | :heavy_check_mark: |
-| 09  | [Stream Processing](https://adventofcode.com/2017/day/9)                       | :star: | :star: | :heavy_check_mark: |
-| 10  | [Knot Hash](https://adventofcode.com/2017/day/10)                              | :star: | :star: | :heavy_check_mark: |
-| 11  | [Hex Ed](https://adventofcode.com/2017/day/11)                                 | :star: | :star: | :heavy_check_mark: |
-| 12  | [Digital Plumber](https://adventofcode.com/2017/day/12)                        | :star: | :star: | :heavy_check_mark: |
-| 13  | [Packet Scanners](https://adventofcode.com/2017/day/13)                        | :star: | :star: | :heavy_check_mark: |
-| 14  | [Disk Defragmentation](https://adventofcode.com/2017/day/14)                   | :star: | :star: | :heavy_check_mark: |
-| 15  | [Dueling Generators](https://adventofcode.com/2017/day/15)                     | :star: | :star: | :heavy_check_mark: |
-| 16  | [Permutation Promenade](https://adventofcode.com/2017/day/16)                  | :star: | :star: | :heavy_check_mark: |
-| 17  | [Spinlock](https://adventofcode.com/2017/day/17)                               | :star: | :star: | :heavy_check_mark: |
-| 18  | [Duet](https://adventofcode.com/2017/day/18)                                   | :star: | :star: | :heavy_check_mark: |
-| 19  | [A Series of Tubes](https://adventofcode.com/2017/day/19)                      | :star: | :star: | :heavy_check_mark: |
-| 20  | [Particle Swarm](https://adventofcode.com/2017/day/20)                         | :star: | :star: | :heavy_check_mark: |
-| 21  | [Fractal Art](https://adventofcode.com/2017/day/21)                            | :star: | :star: | :heavy_check_mark: |
-| 22  | [Sporifica Virus](https://adventofcode.com/2017/day/22)                        | :star: | :star: | :heavy_check_mark: |
-| 23  | [Coprocessor Conflagration](https://adventofcode.com/2017/day/23)              | :star: | :star: | :heavy_check_mark: |
-| 24  | [Electromagnetic Moat](https://adventofcode.com/2017/day/24)                   | :star: | :star: | :heavy_check_mark: |
-| 25  | [The Halting Problem](https://adventofcode.com/2017/day/25)                    | :star: | :star: | :heavy_check_mark: |
+| 01  | [Inverse Captcha](https://adventofcode.com/2017/day/1)                         | :star: | :star: | :white_check_mark: |
+| 02  | [Corruption Checksum](https://adventofcode.com/2017/day/2)                     | :star: | :star: | :white_check_mark: |
+| 03  | [Spiral Memory](https://adventofcode.com/2017/day/3)                           | :star: | :star: | :white_check_mark: |
+| 04  | [High-Entropy Passphrases](https://adventofcode.com/2017/day/4)                | :star: | :star: | :white_check_mark: |
+| 05  | [A Maze of Twisty Trampolines, All Alike](https://adventofcode.com/2017/day/5) | :star: | :star: | :white_check_mark: |
+| 06  | [Memory Reallocation](https://adventofcode.com/2017/day/6)                     | :star: | :star: | :white_check_mark: |
+| 07  | [Recursive Circus](https://adventofcode.com/2017/day/7)                        | :star: | :star: | :white_check_mark: |
+| 08  | [I Heard You Like Registers](https://adventofcode.com/2017/day/8)              | :star: | :star: | :white_check_mark: |
+| 09  | [Stream Processing](https://adventofcode.com/2017/day/9)                       | :star: | :star: | :white_check_mark: |
+| 10  | [Knot Hash](https://adventofcode.com/2017/day/10)                              | :star: | :star: | :white_check_mark: |
+| 11  | [Hex Ed](https://adventofcode.com/2017/day/11)                                 | :star: | :star: | :white_check_mark: |
+| 12  | [Digital Plumber](https://adventofcode.com/2017/day/12)                        | :star: | :star: | :white_check_mark: |
+| 13  | [Packet Scanners](https://adventofcode.com/2017/day/13)                        | :star: | :star: | :white_check_mark: |
+| 14  | [Disk Defragmentation](https://adventofcode.com/2017/day/14)                   | :star: | :star: | :white_check_mark: |
+| 15  | [Dueling Generators](https://adventofcode.com/2017/day/15)                     | :star: | :star: | :white_check_mark: |
+| 16  | [Permutation Promenade](https://adventofcode.com/2017/day/16)                  | :star: | :star: | :white_check_mark: |
+| 17  | [Spinlock](https://adventofcode.com/2017/day/17)                               | :star: | :star: | :white_check_mark: |
+| 18  | [Duet](https://adventofcode.com/2017/day/18)                                   | :star: | :star: | :white_check_mark: |
+| 19  | [A Series of Tubes](https://adventofcode.com/2017/day/19)                      | :star: | :star: | :white_check_mark: |
+| 20  | [Particle Swarm](https://adventofcode.com/2017/day/20)                         | :star: | :star: | :white_check_mark: |
+| 21  | [Fractal Art](https://adventofcode.com/2017/day/21)                            | :star: | :star: | :white_check_mark: |
+| 22  | [Sporifica Virus](https://adventofcode.com/2017/day/22)                        | :star: | :star: | :white_check_mark: |
+| 23  | [Coprocessor Conflagration](https://adventofcode.com/2017/day/23)              | :star: | :star: | :white_check_mark: |
+| 24  | [Electromagnetic Moat](https://adventofcode.com/2017/day/24)                   | :star: | :star: | :white_check_mark: |
+| 25  | [The Halting Problem](https://adventofcode.com/2017/day/25)                    | :star: | :star: | :white_check_mark: |
 
 ## Results
 

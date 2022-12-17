@@ -2,31 +2,31 @@
 
 | Day | Title                                                           |   1    |   2    |       Tests        |
 | :-: | --------------------------------------------------------------- | :----: | :----: | :----------------: |
-| 01  | [Sonar Sweep](https://adventofcode.com/2021/day/1)              | :star: | :star: | :heavy_check_mark: |
-| 02  | [Dive!](https://adventofcode.com/2021/day/2)                    | :star: | :star: | :heavy_check_mark: |
-| 03  | [Binary Diagnostic](https://adventofcode.com/2021/day/3)        | :star: | :star: | :heavy_check_mark: |
-| 04  | [Giant Squid](https://adventofcode.com/2021/day/4)              | :star: | :star: | :heavy_check_mark: |
-| 05  | [Hydrothermal Venture](https://adventofcode.com/2021/day/5)     | :star: | :star: | :heavy_check_mark: |
-| 06  | [Lanternfish](https://adventofcode.com/2021/day/6)              | :star: | :star: | :heavy_check_mark: |
-| 07  | [The Treachery of Whales](https://adventofcode.com/2021/day/7)  | :star: | :star: | :heavy_check_mark: |
-| 08  | [Seven Segment Search](https://adventofcode.com/2021/day/8)     | :star: | :star: | :heavy_check_mark: |
-| 09  | [Smoke Basin](https://adventofcode.com/2021/day/9)              | :star: | :star: | :heavy_check_mark: |
-| 10  | [Syntax Scoring](https://adventofcode.com/2021/day/10)          | :star: | :star: | :heavy_check_mark: |
-| 11  | [Dumbo Octopus](https://adventofcode.com/2021/day/11)           | :star: | :star: | :heavy_check_mark: |
-| 12  | [Passage Pathing](https://adventofcode.com/2021/day/12)         | :star: | :star: | :heavy_check_mark: |
-| 13  | [Transparent Origami](https://adventofcode.com/2021/day/13)     | :star: | :star: | :heavy_check_mark: |
-| 14  | [Extended Polymerization](https://adventofcode.com/2021/day/14) | :star: | :star: | :heavy_check_mark: |
-| 15  | [Chiton](https://adventofcode.com/2021/day/15)                  | :star: | :star: | :heavy_check_mark: |
-| 16  | [Packet Decoder](https://adventofcode.com/2021/day/16)          | :star: | :star: | :heavy_check_mark: |
-| 17  | [Trick Shot](https://adventofcode.com/2021/day/17)              | :star: | :star: | :heavy_check_mark: |
-| 18  | [Snailfish](https://adventofcode.com/2021/day/18)               | :star: | :star: | :heavy_check_mark: |
+| 01  | [Sonar Sweep](https://adventofcode.com/2021/day/1)              | :star: | :star: | :white_check_mark: |
+| 02  | [Dive!](https://adventofcode.com/2021/day/2)                    | :star: | :star: | :white_check_mark: |
+| 03  | [Binary Diagnostic](https://adventofcode.com/2021/day/3)        | :star: | :star: | :white_check_mark: |
+| 04  | [Giant Squid](https://adventofcode.com/2021/day/4)              | :star: | :star: | :white_check_mark: |
+| 05  | [Hydrothermal Venture](https://adventofcode.com/2021/day/5)     | :star: | :star: | :white_check_mark: |
+| 06  | [Lanternfish](https://adventofcode.com/2021/day/6)              | :star: | :star: | :white_check_mark: |
+| 07  | [The Treachery of Whales](https://adventofcode.com/2021/day/7)  | :star: | :star: | :white_check_mark: |
+| 08  | [Seven Segment Search](https://adventofcode.com/2021/day/8)     | :star: | :star: | :white_check_mark: |
+| 09  | [Smoke Basin](https://adventofcode.com/2021/day/9)              | :star: | :star: | :white_check_mark: |
+| 10  | [Syntax Scoring](https://adventofcode.com/2021/day/10)          | :star: | :star: | :white_check_mark: |
+| 11  | [Dumbo Octopus](https://adventofcode.com/2021/day/11)           | :star: | :star: | :white_check_mark: |
+| 12  | [Passage Pathing](https://adventofcode.com/2021/day/12)         | :star: | :star: | :white_check_mark: |
+| 13  | [Transparent Origami](https://adventofcode.com/2021/day/13)     | :star: | :star: | :white_check_mark: |
+| 14  | [Extended Polymerization](https://adventofcode.com/2021/day/14) | :star: | :star: | :white_check_mark: |
+| 15  | [Chiton](https://adventofcode.com/2021/day/15)                  | :star: | :star: | :white_check_mark: |
+| 16  | [Packet Decoder](https://adventofcode.com/2021/day/16)          | :star: | :star: | :white_check_mark: |
+| 17  | [Trick Shot](https://adventofcode.com/2021/day/17)              | :star: | :star: | :white_check_mark: |
+| 18  | [Snailfish](https://adventofcode.com/2021/day/18)               | :star: | :star: | :white_check_mark: |
 | 19  | [Beacon Scanner](https://adventofcode.com/2021/day/19)          |  :x:   |  :x:   |        :x:         |
 | 20  | [Trench Map](https://adventofcode.com/2021/day/20)              | :star: | :star: |        :x:         |
-| 21  | [Dirac Dice](https://adventofcode.com/2021/day/21)              | :star: | :star: | :heavy_check_mark: |
-| 22  | [Reactor Reboot](https://adventofcode.com/2021/day/22)          | :star: | :star: | :heavy_check_mark: |
+| 21  | [Dirac Dice](https://adventofcode.com/2021/day/21)              | :star: | :star: | :white_check_mark: |
+| 22  | [Reactor Reboot](https://adventofcode.com/2021/day/22)          | :star: | :star: | :white_check_mark: |
 | 23  | [Amphipod](https://adventofcode.com/2021/day/23)                |  :x:   |  :x:   |        :x:         |
 | 24  | [Arithmetic Logic Unit](https://adventofcode.com/2021/day/24)   |  :x:   |  :x:   |        :x:         |
-| 25  | [Sea Cucumber](https://adventofcode.com/2021/day/25)            | :star: |  :x:   | :heavy_check_mark: |
+| 25  | [Sea Cucumber](https://adventofcode.com/2021/day/25)            | :star: |  :x:   | :white_check_mark: |
 
 ## Results
 
