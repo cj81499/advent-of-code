@@ -17,8 +17,8 @@
 | 13  | [Distress Signal](https://adventofcode.com/2022/day/13)         | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)   | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 16  | [?](https://adventofcode.com/2022/day/16)                       |        :x:         |        :x:         |        :x:         |
-| 17  | [?](https://adventofcode.com/2022/day/17)                       |        :x:         |        :x:         |        :x:         |
+| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)   |        :x:         |        :x:         |        :x:         |
+| 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)        | :white_check_mark: |        :x:         | :white_check_mark: |
 | 18  | [?](https://adventofcode.com/2022/day/18)                       |        :x:         |        :x:         |        :x:         |
 | 19  | [?](https://adventofcode.com/2022/day/19)                       |        :x:         |        :x:         |        :x:         |
 | 20  | [?](https://adventofcode.com/2022/day/20)                       |        :x:         |        :x:         |        :x:         |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   --------Part 2--------
 Day       Time  Rank  Score       Time   Rank  Score
+ 17   00:53:01  1088      0          -      -      -
  15   00:49:02  3216      0   01:13:55   1758      0
  14   00:20:30   676      0   00:25:16    705      0
  13   00:24:30  1427      0   00:32:16   1338      0
