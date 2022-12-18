@@ -1,3 +1,5 @@
+import pytest
+
 import aoc_cj.aoc2022.day18 as d
 
 EXAMPLE_INPUT_1 = """
@@ -22,11 +24,23 @@ EXAMPLE_INPUT_2 = """
 """.strip()
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT_1) == 10
-    assert d.parta(EXAMPLE_INPUT_2) == 64
+@pytest.mark.parametrize(
+    ("example", "expected"),
+    (
+        (EXAMPLE_INPUT_1, 10),
+        (EXAMPLE_INPUT_2, 64),
+    ),
+)
+def test_a(example: str, expected: int) -> None:
+    assert d.parta(example) == expected
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT_1) == 10
-    assert d.partb(EXAMPLE_INPUT_2) == 58
+@pytest.mark.parametrize(
+    ("example", "expected"),
+    (
+        (EXAMPLE_INPUT_1, 10),
+        (EXAMPLE_INPUT_2, 58),
+    ),
+)
+def test_b(example: str, expected: int) -> None:
+    assert d.partb(example) == expected

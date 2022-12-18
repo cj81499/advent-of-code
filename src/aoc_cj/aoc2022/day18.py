@@ -1,66 +1,42 @@
-from collections.abc import Generator
+import itertools
 
-Point3D = tuple[int, int, int]
-
-
-def adj(p: Point3D) -> Generator[Point3D, None, None]:
-    x, y, z = p
-    for dx, dy, dz in ((1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)):
-        yield x + dx, y + dy, z + dz
+from aoc_cj.util.point import Point3D
 
 
 def parta(txt: str) -> int:
-    points = {(a, b, c) for a, b, c, in (map(int, line.split(",")) for line in txt.splitlines())}
+    lava_points = {Point3D.parse(line) for line in txt.splitlines()}
+    return surface_area(lava_points)
 
-    return sa(points)
 
-
-def sa(points: set[Point3D]) -> int:
-    surface_area = 0
-    for p in points:
-        # count exposed faces
-        for ap in adj(p):
-            if ap not in points:
-                surface_area += 1
-    return surface_area
+def surface_area(points: set[Point3D]) -> int:
+    return sum(1 for p in points for ap in p.adj() if ap not in points)
 
 
 def partb(txt: str) -> int:
-    points = {(a, b, c) for a, b, c, in (map(int, line.split(",")) for line in txt.splitlines())}
+    lava_points = {Point3D.parse(line) for line in txt.splitlines()}
 
-    min_x = min(x for x, y, z in points)
-    max_x = max(x for x, y, z in points)
-    min_y = min(y for x, y, z in points)
-    max_y = max(y for x, y, z in points)
-    min_z = min(z for x, y, z in points)
-    max_z = max(z for x, y, z in points)
+    all_points_in_volume = {
+        Point3D(x, y, z)
+        for x, y, z in itertools.product(
+            range(min(p.x for p in lava_points), max(p.x for p in lava_points) + 1),
+            range(min(p.y for p in lava_points), max(p.y for p in lava_points) + 1),
+            range(min(p.z for p in lava_points), max(p.z for p in lava_points) + 1),
+        )
+    }
+    air_points = all_points_in_volume.difference(lava_points)
 
-    air_points: set[Point3D] = set()
-    for xx in range(min_x, max_x + 1):
-        for yy in range(min_y, max_y + 1):
-            for zz in range(min_z, max_z + 1):
-                p = (xx, yy, zz)
-                if p not in points:
-                    air_points.add(p)
-
-    # remove air points that are not surrounded fully by points or
-    # other air_points until no points are removed
-    removed_points = True
-    while removed_points:
-        to_remove = set()
-
-        for p in air_points:
-            for ap in adj(p):
-                if ap not in air_points and ap not in points:
-                    to_remove.add(p)
-                    continue
-
-        if to_remove:
+    # remove points from air_points that are not fully surrounded by points in
+    # either lava_points or air_points until no points are removed.
+    # only air pockets will remain!
+    while True:
+        if to_remove := {
+            p for p in air_points if any(ap not in air_points and ap not in lava_points for ap in p.adj())
+        }:
             air_points.difference_update(to_remove)
         else:
-            removed_points = False
+            break
 
-    return sa(points) - sa(air_points)
+    return surface_area(lava_points) - surface_area(air_points)
 
 
 if __name__ == "__main__":
