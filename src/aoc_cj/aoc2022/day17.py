@@ -61,8 +61,6 @@ _ROCKS_STR = """
 
 ROCKS = [Rock.parse(r) for r in _ROCKS_STR.strip().split("\n\n")]
 
-# # print(list(ROCKS[2].points()))
-
 
 class Chamber:
     WIDTH = 7
@@ -78,40 +76,18 @@ class Chamber:
         # (or the floor, if there isn't one).
         rock_bottom_left = complex(2, self.highest_rock_y + 4)
 
-        # print(f"Rock begins falling from {rock_bottom_left}")
-        # print(rock)
-
-        is_falling = True
-
-        while is_falling:
-
+        while True:
             # move based off of jet pattern
             j = next(jet_pattern)
             move = {"<": -1, ">": 1}[j]
-            # print()
-            # print(f"jet of gas pushes rock {j}", end="")
             if self.can_move_rock_bottom_left_to(rock, rock_bottom_left + move):
                 rock_bottom_left += move
-            else:
-                pass
-                # print(", but nothing happens", end="")
-            # print()
-            # print(f"rock @ {rock_bottom_left}")
-            # print()
 
             # move down
             if self.can_move_rock_bottom_left_to(rock, rock_bottom_left - 1j):
-                # print("rock falls 1 unit")
                 rock_bottom_left -= 1j
-                # print(f"rock @ {rock_bottom_left}")
             else:
-                # print("Rock falls 1 unit, causing it to come to rest:")
-                is_falling = False
-        # print(f"landed @ {rock_bottom_left}")
-        # print()
-        # print()
-        # print()
-        # print()
+                break
 
         for p in rock.points(rock_bottom_left):
             self._landed_rocks.add(p)

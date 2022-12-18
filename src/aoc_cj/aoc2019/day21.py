@@ -10,7 +10,6 @@ def run_springscript(intcode, instructions):
         p.write_input(ord("\n"))
 
     p.run()
-    # print("".join(chr(c) for c in [*p.outputs][:-1]))
     return p.outputs[-1]
 
 

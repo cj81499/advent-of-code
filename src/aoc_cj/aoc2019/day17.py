@@ -119,34 +119,6 @@ def partb(txt: str):
             p.write_input(ord(x))
         p.write_input(ord("\n"))
 
-    # # for continuous output (while testing)
-    # p.write_input(ord("y"))
-    # p.write_input(ord("\n"))
-    # leftover = ""
-    # while not p.terminated:
-    #     try:
-    #         p.run(max_steps=100)
-    #     except:
-    #         pass
-
-    #     if len(p.outputs) > 0:
-    #         if p.outputs[-1] in range(0x110000):
-    #             leftover += "".join(chr(x) for x in p.outputs)
-    #         else:
-    #             leftover += "".join(chr(x) for x in [*p.outputs][:-1])
-    #         # if we have one or more full screens
-    #         if "\n\n" in leftover:
-    #             chunks = leftover.split("\n\n")
-    #             # print each full screen
-    #             for c in chunks[:-1]:
-    #                 print(c)
-    #                 print()
-    #             # and set leftover to whatever we didn't print
-    #             leftover = chunks[-1]
-    #         if p.outputs[-1] not in range(0x110000):
-    #             return p.outputs[-1]
-    #         p.outputs.clear()
-
     # no to continuous output
     p.write_input(ord("n"))
     p.write_input(ord("\n"))
