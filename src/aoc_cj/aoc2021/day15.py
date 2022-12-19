@@ -1,7 +1,6 @@
+import heapq
 import itertools
 from collections.abc import Iterator
-
-from aoc_cj.util.heap import Heap
 
 Point = tuple[int, int]
 
@@ -15,9 +14,9 @@ def min_risk(grid: dict[Point, int]) -> int:
     goal = max(grid)
 
     risk_of_path_to_point = {(0, 0): 0}
-    h = Heap([(0, (0, 0))])
+    h = [(0, (0, 0))]
     while h:
-        risk_so_far, p = h.pop()
+        risk_so_far, p = heapq.heappop(h)
 
         if p == goal:
             continue
@@ -26,7 +25,7 @@ def min_risk(grid: dict[Point, int]) -> int:
             if adj_p in grid and adj_p not in risk_of_path_to_point:
                 new_risk = risk_so_far + grid[adj_p]
                 risk_of_path_to_point[adj_p] = new_risk
-                h.push((new_risk, adj_p))
+                heapq.heappush(h, (new_risk, adj_p))
 
     return risk_of_path_to_point[goal]
 
