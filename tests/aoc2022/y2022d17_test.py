@@ -11,4 +11,4 @@ def test_a() -> None:
 
 @pytest.mark.skip("unsolved")
 def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == 1514285714288
+    assert d.partb(EXAMPLE_INPUT) == 1514285714288  # type: ignore[func-returns-value]
