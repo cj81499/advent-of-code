@@ -77,7 +77,7 @@ def parta(txt: str, *, initial: str = INITIAL, backwards=False):
 
 
 def partb(txt: str, *, initial: str = SCRAMBLED):
-    return parta(txt, initial, backwards=True)
+    return parta(txt, initial=initial, backwards=True)
 
 
 if __name__ == "__main__":
