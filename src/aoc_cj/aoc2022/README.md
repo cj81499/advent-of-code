@@ -23,7 +23,7 @@
 | 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |  :x:   |  :x:   |        :x:         |
 | 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |  :x:   |  :x:   |        :x:         |
 | 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              | :star: | :star: | :white_check_mark: |
-| 22  | [?](https://adventofcode.com/2022/day/22)                        |  :x:   |  :x:   |        :x:         |
+| 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               | :star: |  :x:   | :white_check_mark: |
 | 23  | [?](https://adventofcode.com/2022/day/23)                        |  :x:   |  :x:   |        :x:         |
 | 24  | [?](https://adventofcode.com/2022/day/24)                        |  :x:   |  :x:   |        :x:         |
 | 25  | [?](https://adventofcode.com/2022/day/25)                        |  :x:   |  :x:   |        :x:         |
