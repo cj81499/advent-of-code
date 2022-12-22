@@ -30,10 +30,9 @@ jobs:
       - name: Check types
         run: poetry run mypy .
 
-      - name: Test
+      - name: Run tests
         run: poetry run pytest --cov=. --cov-report=xml
 
-      # TODO: fix coverage "jitter" on PRs
       # consider uploading only for one python version
-      - name: Upload Coverage to Codecov
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
