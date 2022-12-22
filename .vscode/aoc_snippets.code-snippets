@@ -20,6 +20,7 @@
     "description": "Scaffold Advent of Code Day",
     "prefix": "aoc-day",
     "body": [
+      "import enum",
       "import itertools",
       "import re",
       "from collections import Counter, defaultdict, deque",
