@@ -1,38 +1,39 @@
 # Advent of Code 2022
 
-| Day | Title                                                           |   1    |   2    |       Tests        |
-| :-: | --------------------------------------------------------------- | :----: | :----: | :----------------: |
-| 01  | [Calorie Counting](https://adventofcode.com/2022/day/1)         | :star: | :star: | :white_check_mark: |
-| 02  | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)      | :star: | :star: | :white_check_mark: |
-| 03  | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)  | :star: | :star: | :white_check_mark: |
-| 04  | [Camp Cleanup](https://adventofcode.com/2022/day/4)             | :star: | :star: | :white_check_mark: |
-| 05  | [Supply Stacks](https://adventofcode.com/2022/day/5)            | :star: | :star: | :white_check_mark: |
-| 06  | [Tuning Trouble](https://adventofcode.com/2022/day/6)           | :star: | :star: | :white_check_mark: |
-| 07  | [No Space Left On Device](https://adventofcode.com/2022/day/7)  | :star: | :star: | :white_check_mark: |
-| 08  | [Treetop Tree House](https://adventofcode.com/2022/day/8)       | :star: | :star: | :white_check_mark: |
-| 09  | [Rope Bridge](https://adventofcode.com/2022/day/9)              | :star: | :star: | :white_check_mark: |
-| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)        | :star: | :star: | :white_check_mark: |
-| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)    | :star: | :star: | :white_check_mark: |
-| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | :star: | :star: | :white_check_mark: |
-| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)         | :star: | :star: | :white_check_mark: |
-| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)      | :star: | :star: | :white_check_mark: |
-| 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)   | :star: | :star: | :white_check_mark: |
-| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)   |  :x:   |  :x:   |        :x:         |
-| 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)        | :star: |  :x:   | :white_check_mark: |
-| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)        | :star: | :star: | :white_check_mark: |
-| 19  | [?](https://adventofcode.com/2022/day/19)                       |  :x:   |  :x:   |        :x:         |
-| 20  | [?](https://adventofcode.com/2022/day/20)                       |  :x:   |  :x:   |        :x:         |
-| 21  | [?](https://adventofcode.com/2022/day/21)                       |  :x:   |  :x:   |        :x:         |
-| 22  | [?](https://adventofcode.com/2022/day/22)                       |  :x:   |  :x:   |        :x:         |
-| 23  | [?](https://adventofcode.com/2022/day/23)                       |  :x:   |  :x:   |        :x:         |
-| 24  | [?](https://adventofcode.com/2022/day/24)                       |  :x:   |  :x:   |        :x:         |
-| 25  | [?](https://adventofcode.com/2022/day/25)                       |  :x:   |  :x:   |        :x:         |
+| Day | Title                                                            |   1    |   2    |       Tests        |
+| :-: | ---------------------------------------------------------------- | :----: | :----: | :----------------: |
+| 01  | [Calorie Counting](https://adventofcode.com/2022/day/1)          | :star: | :star: | :white_check_mark: |
+| 02  | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)       | :star: | :star: | :white_check_mark: |
+| 03  | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)   | :star: | :star: | :white_check_mark: |
+| 04  | [Camp Cleanup](https://adventofcode.com/2022/day/4)              | :star: | :star: | :white_check_mark: |
+| 05  | [Supply Stacks](https://adventofcode.com/2022/day/5)             | :star: | :star: | :white_check_mark: |
+| 06  | [Tuning Trouble](https://adventofcode.com/2022/day/6)            | :star: | :star: | :white_check_mark: |
+| 07  | [No Space Left On Device](https://adventofcode.com/2022/day/7)   | :star: | :star: | :white_check_mark: |
+| 08  | [Treetop Tree House](https://adventofcode.com/2022/day/8)        | :star: | :star: | :white_check_mark: |
+| 09  | [Rope Bridge](https://adventofcode.com/2022/day/9)               | :star: | :star: | :white_check_mark: |
+| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)         | :star: | :star: | :white_check_mark: |
+| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)     | :star: | :star: | :white_check_mark: |
+| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)  | :star: | :star: | :white_check_mark: |
+| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)          | :star: | :star: | :white_check_mark: |
+| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)       | :star: | :star: | :white_check_mark: |
+| 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | :star: | :star: | :white_check_mark: |
+| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    |  :x:   |  :x:   |        :x:         |
+| 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)         | :star: |  :x:   | :white_check_mark: |
+| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         | :star: | :star: | :white_check_mark: |
+| 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |  :x:   |  :x:   |        :x:         |
+| 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |  :x:   |  :x:   |        :x:         |
+| 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              | :star: | :star: | :white_check_mark: |
+| 22  | [?](https://adventofcode.com/2022/day/22)                        |  :x:   |  :x:   |        :x:         |
+| 23  | [?](https://adventofcode.com/2022/day/23)                        |  :x:   |  :x:   |        :x:         |
+| 24  | [?](https://adventofcode.com/2022/day/24)                        |  :x:   |  :x:   |        :x:         |
+| 25  | [?](https://adventofcode.com/2022/day/25)                        |  :x:   |  :x:   |        :x:         |
 
 ## Results
 
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 21   00:22:07   2285      0   23:39:04  14617      0
  18   00:08:16   1039      0   00:23:34    629      0
  17   00:53:01   1088      0          -      -      -
  15   00:49:02   3216      0   01:13:55   1758      0
