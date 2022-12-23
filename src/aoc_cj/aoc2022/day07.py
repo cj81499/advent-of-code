@@ -3,6 +3,8 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import DefaultDict, Union
 
+MAX_DIR_SIZE = 100000
+
 TOTAL_DISK_SPACE = 70000000
 REQUIRED_AVAILABLE_SPACE = 30000000
 
@@ -22,13 +24,7 @@ class Dir:
         return sum(c.size for c in self.children)
 
 
-def parta(txt: str) -> int:
-    dirs = parse(txt)
-
-    return sum(d.size for d in dirs.values() if d.size <= 100000)
-
-
-def parse(txt: str) -> dict[str, Dir]:
+def get_dir_sizes(txt: str) -> list[int]:
     dirs: DefaultDict[str, Dir] = defaultdict(lambda: Dir([]))
     current_path: list[str] = []
     for cmd in txt.split("\n$ "):
@@ -50,20 +46,23 @@ def parse(txt: str) -> dict[str, Dir]:
                 else:
                     size, filename = line.split()
                     dir.children.append(File(filename, int(size)))
-    return dirs
+        else:
+            assert False, f"unrecognized command: '{cmd}'"
+    return [d.size for d in dirs.values()]
+
+
+def parta(txt: str) -> int:
+    return sum(s for s in get_dir_sizes(txt) if s <= MAX_DIR_SIZE)
 
 
 def partb(txt: str) -> int:
-    dirs = parse(txt)
+    dir_sizes = get_dir_sizes(txt)
 
-    dir_sizes = {d.size for d in dirs.values()}
     total_used_space = max(dir_sizes)
     current_unused_space = TOTAL_DISK_SPACE - total_used_space
     must_delete_at_least = REQUIRED_AVAILABLE_SPACE - current_unused_space
 
-    delete_candidates = {s for s in dir_sizes if s > must_delete_at_least}
-
-    return min(delete_candidates)
+    return min(s for s in dir_sizes if s > must_delete_at_least)
 
 
 if __name__ == "__main__":
