@@ -1,54 +1,38 @@
-def parta(txt: str) -> str:
-    stacks, moves = txt.split("\n\n")
+from itertools import zip_longest
 
-    stacks_dict: dict[int, list[str]] = {}
+Stacks = dict[int, list[str]]
 
-    for line in stacks.splitlines():
-        for stack_i, line_i in enumerate(range(1, len(line), 4), start=1):
-            c = line[line_i]
-            if c.isalpha():
-                stacks_dict.setdefault(stack_i, []).append(c)
 
-    for k in stacks_dict:
-        stacks_dict[k] = list(reversed(stacks_dict[k]))
+def parse(txt: str) -> tuple[str, Stacks]:
+    stacks_str, moves = txt.split("\n\n")
+
+    stacks = {
+        int(s[0]): list(s[1:])
+        for col in zip_longest(*stacks_str.splitlines(), fillvalue="")
+        if (s := ("".join(reversed(col)).strip())).isalnum()
+    }
+
+    return moves, stacks
+
+
+def top_of_stacks(stacks: Stacks) -> str:
+    return "".join(stacks[i][-1] for i in range(1, max(stacks) + 1))
+
+
+def parta(txt: str, reverse: bool = True) -> str:
+    moves, stacks = parse(txt)
 
     for m in moves.splitlines():
         _, count, _, src, _, dest = m.split()
-        for _ in range(int(count)):
-            stacks_dict[int(dest)].append(stacks_dict[int(src)].pop())
+        move = stacks[int(src)][-int(count) :]
+        stacks[int(dest)].extend(reversed(move) if reverse else move)
+        stacks[int(src)] = stacks[int(src)][: -int(count)]
 
-    result = ""
-    for i in range(1, max(stacks_dict) + 1):
-        result += stacks_dict[i][-1]
-
-    return result
+    return top_of_stacks(stacks)
 
 
 def partb(txt: str) -> str:
-    stacks, moves = txt.split("\n\n")
-
-    stacks_dict: dict[int, list[str]] = {}
-
-    for line in stacks.splitlines():
-        for stack_i, line_i in enumerate(range(1, len(line), 4), start=1):
-            c = line[line_i]
-            if c.isalpha():
-                stacks_dict.setdefault(stack_i, []).append(c)
-
-    for k in stacks_dict:
-        stacks_dict[k] = list(reversed(stacks_dict[k]))
-
-    for m in moves.splitlines():
-        _, count, _, src, _, dest = m.split()
-        stacks_dict[int(dest)].extend(stacks_dict[int(src)][-int(count) :])
-        for _ in range(int(count)):
-            stacks_dict[int(src)].pop()
-
-    result = ""
-    for i in range(1, max(stacks_dict) + 1):
-        result += stacks_dict[i][-1]
-
-    return result
+    return parta(txt, False)
 
 
 if __name__ == "__main__":
