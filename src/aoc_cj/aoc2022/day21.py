@@ -1,137 +1,170 @@
-import operator
+import abc
+import enum
 from typing import Callable, Union
 
 IntFn = Callable[[int, int], int]
 
 Monkeys = dict[str, Union[int, tuple[str, str, str]]]
 
-OPS: dict[str, IntFn] = {
-    "+": operator.add,
-    "-": operator.sub,
-    "*": operator.mul,
-    "/": operator.floordiv,
-}
+ROOT = "root"
+HUMN = "humn"
 
 
-def evaluate(monkeys: Monkeys, name: str = "root") -> int:
-    monkey = monkeys[name]
-    if isinstance(monkey, int):
-        return monkey
+class Side(enum.Enum):
+    LEFT = enum.auto()
+    RIGHT = enum.auto()
 
-    l, op, r = monkey
-    return OPS[op](evaluate(monkeys, l), evaluate(monkeys, r))
+
+class Operation(enum.Enum):
+    ADD = "+"
+    SUBTRACT = "-"
+    MULTIPLY = "*"
+    DIVIDE = "/"
+
+    def apply(self, left: int, right: int) -> int:
+        return {
+            Operation.ADD: left + right,
+            Operation.SUBTRACT: left - right,
+            Operation.MULTIPLY: left * right,
+            Operation.DIVIDE: left // right,
+        }[self]
+
+    def opposite(self) -> "Operation":
+        return {
+            Operation.ADD: Operation.SUBTRACT,
+            Operation.SUBTRACT: Operation.ADD,
+            Operation.MULTIPLY: Operation.DIVIDE,
+            Operation.DIVIDE: Operation.MULTIPLY,
+        }[self]
+
+    def reverse(self, result: int, value: int, value_on: Side) -> int:
+        if value_on is Side.LEFT and self is Operation.SUBTRACT:
+            return -result + value
+        return self.opposite().apply(result, value)
+
+
+class Monkey(abc.ABC):
+    def __init__(self, name: str) -> None:
+        self.name = name
+
+    @abc.abstractmethod
+    def evaluate(self, monkeys: dict[str, "Monkey"]) -> int:
+        pass
+
+    @staticmethod
+    def parse(monkey: str) -> "Monkey":
+        name, value_s = monkey.split(": ")
+        if value_s.isnumeric():
+            return IntMonkey(name, int(value_s))
+        left, op, right = value_s.split()
+        return UnresolvedMonkey(name, left, Operation(op), right)
+
+    @abc.abstractmethod
+    def contains(self, name: str, monkeys: dict[str, "Monkey"]) -> bool:
+        pass
+
+    @abc.abstractmethod
+    def _solve_humn(self, monkeys: dict[str, "Monkey"], target: int) -> int:
+        pass
+
+
+class IntMonkey(Monkey):
+    def __init__(self, name: str, value: int) -> None:
+        super().__init__(name)
+        self.value = value
+
+    def evaluate(self, _monkeys: dict[str, Monkey]) -> int:
+        return self.value
+
+    def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
+        return self.name == name
+
+    def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
+        assert self.name == HUMN
+        return target
+
+
+class UnresolvedMonkey(Monkey):
+    def __init__(self, name: str, left: str, op: Operation, right: str) -> None:
+        super().__init__(name)
+
+        self.left = left
+        self.op = op
+        self.right = right
+
+        self._resolved: ResolvedMonkey | None = None
+
+    def evaluate(self, monkeys: dict[str, Monkey]) -> int:
+        return self._resolve(monkeys).evaluate(monkeys)
+
+    def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
+        return self._resolve(monkeys).contains(name, monkeys)
+
+    def solve_humn(self, monkeys: dict[str, Monkey]) -> int:
+        assert self.name == ROOT
+        # either left or right must contain HUMN
+        resolved = self._resolve(monkeys)
+        assert (left_contains_humn := resolved.left.contains(HUMN, monkeys)) ^ resolved.right.contains(HUMN, monkeys)
+        monkey_containing_humn, monkey_not_containing_humn = (
+            (resolved.left, resolved.right) if left_contains_humn else (resolved.right, resolved.left)
+        )
+        # we know the value of monkey that doesn't contain HUMN
+        known_value = monkey_not_containing_humn.evaluate(monkeys)
+        # if this is the root monkey, we don't have a target value yet.
+        return monkey_containing_humn._solve_humn(monkeys, target=known_value)
+
+    def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
+        return self._resolve(monkeys)._solve_humn(monkeys, target)
+
+    def _resolve(self, monkeys: dict[str, Monkey]) -> "ResolvedMonkey":
+        if self._resolved is None:
+            self._resolved = ResolvedMonkey(self.name, monkeys[self.left], self.op, monkeys[self.right])
+        return self._resolved
+
+
+class ResolvedMonkey(Monkey):
+    def __init__(self, name: str, left: Monkey, op: Operation, right: Monkey) -> None:
+        super().__init__(name)
+
+        self.left = left
+        self.op = op
+        self.right = right
+
+        self._result: int | None = None
+        self._contains_humn: bool | None = None
+
+    def evaluate(self, monkeys: dict[str, Monkey]) -> int:
+        if self._result is None:
+            self._result = self.op.apply(self.left.evaluate(monkeys), self.right.evaluate(monkeys))
+        return self._result
+
+    def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
+        if self._contains_humn is None:
+            self._contains_humn = self.left.contains(name, monkeys) or self.right.contains(name, monkeys)
+        return self._contains_humn
+
+    def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
+        # either left or right must contain HUMN
+        assert (left_contains_humn := self.left.contains(HUMN, monkeys)) ^ self.right.contains(HUMN, monkeys)
+        monkey_containing_humn, monkey_not_containing_humn, known_value_side = (
+            (self.left, self.right, Side.RIGHT) if left_contains_humn else (self.right, self.left, Side.LEFT)
+        )
+        # we know the value of monkey that doesn't contain HUMN
+        known_value = monkey_not_containing_humn.evaluate(monkeys)
+        unknown_value = self.op.reverse(target, known_value, known_value_side)
+        return monkey_containing_humn._solve_humn(monkeys, target=unknown_value)
 
 
 def parta(txt: str) -> int:
-    monkeys = parse(txt)
-
-    return evaluate(monkeys)
-
-
-def parse(txt: str) -> Monkeys:
-    monkeys: Monkeys = {}
-
-    for l in txt.splitlines():
-        name, job = l.split(": ")
-
-        if job.isnumeric():
-            monkeys[name] = int(job)
-        else:
-            l, op_s, r = job.split()
-            monkeys[name] = (l, op_s, r)
-
-    return monkeys
-
-
-def contains(monkeys: Monkeys, search: str, name: str) -> bool:
-    if search == name:
-        return True
-
-    monkey = monkeys[name]
-    if isinstance(monkey, int):
-        return False
-
-    l, _op, r = monkey
-
-    return contains(monkeys, search, l) or contains(monkeys, search, r)
-
-
-def humn_value_for_target(monkeys: Monkeys, name: str, target: int) -> int:
-    if name == "humn":
-        return target
-
-    monkey = monkeys[name]
-    assert not isinstance(monkey, int)
-    l, op, r = monkey
-    if contains(monkeys, "humn", l):
-        r_value = evaluate(monkeys, r)
-        if op == "-":
-            # reverse_result - r_value = target
-            reverse_result = target + r_value
-        elif op == "+":
-            # reverse_result + r_value = target
-            reverse_result = target - r_value
-        elif op == "*":
-            # reverse_result * r_value = target
-            reverse_result = target // r_value
-        elif op == "/":
-            # reverse_result / r_value = target
-            reverse_result = target * r_value
-        else:
-            assert False, "unreachable"
-        actual = OPS[op](reverse_result, r_value)
-        assert actual == target
-
-        return humn_value_for_target(monkeys, l, reverse_result)
-    else:
-        assert contains(monkeys, "humn", r)
-        l_value = evaluate(monkeys, l)
-        if op == "-":
-            # l_value - reverse_result = target
-            reverse_result = l_value - target
-        elif op == "+":
-            # l_value + reverse_result = target
-            reverse_result = target - l_value
-        elif op == "*":
-            # l_value * reverse_result = target
-            reverse_result = target // l_value
-        elif op == "/":
-            # l_value / reverse_result = target
-            reverse_result = target * l_value
-        else:
-            assert False, "unreachable"
-        actual = OPS[op](l_value, reverse_result)
-        assert actual == target
-
-        return humn_value_for_target(monkeys, r, reverse_result)
+    monkeys = {m.name: m for m in (Monkey.parse(l) for l in txt.splitlines())}
+    return monkeys[ROOT].evaluate(monkeys)
 
 
 def partb(txt: str) -> int:
-    monkeys = parse(txt)
-
-    root_monkey = monkeys["root"]
-
-    assert not isinstance(root_monkey, int)
-    assert isinstance(monkeys["humn"], int)
-
-    l, op, r = root_monkey
-    if contains(monkeys, "humn", l):
-        target_value = evaluate(monkeys, r)
-        result = humn_value_for_target(monkeys, l, target_value)
-
-        monkeys["humn"] = result
-        assert evaluate(monkeys, l) == target_value
-
-        return result
-
-    assert contains(monkeys, "humn", r)
-    target_value = evaluate(monkeys, l)
-    result = humn_value_for_target(monkeys, r, target_value)
-
-    monkeys["humn"] = result
-    assert evaluate(monkeys, r) == target_value
-
-    return result
+    monkeys = {m.name: m for m in (Monkey.parse(l) for l in txt.splitlines())}
+    root_monkey = monkeys[ROOT]
+    assert isinstance(root_monkey, UnresolvedMonkey)
+    return root_monkey.solve_humn(monkeys)
 
 
 if __name__ == "__main__":
