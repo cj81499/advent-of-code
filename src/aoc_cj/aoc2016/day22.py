@@ -18,12 +18,12 @@ class Node:
     used: int
 
     __PATTERN = re.compile(r"(?P<fs>[\w\d\/-]+) *(?P<size>\d+)T *(?P<used>\d+)T *(?P<avail>\d+)T *(?P<percent>\d+)%")
+    PREFIX = "/dev/grid/node"
 
     @staticmethod
-    def parse(string: str) -> Optional["Node"]:
-        match = Node.__PATTERN.match(string)
-        if match is None:
-            return None
+    def parse(node: str) -> Optional["Node"]:
+        match = Node.__PATTERN.match(node)
+        assert match is not None
         size, used, avail = map(int, match.group("size", "used", "avail"))
         assert size - used == avail
         *_, x, y = match.group("fs").split("/")[-1].split("-")[-2:]
@@ -39,12 +39,12 @@ class Node:
 
 
 def parta(txt: str) -> int:
-    nodes = [n for l in txt.splitlines() if (n := Node.parse(l)) is not None]
+    nodes = [Node.parse(l) for l in txt.splitlines() if l.startswith(Node.PREFIX)]
     return sum(a.used != 0 and a.used <= b.avail for a, b in itertools.permutations(nodes, 2))
 
 
 def partb(txt: str) -> None:
-    grid = {n.point: n for l in txt.splitlines() if (n := Node.parse(l)) is not None}
+    grid = {(n := Node.parse(l)).point: n for l in txt.splitlines() if l.startswith(Node.PREFIX)}
     max_x, _max_y = max(grid)
 
     # use empty node to move data where we want
