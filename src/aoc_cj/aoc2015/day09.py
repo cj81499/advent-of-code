@@ -15,8 +15,7 @@ class Location:
             return self.distances[other.name]
         elif self.name in other.distances:
             return other.distances[self.name]
-        else:
-            return None
+        assert False, "unreachable"
 
     def __repr__(self) -> str:
         return f"{self.name} {self.distances}"
