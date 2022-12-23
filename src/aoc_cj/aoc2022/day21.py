@@ -130,13 +130,10 @@ class ResolvedMonkey(Monkey):
         self.op = op
         self.right = right
 
-        self._result: Optional[int] = None
         self._contains_humn: Optional[bool] = None
 
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
-        if self._result is None:
-            self._result = self.op.apply(self.left.evaluate(monkeys), self.right.evaluate(monkeys))
-        return self._result
+        return self.op.apply(self.left.evaluate(monkeys), self.right.evaluate(monkeys))
 
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         if self._contains_humn is None:
