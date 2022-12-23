@@ -43,7 +43,7 @@ def search(initial, num_keys, grid, next_states=next_states_a):
     q = PriorityQueue()
     q.push(0, initial)
     seen = set()
-    while len(q) > 0:
+    while q:
         state = q.pop()
         steps, pos, collected = state
         if len(collected) == num_keys:

@@ -61,9 +61,9 @@ OPS = {
 }
 
 
-def solve(operations: str, initial, backwards=False):
+def parta(txt: str, *, initial: str = INITIAL, backwards=False):
     pw = [*initial]
-    ops = operations.splitlines()
+    ops = txt.splitlines()
     if backwards:
         ops = reversed(ops)
     for instruction in ops:
@@ -76,12 +76,8 @@ def solve(operations: str, initial, backwards=False):
     return "".join(pw)
 
 
-def parta(txt: str, to_scramble=INITIAL):
-    return solve(txt, to_scramble)
-
-
-def partb(txt: str, to_unscramble=SCRAMBLED):
-    return solve(txt, to_unscramble, backwards=True)
+def partb(txt: str, *, initial: str = SCRAMBLED):
+    return parta(txt, initial=initial, backwards=True)
 
 
 if __name__ == "__main__":

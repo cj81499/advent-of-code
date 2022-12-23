@@ -57,7 +57,6 @@ def partb(txt: str):
                 elif tile_id == 3:
                     paddle_x = x
         if p.is_waiting_for_input():
-            # print(display(screen, score))
             joystick = 0
             if ball_x != paddle_x:
                 joystick = 1 if ball_x > paddle_x else -1

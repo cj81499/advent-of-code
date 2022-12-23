@@ -12,9 +12,9 @@ rotate based on position of letter d
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT, to_scramble="abcde") == "decab"
+def test_a() -> None:
+    assert d.parta(EXAMPLE_INPUT, initial="abcde") == "decab"
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT, to_unscramble="decab") == "abcde"
+def test_b() -> None:
+    assert d.partb(EXAMPLE_INPUT, initial="decab") == "abcde"

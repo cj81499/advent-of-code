@@ -30,8 +30,11 @@ def solve(year: int, day: int, data: str) -> tuple[Answer, Answer]:
         def solve_part(part: Literal["a", "b"]) -> Answer:
             if f := getattr(module, f"part{part}", None):
                 assert inspect.isfunction(f)
-                # TODO: consider checking inspect.signature
-                resp = f(data)
+                try:
+                    # TODO: consider checking that inspect.signature matches expected signature
+                    resp = f(data)
+                except NotImplementedError:  # unsolved
+                    resp = None
                 assert resp is None or isinstance(resp, (int, str))
                 return resp
             return None

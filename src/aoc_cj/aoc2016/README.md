@@ -2,31 +2,31 @@
 
 | Day | Title                                                                          |   1    |   2    |       Tests        |
 | :-: | ------------------------------------------------------------------------------ | :----: | :----: | :----------------: |
-| 01  | [No Time for a Taxicab](https://adventofcode.com/2016/day/1)                   | :star: | :star: | :heavy_check_mark: |
-| 02  | [Bathroom Security](https://adventofcode.com/2016/day/2)                       | :star: | :star: | :heavy_check_mark: |
-| 03  | [Squares With Three Sides](https://adventofcode.com/2016/day/3)                | :star: | :star: | :heavy_check_mark: |
-| 04  | [Security Through Obscurity](https://adventofcode.com/2016/day/4)              | :star: | :star: | :heavy_check_mark: |
-| 05  | [How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5)         | :star: | :star: | :heavy_check_mark: |
-| 06  | [Signals and Noise](https://adventofcode.com/2016/day/6)                       | :star: | :star: | :heavy_check_mark: |
-| 07  | [Internet Protocol Version 7](https://adventofcode.com/2016/day/7)             | :star: | :star: | :heavy_check_mark: |
-| 08  | [Two-Factor Authentication](https://adventofcode.com/2016/day/8)               | :star: | :star: | :heavy_check_mark: |
-| 09  | [Explosives in Cyberspace](https://adventofcode.com/2016/day/9)                | :star: | :star: | :heavy_check_mark: |
-| 10  | [Balance Bots](https://adventofcode.com/2016/day/10)                           | :star: | :star: | :heavy_check_mark: |
-| 11  | [Radioisotope Thermoelectric Generators](https://adventofcode.com/2016/day/11) | :star: | :star: | :heavy_check_mark: |
-| 12  | [Leonardo's Monorail](https://adventofcode.com/2016/day/12)                    | :star: | :star: | :heavy_check_mark: |
-| 13  | [A Maze of Twisty Little Cubicles](https://adventofcode.com/2016/day/13)       | :star: | :star: | :heavy_check_mark: |
-| 14  | [One-Time Pad](https://adventofcode.com/2016/day/14)                           | :star: | :star: | :heavy_check_mark: |
-| 15  | [Timing is Everything](https://adventofcode.com/2016/day/15)                   | :star: | :star: | :heavy_check_mark: |
-| 16  | [Dragon Checksum](https://adventofcode.com/2016/day/16)                        | :star: | :star: | :heavy_check_mark: |
-| 17  | [Two Steps Forward](https://adventofcode.com/2016/day/17)                      | :star: | :star: | :heavy_check_mark: |
-| 18  | [Like a Rogue](https://adventofcode.com/2016/day/18)                           | :star: | :star: | :heavy_check_mark: |
-| 19  | [An Elephant Named Joseph](https://adventofcode.com/2016/day/19)               | :star: | :star: | :heavy_check_mark: |
-| 20  | [Firewall Rules](https://adventofcode.com/2016/day/20)                         | :star: | :star: | :heavy_check_mark: |
-| 21  | [Scrambled Letters and Hash](https://adventofcode.com/2016/day/21)             | :star: | :star: | :heavy_check_mark: |
-| 22  | [Grid Computing](https://adventofcode.com/2016/day/22)                         | :star: | :star: | :heavy_check_mark: |
-| 23  | [Safe Cracking](https://adventofcode.com/2016/day/23)                          | :star: | :star: | :heavy_check_mark: |
-| 24  | [Air Duct Spelunking](https://adventofcode.com/2016/day/24)                    | :star: | :star: | :heavy_check_mark: |
-| 25  | [Clock Signal](https://adventofcode.com/2016/day/25)                           | :star: | :star: |        n/a         |
+| 01  | [No Time for a Taxicab](https://adventofcode.com/2016/day/1)                   | :star: | :star: | :white_check_mark: |
+| 02  | [Bathroom Security](https://adventofcode.com/2016/day/2)                       | :star: | :star: | :white_check_mark: |
+| 03  | [Squares With Three Sides](https://adventofcode.com/2016/day/3)                | :star: | :star: | :white_check_mark: |
+| 04  | [Security Through Obscurity](https://adventofcode.com/2016/day/4)              | :star: | :star: | :white_check_mark: |
+| 05  | [How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5)         | :star: | :star: | :white_check_mark: |
+| 06  | [Signals and Noise](https://adventofcode.com/2016/day/6)                       | :star: | :star: | :white_check_mark: |
+| 07  | [Internet Protocol Version 7](https://adventofcode.com/2016/day/7)             | :star: | :star: | :white_check_mark: |
+| 08  | [Two-Factor Authentication](https://adventofcode.com/2016/day/8)               | :star: | :star: | :white_check_mark: |
+| 09  | [Explosives in Cyberspace](https://adventofcode.com/2016/day/9)                | :star: | :star: | :white_check_mark: |
+| 10  | [Balance Bots](https://adventofcode.com/2016/day/10)                           | :star: | :star: | :white_check_mark: |
+| 11  | [Radioisotope Thermoelectric Generators](https://adventofcode.com/2016/day/11) | :star: | :star: | :white_check_mark: |
+| 12  | [Leonardo's Monorail](https://adventofcode.com/2016/day/12)                    | :star: | :star: | :white_check_mark: |
+| 13  | [A Maze of Twisty Little Cubicles](https://adventofcode.com/2016/day/13)       | :star: | :star: | :white_check_mark: |
+| 14  | [One-Time Pad](https://adventofcode.com/2016/day/14)                           | :star: | :star: | :white_check_mark: |
+| 15  | [Timing is Everything](https://adventofcode.com/2016/day/15)                   | :star: | :star: | :white_check_mark: |
+| 16  | [Dragon Checksum](https://adventofcode.com/2016/day/16)                        | :star: | :star: | :white_check_mark: |
+| 17  | [Two Steps Forward](https://adventofcode.com/2016/day/17)                      | :star: | :star: | :white_check_mark: |
+| 18  | [Like a Rogue](https://adventofcode.com/2016/day/18)                           | :star: | :star: | :white_check_mark: |
+| 19  | [An Elephant Named Joseph](https://adventofcode.com/2016/day/19)               | :star: | :star: | :white_check_mark: |
+| 20  | [Firewall Rules](https://adventofcode.com/2016/day/20)                         | :star: | :star: | :white_check_mark: |
+| 21  | [Scrambled Letters and Hash](https://adventofcode.com/2016/day/21)             | :star: | :star: | :white_check_mark: |
+| 22  | [Grid Computing](https://adventofcode.com/2016/day/22)                         | :star: | :star: | :white_check_mark: |
+| 23  | [Safe Cracking](https://adventofcode.com/2016/day/23)                          | :star: | :star: | :white_check_mark: |
+| 24  | [Air Duct Spelunking](https://adventofcode.com/2016/day/24)                    | :star: | :star: | :white_check_mark: |
+| 25  | [Clock Signal](https://adventofcode.com/2016/day/25)                           | :star: | :star: |      :shrug:       |
 
 ## Results
 

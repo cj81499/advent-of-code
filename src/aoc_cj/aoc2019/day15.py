@@ -58,7 +58,6 @@ def get_complete_map(txt: str):
     p.run()
     grid = {}
     explore(p, grid)
-    # print(display(grid)) # see the grid
     return grid
 
 

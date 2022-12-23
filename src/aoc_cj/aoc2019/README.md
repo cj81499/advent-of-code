@@ -2,31 +2,31 @@
 
 | Day | Title                                                                     |   1    |   2    |       Tests        |
 | :-: | ------------------------------------------------------------------------- | :----: | :----: | :----------------: |
-| 01  | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | :star: | :star: | :heavy_check_mark: |
-| 02  | [1202 Program Alarm](https://adventofcode.com/2019/day/2)                 | :star: | :star: | :heavy_check_mark: |
-| 03  | [Crossed Wires](https://adventofcode.com/2019/day/3)                      | :star: | :star: | :heavy_check_mark: |
-| 04  | [Secure Container](https://adventofcode.com/2019/day/4)                   | :star: | :star: | :heavy_check_mark: |
-| 05  | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5)   | :star: | :star: | :heavy_check_mark: |
-| 06  | [Universal Orbit Map](https://adventofcode.com/2019/day/6)                | :star: | :star: | :heavy_check_mark: |
-| 07  | [Amplification Circuit](https://adventofcode.com/2019/day/7)              | :star: | :star: | :heavy_check_mark: |
-| 08  | [Space Image Format](https://adventofcode.com/2019/day/8)                 | :star: | :star: | :heavy_check_mark: |
-| 09  | [Sensor Boost](https://adventofcode.com/2019/day/9)                       | :star: | :star: | :heavy_check_mark: |
-| 10  | [Monitoring Station](https://adventofcode.com/2019/day/10)                | :star: | :star: | :heavy_check_mark: |
+| 01  | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | :star: | :star: | :white_check_mark: |
+| 02  | [1202 Program Alarm](https://adventofcode.com/2019/day/2)                 | :star: | :star: | :white_check_mark: |
+| 03  | [Crossed Wires](https://adventofcode.com/2019/day/3)                      | :star: | :star: | :white_check_mark: |
+| 04  | [Secure Container](https://adventofcode.com/2019/day/4)                   | :star: | :star: | :white_check_mark: |
+| 05  | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5)   | :star: | :star: | :white_check_mark: |
+| 06  | [Universal Orbit Map](https://adventofcode.com/2019/day/6)                | :star: | :star: | :white_check_mark: |
+| 07  | [Amplification Circuit](https://adventofcode.com/2019/day/7)              | :star: | :star: | :white_check_mark: |
+| 08  | [Space Image Format](https://adventofcode.com/2019/day/8)                 | :star: | :star: | :white_check_mark: |
+| 09  | [Sensor Boost](https://adventofcode.com/2019/day/9)                       | :star: | :star: | :white_check_mark: |
+| 10  | [Monitoring Station](https://adventofcode.com/2019/day/10)                | :star: | :star: | :white_check_mark: |
 | 11  | [Space Police](https://adventofcode.com/2019/day/11)                      | :star: | :star: |        :x:         |
-| 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: | :star: | :heavy_check_mark: |
+| 12  | [The N-Body Problem](https://adventofcode.com/2019/day/12)                | :star: | :star: | :white_check_mark: |
 | 13  | [Care Package](https://adventofcode.com/2019/day/13)                      | :star: | :star: |        :x:         |
-| 14  | [Space Stoichiometry](https://adventofcode.com/2019/day/14)               | :star: | :star: | :heavy_check_mark: |
+| 14  | [Space Stoichiometry](https://adventofcode.com/2019/day/14)               | :star: | :star: | :white_check_mark: |
 | 15  | [Oxygen System](https://adventofcode.com/2019/day/15)                     | :star: | :star: |        :x:         |
-| 16  | [Flawed Frequency Transmission](https://adventofcode.com/2019/day/16)     | :star: | :star: | :heavy_check_mark: |
-| 17  | [Set and Forget](https://adventofcode.com/2019/day/17)                    | :star: | :star: | :heavy_check_mark: |
-| 18  | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18)        | :star: | :star: | :heavy_check_mark: |
+| 16  | [Flawed Frequency Transmission](https://adventofcode.com/2019/day/16)     | :star: | :star: | :white_check_mark: |
+| 17  | [Set and Forget](https://adventofcode.com/2019/day/17)                    | :star: | :star: | :white_check_mark: |
+| 18  | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18)        | :star: | :star: | :white_check_mark: |
 | 19  | [Tractor Beam](https://adventofcode.com/2019/day/19)                      | :star: | :star: |        :x:         |
-| 20  | [Donut Maze](https://adventofcode.com/2019/day/20)                        | :star: | :star: | :heavy_check_mark: |
+| 20  | [Donut Maze](https://adventofcode.com/2019/day/20)                        | :star: | :star: | :white_check_mark: |
 | 21  | [Springdroid Adventure](https://adventofcode.com/2019/day/21)             | :star: | :star: |        :x:         |
-| 22  | [Slam Shuffle](https://adventofcode.com/2019/day/22)                      | :star: |  :x:   | :heavy_check_mark: |
+| 22  | [Slam Shuffle](https://adventofcode.com/2019/day/22)                      | :star: |  :x:   | :white_check_mark: |
 | 23  | [Category Six](https://adventofcode.com/2019/day/23)                      | :star: | :star: |        :x:         |
-| 24  | [Planet of Discord](https://adventofcode.com/2019/day/24)                 | :star: | :star: | :heavy_check_mark: |
-| 25  | [Cryostasis](https://adventofcode.com/2019/day/25)                        | :star: |  :x:   | :heavy_check_mark: |
+| 24  | [Planet of Discord](https://adventofcode.com/2019/day/24)                 | :star: | :star: | :white_check_mark: |
+| 25  | [Cryostasis](https://adventofcode.com/2019/day/25)                        | :star: |  :x:   | :white_check_mark: |
 
 ## Results
 

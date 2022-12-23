@@ -6,23 +6,19 @@ from more_itertools import minmax
 Pixels = defaultdict[tuple[int, int], bool]
 
 
-def parta(txt: str) -> int:
-    return solve(txt)
-
-
-def partb(txt: str) -> int:
-    return solve(txt, loops=50)
-
-
-def solve(txt: str, loops: int = 2) -> int:
-    image_enhancement_algorithm, lit_pixels = parse(txt)
-
+def parta(txt: str, *, loops: int = 2) -> int:
     assert loops % 2 == 0, "odd number of loops will result in image w/ infinitely many lit pixels"
+
+    image_enhancement_algorithm, lit_pixels = parse(txt)
 
     for _ in range(loops):
         lit_pixels = enhance(image_enhancement_algorithm, lit_pixels)
 
-    return sum(is_lit for pos, is_lit in lit_pixels.items())
+    return sum(lit_pixels.values())
+
+
+def partb(txt: str) -> int:
+    return parta(txt, loops=50)
 
 
 def parse(txt: str) -> tuple[str, Pixels]:

@@ -1,6 +1,11 @@
 """cj's utilities https://adventofcode.com/"""
 
 import math
+import re
+from collections.abc import Generator
+
+_INTS_PATTERN = re.compile(r"-?\d+")
+_FLOATS_PATTERN = re.compile(r"-?\d+\.\d+")
 
 
 def clamp(n: int, min_n: int, max_n: int) -> int:
@@ -26,3 +31,11 @@ def is_prime(n: int) -> bool:
         if n % f == 0 or n % (f + 2) == 0:
             return False
     return True
+
+
+def ints(s: str) -> Generator[int, None, None]:
+    yield from map(int, _INTS_PATTERN.findall(s))
+
+
+def floats(s: str) -> Generator[float, None, None]:
+    yield from map(float, _FLOATS_PATTERN.findall(s))
