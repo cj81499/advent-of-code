@@ -38,6 +38,7 @@ exclude_lines = [
 	"if TYPE_CHECKING:",
   "raise NotImplementedError",
   "@abc.abstractmethod",
+  "assert False",
 ]
 
 [tool.isort]
@@ -71,7 +72,7 @@ exclude = [
 warn_unreachable = true
 
 [[tool.mypy.overrides]]
-module = ['aocd', 'z3']
+module = ['aocd', 'aocd.models', 'z3']
 ignore_missing_imports = true
 
 # Opt out of type checking for old years.
