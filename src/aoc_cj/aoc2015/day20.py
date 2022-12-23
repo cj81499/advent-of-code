@@ -6,7 +6,7 @@ def select_house(presents, min_presents):
         if n > min_presents and i > 0:
             return i
 
-    return None
+    assert False, "unreachable"
 
 
 def presents_for_houses(min_presents, present_multiplier, house_limit=None):
