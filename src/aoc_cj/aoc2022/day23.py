@@ -32,8 +32,7 @@ class Simulation:
         self._check_order: Deque[CardinalDirection] = deque(("N", "S", "W", "E"))
 
     def simulate_round(self) -> None:
-        if self.is_complete:
-            raise AssertionError("simulation is already complete")
+        assert not self.is_complete, "simulation is already complete"
         self.round += 1
 
         proposed_moves = self._get_proposed_moves()  # first half of round
