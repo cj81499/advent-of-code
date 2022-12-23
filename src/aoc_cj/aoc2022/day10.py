@@ -1,60 +1,102 @@
+import dataclasses
+import enum
 from collections import deque
-from collections.abc import Generator
 from typing import Optional
 
-MAX_CYCLE = 240
+from typing_extensions import assert_never
+
+
+class Opcode(enum.Enum):
+    NOOP = enum.auto()
+    ADDX = enum.auto()
+
+    def duration(self) -> int:
+        if self is Opcode.NOOP:
+            return 1
+        if self is Opcode.ADDX:
+            return 2
+        assert_never(self)
+
+    def apply(self, x: int, args: list[int]) -> int:
+        if self is Opcode.NOOP:
+            return x
+        if self is Opcode.ADDX:
+            return x + args[0]
+        assert_never(self)
+
+
+@dataclasses.dataclass
+class Instruction:
+    opcode: Opcode
+    args: list[int]
+
+    @staticmethod
+    def parse(instruction: str) -> "Instruction":
+        opcode, *args = instruction.split()
+        return Instruction(Opcode[opcode.upper()], [int(n) for n in args])
+
+    def execute(self, x: int) -> int:
+        return self.opcode.apply(x, self.args)
+
+
+class Computer:
+    def __init__(self, instructions: list[Instruction]) -> None:
+        self._instructions = deque(instructions)
+        self.x = 1
+        self._running: Optional[tuple[Instruction, int]] = None
+
+    def cycle(self) -> int:
+        # start of cycle
+        if self._running is None and self._instructions:
+            to_run = self._instructions.popleft()
+            self._running = (to_run, to_run.opcode.duration())
+
+        # during cycle
+        x = self.x
+
+        # after the cycle
+        if self._running is not None:
+            instruction, duration = self._running
+            duration -= 1
+
+            if duration == 0:
+                self.x = instruction.execute(x)
+
+            self._running = None if duration == 0 else (instruction, duration)
+
+        return x
 
 
 def parta(txt: str) -> int:
-    return sum(cycle * x for cycle, x in helper(txt) if (cycle - 20) % 40 == 0)
+    instructions = [Instruction.parse(line) for line in txt.splitlines()]
+    computer = Computer(instructions)
 
+    signal_strength_sum = 0
+    for cycle in range(1, 220 + 1):
+        result = computer.cycle()
+        if (cycle - 20) % 40 == 0:
+            signal_strength_sum += cycle * result
 
-def helper(txt: str) -> Generator[tuple[int, int], None, None]:
-    X = 1
-    running: Optional[tuple[str, int, int]] = None
-
-    lines = deque(txt.splitlines())
-    for cycle in range(1, MAX_CYCLE + 1):
-        # start of cycle
-        # if nothing is running and there are more instructions to run
-        if running is None and lines:
-            instruction = lines.popleft()
-
-            if instruction == "noop":
-                running = ("noop", 0, 1)
-            elif instruction.startswith("addx"):
-                _, n = instruction.split()
-                running = ("addx", int(n), 2)
-
-        # during the cycle
-        yield cycle, X
-
-        # after the cycle, cmds finish execution
-        if running is not None:
-            op, num, duration = running
-            if duration == 1:
-                X += num
-                running = None
-            else:
-                running = (op, num, duration - 1)
+    return signal_strength_sum
 
 
 def partb(txt: str) -> str:
-    lines = []
-    row = []
-    for cycle, X in helper(txt):
-        row_idx = (cycle - 1) % 40
-        is_lit = abs(row_idx - X) < 2
-        row.append("#" if is_lit else ".")
-        if cycle % 40 == 0:
-            lines.append("".join(row))
-            row.clear()
+    instructions = [Instruction.parse(line) for line in txt.splitlines()]
+    computer = Computer(instructions)
 
-    return "\n".join(lines)
+    chars = []
+    # crt has 6 rows and 40 cols
+    for row_idx in range(6):
+        for col_idx in range(40):
+            is_lit = abs(col_idx - computer.cycle()) < 2
+            chars.append("#" if is_lit else ".")
+        chars.append("\n")
+
+    return "".join(chars)
 
 
 if __name__ == "__main__":
     from aocd import data
 
     print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"partb:\n{partb(data)}")

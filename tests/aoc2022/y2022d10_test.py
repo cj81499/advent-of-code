@@ -1,5 +1,6 @@
 import aoc_cj.aoc2022.day10 as d
 
+# TODO: test this!
 EXAMPLE_INPUT = """
 noop
 addx 3
@@ -154,6 +155,31 @@ noop
 noop
 noop
 """.strip()
+
+
+def test_example() -> None:
+    instructions = [d.Instruction.parse(line) for line in EXAMPLE_INPUT.splitlines()]
+    c = d.Computer(instructions)
+
+    # Cycle 1
+    assert c.cycle() == 1
+    assert c.x == 1
+
+    # Cycle 2
+    assert c.cycle() == 1
+    assert c.x == 1
+
+    # Cycle 3
+    assert c.cycle() == 1
+    assert c.x == 4
+
+    # Cycle 4
+    assert c.cycle() == 4
+    assert c.x == 4
+
+    # Cycle 5
+    assert c.cycle() == 4
+    assert c.x == -1
 
 
 def test_a() -> None:
