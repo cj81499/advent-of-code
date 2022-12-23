@@ -24,7 +24,7 @@
 | 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |  :x:   |  :x:   |        :x:         |
 | 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              | :star: | :star: | :white_check_mark: |
 | 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               | :star: |  :x:   | :white_check_mark: |
-| 23  | [?](https://adventofcode.com/2022/day/23)                        |  :x:   |  :x:   |        :x:         |
+| 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       | :star: |  :x:   | :white_check_mark: |
 | 24  | [?](https://adventofcode.com/2022/day/24)                        |  :x:   |  :x:   |        :x:         |
 | 25  | [?](https://adventofcode.com/2022/day/25)                        |  :x:   |  :x:   |        :x:         |
 
@@ -33,9 +33,13 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 23   00:44:15    948      0   00:46:30    813      0
+ 22   00:35:52    555      0          -      -      -
  21   00:22:07   2285      0   23:39:04  14617      0
+ 20   01:11:32   1938      0          -      -      -
  18   00:08:16   1039      0   00:23:34    629      0
  17   00:53:01   1088      0          -      -      -
+ 16       >24h  14398      0          -      -      -
  15   00:49:02   3216      0   01:13:55   1758      0
  14   00:20:30    676      0   00:25:16    705      0
  13   00:24:30   1427      0   00:32:16   1338      0

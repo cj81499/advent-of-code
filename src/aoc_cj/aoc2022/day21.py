@@ -1,6 +1,6 @@
 import abc
 import enum
-from typing import Callable, Union
+from typing import Callable, Optional, Union
 
 IntFn = Callable[[int, int], int]
 
@@ -92,7 +92,7 @@ class UnresolvedMonkey(Monkey):
         self.op = op
         self.right = right
 
-        self._resolved: ResolvedMonkey | None = None
+        self._resolved: Optional[ResolvedMonkey] = None
 
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
         return self._resolve(monkeys).evaluate(monkeys)
@@ -130,8 +130,8 @@ class ResolvedMonkey(Monkey):
         self.op = op
         self.right = right
 
-        self._result: int | None = None
-        self._contains_humn: bool | None = None
+        self._result: Optional[int] = None
+        self._contains_humn: Optional[bool] = None
 
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
         if self._result is None:
