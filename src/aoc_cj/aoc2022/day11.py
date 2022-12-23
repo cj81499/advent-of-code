@@ -1,40 +1,20 @@
 import dataclasses
 import math
 import re
-from collections import Counter, deque
+from collections import deque
 from heapq import nlargest
-from typing import Callable, Literal
+from typing import Callable
 
-
-def prime_factors(n: int) -> Counter[int]:
-    pfs: Counter[int] = Counter()
-
-    while n % 2 == 0:
-        pfs[2] += 1
-        n = n // 2
-
-    # n must be odd at this point
-    # so a skip of 2 ( i = i + 2) can be used
-    for i in range(3, int(math.sqrt(n)) + 1, 2):
-
-        # while i divides n , print i and divide n
-        while n % i == 0:
-            pfs[i] += 1
-            n //= i
-
-    if n > 2:
-        pfs[n] += 1
-
-    return Counter(pfs)
+from aoc_cj import util
 
 
 @dataclasses.dataclass
 class Monkey:
     items: deque[int]
-    operation: Callable[[int], int]  # TODO: comment
-    test: int  # TODO: comment
-    true_monkey: int  # TODO: comment
-    false_monkey: int  # TODO: comment
+    operation: Callable[[int], int]
+    test: int
+    true_monkey: int
+    false_monkey: int
     inspect_count = 0
 
     PARSE_REGEX = re.compile(
@@ -68,7 +48,7 @@ class Monkey:
             int(monkey_if_false),
         )
 
-    def turn(self, monkeys: list["Monkey"], part: Literal[1, 2] = 1, relieve_by: int = 3) -> None:
+    def turn(self, monkeys: list["Monkey"], relief_strategy: Callable[[int], int]) -> None:
         while self.items:
             item = self.items.popleft()
 
@@ -77,15 +57,7 @@ class Monkey:
             self.inspect_count += 1
 
             # relief
-            if part == 1:
-                item //= relieve_by
-            else:
-                assert part == 2
-                # "find another way to keep your worry levels manageable"
-                # https://www.reddit.com/r/adventofcode/comments/zih7gf/comment/izrck61/
-
-                # relieve by taking modulus of product of all "divisibility test values"
-                item %= relieve_by
+            item = relief_strategy(item)
 
             # test worry level
             if item % self.test == 0:
@@ -97,40 +69,35 @@ class Monkey:
             monkeys[throw_to].items.append(item)
 
 
+def simulate(
+    monkeys: list[Monkey],
+    rounds: int = 20,
+    relief_strategy: Callable[[int], int] = lambda n: n // 3,
+) -> int:
+    for _round in range(rounds):
+        for m in monkeys:
+            m.turn(monkeys, relief_strategy)
+
+    return math.prod(nlargest(2, (m.inspect_count for m in monkeys)))
+
+
 def parta(txt: str) -> int:
     monkeys = [Monkey.parse(m) for m in txt.split("\n\n")]
-
-    # round
-    for round in range(1, 20 + 1):
-        for i, monkey in enumerate(monkeys):
-            monkey.turn(monkeys)
-
-    a, b = nlargest(2, monkeys, key=lambda m: m.inspect_count)
-    return a.inspect_count * b.inspect_count
+    return simulate(monkeys)
 
 
 def partb(txt: str) -> int:
     monkeys = [Monkey.parse(m) for m in txt.split("\n\n")]
 
     test_vals = [m.test for m in monkeys]
-
-    def is_prime(n: int) -> bool:
-        for i in range(2, n // 2 + 1):
-            if n % i == 0:
-                return False
-        return True
-
-    assert all(is_prime(n) for n in test_vals)
-
+    assert all(util.is_prime(n) for n in test_vals)
     be_relieved_by = math.prod(test_vals)
 
-    # round
-    for round in range(1, 10_000 + 1):
-        for i, monkey in enumerate(monkeys):
-            monkey.turn(monkeys, part=2, relieve_by=be_relieved_by)
+    # "find another way to keep your worry levels manageable"
+    # https://www.reddit.com/r/adventofcode/comments/zih7gf/comment/izrck61/
 
-    a, b = nlargest(2, monkeys, key=lambda m: m.inspect_count)
-    return a.inspect_count * b.inspect_count
+    # relieve by taking modulus of product of all "divisibility test values"
+    return simulate(monkeys, 10_000, lambda n: n % be_relieved_by)
 
 
 if __name__ == "__main__":
