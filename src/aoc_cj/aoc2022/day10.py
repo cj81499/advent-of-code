@@ -92,7 +92,7 @@ def partb(txt: str) -> str:
             chars.append("#" if is_lit else ".")
         chars.append("\n")
 
-    return "".join(chars)
+    return "".join(chars).strip()
 
 
 if __name__ == "__main__":
