@@ -25,7 +25,7 @@
 | 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              | :star: | :star: | :white_check_mark: |
 | 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               | :star: |  :x:   | :white_check_mark: |
 | 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       | :star: |  :x:   | :white_check_mark: |
-| 24  | [?](https://adventofcode.com/2022/day/24)                        |  :x:   |  :x:   |        :x:         |
+| 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           | :star: | :star: | :white_check_mark: |
 | 25  | [?](https://adventofcode.com/2022/day/25)                        |  :x:   |  :x:   |        :x:         |
 
 ## Results
