@@ -2,6 +2,8 @@ import dataclasses
 import re
 from collections.abc import Generator
 
+__all__ = ("Point3D",)
+
 
 @dataclasses.dataclass(frozen=True)
 class Point3D:

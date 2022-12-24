@@ -1,9 +1,11 @@
 import heapq
 from collections.abc import Iterable
 
+from aoc_cj import util
+
 
 def elf_calories(txt: str) -> Iterable[int]:
-    return (sum(map(int, c.split())) for c in txt.split("\n\n"))
+    return (sum(util.ints(c)) for c in txt.split("\n\n"))
 
 
 def parta(txt: str) -> int:

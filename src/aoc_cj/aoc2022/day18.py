@@ -1,22 +1,22 @@
 import itertools
 
-from aoc_cj.util.point import Point3D
+from aoc_cj import util
 
 
 def parta(txt: str) -> int:
-    lava_points = {Point3D.parse(line) for line in txt.splitlines()}
+    lava_points = {util.Point3D.parse(line) for line in txt.splitlines()}
     return surface_area(lava_points)
 
 
-def surface_area(points: set[Point3D]) -> int:
+def surface_area(points: set[util.Point3D]) -> int:
     return sum(1 for p in points for ap in p.adj() if ap not in points)
 
 
 def partb(txt: str) -> int:
-    lava_points = {Point3D.parse(line) for line in txt.splitlines()}
+    lava_points = {util.Point3D.parse(line) for line in txt.splitlines()}
 
     all_points_in_volume = {
-        Point3D(x, y, z)
+        util.Point3D(x, y, z)
         for x, y, z in itertools.product(
             range(min(p.x for p in lava_points), max(p.x for p in lava_points) + 1),
             range(min(p.y for p in lava_points), max(p.y for p in lava_points) + 1),

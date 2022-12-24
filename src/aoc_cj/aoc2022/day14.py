@@ -1,5 +1,7 @@
 import more_itertools as mi
 
+from aoc_cj import util
+
 SAND_SOURCE = 500 + 0j
 
 ROCK = "#"
@@ -9,7 +11,7 @@ SAND = "o"
 def parse(txt: str) -> tuple[dict[complex, str], float]:
     grid: dict[complex, str] = {}
     for text_line in txt.splitlines():
-        for a, b in mi.pairwise(tuple(map(int, rock_line.split(","))) for rock_line in text_line.split(" -> ")):
+        for a, b in mi.pairwise(tuple(util.ints(rock_line)) for rock_line in text_line.split(" -> ")):
             a_x, a_y = a
             b_x, b_y = b
 

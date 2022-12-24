@@ -1,7 +1,7 @@
 import itertools
 from collections import deque
 
-from aoc_cj.util.priority_queue import PriorityQueue
+from aoc_cj import util
 
 
 def parse(txt: str):
@@ -40,7 +40,7 @@ def next_states_b(grid, state):
 
 
 def search(initial, num_keys, grid, next_states=next_states_a):
-    q = PriorityQueue()
+    q = util.PriorityQueue()
     q.push(0, initial)
     seen = set()
     while q:
