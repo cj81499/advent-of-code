@@ -1,40 +1,37 @@
-from aoc_cj.aoc2018.day16 import run_cmd
+import math
+from typing import Literal
+
+from aoc_cj.aoc2018 import day16 as d
 
 
-def parta(txt):
-    ip, *lines = txt.splitlines()
-    ip = int(ip[4:])
-
-    registers = [0, 0, 0, 0, 0, 0]
-    while registers[ip] < len(lines):
-        cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
-        run_cmd(cmd, registers, a, b, c)
-        registers[ip] += 1
-    return registers[0]
-
-
-def factors(n):
-    results = set()
+def factors(n: int) -> set[int]:
+    results: set[int] = set()
     for i in range(1, int(n**0.5) + 1):
-        if not n % i:
+        if n % i == 0:
             results.add(i)
             results.add(n // i)
     return results
 
 
-def partb(txt):
-    ip, *lines = txt.splitlines()
-    ip = int(ip[4:])
+def parta(txt: str, *, part: Literal[1, 2] = 1) -> int:
+    ip_s, *instructions_strs = txt.splitlines()
+    ip = int(ip_s[4:])
+    instructions = [d.Instruction.parse_str(line) for line in instructions_strs]
 
-    registers = [1, 0, 0, 0, 0, 0]
-    i = 0
+    registers: d.Registers = (0 if part == 1 else 1, 0, 0, 0, 0, 0)
+    remaining = math.inf if part == 1 else 100
     # 100 times is enough to find the number the main loop will find the sum of the factors of
-    while registers[ip] < len(lines) and i < 100:
-        cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
-        run_cmd(cmd, registers, a, b, c)
-        registers[ip] += 1
-        i += 1
-    return sum(factors(max(registers)))
+    while registers[ip] < len(instructions) and remaining > 0:
+        instruction = instructions[registers[ip]]
+        opcode = instruction.opcode
+        registers = d.run_cmd(opcode, registers, instruction)
+        registers = d.update_registers(registers, ip, registers[ip] + 1)
+        remaining -= 1
+    return registers[0] if part == 1 else sum(factors(max(registers)))
+
+
+def partb(txt: str) -> int:
+    return parta(txt, part=2)
 
 
 if __name__ == "__main__":

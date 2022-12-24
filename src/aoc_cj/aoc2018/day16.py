@@ -1,23 +1,15 @@
-CMDS = {
-    "addr",
-    "addi",
-    "mulr",
-    "muli",
-    "banr",
-    "bani",
-    "borr",
-    "bori",
-    "setr",
-    "seti",
-    "gtir",
-    "gtri",
-    "gtrr",
-    "eqir",
-    "eqri",
-    "eqrr",
-}
+import dataclasses
+from typing import Any, Callable, Generic, TypeVar
 
-OPERATIONS = {
+from aoc_cj import util
+
+Registers = tuple[int, ...]
+Operation = Callable[[Registers, int, int], int]
+
+_T = TypeVar("_T")
+
+
+OPERATIONS: dict[str, Operation] = {
     "addr": lambda r, a, b: r[a] + r[b],
     "addi": lambda r, a, b: r[a] + b,
     "mulr": lambda r, a, b: r[a] * r[b],
@@ -37,73 +29,90 @@ OPERATIONS = {
 }
 
 
-def run_cmd(name, registers, a, b, c):
-    registers[c] = OPERATIONS[name](registers, a, b)
+@dataclasses.dataclass
+class Sample:
+    before: Registers
+    instruction: "Instruction[int]"
+    after: Registers
+
+    @staticmethod
+    def parse(sample: str) -> "Sample":
+        before, instruction, after = sample.splitlines()
+        before_ints = tuple(util.ints(before))
+        after_ints = tuple(util.ints(after))
+        return Sample(before_ints, Instruction.parse(instruction), after_ints)
+
+    def behaves_like(self) -> set[str]:
+        return {cmd for cmd in OPERATIONS if run_cmd(cmd, self.before, self.instruction) == self.after}
 
 
-def parta(txt):
-    samples, _program = txt.split("\n\n\n\n")
-    samples = samples.split("\n\n")
-    sample_count = 0
-    for s in samples:
-        lines = s.splitlines()
-        before = list(map(int, lines[0][9:-1].split(", ")))
-        _, a, b, c = list(map(int, lines[1].split(" ")))
-        after = list(map(int, lines[2][9:-1].split(", ")))
+@dataclasses.dataclass
+class Instruction(Generic[_T]):
+    opcode: _T
+    a: int
+    b: int
+    c: int
 
-        acts_like_count = 0
-        for cmd in CMDS:
-            r = before.copy()
-            run_cmd(cmd, r, a, b, c)
-            if r == after:
-                acts_like_count += 1
-        if acts_like_count >= 3:
-            sample_count += 1
+    @staticmethod
+    def parse(instruction: str) -> "Instruction[int]":
+        # opcode, *abc_strs = instruction.split()
+        # abc = map(int, abc_strs)
+        return Instruction(*util.ints(instruction))
 
-    return sample_count
+    @staticmethod
+    def parse_str(instruction: str) -> "Instruction[str]":
+        opcode, *abc_strs = instruction.split()
+        abc = map(int, abc_strs)
+        return Instruction(opcode, *abc)
 
 
-def opcodes_solved(opcodes):
-    for code in opcodes:
-        if isinstance(opcodes[code], set):
-            return False
-    return True
+def update_registers(r: Registers, i: int, new_val: int) -> Registers:
+    return r[:i] + (new_val,) + r[i + 1 :]
 
 
-def partb(txt):
-    samples, program = txt.split("\n\n\n\n")
-    opcodes = {i: CMDS.copy() for i in range(16)}
-    samples = samples.split("\n\n")
-    for s in samples:
-        lines = s.splitlines()
-        before = list(map(int, lines[0][9:-1].split(", ")))
-        cmd_num, a, b, c = list(map(int, lines[1].split(" ")))
-        after = list(map(int, lines[2][9:-1].split(", ")))
-        for cmd in CMDS:
-            if cmd in opcodes[cmd_num]:
-                r = before.copy()
-                run_cmd(cmd, r, a, b, c)
-                if r != after:
-                    opcodes[cmd_num].remove(cmd)
-    solved = set()
-    while not opcodes_solved(opcodes):
-        for code in opcodes:
-            if isinstance(opcodes[code], set) and len(opcodes[code]) == 1:
-                opcodes[code] = opcodes[code].pop()
-            if isinstance(opcodes[code], str):
-                solved.add(opcodes[code])
-            else:
-                opcodes[code] = opcodes[code] - solved
+def run_cmd(opcode_name: str, registers: Registers, instruction: Instruction[Any]) -> Registers:
+    a, b, c = instruction.a, instruction.b, instruction.c
+    return update_registers(registers, c, OPERATIONS[opcode_name](registers, a, b))
 
-    registers = [0, 0, 0, 0]
-    program = program.splitlines()
-    for cmd in program:
-        cmd_num, a, b, c = (int(x) for x in cmd.split())
-        # cmd_num, a, b, c = [int(x) for x in cmd.strip().split(" ")]
-        # _, a, b, c = list(map(int, cmd.split(" ")))
 
-        run_cmd(opcodes[cmd_num], registers, a, b, c)
+def parta(txt: str) -> int:
+    samples_s, _instructions_s = txt.split("\n\n\n\n")
+    samples = [Sample.parse(s) for s in samples_s.split("\n\n")]
+    return sum(1 for s in samples if len(s.behaves_like()) >= 3)
+
+
+def partb(txt: str) -> int:
+    samples_s, instructions_s = txt.split("\n\n\n\n")
+    samples = [Sample.parse(s) for s in samples_s.split("\n\n")]
+    instructions = [Instruction.parse(l) for l in instructions_s.splitlines()]
+
+    # solve opcodes
+    solved_opcodes = solve_opcodes(samples)
+
+    # execute instructions
+    registers: Registers = (0, 0, 0, 0)
+    for instruction in instructions:
+        registers = run_cmd(solved_opcodes[instruction.opcode], registers, instruction)
     return registers[0]
+
+
+def solve_opcodes(samples: list[Sample]) -> dict[int, str]:
+    unsolved_opcodes = {i: set(OPERATIONS) for i in range(len(OPERATIONS))}
+
+    for sample in samples:
+        unsolved_opcodes[sample.instruction.opcode] &= sample.behaves_like()
+
+    solved_opcodes: dict[int, str] = {}
+    while unsolved_opcodes:
+        newly_solved = {i: opcodes.pop() for i, opcodes in unsolved_opcodes.items() if len(opcodes) == 1}
+        solved_opcodes |= newly_solved
+        unsolved_opcodes = {
+            k: {v for v in vals if v not in solved_opcodes.values()}
+            for k, vals in unsolved_opcodes.items()
+            if k not in solved_opcodes
+        }
+
+    return solved_opcodes
 
 
 if __name__ == "__main__":

@@ -11,5 +11,5 @@ IGNORE ME
 """.strip()
 
 
-def test_a():
+def test_a() -> None:
     assert d.parta(EXAMPLE_INPUT) == 1
