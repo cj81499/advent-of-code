@@ -26,13 +26,15 @@
 | 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               | :star: |  :x:   | :white_check_mark: |
 | 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       | :star: |  :x:   | :white_check_mark: |
 | 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           | :star: | :star: | :white_check_mark: |
-| 25  | [?](https://adventofcode.com/2022/day/25)                        |  :x:   |  :x:   |        :x:         |
+| 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          | :star: |  :x:   | :white_check_mark: |
 
 ## Results
 
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 25   01:07:38   2718      0          -      -      -
+ 24   00:47:51    766      0   00:51:07    608      0
  23   00:44:15    948      0   00:46:30    813      0
  22   00:35:52    555      0          -      -      -
  21   00:22:07   2285      0   23:39:04  14617      0
