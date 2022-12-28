@@ -1,28 +1,33 @@
+r"""
+I refactored my original solution expecting this "computer" to be reused
+(since that's been the case in previous years).
+
+Unfortunately for me, it was not reused.
+
+¯\_(ツ)_/¯
+"""
+
 import dataclasses
-import enum
-from collections import deque
-from typing import Optional
-
-from typing_extensions import assert_never
+from collections.abc import Iterable
+from typing import Callable, ClassVar, Optional
 
 
-class Opcode(enum.Enum):
-    NOOP = enum.auto()
-    ADDX = enum.auto()
+@dataclasses.dataclass
+class Opcode:
+    duration: int
+    apply: Callable[[int, list[int]], int]
 
-    def duration(self) -> int:
-        if self is Opcode.NOOP:
-            return 1
-        if self is Opcode.ADDX:
-            return 2
-        assert_never(self)
+    OPCODES: ClassVar[dict[str, "Opcode"]] = {}
 
-    def apply(self, x: int, args: list[int]) -> int:
-        if self is Opcode.NOOP:
-            return x
-        if self is Opcode.ADDX:
-            return x + args[0]
-        assert_never(self)
+    @staticmethod
+    def parse(opcode: str) -> "Opcode":
+        return Opcode.OPCODES[opcode]
+
+
+Opcode.OPCODES = {
+    "noop": Opcode(1, lambda x, args: x),
+    "addx": Opcode(2, lambda x, args: x + args[0]),
+}
 
 
 @dataclasses.dataclass
@@ -33,56 +38,56 @@ class Instruction:
     @staticmethod
     def parse(instruction: str) -> "Instruction":
         opcode, *args = instruction.split()
-        return Instruction(Opcode[opcode.upper()], [int(n) for n in args])
+        return Instruction(Opcode.parse(opcode), [int(n) for n in args])
 
     def execute(self, x: int) -> int:
         return self.opcode.apply(x, self.args)
 
 
 class Computer:
-    def __init__(self, instructions: list[Instruction]) -> None:
-        self._instructions = deque(instructions)
+    def __init__(self, instructions: Iterable[Instruction]) -> None:
+        self._instructions = list(instructions)
+        self._instruction_pointer = 0
         self.x = 1
         self._running: Optional[tuple[Instruction, int]] = None
+        self.cycle_number = 0
 
     def cycle(self) -> int:
         # start of cycle
-        if self._running is None and self._instructions:
-            to_run = self._instructions.popleft()
-            self._running = (to_run, to_run.opcode.duration())
+        if self._running is None and self._instruction_pointer < len(self._instructions):
+            to_run = self._instructions[self._instruction_pointer]
+            self._instruction_pointer += 1
+            self._running = (to_run, self.cycle_number)
 
         # during cycle
+        self.cycle_number += 1
         x = self.x
 
         # after the cycle
         if self._running is not None:
-            instruction, duration = self._running
-            duration -= 1
+            instruction, started_at = self._running
 
-            if duration == 0:
+            if self.cycle_number - started_at == instruction.opcode.duration:
                 self.x = instruction.execute(x)
-
-            self._running = None if duration == 0 else (instruction, duration)
+                self._running = None
 
         return x
 
 
 def parta(txt: str) -> int:
-    instructions = [Instruction.parse(line) for line in txt.splitlines()]
-    computer = Computer(instructions)
+    computer = Computer(Instruction.parse(line) for line in txt.splitlines())
 
     signal_strength_sum = 0
-    for cycle in range(1, 220 + 1):
+    while computer.cycle_number <= 240:
         result = computer.cycle()
-        if (cycle - 20) % 40 == 0:
-            signal_strength_sum += cycle * result
+        if (computer.cycle_number - 20) % 40 == 0:
+            signal_strength_sum += computer.cycle_number * result
 
     return signal_strength_sum
 
 
 def partb(txt: str) -> str:
-    instructions = [Instruction.parse(line) for line in txt.splitlines()]
-    computer = Computer(instructions)
+    computer = Computer(Instruction.parse(line) for line in txt.splitlines())
 
     chars = []
     # crt has 6 rows and 40 cols
