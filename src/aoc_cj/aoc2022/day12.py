@@ -28,8 +28,7 @@ def parta(txt: str, part: Literal[1, 2] = 1) -> int:
         return elevation(current) + 1 >= elevation(destination)
 
     explore_from = "S" if part == 1 else "E"
-    start_point = mi.only(p for p, c in grid.items() if c == explore_from)
-    assert start_point is not None
+    start_point = mi.one(p for p, c in grid.items() if c == explore_from)
 
     end_at = "E" if part == 1 else "aS"
     possible_end_points = {p for p, c in grid.items() if c in end_at}
