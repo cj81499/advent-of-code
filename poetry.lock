@@ -842,21 +842,21 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 
 [[package]]
 name = "z3-solver"
-version = "4.12.0.0"
+version = "4.12.1.0"
 description = "an efficient SMT solver library"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "z3-solver-4.12.0.0.tar.gz", hash = "sha256:13f4e5ebbc8478a12ef9c77de4fe595cfefca1370a64cb76d9d3639176b705e3"},
-    {file = "z3_solver-4.12.0.0-py2.py3-none-macosx_10_16_x86_64.whl", hash = "sha256:c73c016c64256257c61727234a168c1fd722d9ce605aa7a0d1d1027b30c1efa2"},
-    {file = "z3_solver-4.12.0.0-py2.py3-none-macosx_11_0_arm64.whl", hash = "sha256:05093668d9413886d579c1d333435772cc4801a0a7f60e0c2a3b57eb6a4c1171"},
-    {file = "z3_solver-4.12.0.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:55d3cc3ece8c182202e4d11c4880bbf754185405def37de3feeb646d70016844"},
-    {file = "z3_solver-4.12.0.0-py2.py3-none-win32.whl", hash = "sha256:3899d7461194a67eb3205c347b3078f1994d6bd1e472f43adf73d7a3eaa7b0f4"},
-    {file = "z3_solver-4.12.0.0-py2.py3-none-win_amd64.whl", hash = "sha256:65e11318958a81236a6a89fcc0721ef7dcc7f570009430488c76c3e86d0baa19"},
+    {file = "z3-solver-4.12.1.0.tar.gz", hash = "sha256:c6b7c0f1c595ba47609d0e02b0cc263dc755def9f8d6f51c1943aec040a1eb2d"},
+    {file = "z3_solver-4.12.1.0-py2.py3-none-macosx_10_16_x86_64.whl", hash = "sha256:c4f1a53bce12b45698e8e49bd980cd3d3f0298c1ba4cf8c40525af86797565c8"},
+    {file = "z3_solver-4.12.1.0-py2.py3-none-macosx_11_0_arm64.whl", hash = "sha256:553ec3cd0188420bc5f007dd873fb0d87075d1b93808eca8c02324eb3a5f6f68"},
+    {file = "z3_solver-4.12.1.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:41cb9ac460af30b193811eebf919d61cf51a8856bbd74b200cbe6b21e3e955e4"},
+    {file = "z3_solver-4.12.1.0-py2.py3-none-win32.whl", hash = "sha256:85ff9f59b0f87df4dc0cd52baebb247b8049f2df6aad623151f4c4a21d3d01ac"},
+    {file = "z3_solver-4.12.1.0-py2.py3-none-win_amd64.whl", hash = "sha256:aa0e06d42070774a2f89818c412514d41fc84578f32d617de618b214e5ed8154"},
 ]
 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9, <4"
-content-hash = "8c26262976e9c113acfa69fe9d0741fa5a8e9444661cd88195d54a919e1eb4cf"
+content-hash = "a41c14454544ece8774dcb3fc42fe1c7fb93b4fa52f9ea61641c60941f86fd28"
