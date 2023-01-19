@@ -1,13 +1,11 @@
+import operator
 from functools import reduce
 
-from more_itertools import chunked, only
+import more_itertools as mi
 
 
 def get_common_item(*strings: str) -> str:
-    intersection = reduce(lambda x, y: x & y, (set(s) for s in strings))
-    common = only(intersection)
-    assert common is not None
-    return common
+    return mi.one(reduce(operator.and_, (set(s) for s in strings)))
 
 
 def priority(c: str) -> int:
@@ -20,7 +18,7 @@ def parta(txt: str) -> int:
 
 
 def partb(txt: str) -> int:
-    return sum(priority(get_common_item(*chunk)) for chunk in chunked(txt.splitlines(), 3))
+    return sum(priority(get_common_item(*chunk)) for chunk in mi.chunked(txt.splitlines(), 3))
 
 
 if __name__ == "__main__":
