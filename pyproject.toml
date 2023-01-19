@@ -60,34 +60,49 @@ xfail_strict=true
 
 [tool.mypy]
 strict = true
-# TODO: type check tests too
-exclude = [
-  '^tests\/aoc2015\/',
-  '^tests\/aoc2016\/',
-  '^tests\/aoc2017\/',
-  '^tests\/aoc2018\/',
-  '^tests\/aoc2019\/',
-  '^tests\/aoc2020\/',
-  '^tests\/aoc2021\/',
-]
+
+# disallow_any_unimported = true
+# disallow_any_expr = true
+# disallow_any_decorated = true
+# disallow_any_explicit = true
+# disallow_any_generics = true
+# disallow_subclassing_any = true
+# disallow_untyped_calls = true
+# disallow_untyped_defs = true
+# disallow_incomplete_defs = true
+# check_untyped_defs = true
+# disallow_untyped_decorators = true
+
+# warn_redundant_casts = true
+# warn_unused_ignores = true
+# warn_return_any = true
+# warn_unreachable = true
 warn_unreachable = true
 
-[[tool.mypy.overrides]]
-module = ['aocd', 'aocd.models', 'z3']
-ignore_missing_imports = true
+# allow_redefinition = true
 
-# Opt out of type checking for old years.
-# I may eventually go back and add types to these.
+# Opt out of type checking old years
+exclude = [
+  '^tests\/aoc2015\/',
+  '^src\/aoc_cj\/aoc2015\/',
+  '^tests\/aoc2016\/',
+  '^src\/aoc_cj\/aoc2016\/',
+  '^tests\/aoc2017\/',
+  '^src\/aoc_cj\/aoc2017\/',
+  '^tests\/aoc2018\/',
+  '^src\/aoc_cj\/aoc2018\/',
+  '^tests\/aoc2019\/',
+  '^src\/aoc_cj\/aoc2019\/',
+  '^tests\/aoc2020\/',
+  '^src\/aoc_cj\/aoc2020\/',
+  '^tests\/aoc2021\/',
+]
+
 [[tool.mypy.overrides]]
 module = [
-    'aoc_cj.aoc2015.*',
-    'aoc_cj.aoc2016.*',
-    'aoc_cj.aoc2017.*',
-    'aoc_cj.aoc2018.*',
-    'aoc_cj.aoc2019.*',
-    'aoc_cj.aoc2020.*',
+  'aocd', # https://github.com/wimglenn/advent-of-code-data/issues/78
 ]
-ignore_errors = true
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
