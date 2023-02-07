@@ -33,7 +33,6 @@ def parta(txt: str, *, y: int = 2000000) -> int:
         # if the sensor can "see" part of row y
         sensor_y = int(s.pos.imag)
         if sensor_y - m <= y <= sensor_y + m:
-
             # difference between sensor_y and y
             dy = abs(sensor_y - y)
 

@@ -70,7 +70,6 @@ class Chamber:
         self.highest_rock_y = 0
 
     def drop(self, rock: Rock, jet_pattern: Iterator[str]) -> None:
-
         # left edge is two units away from the left wall.
         # bottom edge is three units above the highest rock in the room
         # (or the floor, if there isn't one).

@@ -19,7 +19,12 @@ def signal_on(wire, wires):
     if "NOT" in val:
         return ~signal_on(val.lstrip("NOT "), wires) & 0xFFFF
     lhs, op, rhs = val.split()
-    return {"LSHIFT": lshift, "RSHIFT": rshift, "AND": and_, "OR": or_,}[
+    return {
+        "LSHIFT": lshift,
+        "RSHIFT": rshift,
+        "AND": and_,
+        "OR": or_,
+    }[
         op
     ](signal_on(lhs, wires), signal_on(rhs, wires))
 
