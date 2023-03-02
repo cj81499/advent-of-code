@@ -97,7 +97,6 @@ def parta(txt):
     boss = Unit.parse(txt)
     for gold in itertools.count():
         for purchase in go_shopping(gold):
-
             player = Unit(100, 0, 0)
             for item in purchase:
                 player.equip(item)
