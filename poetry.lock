@@ -362,17 +362,18 @@ files = [
 
 [[package]]
 name = "lark"
-version = "1.1.5"
+version = "1.1.6"
 description = "a modern parsing library"
 optional = false
-python-versions = "*"
+python-versions = ">=3.6"
 files = [
-    {file = "lark-1.1.5-py3-none-any.whl", hash = "sha256:8476f9903e93fbde4f6c327f74d79e9b4bd0ed9294c5dfa3164ab8c581b5de2a"},
-    {file = "lark-1.1.5.tar.gz", hash = "sha256:4b534eae1f9af5b4ea000bea95776350befe1981658eea3820a01c37e504bb4d"},
+    {file = "lark-1.1.6-py3-none-any.whl", hash = "sha256:11d5ccbfb424c6f864781b15ac22065ca86debfdc441c60d3b9394c09c0b9829"},
+    {file = "lark-1.1.6.tar.gz", hash = "sha256:46edcd5024bec2b2fe4526373d14c5e92da5190ba41566e1c387d9b7abb3b229"},
 ]
 
 [package.extras]
 atomic-cache = ["atomicwrites"]
+interegular = ["interegular (>=0.3.1,<0.4.0)"]
 nearley = ["js2py"]
 regex = ["regex"]
 
@@ -857,4 +858,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9"
-content-hash = "297045708e8d49f709bd69b9fb98eb236ffe5ce6a55abbd17ecebedb8d4e2613"
+content-hash = "d207d0e1205c28f3fea8dbac986b215beea9b2d05ccf4b577f4d674b31ba7c41"
