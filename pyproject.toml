@@ -11,7 +11,7 @@ advent-of-code-data = "^2.0.1"
 more-itertools = "^10.0.0"
 numpy = "^1.24.3" # remove me
 z3-solver = "^4.12.2"
-lark = "^1.1.5"
+lark = "^1.1.7"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
