@@ -6,6 +6,7 @@ from typing import Literal, cast
 
 from more_itertools import ichunked, take
 from more_itertools.more import peekable
+from typing_extensions import override
 
 Binary = Literal[0, 1]
 
@@ -30,6 +31,7 @@ class LiteralValuePacket(Packet):
     def __post_init__(self) -> None:
         assert self.type_id == 4
 
+    @override
     def evaluate(self) -> int:
         return self.value
 
@@ -38,9 +40,11 @@ class LiteralValuePacket(Packet):
 class OperatorPacket(Packet):
     children: Sequence[Packet]
 
+    @override
     def version_sum(self) -> int:
         return super().version_sum() + sum(c.version_sum() for c in self.children)
 
+    @override
     def evaluate(self) -> int:
         # Packets with type ID 0 are sum packets - their value is the sum of the values of their sub-packets. If they only have a single sub-packet, their value is the value of the sub-packet.
         if self.type_id == 0:

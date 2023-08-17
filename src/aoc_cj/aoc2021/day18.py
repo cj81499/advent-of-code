@@ -6,6 +6,7 @@ from math import ceil, floor
 from typing import Optional
 
 from more_itertools import peekable
+from typing_extensions import override
 
 
 @dataclasses.dataclass
@@ -69,9 +70,11 @@ class PairNode(TreeNode):
         self.left.parent = self
         self.right.parent = self
 
+    @override
     def magnitude(self) -> int:
         return 3 * self.left.magnitude() + 2 * self.right.magnitude()
 
+    @override
     def _explodable(self, depth: int = 0) -> Iterator["PairNode"]:
         if depth > 4:
             return  # too deep
@@ -80,10 +83,12 @@ class PairNode(TreeNode):
             yield self
         yield from self.right._explodable(depth + 1)
 
+    @override
     def _splitable(self) -> Iterator["ValueNode"]:
         yield from self.left._splitable()
         yield from self.right._splitable()
 
+    @override
     def _in_order_traverse(self) -> Iterator[TreeNode]:
         yield from self.left._in_order_traverse()
         yield self
@@ -116,6 +121,7 @@ class PairNode(TreeNode):
 
         self.replace_with(ValueNode(self.parent, 0))
 
+    @override
     def __repr__(self) -> str:
         return f"[{self.left},{self.right}]"
 
@@ -124,12 +130,15 @@ class PairNode(TreeNode):
 class ValueNode(TreeNode):
     value: int
 
+    @override
     def magnitude(self) -> int:
         return self.value
 
+    @override
     def _explodable(self, depth: int = 0) -> Iterator[PairNode]:
         yield from ()  # ValueNodes are never explodable
 
+    @override
     def _splitable(self) -> Iterator["ValueNode"]:
         if self.value >= 10:
             yield self
@@ -145,9 +154,11 @@ class ValueNode(TreeNode):
         elif p.right is self:
             p.right = new_pair
 
+    @override
     def _in_order_traverse(self) -> Iterator[TreeNode]:
         yield self
 
+    @override
     def __repr__(self) -> str:
         return str(self.value)
 
