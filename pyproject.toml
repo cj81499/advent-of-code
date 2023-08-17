@@ -9,7 +9,7 @@ homepage = "https://github.com/cj81499/advent-of-code"
 python = ">=3.9"
 advent-of-code-data = "^2.0.1"
 more-itertools = "^10.0.0"
-numpy = "^1.25.2" # remove me
+numpy = "^1.25.2" # TODO: remove me
 z3-solver = "^4.12.2"
 lark = "^1.1.7"
 
@@ -33,9 +33,9 @@ omit = []
 
 [tool.coverage.report]
 exclude_lines = [
-	'# pragma: no cover',
-	'if __name__ == "__main__":',
-	'if TYPE_CHECKING:',
+  '# pragma: no cover',
+  'if __name__ == "__main__":',
+  'if TYPE_CHECKING:',
   'raise NotImplementedError',
   '@abc\.abstractmethod',
   'assert False',
@@ -54,9 +54,9 @@ all = true
 # skip slow tests by default
 addopts = "-m 'not slow'"
 markers = [
-    "slow: marks tests as slow"
+  "slow: marks tests as slow",
 ]
-xfail_strict=true
+xfail_strict = true
 
 [tool.mypy]
 strict = true
@@ -81,12 +81,12 @@ ignore_missing_imports = true
 # I may eventually go back and add types to these.
 [[tool.mypy.overrides]]
 module = [
-    'aoc_cj.aoc2015.*',
-    'aoc_cj.aoc2016.*',
-    'aoc_cj.aoc2017.*',
-    'aoc_cj.aoc2018.*',
-    'aoc_cj.aoc2019.*',
-    'aoc_cj.aoc2020.*',
+  'aoc_cj.aoc2015.*',
+  'aoc_cj.aoc2016.*',
+  'aoc_cj.aoc2017.*',
+  'aoc_cj.aoc2018.*',
+  'aoc_cj.aoc2019.*',
+  'aoc_cj.aoc2020.*',
 ]
 ignore_errors = true
 
