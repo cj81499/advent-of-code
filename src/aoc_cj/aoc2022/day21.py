@@ -2,6 +2,8 @@ import abc
 import enum
 from typing import Callable, Optional, Union
 
+from typing_extensions import override
+
 IntFn = Callable[[int, int], int]
 
 Monkeys = dict[str, Union[int, tuple[str, str, str]]]
@@ -73,12 +75,15 @@ class IntMonkey(Monkey):
         super().__init__(name)
         self.value = value
 
+    @override
     def evaluate(self, _monkeys: dict[str, Monkey]) -> int:
         return self.value
 
+    @override
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         return self.name == name
 
+    @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         assert self.name == HUMN
         return target
@@ -94,9 +99,11 @@ class UnresolvedMonkey(Monkey):
 
         self._resolved: Optional[ResolvedMonkey] = None
 
+    @override
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
         return self._resolve(monkeys).evaluate(monkeys)
 
+    @override
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         return self._resolve(monkeys).contains(name, monkeys)
 
@@ -113,6 +120,7 @@ class UnresolvedMonkey(Monkey):
         # if this is the root monkey, we don't have a target value yet.
         return monkey_containing_humn._solve_humn(monkeys, target=known_value)
 
+    @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         return self._resolve(monkeys)._solve_humn(monkeys, target)
 
@@ -132,14 +140,17 @@ class ResolvedMonkey(Monkey):
 
         self._contains_humn: Optional[bool] = None
 
+    @override
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
         return self.op.apply(self.left.evaluate(monkeys), self.right.evaluate(monkeys))
 
+    @override
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         if self._contains_humn is None:
             self._contains_humn = self.left.contains(name, monkeys) or self.right.contains(name, monkeys)
         return self._contains_humn
 
+    @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         # either left or right must contain HUMN
         assert (left_contains_humn := self.left.contains(HUMN, monkeys)) ^ self.right.contains(HUMN, monkeys)

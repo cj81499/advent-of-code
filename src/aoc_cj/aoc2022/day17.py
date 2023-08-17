@@ -1,6 +1,8 @@
 import itertools
 from collections.abc import Generator, Iterable, Iterator
 
+from typing_extensions import override
+
 
 class Rock:
     def __init__(self, points: Iterable[complex]) -> None:
@@ -12,6 +14,7 @@ class Rock:
         self.highest_y = int(max(p.imag for p in self._points))
         self.lowest_y = int(min(p.imag for p in self._points))
 
+    @override
     def __str__(self) -> str:
         return "\n".join(
             "".join(

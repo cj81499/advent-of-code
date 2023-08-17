@@ -18,7 +18,7 @@ black = "^23.7.0"
 pre-commit = "^3.3.3"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
-mypy = "^1.4"
+mypy = "^1.5"
 
 [tool.poetry.plugins."adventofcode.user"]
 cj81499 = "aoc_cj:solve"
@@ -60,6 +60,7 @@ xfail_strict=true
 
 [tool.mypy]
 strict = true
+enable_error_code = ["explicit-override"]
 # TODO: type check tests too
 exclude = [
   '^tests\/aoc2015\/',
