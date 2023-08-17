@@ -9,7 +9,6 @@
     "**/.pytest_cache": true,
     "**/*.egg-info": true
   },
-  "python.formatting.provider": "black",
   "python.testing.pytestArgs": [
     "tests"
   ],
@@ -17,8 +16,9 @@
   "[jsonc][markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "python.linting.mypyEnabled": true,
-  "python.linting.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
   "cSpell.words": [
     "aocd",
     "cj's",
