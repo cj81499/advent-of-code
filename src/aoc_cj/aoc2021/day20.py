@@ -29,7 +29,7 @@ def parse(txt: str) -> tuple[str, Pixels]:
     assert image_enhancement_algorithm[-1] == "."
 
     lit_pixels = defaultdict(
-        lambda: False,
+        bool,
         {(x, y): True for y, line in enumerate(input_image_s.splitlines()) for x, c in enumerate(line) if c == "#"},
     )
 

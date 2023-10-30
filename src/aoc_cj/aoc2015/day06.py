@@ -33,7 +33,7 @@ class Instruction:
 
 def parta(txt):
     instructions = [Instruction.parse(line) for line in txt.splitlines()]
-    grid = defaultdict(lambda: False)
+    grid = defaultdict(bool)
     for instruction in instructions:
         for x in range(instruction.start[0], instruction.end[0] + 1):
             for y in range(instruction.start[1], instruction.end[1] + 1):
