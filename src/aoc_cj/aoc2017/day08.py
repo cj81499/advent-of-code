@@ -12,14 +12,14 @@ def perform_cmd(registers, cmd):
 
 
 def parta(txt: str):
-    registers = defaultdict(lambda: 0)
+    registers = defaultdict(int)
     for cmd in txt.splitlines():
         perform_cmd(registers, cmd)
     return max(registers.values())
 
 
 def partb(txt: str):
-    registers = defaultdict(lambda: 0)
+    registers = defaultdict(int)
     all_time_max = 0
     for cmd in txt.splitlines():
         perform_cmd(registers, cmd)
