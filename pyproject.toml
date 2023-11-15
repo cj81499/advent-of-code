@@ -9,7 +9,7 @@ homepage = "https://github.com/cj81499/advent-of-code"
 python = ">=3.9"
 advent-of-code-data = "^2.0.1"
 more-itertools = "^10.0.0"
-numpy = "^1.25.2" # TODO: remove me
+numpy = "^1.26.2" # TODO: remove me
 z3-solver = "^4.12.2"
 lark = "^1.1.8"
 
