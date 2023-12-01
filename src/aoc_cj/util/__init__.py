@@ -9,6 +9,7 @@ from ._priority_queue import PriorityQueue
 
 __all__ = (
     "clamp",
+    "digits",
     "floats",
     "ints",
     "is_prime",
