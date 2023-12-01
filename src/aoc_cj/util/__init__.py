@@ -49,6 +49,13 @@ def ints(s: str) -> Generator[int, None, None]:
     yield from map(int, _INTS_PATTERN.findall(s))
 
 
+_DIGITS_PATTERN = re.compile(r"\d")
+
+
+def digits(s: str) -> Generator[int, None, None]:
+    yield from map(int, _DIGITS_PATTERN.findall(s))
+
+
 _FLOATS_PATTERN = re.compile(r"-?\d+\.\d+")
 
 
