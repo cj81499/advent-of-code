@@ -1,34 +1,49 @@
-import re
+import collections
+import dataclasses
+from collections.abc import Generator, Sequence
+from typing import ClassVar
 
 import more_itertools as mi
 
+from aoc_cj import util
+
+
+@dataclasses.dataclass(frozen=True)
+class Game:
+    id: int
+    reveals: Sequence[tuple[int, str]]
+
+    MAXES: ClassVar = {"red": 12, "green": 13, "blue": 14}
+    _parser: ClassVar = util.create_regex_parser(r"[\w\d]+", str)
+
+    def is_possible(self) -> bool:
+        return all(int(count) <= Game.MAXES[color] for count, color in self.reveals)
+
+    def power(self) -> int:
+        return util.product(self.min_cube_counts().values())
+
+    def min_cube_counts(self) -> collections.Counter[str]:
+        max_counts: collections.Counter[str] = collections.Counter()
+        for count, color in self.reveals:
+            max_counts[color] = max(max_counts[color], count)
+        return max_counts
+
+    @staticmethod
+    def parse(s: str) -> "Game":
+        _, game_id, *reveals = Game._parser(s)
+        return Game(int(game_id), [(int(count), color) for count, color in mi.chunked(reveals, 2, strict=True)])
+
+
+def parse_games(txt: str) -> Generator[Game, None, None]:
+    yield from (Game.parse(l) for l in txt.splitlines())
+
 
 def parta(txt: str) -> int:
-    maxes = {"red": 12, "green": 13, "blue": 14}
-    s = 0
-    for line in txt.splitlines():
-        _, game_id, *rest = re.findall(r"[a-zA-Z0-9]+", line)
-        possible = True
-        for count, color in mi.batched(rest, 2):
-            if int(count) > maxes[color]:
-                possible = False
-        if possible:
-            print(f"possible: {game_id}")
-            s += int(game_id)
-    return s
+    return sum(g.id for g in parse_games(txt) if g.is_possible())
 
 
 def partb(txt: str) -> int:
-    s = 0
-    for line in txt.splitlines():
-        max_seen = {"red": 0, "green": 0, "blue": 0}
-        _, game_id, *rest = re.findall(r"[a-zA-Z0-9]+", line)
-        for count, color in mi.batched(rest, 2):
-            max_seen[color] = max(max_seen[color], int(count))
-        # TODO: util.product
-        power = max_seen["red"] * max_seen["green"] * max_seen["blue"]
-        s += power
-    return s
+    return sum(g.power() for g in parse_games(txt))
 
 
 if __name__ == "__main__":
