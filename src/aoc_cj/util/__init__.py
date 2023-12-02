@@ -3,12 +3,14 @@
 import math
 import re
 from collections.abc import Generator
+from typing import Callable, TypeVar, Union
 
 from ._point import Point3D
 from ._priority_queue import PriorityQueue
 
 __all__ = (
     "clamp",
+    "create_regex_parser",
     "digits",
     "floats",
     "ints",
@@ -16,6 +18,8 @@ __all__ = (
     "Point3D",
     "PriorityQueue",
 )
+
+_T = TypeVar("_T")
 
 
 def clamp(n: int, min_n: int, max_n: int) -> int:
@@ -43,22 +47,15 @@ def is_prime(n: int) -> bool:
     return True
 
 
-_INTS_PATTERN = re.compile(r"-?\d+")
+def create_regex_parser(
+    p: Union[str, re.Pattern[str]], f: Callable[[str], _T]
+) -> Callable[..., Generator[_T, None, None]]:
+    def regex_parse_fn(s: str) -> Generator[_T, None, None]:
+        yield from map(f, re.findall(p, s))
+
+    return regex_parse_fn
 
 
-def ints(s: str) -> Generator[int, None, None]:
-    yield from map(int, _INTS_PATTERN.findall(s))
-
-
-_DIGITS_PATTERN = re.compile(r"\d")
-
-
-def digits(s: str) -> Generator[int, None, None]:
-    yield from map(int, _DIGITS_PATTERN.findall(s))
-
-
-_FLOATS_PATTERN = re.compile(r"-?\d+\.\d+")
-
-
-def floats(s: str) -> Generator[float, None, None]:
-    yield from map(float, _FLOATS_PATTERN.findall(s))
+ints = create_regex_parser(r"-?\d+", int)
+digits = create_regex_parser(r"\d", int)
+floats = create_regex_parser(r"-?\d+\.\d+", float)
