@@ -33,5 +33,6 @@
   "evenBetterToml.formatter.arrayTrailingComma": true,
   "evenBetterToml.formatter.columnWidth": 0,
   "evenBetterToml.formatter.trailingNewline": true,
-  "evenBetterToml.formatter.arrayAutoExpand": false
+  "evenBetterToml.formatter.arrayAutoExpand": false,
+  "python.testing.unittestEnabled": false
 }
