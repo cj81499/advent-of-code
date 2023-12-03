@@ -23,8 +23,6 @@ def parta(txt: str) -> int:
     min_y = min(int(p.imag) for p in grid) + 1
     max_y = max(int(p.imag) for p in grid) - 1
 
-    print(min_x, max_x, min_y, max_y)
-
     @lru_cache
     def grid_after(minutes: int) -> dict[complex, set[str]]:
         assert minutes >= 0
@@ -81,8 +79,6 @@ def partb(txt: str) -> int:
     min_y = min(int(p.imag) for p in grid) + 1
     max_y = max(int(p.imag) for p in grid) - 1
 
-    print(min_x, max_x, min_y, max_y)
-
     @lru_cache
     def grid_after(minutes: int) -> dict[complex, set[str]]:
         assert minutes >= 0
@@ -110,51 +106,30 @@ def partb(txt: str) -> int:
 
         return new_grid
 
+    def explore(*, start: complex, goal: complex, start_time: int = 0) -> int:
+        h = [(start_time, (start.real, start.imag))]  # TODO: can we use a complex or do we need a tuple?
+        while h:
+            time, pos_tuple = heapq.heappop(h)
+            pos = complex(*pos_tuple)
+            if pos == goal:
+                return time
+            g = grid_after(time + 1)
+            for adj in (pos, *(pos + d for d in DIRECTIONS.values())):
+                if adj in (start, goal) or (
+                    min_x <= adj.real <= max_x and min_y <= adj.imag <= max_y and len(g[adj]) == 0
+                ):
+                    next_state = (time + 1, (adj.real, adj.imag))
+                    if next_state not in h:
+                        heapq.heappush(h, next_state)
+        assert False, "unreachable"
+
     start = complex(1, 0)
     goal = complex(max_x, max_y + 1)
 
-    h = [(0, (start.real, start.imag))]
-    while h:
-        cost, pos_tuple = heapq.heappop(h)
-        pos = complex(*pos_tuple)
-        if pos == goal:
-            break
-        g = grid_after(cost + 1)
-        for adj in (pos, *(pos + d for d in DIRECTIONS.values())):
-            if adj in (start, goal) or (min_x <= adj.real <= max_x and min_y <= adj.imag <= max_y and len(g[adj]) == 0):
-                next_state = (cost + 1, (adj.real, adj.imag))
-                if next_state not in h:
-                    heapq.heappush(h, next_state)
-
-    start, goal = goal, start
-    h = [(cost, (start.real, start.imag))]
-    while h:
-        cost, pos_tuple = heapq.heappop(h)
-        pos = complex(*pos_tuple)
-        if pos == goal:
-            break
-        g = grid_after(cost + 1)
-        for adj in (pos, *(pos + d for d in DIRECTIONS.values())):
-            if adj in (start, goal) or (min_x <= adj.real <= max_x and min_y <= adj.imag <= max_y and len(g[adj]) == 0):
-                next_state = (cost + 1, (adj.real, adj.imag))
-                if next_state not in h:
-                    heapq.heappush(h, next_state)
-
-    start, goal = goal, start
-    h = [(cost, (start.real, start.imag))]
-    while h:
-        cost, pos_tuple = heapq.heappop(h)
-        pos = complex(*pos_tuple)
-        if pos == goal:
-            return cost
-        g = grid_after(cost + 1)
-        for adj in (pos, *(pos + d for d in DIRECTIONS.values())):
-            if adj in (start, goal) or (min_x <= adj.real <= max_x and min_y <= adj.imag <= max_y and len(g[adj]) == 0):
-                next_state = (cost + 1, (adj.real, adj.imag))
-                if next_state not in h:
-                    heapq.heappush(h, next_state)
-
-    assert False, "unreachable"
+    time = explore(start=start, goal=goal)  # start -> goal
+    time = explore(start=goal, goal=start, start_time=time)  # goal -> start (elf forgot his snacks)
+    time = explore(start=start, goal=goal, start_time=time)  # start -> goal (again...)
+    return time
 
 
 EXAMPLE_INPUT = """
