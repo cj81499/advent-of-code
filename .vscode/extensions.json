@@ -1,8 +1,10 @@
 {
   "recommendations": [
-    "ms-python.python",
-    "bungcip.better-toml",
     "esbenp.prettier-vscode",
-    "streetsidesoftware.code-spell-checker"
+    "ms-python.python",
+    "streetsidesoftware.code-spell-checker",
+    "tamasfe.even-better-toml",
+    "ms-python.mypy-type-checker",
+    "ms-python.black-formatter"
   ]
 }

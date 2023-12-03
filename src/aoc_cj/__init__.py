@@ -44,11 +44,11 @@ def solve(year: int, day: int, data: str) -> tuple[Answer, Answer]:  # pragma: n
 
 def _solve_part(module: ModuleType, data: str, part: Literal["a", "b"]) -> Answer:  # pragma: no cover
     if f := getattr(module, f"part{part}", None):
-        assert inspect.isfunction(f)
+        assert inspect.isfunction(f), f"f ({f}) is not a function"
         try:
             # TODO: consider checking that inspect.signature matches expected signature
             resp = f(data)
-            assert isinstance(resp, (int, str))
+            assert isinstance(resp, (int, str)) or resp is None, f"resp ({resp}) must be an int, str, or None"
             return resp
         except NotImplementedError:  # unsolved
             return None

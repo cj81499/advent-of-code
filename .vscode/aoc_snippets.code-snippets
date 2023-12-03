@@ -34,7 +34,7 @@
       "if __name__ == \"__main__\":",
       "    from aocd import data",
       "    print(f\"parta: {parta(data)}\")",
-      "    print(f\"partb: {partb(data)}\")",
+      "    print(f\"partb: {partb(data)}\")"
     ]
   },
   "Advent of Code Test": {
@@ -43,7 +43,7 @@
     "prefix": "aoc-test",
     "body": [
       "import pytest",
-      "import aoc_cj.aoc20${2:22}.day${1:n} as d",
+      "import aoc_cj.aoc20${2:23}.day${1:n} as d",
       "EXAMPLE_INPUT = \"\"\"",
       "${3:sample input}",
       "\"\"\".strip()",
@@ -66,7 +66,7 @@
       "    ),",
       ")",
       "def test_${1:FUNCTION}(example: ${6:TYPE_EXAMPLE}, expected: ${7:TYPE_EXPECTED}) -> None:",
-      "    assert d.${1:FUNCTION}(example) == expected$0",
+      "    assert d.${1:FUNCTION}(example) == expected$0"
     ]
   }
 }

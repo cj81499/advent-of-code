@@ -41,7 +41,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     # for each valid ticket
     for t in {t for t in nearby_tickets if is_valid_ticket(t, fields)[0]}:
         # for each value on the ticket and list of possible fields at the location of that value
-        for (ticket_value, possibile_fields) in zip(t, position_possibile_fields):
+        for ticket_value, possibile_fields in zip(t, position_possibile_fields):
             for f in set(possibile_fields):
                 # if the value is not valid for one of the possible fields, remove it as a possibility
                 if not any(ticket_value in r for r in fields[f]):
