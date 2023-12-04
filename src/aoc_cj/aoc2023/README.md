@@ -5,7 +5,7 @@
 | 01  | [Trebuchet?!](https://adventofcode.com/2023/day/1)    |   :star:   |   :star:   | :white_check_mark: |
 | 02  | [Cube Conundrum](https://adventofcode.com/2023/day/2) |   :star:   |   :star:   | :white_check_mark: |
 | 03  | [Gear Ratios](https://adventofcode.com/2023/day/3)    |   :star:   |   :star:   | :white_check_mark: |
-| 04  | [?](https://adventofcode.com/2023/day/4)              | :question: | :question: |     :question:     |
+| 04  | [Scratchcards](https://adventofcode.com/2023/day/4)   |   :star:   |   :star:   | :white_check_mark: |
 | 05  | [?](https://adventofcode.com/2023/day/5)              | :question: | :question: |     :question:     |
 | 06  | [?](https://adventofcode.com/2023/day/6)              | :question: | :question: |     :question:     |
 | 07  | [?](https://adventofcode.com/2023/day/7)              | :question: | :question: |     :question:     |
@@ -31,9 +31,10 @@
 ## Results
 
 ```text
-      -------Part 1--------   -------Part 2--------
-Day       Time  Rank  Score       Time  Rank  Score
-  3   00:31:43  3359      0   01:17:17  5773      0
-  2   00:10:25  1381      0   00:13:37  1243      0
-  1   00:07:41  3772      0   00:23:13  2217      0
+      --------Part 1--------   --------Part 2--------
+Day       Time   Rank  Score       Time   Rank  Score
+  4   01:16:38  15959      0   01:29:51  12162      0
+  3   00:31:43   3359      0   01:17:17   5773      0
+  2   00:10:25   1381      0   00:13:37   1243      0
+  1   00:07:41   3772      0   00:23:13   2217      0
 ```
