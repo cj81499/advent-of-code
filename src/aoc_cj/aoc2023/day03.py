@@ -1,5 +1,6 @@
 import dataclasses
 import functools
+import math
 from collections.abc import Generator
 from typing import ClassVar
 
@@ -62,7 +63,7 @@ class EngineSchematic:
             if c == "*":
                 adjacent_numbers = {n for n in self.numbers if n.is_adjacent_to(possible_gear_pos)}
                 if len(adjacent_numbers) == 2:
-                    gear_ratio = util.product(n.value for n in adjacent_numbers)
+                    gear_ratio = math.prod(n.value for n in adjacent_numbers)
                     yield gear_ratio
 
     def part_numbers(self) -> Generator[int, None, None]:
