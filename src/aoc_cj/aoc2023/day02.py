@@ -1,5 +1,6 @@
 import collections
 import dataclasses
+import math
 from collections.abc import Generator, Sequence
 from typing import ClassVar
 
@@ -20,7 +21,7 @@ class Game:
         return all(int(count) <= Game.MAXES[color] for count, color in self.reveals)
 
     def power(self) -> int:
-        return util.product(self.min_cube_counts().values())
+        return math.prod(self.min_cube_counts().values())
 
     def min_cube_counts(self) -> collections.Counter[str]:
         max_counts: collections.Counter[str] = collections.Counter()
