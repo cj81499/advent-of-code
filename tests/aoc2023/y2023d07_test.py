@@ -31,5 +31,19 @@ def test_a() -> None:
     assert d.parta(EXAMPLE_INPUT) == 6440
 
 
-# def test_b() -> None:
-#     assert d.partb(EXAMPLE_INPUT) == 5905
+@pytest.mark.parametrize(
+    ("hand", "expected_type"),
+    (
+        (d.HandB("32T3K", 1), d.Hand.Type.ONE_PAIR),
+        (d.HandB("T55J5", 1), d.Hand.Type.FOUR_OF_A_KIND),
+        (d.HandB("KK677", 1), d.Hand.Type.TWO_PAIR),
+        (d.HandB("KTJJT", 1), d.Hand.Type.FOUR_OF_A_KIND),
+        (d.HandB("QQQJA", 1), d.Hand.Type.FOUR_OF_A_KIND),
+    ),
+)
+def test_hand_type_b(hand: d.HandB, expected_type: d.Hand.Type) -> None:
+    assert hand.type == expected_type
+
+
+def test_b() -> None:
+    assert d.partb(EXAMPLE_INPUT) == 5905
