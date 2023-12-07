@@ -24,6 +24,7 @@
       "import itertools",
       "import re",
       "from collections import Counter, defaultdict, deque",
+      "from dataclasses import dataclass",
       "import more_itertools as mi",
       "from aoc_cj import util",
       "def parta(txt: str) -> int:",
