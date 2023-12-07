@@ -8,7 +8,7 @@
 | 04  | [Scratchcards](https://adventofcode.com/2023/day/4)                    |   :star:   |   :star:   | :white_check_mark: |
 | 05  | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | :question: | :question: |     :question:     |
 | 06  | [Wait For It](https://adventofcode.com/2023/day/6)                     |   :star:   |   :star:   | :white_check_mark: |
-| 07  | [?](https://adventofcode.com/2023/day/7)                               | :question: | :question: |     :question:     |
+| 07  | [Camel Cards](https://adventofcode.com/2023/day/7)                     |   :star:   | :question: | :white_check_mark: |
 | 08  | [?](https://adventofcode.com/2023/day/8)                               | :question: | :question: |     :question:     |
 | 09  | [?](https://adventofcode.com/2023/day/9)                               | :question: | :question: |     :question:     |
 | 10  | [?](https://adventofcode.com/2023/day/10)                              | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  7   00:32:38   2945      0          -      -      -
   6   00:10:06   2735      0   00:14:10   2533      0
   4   01:16:38  15959      0   01:29:51  12162      0
   3   00:31:43   3359      0   01:17:17   5773      0
