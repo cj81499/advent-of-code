@@ -2,7 +2,7 @@
 
 import math
 import re
-from collections.abc import Generator, Iterable
+from collections.abc import Generator
 from typing import Callable, TypeVar, Union
 
 from ._point import Point3D
@@ -17,7 +17,6 @@ __all__ = (
     "is_prime",
     "Point3D",
     "PriorityQueue",
-    "product",
 )
 
 _T = TypeVar("_T")
@@ -61,10 +60,3 @@ def create_regex_parser(
 ints = create_regex_parser(r"-?\d+", int)
 digits = create_regex_parser(r"\d", int)
 floats = create_regex_parser(r"-?\d+\.\d+", float)
-
-
-def product(nums: Iterable[_T_Num]) -> _T_Num:
-    r: _T_Num = 1
-    for n in nums:
-        r *= n
-    return r
