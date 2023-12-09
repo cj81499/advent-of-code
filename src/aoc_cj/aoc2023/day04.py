@@ -16,10 +16,7 @@ class Card:
     @staticmethod
     def parse(s: str) -> "Card":
         match = Card._PATTERN.match(s)
-        if not match:
-            msg = f"Failed to parse Card ({s})"
-            raise ValueError(msg)
-
+        assert match, f"Failed to parse Card ({s})"
         winning_nums = frozenset(util.ints(match.group(1)))
         nums_you_have = frozenset(util.ints(match.group(2)))
         return Card(winning_nums, nums_you_have)
