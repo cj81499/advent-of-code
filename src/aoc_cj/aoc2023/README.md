@@ -11,7 +11,7 @@
 | 07  | [Camel Cards](https://adventofcode.com/2023/day/7)                     |   :star:   |   :star:   | :white_check_mark: |
 | 08  | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               |   :star:   |   :star:   | :white_check_mark: |
 | 09  | [Mirage Maintenance](https://adventofcode.com/2023/day/9)              |   :star:   |   :star:   | :white_check_mark: |
-| 10  | [?](https://adventofcode.com/2023/day/10)                              | :question: | :question: |     :question:     |
+| 10  | [Pipe Maze](https://adventofcode.com/2023/day/10)                      |   :star:   |   :star:   | :white_check_mark: |
 | 11  | [Cosmic Expansion](https://adventofcode.com/2023/day/11)               |   :star:   |   :star:   | :white_check_mark: |
 | 12  | [Hot Springs](https://adventofcode.com/2023/day/12)                    |   :star:   |   :star:   | :white_check_mark: |
 | 13  | [Point of Incidence](https://adventofcode.com/2023/day/13)             |   :star:   |   :star:   | :white_check_mark: |
@@ -40,6 +40,7 @@ Day       Time   Rank  Score       Time   Rank  Score
  13   00:40:30   3159      0   01:20:31   3702      0
  12   00:18:52    726      0   02:10:23   2413      0
  11   00:19:32   1989      0   00:25:48   1641      0
+ 10   00:26:09   1012      0   01:40:09   1863      0
   9   00:09:36   1149      0   00:14:41   1425      0
   8   00:09:26   2052      0   00:38:21   2580      0
   7   00:32:38   2945      0   00:57:25   3403      0
