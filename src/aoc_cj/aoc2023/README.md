@@ -12,7 +12,7 @@
 | 08  | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               |   :star:   |   :star:   | :white_check_mark: |
 | 09  | [Mirage Maintenance](https://adventofcode.com/2023/day/9)              |   :star:   |   :star:   | :white_check_mark: |
 | 10  | [?](https://adventofcode.com/2023/day/10)                              | :question: | :question: |     :question:     |
-| 11  | [?](https://adventofcode.com/2023/day/11)                              | :question: | :question: |     :question:     |
+| 11  | [Cosmic Expansion](https://adventofcode.com/2023/day/11)               |   :star:   |   :star:   | :white_check_mark: |
 | 12  | [?](https://adventofcode.com/2023/day/12)                              | :question: | :question: |     :question:     |
 | 13  | [?](https://adventofcode.com/2023/day/13)                              | :question: | :question: |     :question:     |
 | 14  | [?](https://adventofcode.com/2023/day/14)                              | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 11   00:19:32   1989      0   00:25:48   1641      0
   9   00:09:36   1149      0   00:14:41   1425      0
   8   00:09:26   2052      0   00:38:21   2580      0
   7   00:32:38   2945      0   00:57:25   3403      0
