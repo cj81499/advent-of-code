@@ -1,156 +1,213 @@
 from collections import deque
+from collections.abc import Generator
+from dataclasses import dataclass
+from functools import cached_property
 
 import more_itertools as mi
 
-Pos = tuple[int, int]
+UP = -1j
+DOWN = +1j
+LEFT = -1
+RIGHT = +1
+
+
+@dataclass(frozen=True, order=True)
+class GridPosition:
+    x: int
+    y: int
+
+    def _add(self, x: int, y: int) -> "GridPosition":
+        return GridPosition(self.x + x, self.y + y)
+
+    def up(self) -> "GridPosition":
+        return self._add(0, -1)
+
+    def down(self) -> "GridPosition":
+        return self._add(0, 1)
+
+    def left(self) -> "GridPosition":
+        return self._add(-1, 0)
+
+    def right(self) -> "GridPosition":
+        return self._add(1, 0)
+
+    def adj_4(self) -> tuple["GridPosition", "GridPosition", "GridPosition", "GridPosition"]:
+        return (self.up(), self.down(), self.left(), self.right())
+
+    def _top_left_corner(self) -> "TopLeftCorner":
+        return TopLeftCorner(self)
+
+    def _top_right_corner(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.right())
+
+    def _bottom_left_corner(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.down())
+
+    def _bottom_right_corner(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.down().right())
+
+    def corners(self) -> tuple["TopLeftCorner", "TopLeftCorner", "TopLeftCorner", "TopLeftCorner"]:
+        return (
+            self._top_left_corner(),
+            self._top_right_corner(),
+            self._bottom_left_corner(),
+            self._bottom_right_corner(),
+        )
+
+
+@dataclass(frozen=True, order=True)
+class TopLeftCorner:
+    pos: GridPosition
+
+    def up(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.pos.up())
+
+    def down(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.pos.down())
+
+    def left(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.pos.left())
+
+    def right(self) -> "TopLeftCorner":
+        return TopLeftCorner(self.pos.right())
+
+
+@dataclass(frozen=True, order=True)
+class Grid:
+    contents: dict[GridPosition, str]
+
+    def start_pos(self) -> GridPosition:
+        return mi.one(p for p, c in self.contents.items() if c == "S")
+
+    def connections(self, p: GridPosition) -> Generator[GridPosition, None, None]:
+        pipe_type = self.contents.get(p, ".")
+
+        if pipe_type == ".":
+            return
+
+        if pipe_type == "|":
+            yield p.up()
+            yield p.down()
+            return
+
+        if pipe_type == "-":
+            yield p.left()
+            yield p.right()
+            return
+
+        if pipe_type == "L":
+            yield p.up()
+            yield p.right()
+            return
+
+        if pipe_type == "J":
+            yield p.up()
+            yield p.left()
+            return
+
+        if pipe_type == "7":
+            yield p.down()
+            yield p.left()
+            return
+
+        if pipe_type == "F":
+            yield p.down()
+            yield p.right()
+            return
+
+        if pipe_type == "S":
+            for adj_p in p.adj_4():
+                if p in self.connections(adj_p):
+                    yield adj_p
+            return
+
+        assert False, f"unexpected value in pipe: '{pipe_type}'"
+
+    @cached_property
+    def _max_x(self) -> int:
+        return max(p.x for p in self.contents)
+
+    @cached_property
+    def _max_y(self) -> int:
+        return max(p.y for p in self.contents)
+
+    def corner_in_bounds(self, corner: TopLeftCorner) -> bool:
+        return (0 <= corner.pos.x <= self._max_x + 1) and (0 <= corner.pos.y <= self._max_y + 1)
+
+    @cached_property
+    def loop(self) -> dict[GridPosition, int]:
+        loop_distances: dict[GridPosition, int] = {}
+        to_explore = deque([(self.start_pos(), 0)])
+        while to_explore:
+            p, distance = to_explore.popleft()
+            if p in loop_distances:
+                continue
+            loop_distances[p] = distance
+            for adj_p in self.connections(p):
+                if adj_p not in loop_distances:
+                    to_explore.append((adj_p, distance + 1))
+        return loop_distances
+
+    def can_flood(self, from_corner: TopLeftCorner, direction: complex) -> bool:
+        # find grid positions to check
+        p1 = from_corner.pos
+        if direction != DOWN:
+            p1 = p1.up()
+        if direction != RIGHT:
+            p1 = p1.left()
+
+        p2 = from_corner.pos
+        if direction == UP:
+            p2 = p2.up()
+        if direction == LEFT:
+            p2 = p2.left()
+
+        # if either position is not in the loop, it can be flooded
+        if p1 not in self.loop or p2 not in self.loop:
+            return True
+        # if the both positions are in the loop, it can be flooded if they're not connected
+        return p1 not in self.connections(p2)
 
 
 def parta(txt: str) -> int:
-    grid = {(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
-    start_pos = mi.one(p for p, c in grid.items() if c == "S")
-
-    def connections(p: Pos) -> tuple[Pos, Pos]:
-        x, y = p
-        above = (x, y - 1)
-        below = (x, y + 1)
-        left = (x - 1, y)
-        right = (x + 1, y)
-        pipe_type = grid[p]
-        if pipe_type == "S":
-            conns = []
-            if grid.get(above, ".") in "|7F":
-                conns.append(above)
-            if grid.get(below, ".") in "|LJ":
-                conns.append(below)
-            if grid.get(left, ".") in "-LF":
-                conns.append(left)
-            if grid.get(right, ".") in "-J7":
-                conns.append(right)
-            assert len(conns) == 2, f"expected exactly 2 connections. Got {conns}"
-            conn1, conn2 = conns
-            return conn1, conn2
-        elif pipe_type == "|":
-            return above, below
-        elif pipe_type == "-":
-            return left, right
-        elif pipe_type == "L":
-            return above, right
-        elif pipe_type == "J":
-            return above, left
-        elif pipe_type == "7":
-            return below, left
-        elif pipe_type == "F":
-            return below, right
-        assert False, f"unexpected value in pipe: '{pipe_type}'"
-
-    distances: dict[Pos, int] = {}
-    to_explore = deque([(start_pos, 0)])
-    while to_explore:
-        p, distance = to_explore.popleft()
-        if p in distances:
-            continue
-        conns = connections(p)
-        distances[p] = distance
-        for adj_p in conns:
-            if adj_p not in distances:
-                to_explore.append((adj_p, distance + 1))
-
-    return max(distances.values())
+    grid = Grid({GridPosition(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)})
+    return max(grid.loop.values())
 
 
 def partb(txt: str) -> int:
-    grid = {(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
-    start_pos = mi.one(p for p, c in grid.items() if c == "S")
+    grid = Grid({GridPosition(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)})
 
-    def connections(p: Pos) -> tuple[Pos, Pos]:
-        x, y = p
-        above = (x, y - 1)
-        below = (x, y + 1)
-        left = (x - 1, y)
-        right = (x + 1, y)
-        pipe_type = grid[p]
-        if pipe_type == "S":
-            conns = []
-            if grid.get(above, ".") in "|7F":
-                conns.append(above)
-            if grid.get(below, ".") in "|LJ":
-                conns.append(below)
-            if grid.get(left, ".") in "-LF":
-                conns.append(left)
-            if grid.get(right, ".") in "-J7":
-                conns.append(right)
-            assert len(conns) == 2, f"expected exactly 2 connections. Got {conns}"
-            conn1, conn2 = conns
-            return conn1, conn2
-        elif pipe_type == "|":
-            return above, below
-        elif pipe_type == "-":
-            return left, right
-        elif pipe_type == "L":
-            return above, right
-        elif pipe_type == "J":
-            return above, left
-        elif pipe_type == "7":
-            return below, left
-        elif pipe_type == "F":
-            return below, right
-        assert False, f"unexpected value in pipe: '{pipe_type}'"
+    # to find tiles enclosed by the loop, we will flood the corners of each grid position
+    # (not the grid positions themselves to allow for flooding to move between disconnected pipes)
+    # at the end, grid positions with no flooded corners are enclosed within the loop
 
-    loop: dict[Pos, int] = {}
-    to_explore = deque([(start_pos, 0)])
+    flood_reachable: set[TopLeftCorner] = set()
+    # starting from top left corner of (0, 0), we will "flood" the corners of the grid.
+    to_explore = deque([TopLeftCorner(GridPosition(0, 0))])
     while to_explore:
-        p, distance = to_explore.popleft()
-        if p in loop:
-            continue
-        conns = connections(p)
-        loop[p] = distance
-        to_explore.extend((adj_p, distance + 1) for adj_p in conns)
+        corner = to_explore.popleft()
 
-    max_pos = max(p for p in grid)
-    max_x, max_y = max_pos
-
-    # find tiles enclosed by the loop
-    # starting from top left corner of (0, 0), we will "flood" the grid.
-    flood_reachable: set[Pos] = set()
-    to_explore = deque([(0, 0)])
-    while to_explore:
-        p = to_explore.popleft()
-        if p in flood_reachable:
+        # if corner is out of bounds, skip it
+        if not grid.corner_in_bounds(corner):
             continue
-        x, y = p
-        if not ((0 <= x <= max_x + 1) and (0 <= y <= max_y + 1)):
-            continue
-        flood_reachable.add(p)
-        # can reach corner only if the path is not blocked by a pipe in the loop
-        can_move_up = (
-            (x - 1, y - 1) not in loop or (x, y - 1) not in loop or (x - 1, y - 1) not in connections((x, y - 1))
-        )
-        can_move_down = (x - 1, y) not in loop or (x, y) not in loop or (x - 1, y) not in connections((x, y))
-        can_move_left = (
-            (x - 1, y - 1) not in loop or (x - 1, y) not in loop or (x - 1, y - 1) not in connections((x - 1, y))
-        )
-        can_move_right = (x, y - 1) not in loop or (x, y) not in loop or (x, y - 1) not in connections((x, y))
-        # print(f"{p=} {can_move_up=} {can_move_down=} {can_move_left=} {can_move_right=}")
-        if can_move_up:
-            to_explore.append((x, y - 1))
-        if can_move_down:
-            to_explore.append((x, y + 1))
-        if can_move_left:
-            to_explore.append((x - 1, y))
-        if can_move_right:
-            to_explore.append((x + 1, y))
 
-    # a tile is enclosed by the loop only if no corner is reached during flooding
-    count = 0
-    for y in range(max_y + 1):
-        for x in range(max_x + 1):
-            top_left = (x, y)
-            top_right = (x + 1, y)
-            bottom_left = (x, y + 1)
-            bottom_right = (x + 1, y + 1)
-            if not any(p in flood_reachable for p in (top_left, top_right, bottom_left, bottom_right)):
-                count += 1
-    return count
+        # if we've already flooded corner, skip it
+        if corner in flood_reachable:
+            continue
+        flood_reachable.add(corner)
+
+        if grid.can_flood(corner, UP):  # flood up
+            to_explore.append(corner.up())
+        if grid.can_flood(corner, DOWN):  # flood down
+            to_explore.append(corner.down())
+        if grid.can_flood(corner, LEFT):  # flood left
+            to_explore.append(corner.left())
+        if grid.can_flood(corner, RIGHT):  # flood right
+            to_explore.append(corner.right())
+
+    # grid spaces that have no flooded corners are enclosed by the loop
+    # count grid positions where no corner was reached during the flooding process
+    return sum(1 for p in grid.contents if not any(p in flood_reachable for p in p.corners()))
 
 
 if __name__ == "__main__":
