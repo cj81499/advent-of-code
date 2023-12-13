@@ -63,10 +63,10 @@
       "    (\"example\", \"expected\"),",
       "    (",
       "        (${2:EXAMPLE_INPUT_1}, ${3:EXPECTED_1}),",
-      "        (${4:EXAMPLE_INPUT_1}, ${5:EXPECTED_2}),",
+      "        (${4:EXAMPLE_INPUT_2}, ${5:EXPECTED_2}),",
       "    ),",
       ")",
-      "def test_${1:FUNCTION}(example: ${6:TYPE_EXAMPLE}, expected: ${7:TYPE_EXPECTED}) -> None:",
+      "def test_${1:FUNCTION}(example: ${6:str}, expected: ${7:TYPE_EXPECTED}) -> None:",
       "    assert d.${1:FUNCTION}(example) == expected$0"
     ]
   }
