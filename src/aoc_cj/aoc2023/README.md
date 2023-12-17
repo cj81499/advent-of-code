@@ -18,7 +18,7 @@
 | 14  | [?](https://adventofcode.com/2023/day/14)                              | :question: | :question: |     :question:     |
 | 15  | [Lens Library](https://adventofcode.com/2023/day/15)                   |   :star:   |   :star:   | :white_check_mark: |
 | 16  | [?](https://adventofcode.com/2023/day/16)                              | :question: | :question: |     :question:     |
-| 17  | [?](https://adventofcode.com/2023/day/17)                              | :question: | :question: |     :question:     |
+| 17  | [Clumsy Crucible](https://adventofcode.com/2023/day/17)                |   :star:   |   :star:   | :white_check_mark: |
 | 18  | [?](https://adventofcode.com/2023/day/18)                              | :question: | :question: |     :question:     |
 | 19  | [?](https://adventofcode.com/2023/day/19)                              | :question: | :question: |     :question:     |
 | 20  | [?](https://adventofcode.com/2023/day/20)                              | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 17   01:16:20   1854      0   01:34:47   1756      0
  15   12:26:10  27466      0   19:38:12  27297      0
  13   00:40:30   3159      0   01:20:31   3702      0
  12   00:18:52    726      0   02:10:23   2413      0
