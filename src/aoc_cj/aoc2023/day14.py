@@ -73,7 +73,7 @@ def partb(txt: str) -> int:
     tilt_cycle = itertools.islice(itertools.repeat((-1j, -1, 1j, 1)), total_iterations)
     o_rock_history: dict[frozenset[complex], int] = {}
     o_rock_history_by_cycle_number = [frozenset(p for p, r in rocks.items() if r == "O")]
-    for cycle_number, cycle in enumerate(tilt_cycle, start=1):
+    for cycle_number, cycle in enumerate(tilt_cycle, start=1):  # pragma: no branch # we expect to return while looping
         for direction in cycle:
             rocks = tilt(rocks, direction)
         o_rocks = frozenset(p for p, r in rocks.items() if r == "O")
@@ -86,7 +86,7 @@ def partb(txt: str) -> int:
             return total_load2(o_rocks_at_end, int(max(p.imag for p in rocks)))
         o_rock_history[o_rocks] = cycle_number
         o_rock_history_by_cycle_number.append(o_rocks)
-    return total_load(rocks)  # no coverage expected
+    return total_load(rocks)  # pragma: no cover # we expect to return while looping
 
 
 if __name__ == "__main__":
