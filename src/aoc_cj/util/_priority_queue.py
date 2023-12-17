@@ -25,4 +25,8 @@ class PriorityQueue(Generic[T]):
         heapq.heappush(self._repr, _PrioritizedItem(priority, item))
 
     def pop(self) -> T:
-        return heapq.heappop(self._repr).item
+        return self.pop_with_priority()[0]
+
+    def pop_with_priority(self) -> tuple[T, int]:
+        res = heapq.heappop(self._repr)
+        return res.item, res.priority
