@@ -16,7 +16,7 @@
 | 12  | [Hot Springs](https://adventofcode.com/2023/day/12)                    |   :star:   |   :star:   | :white_check_mark: |
 | 13  | [Point of Incidence](https://adventofcode.com/2023/day/13)             |   :star:   |   :star:   | :white_check_mark: |
 | 14  | [?](https://adventofcode.com/2023/day/14)                              | :question: | :question: |     :question:     |
-| 15  | [?](https://adventofcode.com/2023/day/15)                              | :question: | :question: |     :question:     |
+| 15  | [Lens Library](https://adventofcode.com/2023/day/15)                   |   :star:   |   :star:   | :white_check_mark: |
 | 16  | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)         |   :star:   |   :star:   | :white_check_mark: |
 | 17  | [?](https://adventofcode.com/2023/day/17)                              | :question: | :question: |     :question:     |
 | 18  | [?](https://adventofcode.com/2023/day/18)                              | :question: | :question: |     :question:     |
@@ -34,6 +34,7 @@
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
  16   00:28:24   1433      0   01:15:41   3608      0
+ 15   12:26:10  27466      0   19:38:12  27297      0
  13   00:40:30   3159      0   01:20:31   3702      0
  12   00:18:52    726      0   02:10:23   2413      0
  11   00:19:32   1989      0   00:25:48   1641      0
