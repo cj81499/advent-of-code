@@ -32,8 +32,7 @@ parallel = true
 omit = []
 
 [tool.coverage.report]
-exclude_lines = [
-  '# pragma: no cover',
+exclude_also = [
   'if __name__ == "__main__":',
   'if TYPE_CHECKING:',
   'raise NotImplementedError',
