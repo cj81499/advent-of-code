@@ -17,7 +17,7 @@
 | 13  | [Point of Incidence](https://adventofcode.com/2023/day/13)             |   :star:   |   :star:   | :white_check_mark: |
 | 14  | [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14)       |   :star:   |   :star:   | :white_check_mark: |
 | 15  | [Lens Library](https://adventofcode.com/2023/day/15)                   |   :star:   |   :star:   | :white_check_mark: |
-| 16  | [?](https://adventofcode.com/2023/day/16)                              | :question: | :question: |     :question:     |
+| 16  | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)         |   :star:   |   :star:   | :white_check_mark: |
 | 17  | [Clumsy Crucible](https://adventofcode.com/2023/day/17)                |   :star:   |   :star:   | :white_check_mark: |
 | 18  | [?](https://adventofcode.com/2023/day/18)                              | :question: | :question: |     :question:     |
 | 19  | [?](https://adventofcode.com/2023/day/19)                              | :question: | :question: |     :question:     |
@@ -34,6 +34,7 @@
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
  17   01:16:20   1854      0   01:34:47   1756      0
+ 16   00:28:24   1433      0   01:15:41   3608      0
  15   12:26:10  27466      0   19:38:12  27297      0
  14   00:17:32   2760      0   01:16:34   3196      0
  13   00:40:30   3159      0   01:20:31   3702      0
