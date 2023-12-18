@@ -19,7 +19,7 @@
 | 15  | [Lens Library](https://adventofcode.com/2023/day/15)                   |   :star:   |   :star:   | :white_check_mark: |
 | 16  | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)         |   :star:   |   :star:   | :white_check_mark: |
 | 17  | [Clumsy Crucible](https://adventofcode.com/2023/day/17)                |   :star:   |   :star:   | :white_check_mark: |
-| 18  | [?](https://adventofcode.com/2023/day/18)                              | :question: | :question: |     :question:     |
+| 18  | [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)                |   :star:   |   :star:   | :white_check_mark: |
 | 19  | [?](https://adventofcode.com/2023/day/19)                              | :question: | :question: |     :question:     |
 | 20  | [?](https://adventofcode.com/2023/day/20)                              | :question: | :question: |     :question:     |
 | 21  | [?](https://adventofcode.com/2023/day/21)                              | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 18   00:34:34   1908      0   01:35:24   1995      0
  17   01:16:20   1854      0   01:34:47   1756      0
  16   00:28:24   1433      0   01:15:41   3608      0
  15   12:26:10  27466      0   19:38:12  27297      0
