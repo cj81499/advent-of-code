@@ -34,8 +34,10 @@ class Rule:
         lhs_value = part_rating[self.lhs]
         if self.op == "<":
             return lhs_value < self.rhs
-        if self.op == ">":
+        elif self.op == ">":
             return lhs_value > self.rhs
+        else:
+            assert_never(self.op)
 
 
 @dataclass(frozen=True)
