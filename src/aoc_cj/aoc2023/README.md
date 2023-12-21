@@ -21,7 +21,7 @@
 | 17  | [Clumsy Crucible](https://adventofcode.com/2023/day/17)                |   :star:   |   :star:   | :white_check_mark: |
 | 18  | [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)                |   :star:   |   :star:   | :white_check_mark: |
 | 19  | [Aplenty](https://adventofcode.com/2023/day/19)                        |   :star:   |   :star:   | :white_check_mark: |
-| 20  | [?](https://adventofcode.com/2023/day/20)                              | :question: | :question: |     :question:     |
+| 20  | [Pulse Propagation](https://adventofcode.com/2023/day/20)              |   :star:   | :question: | :white_check_mark: |
 | 21  | [?](https://adventofcode.com/2023/day/21)                              | :question: | :question: |     :question:     |
 | 22  | [?](https://adventofcode.com/2023/day/22)                              | :question: | :question: |     :question:     |
 | 23  | [A Long Walk](https://adventofcode.com/2023/day/23)                    |   :star:   | :question: | :white_check_mark: |
@@ -36,6 +36,7 @@ Day       Time   Rank  Score       Time   Rank  Score
  25   00:38:34    915      0          -      -      -
  24   00:31:41    500      0   13:48:46   4723      0
  23   00:23:38    839      0          -      -      -
+ 20   01:07:08   1882      0          -      -      -
  19   00:39:34   2593      0   11:20:51   9205      0
  18   00:34:34   1908      0   01:35:24   1995      0
  17   01:16:20   1854      0   01:34:47   1756      0
