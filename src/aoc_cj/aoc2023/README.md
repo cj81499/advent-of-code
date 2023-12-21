@@ -6,7 +6,7 @@
 | 02  | [Cube Conundrum](https://adventofcode.com/2023/day/2)                  |   :star:   |   :star:   | :white_check_mark: |
 | 03  | [Gear Ratios](https://adventofcode.com/2023/day/3)                     |   :star:   |   :star:   | :white_check_mark: |
 | 04  | [Scratchcards](https://adventofcode.com/2023/day/4)                    |   :star:   |   :star:   | :white_check_mark: |
-| 05  | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | :question: | :question: |     :question:     |
+| 05  | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) |   :star:   |   :star:   | :white_check_mark: |
 | 06  | [Wait For It](https://adventofcode.com/2023/day/6)                     |   :star:   |   :star:   | :white_check_mark: |
 | 07  | [Camel Cards](https://adventofcode.com/2023/day/7)                     |   :star:   |   :star:   | :white_check_mark: |
 | 08  | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               |   :star:   |   :star:   | :white_check_mark: |
@@ -47,6 +47,7 @@ Day       Time   Rank  Score       Time   Rank  Score
   8   00:09:26   2052      0   00:38:21   2580      0
   7   00:32:38   2945      0   00:57:25   3403      0
   6   00:10:06   2735      0   00:14:10   2533      0
+  5   00:26:44   2430      0       >24h  74671      0
   4   01:16:38  15959      0   01:29:51  12162      0
   3   00:31:43   3359      0   01:17:17   5773      0
   2   00:10:25   1381      0   00:13:37   1243      0
