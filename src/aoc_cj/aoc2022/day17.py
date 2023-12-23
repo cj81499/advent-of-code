@@ -117,7 +117,6 @@ def parta(txt: str, *, rounds: int = 2022) -> int:
 
 def partb(txt: str) -> None:
     return None
-    # return parta(txt, rounds=1000000000000)
 
 
 if __name__ == "__main__":

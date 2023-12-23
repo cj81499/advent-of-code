@@ -39,7 +39,6 @@ def parta(txt: str):
 
 def partb(txt: str):
     pass
-    # return perform_shuffle(txt, deck_size=119315717514047, repeat=101741582076661)[2020]
 
 
 if __name__ == "__main__":

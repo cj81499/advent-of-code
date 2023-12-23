@@ -1,5 +1,6 @@
 # Advent of Code
 
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/cj81499/advent-of-code/main.svg)](https://results.pre-commit.ci/latest/github/cj81499/advent-of-code/main)
 [![codecov](https://codecov.io/gh/cj81499/advent-of-code/branch/main/graph/badge.svg?token=C8KWW9KG6Q)](https://codecov.io/gh/cj81499/advent-of-code)
 

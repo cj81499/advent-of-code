@@ -49,7 +49,3 @@ def test_day11_fast_increment_password():
 def test_a():
     assert "abcdffaa" == d.next_valid_password("abcdefgh")
     assert "ghjaabcc" == d.next_valid_password("ghijklmn")
-
-
-# def test_b():
-#     assert d.partb([]) == None

@@ -24,9 +24,7 @@ def signal_on(wire, wires):
         "RSHIFT": rshift,
         "AND": and_,
         "OR": or_,
-    }[
-        op
-    ](signal_on(lhs, wires), signal_on(rhs, wires))
+    }[op](signal_on(lhs, wires), signal_on(rhs, wires))
 
 
 def parse_wires(txt):

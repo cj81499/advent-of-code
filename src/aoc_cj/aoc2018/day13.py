@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
-ARROW_TO_DIRECTION = {"^": (0, -1), "v": (0, 1), "<": (-1, 0), ">": (1, 0)}
+import more_itertools as mi
 
+ARROW_TO_DIRECTION = {"^": (0, -1), "v": (0, 1), "<": (-1, 0), ">": (1, 0)}
 DIRECTION_TO_ARROW = {v: k for k, v in ARROW_TO_DIRECTION.items()}
 
 
@@ -118,7 +119,7 @@ def partb(txt):
     carts = [None, None]
     while len(carts) > 1:
         crashes, carts = s.move_carts(partb=True)
-    return ",".join(map(str, [*carts][0]))
+    return ",".join(map(str, mi.one(carts)))
 
 
 if __name__ == "__main__":

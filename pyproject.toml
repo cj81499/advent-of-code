@@ -14,17 +14,14 @@ z3-solver = "^4.12.4"
 lark = "^1.1.8"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.12.0"
 pre-commit = "^3.6.0"
 pytest = "^7.4.3"
 pytest-cov = "^4.1.0"
 mypy = "^1.8"
+ruff = "^0.1.9"
 
 [tool.poetry.plugins."adventofcode.user"]
 cj81499 = "aoc_cj:solve"
-
-[tool.black]
-line_length = 120
 
 [tool.coverage.run]
 branch = true
@@ -41,13 +38,45 @@ exclude_also = [
   'assert_never\(.*\)',
 ]
 
-[tool.isort]
-known_first_party = ["aoc_cj"]
-line_length = 120
-profile = "black"
+[tool.ruff]
+line-length = 120
+target-version = "py38" # FIXME: replace w/ project.requires-python - https://docs.astral.sh/ruff/settings/#target-version
+output-format = "grouped"
+src = [
+  "src",
+  # "test",
+]
 
-[tool.pycln]
-all = true
+[tool.ruff.lint]
+select = [ # https://docs.astral.sh/ruff/rules/ # TODO: enable additional linter rules
+  # "F", # Pyflakes
+  "F401", # unused-import
+  # "E", # pycodestyle
+  # "W", # pycodestyle
+  "I", # isort
+  "UP", # pyupgrade
+  # TODO: evaluate flake8 rules
+  "ERA",
+  # "PL", # pylint
+  # "FURB", #refurb
+  "RUF", # ruff
+
+  # "PL", # pylint # FIXME: duplicate. delete this line
+]
+ignore = [
+  "E741", # allow ambiguous-variable-name (eg: l, I, O)
+  "B011",
+  "B019",
+]
+
+# [tool.ruff.format]
+# indent-style = "tab" # FIXME: use tabs instead of spaces
+
+# [tool.ruff.lint.per-file-ignores]
+# "src/aoc_cj/aoc20{15,16,17,18,19,20,21,22}/*" = ["ALL"]
+
+# [tool.ruff.lint.isort]
+# required-imports = ["from __future__ import annotations"]
 
 [tool.pytest.ini_options]
 # skip slow tests by default

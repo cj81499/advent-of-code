@@ -22,9 +22,7 @@ FG..#########.....#
   ###########.#####
              Z
              Z
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 EXAMPLE_INPUT_1 = """
                    A
@@ -64,9 +62,7 @@ YN......#               VT..#....QG
   #########.###.###.#############
            B   J   C
            U   P   P
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 
 EXAMPLE_INPUT_2 = """
@@ -107,9 +103,7 @@ RE....#.#                           #......RF
   #############.#.#.###.###################
                A O F   N
                A A D   M
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 
 @pytest.mark.parametrize("input, expected", [(EXAMPLE_INPUT_0, 23), (EXAMPLE_INPUT_1, 58)])

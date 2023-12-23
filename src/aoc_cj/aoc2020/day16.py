@@ -1,6 +1,8 @@
 import functools
 from operator import mul
 
+import more_itertools as mi
+
 
 def is_valid_ticket(ticket, fields):
     for n in ticket:
@@ -50,7 +52,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     # while there are one or more positions that have more than multiple possibilites
     while any(len(x) > 1 for x in position_possibile_fields):
         # get the names of fields that we know are correct (they're the only possibility at a location)
-        solved_fields = {list(p)[0] for p in position_possibile_fields if len(p) == 1}
+        solved_fields = {mi.one(p) for p in position_possibile_fields if len(p) == 1}
         # remove those fields as possibilities for everywhere else
         for f in solved_fields:
             for p in position_possibile_fields:
