@@ -39,6 +39,5 @@
   "evenBetterToml.formatter.trailingNewline": true,
   "evenBetterToml.formatter.arrayAutoExpand": false,
   "python.testing.unittestEnabled": false,
-  "python.defaultInterpreterPath": ".venv/bin/python",
   "mypy-type-checker.importStrategy": "fromEnvironment"
 }
