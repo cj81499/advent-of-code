@@ -5,6 +5,6 @@
     "streetsidesoftware.code-spell-checker",
     "tamasfe.even-better-toml",
     "ms-python.mypy-type-checker",
-    "ms-python.black-formatter"
+    "charliermarsh.ruff"
   ]
 }
