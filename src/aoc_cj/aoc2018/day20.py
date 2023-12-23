@@ -1,5 +1,8 @@
 from collections import deque
 
+DIRECTIONS = {"N": (0, -1), "W": (-1, 0), "S": (0, 1), "E": (1, 0)}
+OPPOSITE_DIRECTION = {"N": "S", "W": "E", "S": "N", "E": "W"}
+
 
 class Facility:
     class Room:
@@ -15,8 +18,6 @@ class Facility:
             return ("-" if direction in "NS" else "|") if self.doors[direction] else "?"
 
         def __str__(self):
-            # s = "#" + self._door_str("N") + "#," + self._door_str("W") + str(self.dist)[-1] + \
-            #     self._door_str("E") + ",#" + self._door_str("S") + "#"
             s = (
                 "#"
                 + self._door_str("N")
@@ -29,10 +30,6 @@ class Facility:
                 + "#"
             )
             return s
-
-    DIRECTIONS = {"N": (0, -1), "W": (-1, 0), "S": (0, 1), "E": (1, 0)}
-
-    OPPOSITE_DIRECTION = {"N": "S", "W": "E", "S": "N", "E": "W"}
 
     def __init__(self, regex):
         self.regex = deque(list(regex))
@@ -53,14 +50,14 @@ class Facility:
 
     def move(self, pos, direction):
         x, y = pos
-        dx, dy = Facility.DIRECTIONS[direction]
+        dx, dy = DIRECTIONS[direction]
         new_pos = (x + dx, y + dy)
         self.update_mins_and_maxes(new_pos)
         return new_pos
 
     def addRoom(self, pos, dir_of_movement):
         x, y = pos
-        dx, dy = Facility.DIRECTIONS[dir_of_movement]
+        dx, dy = DIRECTIONS[dir_of_movement]
         prev_pos = (x - dx, y - dy)
         prev_room = self.f[prev_pos]
         prev_room.add_door(dir_of_movement)
@@ -68,7 +65,7 @@ class Facility:
         if pos not in self.f:
             r = Facility.Room(".", prev_room.dist + 1)
             self.f[pos] = r
-        self.f[pos].add_door(Facility.OPPOSITE_DIRECTION[dir_of_movement])
+        self.f[pos].add_door(OPPOSITE_DIRECTION[dir_of_movement])
 
     def _explore_chunk_list(self, pos, chunk_list):
         end_positions = set()

@@ -55,8 +55,6 @@ class Instruction(Generic[_T]):
 
     @staticmethod
     def parse(instruction: str) -> "Instruction[int]":
-        # opcode, *abc_strs = instruction.split()
-        # abc = map(int, abc_strs)
         return Instruction(*util.ints(instruction))
 
     @staticmethod

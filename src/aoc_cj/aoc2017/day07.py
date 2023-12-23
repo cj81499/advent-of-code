@@ -1,6 +1,8 @@
 import re
 from collections import Counter
 
+import more_itertools as mi
+
 REGEX = re.compile(r"([a-z]*) \((\d+)\)( -> (.*)|)")
 
 
@@ -54,7 +56,7 @@ def partb(txt):
         total_weight_counts = Counter(c.total_weight for c in traverse.children)
         most_common_total_weight = total_weight_counts.most_common(n=1)[0][0]
         # next traverse node is the child with a unique total weight
-        traverse = [c for c in traverse.children if c.total_weight != most_common_total_weight][0]
+        traverse = mi.one(c for c in traverse.children if c.total_weight != most_common_total_weight)
 
     child_weight = traverse.children[0].total_weight
     return most_common_total_weight - len(traverse.children) * child_weight

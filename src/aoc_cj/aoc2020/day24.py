@@ -156,10 +156,8 @@ def parta(txt):
 
 def partb(txt):
     grid = get_grid(txt)
-    for day in range(100):
+    for _day in range(100):
         grid.simulate_day()
-        # if day < 10 or (day + 1) % 10 == 0:
-        #     print(f"Day {day + 1}: {grid.count_black_tiles()}")
     return grid.count_black_tiles()
 
 

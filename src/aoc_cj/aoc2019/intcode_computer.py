@@ -132,7 +132,6 @@ class IntcodeProgram:
 
     def _halt(self):
         self.terminated = True
-        # self._ip += 1
 
     def __getitem__(self, i: int):
         assert i >= 0

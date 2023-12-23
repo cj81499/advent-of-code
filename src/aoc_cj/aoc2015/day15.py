@@ -29,7 +29,7 @@ def recipie_generator(ingredient_count: int, teasponns: int):
         remaining = teasponns - i
         if ingredient_count - 1:
             for y in recipie_generator(ingredient_count - 1, remaining):
-                yield [i] + y
+                yield [i, *y]
         else:
             yield [i]
 
