@@ -17,9 +17,7 @@ EXAMPLE_INPUT = """
         ......#.
 
 10R5L5R10L4R5L5
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 
 def test_a() -> None:

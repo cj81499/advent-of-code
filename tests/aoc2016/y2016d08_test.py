@@ -4,41 +4,25 @@ AFTER_1 = """
 ###....
 ###....
 .......
-""".replace(
-    ".", " "
-).strip(
-    "\n"
-)
+""".replace(".", " ").strip("\n")
 
 AFTER_2 = """
 #.#....
 ###....
 .#.....
-""".replace(
-    ".", " "
-).strip(
-    "\n"
-)
+""".replace(".", " ").strip("\n")
 
 AFTER_3 = """
 ....#.#
 ###....
 .#.....
-""".replace(
-    ".", " "
-).strip(
-    "\n"
-)
+""".replace(".", " ").strip("\n")
 
 AFTER_4 = """
 .#..#.#
 #.#....
 .#.....
-""".replace(
-    ".", " "
-).strip(
-    "\n"
-)
+""".replace(".", " ").strip("\n")
 
 
 def test_a():
