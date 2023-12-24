@@ -1,4 +1,4 @@
-def simulate(txt, partb=False):
+def simulate(txt, part_2=False):
     mem = list(map(int, txt.split()))
     seen = {}
     cycles = 0
@@ -10,19 +10,19 @@ def simulate(txt, partb=False):
         for i in range(num_to_redistribute):
             mem[(redistribute_idx + 1 + i) % len(mem)] += 1
         cycles += 1
-    return cycles - seen[t] if partb else cycles
+    return cycles - seen[t] if part_2 else cycles
 
 
-def parta(txt):
+def part_1(txt):
     return simulate(txt)
 
 
-def partb(txt):
-    return simulate(txt, partb=True)
+def part_2(txt):
+    return simulate(txt, part_2=True)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

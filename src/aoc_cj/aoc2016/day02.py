@@ -1,11 +1,11 @@
-NUMPAD_A = """
+NUMPAD_1 = """
 123
 456
 789
 """
 
 
-NUMPAD_B = """
+NUMPAD_2 = """
   1
  234
 56789
@@ -17,12 +17,12 @@ NUMPAD_B = """
 DIRECTION_TO_MOVE = {"U": -1j, "R": 1, "D": 1j, "L": -1}
 
 
-def parta(txt: str):
-    return helper(txt, NUMPAD_A)
+def part_1(txt: str):
+    return helper(txt, NUMPAD_1)
 
 
-def partb(txt: str):
-    return helper(txt, NUMPAD_B)
+def part_2(txt: str):
+    return helper(txt, NUMPAD_2)
 
 
 def helper(code: str, numpad: str):
@@ -50,5 +50,5 @@ def get_pos_to_char(numpad: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

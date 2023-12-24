@@ -8,7 +8,7 @@ SEGMENTS_IN_SEVEN = 3
 SEGMENTS_IN_EIGHT = 7
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     count = 0
     unique_segment_counts = {SEGMENTS_IN_ONE, SEGMENTS_IN_FOUR, SEGMENTS_IN_SEVEN, SEGMENTS_IN_EIGHT}
     for line in txt.splitlines():
@@ -17,7 +17,7 @@ def parta(txt: str) -> int:
     return count
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     return sum(map(get_output_for_line, txt.splitlines()))
 
 
@@ -69,5 +69,5 @@ def get_output_for_line(line: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

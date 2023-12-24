@@ -19,7 +19,7 @@ def partial_step(grid: Grid, new_pos_f: Callable[[int, int], tuple[int, int]], d
     return new_grid
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     lines = txt.splitlines()
 
     height = len(lines)
@@ -37,4 +37,4 @@ def parta(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
+    print(f"part_1: {part_1(data)}")

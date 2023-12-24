@@ -1,4 +1,4 @@
-def parta(txt):
+def part_1(txt):
     return simulate_slope(txt, 3, 1)
 
 
@@ -18,7 +18,7 @@ def simulate_slope(txt, right, down):
     return count
 
 
-def partb(txt):
+def part_2(txt):
     return (
         simulate_slope(txt, 1, 1)
         * simulate_slope(txt, 3, 1)
@@ -31,5 +31,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

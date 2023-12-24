@@ -30,12 +30,12 @@ def min_risk(grid: dict[Point, int]) -> int:
     return risk_of_path_to_point[goal]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     grid = {(x, y): int(n) for y, line in enumerate(txt.splitlines()) for x, n in enumerate(line)}
     return min_risk(grid)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     grid = {(x, y): int(n) for y, line in enumerate(txt.splitlines()) for x, n in enumerate(line)}
 
     max_x, max_y = max(grid)
@@ -51,5 +51,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

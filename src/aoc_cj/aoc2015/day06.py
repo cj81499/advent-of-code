@@ -31,7 +31,7 @@ class Instruction:
         return f"{self.action} {self.start}-{self.end}"
 
 
-def parta(txt):
+def part_1(txt):
     instructions = [Instruction.parse(line) for line in txt.splitlines()]
     grid = defaultdict(bool)
     for instruction in instructions:
@@ -49,7 +49,7 @@ def parta(txt):
     return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 
 
-def partb(txt):
+def part_2(txt):
     instructions = [Instruction.parse(line) for line in txt.splitlines()]
     grid = Counter()
     for instruction in instructions:
@@ -70,5 +70,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

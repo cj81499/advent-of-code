@@ -5,7 +5,7 @@ from typing import Literal
 import more_itertools as mi
 
 
-def parta(txt: str, part: Literal[1, 2] = 1) -> int:
+def part_1(txt: str, part: Literal[1, 2] = 1) -> int:
     grid = {complex(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
 
     def adj(p: complex) -> Generator[complex, None, None]:
@@ -50,12 +50,12 @@ def parta(txt: str, part: Literal[1, 2] = 1) -> int:
     return min(steps_to_reach[p] for p in possible_end_points if p in steps_to_reach)
 
 
-def partb(txt: str) -> int:
-    return parta(txt, part=2)
+def part_2(txt: str) -> int:
+    return part_1(txt, part=2)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

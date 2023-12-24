@@ -1,24 +1,24 @@
 import aoc_cj.aoc2015.day01 as d
 
 
-def test_a():
-    assert d.parta("(())") == 0
-    assert d.parta("()()") == 0
+def test_part_1():
+    assert d.part_1("(())") == 0
+    assert d.part_1("()()") == 0
 
-    assert d.parta("(((") == 3
-    assert d.parta("(()(()(") == 3
-    assert d.parta("))(((((") == 3
+    assert d.part_1("(((") == 3
+    assert d.part_1("(()(()(") == 3
+    assert d.part_1("))(((((") == 3
 
-    assert d.parta("())") == -1
-    assert d.parta("))(") == -1
+    assert d.part_1("())") == -1
+    assert d.part_1("))(") == -1
 
-    assert d.parta(")))") == -3
-    assert d.parta(")())())") == -3
+    assert d.part_1(")))") == -3
+    assert d.part_1(")())())") == -3
 
-    assert d.parta(")))") == -3
-    assert d.parta(")())())") == -3
+    assert d.part_1(")))") == -3
+    assert d.part_1(")())())") == -3
 
 
-def test_b():
-    assert d.partb(")") == 1
-    assert d.partb("()())") == 5
+def test_part_2():
+    assert d.part_2(")") == 1
+    assert d.part_2("()())") == 5

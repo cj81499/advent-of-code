@@ -12,7 +12,7 @@ import aoc_cj.aoc2015.day08 as d
         (r""" "\x27" """, r""" ' """),
     ],
 )
-def test_a(input, expected):
+def test_part_1(input, expected):
     assert d.decode(input.strip()) == expected.strip()
 
 
@@ -25,5 +25,5 @@ def test_a(input, expected):
         (r""" "\x27" """, r""" "\"\\x27\"" """),
     ],
 )
-def test_b(input, expected):
+def test_part_2(input, expected):
     assert d.encode(input.strip()) == expected.strip()

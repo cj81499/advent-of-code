@@ -19,5 +19,5 @@ EXAMPLE_INPUT_4 = "^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS)
         (EXAMPLE_INPUT_4, 31),
     ],
 )
-def test_a(input, expected):
-    assert d.parta(input) == expected
+def test_part_1(input, expected):
+    assert d.part_1(input) == expected

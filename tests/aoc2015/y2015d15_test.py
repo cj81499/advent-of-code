@@ -6,9 +6,9 @@ Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 62842880
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == 62842880
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT) == 57600000
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT) == 57600000

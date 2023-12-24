@@ -71,5 +71,5 @@ def test_base_10_to_snafu(example: str, expected: str) -> None:
     assert d.base_10_to_snafu(int(example)) == expected
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == "2=-1=0"
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == "2=-1=0"

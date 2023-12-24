@@ -36,14 +36,14 @@ def screen_to_str(screen):
     return "\n".join("".join("#" if c else " " for c in row) for row in screen)
 
 
-def parta(txt: str):
+def part_1(txt: str):
     screen = create_screen()
     for instruction in txt.splitlines():
         apply_instruction(screen, instruction)
     return sum(v for row in screen for v in row)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     screen = create_screen()
     for instruction in txt.splitlines():
         apply_instruction(screen, instruction)
@@ -53,5 +53,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

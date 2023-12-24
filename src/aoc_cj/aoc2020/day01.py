@@ -1,4 +1,4 @@
-def parta(txt):
+def part_1(txt):
     nums = {int(line) for line in txt.splitlines()}
 
     for n in nums:
@@ -7,7 +7,7 @@ def parta(txt):
             return n * remaining
 
 
-def partb(txt):
+def part_2(txt):
     nums = {int(line) for line in txt.splitlines()}
 
     for x in nums:
@@ -20,5 +20,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -9,7 +9,7 @@ def parse(txt: str) -> Grid:
     return {(x, y): int(c) for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     grid = parse(txt)
 
     flash_count = 0
@@ -40,7 +40,7 @@ def step(grid: Grid) -> tuple[int, Grid]:
     return len(flashed), new_grid
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     grid = parse(txt)
     num_octopuses = len(grid)
 
@@ -55,5 +55,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

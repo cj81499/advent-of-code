@@ -35,19 +35,19 @@ def knot_hash(txt: str):
     return dense_hash(sparse_hash)
 
 
-def parta(txt: str, list_size: int = DEFAULT_LIST_SIZE):
+def part_1(txt: str, list_size: int = DEFAULT_LIST_SIZE):
     lengths = list(map(int, txt.split(",")))
     nums = [*range(list_size)]
     do_round(nums, lengths)
     return nums[0] * nums[1]
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return knot_hash(txt)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

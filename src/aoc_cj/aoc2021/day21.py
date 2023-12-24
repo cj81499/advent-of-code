@@ -17,7 +17,7 @@ class Player:
         self.score += self.position
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     die = ((n % 100) + 1 for n in itertools.count())
     players = [Player(int(line.split()[-1])) for line in txt.splitlines()]
     roll_count = 0
@@ -61,7 +61,7 @@ def helper(state: State) -> list[int]:
     return wins
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     players = [Player(int(line.split()[-1])) for line in txt.splitlines()]
     state = State(players[0].position, 0, players[1].position, 0, 0)
 
@@ -71,5 +71,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

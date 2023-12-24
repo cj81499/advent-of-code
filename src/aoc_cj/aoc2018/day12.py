@@ -1,11 +1,11 @@
 FIFTY_BILLION = 50_000_000_000
 
 
-def parta(txt: str):
+def part_1(txt: str):
     return simulate_plant_growth(txt)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return simulate_plant_growth(txt, generations=FIFTY_BILLION)
 
 
@@ -49,5 +49,5 @@ def simulate_plant_growth(txt: str, generations=20):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

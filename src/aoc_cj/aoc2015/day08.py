@@ -37,7 +37,7 @@ def encode(s: str) -> int:
     return "".join(str_in_mem)
 
 
-def parta(txt):
+def part_1(txt):
     total_chars_of_code = 0
     total_chars_in_memory = 0
     for s in txt.splitlines():
@@ -47,7 +47,7 @@ def parta(txt):
     return total_chars_of_code - total_chars_in_memory
 
 
-def partb(txt):
+def part_2(txt):
     total_chars_of_original = 0
     total_chars_of_encoded = 0
     for s in txt.splitlines():
@@ -60,5 +60,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

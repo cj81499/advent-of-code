@@ -54,8 +54,8 @@ def test_increasing_digits(input_val: int, expected: bool) -> None:
         (123789, False),  # no double
     ],
 )
-def test_a(input_val: int, expected: bool) -> None:
-    assert d.is_valid_parta(d.get_digits(input_val)) == expected
+def test_part_1(input_val: int, expected: bool) -> None:
+    assert d.is_valid_part_1(d.get_digits(input_val)) == expected
 
 
 @pytest.mark.parametrize(
@@ -66,5 +66,5 @@ def test_a(input_val: int, expected: bool) -> None:
         (111122, True),
     ],
 )
-def test_b(input_val: int, expected: bool) -> None:
-    assert d.is_valid_partb(d.get_digits(input_val)) == expected
+def test_part_2(input_val: int, expected: bool) -> None:
+    assert d.is_valid_part_2(d.get_digits(input_val)) == expected

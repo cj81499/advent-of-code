@@ -69,8 +69,8 @@ EXAMPLE_3 = """
         (EXAMPLE_3, 2210736),
     ],
 )
-def test_a(input_val: list[str], expected: int) -> None:
-    assert d.parta(input_val) == expected
+def test_part_1(input_val: list[str], expected: int) -> None:
+    assert d.part_1(input_val) == expected
 
 
 @pytest.mark.parametrize(
@@ -81,5 +81,5 @@ def test_a(input_val: list[str], expected: int) -> None:
         (EXAMPLE_3, 460664),
     ],
 )
-def test_b(input_val: list[str], expected: int) -> None:
-    assert d.partb(input_val) == expected
+def test_part_2(input_val: list[str], expected: int) -> None:
+    assert d.part_2(input_val) == expected

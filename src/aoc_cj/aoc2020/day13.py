@@ -1,7 +1,7 @@
 import math
 
 
-def parta(txt):
+def part_1(txt):
     arrival_time, bus_ids = txt.splitlines()
     arrival_time = int(arrival_time)
     bus_ids = bus_ids.split(",")
@@ -30,7 +30,7 @@ def lcm(nums):
     return (first * lcm_rest) // math.gcd(first, lcm_rest)
 
 
-def partb(txt):
+def part_2(txt):
     _, bus_ids = txt.splitlines()
     bus_ids = bus_ids.split(",")
 
@@ -47,5 +47,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

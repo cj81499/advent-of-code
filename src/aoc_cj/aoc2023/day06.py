@@ -21,13 +21,13 @@ class Race:
         return wins
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     times, distances = (tuple(util.ints(l)) for l in txt.splitlines())
     races = [Race(t, d) for t, d in mi.zip_equal(times, distances)]
     return math.prod(r.ways_to_win() for r in races)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     time, distance = (mi.one(util.ints(l.split(":")[1])) for l in txt.replace(" ", "").splitlines())
     r = Race(time, distance)
     return r.ways_to_win()
@@ -36,5 +36,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

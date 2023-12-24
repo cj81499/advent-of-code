@@ -77,8 +77,8 @@ L7JLJL-JLJLJL--JLJ.L
         (EXAMPLE_INPUT_2, 8),
     ),
 )
-def test_a(example_input: str, expected: int) -> None:
-    assert d.parta(example_input) == expected
+def test_part_1(example_input: str, expected: int) -> None:
+    assert d.part_1(example_input) == expected
 
 
 @pytest.mark.parametrize(
@@ -90,5 +90,5 @@ def test_a(example_input: str, expected: int) -> None:
         (EXAMPLE_INPUT_6, 10),
     ),
 )
-def test_b(example_input: str, expected: int) -> None:
-    assert d.partb(example_input) == expected
+def test_part_2(example_input: str, expected: int) -> None:
+    assert d.part_2(example_input) == expected

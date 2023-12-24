@@ -15,7 +15,7 @@ def transform(subject_number):
         yield pk
 
 
-def parta(txt):
+def part_1(txt):
     card_pk, door_pk = tuple(map(int, txt.splitlines()))
 
     card_loop_size = None
@@ -42,4 +42,4 @@ def parta(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
+    print(f"part_1: {part_1(data)}")

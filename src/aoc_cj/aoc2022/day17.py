@@ -106,7 +106,7 @@ class Chamber:
         return True
 
 
-def parta(txt: str, *, rounds: int = 2022) -> int:
+def part_1(txt: str, *, rounds: int = 2022) -> int:
     chamber = Chamber()
     jet_pattern = itertools.cycle(txt)
     for _rock_i, rock in zip(range(rounds), itertools.cycle(ROCKS)):
@@ -115,12 +115,12 @@ def parta(txt: str, *, rounds: int = 2022) -> int:
     return chamber.highest_rock_y
 
 
-def partb(txt: str) -> None:
+def part_2(txt: str) -> None:
     return None
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")  # type: ignore[func-returns-value]
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")  # type: ignore[func-returns-value]

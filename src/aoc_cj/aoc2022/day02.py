@@ -40,12 +40,12 @@ class Outcome(enum.Enum):
         return {Move.ROCK: Move.SCISSORS, Move.PAPER: Move.ROCK, Move.SCISSORS: Move.PAPER}[against]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     turns = ((Move(op_move), Move.parse(my_move)) for op_move, my_move in (line.split() for line in txt.splitlines()))
     return sum(my_move.score() + my_move.play(op_move).score() for op_move, my_move in turns)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     turns = ((Move(op_move), Outcome(outcome)) for op_move, outcome in (line.split() for line in txt.splitlines()))
     return sum(outcome.my_move(op_move).score() + outcome.score() for op_move, outcome in turns)
 
@@ -53,5 +53,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

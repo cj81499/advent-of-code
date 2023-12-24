@@ -1,7 +1,7 @@
 MOVES = {"^": (0, 1), "v": (0, -1), "<": (-1, 0), ">": (1, 0)}
 
 
-def parta(directions: str):
+def part_1(directions: str):
     pos = (0, 0)
     visited = {pos}
     for d in directions:
@@ -10,7 +10,7 @@ def parta(directions: str):
     return len(visited)
 
 
-def partb(directions: str):
+def part_2(directions: str):
     active, inactive = (0, 0), (0, 0)
     visited = {active}
     for d in directions:
@@ -23,5 +23,5 @@ def partb(directions: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

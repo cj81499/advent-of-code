@@ -1,13 +1,13 @@
 ONE_BILLION = 1_000_000_000
 
 
-def parta(txt: str, num_programs=16, repetitions=1):
+def part_1(txt: str, num_programs=16, repetitions=1):
     programs = [chr(ord("a") + i) for i in range(num_programs)]
     return dance(programs, txt.split(","), repetitions)
 
 
-def partb(txt: str):
-    return parta(txt, repetitions=ONE_BILLION)
+def part_2(txt: str):
+    return part_1(txt, repetitions=ONE_BILLION)
 
 
 def dance(programs, moves, repetitions):
@@ -51,5 +51,5 @@ def partner(programs, a: str, b: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

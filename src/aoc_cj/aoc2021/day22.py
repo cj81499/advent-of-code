@@ -14,7 +14,7 @@ def parse(line: str) -> tuple[str, int, int, int, int, int, int]:
     return status, min_x, max_x, min_y, max_y, min_z, max_z
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     on_points = set()
     for line in txt.splitlines():
         status, min_x, max_x, min_y, max_y, min_z, max_z = parse(line)
@@ -27,7 +27,7 @@ def parta(txt: str) -> int:
     return len(on_points)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     # idea shown in 2D, solution takes this approach, but generalized to 3D
     #
     # rather than adding each point, keep track of many rectangles (when we move to 3D, this'll be cubiods)
@@ -164,5 +164,5 @@ class CuboidCollection:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

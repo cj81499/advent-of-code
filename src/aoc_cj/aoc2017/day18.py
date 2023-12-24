@@ -88,7 +88,7 @@ def val(registers, a):
     return registers[a] if a.isalpha() else int(a)
 
 
-def parta(txt: str):
+def part_1(txt: str):
     instructions = [line.split() for line in txt.splitlines()]
     p = Program(instructions)
     try:
@@ -98,7 +98,7 @@ def parta(txt: str):
         return e.last_sent
 
 
-def partb(txt: str):
+def part_2(txt: str):
     instructions = [line.split() for line in txt.splitlines()]
     p0 = ProgramB(instructions, 0)
     p1 = ProgramB(instructions, 1)
@@ -113,5 +113,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -73,13 +73,13 @@ def run_cmd(opcode_name: str, registers: Registers, instruction: Instruction[Any
     return update_registers(registers, c, OPERATIONS[opcode_name](registers, a, b))
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     samples_s, _instructions_s = txt.split("\n\n\n\n")
     samples = [Sample.parse(s) for s in samples_s.split("\n\n")]
     return sum(1 for s in samples if len(s.behaves_like()) >= 3)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     samples_s, instructions_s = txt.split("\n\n\n\n")
     samples = [Sample.parse(s) for s in samples_s.split("\n\n")]
     instructions = [Instruction.parse(l) for l in instructions_s.splitlines()]
@@ -116,5 +116,5 @@ def solve_opcodes(samples: list[Sample]) -> dict[int, str]:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

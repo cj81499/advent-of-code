@@ -4,7 +4,7 @@ import itertools
 # then, just keep the pattern going!
 
 
-def parta(txt: str):
+def part_1(txt: str):
     def pattern():
         for i in itertools.count():
             yield from range(1, 2**i, 2)
@@ -12,7 +12,7 @@ def parta(txt: str):
     return next(itertools.islice(pattern(), int(txt) - 1, None))
 
 
-def partb(txt: str):
+def part_2(txt: str):
     def pattern():
         for i in itertools.count():
             yield from (n for n in range(1, 3**i + 1) if n < 3 ** (i - 1) or n % 2 != 0)
@@ -23,5 +23,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

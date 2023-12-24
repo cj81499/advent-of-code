@@ -182,11 +182,11 @@ def test_example() -> None:
     assert c.x == -1
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT_2) == 13140
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT_2) == 13140
 
 
-def test_b() -> None:
+def test_part_2() -> None:
     expected = """
 ##..##..##..##..##..##..##..##..##..##..
 ###...###...###...###...###...###...###.
@@ -196,4 +196,4 @@ def test_b() -> None:
 #######.......#######.......#######.....
 """.strip()
 
-    assert d.partb(EXAMPLE_INPUT_2) == expected
+    assert d.part_2(EXAMPLE_INPUT_2) == expected

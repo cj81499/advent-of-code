@@ -10,9 +10,9 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_a():
-    assert 514579 == d.parta(EXAMPLE_INPUT)
+def test_part_1():
+    assert 514579 == d.part_1(EXAMPLE_INPUT)
 
 
-def test_b():
-    assert 241861950 == d.partb(EXAMPLE_INPUT)
+def test_part_2():
+    assert 241861950 == d.part_2(EXAMPLE_INPUT)

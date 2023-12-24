@@ -24,7 +24,7 @@ def nearest_points(point, points):
     return closest
 
 
-def parta(txt):
+def part_1(txt):
     points = {tuple(map(int, line.split(", "))) for line in txt.splitlines()}
     min_x, max_x, min_y, max_y = corners(points)
 
@@ -50,7 +50,7 @@ def dist_to_all(point, points):
     return sum(man_dist(point, p) for p in points)
 
 
-def partb(txt, total_dist=10000):
+def part_2(txt, total_dist=10000):
     points = {tuple(map(int, line.split(", "))) for line in txt.splitlines()}
     min_x, max_x, min_y, max_y = corners(points)
     return sum(
@@ -61,5 +61,5 @@ def partb(txt, total_dist=10000):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

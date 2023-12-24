@@ -143,13 +143,13 @@ def sea_monster_at(picture, y, x):
     return all(area[p] == "#" for p in SEA_MONSTER_POINTS)
 
 
-def parta(txt):
+def part_1(txt):
     tiles = parse_tiles(txt)
     corners = [t for t in tiles if t.empty_connections() == 2]
     return prod(t.n for t in corners)
 
 
-def partb(txt):
+def part_2(txt):
     tiles = parse_tiles(txt)
 
     corners = [t for t in tiles if t.empty_connections() == 2]
@@ -190,5 +190,5 @@ def count_sea_monsters(picture):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

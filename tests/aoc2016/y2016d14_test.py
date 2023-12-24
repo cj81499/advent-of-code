@@ -3,8 +3,8 @@ import pytest
 import aoc_cj.aoc2016.day14 as d
 
 
-def test_a():
-    assert d.parta("abc") == 22728
+def test_part_1():
+    assert d.part_1("abc") == 22728
 
 
 def test_key_stretch_hash():
@@ -12,5 +12,5 @@ def test_key_stretch_hash():
 
 
 @pytest.mark.slow
-def test_b():
-    assert d.partb("abc") == 22551
+def test_part_2():
+    assert d.part_2("abc") == 22551

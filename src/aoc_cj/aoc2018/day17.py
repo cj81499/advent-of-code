@@ -101,13 +101,13 @@ class Scan:
         return c["~"] + c["|"]
 
 
-def parta(txt):
+def part_1(txt):
     s = Scan(txt.splitlines())
     s.pour()
     return s.count_all_water_tiles() - (s.dimensions["min_y"] - 1)
 
 
-def partb(txt):
+def part_2(txt):
     s = Scan(txt.splitlines())
     s.pour()
     return s.count_settled_water_tiles()
@@ -116,5 +116,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

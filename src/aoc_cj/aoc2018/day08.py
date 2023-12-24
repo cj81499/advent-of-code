@@ -9,7 +9,7 @@ def sum_all_meta_entries(tokens):
     return sum_of_meta
 
 
-def parta(txt):
+def part_1(txt):
     tokens = list(map(int, txt.split()))
     return sum_all_meta_entries(tokens)
 
@@ -32,7 +32,7 @@ def node_value(tokens):
     return value
 
 
-def partb(txt):
+def part_2(txt):
     tokens = list(map(int, txt.split()))
     return node_value(tokens)
 
@@ -40,5 +40,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

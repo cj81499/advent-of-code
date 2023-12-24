@@ -22,8 +22,8 @@ EXAMPLE_INPUT = """
         (EXAMPLE_INPUT, 21),
     ),
 )
-def test_a(example_input: str, expected: int) -> None:
-    assert d.parta(example_input) == expected
+def test_part_1(example_input: str, expected: int) -> None:
+    assert d.part_1(example_input) == expected
 
 
 @pytest.mark.parametrize(
@@ -49,5 +49,5 @@ def test_parse_row2(example_input: str, expected: str) -> None:
         (EXAMPLE_INPUT, 525152),
     ),
 )
-def test_b(example_input: str, expected: int) -> None:
-    assert d.partb(example_input) == expected
+def test_part_2(example_input: str, expected: int) -> None:
+    assert d.part_2(example_input) == expected

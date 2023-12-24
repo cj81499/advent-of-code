@@ -11,13 +11,13 @@ def ancestors(masses: dict[str, str], mass: str) -> set[str]:
     return set() if not parent else ancestors(masses, parent) | {parent}
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     lines = txt.splitlines()
     masses = get_masses(lines)
     return sum(depth(masses, m) for m in masses)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     lines = txt.splitlines()
     masses = get_masses(lines)
 
@@ -32,5 +32,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -3,7 +3,7 @@ import itertools
 from aoc_cj import util
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     lava_points = {util.Point3D.parse(line) for line in txt.splitlines()}
     return surface_area(lava_points)
 
@@ -12,7 +12,7 @@ def surface_area(points: set[util.Point3D]) -> int:
     return sum(1 for p in points for ap in p.adj() if ap not in points)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     lava_points = {util.Point3D.parse(line) for line in txt.splitlines()}
 
     all_points_in_volume = {
@@ -42,5 +42,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

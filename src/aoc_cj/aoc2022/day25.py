@@ -15,11 +15,11 @@ def base_10_to_snafu(n: int) -> str:
     return base_10_to_snafu(n) + last_digit
 
 
-def parta(txt: str) -> str:
+def part_1(txt: str) -> str:
     return base_10_to_snafu(sum(map(snafu_to_base_10, txt.splitlines())))
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
+    print(f"part_1: {part_1(data)}")

@@ -6,5 +6,5 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT, iterations=2) == 12
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT, iterations=2) == 12

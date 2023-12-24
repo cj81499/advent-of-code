@@ -3,8 +3,8 @@ import pytest
 import aoc_cj.aoc2017.day10 as d
 
 
-def test_a():
-    assert d.parta("3, 4, 1, 5", list_size=5) == 12
+def test_part_1():
+    assert d.part_1("3, 4, 1, 5", list_size=5) == 12
 
 
 @pytest.mark.parametrize(
@@ -16,5 +16,5 @@ def test_a():
         ("1,2,4", "63960835bcdc130f0b66d7ff4f6a5a8e"),
     ],
 )
-def test_b(input, expected):
-    assert d.partb(input) == expected
+def test_part_2(input, expected):
+    assert d.part_2(input) == expected

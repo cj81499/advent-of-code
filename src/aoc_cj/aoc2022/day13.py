@@ -36,7 +36,7 @@ def compare(left: L, right: L) -> CompareResult:
     assert False, "unreachable"
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     pairs = txt.split("\n\n")
 
     count = 0
@@ -58,7 +58,7 @@ def cmpb(left: L, right: L) -> int:
     }[compare(left, right)]
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     sep1 = [[2]]
     sep2 = [[6]]
     packets: list[L] = [sep1, sep2, *(ast.literal_eval(line) for line in txt.splitlines() if line != "")]
@@ -79,5 +79,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

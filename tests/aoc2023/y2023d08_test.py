@@ -43,9 +43,9 @@ XXX = (XXX, XXX)
         (EXAMPLE_INPUT_2, 6),
     ),
 )
-def test_a(example_input: str, expected: int) -> None:
-    assert d.parta(example_input) == expected
+def test_part_1(example_input: str, expected: int) -> None:
+    assert d.part_1(example_input) == expected
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT_3) == 6
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT_3) == 6

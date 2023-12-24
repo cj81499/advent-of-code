@@ -12,7 +12,7 @@ def man_dist(p1: Pos, p2: Pos) -> int:
     return abs(p1x - p2x) + abs(p1y - p2y)
 
 
-def parta(txt: str, *, _expand_by: int = 1) -> int:
+def part_1(txt: str, *, _expand_by: int = 1) -> int:
     grid = {(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
     galaxies = {p for p, c in grid.items() if c == "#"}
 
@@ -33,12 +33,12 @@ def parta(txt: str, *, _expand_by: int = 1) -> int:
     return total_dist
 
 
-def partb(txt: str, *, expand_by: int = 1_000_000) -> int:
-    return parta(txt, _expand_by=expand_by - 1)
+def part_2(txt: str, *, expand_by: int = 1_000_000) -> int:
+    return part_1(txt, _expand_by=expand_by - 1)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

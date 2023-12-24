@@ -31,12 +31,12 @@ def parse_wires(txt):
     return dict(reversed(line.split(" -> ")) for line in txt.splitlines())
 
 
-def parta(txt: str):
+def part_1(txt: str):
     wires = HashableDict(parse_wires(txt))
     return signal_on("a", wires)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     wires = HashableDict(parse_wires(txt))
     wires["b"] = str(signal_on("a", wires))
     return signal_on("a", wires)
@@ -45,5 +45,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

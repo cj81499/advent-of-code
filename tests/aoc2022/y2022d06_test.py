@@ -13,8 +13,8 @@ import aoc_cj.aoc2022.day06 as d
         ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11),
     ),
 )
-def test_a(example: str, expected: int) -> None:
-    assert d.parta(example) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
@@ -27,5 +27,5 @@ def test_a(example: str, expected: int) -> None:
         ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26),
     ),
 )
-def test_b(example: str, expected: int) -> None:
-    assert d.partb(example) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected
