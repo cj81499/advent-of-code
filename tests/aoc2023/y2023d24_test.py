@@ -1,5 +1,3 @@
-import pytest
-
 import aoc_cj.aoc2023.day24 as d
 
 EXAMPLE_INPUT = """
@@ -11,10 +9,9 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT, range_endpoints=(7, 27)) == 2
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT, range_endpoints=(7, 27)) == 2
 
 
-@pytest.mark.skip("not implemented")
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == 47
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT) == 47
