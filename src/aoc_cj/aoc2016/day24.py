@@ -56,16 +56,16 @@ def helper(txt: str, end_at_start=False):
     return min(path_distance(edges, p) for p in possible_paths(num_locations, end_at_start))
 
 
-def parta(txt: str):
+def part_1(txt: str):
     return helper(txt)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return helper(txt, end_at_start=True)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

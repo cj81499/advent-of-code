@@ -16,7 +16,7 @@ def str_to_bugs(s: str, recursive=False) -> Bugs:
     return frozenset(bugs)
 
 
-def parta(txt: str):
+def part_1(txt: str):
     bugs: Bugs = str_to_bugs(txt)
     repeat = first_repeat(bugs)
     return biodiversity(repeat)
@@ -49,7 +49,7 @@ def biodiversity(bugs: Bugs) -> int:
     return sum(2 ** (5 * y + x) for x, y in bugs)
 
 
-def partb(txt: str, minutes=200):
+def part_2(txt: str, minutes=200):
     bugs: Bugs = str_to_bugs(txt, recursive=True)
     for _ in range(minutes):
         bugs = step_recursive(bugs)
@@ -93,5 +93,5 @@ def step_recursive(bugs: Bugs) -> Bugs:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -36,7 +36,7 @@ class HelperResponse(NamedTuple):
     unclosed: list[str]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return sum(map(score_for_line, txt.splitlines()))
 
 
@@ -55,7 +55,7 @@ def process_line(line: str) -> HelperResponse:
     return HelperResponse(LineStatus.INCOMPLETE, "", unclosed)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     scores = [
         autocomplete_score(unclosed)
         for status, _c, unclosed in map(process_line, txt.splitlines())
@@ -75,5 +75,5 @@ def autocomplete_score(unclosed: list[str]) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

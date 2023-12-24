@@ -14,8 +14,8 @@ import aoc_cj.aoc2016.day09 as d
         ("X(8x2)(3x3)ABCY", 18),
     ],
 )
-def test_a(compressed, length):
-    assert d.parta(compressed) == length
+def test_part_1(compressed, length):
+    assert d.part_1(compressed) == length
 
 
 @pytest.mark.parametrize(
@@ -27,5 +27,5 @@ def test_a(compressed, length):
         ("(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN", 445),
     ],
 )
-def test_b(compressed, length):
-    assert d.partb(compressed) == length
+def test_part_2(compressed, length):
+    assert d.part_2(compressed) == length

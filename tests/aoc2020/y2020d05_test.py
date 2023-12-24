@@ -25,5 +25,5 @@ def test_binary_search(input, expected):
         ("BBFFBBFRLL", 820),
     ],
 )
-def test_a(input, expected):
+def test_part_1(input, expected):
     assert expected == d.seat_id(input)

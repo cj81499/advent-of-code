@@ -23,9 +23,9 @@ def test_card_points(card_s: str, expected_points: int) -> None:
     assert d.Card.parse(card_s).points() == expected_points
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == 13
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == 13
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == 30
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT) == 30

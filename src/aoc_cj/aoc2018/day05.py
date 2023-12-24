@@ -1,7 +1,7 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
-def parta(txt: str):
+def part_1(txt: str):
     prev_len = 0
     while prev_len != len(txt):
         prev_len = len(txt)
@@ -10,10 +10,10 @@ def parta(txt: str):
     return len(txt)
 
 
-def partb(txt):
+def part_2(txt):
     d = {}
     for c in alphabet:
-        d[c] = parta(txt.replace(c, "").replace(c.upper(), ""))
+        d[c] = part_1(txt.replace(c, "").replace(c.upper(), ""))
     shortest_length = d["a"]
     for c in alphabet:
         if d[c] < shortest_length:
@@ -21,10 +21,10 @@ def partb(txt):
     return shortest_length
 
 
-def partb_polished(txt):
-    shortest_length = parta(txt)
+def part_2_polished(txt):
+    shortest_length = part_1(txt)
     for c in alphabet:
-        length = parta(txt.replace(c, "").replace(c.upper(), ""))
+        length = part_1(txt.replace(c, "").replace(c.upper(), ""))
         if length < shortest_length:
             shortest_length = length
     return shortest_length
@@ -33,5 +33,5 @@ def partb_polished(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

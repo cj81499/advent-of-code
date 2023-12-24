@@ -12,11 +12,11 @@ def get_good_combos(txt, liters=LITERS):
     return good
 
 
-def parta(txt, liters=LITERS):
+def part_1(txt, liters=LITERS):
     return len(get_good_combos(txt, liters=liters))
 
 
-def partb(txt, liters=LITERS):
+def part_2(txt, liters=LITERS):
     good_combos = get_good_combos(txt, liters=liters)
     min_len = min(map(len, good_combos))
     return sum(1 for x in good_combos if len(x) == min_len)
@@ -25,5 +25,5 @@ def partb(txt, liters=LITERS):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

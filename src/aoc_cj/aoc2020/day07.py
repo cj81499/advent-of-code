@@ -34,7 +34,7 @@ def can_hold_shiny_gold(rules, color):
     return False
 
 
-def parta(txt: str):
+def part_1(txt: str):
     rules = bag_rules(txt)
     return sum(can_hold_shiny_gold(rules, bag) for bag in rules)
 
@@ -51,7 +51,7 @@ def number_of_bags_inside_of(rules, color):
     return count
 
 
-def partb(txt: str):
+def part_2(txt: str):
     rules = bag_rules(txt)
     return number_of_bags_inside_of(rules, "shiny gold")
 
@@ -59,5 +59,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

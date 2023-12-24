@@ -38,12 +38,12 @@ def view_distance(height: int, view: Iterable[int]) -> int:
     return vd
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     grid = [[int(c) for c in line] for line in txt.splitlines()]
     return sum(1 for y, row in enumerate(grid) for x, _n in enumerate(row) if is_visible(x, y, grid))
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     grid = [[int(c) for c in line] for line in txt.splitlines()]
     return max(scenic_score(x, y, grid) for y, row in enumerate(grid) for x, _n in enumerate(row))
 
@@ -51,5 +51,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

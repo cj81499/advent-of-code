@@ -123,13 +123,13 @@ class RecursiveCombatGame(CombatGame):
         return self.loop or super()._is_done()
 
 
-def parta(txt):
+def part_1(txt):
     g = CombatGame.parse(txt)
     g.play()
     return g.winner_score()
 
 
-def partb(txt):
+def part_2(txt):
     g = RecursiveCombatGame.parse(txt)
     g.play()
     return g.winner_score()
@@ -138,5 +138,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

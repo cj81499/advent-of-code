@@ -22,9 +22,9 @@ pos=<10,10,10>, r=5
 """.strip()
 
 
-def test_a():
-    assert 7 == d.parta(EXAMPLE_INPUT_0)
+def test_part_1():
+    assert 7 == d.part_1(EXAMPLE_INPUT_0)
 
 
-def test_b():
-    assert 36 == d.partb(EXAMPLE_INPUT_1)
+def test_part_2():
+    assert 36 == d.part_2(EXAMPLE_INPUT_1)

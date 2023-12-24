@@ -53,12 +53,12 @@ def smudged_reflection_score(arr: NDArrayChar) -> int:
     raise NoReflectionError()  # pragma: no cover # we expect to return while looping
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     patterns = [np.char.array([[*line] for line in tp.splitlines()]) for tp in txt.split("\n\n")]
     return sum(reflection_score(p) for p in patterns)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     patterns = [np.char.array([[*line] for line in tp.splitlines()]) for tp in txt.split("\n\n")]
     return sum(smudged_reflection_score(p) for p in patterns)
 
@@ -66,5 +66,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

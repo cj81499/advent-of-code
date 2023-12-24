@@ -10,8 +10,8 @@ import aoc_cj.aoc2018.day11 as d
         ("42", "21,61"),
     ],
 )
-def test_a(input, expected):
-    assert d.parta(input) == expected
+def test_part_1(input, expected):
+    assert d.part_1(input) == expected
 
 
 @pytest.mark.slow
@@ -22,8 +22,8 @@ def test_a(input, expected):
         ("42", "232,251,12"),
     ],
 )
-def test_b(input, expected):
-    assert d.partb(input) == expected
+def test_part_2(input, expected):
+    assert d.part_2(input) == expected
 
 
 @pytest.mark.parametrize(

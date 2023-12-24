@@ -20,7 +20,7 @@ def parse_map_path(path: str) -> Generator[Union[int, str], None, None]:
         yield int(joined) if joined.isnumeric() else joined
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     board_map_s, path = txt.split("\n\n")
 
     board_map = {
@@ -67,7 +67,7 @@ def parta(txt: str) -> int:
     return 1000 * row + 4 * col + FACING_TO_INT[facing]
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     board_map_s, path = txt.split("\n\n")
 
     board_map = {
@@ -93,5 +93,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

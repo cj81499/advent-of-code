@@ -94,14 +94,14 @@ class Simulation:
         return any(p in self._elves for p in to_check)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     s = Simulation.parse(txt)
     for _round in range(10):
         s.simulate_round()
     return s.covered_ground()
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     s = Simulation.parse(txt)
     while not s.is_complete:
         s.simulate_round()
@@ -111,5 +111,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

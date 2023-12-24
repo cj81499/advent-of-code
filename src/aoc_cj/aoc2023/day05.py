@@ -75,7 +75,7 @@ def parse(txt: str) -> tuple[list[int], list[Map]]:
     return seeds, maps
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     seeds, maps = parse(txt)
 
     values: Iterable[int] = seeds
@@ -85,7 +85,7 @@ def parta(txt: str) -> int:
     return min(values)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     seeds, maps = parse(txt)
     ranges = [range(start, start + length) for start, length in mi.grouper(seeds, 2, incomplete="strict")]
 
@@ -117,5 +117,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -54,7 +54,7 @@ def total_load(rocks: Rocks) -> int:
     return tot
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     rocks = {complex(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c != "."}
     return total_load(tilt(rocks, -1j))
 
@@ -67,7 +67,7 @@ def total_load2(o_rocks: Set[complex], max_y: int) -> int:
     return tot
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     rocks: Rocks = {complex(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c != "."}
     total_iterations = 1000000000
     tilt_cycle = itertools.islice(itertools.repeat((-1j, -1, 1j, 1)), total_iterations)
@@ -92,5 +92,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

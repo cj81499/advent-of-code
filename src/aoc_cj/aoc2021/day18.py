@@ -189,16 +189,16 @@ def sum_lines(lines: list[str]) -> TreeNode:
     return total
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return sum_lines(txt.splitlines()).magnitude()
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     return max(parse(a).add(parse(b)).magnitude() for a, b in itertools.permutations(txt.splitlines(), 2))
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

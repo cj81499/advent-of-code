@@ -61,7 +61,7 @@ OPS = {
 }
 
 
-def parta(txt: str, *, initial: str = INITIAL, backwards=False):
+def part_1(txt: str, *, initial: str = INITIAL, backwards=False):
     pw = [*initial]
     ops = txt.splitlines()
     if backwards:
@@ -76,12 +76,12 @@ def parta(txt: str, *, initial: str = INITIAL, backwards=False):
     return "".join(pw)
 
 
-def partb(txt: str, *, initial: str = SCRAMBLED):
-    return parta(txt, initial=initial, backwards=True)
+def part_2(txt: str, *, initial: str = SCRAMBLED):
+    return part_1(txt, initial=initial, backwards=True)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

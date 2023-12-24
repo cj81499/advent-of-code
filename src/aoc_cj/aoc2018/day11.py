@@ -18,7 +18,7 @@ def build_fuel_cells(serial):
     return fuel_cells
 
 
-def parta(txt):
+def part_1(txt):
     fuel_cells = build_fuel_cells(int(txt))
 
     max_power = 0
@@ -52,7 +52,7 @@ def sum_of_area(t, x, y, sq_size):
     return top_left + bottom_right - (top_right + bottom_left)
 
 
-def partb(txt):
+def part_2(txt):
     fuel_cells = build_fuel_cells(int(txt))
     part_sum_table = partial_sum_table(fuel_cells)
     max_coords = None
@@ -70,5 +70,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

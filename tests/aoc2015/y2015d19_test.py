@@ -21,9 +21,9 @@ EXAMPLE_INPUT_1 = "HOHOHO"
         (EXAMPLE_INPUT_1, 7),
     ],
 )
-def test_a(input, expected):
+def test_part_1(input, expected):
     input = f"{REPLACEMENTS}\n\n{input}"
-    assert d.parta(input) == expected
+    assert d.part_1(input) == expected
 
 
 @pytest.mark.parametrize(
@@ -33,6 +33,6 @@ def test_a(input, expected):
         (EXAMPLE_INPUT_1, 6),
     ],
 )
-def test_b(input, expected):
+def test_part_2(input, expected):
     input = f"{REPLACEMENTS}\n\n{input}"
-    assert d.partb(input) == expected
+    assert d.part_2(input) == expected

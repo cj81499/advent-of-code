@@ -48,16 +48,16 @@ def find_paths(lines: list):
     return min_dist, max_dist
 
 
-def parta(txt):
+def part_1(txt):
     return find_paths(txt.splitlines())[0]
 
 
-def partb(txt):
+def part_2(txt):
     return find_paths(txt.splitlines())[1]
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

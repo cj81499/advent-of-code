@@ -9,9 +9,9 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 """.strip()
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == 8
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == 8
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == 2286
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT) == 2286

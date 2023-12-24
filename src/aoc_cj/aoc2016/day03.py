@@ -4,11 +4,11 @@ from collections.abc import Iterable
 from more_itertools import ichunked
 
 
-def parta(txt: str):
+def part_1(txt: str):
     return sum(is_valid_triangle(nums(line)) for line in txt.splitlines())
 
 
-def partb(txt: str):
+def part_2(txt: str):
     lines = txt.splitlines()
     assert len(lines) % 3 == 0
     return sum(
@@ -27,5 +27,5 @@ def is_valid_triangle(candidate: Iterable[int]):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

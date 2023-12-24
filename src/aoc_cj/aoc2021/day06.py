@@ -17,16 +17,16 @@ def solve(fish: list[int], days: int = 80) -> int:
     return sum(fish_counts.values())
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return solve(parse(txt))
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     return solve(parse(txt), 256)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

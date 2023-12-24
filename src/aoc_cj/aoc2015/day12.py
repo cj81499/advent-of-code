@@ -13,12 +13,12 @@ def sum_of_all_numbers(input_json, ignore_red=False):
     return 0
 
 
-def parta(txt):
+def part_1(txt):
     j = json.loads(txt)
     return sum_of_all_numbers(j)
 
 
-def partb(txt):
+def part_2(txt):
     j = json.loads(txt)
     return sum_of_all_numbers(j, ignore_red=True)
 
@@ -26,5 +26,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

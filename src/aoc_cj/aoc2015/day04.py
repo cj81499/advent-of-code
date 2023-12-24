@@ -9,16 +9,16 @@ def find_hash(secret_key: str, zeros: int = 5):
             return i
 
 
-def parta(secret_key: str):
+def part_1(secret_key: str):
     return find_hash(secret_key)
 
 
-def partb(secret_key: str):
+def part_2(secret_key: str):
     return find_hash(secret_key, zeros=6)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

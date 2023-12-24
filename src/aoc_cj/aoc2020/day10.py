@@ -8,7 +8,7 @@ def get_adapters(txt):
     return adapters
 
 
-def parta(txt):
+def part_1(txt):
     adapters = get_adapters(txt)
 
     joltage = 0
@@ -26,18 +26,18 @@ def valid_next_adapters(joltage, adapters):
 
 
 @cache
-def partb_helper(joltage, adapters):
+def part_2_helper(joltage, adapters):
     if joltage == max(adapters):
         return 1
-    return sum(partb_helper(adapter, adapters) for adapter in valid_next_adapters(joltage, adapters))
+    return sum(part_2_helper(adapter, adapters) for adapter in valid_next_adapters(joltage, adapters))
 
 
-def partb(txt):
-    return partb_helper(0, frozenset(get_adapters(txt)))
+def part_2(txt):
+    return part_2_helper(0, frozenset(get_adapters(txt)))
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -4,7 +4,7 @@ import re
 PATTERN = re.compile(r"^\[(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})\] (.*)$")
 
 
-def parta(txt):
+def part_1(txt):
     events = events_list(txt.splitlines())
     d = {}
     active_guard = None
@@ -40,7 +40,7 @@ def parta(txt):
     return sleep_counter.index(max(sleep_counter)) * max_sleep_guard
 
 
-def partb(txt):
+def part_2(txt):
     events = events_list(txt.splitlines())
     d = {}
     active_guard = None
@@ -77,5 +77,5 @@ def events_list(lines):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

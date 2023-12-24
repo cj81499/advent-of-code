@@ -16,8 +16,8 @@ def test_is_open():
         ("ulqzkmiv", "DRURDRUDDLLDLUURRDULRLDUUDDDRR"),
     ],
 )
-def test_a(input, expected):
-    assert d.parta(input) == expected
+def test_part_1(input, expected):
+    assert d.part_1(input) == expected
 
 
 @pytest.mark.parametrize(
@@ -28,5 +28,5 @@ def test_a(input, expected):
         ("ulqzkmiv", 830),
     ],
 )
-def test_b(input, expected):
-    assert d.partb(input) == expected
+def test_part_2(input, expected):
+    assert d.part_2(input) == expected

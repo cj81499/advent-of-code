@@ -44,7 +44,7 @@ class AssemBunnyComputer:
         self._registers[item] = value
 
 
-def parta(txt: str):
+def part_1(txt: str):
     c = AssemBunnyComputer(txt)
     c.run()
     return c["a"]
@@ -52,17 +52,17 @@ def parta(txt: str):
     return solve()
 
 
-def partb(txt: str):
-    return solve(partb=True)
+def part_2(txt: str):
+    return solve(part_2=True)
 
 
-def solve(partb=False):
+def solve(part_2=False):
     # see day12.md
     a = 1
     b = 1
     d = 26
 
-    if partb:
+    if part_2:
         d += 7
 
     for _ in range(d):
@@ -77,5 +77,5 @@ def solve(partb=False):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

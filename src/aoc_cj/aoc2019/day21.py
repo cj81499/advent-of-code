@@ -13,7 +13,7 @@ def run_springscript(intcode, instructions):
     return p.outputs[-1]
 
 
-def parta(txt: str):
+def part_1(txt: str):
     # J = D ^ !(A ^ B ^ C)
 
     # D means the bot will land the jump
@@ -29,7 +29,7 @@ def parta(txt: str):
     return run_springscript(txt, instructions)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     # J = D ^ !(A ^ B ^ C) ^ (H v E)
 
     # D means the bot will land the jump
@@ -53,5 +53,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

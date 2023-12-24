@@ -74,7 +74,7 @@ class Computer:
         return x
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     computer = Computer(Instruction.parse(line) for line in txt.splitlines())
 
     signal_strength_sum = 0
@@ -86,7 +86,7 @@ def parta(txt: str) -> int:
     return signal_strength_sum
 
 
-def partb(txt: str) -> str:
+def part_2(txt: str) -> str:
     computer = Computer(Instruction.parse(line) for line in txt.splitlines())
 
     chars = []
@@ -103,5 +103,5 @@ def partb(txt: str) -> str:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb:\n{partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2:\n{part_2(data)}")

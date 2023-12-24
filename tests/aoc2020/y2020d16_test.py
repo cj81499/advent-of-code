@@ -30,9 +30,9 @@ nearby tickets:
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT_0) == 71
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT_0) == 71
 
 
-def test_b():
+def test_part_2():
     assert d.get_actual_fields(*d.parse_input(EXAMPLE_INPUT_1)) == ("row", "class", "seat")

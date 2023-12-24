@@ -66,10 +66,10 @@ aabbbbbaabbbaaaaaabbbbbababaaaaabbaaabba
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT_0) == 2
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT_0) == 2
 
 
-def test_b():
-    assert d.parta(EXAMPLE_INPUT_1) == 3
-    assert d.partb(EXAMPLE_INPUT_1) == 12
+def test_part_2():
+    assert d.part_1(EXAMPLE_INPUT_1) == 3
+    assert d.part_2(EXAMPLE_INPUT_1) == 12

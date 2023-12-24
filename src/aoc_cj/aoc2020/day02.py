@@ -7,24 +7,24 @@ def helper(txt, fn):
     return sum(fn(*parse(line)) for line in txt.splitlines())
 
 
-def parta(txt: str) -> int:
-    return helper(txt, check_pass_a)
+def part_1(txt: str) -> int:
+    return helper(txt, check_pass_1)
 
 
-def check_pass_a(num_1, num_2, letter, paswd):
+def check_pass_1(num_1, num_2, letter, paswd):
     return num_1 <= sum(map(lambda c: c == letter, paswd)) <= num_2
 
 
-def partb(txt: str) -> int:
-    return helper(txt, check_pass_b)
+def part_2(txt: str) -> int:
+    return helper(txt, check_pass_2)
 
 
-def check_pass_b(num_1, num_2, letter, paswd):
+def check_pass_2(num_1, num_2, letter, paswd):
     return False if len(paswd) < num_2 else (letter == paswd[num_1 - 1]) ^ (letter == paswd[num_2 - 1])
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

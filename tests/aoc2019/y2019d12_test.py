@@ -25,7 +25,7 @@ EXAMPLE_1 = """
     ],
 )
 def test_energy(input_val, step_count: int, expected: int) -> None:
-    assert d.parta(input_val, step_count) == expected
+    assert d.part_1(input_val, step_count) == expected
 
 
 @pytest.mark.parametrize(
@@ -35,5 +35,5 @@ def test_energy(input_val, step_count: int, expected: int) -> None:
         (EXAMPLE_1, 4686774924),
     ],
 )
-def test_b(input_val, required_steps: int) -> None:
-    assert d.partb(input_val) == required_steps
+def test_part_2(input_val, required_steps: int) -> None:
+    assert d.part_2(input_val) == required_steps

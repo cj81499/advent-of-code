@@ -32,7 +32,7 @@ def parse_input(txt):
     return fields, my_ticket, nearby_tickets
 
 
-def parta(txt):
+def part_1(txt):
     fields, _my_ticket, nearby_tickets = parse_input(txt)
     return sum(is_valid_ticket(t, fields)[1] for t in nearby_tickets)
 
@@ -62,7 +62,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     return tuple(x.pop() for x in position_possibile_fields)
 
 
-def partb(txt):
+def part_2(txt):
     fields, my_ticket, nearby_tickets = parse_input(txt)
     actual_fields = get_actual_fields(fields, my_ticket, nearby_tickets)
     departure_values = [val for val, field_name in zip(my_ticket, actual_fields) if "departure" in field_name]
@@ -72,5 +72,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

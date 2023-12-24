@@ -39,13 +39,13 @@ class Line:
         return self.start_x == self.end_x
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     lines = map(Line.parse, txt.splitlines())
     counts = Counter(itertools.chain(*(iter(l) for l in lines if l.is_horizontal() or l.is_vertical())))
     return sum(n >= 2 for n in counts.values())
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     lines = map(Line.parse, txt.splitlines())
     counts = Counter(itertools.chain(*(iter(l) for l in lines)))
     return sum(n >= 2 for n in counts.values())
@@ -54,5 +54,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

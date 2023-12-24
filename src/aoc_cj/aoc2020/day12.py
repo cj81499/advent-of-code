@@ -6,8 +6,8 @@ EAST = (1, 0)
 DIRECTIONS = {"N": NORTH, "S": SOUTH, "W": WEST, "E": EAST}
 
 
-def add_pos(pos_a, pos_b, multiplier=1):
-    return (pos_a[0] + multiplier * pos_b[0], pos_a[1] + multiplier * pos_b[1])
+def add_pos(p1, p2, multiplier=1):
+    return (p1[0] + multiplier * p2[0], p1[1] + multiplier * p2[1])
 
 
 def turn_left(pos):
@@ -31,7 +31,7 @@ def handle_turn(pos, action, angle):
     return (turns[0] if angle == 90 else turns[1])(pos)
 
 
-def parta(txt):
+def part_1(txt):
     pos = (0, 0)
     heading = EAST
     for instruction in txt.splitlines():
@@ -46,7 +46,7 @@ def parta(txt):
     return sum(abs(x) for x in pos)
 
 
-def partb(txt):
+def part_2(txt):
     pos = (0, 0)
     waypoint = (10, -1)
     for instruction in txt.splitlines():
@@ -64,5 +64,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

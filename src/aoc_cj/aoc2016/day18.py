@@ -17,7 +17,7 @@ def is_trap(pos, prev_row):
     return pattern in TRAP_PATTERNS
 
 
-def parta(txt: str, num_rows=40):
+def part_1(txt: str, num_rows=40):
     safe_tiles = 0
     row = txt
     for _ in range(num_rows):
@@ -26,12 +26,12 @@ def parta(txt: str, num_rows=40):
     return safe_tiles
 
 
-def partb(txt: str):
-    return parta(txt, num_rows=400000)
+def part_2(txt: str):
+    return part_1(txt, num_rows=400000)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

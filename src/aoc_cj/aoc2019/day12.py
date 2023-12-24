@@ -5,7 +5,7 @@ from math import gcd, inf
 # https://github.com/kresimir-lukin/AdventOfCode2019/blob/master/day12.py
 
 
-def parta(txt: str, step_count: int = 1000) -> int:
+def part_1(txt: str, step_count: int = 1000) -> int:
     lines = txt.splitlines()
 
     positions, velocities = pos_vel(lines)
@@ -14,7 +14,7 @@ def parta(txt: str, step_count: int = 1000) -> int:
     return sum(nrg(moon) for moon in zip(zip(*positions), zip(*velocities)))
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     lines = txt.splitlines()
 
     positions, velocities = pos_vel(lines)
@@ -72,5 +72,5 @@ def lcm(*nums: int) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

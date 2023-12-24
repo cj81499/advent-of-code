@@ -1,7 +1,7 @@
 Point = tuple[int, int]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     points, folds = parse(txt)
 
     new_points = do_fold(points, folds[0])
@@ -15,7 +15,7 @@ def parse(txt: str) -> tuple[set[Point], list[str]]:
     return points, folds.splitlines()
 
 
-def partb(txt: str) -> str:
+def part_2(txt: str) -> str:
     points, folds = parse(txt)
 
     for fold in folds:
@@ -38,5 +38,5 @@ def do_fold(points: set[Point], fold: str) -> set[Point]:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

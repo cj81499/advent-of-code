@@ -1,4 +1,4 @@
-def parta(txt):
+def part_1(txt):
     total_paper = 0
     for box in txt.splitlines():
         l, w, h = (int(x) for x in box.split("x"))
@@ -8,7 +8,7 @@ def parta(txt):
     return total_paper
 
 
-def partb(txt):
+def part_2(txt):
     total_ribbon = 0
     for box in txt.splitlines():
         l, w, h = (int(x) for x in box.split("x"))
@@ -26,5 +26,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

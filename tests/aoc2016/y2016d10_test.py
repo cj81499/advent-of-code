@@ -10,5 +10,5 @@ value 2 goes to bot 2
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT, compare=(5, 2)) == 2
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT, compare=(5, 2)) == 2

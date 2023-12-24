@@ -13,7 +13,7 @@ RIGHT = complex(1, 0)
 DIRECTIONS = {"^": UP, "v": DOWN, "<": LEFT, ">": RIGHT}
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     grid = defaultdict(
         set, {complex(x, y): {c} for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c != "."}
     )
@@ -69,7 +69,7 @@ def parta(txt: str) -> int:
     assert False, "unreachable"
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     grid = defaultdict(
         set, {complex(x, y): {c} for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c != "."}
     )
@@ -156,5 +156,5 @@ if __name__ == "__main__":
 
     data = EXAMPLE_INPUT
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

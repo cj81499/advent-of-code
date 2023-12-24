@@ -36,7 +36,7 @@ class Card:
         return len(self.winning_nums.intersection(self.nums_you_have))
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     cards = (Card.parse(l) for l in txt.splitlines())
     return sum(c.points() for c in cards)
 
@@ -47,7 +47,7 @@ class CardCount:
     copy_count: int = 1  # at the start, we have 1 copy of each card
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     cards = [CardCount(Card.parse(l)) for l in txt.splitlines()]
 
     for i, current in enumerate(cards):
@@ -64,5 +64,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

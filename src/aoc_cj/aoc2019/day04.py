@@ -17,11 +17,11 @@ def exact_adj_repeat_in_increasing(digits: list[int]) -> bool:
     return any(f == s and digits.count(f) == 2 for f, s in pairwise(digits))
 
 
-def is_valid_parta(digits: list[int]) -> bool:
+def is_valid_part_1(digits: list[int]) -> bool:
     return increasing_digits(digits) and adj_repeat(digits)
 
 
-def is_valid_partb(digits: list[int]) -> bool:
+def is_valid_part_2(digits: list[int]) -> bool:
     return increasing_digits(digits) and exact_adj_repeat_in_increasing(digits)
 
 
@@ -29,18 +29,18 @@ def solver(low: int, high: int, is_valid) -> int:
     return sum(is_valid(get_digits(n)) for n in range(low, high))
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     low, high = (int(x) for x in txt.split("-"))
-    return solver(low, high, is_valid_parta)
+    return solver(low, high, is_valid_part_1)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     low, high = (int(x) for x in txt.split("-"))
-    return solver(low, high, is_valid_partb)
+    return solver(low, high, is_valid_part_2)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

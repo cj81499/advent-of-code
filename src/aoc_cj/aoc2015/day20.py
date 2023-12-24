@@ -29,16 +29,16 @@ def helper(txt, present_multiplier, house_limit=None):
     return select_house(presents, min_presents)
 
 
-def parta(txt):
+def part_1(txt):
     return helper(txt, 10)
 
 
-def partb(txt):
+def part_2(txt):
     return helper(txt, 11, 50)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

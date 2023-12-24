@@ -6,9 +6,9 @@ Distance:  9  40  200
 """.strip()
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == 288
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == 288
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == 71503
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT) == 71503

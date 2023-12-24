@@ -1,7 +1,7 @@
 from aoc_cj.aoc2018.day16 import run_cmd
 
 
-def parta(txt):
+def part_1(txt):
     ip, *lines = txt.splitlines()
     ip = int(ip[4:])
 
@@ -14,7 +14,7 @@ def parta(txt):
         registers[ip] += 1
 
 
-def partb(txt):
+def part_2(txt):
     ip, *lines = txt.splitlines()
     ip = int(ip[4:])
 
@@ -38,5 +38,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")  # SLOWWWWWW. (a few minutes, with pypy)
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")  # SLOWWWWWW. (a few minutes, with pypy)

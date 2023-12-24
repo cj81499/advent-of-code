@@ -42,7 +42,7 @@ def simulate(cups, moves):
     return arr
 
 
-def parta(txt):
+def part_1(txt):
     cups = list(map(int, txt))
     results = simulate(cups, 100)
 
@@ -53,7 +53,7 @@ def parta(txt):
     return int("".join(map(str, nums[:-1])))
 
 
-def partb(txt):
+def part_2(txt):
     cups = list(map(int, txt))
     cups = list(itertools.chain(cups, range(max(cups) + 1, 1000000 + 1)))
     results = simulate(cups, 10000000)
@@ -68,5 +68,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

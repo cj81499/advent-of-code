@@ -25,7 +25,7 @@ def parse(txt: str) -> tuple[set[Replacement], str]:
     return {Replacement.parse(r) for r in replacements.splitlines()}, medicine_molecule
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     replacements, medicine_molecule = parse(txt)
     medicine_elements = ELEMENT_PATTERN.findall(medicine_molecule)
     molecules = {
@@ -44,7 +44,7 @@ def node_count(tree: lark.Tree):
     return 1 + sum(map(node_count, tree.children))
 
 
-def partb(txt: str) -> None:
+def part_2(txt: str) -> None:
     """
     https://www.reddit.com/r/adventofcode/comments/3xflz8/comment/cy4p1td/?utm_source=share&utm_medium=web2x&context=3
     "this is actually the production rules for an unambiguous grammar"
@@ -81,5 +81,5 @@ def partb(txt: str) -> None:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

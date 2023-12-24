@@ -42,7 +42,7 @@ class TurningMachine:
         return sum(self._tape.values())
 
 
-def parta(txt: str):
+def part_1(txt: str):
     info, *states = txt.split("\n\n")
     start_state, checksum_steps = info.splitlines()
     start_state = start_state[-2]
@@ -56,4 +56,4 @@ def parta(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
+    print(f"part_1: {part_1(data)}")

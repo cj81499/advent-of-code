@@ -7,9 +7,9 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_a():
-    assert 2 == d.parta(EXAMPLE_INPUT)
+def test_part_1():
+    assert 2 == d.part_1(EXAMPLE_INPUT)
 
 
-def test_b():
-    assert 1 == d.partb(EXAMPLE_INPUT)
+def test_part_2():
+    assert 1 == d.part_2(EXAMPLE_INPUT)

@@ -148,12 +148,12 @@ class CaveSystem:
                 yield PrioritizedData(move.priority + 1, Node(new_pos, move.data.item))
 
 
-def parta(txt):
+def part_1(txt):
     cave_system = CaveSystem.parse(txt)
     return cave_system.risk_level()
 
 
-def partb(txt):
+def part_2(txt):
     cave_system = CaveSystem.parse(txt)
     return cave_system.min_time_to_target()
 
@@ -161,5 +161,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

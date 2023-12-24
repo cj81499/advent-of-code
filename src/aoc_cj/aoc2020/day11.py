@@ -60,16 +60,16 @@ def solver(txt, fn, max_people):
     return grid_str.count(OCCUPIED)
 
 
-def parta(txt):
+def part_1(txt):
     return solver(txt, num_occupied_seats(adj), 4)
 
 
-def partb(txt):
+def part_2(txt):
     return solver(txt, num_occupied_seats(visible), 5)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

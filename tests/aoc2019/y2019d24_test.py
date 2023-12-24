@@ -84,9 +84,9 @@ def test_biodiversity():
     assert d.biodiversity(d.str_to_bugs(FIRST_REPEAT)) == 2129920
 
 
-def test_a():
-    assert d.parta(INITIAL) == 2129920
+def test_part_1():
+    assert d.part_1(INITIAL) == 2129920
 
 
-def test_b():
-    assert d.partb(INITIAL, minutes=10) == 99
+def test_part_2():
+    assert d.part_2(INITIAL, minutes=10) == 99

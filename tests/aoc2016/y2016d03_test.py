@@ -7,5 +7,5 @@ def test_is_valid_triangle():
     assert d.is_valid_triangle(EXAMPLE_INPUT.split()) is False
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 0
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == 0

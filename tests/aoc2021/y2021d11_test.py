@@ -46,9 +46,9 @@ def test_step():
     assert d.step(after_1_grid)[1] == after_2_grid
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 1656
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == 1656
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT) == 195
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT) == 195

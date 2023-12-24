@@ -5,24 +5,24 @@ def get_group_of_people(txt):
     return [group.splitlines() for group in txt.split("\n\n")]
 
 
-def parta(txt):
-    return sum(parta_helper(group) for group in get_group_of_people(txt))
+def part_1(txt):
+    return sum(part_1_helper(group) for group in get_group_of_people(txt))
 
 
-def parta_helper(group):
+def part_1_helper(group):
     return len({c for person in group for c in person})
 
 
-def partb(txt):
-    return sum(partb_helper(group) for group in get_group_of_people(txt))
+def part_2(txt):
+    return sum(part_2_helper(group) for group in get_group_of_people(txt))
 
 
-def partb_helper(group):
+def part_2_helper(group):
     return len({letter for letter in ascii_lowercase if all(letter in person for person in group)})
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")
