@@ -6,7 +6,7 @@ def parse(txt: str) -> Iterable[tuple[str, int]]:
     yield from ((cmd, int(x)) for cmd, x in splits)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     horiz = 0
     depth = 0
     for cmd, x in parse(txt):
@@ -19,7 +19,7 @@ def parta(txt: str) -> int:
     return horiz * depth
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     horiz = 0
     depth = 0
     aim = 0
@@ -37,5 +37,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

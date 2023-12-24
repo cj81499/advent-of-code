@@ -86,16 +86,16 @@ class Lightshow:
         return collections.Counter(str(self._grid))
 
 
-def parta(txt, steps=100):
+def part_1(txt, steps=100):
     return Lightshow(txt).simulate(steps).count()[ON]
 
 
-def partb(txt, steps=100):
+def part_2(txt, steps=100):
     return Lightshow(txt, corners_locked=True).simulate(steps).count()[ON]
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

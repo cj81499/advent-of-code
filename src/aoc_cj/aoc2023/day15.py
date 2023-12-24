@@ -16,7 +16,7 @@ def hash_algorithm(s: str) -> int:
     return current_value
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return sum(hash_algorithm(step) for step in txt.split(","))
 
 
@@ -58,7 +58,7 @@ def hashmap_algorithm(s: str) -> list[list[Lens]]:
     return boxes
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     lens_configuration = hashmap_algorithm(txt)
 
     return sum(
@@ -71,5 +71,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

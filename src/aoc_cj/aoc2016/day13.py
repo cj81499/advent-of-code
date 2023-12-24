@@ -7,11 +7,11 @@ def is_open(x, y, fav_num):
     return num_ones % 2 == 0
 
 
-def parta(txt: str, target_pos=(31, 39)):
+def part_1(txt: str, target_pos=(31, 39)):
     return solve(txt, target_pos=target_pos)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return solve(txt, max_steps=50)
 
 
@@ -35,5 +35,5 @@ def solve(txt, target_pos=None, max_steps=None):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

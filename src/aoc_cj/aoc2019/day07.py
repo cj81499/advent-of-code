@@ -3,7 +3,7 @@ import itertools
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
 
-def parta(txt: str):
+def part_1(txt: str):
     m = 0
     for phase_setting_seq in itertools.permutations(range(5)):
         amplifiers = [IntcodeProgram.parse(txt) for _ in range(5)]
@@ -17,7 +17,7 @@ def parta(txt: str):
     return m
 
 
-def partb(txt: str):
+def part_2(txt: str):
     m = 0
     for phase_setting_seq in itertools.permutations(range(5, 10)):
         amplifiers = [IntcodeProgram.parse(txt) for _ in range(5)]
@@ -36,5 +36,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

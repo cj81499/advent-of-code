@@ -27,8 +27,8 @@ EXAMPLE_INPUT_2 = """
 """.strip()
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == 102
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == 102
 
 
 @pytest.mark.parametrize(
@@ -38,5 +38,5 @@ def test_a() -> None:
         (EXAMPLE_INPUT_2, 71),
     ),
 )
-def test_b(example_input: str, expected: int) -> None:
-    assert d.partb(example_input) == expected
+def test_part_2(example_input: str, expected: int) -> None:
+    assert d.part_2(example_input) == expected

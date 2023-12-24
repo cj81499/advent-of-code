@@ -38,8 +38,8 @@ def test_example():
     assert str(cave_system) == EXAMPLE_CAVE_SYSTEM_STR
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 114
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == 114
 
 
 EXAMPLE_CAVE_SYSTEM_STR = """
@@ -62,5 +62,5 @@ M=.|=.|.|=.|=|=.
 """.strip()
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT) == 45
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT) == 45

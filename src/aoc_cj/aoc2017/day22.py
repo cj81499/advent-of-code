@@ -68,13 +68,13 @@ class VirusGridB(VirusGrid):
         self._move()
 
 
-def parta(txt: str, burst_count=10000):
+def part_1(txt: str, burst_count=10000):
     vg = VirusGrid(txt)
     vg.simulate(burst_count)
     return vg.infection_count
 
 
-def partb(txt: str, burst_count=10000000):
+def part_2(txt: str, burst_count=10000000):
     vg = VirusGridB(txt)
     vg.simulate(burst_count)
     return vg.infection_count
@@ -83,5 +83,5 @@ def partb(txt: str, burst_count=10000000):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

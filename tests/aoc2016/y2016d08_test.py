@@ -25,7 +25,7 @@ AFTER_4 = """
 """.replace(".", " ").strip("\n")
 
 
-def test_a():
+def test_part_1():
     screen = d.create_screen(7, 3)
     d.apply_instruction(screen, "rect 3x2")
     assert d.screen_to_str(screen) == AFTER_1

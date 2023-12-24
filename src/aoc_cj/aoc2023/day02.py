@@ -39,16 +39,16 @@ def parse_games(txt: str) -> Generator[Game, None, None]:
     yield from (Game.parse(l) for l in txt.splitlines())
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return sum(g.id for g in parse_games(txt) if g.is_possible())
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     return sum(g.power() for g in parse_games(txt))
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

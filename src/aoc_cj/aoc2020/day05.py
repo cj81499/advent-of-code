@@ -25,11 +25,11 @@ def seat_ids(txt):
     return (seat_id(seat) for seat in txt.splitlines())
 
 
-def parta(txt):
+def part_1(txt):
     return max(seat_ids(txt))
 
 
-def partb(txt):
+def part_2(txt):
     ids = set(seat_ids(txt))
     for i in count(min(ids)):  # start counting at the first id
         if i not in ids:
@@ -39,5 +39,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

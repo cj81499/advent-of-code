@@ -41,7 +41,7 @@ class Program:
         return self._instructions[self.ip]
 
 
-def parta(txt: str):
+def part_1(txt: str):
     instructions = [line.split() for line in txt.splitlines()]
     p = Program(instructions)
     while 0 <= p.ip < len(instructions):
@@ -49,7 +49,7 @@ def parta(txt: str):
     return p.mul_count
 
 
-def partb(txt: str):
+def part_2(txt: str):
     # after setup, the program counts how many numbers are not prime between
     # b and c (inclusive) with a step of 17 .
     b, c = 106500, 123500
@@ -59,5 +59,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

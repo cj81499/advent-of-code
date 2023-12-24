@@ -15,12 +15,12 @@ def password_generator(door_id: str, index_mode=False):
                 yield i, hd[NUMBER_OF_ZEROS + 1]
 
 
-def parta(txt: str):
+def part_1(txt: str):
     pass_gen = password_generator(txt)
     return "".join(next(pass_gen) for _ in range(8))
 
 
-def partb(txt: str):
+def part_2(txt: str):
     pass_gen = password_generator(txt, index_mode=True)
     password = [None] * 8
     while None in password:
@@ -33,5 +33,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

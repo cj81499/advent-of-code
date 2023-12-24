@@ -23,7 +23,7 @@ def code_at(col, row):
 PARSE_REGEX = re.compile(r".* row (\d+), column (\d+).")
 
 
-def parta(txt):
+def part_1(txt):
     row, col = map(int, PARSE_REGEX.match(txt).groups())
     return code_at(col, row)
 
@@ -31,4 +31,4 @@ def parta(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
+    print(f"part_1: {part_1(data)}")

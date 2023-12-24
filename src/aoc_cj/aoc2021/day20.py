@@ -6,7 +6,7 @@ from more_itertools import minmax
 Pixels = defaultdict[tuple[int, int], bool]
 
 
-def parta(txt: str, *, loops: int = 2) -> int:
+def part_1(txt: str, *, loops: int = 2) -> int:
     assert loops % 2 == 0, "odd number of loops will result in image w/ infinitely many lit pixels"
 
     image_enhancement_algorithm, lit_pixels = parse(txt)
@@ -17,8 +17,8 @@ def parta(txt: str, *, loops: int = 2) -> int:
     return sum(lit_pixels.values())
 
 
-def partb(txt: str) -> int:
-    return parta(txt, loops=50)
+def part_2(txt: str) -> int:
+    return part_1(txt, loops=50)
 
 
 def parse(txt: str) -> tuple[str, Pixels]:
@@ -62,5 +62,5 @@ def enhance(image_enhancement_algorithm: str, lit_pixels: Pixels) -> Pixels:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

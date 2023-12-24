@@ -12,9 +12,9 @@ y=13, x=498..504
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 57
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == 57
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT) == 29
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT) == 29

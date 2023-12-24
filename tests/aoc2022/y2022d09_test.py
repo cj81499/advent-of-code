@@ -60,8 +60,8 @@ def test_pull(lead_knot: complex, trail_knot: complex, expected: complex) -> Non
     assert d.pull(lead_knot, trail_knot) == expected
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT_1) == 13
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT_1) == 13
 
 
 @pytest.mark.parametrize(
@@ -71,5 +71,5 @@ def test_a() -> None:
         (EXAMPLE_INPUT_2, 36),
     ),
 )
-def test_b(example: str, expected: int) -> None:
-    assert d.partb(example) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

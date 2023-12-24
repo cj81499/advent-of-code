@@ -7,7 +7,7 @@ import more_itertools as mi
 from aoc_cj import util
 
 
-def parta(txt: str, *, _get_nums: Callable[[str], Generator[int, None, None]] = util.digits) -> int:
+def part_1(txt: str, *, _get_nums: Callable[[str], Generator[int, None, None]] = util.digits) -> int:
     def calibration_value(line: str) -> int:
         nums = _get_nums(line)
         first = mi.first(nums)
@@ -22,17 +22,17 @@ NUMBER_PATTERN = re.compile(r"(?=(?P<num>\d|one|two|three|four|five|six|seven|ei
 STR_TO_INT = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9}
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     def get_nums(line: str) -> Generator[int, None, None]:
         yield from (
             int(s) if s.isdigit() else STR_TO_INT[s] for s in NUMBER_PATTERN.findall(line) if isinstance(s, str)
         )
 
-    return parta(txt, _get_nums=get_nums)
+    return part_1(txt, _get_nums=get_nums)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

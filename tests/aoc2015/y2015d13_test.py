@@ -16,5 +16,5 @@ David would gain 41 happiness units by sitting next to Carol.
 """.strip()
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == 330
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == 330

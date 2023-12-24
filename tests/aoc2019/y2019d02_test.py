@@ -13,7 +13,7 @@ import aoc_cj.aoc2019.day02 as d
         ("1,1,1,4,99,5,6,0,99", "30,1,1,4,2,5,6,0,99"),
     ],
 )
-def test_a(input, expected):
+def test_part_1(input, expected):
     p = d.IntcodeProgram.parse(input)
     p.run()
     assert ",".join(map(str, p.memory)) == expected

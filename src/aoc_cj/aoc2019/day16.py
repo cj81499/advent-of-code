@@ -23,14 +23,14 @@ def phase(digits):
     return next_list
 
 
-def parta(txt: str):
+def part_1(txt: str):
     d = digits(txt)
     for _ in range(100):
         d = phase(d)
     return "".join(map(str, d[:8]))
 
 
-def partb(txt: str):
+def part_2(txt: str):
     offset = int(txt[:7])
     # since the offset is over halfway through the list all the digits will be muiltiplied by 1
     # therefore, the new digit is simply the last digit of the sum of all digits at and after that position
@@ -49,5 +49,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

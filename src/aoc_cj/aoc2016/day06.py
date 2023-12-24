@@ -1,11 +1,11 @@
 from collections import Counter
 
 
-def parta(txt: str):
+def part_1(txt: str):
     return error_correct_message(txt)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return error_correct_message(txt, modified=True)
 
 
@@ -21,5 +21,5 @@ def error_correct_message(txt, modified=False):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

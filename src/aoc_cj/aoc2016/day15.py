@@ -22,16 +22,16 @@ def simulate(txt, additional_disc=False):
             return push_time
 
 
-def parta(txt: str):
+def part_1(txt: str):
     return simulate(txt)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return simulate(txt, additional_disc=True)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

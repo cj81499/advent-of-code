@@ -3,7 +3,7 @@ from collections import Counter
 from more_itertools import pairwise
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     polymer, rules = parse(txt)
 
     for _ in range(10):
@@ -21,7 +21,7 @@ def step(polymer: str, rules: dict[str, str]) -> str:
     return "".join(new_polymer)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     polymer, rules = parse(txt)
 
     pairs = Counter(pairwise(polymer))
@@ -50,5 +50,5 @@ def parse(txt: str) -> tuple[str, dict[str, str]]:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

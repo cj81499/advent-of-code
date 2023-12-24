@@ -7,16 +7,16 @@ def fuel_req_rec(mass: int) -> int:
     return 0 if 0 >= r else r + fuel_req_rec(r)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return sum(fuel_req(x) for x in [int(x) for x in txt.splitlines()])
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     return sum(fuel_req_rec(x) for x in [int(x) for x in txt.splitlines()])
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

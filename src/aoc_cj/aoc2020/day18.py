@@ -20,7 +20,7 @@ def tokenize(s: str):
     return tokens
 
 
-def weird_math_a_helper(tokens):
+def weird_math_1_helper(tokens):
     ans = None
     op = None
     while len(tokens) > 0:
@@ -30,7 +30,7 @@ def weird_math_a_helper(tokens):
         elif token in ("*", "+"):
             op = token
         else:
-            n = weird_math_a_helper(tokens) if token == "(" else token
+            n = weird_math_1_helper(tokens) if token == "(" else token
             if ans is None:
                 ans = n
             elif op == "+":
@@ -40,11 +40,11 @@ def weird_math_a_helper(tokens):
     return ans
 
 
-def weird_math_a(problem):
-    return weird_math_a_helper(collections.deque(tokenize(problem)))
+def weird_math_1(problem):
+    return weird_math_1_helper(collections.deque(tokenize(problem)))
 
 
-def weird_math_b_helper(tokens):
+def weird_math_2_helper(tokens):
     sums = []
     ans = None
     op = None
@@ -59,7 +59,7 @@ def weird_math_b_helper(tokens):
         elif token == "+":
             op = token
         else:
-            n = weird_math_b_helper(tokens) if token == "(" else token
+            n = weird_math_2_helper(tokens) if token == "(" else token
             if ans is None:
                 ans = n
             elif op == "+":
@@ -68,20 +68,20 @@ def weird_math_b_helper(tokens):
     return functools.reduce(mul, sums, 1)
 
 
-def weird_math_b(problem):
-    return weird_math_b_helper(collections.deque(tokenize(problem)))
+def weird_math_2(problem):
+    return weird_math_2_helper(collections.deque(tokenize(problem)))
 
 
-def parta(txt):
-    return sum(weird_math_a(line) for line in txt.splitlines())
+def part_1(txt):
+    return sum(weird_math_1(line) for line in txt.splitlines())
 
 
-def partb(txt):
-    return sum(weird_math_b(line) for line in txt.splitlines())
+def part_2(txt):
+    return sum(weird_math_2(line) for line in txt.splitlines())
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

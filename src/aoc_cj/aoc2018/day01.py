@@ -1,8 +1,8 @@
-def parta(txt):
+def part_1(txt):
     return sum(int(x) for x in txt.splitlines())
 
 
-def partb(txt):
+def part_2(txt):
     nums = [int(x) for x in txt.splitlines()]
     seen_freqs = set()
     i = 0
@@ -17,5 +17,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

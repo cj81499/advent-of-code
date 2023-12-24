@@ -21,7 +21,7 @@ class Sensor:
         return Sensor(complex(p_x, p_y), complex(b_x, b_y))
 
 
-def parta(txt: str, *, y: int = 2000000) -> int:
+def part_1(txt: str, *, y: int = 2000000) -> int:
     sensors = [Sensor.parse(l) for l in txt.splitlines()]
 
     beacon_positions = {s.closest_beacon for s in sensors}
@@ -47,7 +47,7 @@ def parta(txt: str, *, y: int = 2000000) -> int:
     return len(cannot_be_beacon)
 
 
-def partb(txt: str, *, max: int = 4000000) -> int:
+def part_2(txt: str, *, max: int = 4000000) -> int:
     # This is quite slow.
     # Might be able to speed it up somewhat by avoiding recomputing man dist
     # between a scanner the and beacon closest to it and avoiding casts from float to int
@@ -105,5 +105,5 @@ Sensor at x=20, y=1: closest beacon is at x=15, y=3
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

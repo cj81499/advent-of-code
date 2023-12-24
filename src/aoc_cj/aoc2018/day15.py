@@ -279,11 +279,11 @@ class Cave:
         return sum(1 for cp in self._rep.values() if isinstance(cp, Elf))
 
 
-def parta(txt):
+def part_1(txt):
     return Cave(txt).do_combat()
 
 
-def partb(txt):
+def part_2(txt):
     for elf_attack_power in itertools.count(start=4):
         c = Cave(txt, elf_attack_power=elf_attack_power)
         initial_elves = c.elf_count()
@@ -296,5 +296,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

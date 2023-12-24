@@ -92,16 +92,16 @@ def area(vertices: Iterable[complex]) -> float:
     return abs(sum(i * j for i, j in zip(x, y[1:] + y[:1])) - sum(i * j for i, j in zip(x[1:] + x[:1], y))) / 2
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return DigPlan.parse(txt).dig()
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     return DigPlan.parse(txt, flipped=True).dig()
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

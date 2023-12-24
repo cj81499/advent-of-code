@@ -37,7 +37,7 @@ class LumberArea:
         return "\n".join(["".join([acre for acre in row]) for row in self.area])
 
 
-def parta(txt):
+def part_1(txt):
     lumber = LumberArea(txt.splitlines())
     for _ in range(10):
         lumber.magic()
@@ -45,7 +45,7 @@ def parta(txt):
     return count["|"] * count["#"]
 
 
-def partb(txt):
+def part_2(txt):
     lumber = LumberArea(txt.splitlines())
     seen = []
     minutes = 1000000000
@@ -68,5 +68,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

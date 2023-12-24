@@ -82,13 +82,13 @@ class HandB(Hand):
         return self._type_helper(counts)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     hands = sorted(map(Hand.parse, txt.splitlines()))
     total_winnings = sum(h.bid * rank for rank, h in enumerate(hands, start=1))
     return total_winnings
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     hands = sorted(map(HandB.parse, txt.splitlines()))
     total_winnings = sum(h.bid * rank for rank, h in enumerate(hands, start=1))
     return total_winnings
@@ -97,5 +97,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

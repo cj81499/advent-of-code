@@ -14,5 +14,5 @@ Filesystem            Size  Used  Avail  Use%
 """.strip()
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT) == 7
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT) == 7

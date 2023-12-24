@@ -25,7 +25,7 @@ def wire_evaluator(lines, evaluator):
     return min(measurements)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     lines = txt.splitlines()
 
     def manhattan_distance(p: complex, f: dict[complex, int], s: dict[complex, int]) -> int:
@@ -34,7 +34,7 @@ def parta(txt: str) -> int:
     return wire_evaluator(lines, manhattan_distance)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     lines = txt.splitlines()
 
     def step_count(p: complex, f: dict[complex, int], s: dict[complex, int]) -> int:
@@ -46,5 +46,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

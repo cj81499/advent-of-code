@@ -31,7 +31,7 @@ def pull(lead_knot: complex, trail_knot: complex) -> complex:
     return new_back_knot
 
 
-def parta(txt: str, rope_length: int = 2) -> int:
+def part_1(txt: str, rope_length: int = 2) -> int:
     # knot @ start is head, knot @ end is tail
     knot_positions = [ORIGIN for _ in range(rope_length)]
 
@@ -57,12 +57,12 @@ def parta(txt: str, rope_length: int = 2) -> int:
     return len(tail_visited)
 
 
-def partb(txt: str) -> int:
-    return parta(txt, 10)
+def part_2(txt: str) -> int:
+    return part_1(txt, 10)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

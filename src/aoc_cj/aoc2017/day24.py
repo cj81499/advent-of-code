@@ -23,12 +23,12 @@ def strength(bridge):
     return sum(sum(c) for c in bridge)
 
 
-def parta(txt: str):
+def part_1(txt: str):
     components = [tuple(sorted(int(n) for n in line.split("/"))) for line in txt.splitlines()]
     return max(strength(b) for b in bridges(components))
 
 
-def partb(txt: str):
+def part_2(txt: str):
     components = [tuple(sorted(int(n) for n in line.split("/"))) for line in txt.splitlines()]
     return max((len(b), strength(b)) for b in bridges(components))[1]
 
@@ -36,5 +36,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

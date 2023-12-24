@@ -12,19 +12,19 @@ def checksum(data):
     return checksum(cs) if len(cs) % 2 == 0 else cs
 
 
-def parta(txt: str, length=272):
+def part_1(txt: str, length=272):
     data = txt
     while len(data) < length:
         data = step(data)
     return checksum(data[:length])
 
 
-def partb(txt: str):
-    return parta(txt, length=35651584)
+def part_2(txt: str):
+    return part_1(txt, length=35651584)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -16,12 +16,12 @@ def get_is_affected(txt: str):
     return is_affected
 
 
-def parta(txt: str, range_size=50):
+def part_1(txt: str, range_size=50):
     is_affected = get_is_affected(txt)
     return sum(is_affected(x, y) for x, y in itertools.product(range(range_size), repeat=2))
 
 
-def partb(txt: str):
+def part_2(txt: str):
     is_affected = get_is_affected(txt)
 
     def first_x_at_y(y):
@@ -42,5 +42,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

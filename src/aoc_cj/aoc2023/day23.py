@@ -14,7 +14,7 @@ DIRECTION_DELTA_MAP = {"^": UP, "v": DOWN, "<": LEFT, ">": RIGHT}
 NextPositions = Callable[[complex, dict[complex, str]], Generator[complex, None, None]]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     def next_positions(pos: complex, grid: dict[complex, str]) -> Generator[complex, None, None]:
         current_grid_val = grid[pos]
         if (delta := DIRECTION_DELTA_MAP.get(current_grid_val)) is not None:
@@ -59,7 +59,7 @@ def paths_between(
                     to_explore.append((next_pos, seen.union((pos,))))
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     # IDEA (not implemented yet. as-is, this is fast enough for the test case, but not fast enough for the real input)
     #
     # https://www.reddit.com/r/adventofcode/comments/18oy4pc/comment/kekf0hl/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
@@ -86,5 +86,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

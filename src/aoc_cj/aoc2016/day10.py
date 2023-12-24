@@ -2,11 +2,11 @@ from collections import defaultdict
 from math import prod
 
 
-def parta(txt: str, compare=(61, 17)):
+def part_1(txt: str, compare=(61, 17)):
     return simulate(txt, compare)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     return simulate(txt, None)
 
 
@@ -47,5 +47,5 @@ def simulate(txt, compare):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

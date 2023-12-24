@@ -5,12 +5,12 @@ Point = tuple[int, int]
 Grid = dict[Point, int]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     grid = parse_grid(txt)
     return sum(1 + grid[p] for p in low_points(grid))
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     grid = parse_grid(txt)
 
     reverse_flow = defaultdict(set)
@@ -52,5 +52,5 @@ def adj(point: Point) -> set[Point]:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

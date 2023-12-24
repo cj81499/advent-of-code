@@ -23,8 +23,8 @@ EXAMPLE_INPUT_6 = "3,1,2"
         (EXAMPLE_INPUT_6, 1836),
     ],
 )
-def test_a(input, expected):
-    assert d.parta(input) == expected
+def test_part_1(input, expected):
+    assert d.part_1(input) == expected
 
 
 @pytest.mark.slow
@@ -40,5 +40,5 @@ def test_a(input, expected):
         (EXAMPLE_INPUT_6, 362),
     ],
 )
-def test_b(input, expected):
-    assert d.partb(input) == expected
+def test_part_2(input, expected):
+    assert d.part_2(input) == expected

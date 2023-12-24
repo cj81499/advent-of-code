@@ -12,7 +12,7 @@ def parse(txt: str):
     return grid, start_pos, num_keys
 
 
-def next_states_a(grid, state):
+def next_states_1(grid, state):
     steps, pos, collected = state
     q = deque()
     q.append((pos, steps))
@@ -29,17 +29,17 @@ def next_states_a(grid, state):
         seen.add(pos)
 
 
-def next_states_b(grid, state):
+def next_states_2(grid, state):
     steps, positions, collected = state
     for i, pos in enumerate(positions):
-        for s in next_states_a(grid, (steps, pos, collected)):
+        for s in next_states_1(grid, (steps, pos, collected)):
             new_steps, new_pos, new_collected = s
             new_positions = list(positions)
             new_positions[i] = new_pos
             yield (new_steps, tuple(new_positions), new_collected)
 
 
-def search(initial, num_keys, grid, next_states=next_states_a):
+def search(initial, num_keys, grid, next_states=next_states_1):
     q = util.PriorityQueue()
     q.push(0, initial)
     seen = set()
@@ -56,13 +56,13 @@ def search(initial, num_keys, grid, next_states=next_states_a):
     return -1
 
 
-def parta(txt: str):
+def part_1(txt: str):
     grid, start_pos, num_keys = parse(txt)
     initial = (0, start_pos, frozenset())
     return search(initial, num_keys, grid)
 
 
-def partb(txt: str):
+def part_2(txt: str):
     grid, start_pos, num_keys = parse(txt)
 
     # update the cave entrance
@@ -71,11 +71,11 @@ def partb(txt: str):
         grid[start_pos + complex(x - 1, y - 1)] = replace[y][x]
 
     initial = (0, tuple(start_pos + delta for delta in (-1 - 1j, 1 - 1j, 1 + 1j, -1 + 1j)), frozenset())
-    return search(initial, num_keys, grid, next_states_b)
+    return search(initial, num_keys, grid, next_states_2)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

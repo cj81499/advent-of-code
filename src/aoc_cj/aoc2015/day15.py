@@ -47,12 +47,12 @@ def calculate_property_score(ingredients, recipie, property_name):
     return max(0, sum(recipie[i] * ingredient.properties[property_name] for i, ingredient in enumerate(ingredients)))
 
 
-def parta(txt):
+def part_1(txt):
     ingredients = [Ingredient(line) for line in txt.splitlines()]
     return max(score_cookie(ingredients, recipie) for recipie in recipie_generator(len(ingredients), RECIPIE_TEASPOONS))
 
 
-def partb(txt):
+def part_2(txt):
     ingredients = [Ingredient(line) for line in txt.splitlines()]
     return max(
         score_cookie(ingredients, recipie)
@@ -64,5 +64,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

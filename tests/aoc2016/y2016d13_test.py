@@ -19,5 +19,5 @@ def test_is_wall():
             assert lines[y][x] == "." if d.is_open(x, y, fav_num) else "#"
 
 
-def test_a():
-    assert d.parta("10", target_pos=(7, 4)) == 11
+def test_part_1():
+    assert d.part_1("10", target_pos=(7, 4)) == 11

@@ -12,7 +12,7 @@ import aoc_cj.aoc2017.day04 as d
     ],
 )
 def test_is_valid(input, expected):
-    assert d.is_valid(input) is expected
+    assert d.is_valid_1(input) is expected
 
 
 @pytest.mark.parametrize(
@@ -25,5 +25,5 @@ def test_is_valid(input, expected):
         ("oiii ioii iioi", False),
     ],
 )
-def test_b(input, expected):
-    assert d.is_valid_b(input) == expected
+def test_part_2(input, expected):
+    assert d.is_valid_2(input) == expected

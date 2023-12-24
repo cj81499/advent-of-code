@@ -70,11 +70,11 @@ class LightBeam:
             yield LightBeam(self.pos + self.direction, self.direction)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return len(Grid.parse(txt).energized_tiles(LightBeam(0, 1)))
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     grid = Grid.parse(txt)
     initial_configurations = itertools.chain(
         (LightBeam(complex(0, y), 1) for y in range(grid.max_y + 1)),  # start from left side
@@ -88,5 +88,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

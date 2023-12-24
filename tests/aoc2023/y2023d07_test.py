@@ -23,12 +23,12 @@ QQQJA 483
         (d.Hand("23456", 1), d.Hand.Type.HIGH_CARD),
     ),
 )
-def test_hand_type(hand: d.Hand, expected_type: d.Hand.Type) -> None:
+def test_hand_type_1(hand: d.Hand, expected_type: d.Hand.Type) -> None:
     assert hand.type == expected_type
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == 6440
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == 6440
 
 
 @pytest.mark.parametrize(
@@ -41,9 +41,9 @@ def test_a() -> None:
         (d.HandB("QQQJA", 1), d.Hand.Type.FOUR_OF_A_KIND),
     ),
 )
-def test_hand_type_b(hand: d.HandB, expected_type: d.Hand.Type) -> None:
+def test_hand_type_2(hand: d.HandB, expected_type: d.Hand.Type) -> None:
     assert hand.type == expected_type
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == 5905
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT) == 5905

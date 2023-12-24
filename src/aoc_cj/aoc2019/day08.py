@@ -13,7 +13,7 @@ def get_layers(nums: list[int], width: int, height: int) -> list[list[int]]:
     return [nums[i : i + layer_size] for i in range(0, len(nums), layer_size)]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     nums = [int(c) for c in txt]
 
     layers = get_layers(nums, WIDTH, HEIGHT)
@@ -42,7 +42,7 @@ def render(layers: list[list[int]], row_len: int) -> str:
     return "\n".join(row_to_str(r) for r in rows)
 
 
-def partb(txt: str) -> str:
+def part_2(txt: str) -> str:
     nums = [int(c) for c in txt]
 
     layers = get_layers(nums, WIDTH, HEIGHT)
@@ -53,5 +53,5 @@ def partb(txt: str) -> str:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

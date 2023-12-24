@@ -66,12 +66,12 @@ def find_optimal(initial_cluster):
         prev = cluster
 
 
-def parta(txt):
+def part_1(txt):
     cluster = Cluster.parse(txt)
     return f"\n{find_optimal(cluster)[0]}"
 
 
-def partb(txt):
+def part_2(txt):
     cluster = Cluster.parse(txt)
     return find_optimal(cluster)[1]
 
@@ -79,5 +79,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

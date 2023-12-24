@@ -25,12 +25,12 @@ def simulate(instructions, stop_on_loop=False):
     return accumulator
 
 
-def parta(txt):
+def part_1(txt):
     instructions = parse_instructions(txt)
     return simulate(instructions, True)
 
 
-def partb(txt):
+def part_2(txt):
     instructions = parse_instructions(txt)
     for i, (cmd, n) in enumerate(instructions):
         if cmd in ("jmp", "nop"):
@@ -45,5 +45,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

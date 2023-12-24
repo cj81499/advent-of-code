@@ -26,7 +26,7 @@ def get_alergens_to_ingredients(foods):
     return a_to_i
 
 
-def parta(txt):
+def part_1(txt):
     foods = [Food(f) for f in txt.splitlines()]
     a_to_i = get_alergens_to_ingredients(foods)
 
@@ -36,7 +36,7 @@ def parta(txt):
     return sum(i in f.ingredients for i in safe_ingredients for f in foods)
 
 
-def partb(txt):
+def part_2(txt):
     foods = [Food(f) for f in txt.splitlines()]
     a_to_i = get_alergens_to_ingredients(foods)
     return ",".join(a_to_i[a] for a in sorted(a_to_i))
@@ -45,5 +45,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

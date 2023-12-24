@@ -81,12 +81,12 @@ def simulate(
     return math.prod(nlargest(2, (m.inspect_count for m in monkeys)))
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     monkeys = [Monkey.parse(m) for m in txt.split("\n\n")]
     return simulate(monkeys)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     monkeys = [Monkey.parse(m) for m in txt.split("\n\n")]
 
     test_vals = [m.test for m in monkeys]
@@ -103,5 +103,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

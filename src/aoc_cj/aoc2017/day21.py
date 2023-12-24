@@ -39,7 +39,7 @@ def parse_rules(txt: str):
     return expanded
 
 
-def parta(txt: str, iterations=5):
+def part_1(txt: str, iterations=5):
     rules = parse_rules(txt)
     grid = np.array([[*line] for line in INITIAL.splitlines()])
     for i in range(iterations):
@@ -54,12 +54,12 @@ def parta(txt: str, iterations=5):
     return np.count_nonzero(grid == "#")
 
 
-def partb(txt: str):
-    return parta(txt, iterations=18)
+def part_2(txt: str):
+    return part_1(txt, iterations=18)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -36,16 +36,16 @@ def max_points_after_t(reindeers: list[str], t: int):
     return max(r["points"] for r in reindeers.values())
 
 
-def parta(txt, t: int = 2503):
+def part_1(txt, t: int = 2503):
     return max_distance_after_t(txt.splitlines(), t)
 
 
-def partb(txt, t: int = 2503):
+def part_2(txt, t: int = 2503):
     return max_points_after_t(txt.splitlines(), t)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

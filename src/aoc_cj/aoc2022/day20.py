@@ -3,7 +3,7 @@ from collections import deque
 from aoc_cj import util
 
 
-def parta(txt: str, *, decryption_key: int = 1, rounds: int = 1) -> int:
+def part_1(txt: str, *, decryption_key: int = 1, rounds: int = 1) -> int:
     d = deque((n * decryption_key, i) for i, n in enumerate(util.ints(txt)))
 
     for _ in range(rounds):
@@ -22,12 +22,12 @@ def parta(txt: str, *, decryption_key: int = 1, rounds: int = 1) -> int:
     return sum(nums[(zero_idx + i * 1000) % len(nums)] for i in range(1, 4))
 
 
-def partb(txt: str) -> int:
-    return parta(txt, decryption_key=811589153, rounds=10)
+def part_2(txt: str) -> int:
+    return part_1(txt, decryption_key=811589153, rounds=10)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")
