@@ -25,7 +25,7 @@
 | 21  | [?](https://adventofcode.com/2023/day/21)                              | :question: | :question: |     :question:     |
 | 22  | [?](https://adventofcode.com/2023/day/22)                              | :question: | :question: |     :question:     |
 | 23  | [A Long Walk](https://adventofcode.com/2023/day/23)                    |   :star:   | :question: | :white_check_mark: |
-| 24  | [?](https://adventofcode.com/2023/day/24)                              | :question: | :question: |     :question:     |
+| 24  | [Never Tell Me The Odds](https://adventofcode.com/2023/day/24)         |   :star:   |   :star:   | :white_check_mark: |
 | 25  | [?](https://adventofcode.com/2023/day/25)                              | :question: | :question: |     :question:     |
 
 ## Results
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 24   00:31:41    500      0   13:48:46   4723      0
  23   00:23:38    839      0          -      -      -
  19   00:39:34   2593      0   11:20:51   9205      0
  18   00:34:34   1908      0   01:35:24   1995      0
