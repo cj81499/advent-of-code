@@ -21,10 +21,10 @@
 | 17  | [Trick Shot](https://adventofcode.com/2021/day/17)              | :star: | :star: | :white_check_mark: |
 | 18  | [Snailfish](https://adventofcode.com/2021/day/18)               | :star: | :star: | :white_check_mark: |
 | 19  | [Beacon Scanner](https://adventofcode.com/2021/day/19)          |  :x:   |  :x:   |        :x:         |
-| 20  | [Trench Map](https://adventofcode.com/2021/day/20)              | :star: | :star: |        :x:         |
+| 20  | [Trench Map](https://adventofcode.com/2021/day/20)              | :star: | :star: | :white_check_mark: |
 | 21  | [Dirac Dice](https://adventofcode.com/2021/day/21)              | :star: | :star: | :white_check_mark: |
 | 22  | [Reactor Reboot](https://adventofcode.com/2021/day/22)          | :star: | :star: | :white_check_mark: |
-| 23  | [Amphipod](https://adventofcode.com/2021/day/23)                |  :x:   |  :x:   |        :x:         |
+| 23  | [Amphipod](https://adventofcode.com/2021/day/23)                | :star: |  :x:   |        :x:         |
 | 24  | [Arithmetic Logic Unit](https://adventofcode.com/2021/day/24)   |  :x:   |  :x:   |        :x:         |
 | 25  | [Sea Cucumber](https://adventofcode.com/2021/day/25)            | :star: |  :x:   | :white_check_mark: |
 
@@ -34,6 +34,7 @@
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
  25   00:23:28   1052      0          -      -      -
+ 23       >24h  15361      0          -      -      -
  22   00:11:16    660      0       >24h  15620      0
  21   00:14:15   1328      0   00:38:33    649      0
  20   00:21:36    253      0   00:24:11    239      0

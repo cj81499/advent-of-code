@@ -24,7 +24,7 @@
 | 20  | [Particle Swarm](https://adventofcode.com/2017/day/20)                         | :star: | :star: | :white_check_mark: |
 | 21  | [Fractal Art](https://adventofcode.com/2017/day/21)                            | :star: | :star: | :white_check_mark: |
 | 22  | [Sporifica Virus](https://adventofcode.com/2017/day/22)                        | :star: | :star: | :white_check_mark: |
-| 23  | [Coprocessor Conflagration](https://adventofcode.com/2017/day/23)              | :star: | :star: | :white_check_mark: |
+| 23  | [Coprocessor Conflagration](https://adventofcode.com/2017/day/23)              | :star: | :star: |      :shrug:       |
 | 24  | [Electromagnetic Moat](https://adventofcode.com/2017/day/24)                   | :star: | :star: | :white_check_mark: |
 | 25  | [The Halting Problem](https://adventofcode.com/2017/day/25)                    | :star: | :star: | :white_check_mark: |
 
