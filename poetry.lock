@@ -602,6 +602,20 @@ files = [
 ]
 
 [[package]]
+name = "types-networkx"
+version = "3.1.0.20231220"
+description = "Typing stubs for networkx"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "types-networkx-3.1.0.20231220.tar.gz", hash = "sha256:8a4033f631aaa15129a1be8c14dc3a963d7f04bed97aff64609201c39c349cdd"},
+    {file = "types_networkx-3.1.0.20231220-py3-none-any.whl", hash = "sha256:8d69449669bce112ac26bd7ff26066893503f814ed9f6ee5015db23dbe15bf1f"},
+]
+
+[package.dependencies]
+numpy = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.8.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -677,4 +691,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9"
-content-hash = "a24a38589006fd7a6937582e692295b0f175f28574f02749756251aaaabaf808"
+content-hash = "8a1ba3d8b43807817d0e04b64c961175b7cb61f3066e018ebc4e8d1bef4ab553"

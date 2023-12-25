@@ -10,7 +10,7 @@ def part_1(txt: str) -> int:
     TIL about min-cut! https://en.wikipedia.org/wiki/Minimum_cut
     """
 
-    graph = nx.Graph()
+    graph: nx.Graph[str] = nx.Graph()
     for line in txt.splitlines():
         lhs, sep, rhs = line.partition(": ")
         assert sep == ": "
