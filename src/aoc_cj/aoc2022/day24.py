@@ -132,29 +132,8 @@ def part_2(txt: str) -> int:
     return time
 
 
-EXAMPLE_INPUT = """
-#.######
-#>>.<^<#
-#.<..<<#
-#>v.><>#
-#<^v^^>#
-######.#
-""".strip()
-
-# EXAMPLE_INPUT = """
-# #.#####
-# #.....#
-# #>....#
-# #.....#
-# #...v.#
-# #.....#
-# #####.#
-# """.strip()
-
 if __name__ == "__main__":
     from aocd import data
-
-    data = EXAMPLE_INPUT
 
     print(f"part_1: {part_1(data)}")
     print(f"part_2: {part_2(data)}")
