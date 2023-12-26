@@ -6,11 +6,18 @@
 
 ## Development
 
-Install [poetry](https://python-poetry.org/docs/#installation)
+Install [pdm](https://pdm-project.org/latest/)
 
 ```shell
-poetry install      # install the project
-pre-commit install  # install pre-commit git hook
+# optionally, create a virtual environment using python 3.9
+# if you skip this, pdm will use the system default python version
+pdm venv create $(which python3.9)
+
+# install the project
+pdm install
+
+# optionally, install git hooks via pre-commit
+pre-commit install
 ```
 
 Make sure that [aocd](https://github.com/wimglenn/advent-of-code-data) knows where to find your session token.
@@ -19,7 +26,7 @@ My personal preference is to put it in `~/.config/aocd/token`.
 ### Test
 
 ```shell
-pytest tests    # run the tests
+pytest tests
 ```
 
 Supports [aoc test runner](https://github.com/wimglenn/advent-of-code-data#verify-your-code-against-multiple-different-inputs).

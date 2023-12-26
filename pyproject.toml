@@ -1,29 +1,44 @@
-[tool.poetry]
+[project]
 name = "aoc-cj"
 version = "0.1.0"
 description = "cj81499's solutions for https://adventofcode.com/"
-authors = ["Cal Jacobson <cj81499@users.noreply.github.com>"]
+authors = [
+    { name = "Cal Jacobson", email = "cj81499@users.noreply.github.com" },
+]
+dependencies = [
+    "advent-of-code-data>=2.0.1",
+    "more-itertools>=10.1.0",
+    "numpy>=1.26.2",
+    "z3-solver>=4.12.4",
+    "lark>=1.1.8",
+    "networkx>=3.2.1",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.urls]
 homepage = "https://github.com/cj81499/advent-of-code"
 
-[tool.poetry.dependencies]
-python = ">=3.9"
-advent-of-code-data = "^2.0.1"
-more-itertools = "^10.0.0"
-numpy = "^1.26.2" # TODO: remove me
-z3-solver = "^4.12.4"
-lark = "^1.1.8"
-networkx = "^3.2.1"
-
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^3.6.0"
-pytest = "^7.4.3"
-pytest-cov = "^4.1.0"
-mypy = "^1.8"
-ruff = "^0.1.9"
-types-networkx = "^3.1.0.20231220"
-
-[tool.poetry.plugins."adventofcode.user"]
+[project.entry-points."adventofcode.user"]
 cj81499 = "aoc_cj:solve"
+
+[tool.pdm]
+package-type = "library"
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "ruff>=0.1.9",
+    "mypy>=1.8.0",
+    "types-networkx>=3.1.0.20231220",
+]
+test = [
+    "pytest>=7.4.3",
+    "pytest-cov>=4.1.0",
+]
+tools = [
+    "pre-commit>=3.6.0",
+]
 
 [tool.coverage.run]
 branch = true
@@ -32,12 +47,12 @@ omit = []
 
 [tool.coverage.report]
 exclude_also = [
-  'if __name__ == "__main__":',
-  'if TYPE_CHECKING:',
-  'raise NotImplementedError',
-  '@abc\.abstractmethod',
-  'assert False',
-  'assert_never\(.*\)',
+    'if __name__ == "__main__":',
+    'if TYPE_CHECKING:',
+    'raise NotImplementedError',
+    '@abc\.abstractmethod',
+    'assert False',
+    'assert_never\(.*\)',
 ]
 
 [tool.ruff]
@@ -45,69 +60,51 @@ line-length = 120
 target-version = "py38" # FIXME: replace w/ project.requires-python - https://docs.astral.sh/ruff/settings/#target-version
 output-format = "grouped"
 src = [
-  "src",
-  # "test",
+    "src",
+    # "test",
 ]
 
 [tool.ruff.lint]
 select = [ # https://docs.astral.sh/ruff/rules/ # TODO: enable additional linter rules
-  # "F", # Pyflakes
-  "F401", # unused-import
-  # "E", # pycodestyle
-  # "W", # pycodestyle
-  "I", # isort
-  "UP", # pyupgrade
-  # TODO: evaluate flake8 rules
-  "ERA",
-  # "PL", # pylint
-  # "FURB", #refurb
-  "RUF", # ruff
-
-  # "PL", # pylint # FIXME: duplicate. delete this line
+    # "F", # Pyflakes
+    "F401", # unused-import
+    # "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "I", # isort
+    "UP", # pyupgrade
+    # TODO: evaluate flake8 rules
+    "ERA",
+    # "PL", # pylint
+    # "FURB", #refurb
+    "RUF", # ruff
 ]
-ignore = [
-  "E741", # allow ambiguous-variable-name (eg: l, I, O)
-  "B011",
-  "B019",
-]
-
-# [tool.ruff.format]
-# indent-style = "tab" # FIXME: use tabs instead of spaces
-
-# [tool.ruff.lint.per-file-ignores]
-# "src/aoc_cj/aoc20{15,16,17,18,19,20,21,22}/*" = ["ALL"]
-
-# [tool.ruff.lint.isort]
-# required-imports = ["from __future__ import annotations"]
 
 [tool.pytest.ini_options]
 # skip slow tests by default
 addopts = "-m 'not slow'"
 markers = [
-  "slow: marks tests as slow",
+    "slow: marks tests as slow",
 ]
 xfail_strict = true
 
-[tool.mypy]
-# https://mypy.readthedocs.io/en/stable/config_file.html
-
+[tool.mypy] # https://mypy.readthedocs.io/en/stable/config_file.html
 # Opt out of type checking old years
 # TODO: type check tests too
 exclude = [
-  '^tests\/aoc2015\/',
-  '^src\/aoc_cj\/aoc2015\/',
-  '^tests\/aoc2016\/',
-  '^src\/aoc_cj\/aoc2016\/',
-  '^tests\/aoc2017\/',
-  '^src\/aoc_cj\/aoc2017\/',
-  '^tests\/aoc2018\/',
-  '^src\/aoc_cj\/aoc2018\/',
-  '^tests\/aoc2019\/',
-  '^src\/aoc_cj\/aoc2019\/',
-  '^tests\/aoc2020\/',
-  '^src\/aoc_cj\/aoc2020\/',
-  '^tests\/aoc2021\/',
-  '^src\/aoc_cj\/aoc2020\/',
+    '^tests\/aoc2015\/',
+    '^src\/aoc_cj\/aoc2015\/',
+    '^tests\/aoc2016\/',
+    '^src\/aoc_cj\/aoc2016\/',
+    '^tests\/aoc2017\/',
+    '^src\/aoc_cj\/aoc2017\/',
+    '^tests\/aoc2018\/',
+    '^src\/aoc_cj\/aoc2018\/',
+    '^tests\/aoc2019\/',
+    '^src\/aoc_cj\/aoc2019\/',
+    '^tests\/aoc2020\/',
+    '^src\/aoc_cj\/aoc2020\/',
+    '^tests\/aoc2021\/',
+    '^src\/aoc_cj\/aoc2020\/',
 ]
 
 strict = true
@@ -136,16 +133,16 @@ warn_unreachable = true
 allow_untyped_globals = false
 allow_redefinition = true
 enable_error_code = [ # https://mypy.readthedocs.io/en/stable/error_code_list2.html#error-codes-optional
-  'redundant-self',
-  'redundant-expr',
-  'possibly-undefined',
-  'truthy-bool',
-  'truthy-iterable',
-  'ignore-without-code',
-  'unused-awaitable',
-  'unused-ignore',
-  'explicit-override',
-  'unimported-reveal',
+    'redundant-self',
+    'redundant-expr',
+    'possibly-undefined',
+    'truthy-bool',
+    'truthy-iterable',
+    'ignore-without-code',
+    'unused-awaitable',
+    'unused-ignore',
+    'explicit-override',
+    'unimported-reveal',
 ]
 implicit_reexport = true
 strict_equality = true
@@ -163,5 +160,5 @@ module = ['aocd']
 ignore_missing_imports = true
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

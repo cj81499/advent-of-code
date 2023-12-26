@@ -1,7 +1,19 @@
 # See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
 default_language_version:
-  ruby: 3.2.2
+  ruby: '3.2.2'
+
+# https://pre-commit.com/#supported-git-hooks
+default_install_hook_types: # all of 'em!
+  - commit-msg
+  - post-checkout
+  - post-commit
+  - post-merge
+  - post-rewrite
+  - pre-commit
+  - pre-merge-commit
+  - pre-push
+  - pre-rebase
+  - prepare-commit-msg
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,6 +30,12 @@ repos:
       - id: ruff
         args: [ --fix ]
       - id: ruff-format
+
+  - repo: https://github.com/pdm-project/pdm
+    rev: '2.11.1'
+    hooks:
+      - id: pdm-lock-check
+      - id: pdm-sync
 
   - repo: https://github.com/markdownlint/markdownlint
     rev: v0.12.0
