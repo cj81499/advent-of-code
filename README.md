@@ -17,7 +17,7 @@ pdm venv create $(which python3.9)
 pdm install
 
 # optionally, install git hooks via pre-commit
-pre-commit install
+pdm run pre-commit install
 ```
 
 Make sure that [aocd](https://github.com/wimglenn/advent-of-code-data) knows where to find your session token.
@@ -26,7 +26,7 @@ My personal preference is to put it in `~/.config/aocd/token`.
 ### Test
 
 ```shell
-pytest tests
+pdm run pytest tests
 ```
 
 Supports [aoc test runner](https://github.com/wimglenn/advent-of-code-data#verify-your-code-against-multiple-different-inputs).
