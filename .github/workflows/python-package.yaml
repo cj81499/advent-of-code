@@ -17,29 +17,27 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4.1.1
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.0.0
+      - name: Set up PDM
+        id: set-up-pdm
+        uses: pdm-project/setup-pdm@v3
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Set up Poetry
-        uses: snok/install-poetry@v1.3.4
-
-      - name: Install Dependencies
-        run: poetry install
+      - name: Install dependencies
+        run: pdm sync --dev
 
       - name: Check format (ruff)
-        run: poetry run ruff format --check .
+        run: pdm run ruff format --check .
 
       - name: Lint (ruff)
-        run: poetry run ruff check --output-format=github .
+        run: pdm run ruff check --output-format=github .
 
       - name: Check types (mypy)
-        run: poetry run mypy .
+        run: pdm run mypy .
 
       - name: Run tests
-        run: poetry run pytest --cov=. --cov-report=xml
+        run: pdm run pytest --cov=. --cov-report=xml
 
-      # consider uploading only for one python version
+      # TODO: consider uploading only for one python version
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
