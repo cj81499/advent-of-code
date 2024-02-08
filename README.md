@@ -9,9 +9,9 @@
 Install [pdm](https://pdm-project.org/latest/)
 
 ```shell
-# optionally, create a virtual environment using python 3.9
+# optionally, create a virtual environment using python 3.12
 # if you skip this, pdm will use the system default python version
-pdm venv create $(which python3.9)
+pdm venv create $(which python3.12)
 
 # install the project
 pdm install

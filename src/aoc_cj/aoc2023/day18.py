@@ -88,8 +88,10 @@ def area(vertices: Iterable[complex]) -> float:
     modified version of code from https://rosettacode.org/wiki/Shoelace_formula_for_polygonal_area#Python:_Explicit
     """
 
-    x, y = mi.zip_equal(*((int(p.real), int(p.imag)) for p in vertices))
-    return abs(sum(i * j for i, j in zip(x, y[1:] + y[:1])) - sum(i * j for i, j in zip(x[1:] + x[:1], y))) / 2
+    x, y = zip(*((int(p.real), int(p.imag)) for p in vertices), strict=True)
+    result = abs(sum(i * j for i, j in zip(x, y[1:] + y[:1])) - sum(i * j for i, j in zip(x[1:] + x[:1], y))) / 2
+    assert isinstance(result, float)
+    return result
 
 
 def part_1(txt: str) -> int:
