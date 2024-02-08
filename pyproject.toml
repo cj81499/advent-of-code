@@ -24,7 +24,7 @@ homepage = "https://github.com/cj81499/advent-of-code"
 cj81499 = "aoc_cj:solve"
 
 [tool.pdm]
-package-type = "library"
+distribution = false
 
 [tool.pdm.dev-dependencies]
 lint = [

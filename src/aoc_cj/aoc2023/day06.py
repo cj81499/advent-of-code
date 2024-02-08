@@ -23,7 +23,7 @@ class Race:
 
 def part_1(txt: str) -> int:
     times, distances = (tuple(util.ints(l)) for l in txt.splitlines())
-    races = [Race(t, d) for t, d in mi.zip_equal(times, distances)]
+    races = [Race(t, d) for t, d in zip(times, distances, strict=True)]
     return math.prod(r.ways_to_win() for r in races)
 
 
