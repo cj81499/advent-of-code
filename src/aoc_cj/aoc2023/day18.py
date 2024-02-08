@@ -89,7 +89,9 @@ def area(vertices: Iterable[complex]) -> float:
     """
 
     x, y = zip(*((int(p.real), int(p.imag)) for p in vertices), strict=True)
-    return abs(sum(i * j for i, j in zip(x, y[1:] + y[:1])) - sum(i * j for i, j in zip(x[1:] + x[:1], y))) / 2
+    result = abs(sum(i * j for i, j in zip(x, y[1:] + y[:1])) - sum(i * j for i, j in zip(x[1:] + x[:1], y))) / 2
+    assert isinstance(result, float)
+    return result
 
 
 def part_1(txt: str) -> int:
