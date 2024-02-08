@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.12", "3.13-dev"]
+        python-version:
+          - "3.12"
+          # - "3.13-dev"
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4.1.1
