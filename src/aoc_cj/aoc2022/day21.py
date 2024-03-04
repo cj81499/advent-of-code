@@ -111,7 +111,8 @@ class UnresolvedMonkey(Monkey):
         assert self.name == ROOT
         # either left or right must contain HUMN
         resolved = self._resolve(monkeys)
-        assert (left_contains_humn := resolved.left.contains(HUMN, monkeys)) ^ resolved.right.contains(HUMN, monkeys)
+        left_contains_humn = resolved.left.contains(HUMN, monkeys)
+        assert left_contains_humn ^ resolved.right.contains(HUMN, monkeys)
         monkey_containing_humn, monkey_not_containing_humn = (
             (resolved.left, resolved.right) if left_contains_humn else (resolved.right, resolved.left)
         )
@@ -153,7 +154,8 @@ class ResolvedMonkey(Monkey):
     @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         # either left or right must contain HUMN
-        assert (left_contains_humn := self.left.contains(HUMN, monkeys)) ^ self.right.contains(HUMN, monkeys)
+        left_contains_humn = self.left.contains(HUMN, monkeys)
+        assert left_contains_humn ^ self.right.contains(HUMN, monkeys)
         monkey_containing_humn, monkey_not_containing_humn, known_value_side = (
             (self.left, self.right, Side.RIGHT) if left_contains_humn else (self.right, self.left, Side.LEFT)
         )
