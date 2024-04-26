@@ -13,3 +13,7 @@ jobs:
 
       - name: Update dependencies
         uses: pdm-project/update-deps-action@v1.7
+        with:
+          # A personal access token (PAT) must be used so that the created PR triggers CI
+          # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
+          token: ${{ secrets.GH_TOKEN }}
