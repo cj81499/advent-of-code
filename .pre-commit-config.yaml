@@ -25,14 +25,14 @@ repos:
       - id: check-added-large-files
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.5
+    rev: v0.4.7
     hooks:
       - id: ruff
         args: [ --fix ]
       - id: ruff-format
 
   - repo: https://github.com/pdm-project/pdm
-    rev: '2.15.3'
+    rev: '2.15.4'
     hooks:
       - id: pdm-lock-check
       - id: pdm-sync
