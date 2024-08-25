@@ -31,11 +31,10 @@ repos:
         args: [ --fix ]
       - id: ruff-format
 
-  - repo: https://github.com/pdm-project/pdm
-    rev: '2.18.1'
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: '0.3.3'
     hooks:
-      - id: pdm-lock-check
-      - id: pdm-sync
+      - id: uv-lock
 
   - repo: https://github.com/markdownlint/markdownlint
     rev: v0.12.0
