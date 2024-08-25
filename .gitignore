@@ -8,7 +8,6 @@ dist/
 *.egg-info/
 .pytest_cache/
 .coverage
-.pdm-python
 
 # Logs
 *.log

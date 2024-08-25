@@ -13,7 +13,7 @@
     "tests"
   ],
   "python.testing.pytestEnabled": true,
-  "[jsonc][markdown]": {
+  "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
@@ -33,7 +33,5 @@
   "evenBetterToml.formatter.trailingNewline": true,
   "evenBetterToml.formatter.arrayAutoExpand": false,
   "python.testing.unittestEnabled": false,
-  "ruff.lint.args": [
-    "--unfixable=F401"
-  ]
+  "python.defaultInterpreterPath": ".venv/bin/python"
 }

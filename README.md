@@ -6,18 +6,14 @@
 
 ## Development
 
-Install [pdm](https://pdm-project.org/latest/)
+Install [uv](https://docs.astral.sh/uv/#getting-started)
 
 ```shell
-# optionally, create a virtual environment using python 3.12
-# if you skip this, pdm will use the system default python version
-pdm venv create $(which python3.12)
-
-# install the project
-pdm install
+# install the project and dependencies (note: this is done implicitly when you `uv run <COMMAND>`)
+uv sync
 
 # optionally, install git hooks via pre-commit
-pdm run pre-commit install
+uv run pre-commit install
 ```
 
 Make sure that [aocd](https://github.com/wimglenn/advent-of-code-data) knows where to find your session token.
@@ -26,7 +22,7 @@ My personal preference is to put it in `~/.config/aocd/token`.
 ### Test
 
 ```shell
-pdm run pytest tests
+uv run pytest
 ```
 
 Supports [aoc test runner](https://github.com/wimglenn/advent-of-code-data#verify-your-code-against-multiple-different-inputs).
