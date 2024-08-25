@@ -22,7 +22,8 @@ jobs:
       - name: Set up uv
         run: curl -LsSf https://astral.sh/uv/0.3.3/install.sh | sh
 
-      - uses: actions/setup-python@v5
+      - name: Setup python
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
