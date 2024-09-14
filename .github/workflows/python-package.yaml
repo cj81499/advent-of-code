@@ -32,7 +32,8 @@ jobs:
         # https://docs.python.org/3/using/cmdline.html#cmdoption-version
         run: |
           uv run python --version --version
-          # [[ "$(uv run python --version | cut -d ' ' -f2)" =~ ^3\.12\.[0-9]+$ ]]
+          uv run python --version | cut -d ' ' -f2
+          [[ "$(uv run python --version | cut -d ' ' -f2)" =~ '^3\.12\.[0-9]+$' ]]
 
       - name: Check format (ruff)
         run: uv run ruff format --check .
@@ -46,6 +47,7 @@ jobs:
       - name: Run tests
         run: uv run pytest --cov=. --cov-report=xml
 
+      # consider ditching codecov - https://hynek.me/articles/ditch-codecov-python/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4.5.0
         with:
@@ -59,11 +61,10 @@ jobs:
     - build
 
     steps:
-    - run: echo '${{ toJSON(needs) }}'
+    - name: Print job results
+      run: echo '${{ toJSON(needs) }}'
 
-    - name: Decide whether the needed jobs succeeded or failed
+    - name: Check if all jobs succeeded
       uses: re-actors/alls-green@release/v1
       with:
-        allowed-failures: docs, linters
-        allowed-skips: non-voting-flaky-job
         jobs: ${{ toJSON(needs) }}
