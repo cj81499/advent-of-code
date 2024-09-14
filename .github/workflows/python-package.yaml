@@ -25,15 +25,12 @@ jobs:
           enable-cache: true
           version: "0.4.10"
 
-      - name: Create python venv
+      - name: Create python ${{ matrix.python-version }} venv
         run: uv venv --python ${{ matrix.python-version }}
-        # if this doesn't work, try .python-version
 
       - name: Print Python version
         # https://docs.python.org/3/using/cmdline.html#cmdoption-version
-        run: |
-          which python3
-          uv run python3 --version --version
+        run: uv run python3 --version --version
 
       - name: Check format (ruff)
         run: uv run ruff format --check .
