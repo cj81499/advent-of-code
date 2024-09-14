@@ -28,15 +28,11 @@ jobs:
       - name: Pin python version to ${{ matrix.python-version }}
         run: uv python pin ${{ matrix.python-version }}
 
-
-      - name: Print Python version
+      - name: Sanity check Python version
         # https://docs.python.org/3/using/cmdline.html#cmdoption-version
         run: |
-          which python
-          which python3
-          uv run which python
-          uv run which python3
           uv run python3 --version --version
+          [[ "$(uv run python --version)" =~ '^Python 3\.12.*$' ]]
 
       - name: Check format (ruff)
         run: uv run ruff format --check .
