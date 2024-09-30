@@ -17,14 +17,14 @@
 | 13  | [Distress Signal](https://adventofcode.com/2022/day/13)          | :star: | :star: | :white_check_mark: |
 | 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)       | :star: | :star: | :white_check_mark: |
 | 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | :star: | :star: | :white_check_mark: |
-| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    |  :x:   |  :x:   |        :x:         |
+| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    | :star: |  :x:   |        :x:         |
 | 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)         | :star: |  :x:   | :white_check_mark: |
 | 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         | :star: | :star: | :white_check_mark: |
 | 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |  :x:   |  :x:   |        :x:         |
 | 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) | :star: | :star: | :white_check_mark: |
 | 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              | :star: | :star: | :white_check_mark: |
 | 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               | :star: |  :x:   | :white_check_mark: |
-| 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       | :star: |  :x:   | :white_check_mark: |
+| 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       | :star: | :star: | :white_check_mark: |
 | 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           | :star: | :star: | :white_check_mark: |
 | 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          | :star: |  :x:   | :white_check_mark: |
 

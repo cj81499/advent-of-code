@@ -30,7 +30,8 @@
 
 ## Results
 
-```text -------Part 1--------   --------Part 2--------
+```text
+      -------Part 1--------   --------Part 2--------
 Day       Time  Rank  Score       Time   Rank  Score
  25   03:30:57  1004      0       >24h   2905      0
  24   23:50:46  1640      0       >24h   1542      0
