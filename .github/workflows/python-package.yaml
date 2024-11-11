@@ -23,7 +23,7 @@ jobs:
         uses: astral-sh/setup-uv@v3.2.2
         with:
           enable-cache: true
-          version: "0.4.10"
+          version: "0.5.1"
 
       - name: Pin python version to ${{ matrix.python-version }}
         run: uv python pin ${{ matrix.python-version }}
