@@ -9,14 +9,14 @@ from ._point import Point3D
 from ._priority_queue import PriorityQueue
 
 __all__ = (
+    "Point3D",
+    "PriorityQueue",
     "clamp",
     "create_regex_parser",
     "digits",
     "floats",
     "ints",
     "is_prime",
-    "Point3D",
-    "PriorityQueue",
 )
 
 _T = TypeVar("_T")
