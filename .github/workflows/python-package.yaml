@@ -48,7 +48,7 @@ jobs:
 
       # consider ditching codecov - https://hynek.me/articles/ditch-codecov-python/
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5.0.2
+        uses: codecov/codecov-action@v5.0.7
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
