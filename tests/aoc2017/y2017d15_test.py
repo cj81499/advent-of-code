@@ -16,13 +16,13 @@ Generator B starts with 8921
         (5, 1),
     ],
 )
-def test_a(num_loops, expected):
-    assert d.parta(EXAMPLE_INPUT, num_loops) == expected
+def test_part_1(num_loops, expected):
+    assert d.part_1(EXAMPLE_INPUT, num_loops) == expected
 
 
 @pytest.mark.slow
 def test_a_slow():
-    assert d.parta(EXAMPLE_INPUT) == 588
+    assert d.part_1(EXAMPLE_INPUT) == 588
 
 
 @pytest.mark.parametrize(
@@ -33,10 +33,10 @@ def test_a_slow():
         (1056, 1),
     ],
 )
-def test_b(num_loops, expected):
-    assert d.partb(EXAMPLE_INPUT, num_loops) == expected
+def test_part_2(num_loops, expected):
+    assert d.part_2(EXAMPLE_INPUT, num_loops) == expected
 
 
 @pytest.mark.slow
 def test_b_slow():
-    assert d.partb(EXAMPLE_INPUT) == 309
+    assert d.part_2(EXAMPLE_INPUT) == 309

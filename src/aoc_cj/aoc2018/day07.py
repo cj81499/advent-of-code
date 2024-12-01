@@ -48,7 +48,7 @@ class StepManager:
         return r
 
 
-def parta(txt: str):
+def part_1(txt: str):
     steps = StepManager.parse(txt)
 
     order = []
@@ -60,7 +60,7 @@ def parta(txt: str):
     return "".join(order)
 
 
-def partb(txt: str, num_workers: int = 5, base_duration: int = 60):
+def part_2(txt: str, num_workers: int = 5, base_duration: int = 60):
     @dataclasses.dataclass
     class Worker:
         working_on: Optional[str] = None
@@ -94,5 +94,5 @@ def partb(txt: str, num_workers: int = 5, base_duration: int = 60):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

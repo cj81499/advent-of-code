@@ -19,7 +19,7 @@ def top_of_stacks(stacks: Stacks) -> str:
     return "".join(stacks[i][-1] for i in range(1, max(stacks) + 1))
 
 
-def parta(txt: str, reverse: bool = True) -> str:
+def part_1(txt: str, reverse: bool = True) -> str:
     moves, stacks = parse(txt)
 
     for m in moves.splitlines():
@@ -31,12 +31,12 @@ def parta(txt: str, reverse: bool = True) -> str:
     return top_of_stacks(stacks)
 
 
-def partb(txt: str) -> str:
-    return parta(txt, False)
+def part_2(txt: str) -> str:
+    return part_1(txt, False)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

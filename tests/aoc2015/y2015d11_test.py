@@ -46,10 +46,6 @@ def test_day11_fast_increment_password():
     assert "maaaaaaaaa" == d.fast_increment_password("lasdfupafj")
 
 
-def test_a():
+def test_part_1():
     assert "abcdffaa" == d.next_valid_password("abcdefgh")
     assert "ghjaabcc" == d.next_valid_password("ghijklmn")
-
-
-# def test_b():
-#     assert d.partb([]) == None

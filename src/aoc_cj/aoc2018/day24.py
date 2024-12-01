@@ -172,12 +172,12 @@ class Battle:
             return "No deaths"
 
 
-def parta(txt):
+def part_1(txt):
     battle = Battle.parseBattle(txt)
     return battle.fight()[1]
 
 
-def partb(s: str):
+def part_2(s: str):
     boost = 1
     immune_wins = False
     while not immune_wins:
@@ -192,5 +192,5 @@ def partb(s: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -43,16 +43,12 @@ EXAMPLE_OUTPUT = """
 #...#...#.
 #...#...#.
 #...#..###
-""".replace(
-    ".", " "
-).strip(
-    "\n"
-)
+""".replace(".", " ").strip("\n")
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT) == "\n" + EXAMPLE_OUTPUT
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT) == "\n" + EXAMPLE_OUTPUT
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT) == 3
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT) == 3

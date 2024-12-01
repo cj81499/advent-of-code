@@ -20,5 +20,5 @@ Damage: 8
         (EXAMPLE_INPUT_1, 641),
     ],
 )
-def test_a(input, expected):
-    assert d.parta(input, player_hp=10, player_mana=250) == expected
+def test_part_1(input, expected):
+    assert d.part_1(input, player_hp=10, player_mana=250) == expected

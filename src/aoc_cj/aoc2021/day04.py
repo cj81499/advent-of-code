@@ -44,13 +44,13 @@ def parse(txt: str) -> tuple[list[int], list[Board]]:
     return [int(x) for x in draws.split(",")], [Board.parse(b) for b in boards]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     draws, boards = parse(txt)
     first_winner = next(winners(draws, boards))
     return first_winner.score()
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     draws, boards = parse(txt)
     *_rest, last_winner = winners(draws, boards)
     return last_winner.score()
@@ -59,5 +59,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

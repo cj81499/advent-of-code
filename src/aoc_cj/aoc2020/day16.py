@@ -1,6 +1,8 @@
 import functools
 from operator import mul
 
+import more_itertools as mi
+
 
 def is_valid_ticket(ticket, fields):
     for n in ticket:
@@ -30,7 +32,7 @@ def parse_input(txt):
     return fields, my_ticket, nearby_tickets
 
 
-def parta(txt):
+def part_1(txt):
     fields, _my_ticket, nearby_tickets = parse_input(txt)
     return sum(is_valid_ticket(t, fields)[1] for t in nearby_tickets)
 
@@ -41,7 +43,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     # for each valid ticket
     for t in {t for t in nearby_tickets if is_valid_ticket(t, fields)[0]}:
         # for each value on the ticket and list of possible fields at the location of that value
-        for (ticket_value, possibile_fields) in zip(t, position_possibile_fields):
+        for ticket_value, possibile_fields in zip(t, position_possibile_fields):
             for f in set(possibile_fields):
                 # if the value is not valid for one of the possible fields, remove it as a possibility
                 if not any(ticket_value in r for r in fields[f]):
@@ -50,7 +52,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     # while there are one or more positions that have more than multiple possibilites
     while any(len(x) > 1 for x in position_possibile_fields):
         # get the names of fields that we know are correct (they're the only possibility at a location)
-        solved_fields = {list(p)[0] for p in position_possibile_fields if len(p) == 1}
+        solved_fields = {mi.one(p) for p in position_possibile_fields if len(p) == 1}
         # remove those fields as possibilities for everywhere else
         for f in solved_fields:
             for p in position_possibile_fields:
@@ -60,7 +62,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     return tuple(x.pop() for x in position_possibile_fields)
 
 
-def partb(txt):
+def part_2(txt):
     fields, my_ticket, nearby_tickets = parse_input(txt)
     actual_fields = get_actual_fields(fields, my_ticket, nearby_tickets)
     departure_values = [val for val, field_name in zip(my_ticket, actual_fields) if "departure" in field_name]
@@ -70,5 +72,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

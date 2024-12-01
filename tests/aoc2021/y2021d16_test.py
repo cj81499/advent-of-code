@@ -25,8 +25,8 @@ def test_parse_packet_1():
         ("A0016C880162017C3686B18A3D4780", 31),
     ),
 )
-def test_a(packet, version_sum):
-    assert d.parta(packet) == version_sum
+def test_part_1(packet, version_sum):
+    assert d.part_1(packet) == version_sum
 
 
 @pytest.mark.parametrize(
@@ -42,6 +42,6 @@ def test_a(packet, version_sum):
         ("9C0141080250320F1802104A08", 1),
     ),
 )
-def test_b(packet, result):
-    assert d.partb(packet) == result
+def test_part_2(packet, result):
+    assert d.part_2(packet) == result
     pass

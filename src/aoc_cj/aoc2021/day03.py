@@ -2,7 +2,7 @@ from collections import Counter
 from typing import Callable
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     gamma_rate = 0
     epsilon_rate = 0
 
@@ -15,7 +15,7 @@ def parta(txt: str) -> int:
     return power_consumption
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     numbers = txt.splitlines()
 
     oxygen_generator_rating = bitwise_filter(numbers, most_common)
@@ -48,5 +48,5 @@ def bitwise_filter(numbers: list[str], choose_to_keep: Callable[[Counter[str]], 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

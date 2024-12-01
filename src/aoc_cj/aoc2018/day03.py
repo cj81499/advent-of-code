@@ -31,7 +31,7 @@ def build_grid(claims):
     return grid
 
 
-def parta(txt):
+def part_1(txt):
     claims = [Claim.parse(line) for line in txt.splitlines()]
     grid = build_grid(claims)
     return sum(len(c) > 1 for p, c in grid.items())
@@ -45,7 +45,7 @@ def no_overlap(grid, claim):
     return True
 
 
-def partb(txt):
+def part_2(txt):
     claims = [Claim.parse(line) for line in txt.splitlines()]
     grid = build_grid(claims)
     return next(c for c in claims if no_overlap(grid, c)).claim_id
@@ -54,5 +54,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

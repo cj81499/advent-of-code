@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
-ARROW_TO_DIRECTION = {"^": (0, -1), "v": (0, 1), "<": (-1, 0), ">": (1, 0)}
+import more_itertools as mi
 
+ARROW_TO_DIRECTION = {"^": (0, -1), "v": (0, 1), "<": (-1, 0), ">": (1, 0)}
 DIRECTION_TO_ARROW = {v: k for k, v in ARROW_TO_DIRECTION.items()}
 
 
@@ -70,7 +71,7 @@ class Simulation:
         except KeyError:
             return crash
 
-    def move_carts(self, partb=False):
+    def move_carts(self, part_2=False):
         crashes = []
         new_carts = {}
         for y in range(self.height):
@@ -105,7 +106,7 @@ class Simulation:
         return s
 
 
-def parta(txt):
+def part_1(txt):
     s = Simulation(txt.splitlines())
     crashes = []
     while len(crashes) != 1:
@@ -113,16 +114,16 @@ def parta(txt):
     return ",".join(map(str, crashes[0]))
 
 
-def partb(txt):
+def part_2(txt):
     s = Simulation(txt.splitlines())
     carts = [None, None]
     while len(carts) > 1:
-        crashes, carts = s.move_carts(partb=True)
-    return ",".join(map(str, [*carts][0]))
+        crashes, carts = s.move_carts(part_2=True)
+    return ",".join(map(str, mi.one(carts)))
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

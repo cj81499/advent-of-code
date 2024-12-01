@@ -6,7 +6,7 @@ Path = Sequence[str]
 Edges = dict[str, set[str]]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     edges = parse(txt)
 
     def can_explore(path: Path, cave: str) -> bool:
@@ -15,7 +15,7 @@ def parta(txt: str) -> int:
     return count_paths(edges, can_explore)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     edges = parse(txt)
 
     def can_explore(path: Path, cave: str) -> bool:
@@ -61,5 +61,5 @@ def count_paths(edges: Edges, can_explore: Callable[[Path, str], bool]) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

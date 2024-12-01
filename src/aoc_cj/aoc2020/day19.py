@@ -50,12 +50,12 @@ def parse_input(txt):
     return rules, messages
 
 
-def parta(txt):
+def part_1(txt):
     rules, messages = parse_input(txt)
     return sum(rules[0].is_valid(m, rules) for m in messages.splitlines())
 
 
-def partb(txt):
+def part_2(txt):
     rules, messages = parse_input(txt)
     rules[8] = Rule("8: 42 | 42 8")
     rules[11] = Rule("11: 42 31 | 42 11 31")
@@ -65,5 +65,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

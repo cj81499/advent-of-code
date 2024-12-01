@@ -1,7 +1,7 @@
 import aoc_cj.aoc2015.day12 as d
 
 
-def test_a():
+def test_part_1():
     assert d.sum_of_all_numbers([1, 2, 3]) == 6
     assert d.sum_of_all_numbers({"a": 2, "b": 4}) == 6
     assert d.sum_of_all_numbers([[[3]]]) == 3
@@ -12,7 +12,7 @@ def test_a():
     assert d.sum_of_all_numbers({}) == 0
 
 
-def test_b():
+def test_part_2():
     assert d.sum_of_all_numbers([1, 2, 3], ignore_red=True) == 6
     assert d.sum_of_all_numbers([1, {"c": "red", "b": 2}, 3], ignore_red=True) == 4
     assert d.sum_of_all_numbers({"d": "red", "e": [1, 2, 3, 4], "f": 5}, ignore_red=True) == 0

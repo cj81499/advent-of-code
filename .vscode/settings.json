@@ -1,7 +1,7 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
   "files.exclude": {
@@ -9,22 +9,29 @@
     "**/.pytest_cache": true,
     "**/*.egg-info": true
   },
-  "python.formatting.provider": "black",
   "python.testing.pytestArgs": [
     "tests"
   ],
   "python.testing.pytestEnabled": true,
-  "[jsonc][markdown]": {
+  "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "python.linting.mypyEnabled": true,
-  "python.linting.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
   "cSpell.words": [
     "aocd",
     "cj's",
     "ilen",
-    "parta",
-    "partb",
     "popleft"
-  ]
+  ],
+  "evenBetterToml.formatter.allowedBlankLines": 1,
+  "evenBetterToml.formatter.alignComments": false,
+  "evenBetterToml.formatter.arrayAutoCollapse": false,
+  "evenBetterToml.formatter.arrayTrailingComma": true,
+  "evenBetterToml.formatter.columnWidth": 0,
+  "evenBetterToml.formatter.trailingNewline": true,
+  "evenBetterToml.formatter.arrayAutoExpand": false,
+  "python.testing.unittestEnabled": false,
+  "python.defaultInterpreterPath": ".venv/bin/python"
 }

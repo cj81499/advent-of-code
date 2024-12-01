@@ -45,8 +45,8 @@ def test_can_hold_shiny_gold(input, expected):
     assert expected == d.can_hold_shiny_gold(RULES_0, input)
 
 
-def test_a():
-    assert 4 == d.parta(EXAMPLE_INPUT_0)
+def test_part_1():
+    assert 4 == d.part_1(EXAMPLE_INPUT_0)
 
 
 @pytest.mark.parametrize(
@@ -62,6 +62,6 @@ def test_number_of_bags_inside_of(input, expected):
     assert expected == d.number_of_bags_inside_of(RULES_0, input)
 
 
-def test_b():
-    assert 32 == d.partb(EXAMPLE_INPUT_0)
-    assert 126 == d.partb(EXAMPLE_INPUT_1)
+def test_part_2():
+    assert 32 == d.part_2(EXAMPLE_INPUT_0)
+    assert 126 == d.part_2(EXAMPLE_INPUT_1)

@@ -2,6 +2,8 @@ import abc
 import enum
 from typing import Callable, Optional, Union
 
+from typing_extensions import override
+
 IntFn = Callable[[int, int], int]
 
 Monkeys = dict[str, Union[int, tuple[str, str, str]]]
@@ -73,12 +75,15 @@ class IntMonkey(Monkey):
         super().__init__(name)
         self.value = value
 
+    @override
     def evaluate(self, _monkeys: dict[str, Monkey]) -> int:
         return self.value
 
+    @override
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         return self.name == name
 
+    @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         assert self.name == HUMN
         return target
@@ -94,9 +99,11 @@ class UnresolvedMonkey(Monkey):
 
         self._resolved: Optional[ResolvedMonkey] = None
 
+    @override
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
         return self._resolve(monkeys).evaluate(monkeys)
 
+    @override
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         return self._resolve(monkeys).contains(name, monkeys)
 
@@ -104,7 +111,8 @@ class UnresolvedMonkey(Monkey):
         assert self.name == ROOT
         # either left or right must contain HUMN
         resolved = self._resolve(monkeys)
-        assert (left_contains_humn := resolved.left.contains(HUMN, monkeys)) ^ resolved.right.contains(HUMN, monkeys)
+        left_contains_humn = resolved.left.contains(HUMN, monkeys)
+        assert left_contains_humn ^ resolved.right.contains(HUMN, monkeys)
         monkey_containing_humn, monkey_not_containing_humn = (
             (resolved.left, resolved.right) if left_contains_humn else (resolved.right, resolved.left)
         )
@@ -113,6 +121,7 @@ class UnresolvedMonkey(Monkey):
         # if this is the root monkey, we don't have a target value yet.
         return monkey_containing_humn._solve_humn(monkeys, target=known_value)
 
+    @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         return self._resolve(monkeys)._solve_humn(monkeys, target)
 
@@ -132,17 +141,21 @@ class ResolvedMonkey(Monkey):
 
         self._contains_humn: Optional[bool] = None
 
+    @override
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
         return self.op.apply(self.left.evaluate(monkeys), self.right.evaluate(monkeys))
 
+    @override
     def contains(self, name: str, monkeys: dict[str, Monkey]) -> bool:
         if self._contains_humn is None:
             self._contains_humn = self.left.contains(name, monkeys) or self.right.contains(name, monkeys)
         return self._contains_humn
 
+    @override
     def _solve_humn(self, monkeys: dict[str, Monkey], target: int) -> int:
         # either left or right must contain HUMN
-        assert (left_contains_humn := self.left.contains(HUMN, monkeys)) ^ self.right.contains(HUMN, monkeys)
+        left_contains_humn = self.left.contains(HUMN, monkeys)
+        assert left_contains_humn ^ self.right.contains(HUMN, monkeys)
         monkey_containing_humn, monkey_not_containing_humn, known_value_side = (
             (self.left, self.right, Side.RIGHT) if left_contains_humn else (self.right, self.left, Side.LEFT)
         )
@@ -152,12 +165,12 @@ class ResolvedMonkey(Monkey):
         return monkey_containing_humn._solve_humn(monkeys, target=unknown_value)
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     monkeys = {m.name: m for m in (Monkey.parse(l) for l in txt.splitlines())}
     return monkeys[ROOT].evaluate(monkeys)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     monkeys = {m.name: m for m in (Monkey.parse(l) for l in txt.splitlines())}
     root_monkey = monkeys[ROOT]
     assert isinstance(root_monkey, UnresolvedMonkey)
@@ -167,5 +180,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

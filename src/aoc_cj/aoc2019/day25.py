@@ -97,7 +97,7 @@ def get_doors(ship_map, location):
     return ship_map[location]["doors"]
 
 
-def parta(txt: str):
+def part_1(txt: str):
     p = IntcodeProgram.parse(txt)
 
     ship_map = {}
@@ -137,4 +137,4 @@ def parta(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
+    print(f"part_1: {part_1(data)}")

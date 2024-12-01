@@ -40,5 +40,5 @@ def test_next_row(first_row, expected):
         prev = d.next_row(row)
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT_2, num_rows=10) == 38
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT_2, num_rows=10) == 38

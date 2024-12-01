@@ -22,9 +22,7 @@ FG..#########.....#
   ###########.#####
              Z
              Z
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 EXAMPLE_INPUT_1 = """
                    A
@@ -64,9 +62,7 @@ YN......#               VT..#....QG
   #########.###.###.#############
            B   J   C
            U   P   P
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 
 EXAMPLE_INPUT_2 = """
@@ -107,16 +103,14 @@ RE....#.#                           #......RF
   #############.#.#.###.###################
                A O F   N
                A A D   M
-""".strip(
-    "\n"
-)
+""".strip("\n")
 
 
 @pytest.mark.parametrize("input, expected", [(EXAMPLE_INPUT_0, 23), (EXAMPLE_INPUT_1, 58)])
-def test_a(input, expected):
-    assert d.parta(input) == expected
+def test_part_1(input, expected):
+    assert d.part_1(input) == expected
 
 
 @pytest.mark.parametrize("input, expected", [(EXAMPLE_INPUT_0, 26), (EXAMPLE_INPUT_2, 396)])
-def test_b(input, expected):
-    assert d.partb(input) == expected
+def test_part_2(input, expected):
+    assert d.part_2(input) == expected

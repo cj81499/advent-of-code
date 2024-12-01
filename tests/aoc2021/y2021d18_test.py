@@ -110,9 +110,9 @@ def test_magnitude(inp: str, magnitude: int):
     assert d.parse(inp).magnitude() == magnitude
 
 
-def test_a():
-    assert d.parta(EXAMPLE_INPUT_5) == 4140
+def test_part_1():
+    assert d.part_1(EXAMPLE_INPUT_5) == 4140
 
 
-def test_b():
-    assert d.partb(EXAMPLE_INPUT_5) == 3993
+def test_part_2():
+    assert d.part_2(EXAMPLE_INPUT_5) == 3993

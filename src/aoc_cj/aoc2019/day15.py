@@ -61,7 +61,7 @@ def get_complete_map(txt: str):
     return grid
 
 
-def parta(txt: str):
+def part_1(txt: str):
     complete_map = get_complete_map(txt)
     # bfs on grid starting @ 0,0 to find oxygen
     q = deque([(0 + 0j, 0)])
@@ -77,7 +77,7 @@ def parta(txt: str):
     return -1
 
 
-def partb(txt: str):
+def part_2(txt: str):
     complete_map = get_complete_map(txt)
     oxygen_pos = next(p for p, c in complete_map.items() if c == "O")
     q = deque([(oxygen_pos, 0)])
@@ -96,5 +96,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

@@ -1,4 +1,4 @@
-def is_valid_a(passport):
+def is_valid_1(passport):
     lines = passport.splitlines()
     missing = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
     for line in lines:
@@ -10,7 +10,7 @@ def is_valid_a(passport):
     return len(missing) == 0
 
 
-def is_valid_b(passport):
+def is_valid_2(passport):
     lines = passport.splitlines()
     missing = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
     for line in lines:
@@ -58,18 +58,18 @@ def is_valid_b(passport):
     return len(missing) == 0
 
 
-def parta(txt):
+def part_1(txt):
     passports = txt.split("\n\n")
-    return sum(is_valid_a(p) for p in passports)
+    return sum(is_valid_1(p) for p in passports)
 
 
-def partb(txt):
+def part_2(txt):
     passports = txt.split("\n\n")
-    return sum(is_valid_b(p) for p in passports)
+    return sum(is_valid_2(p) for p in passports)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

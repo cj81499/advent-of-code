@@ -115,14 +115,14 @@ DEFAULT_PLAYER_HP = 50
 DEFAULT_PLAYER_MANA = 500
 
 
-def parta(txt, player_hp=DEFAULT_PLAYER_HP, player_mana=DEFAULT_PLAYER_MANA):
+def part_1(txt, player_hp=DEFAULT_PLAYER_HP, player_mana=DEFAULT_PLAYER_MANA):
     boss = Unit.parse(txt, "Boss")
     player = Unit("Player", player_hp, mana=player_mana)
 
     return min_mana_for_player_win(player, boss)
 
 
-def partb(txt):
+def part_2(txt):
     boss = Unit.parse(txt, "Boss")
     player = Unit("Player", DEFAULT_PLAYER_HP, mana=DEFAULT_PLAYER_MANA)
 
@@ -132,5 +132,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

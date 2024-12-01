@@ -24,5 +24,5 @@ def test_checksum():
     assert d.checksum("110010110100") == "100"
 
 
-def test_a():
-    assert d.parta("10000", length=20) == "01100"
+def test_part_1():
+    assert d.part_1("10000", length=20) == "01100"

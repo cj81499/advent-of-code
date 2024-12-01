@@ -51,11 +51,11 @@ def get_dir_sizes(txt: str) -> list[int]:
     return [d.size for d in dirs.values()]
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     return sum(s for s in get_dir_sizes(txt) if s <= MAX_DIR_SIZE)
 
 
-def partb(txt: str) -> int:
+def part_2(txt: str) -> int:
     dir_sizes = get_dir_sizes(txt)
 
     total_used_space = max(dir_sizes)
@@ -68,5 +68,5 @@ def partb(txt: str) -> int:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

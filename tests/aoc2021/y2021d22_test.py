@@ -105,8 +105,8 @@ off x=-93533..-4276,y=-16170..68771,z=-104985..-24507
         (EXAMPLE_INPUT_2, 590784),
     ),
 )
-def test_a(input: str, expected: int) -> None:
-    assert d.parta(input) == expected
+def test_part_1(input: str, expected: int) -> None:
+    assert d.part_1(input) == expected
 
 
 @pytest.mark.parametrize(
@@ -116,8 +116,8 @@ def test_a(input: str, expected: int) -> None:
         (EXAMPLE_INPUT_3, 2758514936282235),
     ),
 )
-def test_b(input: str, expected: int) -> None:
-    assert d.partb(input) == expected
+def test_part_2(input: str, expected: int) -> None:
+    assert d.part_2(input) == expected
 
 
 CUBOID_0 = d.Cuboid(0, 0, 0, 0, 0, 0)

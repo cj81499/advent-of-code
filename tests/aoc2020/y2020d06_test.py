@@ -34,11 +34,11 @@ GROUPS = d.get_group_of_people(EXAMPLE_INPUT)
     ],
 )
 def test_a_helper(input, expected):
-    assert expected == d.parta_helper(input)
+    assert expected == d.part_1_helper(input)
 
 
-def test_a():
-    assert 11 == d.parta(EXAMPLE_INPUT)
+def test_part_1():
+    assert 11 == d.part_1(EXAMPLE_INPUT)
 
 
 @pytest.mark.parametrize(
@@ -52,8 +52,8 @@ def test_a():
     ],
 )
 def test_b_helper(input, expected):
-    assert expected == d.partb_helper(input)
+    assert expected == d.part_2_helper(input)
 
 
-def test_b():
-    assert 6 == d.partb(EXAMPLE_INPUT)
+def test_part_2():
+    assert 6 == d.part_2(EXAMPLE_INPUT)

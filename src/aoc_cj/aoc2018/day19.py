@@ -13,7 +13,7 @@ def factors(n: int) -> set[int]:
     return results
 
 
-def parta(txt: str, *, part: Literal[1, 2] = 1) -> int:
+def part_1(txt: str, *, part: Literal[1, 2] = 1) -> int:
     ip_s, *instructions_strs = txt.splitlines()
     ip = int(ip_s[4:])
     instructions = [d.Instruction.parse_str(line) for line in instructions_strs]
@@ -30,12 +30,12 @@ def parta(txt: str, *, part: Literal[1, 2] = 1) -> int:
     return registers[0] if part == 1 else sum(factors(max(registers)))
 
 
-def partb(txt: str) -> int:
-    return parta(txt, part=2)
+def part_2(txt: str) -> int:
+    return part_1(txt, part=2)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

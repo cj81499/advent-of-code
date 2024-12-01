@@ -24,17 +24,18 @@
       "import itertools",
       "import re",
       "from collections import Counter, defaultdict, deque",
+      "from dataclasses import dataclass",
       "import more_itertools as mi",
       "from aoc_cj import util",
-      "def parta(txt: str) -> int:",
+      "def part_1(txt: str) -> int:",
       "    $0print(txt)",
       "    raise NotImplementedError()",
-      "def partb(txt: str) -> int:",
+      "def part_2(txt: str) -> int:",
       "    raise NotImplementedError()",
       "if __name__ == \"__main__\":",
       "    from aocd import data",
-      "    print(f\"parta: {parta(data)}\")",
-      "    print(f\"partb: {partb(data)}\")",
+      "    print(f\"part_1: {part_1(data)}\")",
+      "    print(f\"part_2: {part_2(data)}\")"
     ]
   },
   "Advent of Code Test": {
@@ -43,14 +44,14 @@
     "prefix": "aoc-test",
     "body": [
       "import pytest",
-      "import aoc_cj.aoc20${2:22}.day${1:n} as d",
+      "import aoc_cj.aoc20${2:23}.day${1:n} as d",
       "EXAMPLE_INPUT = \"\"\"",
       "${3:sample input}",
       "\"\"\".strip()",
-      "def test_a() -> None:",
-      "    assert d.parta(EXAMPLE_INPUT) ${4:is None}$0",
-      "def test_b() -> None:",
-      "    assert d.partb(EXAMPLE_INPUT) ${5:is None}"
+      "def test_part_1() -> None:",
+      "    assert d.part_1(EXAMPLE_INPUT) ${4:is None}$0",
+      "def test_part_2() -> None:",
+      "    assert d.part_2(EXAMPLE_INPUT) ${5:is None}"
     ]
   },
   "Parametrized Test": {
@@ -62,11 +63,11 @@
       "    (\"example\", \"expected\"),",
       "    (",
       "        (${2:EXAMPLE_INPUT_1}, ${3:EXPECTED_1}),",
-      "        (${4:EXAMPLE_INPUT_1}, ${5:EXPECTED_2}),",
+      "        (${4:EXAMPLE_INPUT_2}, ${5:EXPECTED_2}),",
       "    ),",
       ")",
-      "def test_${1:FUNCTION}(example: ${6:TYPE_EXAMPLE}, expected: ${7:TYPE_EXPECTED}) -> None:",
-      "    assert d.${1:FUNCTION}(example) == expected$0",
+      "def test_${1:FUNCTION}(example: ${6:str}, expected: ${7:TYPE_EXPECTED}) -> None:",
+      "    assert d.${1:FUNCTION}(example) == expected$0"
     ]
   }
 }

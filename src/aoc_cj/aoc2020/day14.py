@@ -1,8 +1,8 @@
-def parta(txt):
+def part_1(txt):
     return solver(txt, lambda m, a: (a,), lambda m, v: int(apply_mask(m, bin36(v)), 2))
 
 
-def partb(txt):
+def part_2(txt):
     return solver(txt, lambda m, a: (addresses(apply_mask(m, bin36(a), v2=True))), lambda m, v: v)
 
 
@@ -51,5 +51,5 @@ def addresses(addr):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

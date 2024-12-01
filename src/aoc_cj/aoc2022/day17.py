@@ -1,6 +1,8 @@
 import itertools
 from collections.abc import Generator, Iterable, Iterator
 
+from typing_extensions import override
+
 
 class Rock:
     def __init__(self, points: Iterable[complex]) -> None:
@@ -12,6 +14,7 @@ class Rock:
         self.highest_y = int(max(p.imag for p in self._points))
         self.lowest_y = int(min(p.imag for p in self._points))
 
+    @override
     def __str__(self) -> str:
         return "\n".join(
             "".join(
@@ -70,7 +73,6 @@ class Chamber:
         self.highest_rock_y = 0
 
     def drop(self, rock: Rock, jet_pattern: Iterator[str]) -> None:
-
         # left edge is two units away from the left wall.
         # bottom edge is three units above the highest rock in the room
         # (or the floor, if there isn't one).
@@ -104,7 +106,7 @@ class Chamber:
         return True
 
 
-def parta(txt: str, *, rounds: int = 2022) -> int:
+def part_1(txt: str, *, rounds: int = 2022) -> int:
     chamber = Chamber()
     jet_pattern = itertools.cycle(txt)
     for _rock_i, rock in zip(range(rounds), itertools.cycle(ROCKS)):
@@ -113,13 +115,12 @@ def parta(txt: str, *, rounds: int = 2022) -> int:
     return chamber.highest_rock_y
 
 
-def partb(txt: str) -> None:
+def part_2(txt: str) -> None:
     return None
-    # return parta(txt, rounds=1000000000000)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")  # type: ignore[func-returns-value]
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")  # type: ignore[func-returns-value]

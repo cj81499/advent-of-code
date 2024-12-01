@@ -23,8 +23,8 @@ def test_is_real_room(input, expected):
     assert d.is_real_room(input) is expected
 
 
-def test_a():
-    assert d.parta("\n".join(ROOMS)) == 1514
+def test_part_1():
+    assert d.part_1("\n".join(ROOMS)) == 1514
 
 
 def test_decrypt():

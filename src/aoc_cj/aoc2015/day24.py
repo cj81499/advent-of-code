@@ -22,16 +22,16 @@ def helper(txt, number_of_groups=3):
     return min(map(prod, groups_of_size(weights, weight_per_group, min_group_size)))
 
 
-def parta(txt):
+def part_1(txt):
     return helper(txt)
 
 
-def partb(txt):
+def part_2(txt):
     return helper(txt, 4)
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

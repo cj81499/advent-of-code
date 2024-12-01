@@ -149,22 +149,20 @@ def get_grid(txt):
     return grid
 
 
-def parta(txt):
+def part_1(txt):
     grid = get_grid(txt)
     return grid.count_black_tiles()
 
 
-def partb(txt):
+def part_2(txt):
     grid = get_grid(txt)
-    for day in range(100):
+    for _day in range(100):
         grid.simulate_day()
-        # if day < 10 or (day + 1) % 10 == 0:
-        #     print(f"Day {day + 1}: {grid.count_black_tiles()}")
     return grid.count_black_tiles()
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

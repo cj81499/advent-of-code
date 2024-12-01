@@ -37,9 +37,7 @@ EXAMPLE_INPUT = """
     12        7
     1=        3
    122       37
-""".strip(
-            "\n"
-        ).splitlines()
+""".strip("\n").splitlines()
     ),
 )
 def test_snafu_to_base_10(example: str, expected: str) -> None:
@@ -66,14 +64,12 @@ def test_snafu_to_base_10(example: str, expected: str) -> None:
      2022         1=11-2
     12345        1-0---0
 314159265  1121-1110-1=0
-""".strip(
-            "\n"
-        ).splitlines()
+""".strip("\n").splitlines()
     ),
 )
 def test_base_10_to_snafu(example: str, expected: str) -> None:
     assert d.base_10_to_snafu(int(example)) == expected
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == "2=-1=0"
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == "2=-1=0"

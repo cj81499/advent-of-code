@@ -38,12 +38,12 @@ class Node:
         return self.used == 0
 
 
-def parta(txt: str) -> int:
+def part_1(txt: str) -> int:
     nodes = [Node.parse(l) for l in txt.splitlines() if l.startswith(Node.PREFIX)]
     return sum(a.used != 0 and a.used <= b.avail for a, b in itertools.permutations(nodes, 2))
 
 
-def partb(txt: str) -> None:
+def part_2(txt: str) -> None:
     grid = {(n := Node.parse(l)).point: n for l in txt.splitlines() if l.startswith(Node.PREFIX)}
     max_x, _max_y = max(grid)
 
@@ -80,5 +80,5 @@ def partb(txt: str) -> None:
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

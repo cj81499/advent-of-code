@@ -1,4 +1,4 @@
-def parta(txt: str):
+def part_1(txt: str):
     num = int(txt)
     elf1_i = 0
     elf2_i = 1
@@ -13,7 +13,7 @@ def parta(txt: str):
     return "".join(map(str, board[num : num + 10]))
 
 
-def partb(txt: str):
+def part_2(txt: str):
     digits = [int(x) for x in txt.strip()]
 
     elf1_i = 0
@@ -32,5 +32,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

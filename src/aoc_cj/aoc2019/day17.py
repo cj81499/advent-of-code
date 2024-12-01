@@ -1,7 +1,7 @@
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
 
-def parta(txt: str):
+def part_1(txt: str):
     p = IntcodeProgram.parse(txt)
     p.run()
     video_feed = "".join(chr(c) for c in p.outputs)
@@ -100,7 +100,7 @@ def plan_route(full):
                                 return [main_r, a, b, c]
 
 
-def partb(txt: str):
+def part_2(txt: str):
     p = IntcodeProgram.parse(txt)
     assert p[0] == 1
     p[0] = 2  # wake up the robot
@@ -131,5 +131,5 @@ def partb(txt: str):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

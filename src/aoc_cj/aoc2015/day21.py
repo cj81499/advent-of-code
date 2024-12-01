@@ -93,11 +93,10 @@ def battle(player: Unit, boss: Unit):
     return player if player.is_alive() else boss
 
 
-def parta(txt):
+def part_1(txt):
     boss = Unit.parse(txt)
     for gold in itertools.count():
         for purchase in go_shopping(gold):
-
             player = Unit(100, 0, 0)
             for item in purchase:
                 player.equip(item)
@@ -107,7 +106,7 @@ def parta(txt):
                 return gold
 
 
-def partb(txt):
+def part_2(txt):
     boss = Unit.parse(txt)
     most_expensive_loss = 0
     for purchase in go_shopping(float("inf")):
@@ -124,5 +123,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

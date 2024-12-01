@@ -27,16 +27,16 @@ def simulate(txt, a: int = 0):
     return registers
 
 
-def parta(txt):
+def part_1(txt):
     return simulate(txt)["b"]
 
 
-def partb(txt):
+def part_2(txt):
     return simulate(txt, a=1)["b"]
 
 
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

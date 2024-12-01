@@ -15,14 +15,14 @@ def run(player_count: int, last_marble_value: int) -> int:
     return max(scores)
 
 
-def parta(txt):
+def part_1(txt):
     split = txt.split()
     player_count = int(split[0])
     last_marble_value = int(split[6])
     return run(player_count, last_marble_value)
 
 
-def partb(txt):
+def part_2(txt):
     split = txt.split()
     player_count = int(split[0])
     last_marble_value = int(split[6])
@@ -32,5 +32,5 @@ def partb(txt):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")

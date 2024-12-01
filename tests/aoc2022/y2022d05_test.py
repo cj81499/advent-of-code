@@ -13,9 +13,9 @@ move 1 from 1 to 2
 """.rstrip()
 
 
-def test_a() -> None:
-    assert d.parta(EXAMPLE_INPUT) == "CMZ"
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == "CMZ"
 
 
-def test_b() -> None:
-    assert d.partb(EXAMPLE_INPUT) == "MCD"
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT) == "MCD"

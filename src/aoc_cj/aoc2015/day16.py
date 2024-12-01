@@ -15,20 +15,20 @@ GT_QUALITIES = {"cats", "trees"}
 LT_QUALITIES = {"pomeranians", "goldfish"}
 
 
-def parta(txt):
+def part_1(txt):
     return helper(txt)
 
 
-def partb(txt):
+def part_2(txt):
     return helper(txt, True)
 
 
-def helper(txt, partb=False):
+def helper(txt, part_2=False):
     sues = parse_sues(txt)
 
     for qual in TARGET_QUALITIES:
         n = TARGET_QUALITIES[qual]
-        sues = [s for s in sues if check_sue(s, qual, n, partb)]
+        sues = [s for s in sues if check_sue(s, qual, n, part_2)]
 
     if len(sues) != 1:
         raise AssertionError("bad input")
@@ -55,13 +55,13 @@ def parse_sue(sue_str):
     return sue
 
 
-def check_sue(sue, qual, n, partb=False):
+def check_sue(sue, qual, n, part_2=False):
     if qual not in sue:
         return True
 
     comparison = int.__eq__
 
-    if partb:
+    if part_2:
         if qual in GT_QUALITIES:
             comparison = int.__gt__
         elif qual in LT_QUALITIES:
@@ -73,5 +73,5 @@ def check_sue(sue, qual, n, partb=False):
 if __name__ == "__main__":
     from aocd import data
 
-    print(f"parta: {parta(data)}")
-    print(f"partb: {partb(data)}")
+    print(f"part_1: {part_1(data)}")
+    print(f"part_2: {part_2(data)}")
