@@ -6,9 +6,9 @@ Dancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds.
 """.strip()
 
 
-def test_part_1():
-    assert d.part_1(EXAMPLE_INPUT, 1000) == 1120
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT, duration=1000) == 1120
 
 
-def test_part_2():
-    assert d.part_2(EXAMPLE_INPUT, 1000) == 689
+def test_part_2() -> None:
+    assert d.part_2(EXAMPLE_INPUT, duration=1000) == 689

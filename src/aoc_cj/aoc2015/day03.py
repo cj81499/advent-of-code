@@ -1,7 +1,7 @@
 MOVES = {"^": (0, 1), "v": (0, -1), "<": (-1, 0), ">": (1, 0)}
 
 
-def part_1(directions: str):
+def part_1(directions: str) -> int:
     pos = (0, 0)
     visited = {pos}
     for d in directions:
@@ -10,7 +10,7 @@ def part_1(directions: str):
     return len(visited)
 
 
-def part_2(directions: str):
+def part_2(directions: str) -> int:
     active, inactive = (0, 0), (0, 0)
     visited = {active}
     for d in directions:

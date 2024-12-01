@@ -4,7 +4,7 @@ NAUGHTY_SUBSTRINGS = {"ab", "cd", "pq", "xy"}
 VOWELS = {x for x in "aeiou"}
 
 
-def is_nice1(s: str):
+def is_nice1(s: str) -> bool:
     if any(x in s for x in NAUGHTY_SUBSTRINGS):
         return False
 
@@ -22,12 +22,12 @@ def is_nice1(s: str):
     return vowel_count >= 3 and twice_in_a_row
 
 
-def is_nice2(s: str):
+def is_nice2(s: str) -> bool:
     repeating_pair = False
     sandwich = False
     pairs = set()
     prev_pair = None
-    history = deque()
+    history = deque[str]()
     for c in s:
         history.append(c)
         if len(history) == 3:
@@ -45,11 +45,11 @@ def is_nice2(s: str):
     return sandwich and repeating_pair
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     return sum(is_nice1(s) for s in txt.splitlines())
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     return sum(is_nice2(s) for s in txt.splitlines())
 
 

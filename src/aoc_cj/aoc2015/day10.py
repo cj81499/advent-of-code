@@ -1,29 +1,22 @@
-def look_and_say(txt: str, count: int):
-    chars = txt
-    for _ in range(count):
-        next_chars = []
-        count = 0
-        prev = None
-        for c in chars:
-            if c != prev and count > 0:
-                next_chars.append(str(count))
-                next_chars.append(prev)
-                count = 1
-            else:
-                count += 1
-            prev = c
-        next_chars.append(str(count))
-        next_chars.append(prev)
-        chars = next_chars
-    return "".join(chars)
+import itertools
+from typing import Iterable
+
+from more_itertools import run_length
 
 
-def part_1(txt: str):
-    return len(look_and_say(txt, 40))
+def look_and_say(txt: str, *, rounds: int) -> str:
+    it: Iterable[int] = (int(c) for c in txt)
+    for _ in range(rounds):
+        it = itertools.chain.from_iterable((count, char) for char, count in run_length.encode(it))
+    return "".join(str(n) for n in it)
 
 
-def part_2(txt: str):
-    return len(look_and_say(txt, 50))
+def part_1(txt: str) -> int:
+    return len(look_and_say(txt, rounds=40))
+
+
+def part_2(txt: str) -> int:
+    return len(look_and_say(txt, rounds=50))
 
 
 if __name__ == "__main__":

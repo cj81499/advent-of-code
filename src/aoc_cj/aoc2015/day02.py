@@ -1,4 +1,7 @@
-def part_1(txt):
+import heapq
+
+
+def part_1(txt: str) -> int:
     total_paper = 0
     for box in txt.splitlines():
         l, w, h = (int(x) for x in box.split("x"))
@@ -8,18 +11,12 @@ def part_1(txt):
     return total_paper
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     total_ribbon = 0
     for box in txt.splitlines():
-        l, w, h = (int(x) for x in box.split("x"))
-        smallest_two = []
-        for x in (l, w, h):
-            if len(smallest_two) < 2:
-                smallest_two.append(x)
-            else:
-                smallest_two.append(x)
-                smallest_two.remove(max(smallest_two))
-        total_ribbon += sum(2 * x for x in smallest_two) + l * w * h
+        dims = [int(x) for x in box.split("x")]
+        l, w, h = dims
+        total_ribbon += sum(2 * x for x in heapq.nsmallest(2, dims)) + l * w * h
     return total_ribbon
 
 

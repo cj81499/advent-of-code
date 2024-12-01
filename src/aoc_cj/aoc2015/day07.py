@@ -1,14 +1,15 @@
-from functools import cache
-from operator import and_, lshift, or_, rshift
+import functools
+from typing import Mapping
+
+from frozendict import frozendict
 
 
-class HashableDict(dict):
-    def __hash__(self):
-        return hash(tuple(sorted(self.items())))
+def signal_on(wire: str, wires: Mapping[str, str]) -> int:
+    return _signal_on(wire, frozendict(wires))
 
 
-@cache
-def signal_on(wire, wires):
+@functools.cache
+def _signal_on(wire: str, wires: Mapping[str, str]) -> int:
     if wire.isnumeric():
         return int(wire)
     val = wires[wire]
@@ -16,28 +17,36 @@ def signal_on(wire, wires):
         return int(val)
     if val.isalpha():
         return signal_on(val, wires)
-    if "NOT" in val:
+    if val.startswith("NOT "):
         return ~signal_on(val.lstrip("NOT "), wires) & 0xFFFF
     lhs, op, rhs = val.split()
-    return {
-        "LSHIFT": lshift,
-        "RSHIFT": rshift,
-        "AND": and_,
-        "OR": or_,
-    }[op](signal_on(lhs, wires), signal_on(rhs, wires))
+    if op == "LSHIFT":
+        return signal_on(lhs, wires) << signal_on(rhs, wires)
+    if op == "RSHIFT":
+        return signal_on(lhs, wires) >> signal_on(rhs, wires)
+    if op == "AND":
+        return signal_on(lhs, wires) & signal_on(rhs, wires)
+    if op == "OR":
+        return signal_on(lhs, wires) | signal_on(rhs, wires)
+    msg = f"unrecognized op: {op}"
+    raise ValueError(msg)
 
 
-def parse_wires(txt):
-    return dict(reversed(line.split(" -> ")) for line in txt.splitlines())
+def parse_wires(txt: str) -> dict[str, str]:
+    wires = {}
+    for line in txt.splitlines():
+        l, r = line.split(" -> ")
+        wires[r] = l
+    return wires
 
 
-def part_1(txt: str):
-    wires = HashableDict(parse_wires(txt))
+def part_1(txt: str) -> int:
+    wires = parse_wires(txt)
     return signal_on("a", wires)
 
 
-def part_2(txt: str):
-    wires = HashableDict(parse_wires(txt))
+def part_2(txt: str) -> int:
+    wires = parse_wires(txt)
     wires["b"] = str(signal_on("a", wires))
     return signal_on("a", wires)
 

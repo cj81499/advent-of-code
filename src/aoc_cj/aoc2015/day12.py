@@ -1,7 +1,9 @@
 import json
 
+J = int | str | dict[str, "J"] | list["J"]
 
-def sum_of_all_numbers(input_json, ignore_red=False):
+
+def sum_of_all_numbers(input_json: J, *, ignore_red: bool = False) -> int:
     if isinstance(input_json, int):
         return input_json
     elif isinstance(input_json, dict):
@@ -13,14 +15,12 @@ def sum_of_all_numbers(input_json, ignore_red=False):
     return 0
 
 
-def part_1(txt):
-    j = json.loads(txt)
-    return sum_of_all_numbers(j)
+def part_1(txt: str) -> int:
+    return sum_of_all_numbers(json.loads(txt))
 
 
-def part_2(txt):
-    j = json.loads(txt)
-    return sum_of_all_numbers(j, ignore_red=True)
+def part_2(txt: str) -> int:
+    return sum_of_all_numbers(json.loads(txt), ignore_red=True)
 
 
 if __name__ == "__main__":
