@@ -49,7 +49,7 @@ def castable_spells(player: Unit, effects: frozenset[Spell]) -> Generator[Spell,
 
 
 def after_effects(player: Unit, boss: Unit, effects: frozenset[Spell]) -> tuple[Unit, Unit, frozenset[Spell]]:
-    new_effects: set[Spell] = set()
+    new_effects = set[Spell]()
     damage = 0
     healing = 0
     armor = 0
