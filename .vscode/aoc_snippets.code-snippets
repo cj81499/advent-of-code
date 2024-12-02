@@ -44,7 +44,7 @@
     "prefix": "aoc-test",
     "body": [
       "import pytest",
-      "import aoc_cj.aoc20${2:23}.day${1:n} as d",
+      "import aoc_cj.aoc20${2:24}.day${1:n} as d",
       "EXAMPLE_INPUT = \"\"\"",
       "${3:sample input}",
       "\"\"\".strip()",
