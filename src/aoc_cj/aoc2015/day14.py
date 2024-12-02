@@ -1,5 +1,6 @@
 import dataclasses
-from typing import Generator, Mapping, Self
+from collections.abc import Generator, Mapping
+from typing import Self
 
 from more_itertools import nth
 

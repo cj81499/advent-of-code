@@ -1,5 +1,6 @@
 import math
-from typing import Generator, override
+from collections.abc import Generator
+from typing import override
 
 RECIPE_TEASPOONS = 100
 CALORIE_REQUIREMENT = 500

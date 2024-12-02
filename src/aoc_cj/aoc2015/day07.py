@@ -1,5 +1,5 @@
 import functools
-from typing import Mapping
+from collections.abc import Mapping
 
 from frozendict import frozendict
 

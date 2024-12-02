@@ -1,6 +1,6 @@
 import itertools
+from collections.abc import Generator
 from math import prod
-from typing import Generator
 
 
 def groups(weights: set[int], weight_per_group: int) -> Generator[tuple[int, ...], None, None]:

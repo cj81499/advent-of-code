@@ -1,7 +1,7 @@
 import itertools
 import re
+from collections.abc import Generator
 from dataclasses import dataclass
-from typing import Generator
 
 
 @dataclass(frozen=True)
