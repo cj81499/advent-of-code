@@ -3,10 +3,9 @@ import itertools
 import re
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
-from typing import ClassVar
+from typing import ClassVar, Self
 
 import more_itertools as mi
-from typing_extensions import Self
 
 
 class Direction(enum.Enum):

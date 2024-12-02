@@ -3,14 +3,14 @@ from collections import deque
 from collections.abc import Generator, Iterable, Sequence
 from dataclasses import dataclass
 from functools import cached_property
-from typing import ClassVar, Optional
+from typing import ClassVar
 
 import more_itertools as mi
 
 from aoc_cj import util
 
 
-def range_intersect(r1: range, r2: range) -> Optional[range]:
+def range_intersect(r1: range, r2: range) -> range | None:
     return range(max(r1.start, r2.start), min(r1.stop, r2.stop)) or None
 
 

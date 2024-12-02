@@ -8,8 +8,8 @@ Unfortunately for me, it was not reused.
 """
 
 import dataclasses
-from collections.abc import Iterable
-from typing import Callable, ClassVar, Optional
+from collections.abc import Callable, Iterable
+from typing import ClassVar
 
 
 @dataclasses.dataclass
@@ -49,7 +49,7 @@ class Computer:
         self._instructions = list(instructions)
         self._instruction_pointer = 0
         self.x = 1
-        self._running: Optional[tuple[Instruction, int]] = None
+        self._running: tuple[Instruction, int] | None = None
         self.cycle_number = 0
 
     def cycle(self) -> int:

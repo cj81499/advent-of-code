@@ -2,9 +2,8 @@ import ast
 import enum
 from collections.abc import Sequence
 from functools import cmp_to_key
-from typing import Union
 
-L = Union[int, Sequence["L"]]
+L = int | Sequence["L"]
 
 
 class CompareResult(enum.Enum):

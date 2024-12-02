@@ -1,5 +1,4 @@
 from collections.abc import Generator
-from typing import Union
 
 import more_itertools as mi
 
@@ -14,7 +13,7 @@ UP = complex(0, -1)
 FACING_TO_INT = {RIGHT: 0, DOWN: 1, LEFT: 2, UP: 3}
 
 
-def parse_map_path(path: str) -> Generator[Union[int, str], None, None]:
+def parse_map_path(path: str) -> Generator[int | str, None, None]:
     for chunk in mi.split_when(path, lambda x, y: x.isnumeric() != y.isnumeric()):
         joined = "".join(chunk)
         yield int(joined) if joined.isnumeric() else joined

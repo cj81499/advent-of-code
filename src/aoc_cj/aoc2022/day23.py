@@ -1,6 +1,6 @@
 from collections import defaultdict, deque
 from collections.abc import Iterable
-from typing import DefaultDict, Deque, Literal
+from typing import Literal
 
 CardinalDirection = Literal["N", "W", "E", "S"]
 Direction = Literal[CardinalDirection, "NW", "NE", "SW", "SE"]
@@ -29,7 +29,7 @@ class Simulation:
         self._elves = elf_positions
         self.is_complete = False
         self.round = 0
-        self._check_order: Deque[CardinalDirection] = deque(("N", "S", "W", "E"))
+        self._check_order = deque[CardinalDirection](("N", "S", "W", "E"))
 
     def simulate_round(self) -> None:
         assert not self.is_complete, "simulation is already complete"
@@ -40,7 +40,7 @@ class Simulation:
 
     def _get_proposed_moves(self) -> defaultdict[complex, set[complex]]:
         # map position to position of elves that want to move there
-        proposed_moves: DefaultDict[complex, set[complex]] = defaultdict(set)
+        proposed_moves = defaultdict[complex, set[complex]](set)
 
         for elf_pos in self._elves:
             adjacent = adj(elf_pos)

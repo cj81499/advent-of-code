@@ -1,6 +1,5 @@
 import re
-from collections.abc import Generator
-from typing import Callable
+from collections.abc import Callable, Generator
 
 import more_itertools as mi
 

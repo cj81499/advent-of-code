@@ -3,10 +3,9 @@ import dataclasses
 import itertools
 from collections.abc import Iterator
 from math import ceil, floor
-from typing import Optional
+from typing import Optional, override
 
 from more_itertools import peekable
-from typing_extensions import override
 
 
 @dataclasses.dataclass

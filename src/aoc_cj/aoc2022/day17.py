@@ -1,7 +1,6 @@
 import itertools
 from collections.abc import Generator, Iterable, Iterator
-
-from typing_extensions import override
+from typing import override
 
 
 class Rock:

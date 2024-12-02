@@ -1,6 +1,5 @@
 import dataclasses
 import re
-from typing import Optional
 
 PATTERN = re.compile(r" ([A-Z]) ")
 
@@ -18,7 +17,7 @@ class StepManager:
     def __bool__(self) -> bool:
         return not self._finished_steps()
 
-    def next_step(self) -> Optional[str]:
+    def next_step(self) -> str | None:
         return min((k for k, blocked_by in self._unstarted_requirements.items() if len(blocked_by) == 0), default=None)
 
     def start(self, step: str) -> None:
@@ -63,7 +62,7 @@ def part_1(txt: str):
 def part_2(txt: str, num_workers: int = 5, base_duration: int = 60):
     @dataclasses.dataclass
     class Worker:
-        working_on: Optional[str] = None
+        working_on: str | None = None
         remaining_time: int = 0
 
     workers = [Worker() for _ in range(num_workers)]

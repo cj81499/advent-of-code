@@ -3,10 +3,9 @@ import functools
 from collections import Counter
 from dataclasses import dataclass
 from functools import cached_property
-from typing import ClassVar
+from typing import ClassVar, override
 
 import more_itertools as mi
-from typing_extensions import override
 
 
 @functools.total_ordering

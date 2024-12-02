@@ -1,5 +1,6 @@
 import dataclasses
-from typing import Any, Callable, Generic, TypeVar
+from collections.abc import Callable
+from typing import Any, Generic, TypeVar
 
 from aoc_cj import util
 

@@ -2,11 +2,10 @@ import abc
 import dataclasses
 from collections.abc import Iterable, Iterator, Sequence
 from math import prod
-from typing import Literal, cast
+from typing import Literal, cast, override
 
 from more_itertools import ichunked, take
 from more_itertools.more import peekable
-from typing_extensions import override
 
 Binary = Literal[0, 1]
 

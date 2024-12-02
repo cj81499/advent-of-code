@@ -1,7 +1,6 @@
 from collections.abc import Generator
 from dataclasses import dataclass
-
-from typing_extensions import Self, override
+from typing import Self, override
 
 from aoc_cj import util
 

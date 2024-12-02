@@ -2,8 +2,8 @@ import dataclasses
 import math
 import re
 from collections import deque
+from collections.abc import Callable
 from heapq import nlargest
-from typing import Callable
 
 from aoc_cj import util
 

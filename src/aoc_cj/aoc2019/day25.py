@@ -1,7 +1,6 @@
 import itertools
 import re
 from collections import deque
-from typing import Optional
 
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
@@ -10,7 +9,7 @@ r = re.compile(
 )
 
 
-def send_cmd(p: IntcodeProgram, cmd: Optional[str]):
+def send_cmd(p: IntcodeProgram, cmd: str | None):
     if cmd is not None:
         for c in cmd:
             p.write_input(ord(c))
@@ -44,7 +43,7 @@ OPPOSITE_DIRECTION = {
 DANGEROUS_ITEMS = {"escape pod", "molten lava", "photons", "infinite loop", "giant electromagnet"}
 
 
-def handle_move(p: IntcodeProgram, direction: Optional[str], ship_map: dict, prev_location: Optional[str]):
+def handle_move(p: IntcodeProgram, direction: str | None, ship_map: dict, prev_location: str | None):
     output = send_cmd(p, direction)
     match = r.match(output)
     d = match.groupdict()

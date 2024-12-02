@@ -1,7 +1,7 @@
 import itertools
 import math
 import re
-from typing import Callable
+from collections.abc import Callable
 
 PATTERN = re.compile(r"^(\w+) = \((\w+), (\w+)\)$")
 
