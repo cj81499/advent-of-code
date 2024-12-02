@@ -47,7 +47,7 @@ def paths_between(
     grid: dict[complex, str],
     next_positions: NextPositions,
 ) -> Generator[frozenset[complex], None, None]:
-    to_explore: deque[tuple[complex, frozenset[complex]]] = deque(((start, frozenset((start,))),))
+    to_explore = deque[tuple[complex, frozenset[complex]]](((start, frozenset((start,))),))
     while to_explore:
         pos, seen = to_explore.popleft()
         if pos == goal:

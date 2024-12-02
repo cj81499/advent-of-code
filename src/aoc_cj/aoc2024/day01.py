@@ -3,7 +3,7 @@ import collections
 
 def parse(txt: str) -> tuple[tuple[int, ...], tuple[int, ...]]:
     ints_by_line = (tuple(int(x) for x in line.split()) for line in txt.splitlines())
-    transpose: zip[tuple[int, ...]] = zip(*ints_by_line)
+    transpose = zip[tuple[int, ...]](*ints_by_line)
     tup = tuple(transpose)
     if len(tup) != 2:
         raise ValueError

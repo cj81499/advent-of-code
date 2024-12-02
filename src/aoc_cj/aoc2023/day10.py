@@ -181,7 +181,7 @@ def part_2(txt: str) -> int:
     # (not the grid positions themselves to allow for flooding to move between disconnected pipes)
     # at the end, grid positions with no flooded corners are enclosed within the loop
 
-    flood_reachable: set[TopLeftCorner] = set()
+    flood_reachable = set[TopLeftCorner]()
     # starting from top left corner of (0, 0), we will "flood" the corners of the grid.
     to_explore = deque([TopLeftCorner(GridPosition(0, 0))])
     while to_explore:

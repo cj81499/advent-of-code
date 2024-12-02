@@ -26,7 +26,7 @@ def part_1(txt: str, *, y: int = 2000000) -> int:
 
     beacon_positions = {s.closest_beacon for s in sensors}
 
-    cannot_be_beacon: set[complex] = set()
+    cannot_be_beacon = set[complex]()
     for s in sensors:
         m = int(man_dist(s.pos, s.closest_beacon))
 

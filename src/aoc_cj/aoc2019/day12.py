@@ -24,13 +24,13 @@ def part_2(txt: str) -> int:
 
 def pos_vel(lines: list[str]) -> tuple[list[list[int]], list[list[int]]]:
     numbers = [(int(s) for s in re.findall(r"-?\d+", line)) for line in lines]
-    positions: list[list[int]] = list(map(list, zip(*numbers)))
+    positions = list[list[int]](map(list, zip(*numbers)))
     velocities = [[0] * len(numbers) for _ in range(3)]  # 3 for x, y, z
     return positions, velocities
 
 
 def simulate(positions: list[int], velocities: list[int], step_count=inf) -> int:
-    seen: set[tuple[int, ...]] = set()
+    seen = set[tuple[int, ...]]()
     step = 0
     current = (*positions, *velocities)
     while (step < step_count) if step_count < inf else (current not in seen):

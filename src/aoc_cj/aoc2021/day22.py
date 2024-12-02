@@ -148,7 +148,7 @@ class Cuboid:
 
 class CuboidCollection:
     def __init__(self) -> None:
-        self._cuboids: set[Cuboid] = set()
+        self._cuboids = set[Cuboid]()
 
     def volume(self) -> int:
         return sum(c.volume() for c in self._cuboids)
