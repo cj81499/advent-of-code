@@ -1,5 +1,5 @@
 from dataclasses import dataclass, replace
-from functools import lru_cache
+from functools import cache
 
 
 @dataclass(frozen=True)
@@ -66,7 +66,7 @@ def after_effects(player: Unit, boss: Unit, effects):
 
 
 # @cache
-@lru_cache(maxsize=None)
+@cache
 def min_mana_for_player_win_player_turn(player: Unit, boss: Unit, effects, cost_so_far, best_so_far, hard=False):
     # lose 1 hp in hard mode
     if hard:
@@ -92,7 +92,7 @@ def min_mana_for_player_win_player_turn(player: Unit, boss: Unit, effects, cost_
     return best_so_far
 
 
-@lru_cache(maxsize=None)
+@cache
 def min_mana_for_player_win_boss_turn(player: Unit, boss: Unit, effects, cost_so_far, best_so_far, hard=False):
     # effects
     player, boss, effects = after_effects(player, boss, effects)

@@ -1,7 +1,6 @@
 import itertools
 from collections.abc import Generator, Iterable, Iterator
-
-from typing_extensions import override
+from typing import override
 
 
 class Rock:
@@ -69,7 +68,7 @@ class Chamber:
     WIDTH = 7
 
     def __init__(self) -> None:
-        self._landed_rocks: set[complex] = set()
+        self._landed_rocks = set[complex]()
         self.highest_rock_y = 0
 
     def drop(self, rock: Rock, jet_pattern: Iterator[str]) -> None:

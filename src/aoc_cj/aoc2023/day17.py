@@ -1,7 +1,6 @@
 from collections.abc import Generator
 from dataclasses import dataclass
-
-from typing_extensions import Self, override
+from typing import Self, override
 
 from aoc_cj import util
 
@@ -70,7 +69,7 @@ def min_heat_loss(grid: dict[complex, int], crucible_cls: type[Crucible] = Cruci
         to_explore.push(0, crucible_cls.new(direction=RIGHT))
         to_explore.push(0, crucible_cls.new(direction=DOWN))
 
-        seen: set[Crucible] = set()
+        seen = set[Crucible]()
         while to_explore:
             state, heat_loss = to_explore.pop_with_priority()
             # skip states we've already seen and states that are more expensive than what we already know it "costs" to reach the goal

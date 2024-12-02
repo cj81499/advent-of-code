@@ -28,7 +28,7 @@ def adj(point: Point) -> Iterator[Point]:
 def step(grid: Grid) -> tuple[int, Grid]:
     new_grid = {p: n + 1 for p, n in grid.items()}
 
-    flashed: set[Point] = set()
+    flashed = set[Point]()
     while new_flashes := {p for p, n in new_grid.items() if p not in flashed and n > 9}:
         for adj_p in itertools.chain.from_iterable(map(adj, new_flashes)):
             if adj_p in new_grid:

@@ -5,13 +5,13 @@ import inspect
 import logging
 from pathlib import Path
 from types import ModuleType
-from typing import Literal, Optional, Union
+from typing import Literal
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 LOGS_DIR = PROJECT_ROOT / "logs"
 LOGS_DIR.mkdir(exist_ok=True)
 
-Answer = Optional[Union[int, str]]
+Answer = int | str | None
 Part = Literal[1, 2]
 
 logging.basicConfig(
@@ -48,7 +48,7 @@ def _solve_part(module: ModuleType, data: str, part: Part) -> Answer:  # pragma:
         try:
             # TODO: consider checking that inspect.signature matches expected signature
             resp = f(data)
-            assert isinstance(resp, (int, str)) or resp is None, f"resp ({resp}) must be an int, str, or None"
+            assert isinstance(resp, int | str) or resp is None, f"resp ({resp}) must be an int, str, or None"
             return resp
         except NotImplementedError:  # unsolved
             return None

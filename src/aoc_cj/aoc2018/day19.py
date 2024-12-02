@@ -5,7 +5,7 @@ from aoc_cj.aoc2018 import day16 as d
 
 
 def factors(n: int) -> set[int]:
-    results: set[int] = set()
+    results = set[int]()
     for i in range(1, int(n**0.5) + 1):
         if n % i == 0:
             results.add(i)

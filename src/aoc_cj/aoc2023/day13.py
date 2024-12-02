@@ -1,5 +1,4 @@
 import itertools
-from typing import Optional
 
 import numpy as np
 import numpy.typing as npt
@@ -11,7 +10,7 @@ class NoReflectionError(RuntimeError):
     pass
 
 
-def reflection_score(arr: NDArrayChar, *, dont_return: Optional[int] = None) -> int:
+def reflection_score(arr: NDArrayChar, *, dont_return: int | None = None) -> int:
     height, width = arr.shape
     for reflect_after in range(1, width):
         num_cols_to_consider = min(reflect_after, width - reflect_after)

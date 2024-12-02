@@ -1,5 +1,5 @@
 from collections import Counter
-from typing import Callable
+from collections.abc import Callable
 
 
 def part_1(txt: str) -> int:

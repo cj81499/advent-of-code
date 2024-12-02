@@ -33,7 +33,7 @@ class Grid:
         return Grid({complex(x, y): c for y, line in enumerate(s.splitlines()) for x, c in enumerate(line)})
 
     def energized_tiles(self, start: "LightBeam") -> frozenset[complex]:
-        seen: set[LightBeam] = set()
+        seen = set[LightBeam]()
         to_explore = deque((start,))
         while to_explore:
             light = to_explore.popleft()

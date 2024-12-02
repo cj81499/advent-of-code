@@ -1,9 +1,8 @@
 import itertools
 from dataclasses import dataclass
-from typing import Optional
+from typing import Self
 
 import z3  # type: ignore[import-untyped]
-from typing_extensions import Self
 
 from aoc_cj import util
 
@@ -21,7 +20,7 @@ class Hailstone:
     def parse(cls, s: str) -> Self:
         return cls(*util.ints(s))
 
-    def intersect_xy(self, other: Self) -> Optional[complex]:
+    def intersect_xy(self, other: Self) -> complex | None:
         px1 = self.px
         py1 = self.py
         vx1 = self.vx

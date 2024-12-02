@@ -1,5 +1,5 @@
+from collections.abc import Iterable
 from itertools import pairwise
-from typing import Iterable
 
 
 def is_safe(nums: Iterable[int]) -> bool:

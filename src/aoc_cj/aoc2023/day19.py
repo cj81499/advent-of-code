@@ -2,9 +2,7 @@ import math
 import re
 from collections.abc import Generator, Sequence
 from dataclasses import dataclass
-from typing import ClassVar, Literal, Optional, cast
-
-from typing_extensions import assert_never
+from typing import ClassVar, Literal, assert_never, cast
 
 XMAS = Literal["x", "m", "a", "s"]
 COMPARISON = Literal["<", ">"]
@@ -98,7 +96,7 @@ def part_2(txt: str) -> int:
         elif result != "R":
             yield from acceptable_part_ranges(workflows[result], ranges)
 
-    def acceptable_part_ranges(wf: Workflow, ranges: Optional[XMASRanges] = None) -> Generator[XMASRanges, None, None]:
+    def acceptable_part_ranges(wf: Workflow, ranges: XMASRanges | None = None) -> Generator[XMASRanges, None, None]:
         ranges = {cast(XMAS, k): range(1, 4001) for k in "xmas"} if ranges is None else ranges.copy()
         for rule in wf.rules:
             go_to_result_ranges = ranges.copy()

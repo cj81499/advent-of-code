@@ -1,12 +1,11 @@
 import abc
 import enum
-from typing import Callable, Optional, Union
-
-from typing_extensions import override
+from collections.abc import Callable
+from typing import override
 
 IntFn = Callable[[int, int], int]
 
-Monkeys = dict[str, Union[int, tuple[str, str, str]]]
+Monkeys = dict[str, int | tuple[str, str, str]]
 
 ROOT = "root"
 HUMN = "humn"
@@ -97,7 +96,7 @@ class UnresolvedMonkey(Monkey):
         self.op = op
         self.right = right
 
-        self._resolved: Optional[ResolvedMonkey] = None
+        self._resolved: ResolvedMonkey | None = None
 
     @override
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:
@@ -139,7 +138,7 @@ class ResolvedMonkey(Monkey):
         self.op = op
         self.right = right
 
-        self._contains_humn: Optional[bool] = None
+        self._contains_humn: bool | None = None
 
     @override
     def evaluate(self, monkeys: dict[str, Monkey]) -> int:

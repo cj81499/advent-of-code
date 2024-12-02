@@ -1,4 +1,4 @@
-from typing import Callable
+from collections.abc import Callable
 
 Point = tuple[int, int]
 Grid = dict[Point, str]

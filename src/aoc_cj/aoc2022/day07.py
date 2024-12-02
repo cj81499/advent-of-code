@@ -1,7 +1,8 @@
+import dataclasses
 import re
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import DefaultDict, Union
+from typing import Self
 
 MAX_DIR_SIZE = 100000
 
@@ -17,7 +18,7 @@ class File:
 
 @dataclass
 class Dir:
-    children: list[Union["Dir", File]]
+    children: list[File | Self] = dataclasses.field(default_factory=list)
 
     @property
     def size(self) -> int:
@@ -25,7 +26,7 @@ class Dir:
 
 
 def get_dir_sizes(txt: str) -> list[int]:
-    dirs: DefaultDict[str, Dir] = defaultdict(lambda: Dir([]))
+    dirs = defaultdict[str, Dir](Dir)
     current_path: list[str] = []
     for cmd in txt.split("\n$ "):
         if m := re.match(r"(\$ )?cd (.*)", cmd):

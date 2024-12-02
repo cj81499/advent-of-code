@@ -2,8 +2,8 @@
 
 import math
 import re
-from collections.abc import Generator
-from typing import Callable, TypeVar, Union
+from collections.abc import Callable, Generator
+from typing import TypeVar
 
 from ._point import Point3D
 from ._priority_queue import PriorityQueue
@@ -48,9 +48,7 @@ def is_prime(n: int) -> bool:
     return True
 
 
-def create_regex_parser(
-    p: Union[str, re.Pattern[str]], f: Callable[[str], _T]
-) -> Callable[..., Generator[_T, None, None]]:
+def create_regex_parser(p: str | re.Pattern[str], f: Callable[[str], _T]) -> Callable[..., Generator[_T, None, None]]:
     def regex_parse_fn(s: str) -> Generator[_T, None, None]:
         yield from map(f, re.findall(p, s))
 
