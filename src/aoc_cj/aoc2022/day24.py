@@ -1,6 +1,6 @@
+import functools
 import heapq
 from collections import defaultdict
-from functools import cache
 
 WALL = "#"
 
@@ -23,7 +23,7 @@ def part_1(txt: str) -> int:
     min_y = min(int(p.imag) for p in grid) + 1
     max_y = max(int(p.imag) for p in grid) - 1
 
-    @cache
+    @functools.cache
     def grid_after(minutes: int) -> dict[complex, set[str]]:
         assert minutes >= 0
         if minutes == 0:
@@ -79,7 +79,7 @@ def part_2(txt: str) -> int:
     min_y = min(int(p.imag) for p in grid) + 1
     max_y = max(int(p.imag) for p in grid) - 1
 
-    @cache
+    @functools.cache
     def grid_after(minutes: int) -> dict[complex, set[str]]:
         assert minutes >= 0
         if minutes == 0:

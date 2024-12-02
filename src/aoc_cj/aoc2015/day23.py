@@ -1,4 +1,4 @@
-def simulate(txt, a: int = 0):
+def simulate(txt: str, a: int = 0) -> dict[str, int]:
     registers = {"a": a, "b": 0}
     instructions = [line.split() for line in txt.splitlines()]
 
@@ -27,11 +27,11 @@ def simulate(txt, a: int = 0):
     return registers
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     return simulate(txt)["b"]
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     return simulate(txt, a=1)["b"]
 
 

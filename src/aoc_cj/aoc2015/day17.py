@@ -3,20 +3,20 @@ from itertools import combinations
 LITERS = 150
 
 
-def get_good_combos(txt, liters=LITERS):
+def get_good_combos(txt: str, *, liters: int = LITERS) -> list[tuple[int, ...]]:
     containers = list(map(int, txt.splitlines()))
-    good = []
+    good: list[tuple[int, ...]] = []
     for i in range(len(containers)):
         size_good = [x for x in combinations(containers, i) if sum(x) == liters]
         good.extend(size_good)
     return good
 
 
-def part_1(txt, liters=LITERS):
+def part_1(txt: str, *, liters: int = LITERS) -> int:
     return len(get_good_combos(txt, liters=liters))
 
 
-def part_2(txt, liters=LITERS):
+def part_2(txt: str, *, liters: int = LITERS) -> int:
     good_combos = get_good_combos(txt, liters=liters)
     min_len = min(map(len, good_combos))
     return sum(1 for x in good_combos if len(x) == min_len)

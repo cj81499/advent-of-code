@@ -2,6 +2,7 @@ import dataclasses
 import re
 from collections import Counter, defaultdict
 from enum import Enum
+from typing import override
 
 
 class Action(Enum):
@@ -23,15 +24,19 @@ class Instruction:
     _PARSE_REGEX = re.compile(r"(.*) (\d+),(\d+) through (\d+),(\d+)")
 
     @staticmethod
-    def parse(instruction: str):
-        action, start_x, start_y, end_x, end_y = Instruction._PARSE_REGEX.match(instruction).groups()
+    def parse(instruction: str) -> "Instruction":
+        match = Instruction._PARSE_REGEX.match(instruction)
+        if not match:
+            raise ValueError("invalid instruction")
+        action, start_x, start_y, end_x, end_y = match.groups()
         return Instruction(Action(action), (int(start_x), int(start_y)), (int(end_x), int(end_y)))
 
-    def __repr__(self):
+    @override
+    def __repr__(self) -> str:
         return f"{self.action} {self.start}-{self.end}"
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     instructions = [Instruction.parse(line) for line in txt.splitlines()]
     grid = defaultdict(bool)
     for instruction in instructions:
@@ -49,9 +54,9 @@ def part_1(txt):
     return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     instructions = [Instruction.parse(line) for line in txt.splitlines()]
-    grid = Counter()
+    grid = Counter[tuple[int, int]]()
     for instruction in instructions:
         for x in range(instruction.start[0], instruction.end[0] + 1):
             for y in range(instruction.start[1], instruction.end[1] + 1):

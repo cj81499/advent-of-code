@@ -1,5 +1,5 @@
-def decode(s: str) -> int:
-    str_in_mem = []
+def decode(s: str) -> str:
+    str_in_mem: list[str] = []
 
     # start at 1 and end at len(s) -1 to ignore quotation marks
     i = 1
@@ -21,8 +21,8 @@ def decode(s: str) -> int:
     return "".join(str_in_mem)
 
 
-def encode(s: str) -> int:
-    str_in_mem = []
+def encode(s: str) -> str:
+    str_in_mem: list[str] = []
 
     str_in_mem.append('"')
     for c in s:
@@ -37,7 +37,7 @@ def encode(s: str) -> int:
     return "".join(str_in_mem)
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     total_chars_of_code = 0
     total_chars_in_memory = 0
     for s in txt.splitlines():
@@ -47,7 +47,7 @@ def part_1(txt):
     return total_chars_of_code - total_chars_in_memory
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     total_chars_of_original = 0
     total_chars_of_encoded = 0
     for s in txt.splitlines():

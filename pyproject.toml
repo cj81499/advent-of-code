@@ -12,6 +12,7 @@ dependencies = [
     "z3-solver>=4.12.4",
     "lark>=1.1.8",
     "networkx>=3.2.1",
+    "frozendict>=2.4.6",
 ]
 requires-python = ">=3.12"
 readme = "README.md"
@@ -84,7 +85,6 @@ xfail_strict = true
 # TODO: type check tests too
 exclude = [
     '^tests\/aoc2015\/',
-    '^src\/aoc_cj\/aoc2015\/',
     '^tests\/aoc2016\/',
     '^src\/aoc_cj\/aoc2016\/',
     '^tests\/aoc2017\/',

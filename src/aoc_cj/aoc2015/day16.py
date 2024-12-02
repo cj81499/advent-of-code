@@ -15,37 +15,37 @@ GT_QUALITIES = {"cats", "trees"}
 LT_QUALITIES = {"pomeranians", "goldfish"}
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     return helper(txt)
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     return helper(txt, True)
 
 
-def helper(txt, part_2=False):
-    sues = parse_sues(txt)
+def helper(txt: str, part_2: bool = False) -> int:
+    aunts = parse_aunts(txt)
 
     for qual in TARGET_QUALITIES:
         n = TARGET_QUALITIES[qual]
-        sues = [s for s in sues if check_sue(s, qual, n, part_2)]
+        aunts = [s for s in aunts if check_aunt(s, qual, n, part_2)]
 
-    if len(sues) != 1:
+    if len(aunts) != 1:
         raise AssertionError("bad input")
 
-    return sues[0]["SUE_ID"]
+    return aunts[0]["SUE_ID"]
 
 
-def parse_sues(txt):
-    return [parse_sue(line) for line in txt.splitlines()]
+def parse_aunts(txt: str) -> list[dict[str, int]]:
+    return [parse_aunt(line) for line in txt.splitlines()]
 
 
-def parse_sue(sue_str):
-    sue = {}
+def parse_aunt(aunt_str: str) -> dict[str, int]:
+    sue: dict[str, int] = {}
 
-    colon_i = sue_str.index(": ")
-    num = int(sue_str[4:colon_i])
-    attrs = sue_str[colon_i + 2 :].split(", ")
+    colon_i = aunt_str.index(": ")
+    num = int(aunt_str[4:colon_i])
+    attrs = aunt_str[colon_i + 2 :].split(", ")
 
     sue["SUE_ID"] = num
     for attr in attrs:
@@ -55,19 +55,17 @@ def parse_sue(sue_str):
     return sue
 
 
-def check_sue(sue, qual, n, part_2=False):
-    if qual not in sue:
+def check_aunt(aunt: dict[str, int], qual: str, n: int, part_2: bool = False) -> bool:
+    if qual not in aunt:
         return True
-
-    comparison = int.__eq__
 
     if part_2:
         if qual in GT_QUALITIES:
-            comparison = int.__gt__
+            return aunt[qual] > n
         elif qual in LT_QUALITIES:
-            comparison = int.__lt__
+            return aunt[qual] < n
 
-    return comparison(sue[qual], n)
+    return aunt[qual] == n
 
 
 if __name__ == "__main__":

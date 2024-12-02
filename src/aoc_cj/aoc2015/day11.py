@@ -1,24 +1,22 @@
+from collections.abc import Generator
+
+import more_itertools
+
 CONFUSING = {"i", "o", "l"}
 
 
-def next_valid_password(txt: str) -> str:
-    password = fast_increment_password(txt)
-    while not is_valid_password(password):
-        password = fast_increment_password(password)
-    return password
+def generate_passwords(after: str) -> Generator[str, None, None]:
+    pw = after
+    while True:
+        pw = increment_password(pw)
+        if is_valid_password(pw):
+            yield pw
 
 
 def next_char(c: str) -> str:
     assert len(c) == 1
-    return chr(ord(c) + 1)
-
-
-def fast_increment_password(txt: str) -> str:
-    for i, c in enumerate(txt):
-        if c in CONFUSING:
-            return "".join(txt[:i]) + next_char(c) + ("a" * (len(txt) - (i + 1)))
-
-    return increment_password(txt)
+    c = chr(ord(c) + 1)
+    return c if c not in CONFUSING else next_char(c)
 
 
 def increment_password(txt: str) -> str:
@@ -30,35 +28,32 @@ def increment_password(txt: str) -> str:
 
 
 def is_valid_password(txt: str) -> bool:
-    # Passwords must include one increasing straight of at least three letters,
-    # like abc, bcd, cde, and so on, up to xyz. They cannot skip letters; abd doesn't count.
     # Passwords may not contain the letters i, o, or l, as these letters can
     # be mistaken for other characters and are therefore confusing.
+    if any(c in CONFUSING for c in txt):
+        return False
+
+    # Passwords must include one increasing straight of at least three letters,
+    # like abc, bcd, cde, and so on, up to xyz. They cannot skip letters; abd doesn't count.
+    if not any(True for a, b, c in more_itertools.triplewise(txt) if ord(a) + 2 == ord(b) + 1 == ord(c)):
+        return False
+
     # Passwords must contain at least two different, non-overlapping pairs of letters, like aa, bb, or zz.
-    straight = False
-    pairs = set()
+    pair_count = len(set(a for a, b in more_itertools.pairwise(txt) if a == b))
+    if pair_count < 2:
+        return False
 
-    for i in range(len(txt)):
-        if txt[i] in CONFUSING:
-            return False
-        if i < len(txt) - 1:
-            c1, c2 = txt[i], txt[i + 1]
-            if c1 == c2:
-                pairs.add(c1)
-        if not straight and i < len(txt) - 2:
-            c3 = txt[i + 2]
-            if ord(c1) == ord(c2) - 1 and ord(c1) == ord(c3) - 2:
-                straight = True
-
-    return straight and len(pairs) >= 2
+    return True
 
 
-def part_1(txt):
-    return next_valid_password(txt)
+def part_1(txt: str) -> str:
+    return more_itertools.first(generate_passwords(txt))
 
 
-def part_2(txt):
-    return next_valid_password(next_valid_password(txt))
+def part_2(txt: str) -> str:
+    res = more_itertools.nth(generate_passwords(txt), 1)
+    assert res is not None, "Unreachable. There are infinite valid passwords."
+    return res
 
 
 if __name__ == "__main__":

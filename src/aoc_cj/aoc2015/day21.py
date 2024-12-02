@@ -1,5 +1,6 @@
 import itertools
 import re
+from collections.abc import Generator
 from dataclasses import dataclass
 
 
@@ -14,7 +15,7 @@ class Item:
     _PARSE_REGEX = re.compile(r"  +")
 
     @staticmethod
-    def parse(item: str):
+    def parse(item: str) -> "Item":
         name, *stats = re.split(Item._PARSE_REGEX, item)
         return Item(name, *map(int, stats))
 
@@ -44,20 +45,21 @@ Defense +3   80     0       3
 """.strip()
 
 WEAPONS, ARMOR, RINGS = SHOP.split("\n\n")
-WEAPONS = [Item.parse(line) for line in WEAPONS.splitlines()[1:]]
+WEAPONS = {Item.parse(line) for line in WEAPONS.splitlines()[1:]}
 # add None b/c armor and rings are optional
-ARMOR = [None, *(Item.parse(line) for line in ARMOR.splitlines()[1:])]
-RINGS = [None, *(Item.parse(line) for line in RINGS.splitlines()[1:])]
+ARMOR = {None, *(Item.parse(line) for line in ARMOR.splitlines()[1:])}
+RINGS = {None, *(Item.parse(line) for line in RINGS.splitlines()[1:])}
 
 
-def go_shopping(gold):
+def go_shopping(gold: float) -> Generator[tuple[Item, ...], None, None]:
     for purchase in itertools.product(WEAPONS, ARMOR, RINGS, RINGS):
-        purchase = tuple(i for i in purchase if i is not None)
+        # remove None, since we can't purchase nothingness
+        purchase_no_none = tuple(i for i in purchase if i is not None)
         # can't purchase same item more than once (each item must be unique)
-        if len(set(purchase)) == len(purchase):
-            cost = sum(i.cost for i in purchase)
+        if len(set(purchase_no_none)) == len(purchase_no_none):
+            cost = sum(i.cost for i in purchase_no_none)
             if cost <= gold:
-                yield purchase
+                yield purchase_no_none
 
 
 @dataclass
@@ -66,26 +68,26 @@ class Unit:
     damage: int
     armor: int
 
-    def attack(self, other):
+    def attack(self, other: "Unit") -> None:
         other.hit_points -= max(1, self.damage - other.armor)
 
-    def is_alive(self):
+    def is_alive(self) -> bool:
         return self.hit_points > 0
 
-    def copy(self):
+    def copy(self) -> "Unit":
         return Unit(self.hit_points, self.damage, self.armor)
 
-    def equip(self, item: Item):
+    def equip(self, item: Item) -> None:
         self.damage += item.damage
         self.armor += item.armor
 
     @staticmethod
-    def parse(unit: str):
+    def parse(unit: str) -> "Unit":
         data = map(int, (line.split(": ")[1] for line in unit.splitlines()))
         return Unit(*data)
 
 
-def battle(player: Unit, boss: Unit):
+def battle(player: Unit, boss: Unit) -> Unit:
     active, inactive = player, boss
     while player.is_alive() and boss.is_alive():
         active.attack(inactive)
@@ -93,7 +95,7 @@ def battle(player: Unit, boss: Unit):
     return player if player.is_alive() else boss
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     boss = Unit.parse(txt)
     for gold in itertools.count():
         for purchase in go_shopping(gold):
@@ -104,9 +106,10 @@ def part_1(txt):
             winner = battle(player, boss.copy())
             if winner is player:
                 return gold
+    raise ValueError
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     boss = Unit.parse(txt)
     most_expensive_loss = 0
     for purchase in go_shopping(float("inf")):

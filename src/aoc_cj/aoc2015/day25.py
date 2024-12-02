@@ -3,11 +3,11 @@ import re
 FIRST_CODE = 20151125
 
 
-def next_code(code):
+def next_code(code: int) -> int:
     return (code * 252533) % 33554393
 
 
-def code_at(col, row):
+def code_at(col: int, row: int) -> int:
     code = FIRST_CODE
     x, y = 1, 1
 
@@ -23,8 +23,11 @@ def code_at(col, row):
 PARSE_REGEX = re.compile(r".* row (\d+), column (\d+).")
 
 
-def part_1(txt):
-    row, col = map(int, PARSE_REGEX.match(txt).groups())
+def part_1(txt: str) -> int:
+    match = PARSE_REGEX.match(txt)
+    if not match:
+        raise ValueError("bad input")
+    row, col = map(int, match.groups())
     return code_at(col, row)
 
 

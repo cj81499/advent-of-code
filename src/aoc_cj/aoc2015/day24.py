@@ -1,19 +1,20 @@
 import itertools
+from collections.abc import Generator
 from math import prod
 
 
-def groups(weights: set[int], weight_per_group: int):
+def groups(weights: set[int], weight_per_group: int) -> Generator[tuple[int, ...], None, None]:
     for size in range(1, len(weights)):
         yield from groups_of_size(weights, weight_per_group, size)
 
 
-def groups_of_size(weights, weight_per_group, size):
+def groups_of_size(weights: set[int], weight_per_group: int, size: int) -> Generator[tuple[int, ...], None, None]:
     for group in itertools.combinations(weights, r=size):
         if sum(group) == weight_per_group:
             yield group
 
 
-def helper(txt, number_of_groups=3):
+def helper(txt: str, number_of_groups: int = 3) -> int:
     weights = [int(n) for n in txt.splitlines()]
     assert len(weights) == len(set(weights))
     weights = set(weights)
@@ -22,11 +23,11 @@ def helper(txt, number_of_groups=3):
     return min(map(prod, groups_of_size(weights, weight_per_group, min_group_size)))
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     return helper(txt)
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     return helper(txt, 4)
 
 

@@ -23,7 +23,9 @@
     "aocd",
     "cj's",
     "ilen",
-    "popleft"
+    "lightshow",
+    "popleft",
+    "triplewise"
   ],
   "evenBetterToml.formatter.allowedBlankLines": 1,
   "evenBetterToml.formatter.alignComments": false,

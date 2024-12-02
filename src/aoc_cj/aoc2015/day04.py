@@ -2,18 +2,18 @@ import hashlib
 import itertools
 
 
-def find_hash(secret_key: str, zeros: int = 5):
+def find_hash(secret_key: str, zeros: int = 5) -> int:
     zeros_str = "0" * zeros
-    for i in itertools.count():
-        if hashlib.md5(f"{secret_key}{i}".encode()).hexdigest().startswith(zeros_str):
-            return i
+    return next(
+        i for i in itertools.count() if hashlib.md5(f"{secret_key}{i}".encode()).hexdigest().startswith(zeros_str)
+    )
 
 
-def part_1(secret_key: str):
+def part_1(secret_key: str) -> int:
     return find_hash(secret_key)
 
 
-def part_2(secret_key: str):
+def part_2(secret_key: str) -> int:
     return find_hash(secret_key, zeros=6)
 
 

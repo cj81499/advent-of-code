@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 
 import lark
-from more_itertools import bucket
+from more_itertools import bucket, ilen
 
 ELEMENT_PATTERN = re.compile(r"[A-Z][a-z]*")
 
@@ -36,15 +36,7 @@ def part_1(txt: str) -> int:
     return len(molecules)
 
 
-def leaf_count(tree: lark.Tree) -> int:
-    return 1 if len(tree.children) == 0 else 0 + sum(map(leaf_count, tree.children))
-
-
-def node_count(tree: lark.Tree):
-    return 1 + sum(map(node_count, tree.children))
-
-
-def part_2(txt: str) -> None:
+def part_2(txt: str) -> int:
     """
     https://www.reddit.com/r/adventofcode/comments/3xflz8/comment/cy4p1td/?utm_source=share&utm_medium=web2x&context=3
     "this is actually the production rules for an unambiguous grammar"
@@ -75,7 +67,9 @@ def part_2(txt: str) -> None:
     tree = parser.parse(medicine_molecule)
 
     # the number of transforms is the number of non-leaf nodes
-    return node_count(tree) - leaf_count(tree)
+    node_count = ilen(tree.find_pred(lambda _: True))
+    leaf_count = ilen(tree.find_pred(lambda t: len(t.children) == 0))
+    return node_count - leaf_count
 
 
 if __name__ == "__main__":
