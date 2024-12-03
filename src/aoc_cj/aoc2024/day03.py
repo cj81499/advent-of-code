@@ -6,10 +6,7 @@ INSTRUCTION_PATTERN = re.compile(r"mul\((\d+),(\d+)\)|do\(\)|don't\(\)")
 
 
 def part_1(txt: str) -> int:
-    s = 0
-    for match in MUL_PATTERN.findall(txt):
-        s += math.prod(map(int, match))
-    return s
+    return sum(math.prod(map(int, match)) for match in MUL_PATTERN.findall(txt))
 
 
 def part_2(txt: str) -> int:
@@ -21,9 +18,8 @@ def part_2(txt: str) -> int:
             enabled = True
         elif m == "don't()":
             enabled = False
-        else:
-            if enabled:
-                s += math.prod(map(int, match.groups()))
+        elif enabled:
+            s += math.prod(map(int, match.groups()))
     return s
 
 
