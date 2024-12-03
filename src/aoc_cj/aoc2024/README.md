@@ -4,7 +4,7 @@
 | :-: | --------------------------------------------------------- | :--------: | :--------: | :----------------: |
 | 01  | [Historian Hysteria](https://adventofcode.com/2024/day/1) |   :star:   |   :star:   | :white_check_mark: |
 | 02  | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)  |   :star:   |   :star:   | :white_check_mark: |
-| 03  | [?](https://adventofcode.com/2024/day/3)                  | :question: | :question: |     :question:     |
+| 03  | [Mull It Over](https://adventofcode.com/2024/day/3)       |   :star:   |   :star:   | :white_check_mark: |
 | 04  | [?](https://adventofcode.com/2024/day/4)                  | :question: | :question: |     :question:     |
 | 05  | [?](https://adventofcode.com/2024/day/5)                  | :question: | :question: |     :question:     |
 | 06  | [?](https://adventofcode.com/2024/day/6)                  | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  3   00:02:58   510      0   00:06:14   381      0
   2   00:07:34  1464      0   00:38:53  5970      0
   1   00:02:56   735      0   00:04:23   552      0
 ```
