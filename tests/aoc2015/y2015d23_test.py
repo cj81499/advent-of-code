@@ -8,6 +8,6 @@ inc a
 """.strip()
 
 
-def test_simulate():
+def test_simulate() -> None:
     registers = d.simulate(EXAMPLE_INPUT)
     assert registers["a"] == 2
