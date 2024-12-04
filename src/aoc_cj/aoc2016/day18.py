@@ -2,7 +2,7 @@ SAFE = "."
 TRAP = "^"
 
 
-def next_row(row):
+def next_row(row: str) -> str:
     return "".join(TRAP if is_trap(pos, row) else SAFE for pos in range(len(row)))
 
 

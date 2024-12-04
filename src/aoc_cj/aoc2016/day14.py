@@ -13,11 +13,11 @@ def n_repeat_character(h: str, n):
     return None  # if no such repeat exists, return None
 
 
-def standard_hash(to_hash: str):
+def standard_hash(to_hash: str) -> str:
     return md5(to_hash.encode()).hexdigest()
 
 
-def key_stretch_hash(to_hash):
+def key_stretch_hash(to_hash: str) -> str:
     h = standard_hash(to_hash)
     for _ in range(2016):
         h = standard_hash(h)

@@ -12,7 +12,7 @@ import aoc_cj.aoc2016.day07 as d
         ("ioxxoj[asdfgh]zxcvbn", True),
     ],
 )
-def test_supports_tls(input, expected):
+def test_supports_tls(input: str, expected: int) -> None:
     assert d.supports_tls(input) is expected
 
 
@@ -25,5 +25,5 @@ def test_supports_tls(input, expected):
         ("zazbz[bzb]cdb", True),
     ],
 )
-def test_supports_ssl(input, expected):
+def test_supports_ssl(input: str, expected: int) -> None:
     assert d.supports_ssl(input) is expected

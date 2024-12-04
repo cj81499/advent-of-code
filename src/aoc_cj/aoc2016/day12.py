@@ -11,7 +11,7 @@ class AssemBunnyComputer:
     def current_instruction(self):
         return self._program[self.pc]
 
-    def run(self):
+    def run(self) -> None:
         while self.pc in range(len(self._program)):
             instruction, *args = self.current_instruction
             getattr(self, instruction)(*args)
