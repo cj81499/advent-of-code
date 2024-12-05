@@ -21,7 +21,7 @@ EXAMPLE_INPUT_1 = "HOHOHO"
         (EXAMPLE_INPUT_1, 7),
     ],
 )
-def test_part_1(input, expected):
+def test_part_1(input: str, expected: int) -> None:
     input = f"{REPLACEMENTS}\n\n{input}"
     assert d.part_1(input) == expected
 
@@ -33,6 +33,6 @@ def test_part_1(input, expected):
         (EXAMPLE_INPUT_1, 6),
     ],
 )
-def test_part_2(input, expected):
+def test_part_2(input: str, expected: int) -> None:
     input = f"{REPLACEMENTS}\n\n{input}"
     assert d.part_2(input) == expected

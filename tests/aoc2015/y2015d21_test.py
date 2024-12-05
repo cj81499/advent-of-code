@@ -1,7 +1,7 @@
 import aoc_cj.aoc2015.day21 as d
 
 
-def test_battle():
+def test_battle() -> None:
     player = d.Unit(8, 5, 5)
     boss = d.Unit(12, 7, 2)
     winner = d.battle(player, boss)
