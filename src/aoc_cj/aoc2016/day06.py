@@ -1,15 +1,15 @@
 from collections import Counter
 
 
-def part_1(txt: str):
+def part_1(txt: str) -> str:
     return error_correct_message(txt)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> str:
     return error_correct_message(txt, modified=True)
 
 
-def error_correct_message(txt, modified=False):
+def error_correct_message(txt: str, *, modified: bool = False) -> str:
     message = []
     for chars in zip(*txt.splitlines()):
         counts = Counter(chars)

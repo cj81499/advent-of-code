@@ -1,56 +1,63 @@
 import itertools
 from collections import deque
+from collections.abc import Callable, Mapping, Sequence
+from typing import TypeVar
 
 INITIAL = "abcdefgh"
 SCRAMBLED = "fbgdceah"
 
+StrSeq = list[str] | tuple[str, ...]
 
-def swap(li, i, j):
-    li = li.copy()
+
+def swap(li: StrSeq, i: int, j: int) -> list[str]:
+    li = list(li)
     li[i], li[j] = li[j], li[i]
     return li
 
 
-def swap_position(pw, words):
+def swap_position(pw: StrSeq, words: StrSeq) -> list[str]:
     return swap(pw, int(words[2]), int(words[-1]))
 
 
-def swap_letter(pw, words):
+def swap_letter(pw: StrSeq, words: StrSeq) -> list[str]:
     return swap(pw, pw.index(words[2]), pw.index(words[-1]))
 
 
-def rotate(li, n):
+_T = TypeVar("_T")
+
+
+def rotate(li: Sequence[_T], n: int) -> list[_T]:
     d = deque(li)
     d.rotate(n)
     return list(d)
 
 
-def rotate_left(pw, words):
+def rotate_left(pw: StrSeq, words: StrSeq) -> list[str]:
     return rotate(pw, -int(words[-2]))
 
 
-def rotate_right(pw, words):
+def rotate_right(pw: StrSeq, words: StrSeq) -> list[str]:
     return rotate(pw, int(words[-2]))
 
 
-def rotate_based(pw, words):
+def rotate_based(pw: StrSeq, words: StrSeq) -> list[str]:
     i = pw.index(words[-1])
     return rotate(pw, 1 + i + (1 if i >= 4 else 0))
 
 
-def reverse_positions(pw, words):
+def reverse_positions(pw: StrSeq, words: StrSeq) -> list[str]:
     x, y = int(words[2]), int(words[-1])
     return [*pw[:x], *reversed(pw[x : y + 1]), *pw[y + 1 :]]
 
 
-def move_position(pw: list, words):
-    pw = pw.copy()
+def move_position(pw: StrSeq, words: StrSeq) -> list[str]:
+    pw = list(pw)
     val = pw.pop(int(words[2]))
     pw.insert(int(words[-1]), val)
     return pw
 
 
-OPS = {
+OPS: Mapping[str, Callable[[StrSeq, StrSeq], list[str]]] = {
     "swap position": swap_position,
     "swap letter": swap_letter,
     "rotate left": rotate_left,
@@ -61,14 +68,13 @@ OPS = {
 }
 
 
-def part_1(txt: str, *, initial: str = INITIAL, backwards=False):
+def part_1(txt: str, *, initial: str = INITIAL, backwards: bool = False) -> str:
     pw = [*initial]
-    ops = txt.splitlines()
-    if backwards:
-        ops = reversed(ops)
+    lines = txt.splitlines()
+    ops = reversed(lines) if backwards else lines
     for instruction in ops:
         words = instruction.split()
-        op = OPS.get(" ".join(words[:2]))
+        op = OPS[" ".join(words[:2])]
         if not backwards:
             pw = op(pw, words)
         else:
@@ -76,7 +82,7 @@ def part_1(txt: str, *, initial: str = INITIAL, backwards=False):
     return "".join(pw)
 
 
-def part_2(txt: str, *, initial: str = SCRAMBLED):
+def part_2(txt: str, *, initial: str = SCRAMBLED) -> str:
     return part_1(txt, initial=initial, backwards=True)
 
 

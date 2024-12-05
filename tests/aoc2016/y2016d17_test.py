@@ -16,7 +16,7 @@ def test_is_open() -> None:
         ("ulqzkmiv", "DRURDRUDDLLDLUURRDULRLDUUDDDRR"),
     ],
 )
-def test_part_1(input: str, expected: int) -> None:
+def test_part_1(input: str, expected: str | None) -> None:
     assert d.part_1(input) == expected
 
 

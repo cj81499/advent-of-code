@@ -7,15 +7,15 @@ def is_open(x: int, y: int, fav_num: int) -> bool:
     return num_ones % 2 == 0
 
 
-def part_1(txt: str, target_pos=(31, 39)):
+def part_1(txt: str, target_pos: tuple[int, int] = (31, 39)) -> int:
     return solve(txt, target_pos=target_pos)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return solve(txt, max_steps=50)
 
 
-def solve(txt, target_pos=None, max_steps=None):
+def solve(txt: str, target_pos: tuple[int, int] | None = None, max_steps: int | None = None) -> int:
     fav_num = int(txt)
     q = deque([(1, 1, 0)])  # (x, y, steps)
     seen = set()

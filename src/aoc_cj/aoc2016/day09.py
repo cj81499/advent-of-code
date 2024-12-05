@@ -3,15 +3,15 @@ import re
 MARKER_REGEX = re.compile(r"^\((\d+)x(\d+)\)")
 
 
-def part_1(txt: str):
+def part_1(txt: str) -> int:
     return decompressed_length(txt)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return decompressed_length(txt, recursive=True)
 
 
-def decompressed_length(s: str, recursive=False):
+def decompressed_length(s: str, *, recursive: bool = False) -> int:
     length = 0
     i = 0
     while i < len(s):

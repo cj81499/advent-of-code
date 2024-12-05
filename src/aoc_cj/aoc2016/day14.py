@@ -1,16 +1,15 @@
 import itertools
+from collections.abc import Callable, Generator
 from hashlib import md5
 
-from more_itertools import windowed
+import more_itertools as mi
 
 REQUIRED_KEYS = 64
 
 
-def n_repeat_character(h: str, n):
-    for chars in windowed(h, n):  # for each view of size n
-        if len(set(chars)) == 1:  # if the view only contains one character repeated n times
-            return chars[0]  # return the character
-    return None  # if no such repeat exists, return None
+def n_repeat_character(s: str, n: int) -> str | None:
+    """Return the first character in `s` that occurs `n` times in a row, or `None` if no such character exists."""
+    return mi.first((chars[0] for chars in mi.windowed(s, n) if len(set(chars)) == 1), default=None)
 
 
 def standard_hash(to_hash: str) -> str:
@@ -24,9 +23,9 @@ def key_stretch_hash(to_hash: str) -> str:
     return h
 
 
-def keys(salt, hash_fn=standard_hash):
-    idx_chr_pairs = set()  # (idx, char)
-    validated = set()
+def keys(salt: str, hash_fn: Callable[[str], str] = standard_hash) -> Generator[int, None, None]:
+    idx_chr_pairs = set[tuple[int, str]]()  # (idx, char)
+    validated = set[tuple[int, str]]()
 
     for i in itertools.count():
         h = hash_fn(f"{salt}{i}")
@@ -49,17 +48,16 @@ def keys(salt, hash_fn=standard_hash):
             idx_chr_pairs.add((i, c))
 
 
-def nth(iterable, n, default=None):
-    "Returns the nth item or a default value"
-    return next(itertools.islice(iterable, n, None), default)
+def part_1(txt: str) -> int:
+    res = mi.nth(keys(txt), REQUIRED_KEYS - 1)
+    assert res is not None
+    return res
 
 
-def part_1(txt: str):
-    return nth(keys(txt), REQUIRED_KEYS - 1)
-
-
-def part_2(txt: str):
-    return nth(keys(txt, hash_fn=key_stretch_hash), REQUIRED_KEYS - 1)
+def part_2(txt: str) -> int:
+    res = mi.nth(keys(txt, hash_fn=key_stretch_hash), REQUIRED_KEYS - 1)
+    assert res is not None
+    return res
 
 
 if __name__ == "__main__":
