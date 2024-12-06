@@ -19,8 +19,6 @@ def explore(mapping: dict[complex, str], initial_guard_pos: complex) -> set[comp
 
         new_guard_pos = guard_pos + guard_heading
         val_in_mapping = mapping.get(new_guard_pos)
-        if val_in_mapping is None:  # if we're outside the mapping
-            break
         if val_in_mapping == "#":
             # turn right 90 deg
             guard_heading = complex(-guard_heading.imag, guard_heading.real)
