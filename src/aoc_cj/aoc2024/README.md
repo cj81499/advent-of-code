@@ -7,7 +7,7 @@
 | 03  | [Mull It Over](https://adventofcode.com/2024/day/3)       |   :star:   |   :star:   | :white_check_mark: |
 | 04  | [Ceres Search](https://adventofcode.com/2024/day/4)       |   :star:   |   :star:   | :white_check_mark: |
 | 05  | [Print Queue](https://adventofcode.com/2024/day/5)        |   :star:   |   :star:   | :white_check_mark: |
-| 06  | [?](https://adventofcode.com/2024/day/6)                  | :question: | :question: |     :question:     |
+| 06  | [Guard Gallivant](https://adventofcode.com/2024/day/6)    |   :star:   |   :star:   | :white_check_mark: |
 | 07  | [?](https://adventofcode.com/2024/day/7)                  | :question: | :question: |     :question:     |
 | 08  | [?](https://adventofcode.com/2024/day/8)                  | :question: | :question: |     :question:     |
 | 09  | [?](https://adventofcode.com/2024/day/9)                  | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  6   00:10:06  1176      0   00:28:05  1424      0
   5   00:14:00  2415      0   00:28:36  2838      0
   4   00:16:22  3173      0   00:24:33  2475      0
   3   00:02:58   510      0   00:06:14   381      0
