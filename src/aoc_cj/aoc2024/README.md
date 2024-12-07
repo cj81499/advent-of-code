@@ -8,7 +8,7 @@
 | 04  | [Ceres Search](https://adventofcode.com/2024/day/4)       |   :star:   |   :star:   | :white_check_mark: |
 | 05  | [Print Queue](https://adventofcode.com/2024/day/5)        |   :star:   |   :star:   | :white_check_mark: |
 | 06  | [Guard Gallivant](https://adventofcode.com/2024/day/6)    |   :star:   |   :star:   | :white_check_mark: |
-| 07  | [?](https://adventofcode.com/2024/day/7)                  | :question: | :question: |     :question:     |
+| 07  | [Bridge Repair](https://adventofcode.com/2024/day/7)      |   :star:   |   :star:   | :white_check_mark: |
 | 08  | [?](https://adventofcode.com/2024/day/8)                  | :question: | :question: |     :question:     |
 | 09  | [?](https://adventofcode.com/2024/day/9)                  | :question: | :question: |     :question:     |
 | 10  | [?](https://adventofcode.com/2024/day/10)                 | :question: | :question: |     :question:     |
@@ -31,12 +31,13 @@
 ## Results
 
 ```text
-      -------Part 1--------   -------Part 2--------
-Day       Time  Rank  Score       Time  Rank  Score
-  6   00:10:06  1176      0   00:28:05  1424      0
-  5   00:14:00  2415      0   00:28:36  2838      0
-  4   00:16:22  3173      0   00:24:33  2475      0
-  3   00:02:58   510      0   00:06:14   381      0
-  2   00:07:34  1464      0   00:38:53  5970      0
-  1   00:02:56   735      0   00:04:23   552      0
+      --------Part 1--------   --------Part 2--------
+Day       Time   Rank  Score       Time   Rank  Score
+  7   18:15:03  47649      0   18:22:53  44704      0
+  6   00:10:06   1176      0   00:28:05   1424      0
+  5   00:14:00   2415      0   00:28:36   2838      0
+  4   00:16:22   3173      0   00:24:33   2475      0
+  3   00:02:58    510      0   00:06:14    381      0
+  2   00:07:34   1464      0   00:38:53   5970      0
+  1   00:02:56    735      0   00:04:23    552      0
 ```
