@@ -1,5 +1,6 @@
 import ast
 import enum
+import itertools
 from collections.abc import Sequence
 from functools import cmp_to_key
 
@@ -64,9 +65,7 @@ def part_2(txt: str) -> int:
 
     packets.sort(key=cmp_to_key(cmpb))
 
-    from more_itertools import pairwise
-
-    for a, b in pairwise(packets):
+    for a, b in itertools.pairwise(packets):
         assert compare(a, b) == CompareResult.CORRECT
 
     sep1_i = packets.index(sep1) + 1
@@ -76,7 +75,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

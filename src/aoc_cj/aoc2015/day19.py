@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 
 import lark
-from more_itertools import bucket, ilen
+import more_itertools as mi
 
 ELEMENT_PATTERN = re.compile(r"[A-Z][a-z]*")
 
@@ -44,7 +44,7 @@ def part_2(txt: str) -> int:
     """
     replacements, medicine_molecule = parse(txt)
 
-    buckets = bucket(replacements, key=lambda r: r.input)
+    buckets = mi.bucket(replacements, key=lambda r: r.input)
     replacements_by_input = {i: set(buckets[i]) for i in buckets}
 
     all_elements = {
@@ -67,13 +67,13 @@ def part_2(txt: str) -> int:
     tree = parser.parse(medicine_molecule)
 
     # the number of transforms is the number of non-leaf nodes
-    node_count = ilen(tree.find_pred(lambda _: True))
-    leaf_count = ilen(tree.find_pred(lambda t: len(t.children) == 0))
+    node_count = mi.ilen(tree.find_pred(lambda _: True))
+    leaf_count = mi.ilen(tree.find_pred(lambda t: len(t.children) == 0))
     return node_count - leaf_count
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

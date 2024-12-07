@@ -1,7 +1,6 @@
+import itertools
 from collections.abc import Sequence
 from dataclasses import dataclass
-
-import more_itertools as mi
 
 from aoc_cj import util
 
@@ -21,7 +20,7 @@ class History:
         return self.nums[0] - History(self._differences()).prev_value()
 
     def _differences(self) -> Sequence[int]:
-        return [b - a for a, b in mi.pairwise(self.nums)]
+        return [b - a for a, b in itertools.pairwise(self.nums)]
 
 
 def part_1(txt: str) -> int:
@@ -35,7 +34,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

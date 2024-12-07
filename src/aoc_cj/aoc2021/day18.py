@@ -5,7 +5,7 @@ from collections.abc import Iterator
 from math import ceil, floor
 from typing import Optional, override
 
-from more_itertools import peekable
+import more_itertools as mi
 
 
 @dataclasses.dataclass
@@ -163,11 +163,11 @@ class ValueNode(TreeNode):
 
 
 def parse(txt: str) -> TreeNode:
-    it = peekable(txt)
+    it = mi.peekable(txt)
     return (parse_pair if it.peek() == "[" else parse_int)(it)
 
 
-def parse_pair(it: "peekable[str]") -> PairNode:
+def parse_pair(it: "mi.peekable[str]") -> PairNode:
     assert next(it) == "["
     left = (parse_pair if it.peek() == "[" else parse_int)(it)
     assert next(it) == ","
@@ -197,7 +197,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

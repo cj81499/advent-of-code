@@ -1,3 +1,4 @@
+import itertools
 from collections.abc import Generator
 
 import more_itertools
@@ -39,7 +40,7 @@ def is_valid_password(txt: str) -> bool:
         return False
 
     # Passwords must contain at least two different, non-overlapping pairs of letters, like aa, bb, or zz.
-    pair_count = len(set(a for a, b in more_itertools.pairwise(txt) if a == b))
+    pair_count = len(set(a for a, b in itertools.pairwise(txt) if a == b))
     if pair_count < 2:
         return False
 
@@ -57,7 +58,7 @@ def part_2(txt: str) -> str:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

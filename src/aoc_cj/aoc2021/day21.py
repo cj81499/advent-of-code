@@ -3,7 +3,7 @@ import itertools
 from collections.abc import Iterator
 from functools import cache
 
-from more_itertools import pairwise, take
+import more_itertools as mi
 
 
 @dataclasses.dataclass
@@ -12,7 +12,7 @@ class Player:
     score: int = 0
 
     def turn(self, die: Iterator[int]) -> None:
-        rolls = take(3, die)
+        rolls = mi.take(3, die)
         self.position = (self.position - 1 + sum(rolls)) % 10 + 1
         self.score += self.position
 
@@ -21,7 +21,7 @@ def part_1(txt: str) -> int:
     die = ((n % 100) + 1 for n in itertools.count())
     players = [Player(int(line.split()[-1])) for line in txt.splitlines()]
     roll_count = 0
-    for active_player, inactive_player in pairwise(itertools.cycle(players)):
+    for active_player, inactive_player in itertools.pairwise(itertools.cycle(players)):
         active_player.turn(die)
         roll_count += 3
         if active_player.score >= 1000:
@@ -69,7 +69,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

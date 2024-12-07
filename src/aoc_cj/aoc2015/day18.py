@@ -4,7 +4,7 @@ from collections import Counter
 from collections.abc import Generator
 from typing import assert_never
 
-from more_itertools import nth
+import more_itertools as mi
 
 
 class LightState(enum.StrEnum):
@@ -71,13 +71,13 @@ def part_2(txt: str, *, steps: int = 100) -> int:
 
 def _solve(txt: str, steps: int, *, corners_stuck_on: bool = False) -> int:
     lightshow_simulation = lightshow(txt, corners_stuck_on=corners_stuck_on)
-    end_state = nth(lightshow_simulation, steps)
+    end_state = mi.nth(lightshow_simulation, steps)
     assert end_state is not None
     return sum(sum(1 for c in row if c == LightState.ON) for row in end_state)
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

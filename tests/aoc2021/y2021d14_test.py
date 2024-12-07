@@ -1,4 +1,4 @@
-from more_itertools import pairwise
+import itertools
 
 import aoc_cj.aoc2021.day14 as d
 
@@ -27,7 +27,7 @@ CN -> C
 def test_step():
     polymer, rules = d.parse(EXAMPLE_INPUT)
     assert polymer == "NNCB"
-    for start, end in pairwise(
+    for start, end in itertools.pairwise(
         (
             polymer,
             "NCNBCHB",

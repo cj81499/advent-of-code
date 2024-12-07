@@ -1,5 +1,5 @@
+import more_itertools as mi
 import pytest
-from more_itertools import nth
 
 import aoc_cj.aoc2015.day18 as d
 
@@ -122,7 +122,7 @@ AFTER_FIVE_2 = """
 )
 def test_simulation(initial: str, steps: int, expected: str, corners_stuck_on: bool) -> None:
     simulation = d.lightshow(initial, corners_stuck_on=corners_stuck_on)
-    result = nth(simulation, steps)
+    result = mi.nth(simulation, steps)
     assert result is not None, "simulation goes forever"
     assert ["".join(row) for row in result] == [line for line in expected.splitlines()]
 

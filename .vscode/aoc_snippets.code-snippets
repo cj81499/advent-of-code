@@ -20,22 +20,15 @@
     "description": "Scaffold Advent of Code Day",
     "prefix": "aoc-day",
     "body": [
-      "import enum",
-      "import itertools",
-      "import re",
-      "from collections import Counter, defaultdict, deque",
-      "from dataclasses import dataclass",
-      "import more_itertools as mi",
-      "from aoc_cj import util",
       "def part_1(txt: str) -> int:",
       "    $0print(txt)",
       "    raise NotImplementedError()",
       "def part_2(txt: str) -> int:",
       "    raise NotImplementedError()",
       "if __name__ == \"__main__\":",
-      "    from aocd import data",
-      "    print(f\"part_1: {part_1(data)}\")",
-      "    print(f\"part_2: {part_2(data)}\")"
+      "    import aocd",
+      "    print(f\"part_1: {part_1(aocd.data)}\")",
+      "    print(f\"part_2: {part_2(aocd.data)}\")"
     ]
   },
   "Advent of Code Test": {

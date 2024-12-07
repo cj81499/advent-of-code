@@ -1,7 +1,7 @@
 import itertools
 from collections import defaultdict
 
-from more_itertools import minmax
+import more_itertools as mi
 
 Pixels = defaultdict[tuple[int, int], bool]
 
@@ -42,8 +42,8 @@ def enhance(image_enhancement_algorithm: str, lit_pixels: Pixels) -> Pixels:
     new_default = not df()
     new_lit_pixels: Pixels = defaultdict(lambda: new_default)
 
-    min_x, max_x = minmax(x for x, y in lit_pixels.keys())
-    min_y, max_y = minmax(y for x, y in lit_pixels.keys())
+    min_x, max_x = mi.minmax(x for x, y in lit_pixels.keys())
+    min_y, max_y = mi.minmax(y for x, y in lit_pixels.keys())
 
     # the "litness" of any (x, y) outside of this range will be lit in allignment with `new_default`
     for x, y in itertools.product(range(min_x - 1, max_x + 2), range(min_y - 1, max_y + 2)):
@@ -60,7 +60,7 @@ def enhance(image_enhancement_algorithm: str, lit_pixels: Pixels) -> Pixels:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

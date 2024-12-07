@@ -1,6 +1,5 @@
+import itertools
 from collections import Counter
-
-from more_itertools import pairwise
 
 
 def part_1(txt: str) -> int:
@@ -15,7 +14,7 @@ def part_1(txt: str) -> int:
 
 def step(polymer: str, rules: dict[str, str]) -> str:
     new_polymer = [polymer[0]]
-    for a, b in pairwise(polymer):
+    for a, b in itertools.pairwise(polymer):
         new = rules[a + b]
         new_polymer.extend((new, b))
     return "".join(new_polymer)
@@ -24,7 +23,7 @@ def step(polymer: str, rules: dict[str, str]) -> str:
 def part_2(txt: str) -> int:
     polymer, rules = parse(txt)
 
-    pairs = Counter(pairwise(polymer))
+    pairs = Counter(itertools.pairwise(polymer))
 
     for _ in range(40):
         pairs_with_mid = ((a, rules[a + b], b, n) for (a, b), n in pairs.items())
@@ -48,7 +47,7 @@ def parse(txt: str) -> tuple[str, dict[str, str]]:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

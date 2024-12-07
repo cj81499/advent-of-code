@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Union
 
-from more_itertools import ilen
+import more_itertools as mi
 
 
 @dataclass
@@ -41,15 +41,15 @@ class SectionAssignmentPair:
 
 
 def part_1(txt: str) -> int:
-    return ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).full_overlap())
+    return mi.ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).full_overlap())
 
 
 def part_2(txt: str) -> int:
-    return ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).partial_overlap())
+    return mi.ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).partial_overlap())
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

@@ -1,4 +1,4 @@
-import more_itertools as mi
+import itertools
 
 from aoc_cj import util
 
@@ -11,7 +11,7 @@ SAND = "o"
 def parse(txt: str) -> tuple[dict[complex, str], float]:
     grid: dict[complex, str] = {}
     for text_line in txt.splitlines():
-        for a, b in mi.pairwise(tuple(util.ints(rock_line)) for rock_line in text_line.split(" -> ")):
+        for a, b in itertools.pairwise(tuple(util.ints(rock_line)) for rock_line in text_line.split(" -> ")):
             a_x, a_y = a
             b_x, b_y = b
 
@@ -81,7 +81,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

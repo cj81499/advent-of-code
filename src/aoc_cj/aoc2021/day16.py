@@ -1,11 +1,10 @@
 import abc
 import dataclasses
+import math
 from collections.abc import Iterable, Iterator, Sequence
-from math import prod
 from typing import Literal, cast, override
 
-from more_itertools import ichunked, take
-from more_itertools.more import peekable
+import more_itertools as mi
 
 Binary = Literal[0, 1]
 
@@ -50,7 +49,7 @@ class OperatorPacket(Packet):
             return sum(c.evaluate() for c in self.children)
         # Packets with type ID 1 are product packets - their value is the result of multiplying together the values of their sub-packets. If they only have a single sub-packet, their value is the value of the sub-packet.
         if self.type_id == 1:
-            return prod(c.evaluate() for c in self.children)
+            return math.prod(c.evaluate() for c in self.children)
         # Packets with type ID 2 are minimum packets - their value is the minimum of the values of their sub-packets.
         if self.type_id == 2:
             return min(c.evaluate() for c in self.children)
@@ -87,12 +86,12 @@ def binary_to_int(binary: Iterable[Binary]) -> int:
 
 
 def parse_packet(binary: Iterator[Binary]) -> Packet:
-    version = binary_to_int(take(3, binary))
-    type_id = binary_to_int(take(3, binary))
+    version = binary_to_int(mi.take(3, binary))
+    type_id = binary_to_int(mi.take(3, binary))
 
     if type_id == 4:  # literal value
         value = 0
-        for c in ichunked(binary, 5):
+        for c in mi.ichunked(binary, 5):
             first = next(c)
             for b in c:
                 value <<= 1
@@ -108,14 +107,14 @@ def parse_packet(binary: Iterator[Binary]) -> Packet:
     if length_type_id == 0:
         # next 15 bits are a number that represents the
         # total length in bits of the sub-packets contained by this packet
-        total_length_in_bits = binary_to_int(take(15, binary))
-        bits = peekable(take(total_length_in_bits, binary))
+        total_length_in_bits = binary_to_int(mi.take(15, binary))
+        bits = mi.peekable(mi.take(total_length_in_bits, binary))
         while bits:
             children.append(parse_packet(bits))
     else:
         # next 11 bits are a number that represents the
         # number of sub-packets immediately contained by this packet
-        number_of_sub_packets = binary_to_int(take(11, binary))
+        number_of_sub_packets = binary_to_int(mi.take(11, binary))
         for _ in range(number_of_sub_packets):
             children.append(parse_packet(binary))
 
@@ -143,7 +142,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

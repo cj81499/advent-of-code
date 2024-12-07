@@ -1,4 +1,4 @@
-from more_itertools import pairwise
+import itertools
 
 
 def get_digits(n: int) -> list[int]:
@@ -6,15 +6,15 @@ def get_digits(n: int) -> list[int]:
 
 
 def adj_repeat(digits: list[int]) -> bool:
-    return any(f == s for f, s in pairwise(digits))
+    return any(f == s for f, s in itertools.pairwise(digits))
 
 
 def increasing_digits(digits: list[int]) -> bool:
-    return not any(f > s for f, s in pairwise(digits))
+    return not any(f > s for f, s in itertools.pairwise(digits))
 
 
 def exact_adj_repeat_in_increasing(digits: list[int]) -> bool:
-    return any(f == s and digits.count(f) == 2 for f, s in pairwise(digits))
+    return any(f == s and digits.count(f) == 2 for f, s in itertools.pairwise(digits))
 
 
 def is_valid_part_1(digits: list[int]) -> bool:
@@ -40,7 +40,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

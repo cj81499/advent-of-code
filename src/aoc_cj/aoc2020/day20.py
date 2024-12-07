@@ -1,6 +1,6 @@
 import enum
 import itertools
-from math import prod
+import math
 
 import numpy as np
 
@@ -143,10 +143,10 @@ def sea_monster_at(picture, y, x):
     return all(area[p] == "#" for p in SEA_MONSTER_POINTS)
 
 
-def part_1(txt):
+def part_1(txt) -> int:
     tiles = parse_tiles(txt)
     corners = [t for t in tiles if t.empty_connections() == 2]
-    return prod(t.n for t in corners)
+    return math.prod(t.n for t in corners)
 
 
 def part_2(txt):
@@ -188,7 +188,7 @@ def count_sea_monsters(picture):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")
