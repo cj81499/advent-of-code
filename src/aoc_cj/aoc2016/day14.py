@@ -8,8 +8,8 @@ REQUIRED_KEYS = 64
 
 
 def n_repeat_character(s: str, n: int) -> str | None:
-    """Return the first character in `s` that occurs `n` times in a row, or `None` if no such character exists."""
-    return mi.first((chars[0] for chars in mi.windowed(s, n) if len(set(chars)) == 1), default=None)
+    """Return the first character in `s` that occurs `n` (or more) times in a row, or `None` if no such character exists."""
+    return mi.first((c for c, l in mi.run_length.encode(s) if l >= n), default=None)
 
 
 def standard_hash(to_hash: str) -> str:
