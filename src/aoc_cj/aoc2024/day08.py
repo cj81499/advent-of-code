@@ -4,42 +4,44 @@ import more_itertools as mi
 
 
 def part_1(txt: str) -> int:
-    lines = txt.splitlines()
-    scan = {x + y * 1j: c for y, row in enumerate(lines) for x, c in enumerate(row)}
-    antennas_by_freq = mi.bucket(scan.keys(), key=lambda p: scan[p], validator=lambda k: k != ".")
+    scan, antennas_by_freq = parse(txt)
 
-    antinodes_locations = set[complex]()
+    antinode_locations = set[complex]()
     for freq in antennas_by_freq:
-        antenna_locations = list(antennas_by_freq[freq])
-        for a, b in itertools.combinations(antenna_locations, 2):
+        for a, b in itertools.combinations(antennas_by_freq[freq], 2):
             diff = a - b
-            antinodes_locations.add(a + diff)
-            antinodes_locations.add(b - diff)
+            antinode_locations.add(a + diff)
+            antinode_locations.add(b - diff)
 
-    # filter out antinodes that ar outiside the scan
-    return len(antinodes_locations.intersection(scan))
+    # count antinodes that are within the scan
+    return len(antinode_locations.intersection(scan))
 
 
 def part_2(txt: str) -> int:
+    scan, antennas_by_freq = parse(txt)
     lines = txt.splitlines()
-    height = len(lines)
-    width = len(lines[0])
+    max_h_w = max(len(lines), len(lines[0]))
 
-    scan = {x + y * 1j: c for y, row in enumerate(lines) for x, c in enumerate(row)}
-    antennas_by_freq = mi.bucket(scan.keys(), key=lambda p: scan[p], validator=lambda k: k != ".")
-
-    antinodes_locations = set[complex]()
+    antinode_locations = set[complex]()
     for freq in antennas_by_freq:
-        antenna_locations = list(antennas_by_freq[freq])
-        for a, b in itertools.combinations(antenna_locations, 2):
+        for a, b in itertools.combinations(antennas_by_freq[freq], 2):
             diff = a - b
-            # HACK: 100 is probably enough....
-            # should probably do this by going until the antinode is "out of bounds"
-            for i in range(100):
-                antinodes_locations.add(a + i * diff)
-                antinodes_locations.add(b - i * diff)
+            # find "resonant" antinodes
+            # max_h_w is guaranteed to be enough "steps", even if two nodes w/ the same freq are immediately next to
+            # one another.
+            # Another approach would be to start at each node and "walk `diff` steps" until the position of the antinode
+            # is outside the scan. This is (slightly) simpler to implement and perf is not an issue.
+            antinode_locations.update(a + i * diff for i in range(max_h_w))
+            antinode_locations.update(b - i * diff for i in range(max_h_w))
 
-    return len(antinodes_locations.intersection(scan))
+    # count antinodes that are within the scan
+    return len(antinode_locations.intersection(scan))
+
+
+def parse(txt: str) -> tuple[dict[complex, str], "mi.bucket[complex, str]"]:
+    scan = {x + y * 1j: c for y, row in enumerate(txt.splitlines()) for x, c in enumerate(row)}
+    antennas_by_freq = mi.bucket(scan.keys(), key=lambda p: scan[p], validator=lambda k: k != ".")
+    return scan, antennas_by_freq
 
 
 if __name__ == "__main__":
