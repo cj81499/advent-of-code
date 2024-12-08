@@ -1,4 +1,4 @@
-from itertools import permutations
+import itertools
 
 Preferences = dict[str, dict[str, int]]
 
@@ -40,7 +40,7 @@ def seating_arangement_happiness(prefs: Preferences, arangement: tuple[str, ...]
 
 def optimal_happiness(prefs: Preferences) -> int:
     """Calculate optimal happiness"""
-    return max(seating_arangement_happiness(prefs, perm) for perm in permutations(prefs))
+    return max(seating_arangement_happiness(prefs, perm) for perm in itertools.permutations(prefs))
 
 
 def add_self_to_prefs(prefs: Preferences) -> Preferences:
@@ -60,7 +60,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

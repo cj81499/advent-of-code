@@ -1,6 +1,6 @@
 import enum
-from functools import reduce
-from statistics import median_low
+import functools
+import statistics
 from typing import NamedTuple
 
 PAIRS = {
@@ -63,17 +63,17 @@ def part_2(txt: str) -> int:
     ]
 
     assert len(scores) % 2 != 0  # assert odd number of scores
-    med = median_low(scores)  # get median
+    med = statistics.median_low(scores)  # get median
     return int(med)
 
 
 def autocomplete_score(unclosed: list[str]) -> int:
     closing_chars = (PAIRS[c] for c in reversed(unclosed))
-    return reduce(lambda acc, c: 5 * acc + INCOMPLETE_POINTS[c], closing_chars, 0)
+    return functools.reduce(lambda acc, c: 5 * acc + INCOMPLETE_POINTS[c], closing_chars, 0)
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

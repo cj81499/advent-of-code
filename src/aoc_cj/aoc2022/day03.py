@@ -1,11 +1,11 @@
+import functools
 import operator
-from functools import reduce
 
 import more_itertools as mi
 
 
 def get_common_item(*strings: str) -> str:
-    return mi.one(reduce(operator.and_, (set(s) for s in strings)))
+    return mi.one(functools.reduce(operator.and_, (set(s) for s in strings)))
 
 
 def priority(c: str) -> int:
@@ -22,7 +22,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

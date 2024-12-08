@@ -1,10 +1,10 @@
-from dataclasses import dataclass
+import dataclasses
 from typing import Union
 
-from more_itertools import ilen
+import more_itertools as mi
 
 
-@dataclass
+@dataclasses.dataclass
 class SectionAssignment:
     start: int
     end: int
@@ -19,7 +19,10 @@ class SectionAssignment:
         return item.start in self and item.end in self
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class SectionAssignmentPair:
     left: SectionAssignment
     right: SectionAssignment
@@ -41,15 +44,15 @@ class SectionAssignmentPair:
 
 
 def part_1(txt: str) -> int:
-    return ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).full_overlap())
+    return mi.ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).full_overlap())
 
 
 def part_2(txt: str) -> int:
-    return ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).partial_overlap())
+    return mi.ilen(1 for line in txt.splitlines() if SectionAssignmentPair.parse(line).partial_overlap())
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

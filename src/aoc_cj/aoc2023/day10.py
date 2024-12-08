@@ -1,7 +1,6 @@
+import functools
 from collections import deque
 from collections.abc import Generator
-from dataclasses import dataclass
-from functools import cached_property
 
 import more_itertools as mi
 
@@ -11,7 +10,10 @@ LEFT = -1
 RIGHT = +1
 
 
-@dataclass(frozen=True, order=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True, order=True)
 class GridPosition:
     x: int
     y: int
@@ -55,7 +57,10 @@ class GridPosition:
         )
 
 
-@dataclass(frozen=True, order=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True, order=True)
 class TopLeftCorner:
     pos: GridPosition
 
@@ -72,7 +77,10 @@ class TopLeftCorner:
         return TopLeftCorner(self.pos.right())
 
 
-@dataclass(frozen=True, order=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True, order=True)
 class Grid:
     contents: dict[GridPosition, str]
 
@@ -123,18 +131,18 @@ class Grid:
 
         assert False, f"unexpected value in pipe: '{pipe_type}'"
 
-    @cached_property
+    @functools.cached_property
     def _max_x(self) -> int:
         return max(p.x for p in self.contents)
 
-    @cached_property
+    @functools.cached_property
     def _max_y(self) -> int:
         return max(p.y for p in self.contents)
 
     def corner_in_bounds(self, corner: TopLeftCorner) -> bool:
         return (0 <= corner.pos.x <= self._max_x + 1) and (0 <= corner.pos.y <= self._max_y + 1)
 
-    @cached_property
+    @functools.cached_property
     def loop(self) -> dict[GridPosition, int]:
         loop_distances: dict[GridPosition, int] = {}
         to_explore = deque([(self.start_pos(), 0)])
@@ -211,7 +219,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

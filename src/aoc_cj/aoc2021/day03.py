@@ -46,7 +46,7 @@ def bitwise_filter(numbers: list[str], choose_to_keep: Callable[[Counter[str]], 
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

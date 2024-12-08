@@ -2,7 +2,6 @@ import enum
 import itertools
 import re
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass
 from typing import ClassVar, Self
 
 import more_itertools as mi
@@ -19,7 +18,10 @@ class Direction(enum.Enum):
         return complex(-d1.value.imag, d1.value.real) == d2.value
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Step:
     direction: "Direction"
     distance: int
@@ -48,7 +50,10 @@ class Step:
         )
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class DigPlan:
     steps: Sequence[Step]
 
@@ -69,7 +74,8 @@ class DigPlan:
         ):
             # modify our movements to move along the outside edge of the trench we're digging
             right_turn_count = sum(
-                Direction.is_right_turn(s1.direction, s2.direction) for s1, s2 in mi.pairwise((before, current, after))
+                Direction.is_right_turn(s1.direction, s2.direction)
+                for s1, s2 in itertools.pairwise((before, current, after))
             )
             pos += current.direction.value * (current.distance + right_turn_count - 1)
             vertices.append(pos)
@@ -102,7 +108,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

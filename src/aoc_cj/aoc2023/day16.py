@@ -1,8 +1,7 @@
+import functools
 import itertools
 from collections import deque
 from collections.abc import Generator
-from dataclasses import dataclass
-from functools import cache, cached_property
 
 UP = -1j
 DOWN = 1j
@@ -10,15 +9,18 @@ LEFT = -1
 RIGHT = 1
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Grid:
     contents: dict[complex, str]
 
-    @cached_property
+    @functools.cached_property
     def max_x(self) -> int:
         return int(max(p.real for p in self.contents))
 
-    @cached_property
+    @functools.cached_property
     def max_y(self) -> int:
         return int(max(p.imag for p in self.contents))
 
@@ -44,12 +46,15 @@ class Grid:
         return frozenset(l.pos for l in seen)
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class LightBeam:
     pos: complex
     direction: complex
 
-    @cache
+    @functools.cache
     def advance(self, contents: str) -> frozenset["LightBeam"]:
         return frozenset(self._advance(contents))
 
@@ -86,7 +91,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

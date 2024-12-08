@@ -1,11 +1,11 @@
 import dataclasses
+import enum
 import re
 from collections import Counter, defaultdict
-from enum import Enum
 from typing import override
 
 
-class Action(Enum):
+class Action(enum.Enum):
     TURN_ON = "turn on"
     TURN_OFF = "turn off"
     TOGGLE = "toggle"
@@ -73,7 +73,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

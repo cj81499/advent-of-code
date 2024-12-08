@@ -1,6 +1,5 @@
 import itertools
 import re
-from dataclasses import dataclass
 from typing import NamedTuple
 
 import more_itertools as mi
@@ -11,7 +10,10 @@ class Point(NamedTuple):
     y: int
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Node:
     point: Point
     size: int
@@ -78,7 +80,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

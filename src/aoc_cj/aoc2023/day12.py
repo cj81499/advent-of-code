@@ -1,7 +1,6 @@
+import functools
 import itertools
 import re
-from dataclasses import dataclass
-from functools import cache
 
 from aoc_cj import util
 
@@ -13,7 +12,10 @@ OPERATIONAL_PREFIX_PATTERN = re.compile(rf"^[{OPERATIONAL}]+")
 DAMAGED_OR_UNKNOWN_PREFIX_PATTERN = re.compile(rf"^[{DAMAGED}{UNKNOWN}]+")
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Row:
     contents: str
     damaged_spring_groups: tuple[int, ...]
@@ -33,7 +35,7 @@ class Row:
             tuple(itertools.chain.from_iterable(itertools.repeat(r.damaged_spring_groups, 5))),
         )
 
-    @cache
+    @functools.cache
     def count_arrangements(self) -> int:
         if len(self.contents) == 0:
             return 1 if len(self.damaged_spring_groups) == 0 else 0
@@ -88,7 +90,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

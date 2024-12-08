@@ -1,11 +1,11 @@
+import hashlib
 import itertools
 from collections import deque
 from collections.abc import Generator
-from hashlib import md5
 
 
 def is_open(passcode: str, path: str) -> tuple[bool, ...]:
-    hd = md5(f"{passcode}{path}".encode()).hexdigest()
+    hd = hashlib.md5(f"{passcode}{path}".encode()).hexdigest()
     return tuple(not x.isnumeric() and x != "a" for x in hd[:4])
 
 
@@ -42,7 +42,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

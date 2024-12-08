@@ -1,4 +1,4 @@
-from itertools import combinations
+import itertools
 
 LITERS = 150
 
@@ -7,7 +7,7 @@ def get_good_combos(txt: str, *, liters: int = LITERS) -> list[tuple[int, ...]]:
     containers = list(map(int, txt.splitlines()))
     good: list[tuple[int, ...]] = []
     for i in range(len(containers)):
-        size_good = [x for x in combinations(containers, i) if sum(x) == liters]
+        size_good = [x for x in itertools.combinations(containers, i) if sum(x) == liters]
         good.extend(size_good)
     return good
 
@@ -23,7 +23,7 @@ def part_2(txt: str, *, liters: int = LITERS) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

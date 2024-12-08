@@ -1,5 +1,4 @@
 import re
-from dataclasses import dataclass
 
 import z3
 
@@ -12,7 +11,10 @@ def z3_man_dist(p1, p2):
     return sum(z3_abs(x1 - x2) for x1, x2 in zip(p1, p2))
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class Point:
     x: int
     y: int
@@ -37,7 +39,10 @@ class Point:
 ORIGIN = Point(0, 0, 0)
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class Nanobot:
     p: Point
     r: int
@@ -53,7 +58,10 @@ class Nanobot:
         return Nanobot(Point(x, y, z), r)
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class Swarm:
     nanobots: list
 
@@ -101,7 +109,7 @@ def part_2(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

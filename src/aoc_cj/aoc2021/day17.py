@@ -2,7 +2,7 @@ import itertools
 import re
 from collections.abc import Iterable
 
-from more_itertools import ilen
+import more_itertools as mi
 
 PATTERN = re.compile(r"target area: x=(-?\d+)\.\.(-?\d+), y=(-?\d+)\.\.(-?\d+)")
 INF = float("inf")
@@ -16,7 +16,7 @@ def part_1(txt: str) -> int:
 
 
 def part_2(txt: str) -> int:
-    return ilen(simulate_all(parse_target(txt)))
+    return mi.ilen(simulate_all(parse_target(txt)))
 
 
 def simulate_all(target: Target) -> Iterable[int]:
@@ -66,7 +66,7 @@ def simulate(initial_velocity: tuple[int, int], target: Target) -> float:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

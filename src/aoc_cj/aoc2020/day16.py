@@ -1,5 +1,5 @@
 import functools
-from operator import mul
+import operator
 
 import more_itertools as mi
 
@@ -66,11 +66,11 @@ def part_2(txt):
     fields, my_ticket, nearby_tickets = parse_input(txt)
     actual_fields = get_actual_fields(fields, my_ticket, nearby_tickets)
     departure_values = [val for val, field_name in zip(my_ticket, actual_fields) if "departure" in field_name]
-    return functools.reduce(mul, departure_values, 1)
+    return functools.reduce(operator.mul, departure_values, 1)
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

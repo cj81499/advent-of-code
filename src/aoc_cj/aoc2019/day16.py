@@ -1,4 +1,4 @@
-from itertools import chain, cycle, repeat
+import itertools
 
 
 def digits(s: str):
@@ -9,7 +9,7 @@ BASE_PATTERN = [0, 1, 0, -1]
 
 
 def pattern_helper(i):
-    p = cycle(chain.from_iterable(repeat(n, i + 1) for n in BASE_PATTERN))
+    p = itertools.cycle(itertools.chain.from_iterable(itertools.repeat(n, i + 1) for n in BASE_PATTERN))
     next(p)  # skip first
     return p
 
@@ -47,7 +47,7 @@ def part_2(txt: str):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

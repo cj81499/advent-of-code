@@ -1,6 +1,6 @@
+import hashlib
 import itertools
 from collections.abc import Callable, Generator
-from hashlib import md5
 
 import more_itertools as mi
 
@@ -13,7 +13,7 @@ def n_repeat_character(s: str, n: int) -> str | None:
 
 
 def standard_hash(to_hash: str) -> str:
-    return md5(to_hash.encode()).hexdigest()
+    return hashlib.md5(to_hash.encode()).hexdigest()
 
 
 def key_stretch_hash(to_hash: str) -> str:
@@ -61,7 +61,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

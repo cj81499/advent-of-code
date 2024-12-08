@@ -1,5 +1,5 @@
+import dataclasses
 import itertools
-from dataclasses import dataclass
 from typing import Self
 
 import z3  # type: ignore[import-untyped]
@@ -7,7 +7,7 @@ import z3  # type: ignore[import-untyped]
 from aoc_cj import util
 
 
-@dataclass
+@dataclasses.dataclass
 class Hailstone:
     px: int
     py: int
@@ -115,7 +115,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

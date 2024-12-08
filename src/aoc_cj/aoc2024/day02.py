@@ -1,9 +1,9 @@
+import itertools
 from collections.abc import Iterable
-from itertools import pairwise
 
 
 def is_safe(nums: Iterable[int]) -> bool:
-    differences = [b - a for a, b in pairwise(nums)]
+    differences = [b - a for a, b in itertools.pairwise(nums)]
     return all(d in (1, 2, 3) for d in differences) or all(d in (-1, -2, -3) for d in differences)
 
 
@@ -20,7 +20,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

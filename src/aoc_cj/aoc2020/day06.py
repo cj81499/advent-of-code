@@ -1,4 +1,4 @@
-from string import ascii_lowercase
+import string
 
 
 def get_group_of_people(txt):
@@ -18,11 +18,11 @@ def part_2(txt):
 
 
 def part_2_helper(group):
-    return len({letter for letter in ascii_lowercase if all(letter in person for person in group)})
+    return len({letter for letter in string.ascii_lowercase if all(letter in person for person in group)})
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

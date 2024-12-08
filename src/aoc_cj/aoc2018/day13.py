@@ -1,12 +1,13 @@
-from dataclasses import dataclass
-
 import more_itertools as mi
 
 ARROW_TO_DIRECTION = {"^": (0, -1), "v": (0, 1), "<": (-1, 0), ">": (1, 0)}
 DIRECTION_TO_ARROW = {v: k for k, v in ARROW_TO_DIRECTION.items()}
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class Cart:
     x: int
     y: int
@@ -123,7 +124,7 @@ def part_2(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

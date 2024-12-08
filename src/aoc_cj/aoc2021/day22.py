@@ -1,6 +1,5 @@
 import itertools
 import re
-from dataclasses import dataclass
 from typing import Optional
 
 PATTERN = re.compile(r"(on|off) x=(-?\d+)\.\.(-?\d+),y=(-?\d+)\.\.(-?\d+),z=(-?\d+)\.\.(-?\d+)")
@@ -81,7 +80,10 @@ def part_2(txt: str) -> int:
     return cc.volume()
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Cuboid:
     min_x: int
     max_x: int
@@ -162,7 +164,7 @@ class CuboidCollection:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

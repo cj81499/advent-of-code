@@ -1,4 +1,4 @@
-from functools import cache
+import functools
 
 
 def get_adapters(txt):
@@ -25,7 +25,7 @@ def valid_next_adapters(joltage, adapters):
     return {joltage + i for i in range(1, 4)}.intersection(adapters)
 
 
-@cache
+@functools.cache
 def part_2_helper(joltage, adapters):
     if joltage == max(adapters):
         return 1
@@ -37,7 +37,7 @@ def part_2(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

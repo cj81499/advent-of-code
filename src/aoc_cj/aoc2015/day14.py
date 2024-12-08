@@ -2,7 +2,7 @@ import dataclasses
 from collections.abc import Generator, Mapping
 from typing import Self
 
-from more_itertools import nth
+import more_itertools as mi
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
@@ -58,7 +58,7 @@ def race_reindeers(reindeers: set[Reindeer]) -> Generator[Mapping[Reindeer, Rein
 def part_1(txt: str, *, duration: int = 2503) -> int:
     reindeers = {Reindeer.parse(l) for l in txt.splitlines()}
     race_simulation = race_reindeers(reindeers)
-    final_state = nth(race_simulation, duration)  # get simulation state after duration seconds
+    final_state = mi.nth(race_simulation, duration)  # get simulation state after duration seconds
     assert final_state is not None, "simulation could go on forever"
     return max(rs.distance_traveled for rs in final_state.values())
 
@@ -77,7 +77,7 @@ def part_2(txt: str, *, duration: int = 2503) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

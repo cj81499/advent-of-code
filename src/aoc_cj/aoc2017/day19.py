@@ -1,7 +1,7 @@
-from enum import Enum
+import enum
 
 
-class Direction(Enum):
+class Direction(enum.Enum):
     UP = (+0, -1)
     RIGHT = (+1, +0)
     DOWN = (+0, +1)
@@ -43,7 +43,7 @@ def part_2(txt: str):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

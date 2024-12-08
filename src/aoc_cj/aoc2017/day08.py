@@ -1,7 +1,14 @@
+import operator
 from collections import defaultdict
-from operator import eq, ge, gt, le, lt, ne
 
-COMPARISONS = {">": gt, "<": lt, ">=": ge, "<=": le, "==": eq, "!=": ne}
+COMPARISONS = {
+    ">": operator.gt,
+    "<": operator.lt,
+    ">=": operator.ge,
+    "<=": operator.le,
+    "==": operator.eq,
+    "!=": operator.ne,
+}
 
 
 def perform_cmd(registers, cmd):
@@ -28,7 +35,7 @@ def part_2(txt: str):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

@@ -1,4 +1,4 @@
-from itertools import count
+import itertools
 
 
 def binary_search(lo, hi, lo_ele, hi_ele, iterable):
@@ -31,13 +31,13 @@ def part_1(txt):
 
 def part_2(txt):
     ids = set(seat_ids(txt))
-    for i in count(min(ids)):  # start counting at the first id
+    for i in itertools.count(min(ids)):  # start counting at the first id
         if i not in ids:
             return i
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

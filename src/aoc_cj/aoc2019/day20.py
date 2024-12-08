@@ -1,6 +1,6 @@
+import functools
 import heapq
 from collections import deque
-from functools import total_ordering
 
 
 def part_1(txt: str):
@@ -22,7 +22,7 @@ def part_1(txt: str):
     return shortest_dist
 
 
-@total_ordering
+@functools.total_ordering
 class ComparableComplex(complex):
     def __lt__(self, other):
         if self.imag != other.imag:
@@ -106,7 +106,7 @@ def parse(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

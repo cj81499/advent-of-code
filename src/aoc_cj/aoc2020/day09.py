@@ -1,5 +1,5 @@
+import itertools
 from collections import deque
-from itertools import combinations
 
 
 def parse_nums(txt):
@@ -11,7 +11,7 @@ def part_1(txt, preamble_size=25):
     d = deque()
     for num in nums:
         if len(d) > preamble_size:
-            if not any(x + y == num for x, y in combinations(d, 2)):
+            if not any(x + y == num for x, y in itertools.combinations(d, 2)):
                 return num
             d.popleft()
         d.append(num)
@@ -31,7 +31,7 @@ def part_2(txt, preamble_size=25):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

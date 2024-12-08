@@ -1,6 +1,6 @@
 import collections
 import functools
-from operator import mul
+import operator
 
 
 def tokenize(s: str):
@@ -65,7 +65,7 @@ def weird_math_2_helper(tokens):
             elif op == "+":
                 ans += n
     sums.append(ans)
-    return functools.reduce(mul, sums, 1)
+    return functools.reduce(operator.mul, sums, 1)
 
 
 def weird_math_2(problem):
@@ -81,7 +81,7 @@ def part_2(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

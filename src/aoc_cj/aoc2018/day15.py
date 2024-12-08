@@ -1,7 +1,7 @@
 import dataclasses
+import enum
 import itertools
 from collections import deque
-from enum import Enum
 
 
 class Node:
@@ -52,7 +52,7 @@ class Location:
         return [self.add(d) for d in Direction]
 
 
-class Direction(Enum):
+class Direction(enum.Enum):
     UP = Location(0, -1)
     LEFT = Location(-1, 0)
     RIGHT = Location(+1, 0)
@@ -294,7 +294,7 @@ def part_2(txt):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

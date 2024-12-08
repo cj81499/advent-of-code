@@ -1,9 +1,9 @@
+import dataclasses
 import functools
 from collections.abc import Generator
-from dataclasses import dataclass, replace
 
 
-@dataclass(frozen=True)
+@dataclasses.dataclass(frozen=True)
 class Spell:
     name: str
     cost: int
@@ -27,7 +27,10 @@ SPELLS = [
 SPELLS.reverse()
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Unit:
     name: str
     hit_points: int
@@ -60,9 +63,11 @@ def after_effects(player: Unit, boss: Unit, effects: frozenset[Spell]) -> tuple[
         armor += e.armor
         mana += e.mana
         if e.duration - 1 > 0:
-            new_effects.add(replace(e, duration=e.duration - 1))
-    new_player = replace(player, hit_points=player.hit_points + healing, armor=armor, mana=player.mana + mana)
-    new_boss = replace(boss, hit_points=boss.hit_points - damage)
+            new_effects.add(dataclasses.replace(e, duration=e.duration - 1))
+    new_player = dataclasses.replace(
+        player, hit_points=player.hit_points + healing, armor=armor, mana=player.mana + mana
+    )
+    new_boss = dataclasses.replace(boss, hit_points=boss.hit_points - damage)
     return new_player, new_boss, frozenset(new_effects)
 
 
@@ -78,7 +83,7 @@ def min_mana_for_player_win_player_turn(
 ) -> int | None:
     # lose 1 hp in hard mode
     if hard:
-        player = replace(player, hit_points=player.hit_points - 1)
+        player = dataclasses.replace(player, hit_points=player.hit_points - 1)
         if player.is_dead():
             return None
     # effects
@@ -92,7 +97,7 @@ def min_mana_for_player_win_player_turn(
         # if we've already found a cheaper solution, don't waste time with a more expensive one
         if best_so_far is not None and cost > best_so_far:
             continue
-        new_player = replace(player, mana=player.mana - spell.cost)
+        new_player = dataclasses.replace(player, mana=player.mana - spell.cost)
         new_effects = effects.union({spell})
         min_mana = min_mana_for_player_win_boss_turn(new_player, boss, new_effects, cost, best_so_far, hard=hard)
         if min_mana is not None and (best_so_far is None or min_mana < best_so_far):
@@ -116,7 +121,7 @@ def min_mana_for_player_win_boss_turn(
     if boss.is_dead():
         return cost_so_far
     # deal damage
-    player = replace(player, hit_points=player.hit_points - max(1, boss.damage - player.armor))
+    player = dataclasses.replace(player, hit_points=player.hit_points - max(1, boss.damage - player.armor))
     # check for player death
     if player.is_dead():
         return None
@@ -149,7 +154,7 @@ def part_2(txt: str) -> int:
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

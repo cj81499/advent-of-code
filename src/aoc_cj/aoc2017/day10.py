@@ -1,7 +1,7 @@
-from functools import reduce
-from operator import xor
+import functools
+import operator
 
-from more_itertools import ichunked
+import more_itertools as mi
 
 SUFFIX = (17, 31, 73, 47, 23)
 DEFAULT_LIST_SIZE = 256
@@ -20,7 +20,7 @@ def do_round(nums, lengths, pos=0, skip_size=0):
 
 
 def dense_hash(sparse_hash):
-    return "".join(hex(reduce(xor, c))[2:].zfill(2) for c in ichunked(sparse_hash, 16))
+    return "".join(hex(functools.reduce(operator.xor, c))[2:].zfill(2) for c in mi.ichunked(sparse_hash, 16))
 
 
 def knot_hash(txt: str):
@@ -47,7 +47,7 @@ def part_2(txt: str):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

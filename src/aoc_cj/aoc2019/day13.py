@@ -1,6 +1,6 @@
 from collections import Counter
 
-from more_itertools import ichunked
+import more_itertools as mi
 
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
@@ -9,7 +9,7 @@ def part_1(txt: str):
     screen = {}
     p = IntcodeProgram.parse(txt)
     p.run()
-    for x, y, tile_id in ichunked(p.outputs, 3):
+    for x, y, tile_id in mi.ichunked(p.outputs, 3):
         screen[(x, y)] = tile_id
     return Counter(screen.values())[2]
 
@@ -65,7 +65,7 @@ def part_2(txt: str):
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")

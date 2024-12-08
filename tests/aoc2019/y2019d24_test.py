@@ -1,5 +1,6 @@
+import itertools
+
 import pytest
-from more_itertools import pairwise
 
 import aoc_cj.aoc2019.day24 as d
 
@@ -67,7 +68,7 @@ def test_str_to_bugs():
     )
 
 
-@pytest.mark.parametrize("before, after", pairwise((INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4)))
+@pytest.mark.parametrize("before, after", itertools.pairwise((INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4)))
 def test_step(before, after):
     print(f"{before=}, {after=}")
     before = d.str_to_bugs(before)

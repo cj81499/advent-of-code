@@ -1,5 +1,5 @@
+import math
 import re
-from math import gcd, inf
 
 # HEAVLIY inspired by:
 # https://github.com/kresimir-lukin/AdventOfCode2019/blob/master/day12.py
@@ -29,11 +29,11 @@ def pos_vel(lines: list[str]) -> tuple[list[list[int]], list[list[int]]]:
     return positions, velocities
 
 
-def simulate(positions: list[int], velocities: list[int], step_count=inf) -> int:
+def simulate(positions: list[int], velocities: list[int], step_count=math.inf) -> int:
     seen = set[tuple[int, ...]]()
     step = 0
     current = (*positions, *velocities)
-    while (step < step_count) if step_count < inf else (current not in seen):
+    while (step < step_count) if step_count < math.inf else (current not in seen):
         seen.add(current)
         do_step(positions, velocities)
         current = (*positions, *velocities)
@@ -65,12 +65,12 @@ def nrg(moon: tuple[tuple[int, ...], ...]) -> int:
 
 def lcm(*nums: int) -> int:
     if len(nums) == 2:
-        return nums[0] * nums[1] // gcd(nums[0], nums[1])
+        return nums[0] * nums[1] // math.gcd(nums[0], nums[1])
     return lcm(nums[0], lcm(*nums[1:]))
 
 
 if __name__ == "__main__":
-    from aocd import data
+    import aocd
 
-    print(f"part_1: {part_1(data)}")
-    print(f"part_2: {part_2(data)}")
+    print(f"part_1: {part_1(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")
