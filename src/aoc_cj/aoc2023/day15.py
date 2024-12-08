@@ -1,5 +1,4 @@
 import re
-from dataclasses import dataclass
 
 import more_itertools as mi
 
@@ -20,7 +19,10 @@ def part_1(txt: str) -> int:
     return sum(hash_algorithm(step) for step in txt.split(","))
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Lens:
     focal_length: int
     label: str

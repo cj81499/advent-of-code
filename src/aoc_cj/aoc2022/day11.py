@@ -1,9 +1,9 @@
 import dataclasses
+import heapq
 import math
 import re
 from collections import deque
 from collections.abc import Callable
-from heapq import nlargest
 
 from aoc_cj import util
 
@@ -78,7 +78,7 @@ def simulate(
         for m in monkeys:
             m.turn(monkeys, relief_strategy)
 
-    return math.prod(nlargest(2, (m.inspect_count for m in monkeys)))
+    return math.prod(heapq.nlargest(2, (m.inspect_count for m in monkeys)))
 
 
 def part_1(txt: str) -> int:

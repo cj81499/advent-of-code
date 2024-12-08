@@ -1,4 +1,4 @@
-from functools import cache
+import functools
 
 
 def get_adapters(txt):
@@ -25,7 +25,7 @@ def valid_next_adapters(joltage, adapters):
     return {joltage + i for i in range(1, 4)}.intersection(adapters)
 
 
-@cache
+@functools.cache
 def part_2_helper(joltage, adapters):
     if joltage == max(adapters):
         return 1

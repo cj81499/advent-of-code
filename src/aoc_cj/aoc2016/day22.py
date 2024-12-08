@@ -1,9 +1,8 @@
 import itertools
 import re
-from dataclasses import dataclass
 from typing import NamedTuple, Optional
 
-from more_itertools import one
+import more_itertools as mi
 
 
 class Point(NamedTuple):
@@ -11,7 +10,10 @@ class Point(NamedTuple):
     y: int
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Node:
     point: Point
     size: int
@@ -49,7 +51,7 @@ def part_2(txt: str) -> None:
 
     # use empty node to move data where we want
     empty_nodes = {n for n in grid.values() if n.used == 0}
-    empty_node = one(empty_nodes)  # there is only 1 empty node in my input
+    empty_node = mi.one(empty_nodes)  # there is only 1 empty node in my input
 
     # first, empty node must be moved next to goal data
     goal_pos = Point(max_x, 0)

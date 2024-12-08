@@ -1,4 +1,4 @@
-from itertools import combinations
+import itertools
 
 LITERS = 150
 
@@ -7,7 +7,7 @@ def get_good_combos(txt: str, *, liters: int = LITERS) -> list[tuple[int, ...]]:
     containers = list(map(int, txt.splitlines()))
     good: list[tuple[int, ...]] = []
     for i in range(len(containers)):
-        size_good = [x for x in combinations(containers, i) if sum(x) == liters]
+        size_good = [x for x in itertools.combinations(containers, i) if sum(x) == liters]
         good.extend(size_good)
     return good
 

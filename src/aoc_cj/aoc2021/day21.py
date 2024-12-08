@@ -1,7 +1,7 @@
 import dataclasses
+import functools
 import itertools
 from collections.abc import Iterator
-from functools import cache
 
 import more_itertools as mi
 
@@ -38,7 +38,7 @@ class State:
     active: int = 0
 
 
-@cache
+@functools.cache
 def helper(state: State) -> list[int]:
     wins = [0, 0]
     possible_rolls = itertools.product(range(1, 4), range(1, 4), range(1, 4))

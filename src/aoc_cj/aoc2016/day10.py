@@ -1,5 +1,5 @@
+import math
 from collections import defaultdict
-from math import prod
 
 
 def part_1(txt: str, compare=(61, 17)):
@@ -41,7 +41,7 @@ def simulate(txt, compare):
                 new_bots[bot_num].update(holding)
         bots = new_bots
     outputs = {k: next(iter(v)) for k, v in outputs.items()}
-    return prod(outputs[n] for n in range(3))
+    return math.prod(outputs[n] for n in range(3))
 
 
 if __name__ == "__main__":

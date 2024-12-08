@@ -1,11 +1,11 @@
+import functools
 import operator
-from functools import reduce
 
 import more_itertools as mi
 
 
 def get_common_item(*strings: str) -> str:
-    return mi.one(reduce(operator.and_, (set(s) for s in strings)))
+    return mi.one(functools.reduce(operator.and_, (set(s) for s in strings)))
 
 
 def priority(c: str) -> int:

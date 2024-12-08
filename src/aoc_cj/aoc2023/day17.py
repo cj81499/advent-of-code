@@ -1,5 +1,4 @@
 from collections.abc import Generator
-from dataclasses import dataclass
 from typing import Self, override
 
 from aoc_cj import util
@@ -12,7 +11,10 @@ RIGHT = +1
 DIRECTIONS = frozenset((UP, DOWN, LEFT, RIGHT))
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Crucible:
     pos: complex
     direction: complex

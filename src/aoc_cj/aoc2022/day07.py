@@ -1,7 +1,6 @@
 import dataclasses
 import re
 from collections import defaultdict
-from dataclasses import dataclass
 from typing import Self
 
 MAX_DIR_SIZE = 100000
@@ -10,13 +9,19 @@ TOTAL_DISK_SPACE = 70000000
 REQUIRED_AVAILABLE_SPACE = 30000000
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class File:
     name: str
     size: int
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class Dir:
     children: list[File | Self] = dataclasses.field(default_factory=list)
 

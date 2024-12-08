@@ -1,3 +1,6 @@
+import math
+
+
 class Chemical:
     def __init__(self, chem_str: str) -> None:
         qty, self.name = chem_str.split(" ")
@@ -30,9 +33,8 @@ def ore_req(chemical: str, rxns: set[Reaction], count: int = 1, leftover=None) -
         leftover = {}
     rxn = next(filter(lambda rxn: rxn.output.name == chemical, rxns))
     existing = leftover.get(chemical, 0)
-    from math import ceil
 
-    mult = ceil(max(count - existing, 0) / rxn.output.qty)
+    mult = math.ceil(max(count - existing, 0) / rxn.output.qty)
     unused = rxn.output.qty * mult - (count - existing)
     leftover[chemical] = unused
     return sum(ore_req(i.name, rxns, mult * i.qty, leftover) for i in rxn.inputs)

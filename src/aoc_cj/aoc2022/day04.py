@@ -1,10 +1,10 @@
-from dataclasses import dataclass
+import dataclasses
 from typing import Union
 
 import more_itertools as mi
 
 
-@dataclass
+@dataclasses.dataclass
 class SectionAssignment:
     start: int
     end: int
@@ -19,7 +19,10 @@ class SectionAssignment:
         return item.start in self and item.end in self
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class SectionAssignmentPair:
     left: SectionAssignment
     right: SectionAssignment

@@ -1,4 +1,4 @@
-from more_itertools import ilen
+import more_itertools as mi
 
 MAX_32_BIT_INTEGER = 0xFFFF_FFFF
 
@@ -8,7 +8,7 @@ def part_1(txt: str):
 
 
 def part_2(txt: str, max_ip=MAX_32_BIT_INTEGER):
-    return ilen(valid_ips(txt, max_ip))
+    return mi.ilen(valid_ips(txt, max_ip))
 
 
 def valid_ips(txt: str, max_ip=MAX_32_BIT_INTEGER):

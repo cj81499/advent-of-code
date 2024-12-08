@@ -1,4 +1,4 @@
-from string import ascii_lowercase
+import string
 
 
 def get_group_of_people(txt):
@@ -18,7 +18,7 @@ def part_2(txt):
 
 
 def part_2_helper(group):
-    return len({letter for letter in ascii_lowercase if all(letter in person for person in group)})
+    return len({letter for letter in string.ascii_lowercase if all(letter in person for person in group)})
 
 
 if __name__ == "__main__":

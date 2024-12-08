@@ -1,8 +1,8 @@
 import ast
 import enum
+import functools
 import itertools
 from collections.abc import Sequence
-from functools import cmp_to_key
 
 L = int | Sequence["L"]
 
@@ -63,7 +63,7 @@ def part_2(txt: str) -> int:
     sep2 = [[6]]
     packets: list[L] = [sep1, sep2, *(ast.literal_eval(line) for line in txt.splitlines() if line != "")]
 
-    packets.sort(key=cmp_to_key(cmpb))
+    packets.sort(key=functools.cmp_to_key(cmpb))
 
     for a, b in itertools.pairwise(packets):
         assert compare(a, b) == CompareResult.CORRECT

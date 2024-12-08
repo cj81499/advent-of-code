@@ -1,8 +1,8 @@
 import abc
 import dataclasses
 import itertools
+import math
 from collections.abc import Iterator
-from math import ceil, floor
 from typing import Optional, override
 
 import more_itertools as mi
@@ -147,7 +147,7 @@ class ValueNode(TreeNode):
 
         p = self.parent
         assert p is not None
-        new_pair = PairNode(p, ValueNode(None, floor(half)), ValueNode(None, ceil(half)))
+        new_pair = PairNode(p, ValueNode(None, math.floor(half)), ValueNode(None, math.ceil(half)))
         if p.left is self:
             p.left = new_pair
         elif p.right is self:

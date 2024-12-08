@@ -1,10 +1,10 @@
+import dataclasses
 import itertools
 import re
 from collections.abc import Generator
-from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclasses.dataclass(frozen=True)
 class Item:
     name: str
     cost: int
@@ -62,7 +62,10 @@ def go_shopping(gold: float) -> Generator[tuple[Item, ...], None, None]:
                 yield purchase_no_none
 
 
-@dataclass
+import dataclasses
+
+
+@dataclasses.dataclass
 class Unit:
     hit_points: int
     damage: int

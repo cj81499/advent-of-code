@@ -1,15 +1,14 @@
+import dataclasses
 import enum
 import functools
 from collections import Counter
-from dataclasses import dataclass
-from functools import cached_property
 from typing import ClassVar, override
 
 import more_itertools as mi
 
 
 @functools.total_ordering
-@dataclass(frozen=True)
+@dataclasses.dataclass(frozen=True)
 class Hand:
     cards: str
     bid: int
@@ -36,7 +35,7 @@ class Hand:
     def _tuple_val(self) -> tuple[Type, tuple[int, ...]]:
         return (self.type, tuple(self.CARD_VALUES.index(c) for c in self.cards))
 
-    @cached_property
+    @functools.cached_property
     def type(self) -> Type:
         counts = Counter(self.cards)
         return Hand._type_helper(counts)
@@ -68,7 +67,7 @@ class HandB(Hand):
     CARD_VALUES: ClassVar = "AKQT98765432J"[::-1]
 
     @override
-    @cached_property
+    @functools.cached_property
     def type(self) -> Hand.Type:
         counts = Counter(self.cards)
         joker_count = counts.pop("J", 0)

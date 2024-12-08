@@ -1,5 +1,5 @@
-from functools import reduce
-from operator import xor
+import functools
+import operator
 
 import more_itertools as mi
 
@@ -20,7 +20,7 @@ def do_round(nums, lengths, pos=0, skip_size=0):
 
 
 def dense_hash(sparse_hash):
-    return "".join(hex(reduce(xor, c))[2:].zfill(2) for c in mi.ichunked(sparse_hash, 16))
+    return "".join(hex(functools.reduce(operator.xor, c))[2:].zfill(2) for c in mi.ichunked(sparse_hash, 16))
 
 
 def knot_hash(txt: str):

@@ -1,7 +1,14 @@
+import operator
 from collections import defaultdict
-from operator import eq, ge, gt, le, lt, ne
 
-COMPARISONS = {">": gt, "<": lt, ">=": ge, "<=": le, "==": eq, "!=": ne}
+COMPARISONS = {
+    ">": operator.gt,
+    "<": operator.lt,
+    ">=": operator.ge,
+    "<=": operator.le,
+    "==": operator.eq,
+    "!=": operator.ne,
+}
 
 
 def perform_cmd(registers, cmd):

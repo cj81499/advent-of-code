@@ -1,11 +1,11 @@
 import dataclasses
+import enum
 import re
 from collections import Counter, defaultdict
-from enum import Enum
 from typing import override
 
 
-class Action(Enum):
+class Action(enum.Enum):
     TURN_ON = "turn on"
     TURN_OFF = "turn off"
     TOGGLE = "toggle"

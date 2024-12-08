@@ -1,7 +1,7 @@
 import dataclasses
+import enum
 import itertools
 from collections import deque
-from enum import Enum
 
 
 class Node:
@@ -52,7 +52,7 @@ class Location:
         return [self.add(d) for d in Direction]
 
 
-class Direction(Enum):
+class Direction(enum.Enum):
     UP = Location(0, -1)
     LEFT = Location(-1, 0)
     RIGHT = Location(+1, 0)

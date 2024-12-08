@@ -1,4 +1,4 @@
-from more_itertools import ichunked
+import more_itertools as mi
 
 
 def step(data):
@@ -8,7 +8,7 @@ def step(data):
 
 
 def checksum(data):
-    cs = "".join("1" if len(set(pair)) == 1 else "0" for pair in ichunked(data, 2))
+    cs = "".join("1" if len(set(pair)) == 1 else "0" for pair in mi.ichunked(data, 2))
     return checksum(cs) if len(cs) % 2 == 0 else cs
 
 

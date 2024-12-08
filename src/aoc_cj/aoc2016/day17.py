@@ -1,10 +1,10 @@
+import hashlib
 import itertools
 from collections import deque
-from hashlib import md5
 
 
 def is_open(passcode: str, path: str):
-    hd = md5(f"{passcode}{path}".encode()).hexdigest()
+    hd = hashlib.md5(f"{passcode}{path}".encode()).hexdigest()
     return tuple(not x.isnumeric() and x != "a" for x in hd[:4])
 
 

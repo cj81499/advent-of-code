@@ -1,11 +1,11 @@
+import dataclasses
 import itertools
 from collections.abc import Sequence
-from dataclasses import dataclass
 
 from aoc_cj import util
 
 
-@dataclass
+@dataclasses.dataclass
 class History:
     nums: Sequence[int]
 

@@ -2,7 +2,6 @@ import enum
 import itertools
 import re
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass
 from typing import ClassVar, Self
 
 import more_itertools as mi
@@ -19,7 +18,10 @@ class Direction(enum.Enum):
         return complex(-d1.value.imag, d1.value.real) == d2.value
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Step:
     direction: "Direction"
     distance: int
@@ -48,7 +50,10 @@ class Step:
         )
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class DigPlan:
     steps: Sequence[Step]
 

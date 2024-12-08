@@ -1,9 +1,9 @@
 import collections
+import dataclasses
 import re
-from dataclasses import dataclass
 
 
-@dataclass
+@dataclasses.dataclass
 class Claim:
     claim_id: int
     x: int

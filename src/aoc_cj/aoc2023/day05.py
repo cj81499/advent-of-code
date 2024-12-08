@@ -1,8 +1,7 @@
+import functools
 import re
 from collections import deque
 from collections.abc import Generator, Iterable, Sequence
-from dataclasses import dataclass
-from functools import cached_property
 from typing import ClassVar
 
 import more_itertools as mi
@@ -21,13 +20,16 @@ def range_difference(r1: range, r2: range) -> Generator[range, None, None]:
         yield range(max(r1.start, r2.stop), r1.stop)
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class MappingRange:
     destination_range_start: int
     source_range_start: int
     range_length: int
 
-    @cached_property
+    @functools.cached_property
     def source_range(self) -> range:
         return range(self.source_range_start, self.source_range_start + self.range_length)
 
@@ -46,7 +48,10 @@ class MappingRange:
         return value - self.source_range_start + self.destination_range_start
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Map:
     ranges: Sequence[MappingRange]
 

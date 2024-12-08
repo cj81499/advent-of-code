@@ -1,8 +1,6 @@
 import itertools
 from collections import deque
 
-from more_itertools import pairwise
-
 WALL = "#"
 OPEN = "."
 
@@ -19,7 +17,7 @@ def adj_pos(x: int, y: int):
 
 
 def path_distance(edges, possible_path):
-    return sum(edges[tuple(sorted(pair))] for pair in pairwise(possible_path))
+    return sum(edges[tuple(sorted(pair))] for pair in itertools.pairwise(possible_path))
 
 
 def possible_paths(num_targets, end_at_start=False):

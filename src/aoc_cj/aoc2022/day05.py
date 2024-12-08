@@ -1,4 +1,4 @@
-from itertools import zip_longest
+import itertools
 
 Stacks = dict[int, list[str]]
 
@@ -8,7 +8,7 @@ def parse(txt: str) -> tuple[str, Stacks]:
 
     stacks = {
         int(s[0]): list(s[1:])
-        for col in zip_longest(*stacks_str.splitlines(), fillvalue="")
+        for col in itertools.zip_longest(*stacks_str.splitlines(), fillvalue="")
         if (s := ("".join(reversed(col)).strip())).isalnum()
     }
 

@@ -1,7 +1,7 @@
 import itertools
 from collections.abc import Generator
 
-import more_itertools
+import more_itertools as mi
 
 CONFUSING = {"i", "o", "l"}
 
@@ -36,7 +36,7 @@ def is_valid_password(txt: str) -> bool:
 
     # Passwords must include one increasing straight of at least three letters,
     # like abc, bcd, cde, and so on, up to xyz. They cannot skip letters; abd doesn't count.
-    if not any(True for a, b, c in more_itertools.triplewise(txt) if ord(a) + 2 == ord(b) + 1 == ord(c)):
+    if not any(True for a, b, c in mi.triplewise(txt) if ord(a) + 2 == ord(b) + 1 == ord(c)):
         return False
 
     # Passwords must contain at least two different, non-overlapping pairs of letters, like aa, bb, or zz.
@@ -48,11 +48,11 @@ def is_valid_password(txt: str) -> bool:
 
 
 def part_1(txt: str) -> str:
-    return more_itertools.first(generate_passwords(txt))
+    return mi.first(generate_passwords(txt))
 
 
 def part_2(txt: str) -> str:
-    res = more_itertools.nth(generate_passwords(txt), 1)
+    res = mi.nth(generate_passwords(txt), 1)
     assert res is not None, "Unreachable. There are infinite valid passwords."
     return res
 

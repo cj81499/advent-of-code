@@ -1,12 +1,12 @@
-from enum import Enum
+import enum
 
 
-class Color(Enum):
+class Color(enum.Enum):
     WHITE = True
     BLACK = False
 
 
-class Direction(Enum):
+class Direction(enum.Enum):
     EAST = "e"
     SOUTH_EAST = "se"
     SOUTH_WEST = "sw"

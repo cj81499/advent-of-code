@@ -1,4 +1,4 @@
-from itertools import permutations
+import itertools
 
 Preferences = dict[str, dict[str, int]]
 
@@ -40,7 +40,7 @@ def seating_arangement_happiness(prefs: Preferences, arangement: tuple[str, ...]
 
 def optimal_happiness(prefs: Preferences) -> int:
     """Calculate optimal happiness"""
-    return max(seating_arangement_happiness(prefs, perm) for perm in permutations(prefs))
+    return max(seating_arangement_happiness(prefs, perm) for perm in itertools.permutations(prefs))
 
 
 def add_self_to_prefs(prefs: Preferences) -> Preferences:

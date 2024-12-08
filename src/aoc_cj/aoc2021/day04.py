@@ -1,5 +1,5 @@
+import itertools
 from collections.abc import Iterator
-from itertools import chain
 
 
 class Board:
@@ -23,7 +23,9 @@ class Board:
     def score(self) -> int:
         if not self.is_won():
             raise ValueError("cannot get score until game is won")
-        unmarked_numbers = (n for n, marked in zip(chain(*self._grid), chain(*self._marks)) if not marked)
+        unmarked_numbers = (
+            n for n, marked in zip(itertools.chain(*self._grid), itertools.chain(*self._marks)) if not marked
+        )
         return sum(unmarked_numbers) * self._last_draw
 
     @staticmethod

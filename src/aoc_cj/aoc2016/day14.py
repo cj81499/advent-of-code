@@ -1,20 +1,20 @@
+import hashlib
 import itertools
-from hashlib import md5
 
-from more_itertools import windowed
+import more_itertools as mi
 
 REQUIRED_KEYS = 64
 
 
 def n_repeat_character(h: str, n):
-    for chars in windowed(h, n):  # for each view of size n
+    for chars in mi.windowed(h, n):  # for each view of size n
         if len(set(chars)) == 1:  # if the view only contains one character repeated n times
             return chars[0]  # return the character
     return None  # if no such repeat exists, return None
 
 
 def standard_hash(to_hash: str):
-    return md5(to_hash.encode()).hexdigest()
+    return hashlib.md5(to_hash.encode()).hexdigest()
 
 
 def key_stretch_hash(to_hash):

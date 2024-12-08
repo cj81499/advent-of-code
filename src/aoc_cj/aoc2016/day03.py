@@ -1,7 +1,7 @@
 import itertools
 from collections.abc import Iterable
 
-from more_itertools import ichunked
+import more_itertools as mi
 
 
 def part_1(txt: str):
@@ -12,7 +12,8 @@ def part_2(txt: str):
     lines = txt.splitlines()
     assert len(lines) % 3 == 0
     return sum(
-        sum(is_valid_triangle(n) for n in zip(la, lb, lc)) for la, lb, lc in (map(nums, c) for c in ichunked(lines, 3))
+        sum(is_valid_triangle(n) for n in zip(la, lb, lc))
+        for la, lb, lc in (map(nums, c) for c in mi.ichunked(lines, 3))
     )
 
 

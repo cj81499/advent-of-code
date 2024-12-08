@@ -1,4 +1,4 @@
-from itertools import chain, cycle, repeat
+import itertools
 
 
 def digits(s: str):
@@ -9,7 +9,7 @@ BASE_PATTERN = [0, 1, 0, -1]
 
 
 def pattern_helper(i):
-    p = cycle(chain.from_iterable(repeat(n, i + 1) for n in BASE_PATTERN))
+    p = itertools.cycle(itertools.chain.from_iterable(itertools.repeat(n, i + 1) for n in BASE_PATTERN))
     next(p)  # skip first
     return p
 

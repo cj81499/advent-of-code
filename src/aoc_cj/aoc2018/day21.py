@@ -1,4 +1,4 @@
-from aoc_cj.aoc2018.day16 import run_cmd
+from aoc_cj.aoc2018 import day16
 
 
 def part_1(txt):
@@ -8,7 +8,7 @@ def part_1(txt):
     registers = [0, 0, 0, 0, 0, 0]
     while registers[ip] >= 0 and registers[ip] < len(lines):
         cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
-        run_cmd(cmd, registers, a, b, c)
+        day16.run_cmd(cmd, registers, a, b, c)
         if registers[ip] == 28:
             return max(registers)
         registers[ip] += 1
@@ -25,7 +25,7 @@ def part_2(txt):
     registers = [0, 0, 0, 0, 0, 0]
     while registers[ip] >= 0 and registers[ip] < len(lines):
         cmd, a, b, c = cmds[registers[ip]]
-        run_cmd(cmd, registers, a, b, c)
+        day16.run_cmd(cmd, registers, a, b, c)
         if registers[ip] == 28:
             m = max(registers)
             if m in seen:

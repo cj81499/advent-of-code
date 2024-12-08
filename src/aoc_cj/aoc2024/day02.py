@@ -1,9 +1,9 @@
+import itertools
 from collections.abc import Iterable
-from itertools import pairwise
 
 
 def is_safe(nums: Iterable[int]) -> bool:
-    differences = [b - a for a, b in pairwise(nums)]
+    differences = [b - a for a, b in itertools.pairwise(nums)]
     return all(d in (1, 2, 3) for d in differences) or all(d in (-1, -2, -3) for d in differences)
 
 

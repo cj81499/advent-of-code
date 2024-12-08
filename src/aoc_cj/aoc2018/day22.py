@@ -1,7 +1,7 @@
+import dataclasses
+import enum
 import heapq
 import itertools
-from dataclasses import dataclass, field
-from enum import Enum
 from typing import Any
 
 
@@ -9,25 +9,25 @@ def adj(x, y):
     yield from ((x + dx, y + dy) for dx, dy in ((0, -1), (0, 1), (-1, 0), (1, 0)))
 
 
-class Item(Enum):
+class Item(enum.Enum):
     NEITHER = 0
     TORCH = 1
     CLIMBING_GEAR = 2
 
 
-@dataclass(frozen=True, eq=True, order=True)
+@dataclasses.dataclass(frozen=True, eq=True, order=True)
 class PrioritizedData:
     priority: int
-    data: Any = field(compare=False)
+    data: Any = dataclasses.field(compare=False)
 
 
-@dataclass(frozen=True, eq=True)
+@dataclasses.dataclass(frozen=True, eq=True)
 class Node:
     pos: tuple[int, int]
     item: Item
 
 
-class Type(Enum):
+class Type(enum.Enum):
     ROCKY = 0
     WET = 1
     NARROW = 2

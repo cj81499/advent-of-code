@@ -1,4 +1,4 @@
-from itertools import count
+import itertools
 
 
 def binary_search(lo, hi, lo_ele, hi_ele, iterable):
@@ -31,7 +31,7 @@ def part_1(txt):
 
 def part_2(txt):
     ids = set(seat_ids(txt))
-    for i in count(min(ids)):  # start counting at the first id
+    for i in itertools.count(min(ids)):  # start counting at the first id
         if i not in ids:
             return i
 

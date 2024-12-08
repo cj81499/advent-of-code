@@ -1,5 +1,5 @@
+import dataclasses
 import itertools
-from dataclasses import dataclass
 from typing import Self
 
 import z3  # type: ignore[import-untyped]
@@ -7,7 +7,7 @@ import z3  # type: ignore[import-untyped]
 from aoc_cj import util
 
 
-@dataclass
+@dataclasses.dataclass
 class Hailstone:
     px: int
     py: int

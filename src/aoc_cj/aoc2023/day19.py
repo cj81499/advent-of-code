@@ -1,14 +1,16 @@
 import math
 import re
 from collections.abc import Generator, Sequence
-from dataclasses import dataclass
 from typing import ClassVar, Literal, assert_never, cast
 
 XMAS = Literal["x", "m", "a", "s"]
 COMPARISON = Literal["<", ">"]
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Rule:
     lhs: XMAS
     op: COMPARISON
@@ -38,7 +40,10 @@ class Rule:
             assert_never(self.op)
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Workflow:
     name: str
     rules: Sequence[Rule]

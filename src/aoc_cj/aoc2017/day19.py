@@ -1,7 +1,7 @@
-from enum import Enum
+import enum
 
 
-class Direction(Enum):
+class Direction(enum.Enum):
     UP = (+0, -1)
     RIGHT = (+1, +0)
     DOWN = (+0, +1)

@@ -1,6 +1,5 @@
 import itertools
 import re
-from dataclasses import dataclass
 
 import lark
 import more_itertools as mi
@@ -8,7 +7,10 @@ import more_itertools as mi
 ELEMENT_PATTERN = re.compile(r"[A-Z][a-z]*")
 
 
-@dataclass(frozen=True)
+import dataclasses
+
+
+@dataclasses.dataclass(frozen=True)
 class Replacement:
     input: str
     output_molecule: str
