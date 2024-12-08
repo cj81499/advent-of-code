@@ -1,37 +1,37 @@
 import itertools
 from collections import deque
-
-from more_itertools import pairwise
+from collections.abc import Generator
 
 WALL = "#"
 OPEN = "."
 
 Pos = tuple[int, int]
 Grid = dict[Pos, str]
+Path = tuple[int, ...]
 
 
-def is_wall(grid: Grid, pos: Pos):
+def is_wall(grid: Grid, pos: Pos) -> bool:
     return grid.get(pos, WALL) == WALL
 
 
-def adj_pos(x: int, y: int):
+def adj_pos(x: int, y: int) -> Generator[Pos, None, None]:
     yield from ((x + dx, y + dy) for (dx, dy) in ((0, -1), (0, 1), (-1, 0), (1, 0)))
 
 
-def path_distance(edges, possible_path):
-    return sum(edges[tuple(sorted(pair))] for pair in pairwise(possible_path))
+def path_distance(edges: dict[Path, int], possible_path: Path) -> int:
+    return sum(edges[tuple(sorted(pair))] for pair in itertools.pairwise(possible_path))
 
 
-def possible_paths(num_targets, end_at_start=False):
+def possible_paths(num_targets: int, *, end_at_start: bool = False) -> Generator[Path, None, None]:
     yield from ((0, *perm, 0) if end_at_start else (0, *perm) for perm in itertools.permutations(range(1, num_targets)))
 
 
-def helper(txt: str, end_at_start=False):
+def helper(txt: str, *, end_at_start: bool = False) -> int:
     grid = {(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
 
-    def distance_between(start: Pos, end: Pos):
+    def distance_between(start: Pos, end: Pos) -> int:
         # dfs from start to end
-        q = deque()
+        q = deque[tuple[int, Pos]]()
         q.append((0, start))
         seen = set()
         while q:
@@ -53,14 +53,14 @@ def helper(txt: str, end_at_start=False):
 
     num_locations = len(locations)
 
-    return min(path_distance(edges, p) for p in possible_paths(num_locations, end_at_start))
+    return min(path_distance(edges, p) for p in possible_paths(num_locations, end_at_start=end_at_start))
 
 
-def part_1(txt: str):
+def part_1(txt: str) -> int:
     return helper(txt)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return helper(txt, end_at_start=True)
 
 

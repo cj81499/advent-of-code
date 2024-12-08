@@ -1,12 +1,12 @@
-def part_1(txt: str):
+def part_1(txt: str) -> int:
     return follow_instructions(txt)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return follow_instructions(txt, stop_at_repeat=True)
 
 
-def follow_instructions(instructions: str, stop_at_repeat=False):
+def follow_instructions(instructions: str, *, stop_at_repeat: bool = False) -> int:
     direction = -1j
     pos = 0j
     seen = set()
@@ -22,7 +22,7 @@ def follow_instructions(instructions: str, stop_at_repeat=False):
     return man_dist(pos)
 
 
-def man_dist(pos):
+def man_dist(pos: complex) -> int:
     return abs(int(pos.real)) + abs(int(pos.imag))
 
 

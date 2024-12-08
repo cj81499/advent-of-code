@@ -11,7 +11,7 @@ dec a
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     c = d.Day23AssemBunnyComputer(EXAMPLE_INPUT)
     c.run()
     assert c["a"] == 3

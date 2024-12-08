@@ -1,9 +1,10 @@
 import itertools
 from collections import deque
+from collections.abc import Generator
 from hashlib import md5
 
 
-def is_open(passcode: str, path: str):
+def is_open(passcode: str, path: str) -> tuple[bool, ...]:
     hd = md5(f"{passcode}{path}".encode()).hexdigest()
     return tuple(not x.isnumeric() and x != "a" for x in hd[:4])
 
@@ -12,9 +13,9 @@ GRID_SIZE = 4
 MOVES = {"U": -1j, "D": 1j, "L": -1, "R": 1}
 
 
-def paths(passcode: str):
+def paths(passcode: str) -> Generator[str, None, None]:
     GOAL = complex(GRID_SIZE - 1, GRID_SIZE - 1)
-    q = deque()
+    q = deque[tuple[complex, str]]()
     q.append((0 + 0j, ""))
     while len(q) > 0:
         pos, path = q.popleft()
@@ -29,14 +30,14 @@ def paths(passcode: str):
                 q.append((next_pos, next_path))
 
 
-def part_1(txt: str):
+def part_1(txt: str) -> str | None:
     try:
         return next(paths(txt))
     except StopIteration:
         return None
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return len(list(paths(txt))[-1])
 
 

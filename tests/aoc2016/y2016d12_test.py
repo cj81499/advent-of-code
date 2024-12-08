@@ -10,7 +10,7 @@ dec a
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     c = d.AssemBunnyComputer(EXAMPLE_INPUT)
     c.run()
     assert c["a"] == 42

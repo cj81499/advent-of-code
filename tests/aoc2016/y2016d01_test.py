@@ -11,7 +11,7 @@ import aoc_cj.aoc2016.day01 as d
         ("R5, L5, R5, R3", 12),
     ],
 )
-def test_part_1(input, expected):
+def test_part_1(input: str, expected: int) -> None:
     assert d.part_1(input) == expected
 
 
@@ -21,5 +21,5 @@ def test_part_1(input, expected):
         ("R8, R4, R4, R8", 4),
     ],
 )
-def test_part_2(input, expected):
+def test_part_2(input: str, expected: int) -> None:
     assert d.part_2(input) == expected

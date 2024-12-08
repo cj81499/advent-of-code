@@ -84,10 +84,7 @@ markers = [
 xfail_strict = true
 
 [tool.mypy] # https://mypy.readthedocs.io/en/stable/config_file.html
-# Opt out of type checking old years
 exclude = [
-    '^tests\/aoc2016\/',
-    '^src\/aoc_cj\/aoc2016\/',
     '^tests\/aoc2017\/',
     '^src\/aoc_cj\/aoc2017\/',
     '^tests\/aoc2018\/',
