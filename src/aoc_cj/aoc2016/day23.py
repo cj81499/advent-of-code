@@ -2,7 +2,7 @@ from aoc_cj.aoc2016.day12 import AssemBunnyComputer
 
 
 class Day23AssemBunnyComputer(AssemBunnyComputer):
-    def tgl(self, x):
+    def tgl(self, x: str) -> None:
         addr = self.pc + self.arg(x)
         if addr < len(self._program):
             ins = self._program[addr]
@@ -12,14 +12,14 @@ class Day23AssemBunnyComputer(AssemBunnyComputer):
                 ins[0] = "cpy" if ins[0] == "jnz" else "jnz"
 
 
-def part_1(txt: str):
+def part_1(txt: str) -> int:
     c = Day23AssemBunnyComputer(txt)
     c["a"] = 7
     c.run()
     return c["a"]
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     """
     BEWARE: this is super slow (even with pypy).
     I don't really want to finish analyzing the asm, but I started in `day23.md`

@@ -2,16 +2,16 @@ import math
 from collections import defaultdict
 
 
-def part_1(txt: str, compare=(61, 17)):
+def part_1(txt: str, compare: tuple[int, int] = (61, 17)) -> int:
     return simulate(txt, compare)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return simulate(txt, None)
 
 
-def simulate(txt, compare):
-    bots = defaultdict(set)
+def simulate(txt: str, compare: tuple[int, int] | None) -> int:
+    bots = defaultdict[int, set[int]](set)
     transitions = {}
     for line in txt.splitlines():
         words = line.split()
@@ -24,9 +24,9 @@ def simulate(txt, compare):
             low_to_type, high_to_type = words[5], words[10]
             assert bot_num not in transitions
             transitions[bot_num] = ((low_to_num, low_to_type), (high_to_num, high_to_type))
-    outputs = defaultdict(set)
+    outputs = defaultdict[int, set[int]](set)
     while any(len(holding) == 2 for holding in bots.values()):
-        new_bots = defaultdict(set)
+        new_bots = defaultdict[int, set[int]](set)
         for bot_num, holding in bots.items():
             if len(holding) == 2:
                 if compare is not None and holding == set(compare):

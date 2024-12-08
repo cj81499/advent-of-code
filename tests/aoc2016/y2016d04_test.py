@@ -19,13 +19,13 @@ ROOMS = (ROOM_1, ROOM_2, ROOM_3, ROOM_4)
         (ROOM_4, False),
     ],
 )
-def test_is_real_room(input, expected):
+def test_is_real_room(input: str, expected: bool) -> None:
     assert d.is_real_room(input) is expected
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1("\n".join(ROOMS)) == 1514
 
 
-def test_decrypt():
+def test_decrypt() -> None:
     assert d.decrypt("qzmt-zixmtkozy-ivhz-343[ignore]") == "very encrypted name"
