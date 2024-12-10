@@ -27,7 +27,8 @@ def part_1(txt: str) -> int:
             disk[i] = disk[end]
             disk[end] = None
 
-    return fs_checksum(disk)
+    # return the filesystem checksum
+    return sum(i * n for i, n in enumerate(disk) if n is not None)
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
@@ -51,50 +52,26 @@ def part_2(txt: str) -> int:
         if is_file:
             file_id += 1
 
-    # for f in disk:
-    #     print(f)
-    # print()
-
     max_file_id = disk[-1].id
     for file_id in reversed(range(max_file_id + 1)):
         # find file on disk
         file = mi.one(f for f in disk if f.id == file_id)
-        # print(f"attempt to move {file=}")
         # attempt to move file
         # find span of free space that can fit file
         space_needed = file.length
-        # print(f"{space_needed=}")
         for i, (f1, f2) in enumerate(itertools.pairwise(disk)):
             if f1 is file:
                 break
             space_starts = f1.start + f1.length
             space_ends = f2.start
             available_space = space_ends - space_starts
-            # print(f"{available_space=} between {f1} {f2}")
             if available_space >= space_needed:
-                # print(f"MOVE {file=} immediately after {f1=}")
                 disk.remove(file)
                 disk.insert(i + 1, File(id=file.id, start=space_starts, length=file.length))
                 break
 
-    # for f in disk:
-    #     print(f)
-
-    disk2: list[int | None] = []
-    for f in disk:
-        while len(disk2) < f.start:
-            disk2.append(None)
-        for _ in range(f.length):
-            disk2.append(f.id)
-
-    # print("".join(str(d) if d is not None else "." for d in disk2))
-
-    fs_checksum = sum(i * n for i, n in enumerate(disk2) if n is not None)
-    return fs_checksum
-
-
-def fs_checksum(disk: list[int | None]) -> int:
-    return sum(i * n for i, n in enumerate(disk) if n is not None)
+    # return the filesystem checksum
+    return sum(sum(f.id * i for i in range(f.start, f.start + f.length)) for f in disk)
 
 
 if __name__ == "__main__":
