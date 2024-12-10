@@ -10,7 +10,7 @@
 | 06  | [Guard Gallivant](https://adventofcode.com/2024/day/6)       |   :star:   |   :star:   | :white_check_mark: |
 | 07  | [Bridge Repair](https://adventofcode.com/2024/day/7)         |   :star:   |   :star:   | :white_check_mark: |
 | 08  | [Resonant Collinearity](https://adventofcode.com/2024/day/8) |   :star:   |   :star:   | :white_check_mark: |
-| 09  | [?](https://adventofcode.com/2024/day/9)                     | :question: | :question: |     :question:     |
+| 09  | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       |   :star:   |   :star:   | :white_check_mark: |
 | 10  | [?](https://adventofcode.com/2024/day/10)                    | :question: | :question: |     :question:     |
 | 11  | [?](https://adventofcode.com/2024/day/11)                    | :question: | :question: |     :question:     |
 | 12  | [?](https://adventofcode.com/2024/day/12)                    | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  9   00:26:04   3077      0   00:59:19   2493      0
   8   00:11:47   1009      0   00:14:19    580      0
   7   18:15:03  47649      0   18:22:53  44704      0
   6   00:10:06   1176      0   00:28:05   1424      0
