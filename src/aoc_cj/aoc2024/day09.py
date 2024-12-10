@@ -1,5 +1,6 @@
 import dataclasses
-import itertools
+import heapq
+from collections import defaultdict
 
 import more_itertools as mi
 
@@ -27,7 +28,7 @@ def part_1(txt: str) -> int:
     return sum(i * n for i, n in enumerate(disk) if n is not None)
 
 
-@dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
+@dataclasses.dataclass(kw_only=True, slots=True)
 class File:
     id: int
     start: int
@@ -36,33 +37,46 @@ class File:
 
 def part_2(txt: str) -> int:
     disk: list[File] = []
+    # mapping from size of free space to heap of indices where free space of that size starts
+    # using a heap enables us to efficiently track all free spaces of a particular size AND
+    # efficiently find the first (minimum) free space of that size
+    free_space = defaultdict[int, list[int]](list)
     start = 0
     for i, length in enumerate(map(int, txt)):
         is_file = i % 2 == 0
         if is_file:
             file_id = i // 2
             disk.append(File(id=file_id, start=start, length=length))
-
+        else:
+            heapq.heappush(free_space[length], start)
         start += length
 
     # defrag the disk
-    max_file_id = disk[-1].id
-    for file_id in reversed(range(max_file_id + 1)):
-        # find file on disk
-        file = mi.one(f for f in disk if f.id == file_id)
-        # attempt to move file
-        # find span of free space that can fit file
-        space_needed = file.length
-        for i, (f1, f2) in enumerate(itertools.pairwise(disk)):
-            if f1 is file:
-                break
-            space_starts = f1.start + f1.length
-            space_ends = f2.start
-            available_space = space_ends - space_starts
-            if available_space >= space_needed:
-                disk.remove(file)
-                disk.insert(i + 1, File(id=file.id, start=space_starts, length=file.length))
-                break
+    # solution inspired by https://github.com/ricbit/advent-of-code/blob/main/2024/adv09-r.py
+    for f in reversed(disk):
+        best_size, best_pos = f.length, f.start
+        # it's impossible for any file or free space to be larger than 9 b/c the input
+        # represents each size w/ a single int
+        for size in range(f.length, 10):
+            spaces_of_size = free_space[size]
+            if len(spaces_of_size) > 0:
+                # To access the smallest item without popping it, use heap[0].
+                # via https://docs.python.org/3/library/heapq.html#heapq.heappop
+                start_of_first_space_of_size = spaces_of_size[0]
+                if start_of_first_space_of_size < best_pos:
+                    best_pos = start_of_first_space_of_size
+                    best_size = size
+        # if we found somewhere to move the file
+        if best_pos != f.start:
+            # move file to the best position
+            f.start = best_pos
+            # that space is no longer available
+            heapq.heappop(free_space[best_size])
+            # but a new space (may) be available!
+            remaining_space = best_size - f.length
+            if remaining_space > 0:
+                remaining_space_start = best_pos + f.length
+                heapq.heappush(free_space[remaining_space], remaining_space_start)
 
     # return the filesystem checksum
     return sum(sum(f.id * i for i in range(f.start, f.start + f.length)) for f in disk)
