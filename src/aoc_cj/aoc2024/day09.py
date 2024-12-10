@@ -6,26 +6,22 @@ import more_itertools as mi
 
 def part_1(txt: str) -> int:
     disk: list[int | None] = []
-    is_file = True
-    file_id = 0
-    for length in map(int, txt):
-        to_append = file_id if is_file else None
-        for _ in range(length):
-            disk.append(to_append)
-        is_file = not is_file
-        if is_file:
-            file_id += 1
+    for i, length in enumerate(map(int, txt)):
+        is_file = i % 2 == 0
+        file_id = i // 2
+        disk.extend([file_id if is_file else None] * length)
 
-    i = 0
+    # defrag the disk
+    i = mi.first(idx for idx, n in enumerate(disk) if n is None)
     end = len(disk) - 1
-    for i in range(len(disk)):
-        if i < end and disk[i] is None:
-            while disk[end] is None:
-                end -= 1
-            if i >= end:
-                break
-            disk[i] = disk[end]
-            disk[end] = None
+    while i < end:
+        assert disk[i] is None
+        assert disk[end] is not None
+        disk[i], disk[end] = disk[end], None
+        while disk[end] is None:
+            end -= 1
+        while disk[i] is not None:
+            i += 1
 
     # return the filesystem checksum
     return sum(i * n for i, n in enumerate(disk) if n is not None)
@@ -40,18 +36,16 @@ class File:
 
 def part_2(txt: str) -> int:
     disk: list[File] = []
-    is_file = True
-    file_id = 0
     start = 0
-    for length in map(int, txt):
+    for i, length in enumerate(map(int, txt)):
+        is_file = i % 2 == 0
         if is_file:
+            file_id = i // 2
             disk.append(File(id=file_id, start=start, length=length))
 
         start += length
-        is_file = not is_file
-        if is_file:
-            file_id += 1
 
+    # defrag the disk
     max_file_id = disk[-1].id
     for file_id in reversed(range(max_file_id + 1)):
         # find file on disk
