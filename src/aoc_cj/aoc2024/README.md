@@ -11,8 +11,8 @@
 | 07  | [Bridge Repair](https://adventofcode.com/2024/day/7)         |   :star:   |   :star:   | :white_check_mark: |
 | 08  | [Resonant Collinearity](https://adventofcode.com/2024/day/8) |   :star:   |   :star:   | :white_check_mark: |
 | 09  | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       |   :star:   |   :star:   | :white_check_mark: |
-| 10  | [Hoof It](https://adventofcode.com/2024/day/10)                    | :star:   |   :star:   | :white_check_mark: |
-| 11  | [?](https://adventofcode.com/2024/day/11)                    | :question: | :question: |     :question:     |
+| 10  | [Hoof It](https://adventofcode.com/2024/day/10)              |   :star:   |   :star:   | :white_check_mark: |
+| 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    |   :star:   |   :star:   | :white_check_mark: |
 | 12  | [?](https://adventofcode.com/2024/day/12)                    | :question: | :question: |     :question:     |
 | 13  | [?](https://adventofcode.com/2024/day/13)                    | :question: | :question: |     :question:     |
 | 14  | [?](https://adventofcode.com/2024/day/14)                    | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 11   00:08:36   1763      0   00:31:36   2520      0
  10   00:21:52   3382      0   00:23:51   2781      0
   9   00:26:04   3077      0   00:59:19   2493      0
   8   00:11:47   1009      0   00:14:19    580      0
