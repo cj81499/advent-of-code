@@ -1,3 +1,4 @@
+import dataclasses
 from collections.abc import Generator
 
 
@@ -6,40 +7,21 @@ def adj_4(p: complex) -> Generator[complex, None, None]:
         yield p + delta
 
 
-def part_1(txt: str) -> int:
-    regions = parse_regions(txt)
+@dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
+class Region:
+    points: frozenset[complex]
 
-    # sum of all region's prices
-    s = 0
+    def area(self) -> int:
+        return len(self.points)
 
-    for r in regions:
-        # find area of each region
-        area = len(r)
-        # find perimeter of each region
-        perimeter = 0  # TODO
-        for p in r:
-            for adj_p in adj_4(p):
-                if adj_p not in r:
-                    perimeter += 1
-        # price of fence for a region is area * perimeter
-        price = area * perimeter
+    def perimeter(self) -> int:
+        return sum(1 for p in self.points for adj_p in adj_4(p) if adj_p not in self.points)
 
-        s += price
+    def price(self) -> int:
+        return self.area() * self.perimeter()
 
-    return s
-
-
-def part_2(txt: str) -> int:
-    regions = parse_regions(txt)
-
-    # sum of all region's prices
-    s = 0
-
-    for r in regions:
-        # find area of each region
-        area = len(r)
-
-        # find number of sides of each region
+    def side_count(self) -> int:
+        r = self.points
         # number of sides == number of "corners"
         corners = set[complex]()
 
@@ -100,35 +82,34 @@ def part_2(txt: str) -> int:
                 else:
                     corners.add(p + 1j + 1)
 
-        side_count = len(corners)
+        return len(corners)
 
-        # price of fence for a region is area * perimeter
-        price = area * side_count
-
-        s += price
-
-    return s
+    def bulk_price(self) -> int:
+        return self.area() * self.side_count()
 
 
-def parse_regions(txt: str) -> list[set[complex]]:
+def part_1(txt: str) -> int:
+    return sum(r.price() for r in parse_regions(txt))
+
+
+def part_2(txt: str) -> int:
+    return sum(r.bulk_price() for r in parse_regions(txt))
+
+
+def parse_regions(txt: str) -> frozenset[Region]:
     grid = {x + y * 1j: c for y, row in enumerate(txt.splitlines()) for x, c in enumerate(row)}
-
-    regions: list[set[complex]] = []
-    to_handle = {p for p in grid}
-    while to_handle:
-        handling = to_handle.pop()
-        val = grid[handling]
-        to_add = {handling}
+    regions = set[Region]()
+    while grid:
+        pos, val = grid.popitem()
+        to_add = {pos}
         region = set[complex]()
         while to_add:
             adding = to_add.pop()
             region.add(adding)
-            for adj_p in adj_4(adding):
-                if adj_p not in region and grid.get(adj_p) == val:
-                    to_add.add(adj_p)
-        to_handle.difference_update(region)
-        regions.append(region)
-    return regions
+            grid.pop(adding, None)
+            to_add.update(adj_p for adj_p in adj_4(adding) if grid.get(adj_p) == val)
+        regions.add(Region(points=frozenset(region)))
+    return frozenset(regions)
 
 
 if __name__ == "__main__":
