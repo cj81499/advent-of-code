@@ -13,7 +13,7 @@
 | 09  | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       |   :star:   |   :star:   | :white_check_mark: |
 | 10  | [Hoof It](https://adventofcode.com/2024/day/10)              |   :star:   |   :star:   | :white_check_mark: |
 | 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    |   :star:   |   :star:   | :white_check_mark: |
-| 12  | [?](https://adventofcode.com/2024/day/12)                    | :question: | :question: |     :question:     |
+| 12  | [Garden Groups](https://adventofcode.com/2024/day/12)        |   :star:   |   :star:   | :white_check_mark: |
 | 13  | [?](https://adventofcode.com/2024/day/13)                    | :question: | :question: |     :question:     |
 | 14  | [?](https://adventofcode.com/2024/day/14)                    | :question: | :question: |     :question:     |
 | 15  | [?](https://adventofcode.com/2024/day/15)                    | :question: | :question: |     :question:     |
