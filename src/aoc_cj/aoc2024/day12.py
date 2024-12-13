@@ -1,4 +1,5 @@
 import dataclasses
+import itertools
 from collections.abc import Generator
 
 
@@ -21,62 +22,53 @@ class Region:
         return self.area() * self.perimeter()
 
     def side_count(self) -> int:
-        r = self.points
-        # number of sides == number of "corners"
-        corners = set[complex]()
+        # for a polygon, number of sides == number of corners. We will count corners instead of sides.
+        corner_count = 0
 
-        # LESS HACKY IDEA: scan a 2x2 "grid" over the area of the region,
-        # checking if the intersection of 1x1 squares at the middle of the region is an edge
+        # Scan a 2x2 "grid" over the area of the region.
+        # Count corners based on what we see.
         #
-        # .. -> no edge
-        # ..
+        # No edge:
+        # ..  ##  ##  .#  ..  #.
+        # ..  ##  ..  .#  ##  #.
         #
-        # ## -> no edge
-        # ..
+        # 1 edge:
+        # #.  .#  ..  ..  .#  #.  ##  ##
+        # ..  ..  .#  #.  ##  ##  #.  .#
         #
-        #
-        # #. -> 1 edge
-        # ..
-        #
-        # #. -> 2 edges
-        # .#
+        # 2 edges:
+        # #.  .#
+        # .#  #.
 
-        for p in r:
-            above_in_r = p - 1j in r
-            below_in_r = p + 1j in r
-            left_in_r = p - 1 in r
-            right_in_r = p + 1 in r
+        # The loop body will consider a 2x2 region where `p` is at the top left.
+        # Consider a region containing a single point. If we only check at that point,
+        # we'll only count the bottom right corner.
+        # To fix this, in addition to checking the points in the region, we also check
+        # at the points shifted up one, shifted left by one, and shifted left one AND up one.
+        to_check = set(
+            itertools.chain.from_iterable(
+                (
+                    p,  # point itself
+                    p - 1,  # point shifted left one
+                    p - 1j,  # point shifted up one
+                    p - 1 - 1j,  # point shifted left one and up one
+                )
+                for p in self.points
+            )
+        )
+        for p in to_check:
+            p_in_region = p in self.points
+            below_in_region = p + 1j in self.points
+            right_in_region = p + 1 in self.points
+            bottom_right_in_region = p + 1 + 1j in self.points
 
-            top_left_in_r = p - 1j - 1 in r
-            top_right_in_r = p - 1j + 1 in r
-            bottom_left_in_r = p + 1j - 1 in r
-            bottom_right_in_r = p + 1j + 1 in r
+            in_region_count = sum((p_in_region, below_in_region, right_in_region, bottom_right_in_region))
+            if in_region_count in (1, 3):
+                corner_count += 1
+            elif in_region_count == 2 and p_in_region != right_in_region and p_in_region != below_in_region:
+                corner_count += 2
 
-            if (not (above_in_r or left_in_r)) or (above_in_r and left_in_r and not top_left_in_r):
-                corners.add(p)
-            if (not (above_in_r or right_in_r)) or (above_in_r and right_in_r and not top_right_in_r):
-                corners.add(p + 1)
-            if (not (below_in_r or left_in_r)) or (below_in_r and left_in_r and not bottom_left_in_r):
-                corners.add(p + 1j)
-            if (not (below_in_r or right_in_r)) or (below_in_r and right_in_r and not bottom_right_in_r):
-                corners.add(p + 1j + 1)
-
-        # side count is NOT perfectly equal to count of corner points b/c some corner points have TWO corners.
-        # For example, the point at the center of the following region should count twice.
-        # ######
-        # ###..#
-        # ###..#
-        # #..###
-        # #..###
-        # ######
-        return sum(2 if self._is_double_corner(c) else 1 for c in corners)
-
-    def _is_double_corner(self, p: complex) -> bool:
-        in_r = p in self.points
-        above_in_r = p - 1j in self.points
-        left_in_r = p - 1 in self.points
-        top_left_in_r = p - 1j - 1 in self.points
-        return in_r == top_left_in_r and above_in_r == left_in_r and in_r != above_in_r
+        return corner_count
 
     def bulk_price(self) -> int:
         return self.area() * self.side_count()
