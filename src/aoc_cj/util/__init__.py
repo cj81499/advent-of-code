@@ -20,7 +20,6 @@ __all__ = (
 )
 
 _T = TypeVar("_T")
-_T_Num = TypeVar("_T_Num", int, float)
 
 
 def clamp(n: int, min_n: int, max_n: int) -> int:
@@ -48,7 +47,7 @@ def is_prime(n: int) -> bool:
     return True
 
 
-def create_regex_parser(p: str | re.Pattern[str], f: Callable[[str], _T]) -> Callable[..., Generator[_T, None, None]]:
+def create_regex_parser(p: str | re.Pattern[str], f: Callable[[str], _T]) -> Callable[[str], Generator[_T, None, None]]:
     def regex_parse_fn(s: str) -> Generator[_T, None, None]:
         yield from map(f, re.findall(p, s))
 
