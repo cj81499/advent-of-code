@@ -14,7 +14,7 @@
 | 10  | [Hoof It](https://adventofcode.com/2024/day/10)              |   :star:   |   :star:   | :white_check_mark: |
 | 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    |   :star:   |   :star:   | :white_check_mark: |
 | 12  | [Garden Groups](https://adventofcode.com/2024/day/12)        |   :star:   |   :star:   | :white_check_mark: |
-| 13  | [?](https://adventofcode.com/2024/day/13)                    | :question: | :question: |     :question:     |
+| 13  | [Claw Contraption](https://adventofcode.com/2024/day/13)     |   :star:   |   :star:   | :white_check_mark: |
 | 14  | [?](https://adventofcode.com/2024/day/14)                    | :question: | :question: |     :question:     |
 | 15  | [?](https://adventofcode.com/2024/day/15)                    | :question: | :question: |     :question:     |
 | 16  | [?](https://adventofcode.com/2024/day/16)                    | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 13   00:11:11    750      0   00:20:33    504      0
  12   00:37:11   4294      0   01:21:30   2844      0
  11   00:08:36   1763      0   00:31:36   2520      0
  10   00:21:52   3382      0   00:23:51   2781      0
