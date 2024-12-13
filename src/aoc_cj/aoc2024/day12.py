@@ -46,43 +46,37 @@ class Region:
             below_in_r = p + 1j in r
             left_in_r = p - 1 in r
             right_in_r = p + 1 in r
+
             top_left_in_r = p - 1j - 1 in r
             top_right_in_r = p - 1j + 1 in r
             bottom_left_in_r = p + 1j - 1 in r
             bottom_right_in_r = p + 1j + 1 in r
 
-            if (neither_top_left := not (above_in_r or left_in_r)) or (above_in_r and left_in_r and not top_left_in_r):
-                # handles edge case where adjacent positions are not in region, but diagonal position is in region.
-                # This is just one corner _position_, but accounts for two corners (and thus, two sides).
-                # Wacky hack, but we shift the position slightly such that it won't collide with the corner position we
-                # add when we detect the same corner position from the opposite "side"
-                if neither_top_left and top_left_in_r:
-                    corners.add(p - 0.1 - 0.1j)
-                else:
-                    corners.add(p)
-            if (neither_top_right := not (above_in_r or right_in_r)) or (
-                above_in_r and right_in_r and not top_right_in_r
-            ):
-                if neither_top_right and top_right_in_r:
-                    corners.add(p + 0.1 - 0.1j)
-                else:
-                    corners.add(p + 1)
-            if (neither_bottom_left := not (below_in_r or left_in_r)) or (
-                below_in_r and left_in_r and not bottom_left_in_r
-            ):
-                if neither_bottom_left and bottom_left_in_r:
-                    corners.add(p - 0.1 + 0.1j)
-                else:
-                    corners.add(p + 1j)
-            if (neither_bottom_right := not (below_in_r or right_in_r)) or (
-                below_in_r and right_in_r and not bottom_right_in_r
-            ):
-                if neither_bottom_right and bottom_right_in_r:
-                    corners.add(p + 0.1 + 0.1j)
-                else:
-                    corners.add(p + 1j + 1)
+            if (not (above_in_r or left_in_r)) or (above_in_r and left_in_r and not top_left_in_r):
+                corners.add(p)
+            if (not (above_in_r or right_in_r)) or (above_in_r and right_in_r and not top_right_in_r):
+                corners.add(p + 1)
+            if (not (below_in_r or left_in_r)) or (below_in_r and left_in_r and not bottom_left_in_r):
+                corners.add(p + 1j)
+            if (not (below_in_r or right_in_r)) or (below_in_r and right_in_r and not bottom_right_in_r):
+                corners.add(p + 1j + 1)
 
-        return len(corners)
+        # side count is NOT perfectly equal to count of corner points b/c some corner points have TWO corners.
+        # For example, the point at the center of the following region should count twice.
+        # ######
+        # ###..#
+        # ###..#
+        # #..###
+        # #..###
+        # ######
+        return sum(2 if self._is_double_corner(c) else 1 for c in corners)
+
+    def _is_double_corner(self, p: complex) -> bool:
+        in_r = p in self.points
+        above_in_r = p - 1j in self.points
+        left_in_r = p - 1 in self.points
+        top_left_in_r = p - 1j - 1 in self.points
+        return in_r == top_left_in_r and above_in_r == left_in_r and in_r != above_in_r
 
     def bulk_price(self) -> int:
         return self.area() * self.side_count()
