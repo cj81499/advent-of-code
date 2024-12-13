@@ -20,7 +20,6 @@ __all__ = (
 )
 
 _T = TypeVar("_T")
-_T_Num = TypeVar("_T_Num", int, float)
 
 
 def clamp(n: int, min_n: int, max_n: int) -> int:
