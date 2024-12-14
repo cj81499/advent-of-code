@@ -19,7 +19,8 @@ class Game:
         assert len(prize) == 2
         return Game(a=a, b=b, prize=prize)
 
-    def cheapest_way_to_win(self, off_by: int = 0) -> int | None:
+    # using linear algebra solution, but still neat!
+    def cheapest_way_to_win(self, off_by: int = 0) -> int | None:  # pragma: no cover
         # create an optimization problem
         opt = z3.Optimize()
 
@@ -44,17 +45,45 @@ class Game:
         model = opt.model()
         return int(model[cost].as_long())
 
+    def cheapest_way_to_win_lin_alg(self, off_by: int = 0) -> int | None:
+        # Solve system of 2 linear equations where (px, py) is prize position, (ax, ay)/(bx, by) is movement from pressing a/b.
+        #   px = ax * a + bx * b  # noqa: ERA001
+        #   py = ay * a + by * b  # noqa: ERA001
+        px, py = self.prize
+        px += off_by
+        py += off_by
+        ax, ay = self.a
+        bx, by = self.b
+
+        # determinant of the coefficient matrix
+        det = ax * by - ay * bx
+
+        # if det == 0, there's no solution
+        if det == 0:  # pragma: no cover - not relevant for our input
+            return 0
+
+        # solve for a and b
+        a_float = (px * by - bx * py) / det
+        b_float = (ax * py - ay * px) / det
+
+        # if the solution does not use an integer number of button presses, there's no solution
+        if (a := int(a_float)) != a_float or (b := int(b_float)) != b_float:
+            return 0
+
+        # return the cost to get the prize
+        return 3 * a + b
+
 
 def part_1(txt: str) -> int:
     return solve(txt)
 
 
 def part_2(txt: str) -> int:
-    return solve(txt, off_by=10_000_000_000_000)
+    return solve(txt, off_by=10_000_000_000_000)  # pragma: no cover - no test cases
 
 
 def solve(txt: str, off_by: int = 0) -> int:
-    return sum(g.cheapest_way_to_win(off_by=off_by) or 0 for g in map(Game.parse, txt.split("\n\n")))
+    return sum(g.cheapest_way_to_win_lin_alg(off_by=off_by) or 0 for g in map(Game.parse, txt.split("\n\n")))
 
 
 if __name__ == "__main__":
