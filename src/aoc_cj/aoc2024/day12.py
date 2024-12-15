@@ -1,11 +1,7 @@
 import dataclasses
 import itertools
-from collections.abc import Generator
 
-
-def adj_4(p: complex) -> Generator[complex, None, None]:
-    for delta in (-1, 1, -1j, 1j):
-        yield p + delta
+from aoc_cj import util
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
@@ -16,7 +12,7 @@ class Region:
         return len(self.points)
 
     def perimeter(self) -> int:
-        return sum(1 for p in self.points for adj_p in adj_4(p) if adj_p not in self.points)
+        return sum(1 for p in self.points for adj_p in util.adj_4(p) if adj_p not in self.points)
 
     def price(self) -> int:
         return self.area() * self.perimeter()
@@ -93,7 +89,7 @@ def parse_regions(txt: str) -> frozenset[Region]:
             adding = to_add.pop()
             region.add(adding)
             grid.pop(adding, None)
-            to_add.update(adj_p for adj_p in adj_4(adding) if grid.get(adj_p) == val)
+            to_add.update(adj_p for adj_p in util.adj_4(adding) if grid.get(adj_p) == val)
         regions.add(Region(points=frozenset(region)))
     return frozenset(regions)
 
