@@ -11,6 +11,7 @@ from ._priority_queue import PriorityQueue
 __all__ = (
     "Point3D",
     "PriorityQueue",
+    "adj_4",
     "clamp",
     "create_regex_parser",
     "digits",
@@ -20,6 +21,11 @@ __all__ = (
 )
 
 _T = TypeVar("_T")
+
+
+def adj_4(p: complex) -> Generator[complex, None, None]:
+    for delta in (-1, 1, -1j, 1j):
+        yield p + delta
 
 
 def clamp(n: int, min_n: int, max_n: int) -> int:
