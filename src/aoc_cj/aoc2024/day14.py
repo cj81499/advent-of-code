@@ -49,16 +49,13 @@ def quadrant(p: complex, *, width: int, height: int) -> Quadrant | None:
 
 
 def part_1(txt: str, *, width: int = 101, height: int = 103) -> int:
-    return math.prod(
-        Counter(
-            q
-            for r in map(Robot.parse, txt.splitlines())
-            if (q := quadrant(r.after(100, width=width, height=height), width=width, height=height)) is not None
-        ).values()
-    )
+    robots = map(Robot.parse, txt.splitlines())
+    positions_after_100 = (r.after(100, width=width, height=height) for r in robots)
+    quadrants = (quadrant(p, width=width, height=height) for p in positions_after_100)
+    return math.prod(Counter(q for q in quadrants if q is not None).values())
 
 
-def part_2(txt: str, *, width: int = 101, height: int = 103) -> int:
+def part_2(txt: str, *, width: int = 101, height: int = 103) -> int:  # pragma: no cover - no test cases
     robots = list(map(Robot.parse, txt.splitlines()))
     for t in itertools.count():
         # find "groupings" (like the regions from day 12) of occupied positions.
