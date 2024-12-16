@@ -73,7 +73,7 @@ class HandB(Hand):
         joker_count = counts.pop("J", 0)
         if joker_count == 0:
             return super().type
-        if joker_count == 5:  # pragma: no cover # example input doesn't use this logic, but needed for full input
+        if joker_count == 5:  # pragma: no cover - example input doesn't use this logic, but needed for full input
             return Hand.Type.FIVE_OF_A_KIND
         k, _v = mi.one(counts.most_common(1))
         counts[k] += joker_count

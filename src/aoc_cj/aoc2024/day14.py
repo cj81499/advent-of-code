@@ -55,7 +55,7 @@ def part_1(txt: str, *, width: int = 101, height: int = 103) -> int:
     return math.prod(Counter(q for q in quadrants if q is not None).values())
 
 
-def part_2(txt: str, *, width: int = 101, height: int = 103) -> int:  # pragma: no cover - no test cases
+def part_2(txt: str, *, width: int = 101, height: int = 103) -> int:  # pragma: no cover - no test case provided
     robots = list(map(Robot.parse, txt.splitlines()))
     for t in itertools.count():
         # find "groupings" (like the regions from day 12) of occupied positions.

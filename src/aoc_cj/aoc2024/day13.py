@@ -19,8 +19,7 @@ class Game:
         assert len(prize) == 2
         return Game(a=a, b=b, prize=prize)
 
-    # using linear algebra solution, but still neat!
-    def cheapest_way_to_win(self, off_by: int = 0) -> int | None:  # pragma: no cover
+    def cheapest_way_to_win(self, off_by: int = 0) -> int | None:  # pragma: no cover - using linear algebra solution
         # create an optimization problem
         opt = z3.Optimize()
 
@@ -79,7 +78,7 @@ def part_1(txt: str) -> int:
 
 
 def part_2(txt: str) -> int:
-    return solve(txt, off_by=10_000_000_000_000)  # pragma: no cover - no test cases
+    return solve(txt, off_by=10_000_000_000_000)  # pragma: no cover - no test case provided
 
 
 def solve(txt: str, off_by: int = 0) -> int:

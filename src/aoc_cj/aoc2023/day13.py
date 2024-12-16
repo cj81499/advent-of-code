@@ -40,7 +40,7 @@ def smudged_reflection_score(arr: NDArrayChar) -> int:
     # perspective, create and use a copy of arr for the rest of the function
     arr = arr.copy()
 
-    for x, y in itertools.product(range(width), range(height)):  # pragma: no branch # we expect to return while looping
+    for x, y in itertools.product(range(width), range(height)):  # pragma: no branch - we expect to return while looping
         # swap ash w/ rocks or vice versa to try to "fix the smudge"
         arr[y, x] = "#" if arr[y, x] == "." else "."
         try:
@@ -49,7 +49,7 @@ def smudged_reflection_score(arr: NDArrayChar) -> int:
             # the swap didn't "fix the smudge". undo it
             arr[y, x] = "#" if arr[y, x] == "." else "."
 
-    raise NoReflectionError()  # pragma: no cover # we expect to return while looping
+    raise NoReflectionError()  # pragma: no cover - we expect to return while looping
 
 
 def part_1(txt: str) -> int:
