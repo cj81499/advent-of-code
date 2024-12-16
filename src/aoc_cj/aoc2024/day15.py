@@ -1,6 +1,5 @@
 import dataclasses
 import enum
-import itertools
 from collections.abc import Generator, Mapping
 from typing import Self, assert_never, override
 
@@ -40,6 +39,17 @@ class Grid:
     robot_pos: complex
     grid: Mapping[complex, Kind]
 
+    @override
+    def __str__(self) -> str:
+        max_x = max(int(p.real) for p in self.grid)
+        max_y = max(int(p.imag) for p in self.grid)
+        return "\n".join(
+            "".join(
+                self.grid.get((p := x + y * 1j), Kind.ROBOT if p == self.robot_pos else ".") for x in range(max_x + 1)
+            )
+            for y in range(max_y + 1)
+        )
+
     def move(self, direction: Direction) -> Self:
         cls = type(self)
 
@@ -54,21 +64,7 @@ class Grid:
                 raise AssertionError(msg)
             case Kind.WALL:
                 return self
-            case Kind.BOX:
-                positions_in_front_of_robot = (self.robot_pos + delta * i for i in itertools.count(start=1))
-                final_box = mi.last(
-                    itertools.takewhile(lambda p: self.grid.get(p) is Kind.BOX, positions_in_front_of_robot)
-                )
-                new_box_pos = final_box + delta
-                if self.grid.get(new_box_pos) is Kind.WALL:
-                    return self
-
-                # advance box(es)
-                new_grid = {p: v for p, v in self.grid.items()}
-                assert new_grid.pop(new_robot_pos) == Kind.BOX
-                new_grid[new_box_pos] = Kind.BOX
-                return cls(robot_pos=new_robot_pos, grid=new_grid)
-            case Kind.BOX_LEFT | Kind.BOX_RIGHT:
+            case Kind.BOX | Kind.BOX_LEFT | Kind.BOX_RIGHT:
                 to_advance: list[complex] = []
                 to_check = {new_robot_pos}
                 while to_check:
@@ -80,43 +76,33 @@ class Grid:
                         case Kind.ROBOT:
                             msg = f"Robot movement handled specially"
                             raise AssertionError(msg)
-                        case Kind.BOX:
-                            msg = f"BOX (not left or right) found while solving part 2"
-                            raise AssertionError(msg)
                         case Kind.WALL:
                             return self
-                        case Kind.BOX_LEFT | Kind.BOX_RIGHT:
-                            other_half_pos = checking_pos + (1 if checking_val is Kind.BOX_LEFT else -1)
-                            other_half_kind = Kind.BOX_RIGHT if checking_val is Kind.BOX_LEFT else Kind.BOX_LEFT
-                            assert self.grid.get(other_half_pos) == other_half_kind
+                        case Kind.BOX | Kind.BOX_LEFT | Kind.BOX_RIGHT:
+                            box_parts = {checking_pos}
+                            # if it's a box half, include the other half in box_parts
+                            if val in (Kind.BOX_LEFT, Kind.BOX_RIGHT):
+                                other_half_pos = checking_pos + (1 if checking_val is Kind.BOX_LEFT else -1)
+                                other_half_kind = Kind.BOX_RIGHT if checking_val is Kind.BOX_LEFT else Kind.BOX_LEFT
+                                assert self.grid.get(other_half_pos) == other_half_kind
+                                box_parts.add(other_half_pos)
 
-                            # handle whatever's in front of either side
-                            if (p := checking_pos + delta) not in (checking_pos, other_half_pos):
-                                to_check.add(p)
-                            if (p := other_half_pos + delta) not in (checking_pos, other_half_pos):
-                                to_check.add(p)
+                            # handle whatever's in front of the box
+                            for p in box_parts:
+                                move_to = p + delta
+                                if move_to not in box_parts:
+                                    to_check.add(move_to)
 
-                            to_advance.append(checking_pos)
-                            to_advance.append(other_half_pos)
+                            # advance the box
+                            to_advance.extend(box_parts)
                         case _:
                             assert_never(checking_val)
-                new_grid = {p: v for p, v in self.grid.items() if p not in to_advance}
-                for p in to_advance:
-                    new_grid[p + delta] = self.grid[p]
+
+                # create the new grid where everything in to_advance is moved forwards
+                new_grid = {(p + delta if p in to_advance else p): v for p, v in self.grid.items()}
                 return cls(robot_pos=new_robot_pos, grid=new_grid)
             case _:
                 assert_never(val)
-
-    @override
-    def __str__(self) -> str:
-        max_x = max(int(p.real) for p in self.grid)
-        max_y = max(int(p.imag) for p in self.grid)
-        return "\n".join(
-            "".join(
-                self.grid.get((p := x + y * 1j), Kind.ROBOT if p == self.robot_pos else ".") for x in range(max_x + 1)
-            )
-            for y in range(max_y + 1)
-        )
 
     def gps_score(self) -> int:
         return sum(100 * int(p.imag) + int(p.real) for p, k in self.grid.items() if k in (Kind.BOX, Kind.BOX_LEFT))
