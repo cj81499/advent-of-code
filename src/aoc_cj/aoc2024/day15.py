@@ -30,7 +30,7 @@ class Direction(enum.StrEnum):
                 return -1
             case Direction.RIGHT:
                 return +1
-            case _:
+            case _:  # pragma: no cover
                 assert_never(self)
 
 
@@ -40,7 +40,7 @@ class Grid:
     grid: Mapping[complex, Kind]
 
     @override
-    def __str__(self) -> str:
+    def __str__(self) -> str:  # pragma: no cover
         max_x = max(int(p.real) for p in self.grid)
         max_y = max(int(p.imag) for p in self.grid)
         return "\n".join(
@@ -59,7 +59,7 @@ class Grid:
         match val:
             case None:
                 return cls(robot_pos=new_robot_pos, grid=self.grid)
-            case Kind.ROBOT:
+            case Kind.ROBOT:  # pragma: no cover
                 msg = f"Robot found at multiple locations: {self.robot_pos}, {new_robot_pos}."
                 raise AssertionError(msg)
             case Kind.WALL:
@@ -73,7 +73,7 @@ class Grid:
                     match checking_val:
                         case None:
                             pass
-                        case Kind.ROBOT:
+                        case Kind.ROBOT:  # pragma: no cover
                             msg = f"Robot movement handled specially"
                             raise AssertionError(msg)
                         case Kind.WALL:
@@ -95,13 +95,13 @@ class Grid:
 
                             # advance the box
                             to_advance.extend(box_parts)
-                        case _:
+                        case _:  # pragma: no cover
                             assert_never(checking_val)
 
                 # create the new grid where everything in to_advance is moved forwards
                 new_grid = {(p + delta if p in to_advance else p): v for p, v in self.grid.items()}
                 return cls(robot_pos=new_robot_pos, grid=new_grid)
-            case _:
+            case _:  # pragma: no cover
                 assert_never(val)
 
     def gps_score(self) -> int:
