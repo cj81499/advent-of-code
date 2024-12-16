@@ -16,7 +16,7 @@ def part_1(txt: str) -> int:
     return solve(txt, blinks=25)
 
 
-def part_2(txt: str) -> int:
+def part_2(txt: str) -> int:  # pragma: no cover - no test case provided
     return solve(txt, blinks=75)
 
 

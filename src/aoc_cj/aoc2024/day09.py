@@ -13,7 +13,7 @@ def part_1(txt: str) -> int:
         disk.extend([file_id if is_file else None] * length)
 
     # defrag the disk
-    i = mi.first(idx for idx, n in enumerate(disk) if n is None)
+    i = mi.first(idx for idx, n in enumerate(disk) if n is None)  # pragma: no branch - may not use full generator
     end = len(disk) - 1
     while i < end:
         assert disk[i] is None
@@ -63,7 +63,7 @@ def part_2(txt: str) -> int:
                 # To access the smallest item without popping it, use heap[0].
                 # via https://docs.python.org/3/library/heapq.html#heapq.heappop
                 start_of_first_space_of_size = spaces_of_size[0]
-                if start_of_first_space_of_size < best_pos:
+                if start_of_first_space_of_size < best_pos:  # pragma: no branch - always true for example input
                     best_pos = start_of_first_space_of_size
                     best_size = size
         # if we found somewhere to move the file

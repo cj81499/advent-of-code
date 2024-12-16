@@ -49,6 +49,7 @@ exclude_also = [
     'assert_never\(.*\)',
 ]
 partial_branches = [
+    'pragma: no branch',
     'for .* in itertools\.count\(\):',
 ]
 
