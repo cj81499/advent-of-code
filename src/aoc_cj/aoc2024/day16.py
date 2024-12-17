@@ -51,7 +51,7 @@ def part_1(txt: str) -> int:
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
-class CheapestEntry:
+class _CheapTracker:
     cost: int
     seen: set[complex]
 
@@ -59,18 +59,19 @@ class CheapestEntry:
 def part_2(txt: str) -> int:
     start, end, walls = parse(txt)
 
+    # TODO: there's a lot of duplicated stuff. can we refactor?
     initial_state = _State(pos=start, facing=Facing.EAST)
     to_explore = deque[tuple[int, _State, _State]]()
     to_explore.append((0, initial_state, initial_state))
     valid_pos = lambda p: p not in walls
-    cheapest: dict[_State, CheapestEntry] = {}
+    cheapest: dict[_State, _CheapTracker] = {}
     while to_explore:
         cost, state, prev_state = to_explore.popleft()
         best = cheapest.get(state, None)
         # if we've found a new best
         if best is None or cost < best.cost:
             seen_on_way = cheapest[prev_state].seen if prev_state in cheapest else set()
-            cheapest[state] = CheapestEntry(cost=cost, seen=seen_on_way | {state.pos})
+            cheapest[state] = _CheapTracker(cost=cost, seen=seen_on_way | {state.pos})
             for next_state, cost_increase in state.next(valid_pos):
                 to_explore.append((cost + cost_increase, next_state, state))
         elif cost == best.cost:
