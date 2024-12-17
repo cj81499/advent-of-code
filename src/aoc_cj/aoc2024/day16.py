@@ -1,5 +1,6 @@
 import dataclasses
 import enum
+import itertools
 import math
 from collections import deque
 from collections.abc import Callable, Generator
@@ -49,41 +50,39 @@ def part_1(txt: str) -> int:
     return min(cost for s, cost in cheapest.items() if s.pos == end)
 
 
+@dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
+class CheapestEntry:
+    cost: int
+    seen: set[complex]
+
+
 def part_2(txt: str) -> int:
     start, end, walls = parse(txt)
 
-    initial = _State(pos=start, facing=Facing.EAST)
-    to_explore = deque[tuple[int, _State, _State | None]](((0, initial, None),))
+    initial_state = _State(pos=start, facing=Facing.EAST)
+    to_explore = deque[tuple[int, _State, _State]]()
+    to_explore.append((0, initial_state, initial_state))
     valid_pos = lambda p: p not in walls
-    cheapest: dict[_State, tuple[int, set[complex]]] = {}
+    cheapest: dict[_State, CheapestEntry] = {}
     while to_explore:
         cost, state, prev_state = to_explore.popleft()
-        if state not in cheapest:
-            if prev_state not in cheapest:
-                cheapest[state] = (cost, {state.pos})
-            else:
-                cheapest[state] = (cost, cheapest[prev_state][1].union((state.pos,)))
+        best = cheapest.get(state, None)
+        # if we've found a new best
+        if best is None or cost < best.cost:
+            seen_on_way = cheapest[prev_state].seen if prev_state in cheapest else set()
+            cheapest[state] = CheapestEntry(cost=cost, seen=seen_on_way | {state.pos})
             for next_state, cost_increase in state.next(valid_pos):
                 to_explore.append((cost + cost_increase, next_state, state))
-        else:
-            cheapest_cost, seen = cheapest[state]
-            seen_on_way = cheapest[prev_state][1].union((state.pos,)) if prev_state in cheapest else {state.pos}
-            if cost == cheapest_cost:
-                seen.update(seen_on_way)
-            elif cost < cheapest_cost:
-                cheapest[state] = (cost, seen_on_way)
-                for next_state, cost_increase in state.next(valid_pos):
-                    to_explore.append((cost + cost_increase, next_state, state))
+        elif cost == best.cost:
+            best.seen.update(cheapest[prev_state].seen)
+            best.seen.add(state.pos)
 
     end_states = {s: v for s, v in cheapest.items() if s.pos == end}
-    print(end_states)
-    min_cost = min(cost for _, (cost, _) in end_states.items())
-    min_cost_end_states = {s: p for s, (cost, p) in end_states.items() if cost == min_cost}
-    print(min_cost_end_states)
-    positions = set[complex]()
-    for p in min_cost_end_states.values():
-        positions.update(p)
-    return len(positions)
+    min_cost = min(best.cost for _, best in end_states.items())
+    positions_along_min_cost_paths = set(
+        itertools.chain.from_iterable(best.seen for best in end_states.values() if best.cost == min_cost)
+    )
+    return len(positions_along_min_cost_paths)
 
 
 def parse(txt: str) -> tuple[complex, complex, set[complex]]:
