@@ -19,7 +19,7 @@
 | 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)       |   :star:   |   :star:   | :white_check_mark: |
 | 16  | [?](https://adventofcode.com/2024/day/16)                    | :question: | :question: |     :question:     |
 | 17  | [?](https://adventofcode.com/2024/day/17)                    | :question: | :question: |     :question:     |
-| 18  | [?](https://adventofcode.com/2024/day/18)                    | :question: | :question: |     :question:     |
+| 18  | [RAM Run](https://adventofcode.com/2024/day/18)              |   :star:   |   :star:   | :white_check_mark: |
 | 19  | [?](https://adventofcode.com/2024/day/19)                    | :question: | :question: |     :question:     |
 | 20  | [?](https://adventofcode.com/2024/day/20)                    | :question: | :question: |     :question:     |
 | 21  | [?](https://adventofcode.com/2024/day/21)                    | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 18   00:20:57   2438      0   00:26:54   2052      0
  15   00:56:48   4717      0   20:32:43  20377      0
  14   13:37:54  27290      0   13:47:27  22823      0
  13   00:11:11    750      0   00:20:33    504      0
