@@ -59,7 +59,6 @@ class _CheapTracker:
 def part_2(txt: str) -> int:
     start, end, walls = parse(txt)
 
-    # TODO: there's a lot of duplicated stuff. can we refactor?
     initial_state = _State(pos=start, facing=Facing.EAST)
     to_explore = deque[tuple[int, _State, _State]]()
     to_explore.append((0, initial_state, initial_state))
