@@ -58,14 +58,28 @@ def part_2(txt: str, max_dim: int = 70) -> str:
     byte_positions = [x + y * 1j for x, y in (util.ints(l) for l in txt.splitlines())]
     start = 0j
     goal = max_dim + max_dim * 1j
-    blocked = set[complex]()
-    for p in byte_positions:
-        blocked.add(p)
+
+    # use binary search to find the first element in byte_positions that'll cut
+    # off all paths from start to goal.
+    # a linear search would work, but is quite a bit slower.
+    left = 0
+    right = len(byte_positions) - 1
+    result: complex | None = None
+    while left <= right:
+        mid = (left + right) // 2
+        blocked = set(byte_positions[: mid + 1])
         try:
             explore(max_dim, start, goal, blocked)
         except NoPathFoundError:
-            return f"{int(p.real)},{int(p.imag)}"
-    assert False, "Path never blocked"
+            # no path found. The element must not be further to the right
+            result = byte_positions[mid]
+            right = mid - 1
+        else:
+            # path found. The element must be further to the right
+            left = mid + 1
+    assert result is not None
+
+    return f"{int(result.real)},{int(result.imag)}"
 
 
 if __name__ == "__main__":
