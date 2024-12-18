@@ -15,7 +15,9 @@ class HeapItem(Generic[_T]):
         self.value = value
 
     @override
-    def __eq__(self, other: Self) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, HeapItem):
+            return NotImplemented
         return (self.cost, self.value) == (other.cost, other.value)
 
     def __lt__(self, other: Self) -> bool:
