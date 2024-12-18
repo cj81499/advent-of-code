@@ -17,7 +17,7 @@
 | 13  | [Claw Contraption](https://adventofcode.com/2024/day/13)     |   :star:   |   :star:   | :white_check_mark: |
 | 14  | [Restroom Redoubt](https://adventofcode.com/2024/day/14)     |   :star:   |   :star:   | :white_check_mark: |
 | 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)       |   :star:   |   :star:   | :white_check_mark: |
-| 16  | [?](https://adventofcode.com/2024/day/16)                    | :question: | :question: |     :question:     |
+| 16  | [Reindeer Maze](https://adventofcode.com/2024/day/16)        |   :star:   |   :star:   | :white_check_mark: |
 | 17  | [?](https://adventofcode.com/2024/day/17)                    | :question: | :question: |     :question:     |
 | 18  | [?](https://adventofcode.com/2024/day/18)                    | :question: | :question: |     :question:     |
 | 19  | [?](https://adventofcode.com/2024/day/19)                    | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 16   01:06:42   4058      0   01:52:17   3208      0
  15   00:56:48   4717      0   20:32:43  20377      0
  14   13:37:54  27290      0   13:47:27  22823      0
  13   00:11:11    750      0   00:20:33    504      0
