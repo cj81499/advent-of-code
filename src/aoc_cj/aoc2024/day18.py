@@ -1,6 +1,6 @@
 import heapq
 import itertools
-from typing import Generic, Self, TypeVar, override
+from typing import Generic, Self, TypeVar
 
 from aoc_cj import util
 
@@ -14,12 +14,6 @@ class HeapItem(Generic[_T]):
         self.cost = cost
         self.value = value
 
-    @override
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, HeapItem):
-            return NotImplemented
-        return (self.cost, self.value) == (other.cost, other.value)
-
     def __lt__(self, other: Self) -> bool:
         return self.cost < other.cost
 
@@ -29,7 +23,7 @@ class NoPathFoundError(Exception):
 
 
 def part_1(txt: str, max_dim: int = 70, simulate: int = 1024) -> int:
-    byte_positions = (x + y * 1j for x, y in (util.ints(l) for l in txt.splitlines()))
+    byte_positions = [x + y * 1j for x, y in (util.ints(l) for l in txt.splitlines())]
     start = 0j
     goal = max_dim + max_dim * 1j
     blocked = set(itertools.islice(byte_positions, simulate))
