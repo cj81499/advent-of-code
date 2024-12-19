@@ -17,7 +17,10 @@ def _possible_results(nums: Sequence[int], *, concat_op: bool = False) -> Genera
         yield r + last
         yield r * last
         if concat_op:
-            yield int(str(r) + str(last))
+            # The following is _slightly_ faster than int(str(r) + str(last)), but computes the same result
+            # It "shifts" r to the left by N digits where N is the number of digits in `last`
+            # I believe it performs better because it only needs to convert one int to str and it avoids parsing str to int
+            yield r * (10 ** len(str(last))) + last
 
 
 def solve(txt: str, *, concat_op: bool = False) -> int:
