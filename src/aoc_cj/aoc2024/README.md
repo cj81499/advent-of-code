@@ -20,7 +20,7 @@
 | 16  | [Reindeer Maze](https://adventofcode.com/2024/day/16)        |   :star:   |   :star:   | :white_check_mark: |
 | 17  | [?](https://adventofcode.com/2024/day/17)                    | :question: | :question: |     :question:     |
 | 18  | [RAM Run](https://adventofcode.com/2024/day/18)              |   :star:   |   :star:   | :white_check_mark: |
-| 19  | [?](https://adventofcode.com/2024/day/19)                    | :question: | :question: |     :question:     |
+| 19  | [Linen Layout](https://adventofcode.com/2024/day/19)         |   :star:   |   :star:   | :white_check_mark: |
 | 20  | [?](https://adventofcode.com/2024/day/20)                    | :question: | :question: |     :question:     |
 | 21  | [?](https://adventofcode.com/2024/day/21)                    | :question: | :question: |     :question:     |
 | 22  | [?](https://adventofcode.com/2024/day/22)                    | :question: | :question: |     :question:     |
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 19   00:10:57   1444      0   00:14:34   1129      0
  18   00:20:57   2438      0   00:26:54   2052      0
  16   01:06:42   4058      0   01:52:17   3208      0
  15   00:56:48   4717      0   20:32:43  20377      0
