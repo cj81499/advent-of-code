@@ -4,11 +4,11 @@ import functools
 def design_is_possible(design: str, available_patterns: frozenset[str]) -> bool:
     if design == "":
         return True
-    for p in available_patterns:
-        if design.startswith(p):
-            if design_is_possible(design.removeprefix(p), available_patterns):
-                return True
-    return False
+    return any(
+        design_is_possible(design.removeprefix(p), available_patterns)
+        for p in available_patterns
+        if design.startswith(p)
+    )
 
 
 @functools.cache
@@ -22,17 +22,18 @@ def ways_design_is_possible(design: str, available_patterns: frozenset[str]) -> 
     )
 
 
-def part_1(txt: str) -> int:
+def parse(txt: str) -> tuple[frozenset[str], list[str]]:
     available_patterns, desired_designs = txt.split("\n\n")
-    available_patterns = frozenset(available_patterns.split(", "))
-    desired_designs = desired_designs.splitlines()
+    return frozenset(available_patterns.split(", ")), desired_designs.splitlines()
+
+
+def part_1(txt: str) -> int:
+    available_patterns, desired_designs = parse(txt)
     return sum(1 for d in desired_designs if design_is_possible(d, available_patterns))
 
 
 def part_2(txt: str) -> int:
-    available_patterns, desired_designs = txt.split("\n\n")
-    available_patterns = frozenset(available_patterns.split(", "))
-    desired_designs = desired_designs.splitlines()
+    available_patterns, desired_designs = parse(txt)
     return sum(ways_design_is_possible(d, available_patterns) for d in desired_designs)
 
 
