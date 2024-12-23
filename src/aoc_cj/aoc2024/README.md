@@ -21,7 +21,7 @@
 | 17  | [?](https://adventofcode.com/2024/day/17)                    | :question: | :question: |     :question:     |
 | 18  | [RAM Run](https://adventofcode.com/2024/day/18)              |   :star:   |   :star:   | :white_check_mark: |
 | 19  | [Linen Layout](https://adventofcode.com/2024/day/19)         |   :star:   |   :star:   | :white_check_mark: |
-| 20  | [?](https://adventofcode.com/2024/day/20)                    | :question: | :question: |     :question:     |
+| 20  | [Race Condition](https://adventofcode.com/2024/day/20)       |   :star:   |   :star:   | :white_check_mark: |
 | 21  | [?](https://adventofcode.com/2024/day/21)                    | :question: | :question: |     :question:     |
 | 22  | [Monkey Market](https://adventofcode.com/2024/day/22)        |   :star:   |   :star:   | :white_check_mark: |
 | 23  | [?](https://adventofcode.com/2024/day/23)                    | :question: | :question: |     :question:     |
@@ -34,6 +34,7 @@
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
  22   00:10:48   1511      0   00:37:45   1195      0
+ 20   00:39:15   2009      0   00:56:24   1258      0
  19   00:10:57   1444      0   00:14:34   1129      0
  18   00:20:57   2438      0   00:26:54   2052      0
  16   01:06:42   4058      0   01:52:17   3208      0
