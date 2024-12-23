@@ -1,16 +1,9 @@
-import dataclasses
 from collections import deque
 from collections.abc import Generator
 
 import more_itertools as mi
 
 from aoc_cj import util
-
-
-@dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
-class _State:
-    cost: int
-    pos: complex
 
 
 def part_1(txt: str) -> int:
@@ -32,16 +25,16 @@ def cheat_generator(txt: str, *, min_savings: int = 1, max_cheat_duration: int =
 
     # find how far each position on the racetrack is from the end
     dist_from_end: dict[complex, int] = {}
-    to_explore = deque[_State]()
-    to_explore.append(_State(cost=0, pos=end))
+    to_explore = deque[tuple[int, complex]]()
+    to_explore.append((0, end))
     while to_explore:
-        state = to_explore.popleft()
-        if state.pos in dist_from_end:
+        cost, pos = to_explore.popleft()
+        if pos in dist_from_end:
             continue
-        for cheat_start_pos in util.adj_4(state.pos):
+        for cheat_start_pos in util.adj_4(pos):
             if cheat_start_pos in racetrack and cheat_start_pos not in dist_from_end:
-                to_explore.append(_State(cost=state.cost + 1, pos=cheat_start_pos))
-        dist_from_end[state.pos] = state.cost
+                to_explore.append((cost + 1, cheat_start_pos))
+        dist_from_end[pos] = cost
 
     cheat_deltas = set[complex]()
     for x in range(max_cheat_duration + 1):
