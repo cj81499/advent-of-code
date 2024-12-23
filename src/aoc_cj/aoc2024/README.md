@@ -24,7 +24,7 @@
 | 20  | [Race Condition](https://adventofcode.com/2024/day/20)       |   :star:   |   :star:   | :white_check_mark: |
 | 21  | [?](https://adventofcode.com/2024/day/21)                    | :question: | :question: |     :question:     |
 | 22  | [Monkey Market](https://adventofcode.com/2024/day/22)        |   :star:   |   :star:   | :white_check_mark: |
-| 23  | [?](https://adventofcode.com/2024/day/23)                    | :question: | :question: |     :question:     |
+| 23  | [LAN Party](https://adventofcode.com/2024/day/23)            |   :star:   |   :star:   | :white_check_mark: |
 | 24  | [?](https://adventofcode.com/2024/day/24)                    | :question: | :question: |     :question:     |
 | 25  | [?](https://adventofcode.com/2024/day/25)                    | :question: | :question: |     :question:     |
 
@@ -33,6 +33,7 @@
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 23   00:12:48   1409      0   01:02:24   2715      0
  22   00:10:48   1511      0   00:37:45   1195      0
  20   00:39:15   2009      0   00:56:24   1258      0
  19   00:10:57   1444      0   00:14:34   1129      0
