@@ -21,7 +21,7 @@
 | 17  | [?](https://adventofcode.com/2024/day/17)                    | :question: | :question: |     :question:     |
 | 18  | [RAM Run](https://adventofcode.com/2024/day/18)              |   :star:   |   :star:   | :white_check_mark: |
 | 19  | [Linen Layout](https://adventofcode.com/2024/day/19)         |   :star:   |   :star:   | :white_check_mark: |
-| 20  | [Race Condition](https://adventofcode.com/2024/day/20)       |   :star:   |   :star:   |     :question:     |
+| 20  | [Race Condition](https://adventofcode.com/2024/day/20)       |   :star:   |   :star:   | :white_check_mark: |
 | 21  | [?](https://adventofcode.com/2024/day/21)                    | :question: | :question: |     :question:     |
 | 22  | [Monkey Market](https://adventofcode.com/2024/day/22)        |   :star:   |   :star:   | :white_check_mark: |
 | 23  | [?](https://adventofcode.com/2024/day/23)                    | :question: | :question: |     :question:     |
