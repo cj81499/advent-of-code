@@ -20,31 +20,27 @@ jobs:
         uses: actions/checkout@v4.2.2
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v4.2.0
+        uses: astral-sh/setup-uv@v5.0.1
         with:
-          enable-cache: true
-          version: "0.5.1"
-
-      - name: Pin python version to ${{ matrix.python-version }}
-        run: uv python pin ${{ matrix.python-version }}
+          python-version: ${{ matrix.python-version }}
 
       - name: Sanity check Python version
         # https://docs.python.org/3/using/cmdline.html#cmdoption-version
         run: |
-          uv run python --version --version
-          [[ "$(uv run python --version)" == Python\ ${{ matrix.python-version }}* ]]
+          uv run --frozen python --version --version
+          [[ "$(uv run --frozen python --version)" == Python\ ${{ matrix.python-version }}* ]]
 
       - name: Check format (ruff)
-        run: uv run ruff format --check .
+        run: uv run --frozen ruff format --check .
 
       - name: Lint (ruff)
-        run: uv run ruff check --output-format=github .
+        run: uv run --frozen ruff check --output-format=github .
 
       - name: Check types (mypy)
-        run: uv run mypy .
+        run: uv run --frozen mypy .
 
       - name: Run tests
-        run: uv run pytest --cov=. --cov-report=xml
+        run: uv run --frozen pytest --cov=. --cov-report=xml
 
       # consider ditching codecov - https://hynek.me/articles/ditch-codecov-python/
       - name: Upload coverage to Codecov
@@ -57,13 +53,13 @@ jobs:
     if: always()
     runs-on: Ubuntu-latest
     needs:
-    - build
+      - build
 
     steps:
-    - name: Print job results
-      run: echo '${{ toJSON(needs) }}'
+      - name: Print job results
+        run: echo '${{ toJSON(needs) }}'
 
-    - name: Check if all jobs succeeded
-      uses: re-actors/alls-green@v1.2.2
-      with:
-        jobs: ${{ toJSON(needs) }}
+      - name: Check if all jobs succeeded
+        uses: re-actors/alls-green@v1.2.2
+        with:
+          jobs: ${{ toJSON(needs) }}
