@@ -49,7 +49,6 @@ EXPECTED_SAVINGS_2 = {
     ),
 )
 def test_cheat_generator(min_savings: int, max_cheat_duration: int, expected_savings_counts: dict[int, int]) -> None:
-    cheats = d.cheat_generator(EXAMPLE_INPUT, min_savings=min_savings, max_cheat_duration=max_cheat_duration)
-    counts = Counter(cheats)
-    for savings, expected in expected_savings_counts.items():
-        assert counts[savings] == expected, f"{savings=}"
+    cheats = d.cheat_generator(EXAMPLE_INPUT, max_cheat_duration=max_cheat_duration)
+    counts = Counter(c for c in cheats if c >= min_savings)
+    assert counts == expected_savings_counts

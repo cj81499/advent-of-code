@@ -1,7 +1,6 @@
 """cj's solutions for https://adventofcode.com/"""
 
 import importlib
-import inspect
 import logging
 from pathlib import Path
 from types import ModuleType
@@ -44,7 +43,7 @@ def solve(year: int, day: int, data: str) -> tuple[Answer, Answer]:  # pragma: n
 
 def _solve_part(module: ModuleType, data: str, part: Part) -> Answer:  # pragma: no cover
     if f := getattr(module, f"part_{part}", None):
-        assert inspect.isfunction(f), f"f ({f}) is not a function"
+        assert callable(f), f"f ({f}) is not callable"
         try:
             # TODO: consider checking that inspect.signature matches expected signature
             resp = f(data)
