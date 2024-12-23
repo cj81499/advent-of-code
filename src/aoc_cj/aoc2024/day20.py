@@ -40,10 +40,10 @@ def cheat_generator(txt: str, *, min_savings: int = 1, max_cheat_duration: int =
     for x in range(max_cheat_duration + 1):
         for y in range(max_cheat_duration + 1):
             if 2 <= x + y <= max_cheat_duration:
-                cheat_deltas.add(x + y * 1j)
-                cheat_deltas.add(-x + y * 1j)
-                cheat_deltas.add(x + y * -1j)
-                cheat_deltas.add(-x + y * -1j)
+                cheat_deltas.add(complex(x, y))
+                cheat_deltas.add(complex(-x, y))
+                cheat_deltas.add(complex(x, -y))
+                cheat_deltas.add(complex(-x, -y))
 
     # for each position on the racetrack, see if we can cheat in a way that'll save us more that 100 picoseconds
     for cheat_start_pos, dist in dist_from_end.items():
