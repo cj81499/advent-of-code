@@ -1,38 +1,39 @@
 # Advent of Code 2024
 
-| Day | Title                                                        |     1      |     2      |       Tests        |
-| :-: | ------------------------------------------------------------ | :--------: | :--------: | :----------------: |
-| 01  | [Historian Hysteria](https://adventofcode.com/2024/day/1)    |   :star:   |   :star:   | :white_check_mark: |
-| 02  | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)     |   :star:   |   :star:   | :white_check_mark: |
-| 03  | [Mull It Over](https://adventofcode.com/2024/day/3)          |   :star:   |   :star:   | :white_check_mark: |
-| 04  | [Ceres Search](https://adventofcode.com/2024/day/4)          |   :star:   |   :star:   | :white_check_mark: |
-| 05  | [Print Queue](https://adventofcode.com/2024/day/5)           |   :star:   |   :star:   | :white_check_mark: |
-| 06  | [Guard Gallivant](https://adventofcode.com/2024/day/6)       |   :star:   |   :star:   | :white_check_mark: |
-| 07  | [Bridge Repair](https://adventofcode.com/2024/day/7)         |   :star:   |   :star:   | :white_check_mark: |
-| 08  | [Resonant Collinearity](https://adventofcode.com/2024/day/8) |   :star:   |   :star:   | :white_check_mark: |
-| 09  | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       |   :star:   |   :star:   | :white_check_mark: |
-| 10  | [Hoof It](https://adventofcode.com/2024/day/10)              |   :star:   |   :star:   | :white_check_mark: |
-| 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    |   :star:   |   :star:   | :white_check_mark: |
-| 12  | [Garden Groups](https://adventofcode.com/2024/day/12)        |   :star:   |   :star:   | :white_check_mark: |
-| 13  | [Claw Contraption](https://adventofcode.com/2024/day/13)     |   :star:   |   :star:   | :white_check_mark: |
-| 14  | [Restroom Redoubt](https://adventofcode.com/2024/day/14)     |   :star:   |   :star:   | :white_check_mark: |
-| 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)       |   :star:   |   :star:   | :white_check_mark: |
-| 16  | [Reindeer Maze](https://adventofcode.com/2024/day/16)        |   :star:   |   :star:   | :white_check_mark: |
-| 17  | [?](https://adventofcode.com/2024/day/17)                    | :question: | :question: |     :question:     |
-| 18  | [RAM Run](https://adventofcode.com/2024/day/18)              |   :star:   |   :star:   | :white_check_mark: |
-| 19  | [Linen Layout](https://adventofcode.com/2024/day/19)         |   :star:   |   :star:   | :white_check_mark: |
-| 20  | [Race Condition](https://adventofcode.com/2024/day/20)       |   :star:   |   :star:   | :white_check_mark: |
-| 21  | [?](https://adventofcode.com/2024/day/21)                    | :question: | :question: |     :question:     |
-| 22  | [Monkey Market](https://adventofcode.com/2024/day/22)        |   :star:   |   :star:   | :white_check_mark: |
-| 23  | [LAN Party](https://adventofcode.com/2024/day/23)            |   :star:   |   :star:   | :white_check_mark: |
-| 24  | [?](https://adventofcode.com/2024/day/24)                    | :question: | :question: |     :question:     |
-| 25  | [?](https://adventofcode.com/2024/day/25)                    | :question: | :question: |     :question:     |
+| Day | Title                                                          |     1      |     2      |       Tests        |
+| :-: | -------------------------------------------------------------- | :--------: | :--------: | :----------------: |
+| 01  | [Historian Hysteria](https://adventofcode.com/2024/day/1)      |   :star:   |   :star:   | :white_check_mark: |
+| 02  | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)       |   :star:   |   :star:   | :white_check_mark: |
+| 03  | [Mull It Over](https://adventofcode.com/2024/day/3)            |   :star:   |   :star:   | :white_check_mark: |
+| 04  | [Ceres Search](https://adventofcode.com/2024/day/4)            |   :star:   |   :star:   | :white_check_mark: |
+| 05  | [Print Queue](https://adventofcode.com/2024/day/5)             |   :star:   |   :star:   | :white_check_mark: |
+| 06  | [Guard Gallivant](https://adventofcode.com/2024/day/6)         |   :star:   |   :star:   | :white_check_mark: |
+| 07  | [Bridge Repair](https://adventofcode.com/2024/day/7)           |   :star:   |   :star:   | :white_check_mark: |
+| 08  | [Resonant Collinearity](https://adventofcode.com/2024/day/8)   |   :star:   |   :star:   | :white_check_mark: |
+| 09  | [Disk Fragmenter](https://adventofcode.com/2024/day/9)         |   :star:   |   :star:   | :white_check_mark: |
+| 10  | [Hoof It](https://adventofcode.com/2024/day/10)                |   :star:   |   :star:   | :white_check_mark: |
+| 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)      |   :star:   |   :star:   | :white_check_mark: |
+| 12  | [Garden Groups](https://adventofcode.com/2024/day/12)          |   :star:   |   :star:   | :white_check_mark: |
+| 13  | [Claw Contraption](https://adventofcode.com/2024/day/13)       |   :star:   |   :star:   | :white_check_mark: |
+| 14  | [Restroom Redoubt](https://adventofcode.com/2024/day/14)       |   :star:   |   :star:   | :white_check_mark: |
+| 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)         |   :star:   |   :star:   | :white_check_mark: |
+| 16  | [Reindeer Maze](https://adventofcode.com/2024/day/16)          |   :star:   |   :star:   | :white_check_mark: |
+| 17  | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | :question: | :question: |     :question:     |
+| 18  | [RAM Run](https://adventofcode.com/2024/day/18)                |   :star:   |   :star:   | :white_check_mark: |
+| 19  | [Linen Layout](https://adventofcode.com/2024/day/19)           |   :star:   |   :star:   | :white_check_mark: |
+| 20  | [Race Condition](https://adventofcode.com/2024/day/20)         |   :star:   |   :star:   | :white_check_mark: |
+| 21  | [Keypad Conundrum](https://adventofcode.com/2024/day/21)       | :question: | :question: |     :question:     |
+| 22  | [Monkey Market](https://adventofcode.com/2024/day/22)          |   :star:   |   :star:   | :white_check_mark: |
+| 23  | [LAN Party](https://adventofcode.com/2024/day/23)              |   :star:   |   :star:   | :white_check_mark: |
+| 24  | [Crossed Wires](https://adventofcode.com/2024/day/24)          |   :star:   | :question: |     :question:     |
+| 25  | [?](https://adventofcode.com/2024/day/25)                      | :question: | :question: |     :question:     |
 
 ## Results
 
 ```text
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 24   00:28:15   2330      0          -      -      -
  23   00:12:48   1409      0   01:02:24   2715      0
  22   00:10:48   1511      0   00:37:45   1195      0
  20   00:39:15   2009      0   00:56:24   1258      0
