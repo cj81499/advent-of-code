@@ -1,8 +1,6 @@
 import aoc_cj.aoc2017.day19 as d
 
-EXAMPLE_INPUT = (
-    "    |         \n" "    |  +--+   \n" "    A  |  C   \n" "F---|----E|--+\n" "    |  |  |  D\n" "    +B-+  +--+"
-)
+EXAMPLE_INPUT = "    |         \n    |  +--+   \n    A  |  C   \nF---|----E|--+\n    |  |  |  D\n    +B-+  +--+"
 
 
 def test_part_1():
