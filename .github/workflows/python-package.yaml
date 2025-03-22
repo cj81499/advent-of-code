@@ -1,4 +1,6 @@
 name: Python Package
+permissions:
+  contents: none
 
 on:
   push:
@@ -15,12 +17,16 @@ jobs:
         python-version:
           - "3.12"
           - "3.13"
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v5.2.2
+        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174 # v5.4.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -44,7 +50,7 @@ jobs:
 
       # consider ditching codecov - https://hynek.me/articles/ditch-codecov-python/
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5.3.1
+        uses: codecov/codecov-action@0565863a31f2c772f9f0395002a31e3f06189574 # v5.4.0
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -55,12 +61,12 @@ jobs:
       security-events: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@22695119d769bdb6f7032ad67b9bca0ef8c4a174 # v5.4.0
 
       - name: Run zizmor 🌈
         run: uvx zizmor --persona=auditor --format=sarif . > results.sarif
@@ -68,7 +74,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
         with:
           sarif_file: results.sarif
           category: zizmor
@@ -79,12 +85,13 @@ jobs:
     needs:
       - build
       - zizmor
-
+    env:
+      JOBS: ${{ toJSON(needs) }}
     steps:
       - name: Print job results
-        run: echo '${{ toJSON(needs) }}'
+        run: echo "$JOBS"
 
       - name: Check if all jobs succeeded
-        uses: re-actors/alls-green@v1.2.2
+        uses: re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe # v1.2.2
         with:
-          jobs: ${{ toJSON(needs) }}
+          jobs: "${{ toJSON(needs) }}"
