@@ -27,7 +27,9 @@
     "lightshow",
     "peekable",
     "popleft",
-    "triplewise"
+    "sarif",
+    "triplewise",
+    "zizmor"
   ],
   "evenBetterToml.formatter.allowedBlankLines": 1,
   "evenBetterToml.formatter.alignComments": false,
