@@ -119,7 +119,7 @@ def part_2(txt):
     s = Simulation(txt.splitlines())
     carts = [None, None]
     while len(carts) > 1:
-        crashes, carts = s.move_carts(part_2=True)
+        _crashes, carts = s.move_carts(part_2=True)
     return ",".join(map(str, mi.one(carts)))
 
 

@@ -1,13 +1,10 @@
 import dataclasses
 from collections.abc import Callable
-from typing import Any, Generic, TypeVar
 
 from aoc_cj import util
 
 Registers = tuple[int, ...]
 Operation = Callable[[Registers, int, int], int]
-
-_T = TypeVar("_T")
 
 
 OPERATIONS: dict[str, Operation] = {
@@ -48,8 +45,8 @@ class Sample:
 
 
 @dataclasses.dataclass
-class Instruction(Generic[_T]):
-    opcode: _T
+class Instruction[T]:
+    opcode: T
     a: int
     b: int
     c: int
@@ -66,10 +63,10 @@ class Instruction(Generic[_T]):
 
 
 def update_registers(r: Registers, i: int, new_val: int) -> Registers:
-    return r[:i] + (new_val,) + r[i + 1 :]
+    return (*r[:i], new_val, *r[i + 1 :])
 
 
-def run_cmd(opcode_name: str, registers: Registers, instruction: Instruction[Any]) -> Registers:
+def run_cmd(opcode_name: str, registers: Registers, instruction: Instruction[object]) -> Registers:
     a, b, c = instruction.a, instruction.b, instruction.c
     return update_registers(registers, c, OPERATIONS[opcode_name](registers, a, b))
 

@@ -65,7 +65,7 @@ def next_states(state: State) -> set[State]:
     return safe_states
 
 
-def next_states_helper(state: State, items_to_move: Sequence[tuple[int, int]]) -> Generator[State, None, None]:
+def next_states_helper(state: State, items_to_move: Sequence[tuple[int, int]]) -> Generator[State]:
     pos, item_pairs = state
     for new_pos in (pos + delta for delta in (-1, 1) if pos + delta in range(NUM_FLOORS)):
         yield (new_pos, new_item_pairs(item_pairs, items_to_move, new_pos))

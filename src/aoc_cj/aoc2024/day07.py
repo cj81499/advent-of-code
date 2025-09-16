@@ -1,14 +1,14 @@
 from collections.abc import Generator, Sequence
 
 
-def parse(txt: str) -> Generator[tuple[int, tuple[int, ...]], None, None]:
+def parse(txt: str) -> Generator[tuple[int, tuple[int, ...]]]:
     for line in txt.splitlines():
         target, sep, nums = line.partition(": ")
         assert sep == ": "
         yield int(target), tuple(map(int, nums.split()))
 
 
-def _possible_results(nums: Sequence[int], *, concat_op: bool = False) -> Generator[int, None, None]:
+def _possible_results(nums: Sequence[int], *, concat_op: bool = False) -> Generator[int]:
     if len(nums) == 1:
         yield nums[0]
         return

@@ -58,7 +58,7 @@ class EngineSchematic:
 
         return EngineSchematic(numbers, symbols)
 
-    def gear_ratios(self) -> Generator[int, None, None]:
+    def gear_ratios(self) -> Generator[int]:
         for possible_gear_pos, c in self.symbols.items():
             if c == "*":
                 adjacent_numbers = {n for n in self.numbers if n.is_adjacent_to(possible_gear_pos)}
@@ -66,7 +66,7 @@ class EngineSchematic:
                     gear_ratio = math.prod(n.value for n in adjacent_numbers)
                     yield gear_ratio
 
-    def part_numbers(self) -> Generator[int, None, None]:
+    def part_numbers(self) -> Generator[int]:
         for n in self.numbers:
             if any(n.is_adjacent_to(s) for s in self.symbols):
                 yield n.value

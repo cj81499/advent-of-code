@@ -13,7 +13,7 @@ def part_2(txt: str, max_ip: int = MAX_32_BIT_INTEGER) -> int:
     return mi.ilen(valid_ips(txt, max_ip))
 
 
-def valid_ips(txt: str, max_ip: int = MAX_32_BIT_INTEGER) -> Generator[int, None, None]:
+def valid_ips(txt: str, max_ip: int = MAX_32_BIT_INTEGER) -> Generator[int]:
     sorted_blacklist = tuple(sorted(tuple(int(n) for n in line.split("-")) for line in txt.splitlines()))
     ip = 0
     for start, stop in sorted_blacklist:

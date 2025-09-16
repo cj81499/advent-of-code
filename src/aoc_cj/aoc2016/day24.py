@@ -14,7 +14,7 @@ def is_wall(grid: Grid, pos: Pos) -> bool:
     return grid.get(pos, WALL) == WALL
 
 
-def adj_pos(x: int, y: int) -> Generator[Pos, None, None]:
+def adj_pos(x: int, y: int) -> Generator[Pos]:
     yield from ((x + dx, y + dy) for (dx, dy) in ((0, -1), (0, 1), (-1, 0), (1, 0)))
 
 
@@ -22,7 +22,7 @@ def path_distance(edges: dict[Path, int], possible_path: Path) -> int:
     return sum(edges[tuple(sorted(pair))] for pair in itertools.pairwise(possible_path))
 
 
-def possible_paths(num_targets: int, *, end_at_start: bool = False) -> Generator[Path, None, None]:
+def possible_paths(num_targets: int, *, end_at_start: bool = False) -> Generator[Path]:
     yield from ((0, *perm, 0) if end_at_start else (0, *perm) for perm in itertools.permutations(range(1, num_targets)))
 
 

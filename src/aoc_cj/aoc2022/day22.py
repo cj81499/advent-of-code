@@ -13,7 +13,7 @@ UP = complex(0, -1)
 FACING_TO_INT = {RIGHT: 0, DOWN: 1, LEFT: 2, UP: 3}
 
 
-def parse_map_path(path: str) -> Generator[int | str, None, None]:
+def parse_map_path(path: str) -> Generator[int | str]:
     for chunk in mi.split_when(path, lambda x, y: x.isnumeric() != y.isnumeric()):
         joined = "".join(chunk)
         yield int(joined) if joined.isnumeric() else joined
@@ -67,7 +67,7 @@ def part_1(txt: str) -> int:
 
 
 def part_2(txt: str) -> int:
-    board_map_s, path = txt.split("\n\n")
+    board_map_s, _path = txt.split("\n\n")
 
     board_map = {
         complex(x, y): c

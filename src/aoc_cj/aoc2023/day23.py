@@ -10,11 +10,11 @@ RIGHT = 1
 
 DIRECTION_DELTA_MAP = {"^": UP, "v": DOWN, "<": LEFT, ">": RIGHT}
 
-NextPositions = Callable[[complex, dict[complex, str]], Generator[complex, None, None]]
+NextPositions = Callable[[complex, dict[complex, str]], Generator[complex]]
 
 
 def part_1(txt: str) -> int:
-    def next_positions(pos: complex, grid: dict[complex, str]) -> Generator[complex, None, None]:
+    def next_positions(pos: complex, grid: dict[complex, str]) -> Generator[complex]:
         current_grid_val = grid[pos]
         if (delta := DIRECTION_DELTA_MAP.get(current_grid_val)) is not None:
             yield pos + delta
@@ -46,7 +46,7 @@ def paths_between(
     goal: complex,
     grid: dict[complex, str],
     next_positions: NextPositions,
-) -> Generator[frozenset[complex], None, None]:
+) -> Generator[frozenset[complex]]:
     to_explore = deque[tuple[complex, frozenset[complex]]](((start, frozenset((start,))),))
     while to_explore:
         pos, seen = to_explore.popleft()
@@ -68,7 +68,7 @@ def part_2(txt: str) -> int:
     # nodes instead of many thousands. The same DFS as before now completes
     # reasonably quickly.
 
-    def next_positions(pos: complex, grid: dict[complex, str]) -> Generator[complex, None, None]:
+    def next_positions(pos: complex, grid: dict[complex, str]) -> Generator[complex]:
         current_grid_val = grid[pos]
         if current_grid_val != "#":
             for delta in (UP, DOWN, LEFT, RIGHT):

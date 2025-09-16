@@ -123,7 +123,7 @@ def solve(txt: str, *, double_width: bool = False) -> int:
     return grid.gps_score()
 
 
-def parse(txt: str, *, double_width: bool = False) -> tuple[Generator[Direction, None, None], Grid]:
+def parse(txt: str, *, double_width: bool = False) -> tuple[Generator[Direction], Grid]:
     initial_state, moves = txt.split("\n\n")
     state = (
         initial_state.replace("#", "##").replace(".", "..").replace("O", "[]").replace("@", "@.")

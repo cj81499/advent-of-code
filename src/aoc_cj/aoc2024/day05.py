@@ -1,6 +1,5 @@
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
-from typing import TypeVar
 
 import more_itertools as mi
 
@@ -24,10 +23,7 @@ def is_correctly_ordered(rules: Mapping[int, set[int]], page_order: Sequence[int
     return True
 
 
-_T = TypeVar("_T")
-
-
-def middle_element(seq: Sequence[_T]) -> _T:
+def middle_element[T](seq: Sequence[T]) -> T:
     return seq[len(seq) // 2]
 
 

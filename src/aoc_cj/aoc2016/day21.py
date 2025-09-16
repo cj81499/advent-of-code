@@ -1,7 +1,6 @@
 import itertools
 from collections import deque
 from collections.abc import Callable, Mapping, Sequence
-from typing import TypeVar
 
 INITIAL = "abcdefgh"
 SCRAMBLED = "fbgdceah"
@@ -23,10 +22,7 @@ def swap_letter(pw: StrSeq, words: StrSeq) -> list[str]:
     return swap(pw, pw.index(words[2]), pw.index(words[-1]))
 
 
-_T = TypeVar("_T")
-
-
-def rotate(li: Sequence[_T], n: int) -> list[_T]:
+def rotate[T](li: Sequence[T], n: int) -> list[T]:
     d = deque(li)
     d.rotate(n)
     return list(d)

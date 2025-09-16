@@ -17,7 +17,7 @@ def part_2(txt: str) -> int:
     )
 
 
-def nums(s: str) -> Generator[int, None, None]:
+def nums(s: str) -> Generator[int]:
     return (int(n) for n in s.split())
 
 

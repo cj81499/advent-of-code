@@ -30,7 +30,7 @@ class ReindeerState:
     distance_traveled: int = 0
 
 
-def race_reindeers(reindeers: set[Reindeer]) -> Generator[Mapping[Reindeer, ReindeerState], None, None]:
+def race_reindeers(reindeers: set[Reindeer]) -> Generator[Mapping[Reindeer, ReindeerState]]:
     state = {r: ReindeerState(is_flying=False, remaining_duration=0) for r in reindeers}
     while True:
         new_state = {}

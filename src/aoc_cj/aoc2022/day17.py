@@ -31,7 +31,7 @@ class Rock:
             )
         )
 
-    def points(self, offset: complex = 0) -> Generator[complex, None, None]:
+    def points(self, offset: complex = 0) -> Generator[complex]:
         yield from (p + offset for p in self._points)
 
     @staticmethod

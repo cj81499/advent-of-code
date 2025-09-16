@@ -87,7 +87,7 @@ class Grid:
     def start_pos(self) -> GridPosition:
         return mi.one(p for p, c in self.contents.items() if c == "S")
 
-    def connections(self, p: GridPosition) -> Generator[GridPosition, None, None]:
+    def connections(self, p: GridPosition) -> Generator[GridPosition]:
         pipe_type = self.contents.get(p, ".")
 
         if pipe_type == ".":

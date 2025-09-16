@@ -6,7 +6,7 @@ import more_itertools as mi
 from aoc_cj import util
 
 
-def part_1(txt: str, *, _get_nums: Callable[[str], Generator[int, None, None]] = util.digits) -> int:
+def part_1(txt: str, *, _get_nums: Callable[[str], Generator[int]] = util.digits) -> int:
     def calibration_value(line: str) -> int:
         nums = _get_nums(line)
         first = mi.first(nums)
@@ -22,7 +22,7 @@ STR_TO_INT = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "s
 
 
 def part_2(txt: str) -> int:
-    def get_nums(line: str) -> Generator[int, None, None]:
+    def get_nums(line: str) -> Generator[int]:
         yield from (
             int(s) if s.isdigit() else STR_TO_INT[s] for s in NUMBER_PATTERN.findall(line) if isinstance(s, str)
         )
