@@ -16,7 +16,7 @@ _DIRECTIONS = (
 )
 
 
-def ray(lines: list[str], x: int, y: int, dx: int, dy: int) -> Generator[str, None, None]:
+def ray(lines: list[str], x: int, y: int, dx: int, dy: int) -> Generator[str]:
     for i in itertools.count():
         new_y = y + dy * i
         new_x = x + dx * i

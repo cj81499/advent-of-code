@@ -13,7 +13,7 @@ def range_intersect(r1: range, r2: range) -> range | None:
     return range(max(r1.start, r2.start), min(r1.stop, r2.stop)) or None
 
 
-def range_difference(r1: range, r2: range) -> Generator[range, None, None]:
+def range_difference(r1: range, r2: range) -> Generator[range]:
     if r1.start < r2.start:
         yield range(r1.start, min(r1.stop, r2.start))
     if r1.stop > r2.stop:

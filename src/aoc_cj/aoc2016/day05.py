@@ -7,10 +7,10 @@ NUMBER_OF_ZEROS = 5
 
 
 @overload
-def password_generator(door_id: str, *, index_mode: Literal[False] = False) -> Generator[str, None, None]: ...
+def password_generator(door_id: str, *, index_mode: Literal[False] = False) -> Generator[str]: ...
 @overload
-def password_generator(door_id: str, *, index_mode: Literal[True]) -> Generator[tuple[int, str], None, None]: ...
-def password_generator(door_id: str, *, index_mode: bool = False) -> Generator[str | tuple[int, str], None, None]:
+def password_generator(door_id: str, *, index_mode: Literal[True]) -> Generator[tuple[int, str]]: ...
+def password_generator(door_id: str, *, index_mode: bool = False) -> Generator[str | tuple[int, str]]:
     for i in itertools.count():
         hd = hashlib.md5(f"{door_id}{i}".encode()).hexdigest()
         if hd.startswith("0" * NUMBER_OF_ZEROS):

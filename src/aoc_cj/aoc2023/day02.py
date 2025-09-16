@@ -35,7 +35,7 @@ class Game:
         return Game(int(game_id), [(int(count), color) for count, color in mi.chunked(reveals, 2, strict=True)])
 
 
-def parse_games(txt: str) -> Generator[Game, None, None]:
+def parse_games(txt: str) -> Generator[Game]:
     yield from (Game.parse(l) for l in txt.splitlines())
 
 

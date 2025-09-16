@@ -1,13 +1,19 @@
+import dataclasses
 import math
 import re
 from collections.abc import Generator, Sequence
-from typing import ClassVar, Literal, assert_never, cast
+from typing import ClassVar, Literal, TypeIs, assert_never, cast
 
 XMAS = Literal["x", "m", "a", "s"]
 COMPARISON = Literal["<", ">"]
 
 
-import dataclasses
+def is_xmas(o: object) -> TypeIs[XMAS]:
+    return o in ("x", "m", "a", "s")
+
+
+def is_comparison(o: object) -> TypeIs[COMPARISON]:
+    return o in ("<", ">")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -23,12 +29,10 @@ class Rule:
     def parse(s: str) -> "Rule":
         match = Rule.CONDITION_PATTERN.match(s)
         assert match is not None, f"failed to match {s}"
-        return Rule(
-            lhs=match.group("lhs"),
-            op=match.group("op"),
-            rhs=int(match.group("rhs")),
-            result=match.group("result"),
-        )
+        lhs, op, rhs, result = match.group("lhs", "op", "rhs", "result")
+        assert is_xmas(lhs)
+        assert is_comparison(op)
+        return Rule(lhs=lhs, op=op, rhs=int(rhs), result=result)
 
     def matches(self, part_rating: dict[str, int]) -> bool:
         lhs_value = part_rating[self.lhs]
@@ -95,13 +99,13 @@ def part_2(txt: str) -> int:
     workflows_str, _ = txt.split("\n\n")
     workflows = {(wf := Workflow.parse(line)).name: wf for line in workflows_str.splitlines()}
 
-    def _acceptable_part_ranges_helper(result: str, ranges: XMASRanges) -> Generator[XMASRanges, None, None]:
+    def _acceptable_part_ranges_helper(result: str, ranges: XMASRanges) -> Generator[XMASRanges]:
         if result == "A":
             yield ranges
         elif result != "R":
             yield from acceptable_part_ranges(workflows[result], ranges)
 
-    def acceptable_part_ranges(wf: Workflow, ranges: XMASRanges | None = None) -> Generator[XMASRanges, None, None]:
+    def acceptable_part_ranges(wf: Workflow, ranges: XMASRanges | None = None) -> Generator[XMASRanges]:
         ranges = {cast(XMAS, k): range(1, 4001) for k in "xmas"} if ranges is None else ranges.copy()
         for rule in wf.rules:
             go_to_result_ranges = ranges.copy()

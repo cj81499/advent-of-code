@@ -6,7 +6,7 @@ from collections.abc import Generator
 
 
 def part_1(txt: str) -> int:
-    def pattern() -> Generator[int, None, None]:
+    def pattern() -> Generator[int]:
         for i in itertools.count():
             yield from range(1, 2**i, 2)
 
@@ -14,7 +14,7 @@ def part_1(txt: str) -> int:
 
 
 def part_2(txt: str) -> int:
-    def pattern() -> Generator[int, None, None]:
+    def pattern() -> Generator[int]:
         for i in itertools.count():
             yield from (n for n in range(1, 3**i + 1) if n < 3 ** (i - 1) or n % 2 != 0)
 

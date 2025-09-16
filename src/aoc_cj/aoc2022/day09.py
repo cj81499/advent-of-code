@@ -10,7 +10,7 @@ RIGHT = 1 + 0j  # positive real -> right
 DIRECTIONS = {"U": UP, "D": DOWN, "L": LEFT, "R": RIGHT}
 
 
-def parse_motions(txt: str) -> Generator[tuple[complex, int], None, None]:
+def parse_motions(txt: str) -> Generator[tuple[complex, int]]:
     for line in txt.splitlines():
         direction, distance = line.split()
         yield DIRECTIONS[direction], int(distance)

@@ -6,7 +6,7 @@ import more_itertools as mi
 CONFUSING = {"i", "o", "l"}
 
 
-def generate_passwords(after: str) -> Generator[str, None, None]:
+def generate_passwords(after: str) -> Generator[str]:
     pw = after
     while True:
         pw = increment_password(pw)

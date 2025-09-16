@@ -13,7 +13,7 @@ GRID_SIZE = 4
 MOVES = {"U": -1j, "D": 1j, "L": -1, "R": 1}
 
 
-def paths(passcode: str) -> Generator[str, None, None]:
+def paths(passcode: str) -> Generator[str]:
     GOAL = complex(GRID_SIZE - 1, GRID_SIZE - 1)
     q = deque[tuple[complex, str]]()
     q.append((0 + 0j, ""))
