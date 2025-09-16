@@ -48,7 +48,7 @@ def supernet_sequences(ip: str) -> set[str]:
     return set(TEXT_REGEX.findall(ip)) - hypernet_sequences(ip)
 
 
-def subs_of_length(s: str, length: int) -> Generator[str, None, None]:
+def subs_of_length(s: str, length: int) -> Generator[str]:
     assert length > 0
     yield from (s[i : i + length] for i in range(len(s) - (length - 1)))
 

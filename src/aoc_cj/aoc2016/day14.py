@@ -23,7 +23,7 @@ def key_stretch_hash(to_hash: str) -> str:
     return h
 
 
-def keys(salt: str, hash_fn: Callable[[str], str] = standard_hash) -> Generator[int, None, None]:
+def keys(salt: str, hash_fn: Callable[[str], str] = standard_hash) -> Generator[int]:
     idx_chr_pairs = set[tuple[int, str]]()  # (idx, char)
     validated = set[tuple[int, str]]()
 

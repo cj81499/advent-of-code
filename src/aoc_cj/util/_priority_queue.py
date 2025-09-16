@@ -1,20 +1,16 @@
 import dataclasses
 import heapq
-from typing import Generic, TypeVar
 
 __all__ = ("PriorityQueue",)
 
 
-T = TypeVar("T")
-
-
 @dataclasses.dataclass(order=True)
-class _PrioritizedItem(Generic[T]):
+class _PrioritizedItem[T]:
     priority: int
     item: T = dataclasses.field(compare=False)
 
 
-class PriorityQueue(Generic[T]):
+class PriorityQueue[T]:
     def __init__(self) -> None:
         self._repr: list[_PrioritizedItem[T]] = []
 

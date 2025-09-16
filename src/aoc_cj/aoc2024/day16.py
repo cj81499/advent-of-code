@@ -23,7 +23,7 @@ class _State:
     pos: complex
     facing: Facing
 
-    def next(self, valid_pos: Callable[[complex], bool]) -> Generator[tuple[Self, int], None, None]:
+    def next(self, valid_pos: Callable[[complex], bool]) -> Generator[tuple[Self, int]]:
         cls = type(self)
         for new_pos in util.adj_4(self.pos):
             if valid_pos(new_pos):

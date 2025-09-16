@@ -99,7 +99,7 @@ class RecursiveCombatGame(CombatGame):
         if can_recurse:
             subgame_winner_n = self._play_subgame(draw_deck_pairs)
             winning_draw, winning_deck = mi.one(filter(lambda p: p[1].n == subgame_winner_n, draw_deck_pairs))
-            losing_draw, losing_deck = mi.one(filter(lambda p: p[1].n != subgame_winner_n, draw_deck_pairs))
+            losing_draw, _losing_deck = mi.one(filter(lambda p: p[1].n != subgame_winner_n, draw_deck_pairs))
             to_put_on_bottom = [winning_draw, losing_draw]
             winning_deck.put_on_bottom(*to_put_on_bottom)
         else:

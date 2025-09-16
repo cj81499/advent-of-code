@@ -3,7 +3,6 @@
 import math
 import re
 from collections.abc import Callable, Generator
-from typing import TypeVar
 
 from ._point import Point3D
 from ._priority_queue import PriorityQueue
@@ -20,10 +19,8 @@ __all__ = (
     "is_prime",
 )
 
-_T = TypeVar("_T")
 
-
-def adj_4(p: complex) -> Generator[complex, None, None]:
+def adj_4(p: complex) -> Generator[complex]:
     for delta in (-1, 1, -1j, 1j):
         yield p + delta
 
@@ -53,8 +50,8 @@ def is_prime(n: int) -> bool:
     return True
 
 
-def create_regex_parser(p: str | re.Pattern[str], f: Callable[[str], _T]) -> Callable[[str], Generator[_T, None, None]]:
-    def regex_parse_fn(s: str) -> Generator[_T, None, None]:
+def create_regex_parser[T](p: str | re.Pattern[str], f: Callable[[str], T]) -> Callable[[str], Generator[T]]:
+    def regex_parse_fn(s: str) -> Generator[T]:
         yield from map(f, re.findall(p, s))
 
     return regex_parse_fn

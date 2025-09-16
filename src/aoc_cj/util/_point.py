@@ -20,7 +20,7 @@ class Point3D:
         x, y, z = map(int, m.groups())
         return Point3D(x, y, z)
 
-    def adj(self) -> Generator["Point3D", None, None]:
+    def adj(self) -> Generator["Point3D"]:
         yield Point3D(self.x + 1, self.y, self.z)
         yield Point3D(self.x - 1, self.y, self.z)
         yield Point3D(self.x, self.y + 1, self.z)

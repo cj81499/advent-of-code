@@ -47,7 +47,7 @@ class Unit:
         return Unit(name, **data)
 
 
-def castable_spells(player: Unit, effects: frozenset[Spell]) -> Generator[Spell, None, None]:
+def castable_spells(player: Unit, effects: frozenset[Spell]) -> Generator[Spell]:
     yield from (s for s in SPELLS if s.name not in (e.name for e in effects) and s.cost <= player.mana)
 
 

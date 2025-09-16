@@ -4,7 +4,7 @@ def is_valid_1(passport):
     for line in lines:
         pairs = line.split(" ")
         for pair in pairs:
-            key, val = pair.split(":")
+            key, _val = pair.split(":")
             if key in missing:
                 missing.remove(key)
     return len(missing) == 0

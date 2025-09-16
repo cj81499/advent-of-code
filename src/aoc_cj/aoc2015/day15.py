@@ -17,7 +17,7 @@ class Ingredient:
         return f"{self.name} ({self.properties})"
 
 
-def recipe_generator(ingredient_count: int, teaspoons: int) -> Generator[list[int], None, None]:
+def recipe_generator(ingredient_count: int, teaspoons: int) -> Generator[list[int]]:
     """
     https://www.reddit.com/r/adventofcode/comments/3wwj84/day_15_solutions/cxzk44a?utm_source=share&utm_medium=web2x
     """

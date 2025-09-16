@@ -58,7 +58,7 @@ class LightBeam:
     def advance(self, contents: str) -> frozenset["LightBeam"]:
         return frozenset(self._advance(contents))
 
-    def _advance(self, contents: str) -> Generator["LightBeam", None, None]:
+    def _advance(self, contents: str) -> Generator["LightBeam"]:
         if contents == "-" and self.direction in (UP, DOWN):
             yield LightBeam(self.pos + LEFT, LEFT)
             yield LightBeam(self.pos + RIGHT, RIGHT)

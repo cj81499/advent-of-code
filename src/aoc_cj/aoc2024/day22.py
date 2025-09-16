@@ -1,18 +1,15 @@
 import itertools
 from collections import defaultdict
 from collections.abc import Generator, Iterable
-from typing import TypeVar
 
 import more_itertools as mi
 
-_T = TypeVar("_T")
 
-
-def nth(iterable: Iterable[_T], n: int) -> _T:
+def nth[T](iterable: Iterable[T], n: int) -> T:
     return mi.first(itertools.islice(iterable, n, None))
 
 
-def secret_generator(secret: int) -> Generator[int, None, None]:
+def secret_generator(secret: int) -> Generator[int]:
     while True:
         secret ^= secret * 64
         secret %= 16777216

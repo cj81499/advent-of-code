@@ -26,7 +26,7 @@ class Crucible:
     def _must_turn(self) -> bool:
         return self.duration >= 3
 
-    def _next_directions(self) -> Generator[complex, None, None]:
+    def _next_directions(self) -> Generator[complex]:
         if self.can_turn_or_stop():
             # crucibles may not turn around 180°
             opposite_direction = self.direction * -1
@@ -38,7 +38,7 @@ class Crucible:
         else:
             yield self.direction
 
-    def next_states(self, grid: dict[complex, int]) -> Generator[Self, None, None]:
+    def next_states(self, grid: dict[complex, int]) -> Generator[Self]:
         for direction in self._next_directions():
             new_pos = self.pos + direction
             if new_pos in grid:
@@ -61,7 +61,7 @@ class UltraCrucible(Crucible):
 
 
 def min_heat_loss(grid: dict[complex, int], crucible_cls: type[Crucible] = Crucible) -> int:
-    def _helper() -> Generator[int, None, None]:
+    def _helper() -> Generator[int]:
         """explore the grid, yielding the amount of heat lost each time we find a path to the destination"""
         max_x = int(max(p.real for p in grid))
         max_y = int(max(p.imag for p in grid))

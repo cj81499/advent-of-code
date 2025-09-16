@@ -1,16 +1,14 @@
 import heapq
 import itertools
-from typing import Generic, Self, TypeVar
+from typing import Self
 
 from aoc_cj import util
 
-_T = TypeVar("_T")
 
-
-class HeapItem(Generic[_T]):
+class HeapItem[T]:
     __slots__ = ("cost", "value")
 
-    def __init__(self, cost: int, value: _T) -> None:
+    def __init__(self, cost: int, value: T) -> None:
         self.cost = cost
         self.value = value
 

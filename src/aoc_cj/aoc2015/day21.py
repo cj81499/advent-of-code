@@ -51,7 +51,7 @@ ARMOR = {None, *(Item.parse(line) for line in ARMOR.splitlines()[1:])}
 RINGS = {None, *(Item.parse(line) for line in RINGS.splitlines()[1:])}
 
 
-def go_shopping(gold: float) -> Generator[tuple[Item, ...], None, None]:
+def go_shopping(gold: float) -> Generator[tuple[Item, ...]]:
     for purchase in itertools.product(WEAPONS, ARMOR, RINGS, RINGS):
         # remove None, since we can't purchase nothingness
         purchase_no_none = tuple(i for i in purchase if i is not None)

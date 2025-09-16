@@ -3,12 +3,12 @@ import math
 from collections.abc import Generator
 
 
-def groups(weights: set[int], weight_per_group: int) -> Generator[tuple[int, ...], None, None]:
+def groups(weights: set[int], weight_per_group: int) -> Generator[tuple[int, ...]]:
     for size in range(1, len(weights)):
         yield from groups_of_size(weights, weight_per_group, size)
 
 
-def groups_of_size(weights: set[int], weight_per_group: int, size: int) -> Generator[tuple[int, ...], None, None]:
+def groups_of_size(weights: set[int], weight_per_group: int, size: int) -> Generator[tuple[int, ...]]:
     for group in itertools.combinations(weights, r=size):
         if sum(group) == weight_per_group:
             yield group
