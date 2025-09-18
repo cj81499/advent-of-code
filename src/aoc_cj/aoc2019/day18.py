@@ -11,30 +11,25 @@ from aoc_cj import util
 Grid = dict[complex, str]
 
 
-@dataclasses.dataclass(frozen=True, kw_only=True)
-class StateA:
-    pos: complex
-    steps: int = 0
-    collected: frozenset[str] = frozenset()
-
-    def next_states(self, grid: Grid) -> Generator[Self]:
-        cls = type(self)
-        q = deque(((self.pos, self.steps),))
-        seen: set[complex] = set()
-        while len(q) > 0:
-            pos, steps = q.popleft()
-            if pos in seen:
-                continue
-            val = grid[pos]
-            if val in ".@" or val.lower() in self.collected:
-                q.extend((pos + delta, steps + 1) for delta in (-1j, 1, 1j, -1))
-            elif val != "#" and val.islower():
-                yield cls(pos=pos, steps=steps, collected=frozenset((*self.collected, val)))
-            seen.add(pos)
+def next_states(
+    pos: complex, steps: int, collected: frozenset[str], grid: Grid
+) -> Generator[tuple[complex, int, frozenset[str]]]:
+    q = deque(((pos, steps),))
+    seen: set[complex] = set()
+    while len(q) > 0:
+        pos, steps = q.popleft()
+        if pos in seen:
+            continue
+        val = grid[pos]
+        if val in ".@" or val.lower() in collected:
+            q.extend((pos + delta, steps + 1) for delta in (-1j, 1, 1j, -1))
+        elif val != "#" and val.islower():
+            yield (pos, steps, frozenset((*collected, val)))
+        seen.add(pos)
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True)
-class StateB:
+class State:
     pos: tuple[complex, ...]
     steps: int = 0
     collected: frozenset[str] = frozenset()
@@ -42,13 +37,13 @@ class StateB:
     def next_states(self, grid: Grid) -> Generator[Self]:
         cls = type(self)
         for i, pos in enumerate(self.pos):
-            for new_state in StateA(pos=pos, steps=self.steps, collected=self.collected).next_states(grid):
+            for new_state in next_states(pos, self.steps, self.collected, grid):
                 new_positions = list(self.pos)
-                new_positions[i] = new_state.pos
-                yield cls(pos=tuple(new_positions), steps=new_state.steps, collected=new_state.collected)
+                new_positions[i] = new_state[0]
+                yield cls(pos=tuple(new_positions), steps=new_state[1], collected=new_state[2])
 
 
-def search[TState: (StateA, StateB)](start: TState, grid: Grid) -> int:
+def search[TState: State](start: TState, grid: Grid) -> int:
     all_keys = frozenset(c for c in grid.values() if c.islower())
 
     q = util.PriorityQueue[TState]()
@@ -71,7 +66,7 @@ def part_1(txt: str) -> int:
     grid = {complex(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
     start_pos = mi.one(p for p, c in grid.items() if c == "@")
 
-    return search(StateA(pos=start_pos), grid)
+    return search(State(pos=(start_pos,)), grid)
 
 
 def part_2(txt: str) -> int:
@@ -84,7 +79,7 @@ def part_2(txt: str) -> int:
         grid[start_pos + complex(x - 1, y - 1)] = replace[y][x]
 
     start = tuple(start_pos + delta for delta in (-1 - 1j, 1 - 1j, 1 + 1j, -1 + 1j))
-    return search(StateB(pos=start), grid)
+    return search(State(pos=start), grid)
 
 
 if __name__ == "__main__":
