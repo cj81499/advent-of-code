@@ -6,9 +6,13 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 7
 
   # Check for Python dependency upgrades
   - package-ecosystem: "uv"
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 7
