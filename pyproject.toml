@@ -24,8 +24,8 @@ homepage = "https://github.com/cj81499/advent-of-code"
 [project.entry-points."adventofcode.user"]
 cj81499 = "aoc_cj:solve"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "ruff>=0.6.2",
     "mypy>=1.11.2",
     "pytest>=8.3.2",
