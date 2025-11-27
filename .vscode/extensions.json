@@ -3,7 +3,7 @@
     "esbenp.prettier-vscode",
     "ms-python.python",
     "streetsidesoftware.code-spell-checker",
-    "tamasfe.even-better-toml",
+    "tombi-toml.tombi",
     "ms-python.mypy-type-checker",
     "charliermarsh.ruff"
   ]
