@@ -28,6 +28,7 @@
     "lightshow",
     "peekable",
     "popleft",
+    "Renderable",
     "sarif",
     "triplewise",
     "zizmor"

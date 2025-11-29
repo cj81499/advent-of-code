@@ -27,11 +27,14 @@ cj81499 = "aoc_cj:solve"
 
 [dependency-groups]
 dev = [
+  "anyio>=4.14.2",
+  "click>=8.4.2",
   "mypy>=2.3.0",
   "pre-commit>=4.6.1",
   "pytest>=9.1.1",
   "pytest-cov>=7.0.0",
   "pytest-watcher>=0.4.3",
+  "rich>=15.0.0",
   "ruff>=0.16.0",
   "tombi>=1.2.4",
   "types-networkx>=3.6.1.20260724",
