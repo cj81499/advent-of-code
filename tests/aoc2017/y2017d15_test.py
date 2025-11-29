@@ -21,7 +21,7 @@ def test_part_1(num_loops, expected):
 
 
 @pytest.mark.slow
-def test_a_slow():
+def test_part_1_slow():
     assert d.part_1(EXAMPLE_INPUT) == 588
 
 
@@ -38,5 +38,5 @@ def test_part_2(num_loops, expected):
 
 
 @pytest.mark.slow
-def test_b_slow():
+def test_part_2_slow():
     assert d.part_2(EXAMPLE_INPUT) == 309
