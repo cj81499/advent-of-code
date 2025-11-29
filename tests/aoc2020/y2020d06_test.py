@@ -33,7 +33,7 @@ GROUPS = d.get_group_of_people(EXAMPLE_INPUT)
         (GROUPS[4], 1),
     ],
 )
-def test_a_helper(input, expected):
+def test_part_1_helper(input, expected):
     assert expected == d.part_1_helper(input)
 
 
@@ -51,7 +51,7 @@ def test_part_1():
         (GROUPS[4], 1),
     ],
 )
-def test_b_helper(input, expected):
+def test_part_2_helper(input, expected):
     assert expected == d.part_2_helper(input)
 
 

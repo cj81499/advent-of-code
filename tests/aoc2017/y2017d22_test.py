@@ -18,5 +18,5 @@ def test_part_2():
 
 
 @pytest.mark.slow
-def test_b_slow():
+def test_part_2_slow():
     assert d.part_2(EXAMPLE_INPUT) == 2511944
