@@ -6,8 +6,11 @@ INITIAL = """
 ###
 """.strip()
 
+type Rules = dict[str, str]
+type Grid = np.typing.NDArray[np.str_]
 
-def all_orientations(grid):
+
+def all_orientations(grid: Grid) -> tuple[Grid, ...]:
     flipped = np.fliplr(grid)
     return (
         grid,
@@ -21,15 +24,15 @@ def all_orientations(grid):
     )
 
 
-def grid_to_s(g):
+def grid_to_s(g: Grid) -> str:
     return "/".join("".join(row) for row in g)
 
 
-def enhance(subgrid, rules):
-    return np.array([[*line] for line in rules.get(grid_to_s(subgrid)).split("/")])
+def enhance(subgrid: Grid, rules: Rules) -> Grid:
+    return np.array([[*line] for line in rules[(grid_to_s(subgrid))].split("/")])
 
 
-def parse_rules(txt: str):
+def parse_rules(txt: str) -> Rules:
     rules = dict(line.split(" => ") for line in txt.splitlines())
     expanded = {}
     for rule, result in rules.items():
@@ -39,7 +42,7 @@ def parse_rules(txt: str):
     return expanded
 
 
-def part_1(txt: str, iterations=5):
+def part_1(txt: str, iterations: int = 5) -> int:
     rules = parse_rules(txt)
     grid = np.array([[*line] for line in INITIAL.splitlines()])
     for i in range(iterations):
@@ -51,10 +54,10 @@ def part_1(txt: str, iterations=5):
                 for row in np.vsplit(grid, split_count)
             )
         )
-    return np.count_nonzero(grid == "#")
+    return int(np.count_nonzero(grid == "#"))
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return part_1(txt, iterations=18)
 
 
