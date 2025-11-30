@@ -1,8 +1,8 @@
 import itertools
 from functools import cache, cached_property
+from typing import Self
 
 import more_itertools as mi
-from typing_extensions import Self
 
 UP = -1j
 DOWN = 1j
