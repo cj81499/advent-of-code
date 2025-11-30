@@ -1,0 +1,37 @@
+$ aoc | grep -Ev '✔.*part a: .*✔.*part b:|\/25.*✔.*part a: '
+   ?.??s   2016/8  - Two-Factor Authentication                  cj81499/default   ✔ part a: 119                                ✖ part b:
+#### #### #  # ####  ### ####  ##   ##  ###   ##
+   # #   (expected: ZFHFSFOGPO)
+  6?.??s   2016/23 - Safe Cracking                              cj81499/default   ✖ TimeoutError('Task Timeout', 60.0)
+   ?.??s   2016/25 - Clock Signal                               cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2016.day25' not found")
+   ?.??s   2018/10 - The Stars Align                            cj81499/default   ✖ part a:
+ ####   ######  #    #  #    #   ####    ####    ####   #   (expected: GFNKCGGH)   ✔ part b: 10274
+   ?.??s   2018/21 - Chronal Conversion                         cj81499/default   ✖ TypeError('run_cmd() takes 3 positional arguments but 5 were given')
+   ?.??s   2019/8  - Space Image Format                         cj81499/default   ✔ part a: 1572                               ✖ part b:
+#  # #   ##  # #### ####
+# #  #   ##  # #    #
+##    # (expected: KYHFE)
+   ?.??s   2019/11 - Space Police                               cj81499/default   ✔ part a: 2415                               ✖ part b:
+###  #### ###  #  # #### #  # ###   ##
+#  # #    #  # #  # (expected: BFPUZUPC)
+  6?.??s   2019/18 - Many-Worlds Interpretation                 cj81499/default   ✖ TimeoutError('Task Timeout', 60.0)
+   ?.??s   2019/22 - Slam Shuffle                               cj81499/default   ✔ part a: 6289                               ? part b: None (correct answer unknown)
+   ?.??s   2021/13 - Transparent Origami                        cj81499/default   ✔ part a: 795                                ✖ part b:
+ ##  ####   ## #  # #    #  #  ##    ##
+#  # #       # # #  (expected: CEJKLUGJ)
+   ?.??s   2021/19 - Beacon Scanner                             cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2021.day19' not found")
+   ?.??s   2021/23 - Amphipod                                   cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2021.day23' not found")
+   ?.??s   2021/24 - Arithmetic Logic Unit                      cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2021.day24' not found")
+   ?.??s   2022/10 - Cathode-Ray Tube                           cj81499/default   ✔ part a: 14620                              ✖ part b: ###....##.####.###..#..#.###..####.#..#.
+#..#....#.#....#..# (expected: BJFRHRFU)
+   ?.??s   2022/16 - Proboscidea Volcanium                      cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2022.day16' not found")
+   ?.??s   2022/17 - Pyroclastic Flow                           cj81499/default   ✔ part a: 3206                               ? part b: None (correct answer unknown)
+   ?.??s   2022/19 - Not Enough Minerals                        cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2022.day19' not found")
+   ?.??s   2022/22 - Monkey Map                                 cj81499/default   ✔ part a: 3590                               ? part b: None (correct answer unknown)
+   ?.??s   2023/20 - Pulse Propagation                          cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2023.day20' not found")
+   ?.??s   2023/21 - Step Counter                               cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2023.day21' not found")
+   ?.??s   2023/22 - Sand Slabs                                 cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2023.day22' not found")
+  6?.??s   2023/23 - A Long Walk                                cj81499/default   ✖ TimeoutError('Task Timeout', 60.0)
+   ?.??s   2024/17 - Chronospatial Computer                     cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2024.day17' not found")
+   ?.??s   2024/21 - Keypad Conundrum                           cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2024.day21' not found")
+   ?.??s   2024/24 - Crossed Wires                              cj81499/default   ✖ NotImplementedError("module 'aoc_cj.aoc2024.day24' not found")
