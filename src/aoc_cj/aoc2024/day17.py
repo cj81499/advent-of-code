@@ -50,7 +50,7 @@ class Computer:
                 return self.c
         assert False, "unreachable"
 
-    def run(self) -> Generator[int, None, None]:
+    def run(self) -> Generator[int]:
         ip = 0
         with contextlib.suppress(IndexError):
             while ip < len(self.program):
