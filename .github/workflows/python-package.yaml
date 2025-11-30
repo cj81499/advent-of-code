@@ -1,6 +1,11 @@
 name: Python Package
+
 permissions:
-  contents: none
+  contents: none # default to no read access to repo contents
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 on:
   push:
@@ -11,13 +16,14 @@ on:
 
 jobs:
   build:
+    name: Build and test/lint on Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version:
           - "3.13"
     permissions:
-      contents: read
+      contents: read # grant read access to repo contents for this job
     steps:
       - name: Checkout Repo
         uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
@@ -30,10 +36,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Sanity check Python version
+        env:
+          MATRIX_PYTHON_VERSION: ${{ matrix.python-version }}
         # https://docs.python.org/3/using/cmdline.html#cmdoption-version
         run: |
           uv run --frozen python --version --version
-          [[ "$(uv run --frozen python --version)" == Python\ ${{ matrix.python-version }}* ]]
+          [[ "$(uv run --frozen python --version)" == Python\ $MATRIX_PYTHON_VERSION* ]]
 
       - name: Check format (ruff)
         run: uv run --frozen ruff format --check .
@@ -55,9 +63,10 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   zizmor:
+    name: Run zizmor static analysis
     runs-on: ubuntu-latest
     permissions:
-      security-events: write
+      security-events: write # allow zizmor to create code scanning alerts
     steps:
       - name: Checkout repository
         uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
@@ -79,6 +88,7 @@ jobs:
           category: zizmor
 
   check:
+    name: Check if all jobs succeeded
     if: always()
     runs-on: Ubuntu-latest
     needs:
