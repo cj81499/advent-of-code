@@ -3,8 +3,6 @@ import re
 from collections.abc import Generator
 from typing import Self, override
 
-from typing_extensions import Self, override
-
 __all__ = ("Point3D",)
 
 
