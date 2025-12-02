@@ -4,7 +4,7 @@ import itertools
 import typing as t
 from collections.abc import Callable, Iterable
 
-import more_itertools as mi
+from aoc_cj import pipe
 
 type Direction = t.Literal["L", "R"]
 _DIRECTIONS = frozenset[Direction](t.get_args(Direction.__value__))
@@ -30,7 +30,7 @@ simulate_dial = functools.partial(itertools.accumulate, func=lambda a, b: (a + b
 
 
 def solve(get_moves: Callable[[Rotation], Iterable[int]], txt: str) -> int:
-    moves = mi.flatten(get_moves(Rotation.parse(l)) for l in txt.splitlines())
+    moves = txt | pipe.fn(str.splitlines) | pipe.map_(Rotation.parse) | pipe.map_(get_moves) | pipe.flatten
     return sum(pos == 0 for pos in simulate_dial(moves))
 
 
