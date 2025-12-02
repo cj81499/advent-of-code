@@ -3,7 +3,7 @@
 | Day | Title                                                  |     1      |     2      |       Tests        |
 | :-: | ------------------------------------------------------ | :--------: | :--------: | :----------------: |
 | 01  | [Secret Entrance](https://adventofcode.com/2025/day/1) |   :star:   |   :star:   | :white_check_mark: |
-| 02  | [?](https://adventofcode.com/2025/day/2)               | :question: | :question: |     :question:     |
+| 02  | [Gift Shop](https://adventofcode.com/2025/day/2)       |   :star:   |   :star:   | :white_check_mark: |
 | 03  | [?](https://adventofcode.com/2025/day/3)               | :question: | :question: |     :question:     |
 | 04  | [?](https://adventofcode.com/2025/day/4)               | :question: | :question: |     :question:     |
 | 05  | [?](https://adventofcode.com/2025/day/5)               | :question: | :question: |     :question:     |
@@ -19,5 +19,6 @@
 
 ```text
 Day   -Part 1-   -Part 2-
+  2   04:18:34   04:24:54
   1   01:17:13   01:21:42
 ```
