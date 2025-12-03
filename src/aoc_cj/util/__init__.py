@@ -11,6 +11,7 @@ __all__ = (
     "Point3D",
     "PriorityQueue",
     "adj_4",
+    "adj_8",
     "clamp",
     "create_regex_parser",
     "digits",
@@ -22,6 +23,11 @@ __all__ = (
 
 def adj_4(p: complex) -> Generator[complex]:
     for delta in (-1, 1, -1j, 1j):
+        yield p + delta
+
+
+def adj_8(p: complex) -> Generator[complex]:
+    for delta in (-1 - 1j, -1j, 1 - 1j, -1, 1, -1 + 1j, 1j, 1 + 1j):
         yield p + delta
 
 
