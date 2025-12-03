@@ -31,13 +31,6 @@
     "triplewise",
     "zizmor"
   ],
-  "evenBetterToml.formatter.allowedBlankLines": 1,
-  "evenBetterToml.formatter.alignComments": false,
-  "evenBetterToml.formatter.arrayAutoCollapse": false,
-  "evenBetterToml.formatter.arrayTrailingComma": true,
-  "evenBetterToml.formatter.columnWidth": 0,
-  "evenBetterToml.formatter.trailingNewline": true,
-  "evenBetterToml.formatter.arrayAutoExpand": false,
   "python.testing.unittestEnabled": false,
   "python.defaultInterpreterPath": ".venv/bin/python",
   "mypy-type-checker.importStrategy": "fromEnvironment"
