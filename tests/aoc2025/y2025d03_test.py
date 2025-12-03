@@ -14,3 +14,7 @@ def test_part_1() -> None:
 
 def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 3121910778619
+
+
+def test_max_joltage() -> None:
+    assert d.max_joltage("1497038", width=3) == 978
