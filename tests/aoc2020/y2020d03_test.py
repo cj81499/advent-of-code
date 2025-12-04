@@ -16,8 +16,8 @@ EXAMPLE_INPUT = """
 
 
 def test_part_1():
-    assert 7 == d.part_1(EXAMPLE_INPUT)
+    assert d.part_1(EXAMPLE_INPUT) == 7
 
 
 def test_part_2():
-    assert 336 == d.part_2(EXAMPLE_INPUT)
+    assert d.part_2(EXAMPLE_INPUT) == 336

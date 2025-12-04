@@ -71,7 +71,7 @@ def part_1(txt: str):
         if pos not in explored:
             if complete_map[pos] == "O":
                 return distance
-            elif complete_map[pos] == ".":
+            if complete_map[pos] == ".":
                 q.extend((pos + m, distance + 1) for m in MOVES.values())
             explored.add(pos)
     return -1

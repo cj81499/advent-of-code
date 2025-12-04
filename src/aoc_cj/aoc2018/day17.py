@@ -48,7 +48,7 @@ class Scan:
                 self.dimensions[d] = area_dimensions[d]
 
     def spread(self, x, y):
-        if not self.scan[(x, y + 1)] in "~#":
+        if self.scan[(x, y + 1)] not in "~#":
             return
         left_done = False
         right_done = False

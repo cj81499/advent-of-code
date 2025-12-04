@@ -109,7 +109,7 @@ class Unit(CavePiece):
         targets = self.get_targets()
         # If no targets remain, combat ends.
         if len(targets) == 0:
-            raise NoTargetsFoundException()
+            raise NoTargetsFoundException
 
         # Then, the unit identifies all of the open squares (.) that are in range of
         # each target; these are the squares which are adjacent (immediately up, down,
@@ -202,9 +202,9 @@ class CavePieceFactory:
     def get_cave_piece(self, c: str, cave: "Cave", loc: Location):
         if c == "#":
             return Wall(cave, loc)
-        elif c == "G":
+        if c == "G":
             return Goblin(cave, loc)
-        elif c == "E":
+        if c == "E":
             return Elf(cave, loc, self.elf_attack_power)
         return Open(cave, loc)
 

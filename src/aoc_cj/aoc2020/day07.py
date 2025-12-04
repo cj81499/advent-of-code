@@ -27,9 +27,7 @@ def can_hold_shiny_gold(rules, color):
     if rule is None:
         return False
     for n, bag_color in rule:
-        if bag_color == "shiny gold":
-            return True
-        elif can_hold_shiny_gold(rules, bag_color):
+        if bag_color == "shiny gold" or can_hold_shiny_gold(rules, bag_color):
             return True
     return False
 

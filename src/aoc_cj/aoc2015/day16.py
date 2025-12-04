@@ -62,7 +62,7 @@ def check_aunt(aunt: dict[str, int], qual: str, n: int, part_2: bool = False) ->
     if part_2:
         if qual in GT_QUALITIES:
             return aunt[qual] > n
-        elif qual in LT_QUALITIES:
+        if qual in LT_QUALITIES:
             return aunt[qual] < n
 
     return aunt[qual] == n

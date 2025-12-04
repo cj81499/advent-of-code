@@ -106,9 +106,9 @@ class HexGrid:
 
     def _should_flip(self, tile, pos):
         count = self._count_adj_black_tiles(pos)
-        if tile.get_color() == Color.BLACK and (count == 0 or count > 2):
-            return True
-        elif tile.get_color() == Color.WHITE and count == 2:
+        if (tile.get_color() == Color.BLACK and (count == 0 or count > 2)) or (
+            tile.get_color() == Color.WHITE and count == 2
+        ):
             return True
         return False
 

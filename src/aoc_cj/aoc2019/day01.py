@@ -4,7 +4,7 @@ def fuel_req(mass: int) -> int:
 
 def fuel_req_rec(mass: int) -> int:
     r = fuel_req(mass)
-    return 0 if 0 >= r else r + fuel_req_rec(r)
+    return 0 if r <= 0 else r + fuel_req_rec(r)
 
 
 def part_1(txt: str) -> int:

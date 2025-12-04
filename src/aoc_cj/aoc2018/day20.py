@@ -96,7 +96,7 @@ class Facility:
 
     @staticmethod
     def parse_dir_str(q):
-        if not q[0] in "NSWE":
+        if q[0] not in "NSWE":
             raise AssertionError("dir-str must start with a direction")
         dir_str = deque()
         while q[0] in "NSWE":
@@ -176,8 +176,7 @@ class Facility:
         for y in range(self.min_y, self.max_y + 1):
             for x in range(self.min_x, self.max_x + 1):
                 r = self.f[(x, y)]
-                if r.dist > max_dist:
-                    max_dist = r.dist
+                max_dist = max(max_dist, r.dist)
         return max_dist
 
     def count_rooms_at_least_dist_far(self, dist):

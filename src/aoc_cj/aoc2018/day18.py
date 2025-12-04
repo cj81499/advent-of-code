@@ -59,8 +59,7 @@ def part_2(txt):
             value_at_end = seen[seen_at + ((remaining_minutes) % cycle_size)]
             count = Counter(value_at_end)
             return count["|"] * count["#"]
-        else:
-            seen.append(str_l)
+        seen.append(str_l)
     count = Counter(str_l)
     return count["|"] * count["#"]
 
