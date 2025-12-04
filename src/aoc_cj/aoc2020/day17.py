@@ -1,67 +1,59 @@
-import collections
+import functools
 import itertools
+from collections.abc import Generator, Iterable, Sequence
+from collections.abc import Set as AbstractSet
 
-ACTIVE = "#"
-INACTIVE = "."
-
-
-def neighbors(pos):
-    for delta in itertools.product(*itertools.repeat((-1, 0, 1), len(pos))):
-        if not all(x == 0 for x in delta):
-            yield tuple(x + dx for x, dx in zip(pos, delta))
+import more_itertools as mi
 
 
-def simulate(txt, dimensions):
-    # initialize space
-    space = collections.defaultdict(lambda: INACTIVE)
-    space.update(
-        {
-            (x, y, *itertools.repeat(0, dimensions - 2)): c
-            for y, row in enumerate(txt.splitlines())
-            for x, c in enumerate(row)
-        }
+def replace_at_pos[T](t: Sequence[T], index: int, value: T) -> tuple[T, ...]:
+    """Return a tuple with the element at `index` replaced by `value`."""
+    return (*t[:index], value, *t[index + 1 :])
+
+
+type Point = tuple[int, ...]
+
+
+def neighbors(p: Point) -> Generator[Point]:
+    for deltas in itertools.product(*itertools.repeat((-1, 0, 1), len(p))):
+        if any(x != 0 for x in deltas):
+            yield tuple(x + d for x, d in zip(p, deltas, strict=True))
+
+
+def points_to_consider(active: AbstractSet[Point]) -> Iterable[Point]:
+    min_corner, max_corner = zip(*(map(mi.minmax, zip(*active, strict=True))), strict=True)
+    return itertools.product(
+        *(range(min_for_d - 1, max_for_d + 2) for min_for_d, max_for_d in zip(min_corner, max_corner, strict=True)),
     )
 
-    # run 6 iterations of the simulation
-    for _ in range(6):
-        # get min and max coordinates
-        mins, maxes = minmax_tuple(set(space))
-        # count active neighbors for each position
-        active_neighbors = collections.defaultdict(int)
-        for p in expand_points(mins, maxes):
-            if space[p] == ACTIVE:
-                for n in neighbors(p):
-                    active_neighbors[n] += 1
 
-        # calculate the contents of the new space
-        new_space = collections.defaultdict(lambda: INACTIVE)
-        new_space.update(
-            {
-                p: ACTIVE
-                for p in expand_points(mins, maxes)
-                if active_neighbors[p] == 3 or (active_neighbors[p] == 2 and space[p] == ACTIVE)
-            }
-        )
-        space = new_space
+def solve(txt: str, *, cycles: int = 6, dimensions: int = 3) -> int:
+    active = {
+        (x, y, *itertools.repeat(0, dimensions - 2))
+        for y, line in enumerate(txt.splitlines())
+        for x, c in enumerate(line)
+        if c == "#"
+    }
 
-    return sum(v == ACTIVE for v in new_space.values())
+    for _cycle in range(cycles):
+        active = {p for p in points_to_consider(active) if should_activate(p, active)}
+
+    return len(active)
 
 
-def minmax_tuple(tuples):
-    return tuple(min(x) for x in zip(*tuples)), tuple(max(x) for x in zip(*tuples))
+def should_activate(p: Point, active: set[Point]) -> bool:
+    is_active = p in active
+    active_neighbors = {n for n in neighbors(p) if n in active}
+    if is_active:
+        if len(active_neighbors) in (2, 3):
+            return True
+    elif len(active_neighbors) == 3:
+        return True
+    return False
 
 
-def expand_points(mins, maxes):
-    assert len(mins) == len(maxes)
-    return itertools.product(*(range(start - 1, stop + 2) for start, stop in zip(mins, maxes)))
-
-
-def part_1(txt):
-    return simulate(txt, 3)
-
-
-def part_2(txt):
-    return simulate(txt, 4)
+part_1 = solve
+part_2 = functools.partial(solve, dimensions=4)
 
 
 if __name__ == "__main__":
