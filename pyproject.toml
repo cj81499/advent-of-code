@@ -30,7 +30,7 @@ dev = [
   "mypy>=1.18.2",
   "pre-commit>=4.3.0",
   "pytest>=8.4.2",
-  "pytest-cov>=7.0.0",
+  "pytest-cov>=7.0.0",  # TODO: consider removing https://www.youtube.com/watch?v=sPgvHGkmd0U
   "pytest-watcher>=0.4.3",
   "ruff>=0.14.3",
   "tombi>=0.7.0",
@@ -134,24 +134,22 @@ patterns = ["*.py", "pyproject.toml"]
 
 [tool.ruff]
 line-length = 120
-output-format = "grouped"
-src = [
-  "src",
-  # "tests",
-]
 
 [tool.ruff.lint]
-select = [
-  # https://docs.astral.sh/ruff/rules/ # TODO: enable additional linter rules
-  # "F", # Pyflakes
-  "F401",  # unused-import
-  # "E", # pycodestyle errors
-  "W",  # pycodestyle warnings
-  "I",  # isort
-  "UP",  # pyupgrade
-  # TODO: evaluate flake8 rules
-  "ERA",
-  # "PL", # pylint
-  # "FURB", #refurb
-  "RUF",  # ruff
+# https://docs.astral.sh/ruff/rules/ # TODO: enable additional linter rules
+select = ["ALL"]
+ignore = [
+  "D",  # don't require docstrings
+  "COM812",  # causes conflicts when used with the formatter
+  "T201",  # allow use of print
+  "TD002",  # don't require author in TODO comments. requiring an issue link is enough.
+  "FIX002",  # don't require fixing TODO comments. requiring an issue link is enough.
+  "ANN",  # type annotations are enforced by the type checker, not ruff.
+  "S101",  # allow use of assert
+  "PLR2004",  # allow use of magic numbers
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*.py" = [
+  "INP001",  # allow tests to implicit namespace package
 ]
