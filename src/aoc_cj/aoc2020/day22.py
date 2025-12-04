@@ -69,7 +69,7 @@ class CombatGame:
     def _round(self):
         draw_deck_pairs = [(d.draw(), d) for d in self.decks]
         _winning_draw, winning_deck = max(draw_deck_pairs)
-        to_put_on_bottom = list(sorted((n for n, _deck in draw_deck_pairs), reverse=True))
+        to_put_on_bottom = sorted((n for n, _deck in draw_deck_pairs), reverse=True)
         winning_deck.put_on_bottom(*to_put_on_bottom)
 
 
@@ -104,7 +104,7 @@ class RecursiveCombatGame(CombatGame):
             winning_deck.put_on_bottom(*to_put_on_bottom)
         else:
             _winning_draw, winning_deck = max(draw_deck_pairs)
-            to_put_on_bottom = list(sorted((n for n, _deck in draw_deck_pairs), reverse=True))
+            to_put_on_bottom = sorted((n for n, _deck in draw_deck_pairs), reverse=True)
             winning_deck.put_on_bottom(*to_put_on_bottom)
         self._round_n += 1
 

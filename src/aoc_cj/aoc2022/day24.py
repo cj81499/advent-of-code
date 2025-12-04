@@ -38,15 +38,14 @@ def part_1(txt: str) -> int:
                     possible_new_pos = p + DIRECTIONS[c]
                     if possible_new_pos not in start or WALL not in start[possible_new_pos]:
                         new_grid[possible_new_pos].add(c)
-                    else:
-                        if c == "^":
-                            new_grid[complex(p.real, max_y)].add(c)
-                        elif c == "v":
-                            new_grid[complex(p.real, min_y)].add(c)
-                        elif c == "<":
-                            new_grid[complex(max_x, p.imag)].add(c)
-                        elif c == ">":
-                            new_grid[complex(min_x, p.imag)].add(c)
+                    elif c == "^":
+                        new_grid[complex(p.real, max_y)].add(c)
+                    elif c == "v":
+                        new_grid[complex(p.real, min_y)].add(c)
+                    elif c == "<":
+                        new_grid[complex(max_x, p.imag)].add(c)
+                    elif c == ">":
+                        new_grid[complex(min_x, p.imag)].add(c)
 
         return new_grid
 
@@ -94,15 +93,14 @@ def part_2(txt: str) -> int:
                     possible_new_pos = p + DIRECTIONS[c]
                     if possible_new_pos not in start or WALL not in start[possible_new_pos]:
                         new_grid[possible_new_pos].add(c)
-                    else:
-                        if c == "^":
-                            new_grid[complex(p.real, max_y)].add(c)
-                        elif c == "v":
-                            new_grid[complex(p.real, min_y)].add(c)
-                        elif c == "<":
-                            new_grid[complex(max_x, p.imag)].add(c)
-                        elif c == ">":
-                            new_grid[complex(min_x, p.imag)].add(c)
+                    elif c == "^":
+                        new_grid[complex(p.real, max_y)].add(c)
+                    elif c == "v":
+                        new_grid[complex(p.real, min_y)].add(c)
+                    elif c == "<":
+                        new_grid[complex(max_x, p.imag)].add(c)
+                    elif c == ">":
+                        new_grid[complex(min_x, p.imag)].add(c)
 
         return new_grid
 

@@ -44,4 +44,3 @@ def test_part_1(packet, version_sum):
 )
 def test_part_2(packet, result):
     assert d.part_2(packet) == result
-    pass

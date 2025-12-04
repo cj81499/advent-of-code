@@ -35,7 +35,7 @@ class Monkey:
 
             if op == "+":
                 return val1 + val2
-            elif op == "*":
+            if op == "*":
                 return val1 * val2
 
             assert False, "unreachable"

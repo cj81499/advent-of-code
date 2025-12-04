@@ -33,7 +33,7 @@ def part_2(txt: str) -> str:
         i, x = next(pass_gen)
         if password[i] is None:
             password[i] = x
-    return "".join(cast(list[str], password))
+    return "".join(cast("list[str]", password))
 
 
 if __name__ == "__main__":

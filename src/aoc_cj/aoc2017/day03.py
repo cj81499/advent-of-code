@@ -11,7 +11,7 @@ def part_1(txt):
 
         # rotate heading if we can move after rotating ccw
         turned_x, turned_y = x + dy, y - dx
-        if not (turned_x, turned_y) in memory:
+        if (turned_x, turned_y) not in memory:
             dx, dy = dy, -dx
 
         # calculate new position
@@ -40,7 +40,7 @@ def part_2(txt):
 
         # rotate heading if we can move after rotating ccw
         turned_x, turned_y = x + dy, y - dx
-        if not (turned_x, turned_y) in memory:
+        if (turned_x, turned_y) not in memory:
             dx, dy = dy, -dx
 
         # calculate new position

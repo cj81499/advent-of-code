@@ -28,7 +28,7 @@ def reflection_score(arr: NDArrayChar, *, dont_return: int | None = None) -> int
         if np.array_equal(before_rows, mirrored) and dont_return != (res := 100 * reflect_after):
             return res
 
-    raise NoReflectionError()
+    raise NoReflectionError
 
 
 def smudged_reflection_score(arr: NDArrayChar) -> int:
@@ -49,7 +49,7 @@ def smudged_reflection_score(arr: NDArrayChar) -> int:
             # the swap didn't "fix the smudge". undo it
             arr[y, x] = "#" if arr[y, x] == "." else "."
 
-    raise NoReflectionError()  # pragma: no cover - we expect to return while looping
+    raise NoReflectionError  # pragma: no cover - we expect to return while looping
 
 
 def part_1(txt: str) -> int:

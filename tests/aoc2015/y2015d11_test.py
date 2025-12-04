@@ -10,18 +10,18 @@ def test_day11_is_valid_password() -> None:
 
 
 def test_day11_increment_password() -> None:
-    assert "b" == d.increment_password("a")
-    assert "c" == d.increment_password("b")
-    assert "d" == d.increment_password("c")
-    assert "aa" == d.increment_password("z")
-    assert "ab" == d.increment_password("aa")
-    assert "ac" == d.increment_password("ab")
-    assert "ad" == d.increment_password("ac")
-    assert "zb" == d.increment_password("za")
-    assert "zz" == d.increment_password("zy")
-    assert "aaa" == d.increment_password("zz")
+    assert d.increment_password("a") == "b"
+    assert d.increment_password("b") == "c"
+    assert d.increment_password("c") == "d"
+    assert d.increment_password("z") == "aa"
+    assert d.increment_password("aa") == "ab"
+    assert d.increment_password("ab") == "ac"
+    assert d.increment_password("ac") == "ad"
+    assert d.increment_password("za") == "zb"
+    assert d.increment_password("zy") == "zz"
+    assert d.increment_password("zz") == "aaa"
 
 
 def test_part_1() -> None:
-    assert "abcdffaa" == next(d.generate_passwords("abcdefgh"))
-    assert "ghjaabcc" == next(d.generate_passwords("ghijklmn"))
+    assert next(d.generate_passwords("abcdefgh")) == "abcdffaa"
+    assert next(d.generate_passwords("ghijklmn")) == "ghjaabcc"

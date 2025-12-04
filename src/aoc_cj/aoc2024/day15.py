@@ -74,7 +74,7 @@ class Grid:
                         case None:
                             pass
                         case Kind.ROBOT:  # pragma: no cover
-                            msg = f"Robot movement handled specially"
+                            msg = "Robot movement handled specially"
                             raise AssertionError(msg)
                         case Kind.WALL:
                             return self

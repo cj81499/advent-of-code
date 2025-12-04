@@ -46,7 +46,7 @@ def test_can_hold_shiny_gold(input, expected):
 
 
 def test_part_1():
-    assert 4 == d.part_1(EXAMPLE_INPUT_0)
+    assert d.part_1(EXAMPLE_INPUT_0) == 4
 
 
 @pytest.mark.parametrize(
@@ -63,5 +63,5 @@ def test_number_of_bags_inside_of(input, expected):
 
 
 def test_part_2():
-    assert 32 == d.part_2(EXAMPLE_INPUT_0)
-    assert 126 == d.part_2(EXAMPLE_INPUT_1)
+    assert d.part_2(EXAMPLE_INPUT_0) == 32
+    assert d.part_2(EXAMPLE_INPUT_1) == 126

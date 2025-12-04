@@ -38,7 +38,7 @@ def test_part_1_helper(input, expected):
 
 
 def test_part_1():
-    assert 11 == d.part_1(EXAMPLE_INPUT)
+    assert d.part_1(EXAMPLE_INPUT) == 11
 
 
 @pytest.mark.parametrize(
@@ -56,4 +56,4 @@ def test_part_2_helper(input, expected):
 
 
 def test_part_2():
-    assert 6 == d.part_2(EXAMPLE_INPUT)
+    assert d.part_2(EXAMPLE_INPUT) == 6

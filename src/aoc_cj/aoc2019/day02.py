@@ -12,7 +12,7 @@ def part_1(txt: str):
 
 
 def part_2(txt: str):
-    for noun, verb in itertools.product(range(0, 100), repeat=2):
+    for noun, verb in itertools.product(range(100), repeat=2):
         p = IntcodeProgram.parse(txt)
         p[1] = noun
         p[2] = verb

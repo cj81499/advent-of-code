@@ -38,10 +38,9 @@ class Rule:
         lhs_value = part_rating[self.lhs]
         if self.op == "<":
             return lhs_value < self.rhs
-        elif self.op == ">":
+        if self.op == ">":
             return lhs_value > self.rhs
-        else:
-            assert_never(self.op)
+        assert_never(self.op)
 
 
 import dataclasses
@@ -106,7 +105,7 @@ def part_2(txt: str) -> int:
             yield from acceptable_part_ranges(workflows[result], ranges)
 
     def acceptable_part_ranges(wf: Workflow, ranges: XMASRanges | None = None) -> Generator[XMASRanges]:
-        ranges = {cast(XMAS, k): range(1, 4001) for k in "xmas"} if ranges is None else ranges.copy()
+        ranges = {cast("XMAS", k): range(1, 4001) for k in "xmas"} if ranges is None else ranges.copy()
         for rule in wf.rules:
             go_to_result_ranges = ranges.copy()
 

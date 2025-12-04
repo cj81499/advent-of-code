@@ -75,8 +75,7 @@ class Group:
     def take_dmg_from(self, attacker):
         dmg = attacker.calculate_dmg(self)
         kill_count = dmg // self.unit_hp
-        if kill_count > self.alive_unit_count:
-            kill_count = self.alive_unit_count
+        kill_count = min(kill_count, self.alive_unit_count)
         self.alive_unit_count -= kill_count
         return kill_count
 

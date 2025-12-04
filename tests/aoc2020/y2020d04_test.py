@@ -18,7 +18,7 @@ iyr:2011 ecl:brn hgt:59in
 
 
 def test_part_1():
-    assert 2 == d.part_1(EXAMPLE_INPUT)
+    assert d.part_1(EXAMPLE_INPUT) == 2
 
 
 EXAMPLE_INPUT_B_INVALID = """
