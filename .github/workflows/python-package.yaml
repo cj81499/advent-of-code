@@ -43,11 +43,17 @@ jobs:
           uv run --frozen python --version --version
           [[ "$(uv run --frozen python --version)" == Python\ $MATRIX_PYTHON_VERSION* ]]
 
-      - name: Check format (ruff)
+      - name: Check python format (ruff)
         run: uv run --frozen ruff format --check .
 
-      - name: Lint (ruff)
+      - name: Check toml format (ruff)
+        run: uv run --frozen tombi format --check
+
+      - name: Lint python (ruff)
         run: uv run --frozen ruff check --output-format=github .
+
+      - name: Lint toml (tombi)
+        run: uv run --frozen tombi lint
 
       - name: Check types (mypy)
         run: uv run --frozen mypy .
