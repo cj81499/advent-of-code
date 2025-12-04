@@ -127,7 +127,7 @@ def hex_to_binary(hex: str) -> Iterator[Binary]:
         for _ in range(4):
             bit = (nibble & 0b1000) >> 3
             assert bit in {0, 1}
-            yield cast(Binary, bit)
+            yield cast("Binary", bit)
             nibble <<= 1
 
 

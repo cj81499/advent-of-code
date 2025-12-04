@@ -84,9 +84,9 @@ def part_2(txt: str) -> int:
     lines = board_map_s.splitlines()
     edge_length = min(*(len(row.strip()) for row in lines), *(len("".join(col).strip()) for col in zip(lines)))
 
-    shape = {p2 for p in board_map.keys() if (p2 := p / edge_length).real.is_integer() and p2.imag.is_integer()}
+    shape = {p2 for p in board_map if (p2 := p / edge_length).real.is_integer() and p2.imag.is_integer()}
 
-    raise NotImplementedError()
+    raise NotImplementedError
 
 
 if __name__ == "__main__":

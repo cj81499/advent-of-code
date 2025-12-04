@@ -39,7 +39,7 @@ class Tile:
         shape = self._grid.shape
         assert shape[0] == shape[1]
 
-        self.connections = {d: None for d in Direction}
+        self.connections = dict.fromkeys(Direction)
         self.is_aligned = False
 
     def border(self, direction):

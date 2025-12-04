@@ -14,7 +14,7 @@ class Location:
         assert isinstance(other, Location)
         if other.name in self.distances:
             return self.distances[other.name]
-        elif self.name in other.distances:
+        if self.name in other.distances:
             return other.distances[self.name]
         assert False, "unreachable"
 

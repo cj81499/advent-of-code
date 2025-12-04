@@ -8,8 +8,8 @@ EXAMPLE_INPUT = """
 
 
 def test_part_1():
-    assert 2 == d.part_1(EXAMPLE_INPUT)
+    assert d.part_1(EXAMPLE_INPUT) == 2
 
 
 def test_part_2():
-    assert 1 == d.part_2(EXAMPLE_INPUT)
+    assert d.part_2(EXAMPLE_INPUT) == 1

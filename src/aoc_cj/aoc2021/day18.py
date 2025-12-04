@@ -104,8 +104,7 @@ class PairNode(TreeNode):
             elif isinstance(n, ValueNode):
                 if seen_self:
                     return (last_value_node, n)
-                else:
-                    last_value_node = n
+                last_value_node = n
 
         return (last_value_node, None)
 

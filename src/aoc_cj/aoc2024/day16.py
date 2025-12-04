@@ -66,7 +66,7 @@ def part_2(txt: str) -> int:
     cheapest: dict[_State, _CheapTracker] = {}
     while to_explore:
         cost, state, prev_state = to_explore.popleft()
-        best = cheapest.get(state, None)
+        best = cheapest.get(state)
         # if we've found a new best
         if best is None or cost < best.cost:
             seen_on_way = cheapest[prev_state].seen if prev_state in cheapest else set()

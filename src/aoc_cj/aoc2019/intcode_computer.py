@@ -35,7 +35,7 @@ class IntcodeProgram:
 
     def run_next(self):
         if self.terminated:
-            raise ProgramTerminatedException()
+            raise ProgramTerminatedException
         if self.is_waiting_for_input():
             return
         op = self.opcode
@@ -60,7 +60,7 @@ class IntcodeProgram:
         elif op == 99:
             self._halt()
         else:
-            raise UnknownOpcodeException()
+            raise UnknownOpcodeException
 
     def is_waiting_for_input(self):
         return self.opcode == 3 and len(self._input_queue) == 0
@@ -77,7 +77,7 @@ class IntcodeProgram:
         mode = self._parameter_mode(n)
         if mode == 1:
             return i
-        elif mode == 2:
+        if mode == 2:
             return self._relative_base + self[i]
         return self[i]
 
