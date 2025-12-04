@@ -1,30 +1,24 @@
 from aoc_cj.util import adj_8
 
 
+def parse(txt: str) -> set[complex]:
+    return {complex(x, y) for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c == "@"}
+
+
+def accessible(paper: set[complex]) -> set[complex]:
+    return {p for p in paper if sum(p in paper for p in adj_8(p)) < 4}
+
+
 def part_1(txt: str) -> int:
-    paper = {complex(x, y) for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c == "@"}
-    qty = 0
-    for pos in paper:
-        can_access = sum(p in paper for p in adj_8(pos)) < 4
-        if can_access:
-            qty += 1
-    return qty
+    return len(accessible(parse(txt)))
 
 
 def part_2(txt: str) -> int:
-    paper = {complex(x, y) for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line) if c == "@"}
-    remove = set[complex]()
-    go = True
-    while go:
-        go = False
-        paper -= remove
-        for pos in paper:
-            can_access = sum(p in paper for p in adj_8(pos)) < 4
-            if can_access:
-                go = True
-                remove.add(pos)
-
-    return len(remove)
+    original_paper = parse(txt)
+    paper = original_paper.copy()
+    while a := accessible(paper):
+        paper -= a
+    return len(original_paper - paper)
 
 
 if __name__ == "__main__":
