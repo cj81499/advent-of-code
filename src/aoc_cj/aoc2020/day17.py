@@ -1,71 +1,42 @@
-import collections
+import functools
 import itertools
-from collections.abc import Collection, Generator, Iterable
-from typing import Final, Literal
 
-ACTIVE: Final = "#"
-INACTIVE: Final = "."
+import more_itertools as mi
 
 type Point = tuple[int, ...]
 
 
-def neighbors(pos: Point) -> Generator[Point]:
-    for delta in itertools.product(*itertools.repeat((-1, 0, 1), len(pos))):
-        if not all(x == 0 for x in delta):
-            yield tuple(x + dx for x, dx in zip(pos, delta))
-
-
-def simulate(txt: str, dimensions: int) -> int:
-    # initialize space
-    space = collections.defaultdict[Point, Literal[".", "#"]](lambda: INACTIVE)
-    space.update(
-        {
-            (x, y, *itertools.repeat(0, dimensions - 2)): c
-            for y, row in enumerate(txt.splitlines())
-            for x, c in enumerate(row)
-        }
+@functools.cache
+def neighbors(p: Point) -> tuple[Point, ...]:
+    return tuple(
+        tuple(x + d for x, d in zip(p, deltas, strict=True))
+        for deltas in itertools.product(*itertools.repeat((-1, 0, 1), len(p)))
+        if any(x != 0 for x in deltas)
     )
 
-    # run 6 iterations of the simulation
-    for _ in range(6):
-        # get min and max coordinates
-        mins, maxes = minmax_tuple(set(space))
-        # count active neighbors for each position
-        active_neighbors = collections.defaultdict[Point, int](int)
-        for p in expand_points(mins, maxes):
-            if space[p] == ACTIVE:
-                for n in neighbors(p):
-                    active_neighbors[n] += 1
 
-        # calculate the contents of the new space
-        new_space = collections.defaultdict[Point, Literal[".", "#"]](lambda: INACTIVE)
-        new_space.update(
-            {
-                p: ACTIVE
-                for p in expand_points(mins, maxes)
-                if active_neighbors[p] == 3 or (active_neighbors[p] == 2 and space[p] == ACTIVE)
-            }
-        )
-        space = new_space
-
-    return sum(v == ACTIVE for v in space.values())
+def should_activate(p: Point, active: set[Point]) -> bool:
+    active_neighbors = sum(1 for n in neighbors(p) if n in active)
+    return active_neighbors == 3 or (active_neighbors == 2 and p in active)
 
 
-def minmax_tuple(points: Collection[Point]) -> tuple[Point, Point]:
-    return tuple(min(x) for x in zip(*points)), tuple(max(x) for x in zip(*points))
+def solve(txt: str, *, cycles: int = 6, dimensions: int = 3) -> int:
+    active = {
+        (x, y, *itertools.repeat(0, dimensions - 2))
+        for y, line in enumerate(txt.splitlines())
+        for x, c in enumerate(line)
+        if c == "#"
+    }
+
+    for _cycle in range(cycles):
+        points_to_consider = active.union(mi.flatten(map(neighbors, active)))
+        active = {p for p in points_to_consider if should_activate(p, active)}
+
+    return len(active)
 
 
-def expand_points(mins: Point, maxes: Point) -> Iterable[tuple[int, ...]]:
-    assert len(mins) == len(maxes)
-    return itertools.product(*(range(start - 1, stop + 2) for start, stop in zip(mins, maxes)))
-
-
-def part_1(txt: str) -> int:
-    return simulate(txt, 3)
-
-
-def part_2(txt: str) -> int:
-    return simulate(txt, 4)
+part_1 = solve
+part_2 = functools.partial(solve, dimensions=4)
 
 
 if __name__ == "__main__":
