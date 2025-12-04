@@ -76,13 +76,11 @@ select = [ # https://docs.astral.sh/ruff/rules/ # TODO: enable additional linter
     "RUF", # ruff
 ]
 
-[tool.pytest.ini_options]
+[tool.pytest]
 # skip slow tests by default
-addopts = "-m 'not slow'"
-markers = [
-    "slow: marks tests as slow",
-]
-xfail_strict = true
+addopts = ["-m", "not slow"]
+markers = ["slow: marks tests as slow"]
+strict_xfail = true
 
 [tool.mypy] # https://mypy.readthedocs.io/en/stable/config_file.html
 exclude = [
