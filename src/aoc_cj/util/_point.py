@@ -1,6 +1,7 @@
 import dataclasses
 import re
 from collections.abc import Generator
+from typing import Self, override
 
 __all__ = ("Point3D",)
 
@@ -12,6 +13,14 @@ class Point3D:
     z: int
 
     PARSE_REGEX = re.compile(r"(\d+)\D+(\d+)\D+(\d+)")
+
+    def __add__(self, other: Self) -> Self:
+        cls = self.__class__
+        return cls(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    @override
+    def __str__(self) -> str:
+        return str((self.x, self.y, self.z))
 
     @staticmethod
     def parse(point3d: str) -> "Point3D":
