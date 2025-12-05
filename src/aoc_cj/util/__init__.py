@@ -64,5 +64,11 @@ def create_regex_parser[T](p: str | re.Pattern[str], f: Callable[[str], T]) -> C
 
 
 ints = create_regex_parser(r"-?\d+", int)
+positive_ints = create_regex_parser(r"\d+", int)
 digits = create_regex_parser(r"\d", int)
 floats = create_regex_parser(r"-?\d+\.\d+", float)
+
+
+def parse_range(r: str) -> range:
+    start, stop = positive_ints(r)
+    return range(start, stop + 1)
