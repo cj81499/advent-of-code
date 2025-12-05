@@ -1,10 +1,11 @@
+import functools
 import itertools
 import re
 
 from aoc_cj import util
 
 
-def part_1(txt: str, *, invalid_id_pattern: re.Pattern[str] = re.compile(r"^(\d+)\1$")) -> int:
+def solve(txt: str, *, invalid_id_pattern: re.Pattern[str]) -> int:
     return sum(
         filter(
             lambda n: invalid_id_pattern.match(str(n)) is not None,
@@ -18,8 +19,8 @@ def part_1(txt: str, *, invalid_id_pattern: re.Pattern[str] = re.compile(r"^(\d+
     )
 
 
-def part_2(txt: str) -> int:
-    return part_1(txt, invalid_id_pattern=re.compile(r"^(\d+)\1+$"))
+part_1 = functools.partial(solve, invalid_id_pattern=re.compile(r"^(\d+)\1$"))
+part_2 = functools.partial(solve, invalid_id_pattern=re.compile(r"^(\d+)\1+$"))
 
 
 if __name__ == "__main__":
