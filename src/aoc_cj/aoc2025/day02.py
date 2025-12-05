@@ -1,26 +1,26 @@
+import functools
 import itertools
 import re
-from collections.abc import Generator
+
+from aoc_cj import util
 
 
-def ranges(txt: str) -> Generator[range]:
-    for r in txt.replace("\n", "").split(","):
-        start, sep, end = r.partition("-")
-        assert sep == "-"
-        yield range(int(start), int(end) + 1)
-
-
-def part_1(txt: str, *, pattern: re.Pattern[str] = re.compile(r"^(.+)\1$")) -> int:
+def solve(txt: str, *, invalid_id_pattern: re.Pattern[str]) -> int:
     return sum(
         filter(
-            lambda n: pattern.match(str(n)) is not None,
-            itertools.chain.from_iterable(ranges(txt)),
+            lambda n: invalid_id_pattern.match(str(n)) is not None,
+            itertools.chain.from_iterable(
+                map(
+                    util.parse_range,
+                    txt.replace("\n", "").split(","),
+                )
+            ),
         )
     )
 
 
-def part_2(txt: str) -> int:
-    return part_1(txt, pattern=re.compile(r"^(.+)\1+$"))
+part_1 = functools.partial(solve, invalid_id_pattern=re.compile(r"^(\d+)\1$"))
+part_2 = functools.partial(solve, invalid_id_pattern=re.compile(r"^(\d+)\1+$"))
 
 
 if __name__ == "__main__":
