@@ -1,48 +1,57 @@
-from math import prod
+import dataclasses
+import enum
+import math
+from collections.abc import Generator, Iterable, Sequence
+from typing import assert_never
 
-from aoc_cj import util
+
+class Operator(enum.StrEnum):
+    PLUS = "+"
+    MULTIPLY = "*"
+
+    def compute(self, numbers: Iterable[int]) -> int:
+        if self == Operator.PLUS:
+            return sum(numbers)
+        if self == Operator.MULTIPLY:
+            return math.prod(numbers)
+        assert_never(self)
+
+
+def transpose[T](it: Iterable[Iterable[T]]) -> Iterable[tuple[T]]:
+    return zip(*it, strict=True)
+
+
+@dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
+class Problem:
+    rows: Sequence[str]
+    op: Operator
+
+    def solve_1(self) -> int:
+        return self.op.compute(map(int, self.rows))
+
+    def solve_2(self) -> int:
+        return self.op.compute(int("".join(col)) for col in zip(*self.rows, strict=True))
+
+
+def parse_problems(txt: str) -> Generator[Problem]:
+    lines = txt.splitlines()
+    start = 0
+    op = "unknown"
+    for i, column in enumerate(transpose(lines)):
+        if column[-1] != " ":
+            op = column[-1]
+        elif all(c == " " for c in column):
+            yield Problem(rows=[l[start:i] for l in lines[:-1]], op=Operator(op))
+            start = i + 1
+    yield Problem(rows=[l[start:] for l in lines[:-1]], op=Operator(op))
 
 
 def part_1(txt: str) -> int:
-    *rows, operators = txt.splitlines()
-    rows = map(util.positive_ints, rows)
-    operators = operators.split()
-    columns: zip[tuple[int, ...]] = zip(*rows, strict=True)
-    tot = 0
-    for column, operator in zip(columns, operators, strict=True):
-        if operator == "*":
-            result = prod(column)
-        elif operator == "+":
-            result = sum(column)
-        else:
-            msg = f"unsupported operator: {operator}"
-            raise AssertionError(msg)
-        tot += result
-    return tot
+    return sum(map(Problem.solve_1, parse_problems(txt)))
 
 
 def part_2(txt: str) -> int:
-    tot = 0
-    columns: zip[tuple[str, ...]] = zip(*txt.splitlines(), strict=True)
-    problem_numbers = []
-    for c in reversed(tuple(columns)):
-        *digits, op = c
-        digits = "".join(digits).strip()
-        if digits == "":
-            continue  # problem separator line
-        problem_numbers.append(int(digits))
-
-        if op := op.strip():
-            if op == "*":
-                result = prod(problem_numbers)
-            elif op == "+":
-                result = sum(problem_numbers)
-            else:
-                msg = f"unsupported operator: {op}"
-                raise AssertionError(msg)
-            tot += result
-            problem_numbers.clear()
-    return tot
+    return sum(map(Problem.solve_2, parse_problems(txt)))
 
 
 if __name__ == "__main__":
