@@ -40,7 +40,7 @@
       "import aoc_cj.aoc20${2:25}.day${1:n} as d",
       "EXAMPLE_INPUT = \"\"\"",
       "${3:sample input}",
-      "\"\"\".strip()",
+      "\"\"\".strip(\"\\n\")  # noqa: W291",
       "def test_part_1() -> None:",
       "    assert d.part_1(EXAMPLE_INPUT) ${4:is None}$0",
       "def test_part_2() -> None:",
