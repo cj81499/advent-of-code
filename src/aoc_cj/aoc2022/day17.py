@@ -122,4 +122,4 @@ if __name__ == "__main__":
     import aocd
 
     print(f"part_1: {part_1(aocd.data)}")
-    print(f"part_2: {part_2(aocd.data)}")  # type: ignore[func-returns-value]
+    print(f"part_2: {part_2(aocd.data)}")

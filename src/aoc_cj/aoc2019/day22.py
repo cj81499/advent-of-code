@@ -1,5 +1,8 @@
+import sys
+
+
 def deck_of_size(n):
-    return [x for x in range(n)]
+    return list(range(n))
 
 
 def deal_into_new_stack(deck):
@@ -28,8 +31,7 @@ def perform_shuffle(txt: str, deck_size=10007, repeat=1):
             elif instruction.startswith("deal with increment "):
                 deck = deal_with_increment(deck, int(instruction.split()[-1]))
             else:
-                print("unrecognized shuffle instruction:", instruction)
-                exit(1)
+                sys.exit(1)
     return deck
 
 
@@ -37,7 +39,7 @@ def part_1(txt: str):
     return perform_shuffle(txt).index(2019)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> None:
     pass
 
 

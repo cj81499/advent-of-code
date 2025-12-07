@@ -98,6 +98,7 @@ def plan_route(full):
                             main_r = generate_main_routine(full, a, b, c)
                             if main_r is not None:
                                 return [main_r, a, b, c]
+    return None
 
 
 def part_2(txt: str):

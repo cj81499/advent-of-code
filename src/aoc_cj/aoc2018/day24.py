@@ -10,7 +10,7 @@ class Group:
         immunities: list,
         army_name: str,
         group_num: int,
-    ):
+    ) -> None:
         self.unit_count = unit_count
         self.unit_hp = unit_hp
         self.unit_dmg = unit_dmg
@@ -26,10 +26,10 @@ class Group:
     def effective_power(self):
         return max(0, self.alive_unit_count) * self.unit_dmg
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.army_name + " group " + str(self.group_num)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str(
             (
                 self.unit_count,
@@ -81,7 +81,7 @@ class Group:
 
 
 class Army:
-    def __init__(self, groups: list, name: str):
+    def __init__(self, groups: list, name: str) -> None:
         self.groups = groups
         self.name = name
 
@@ -97,12 +97,12 @@ class Army:
             group_number += 1
         return cls(group_list, army_name)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Army(name: {self.name}, group count: {len(self.groups)})"
 
 
 class Battle:
-    def __init__(self, armies):
+    def __init__(self, armies) -> None:
         self.armies = armies
 
     @classmethod
@@ -120,6 +120,7 @@ class Battle:
                 alive_count = sum(1 if group.alive_unit_count > 0 else 0 for group in army.groups)
                 if alive_count == 0:
                     return army.name, sum(x.alive_unit_count for x in self.armies[0 if i == 1 else 1].groups)
+        return None
 
     def round(self):
         fighting_groups = self._get_fighting_groups()
@@ -158,7 +159,7 @@ class Battle:
                 attacks[attacker.initiative] = (attacker, best_target)
         return attacks
 
-    def _attack(self, fighting_groups, attacks):
+    def _attack(self, fighting_groups, attacks) -> str | None:
         round_death_count = 0
         fighting_groups.sort(key=lambda x: x.initiative, reverse=True)
         for step in sorted(attacks.keys(), reverse=True):
@@ -169,6 +170,7 @@ class Battle:
                 round_death_count += defender.take_dmg_from(attacker)
         if round_death_count == 0:
             return "No deaths"
+        return None
 
 
 def part_1(txt):

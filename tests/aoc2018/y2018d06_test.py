@@ -10,9 +10,9 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 17
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT, total_dist=32) == 16

@@ -106,11 +106,11 @@ RE....#.#                           #......RF
 """.strip("\n")
 
 
-@pytest.mark.parametrize("input, expected", [(EXAMPLE_INPUT_0, 23), (EXAMPLE_INPUT_1, 58)])
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+@pytest.mark.parametrize(("example", "expected"), [(EXAMPLE_INPUT_0, 23), (EXAMPLE_INPUT_1, 58)])
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected
 
 
-@pytest.mark.parametrize("input, expected", [(EXAMPLE_INPUT_0, 26), (EXAMPLE_INPUT_2, 396)])
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+@pytest.mark.parametrize(("example", "expected"), [(EXAMPLE_INPUT_0, 26), (EXAMPLE_INPUT_2, 396)])
+def test_part_2(example: str, expected) -> None:
+    assert d.part_2(example) == expected

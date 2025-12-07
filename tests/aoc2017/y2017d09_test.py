@@ -4,7 +4,7 @@ import aoc_cj.aoc2017.day09 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (r"{}", 1),
         (r"{{{}}}", 6),
@@ -16,12 +16,12 @@ import aoc_cj.aoc2017.day09 as d
         (r"{{<a!>},{<a!>},{<a!>},{<ab>}}", 3),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (r"<>", 0),
         (r"<random characters>", 17),
@@ -32,5 +32,5 @@ def test_part_1(input, expected):
         (r"""<{o"i!a,<{i<a>""", 10),
     ],
 )
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected) -> None:
+    assert d.part_2(example) == expected

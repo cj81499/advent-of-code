@@ -43,9 +43,6 @@ class Rule:
         assert_never(self.op)
 
 
-import dataclasses
-
-
 @dataclasses.dataclass(frozen=True)
 class Workflow:
     name: str

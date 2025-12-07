@@ -1,3 +1,4 @@
+import dataclasses
 import enum
 import itertools
 import re
@@ -16,9 +17,6 @@ class Direction(enum.Enum):
     @staticmethod
     def is_right_turn(d1: "Direction", d2: "Direction") -> bool:
         return complex(-d1.value.imag, d1.value.real) == d2.value
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -48,9 +46,6 @@ class Step:
             distance=int("".join(self.color[:-1]), 16),
             color=hex(self.distance)[2:] + cls.DIRECTION_TO_INT_MAPPING[self.direction],
         )
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -94,7 +89,13 @@ def area(vertices: Iterable[complex]) -> float:
     """
 
     x, y = zip(*((int(p.real), int(p.imag)) for p in vertices), strict=True)
-    result = abs(sum(i * j for i, j in zip(x, y[1:] + y[:1])) - sum(i * j for i, j in zip(x[1:] + x[:1], y))) / 2
+    result = (
+        abs(
+            sum(i * j for i, j in zip(x, y[1:] + y[:1], strict=True))
+            - sum(i * j for i, j in zip(x[1:] + x[:1], y, strict=True))
+        )
+        / 2
+    )
     assert isinstance(result, float)
     return result
 

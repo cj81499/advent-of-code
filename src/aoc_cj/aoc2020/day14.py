@@ -24,7 +24,7 @@ def solver(txt, addrs_fn, val_fn):
 def apply_mask(mask, binary, v2=False):
     masked = []
     append_switch = "0" if v2 else "X"
-    for m, b in zip(mask, binary):
+    for m, b in zip(mask, binary, strict=True):
         masked.append(b if m == append_switch else m)
     return "".join(masked)
 

@@ -1,3 +1,4 @@
+import dataclasses
 import re
 
 import z3
@@ -8,10 +9,7 @@ def z3_abs(n):
 
 
 def z3_man_dist(p1, p2):
-    return sum(z3_abs(x1 - x2) for x1, x2 in zip(p1, p2))
-
-
-import dataclasses
+    return sum(z3_abs(x1 - x2) for x1, x2 in zip(p1, p2, strict=True))
 
 
 @dataclasses.dataclass
@@ -39,9 +37,6 @@ class Point:
 ORIGIN = Point(0, 0, 0)
 
 
-import dataclasses
-
-
 @dataclasses.dataclass
 class Nanobot:
     p: Point
@@ -56,9 +51,6 @@ class Nanobot:
     def parse(nanobot_str):
         x, y, z, r = map(int, Nanobot._REGEX.match(nanobot_str).groups())
         return Nanobot(Point(x, y, z), r)
-
-
-import dataclasses
 
 
 @dataclasses.dataclass

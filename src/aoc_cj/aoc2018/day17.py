@@ -5,7 +5,7 @@ sys.setrecursionlimit(2000)
 
 
 class Scan:
-    def __init__(self, lines: list):
+    def __init__(self, lines: list) -> None:
         self.scan = defaultdict(lambda: ".")
         self.scan[(500, 0)] = "+"
         self.dimensions = {"min_x": None, "max_x": None, "min_y": None, "max_y": None}
@@ -31,7 +31,7 @@ class Scan:
                 s += "\n"
         return s
 
-    def __expand_dimensions(self, area: dict):
+    def __expand_dimensions(self, area: dict) -> None:
         area_dimensions = {
             "min_x": area["x"][0],
             "max_x": area["x"][len(area["x"]) - 1],
@@ -47,7 +47,7 @@ class Scan:
             else:
                 self.dimensions[d] = area_dimensions[d]
 
-    def spread(self, x, y):
+    def spread(self, x, y) -> None:
         if self.scan[(x, y + 1)] not in "~#":
             return
         left_done = False
@@ -80,8 +80,8 @@ class Scan:
         if left_reached_clif:
             self.drip(left_reached_clif - 1, y)
 
-    def drip(self, x, y):
-        if not self.scan[(x, y)] == ".":
+    def drip(self, x, y) -> None:
+        if self.scan[x, y] != ".":
             return
         self.scan[(x, y)] = "|"
         # Stop when we reach bottom of map
@@ -89,7 +89,7 @@ class Scan:
             self.drip(x, y + 1)
             self.spread(x, y)
 
-    def pour(self):
+    def pour(self) -> None:
         self.drip(500, 1)
 
     def count_settled_water_tiles(self):

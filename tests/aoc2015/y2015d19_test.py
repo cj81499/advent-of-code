@@ -15,24 +15,24 @@ EXAMPLE_INPUT_1 = "HOHOHO"
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_0, 4),
         (EXAMPLE_INPUT_1, 7),
     ],
 )
-def test_part_1(input: str, expected: int) -> None:
-    input = f"{REPLACEMENTS}\n\n{input}"
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected: int) -> None:
+    example = f"{REPLACEMENTS}\n\n{example}"
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_0, 3),
         (EXAMPLE_INPUT_1, 6),
     ],
 )
-def test_part_2(input: str, expected: int) -> None:
-    input = f"{REPLACEMENTS}\n\n{input}"
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected: int) -> None:
+    example = f"{REPLACEMENTS}\n\n{example}"
+    assert d.part_2(example) == expected

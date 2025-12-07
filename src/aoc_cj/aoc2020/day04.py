@@ -5,8 +5,7 @@ def is_valid_1(passport):
         pairs = line.split(" ")
         for pair in pairs:
             key, _val = pair.split(":")
-            if key in missing:
-                missing.remove(key)
+            missing.discard(key)
     return len(missing) == 0
 
 
@@ -44,7 +43,7 @@ def is_valid_2(passport):
                     else:
                         return False
                 elif key == "hcl":
-                    if not val.startswith("#") or not len(val) == 7:
+                    if not val.startswith("#") or len(val) != 7:
                         return False
                     for c in val[1:]:
                         if c not in "0123456789abcdef":

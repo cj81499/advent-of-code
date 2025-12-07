@@ -4,7 +4,7 @@ import aoc_cj.aoc2017.day11 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("ne,ne,ne", 3),
         ("ne,ne,sw,sw", 0),
@@ -12,5 +12,5 @@ import aoc_cj.aoc2017.day11 as d
         ("se,sw,se,sw,sw", 3),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected

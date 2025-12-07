@@ -9,7 +9,7 @@ EXAMPLE_3 = 100756
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_0, 2),
         (EXAMPLE_1, 2),
@@ -17,12 +17,12 @@ EXAMPLE_3 = 100756
         (EXAMPLE_3, 33583),
     ],
 )
-def test_part_1(input_val: int, expected: int) -> None:
-    assert d.fuel_req(input_val) == expected
+def test_part_1(example: int, expected: int) -> None:
+    assert d.fuel_req(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_0, 2),
         (EXAMPLE_1, 2),
@@ -30,5 +30,5 @@ def test_part_1(input_val: int, expected: int) -> None:
         (EXAMPLE_3, 50346),
     ],
 )
-def test_part_2(input_val: int, expected: int) -> None:
-    assert d.fuel_req_rec(input_val) == expected
+def test_part_2(example: int, expected: int) -> None:
+    assert d.fuel_req_rec(example) == expected

@@ -34,24 +34,24 @@ cut -1
 """.strip()
 
 
-def test_deal_into_new_stack():
+def test_deal_into_new_stack() -> None:
     assert d.deal_into_new_stack(d.deck_of_size(10)) == [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 
 
-def test_cut():
+def test_cut() -> None:
     assert d.cut(d.deck_of_size(10), 3) == [3, 4, 5, 6, 7, 8, 9, 0, 1, 2]
 
 
-def test_cut_negative():
+def test_cut_negative() -> None:
     assert d.cut(d.deck_of_size(10), -4) == [6, 7, 8, 9, 0, 1, 2, 3, 4, 5]
 
 
-def test_deal_with_increment():
+def test_deal_with_increment() -> None:
     assert d.deal_with_increment(d.deck_of_size(10), 3) == [0, 7, 4, 1, 8, 5, 2, 9, 6, 3]
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_0, "0 3 6 9 2 5 8 1 4 7"),
         (EXAMPLE_INPUT_1, "3 0 7 4 1 8 5 2 9 6"),
@@ -59,5 +59,5 @@ def test_deal_with_increment():
         (EXAMPLE_INPUT_3, "9 2 5 8 1 4 7 0 3 6"),
     ],
 )
-def test_perform_shuffle(input, expected):
-    assert d.perform_shuffle(input, deck_size=10) == [int(n) for n in expected.split()]
+def test_perform_shuffle(example: str, expected) -> None:
+    assert d.perform_shuffle(example, deck_size=10) == [int(n) for n in expected.split()]

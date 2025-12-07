@@ -49,7 +49,8 @@ def part_1(txt: str) -> int:
                     elif facing == UP:
                         new_pos = max((p for p in board_map if p.real == current_pos.real), key=lambda p: p.imag)
                     else:
-                        assert False, "unreachable"
+                        msg = "unreachable"
+                        raise AssertionError(msg)
                 # if new_pos is a wall
                 if board_map.get(new_pos) == WALL:
                     break
@@ -59,7 +60,8 @@ def part_1(txt: str) -> int:
         elif step == "R":
             facing = complex(-facing.imag, facing.real)  # turn CW
         else:
-            assert False, "unreachable"
+            msg = "unreachable"
+            raise AssertionError(msg)
 
     row = int(current_pos.imag) + 1
     col = int(current_pos.real) + 1
@@ -77,14 +79,14 @@ def part_2(txt: str) -> int:
     }
 
     # You begin the path in the leftmost open tile of the top row of tiles.
-    current_pos = min((p for p, c in board_map.items() if c == OPEN and p.imag == 0), key=lambda p: p.real)
+    min((p for p, c in board_map.items() if c == OPEN and p.imag == 0), key=lambda p: p.real)
     # Initially, you are facing to the right (from the perspective of how the map is drawn).
-    facing = complex(1, 0)
+    complex(1, 0)
 
     lines = board_map_s.splitlines()
     edge_length = min(*(len(row.strip()) for row in lines), *(len("".join(col).strip()) for col in zip(lines)))
 
-    shape = {p2 for p in board_map if (p2 := p / edge_length).real.is_integer() and p2.imag.is_integer()}
+    {p2 for p in board_map if (p2 := p / edge_length).real.is_integer() and p2.imag.is_integer()}
 
     raise NotImplementedError
 

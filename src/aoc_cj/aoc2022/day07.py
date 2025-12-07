@@ -15,9 +15,6 @@ class File:
     size: int
 
 
-import dataclasses
-
-
 @dataclasses.dataclass
 class Dir:
     children: list[File | Self] = dataclasses.field(default_factory=list)
@@ -50,7 +47,8 @@ def get_dir_sizes(txt: str) -> list[int]:
                     size, filename = line.split()
                     dir.children.append(File(filename, int(size)))
         else:
-            assert False, f"unrecognized command: '{cmd}'"
+            msg = f"unrecognized command: '{cmd}'"
+            raise AssertionError(msg)
     return [d.size for d in dirs.values()]
 
 

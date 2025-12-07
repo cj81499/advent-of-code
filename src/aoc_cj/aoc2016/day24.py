@@ -41,7 +41,8 @@ def helper(txt: str, *, end_at_start: bool = False) -> int:
             if pos not in seen:
                 q.extend((distance + 1, p) for p in adj_pos(*pos) if not is_wall(grid, p))
                 seen.add(pos)
-        raise RuntimeError(f"{end} is not reachable from {start}")
+        msg = f"{end} is not reachable from {start}"
+        raise RuntimeError(msg)
 
     locations = {int(c): p for p, c in grid.items() if c.isnumeric()}
 

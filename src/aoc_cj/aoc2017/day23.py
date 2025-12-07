@@ -4,7 +4,7 @@ from aoc_cj import util
 
 
 class Program:
-    def __init__(self, instructions):
+    def __init__(self, instructions) -> None:
         self._instructions = instructions
         self.ip = 0
         self._registers = defaultdict(int)
@@ -13,25 +13,25 @@ class Program:
     def _val(self, arg):
         return self._registers[arg] if arg.isalpha() else int(arg)
 
-    def set(self):
+    def set(self) -> None:
         x, y = self._args
         self._registers[x] = self._val(y)
 
-    def sub(self):
+    def sub(self) -> None:
         x, y = self._args
         self._registers[x] -= self._val(y)
 
-    def mul(self):
+    def mul(self) -> None:
         x, y = self._args
         self._registers[x] *= self._val(y)
         self.mul_count += 1
 
-    def jnz(self):
+    def jnz(self) -> None:
         x, y = self._args
         if self._val(x) != 0:
             self.ip += self._val(y) - 1
 
-    def perform_instruction(self):
+    def perform_instruction(self) -> None:
         cmd, *self._args = self.current_instruction
         getattr(self, cmd)()
         self.ip += 1

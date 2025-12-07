@@ -1,3 +1,4 @@
+import dataclasses
 import itertools
 import re
 from typing import Optional
@@ -78,9 +79,6 @@ def part_2(txt: str) -> int:
             cc.subtract(c)
 
     return cc.volume()
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)

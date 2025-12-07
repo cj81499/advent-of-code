@@ -3,8 +3,8 @@ from collections import Counter
 
 
 class LumberArea:
-    def __init__(self, lines):
-        self.area = [[x for x in line] for line in lines]
+    def __init__(self, lines) -> None:
+        self.area = [list(line) for line in lines]
 
     def adj_in_area(self, x, y):
         s = {(x + _x, y + _y) for _x in range(-1, 2) for _y in range(-1, 2)}
@@ -19,7 +19,7 @@ class LumberArea:
         s.remove((x, y))
         return s
 
-    def magic(self):
+    def magic(self) -> None:
         start = copy.deepcopy(self.area)
         for y, row in enumerate(self.area):
             for x, acre in enumerate(row):
@@ -33,8 +33,8 @@ class LumberArea:
                 elif acre == "#" and not (adj_counts["#"] >= 1 and adj_counts["|"] >= 1):
                     self.area[y][x] = "."
 
-    def __str__(self):
-        return "\n".join(["".join([acre for acre in row]) for row in self.area])
+    def __str__(self) -> str:
+        return "\n".join(["".join(list(row)) for row in self.area])
 
 
 def part_1(txt):

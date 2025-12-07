@@ -61,7 +61,7 @@ EXAMPLE_3 = """
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_0, 165),
         (EXAMPLE_1, 13312),
@@ -69,17 +69,17 @@ EXAMPLE_3 = """
         (EXAMPLE_3, 2210736),
     ],
 )
-def test_part_1(input_val: list[str], expected: int) -> None:
-    assert d.part_1(input_val) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_1, 82892753),
         (EXAMPLE_2, 5586022),
         (EXAMPLE_3, 460664),
     ],
 )
-def test_part_2(input_val: list[str], expected: int) -> None:
-    assert d.part_2(input_val) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

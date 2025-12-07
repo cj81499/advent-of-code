@@ -2,7 +2,7 @@ from collections.abc import Iterable
 
 
 def parse(txt: str) -> Iterable[tuple[str, int]]:
-    splits = (l.split() for l in txt.splitlines())
+    splits = map(txt.split, txt.splitlines())
     yield from ((cmd, int(x)) for cmd, x in splits)
 
 

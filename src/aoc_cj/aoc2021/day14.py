@@ -43,7 +43,7 @@ def part_2(txt: str) -> int:
 
 def parse(txt: str) -> tuple[str, dict[str, str]]:
     polymer_template, pair_insertion_rules = txt.split("\n\n")
-    return polymer_template, {k: v for k, v in (l.split(" -> ") for l in pair_insertion_rules.splitlines())}
+    return polymer_template, dict(l.split(" -> ") for l in pair_insertion_rules.splitlines())
 
 
 if __name__ == "__main__":

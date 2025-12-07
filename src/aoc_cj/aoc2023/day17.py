@@ -1,3 +1,4 @@
+import dataclasses
 from collections.abc import Generator
 from typing import Self, override
 
@@ -9,9 +10,6 @@ LEFT = -1
 RIGHT = +1
 
 DIRECTIONS = frozenset((UP, DOWN, LEFT, RIGHT))
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -74,7 +72,7 @@ def min_heat_loss(grid: dict[complex, int], crucible_cls: type[Crucible] = Cruci
         seen = set[Crucible]()
         while to_explore:
             state, heat_loss = to_explore.pop_with_priority()
-            # skip states we've already seen and states that are more expensive than what we already know it "costs" to reach the goal
+            # skip states we've already seen
             if state in seen:
                 continue
             seen.add(state)

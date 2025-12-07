@@ -18,14 +18,14 @@ class Direction(enum.Enum):
 class Coordinate:
     # Using axial coordinates
     # https://www.redblobgames.com/grids/hexagons/
-    def __init__(self, q, r):
+    def __init__(self, q, r) -> None:
         self._q = q
         self._r = r
 
     def _as_tuple(self):
         return (self._q, self._r)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"(q:{self._q}, r:{self._r})"
 
     def __hash__(self):
@@ -56,15 +56,15 @@ Coordinate.ADJ = {
 class HexTile:
     _n = 0
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._color = Color.WHITE
         self.n = HexTile._n
         HexTile._n += 1
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"T{self.n}({self._color})"
 
-    def toggle_color(self):
+    def toggle_color(self) -> None:
         self._color = Color(not self._color.value)
 
     def get_color(self):
@@ -74,11 +74,11 @@ class HexTile:
 class HexGrid:
     ORIGIN = Coordinate(0, 0)
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._tiles = {}
         self._create_tile_at(HexGrid.ORIGIN)
 
-    def flip_tile(self, directions):
+    def flip_tile(self, directions) -> None:
         pos = HexGrid.ORIGIN
         for d in directions:
             pos = pos + Coordinate.ADJ[d]
@@ -89,7 +89,7 @@ class HexGrid:
     def count_black_tiles(self):
         return sum(t.get_color() == Color.BLACK for t in self._tiles.values())
 
-    def simulate_day(self):
+    def simulate_day(self) -> None:
         # add white tiles next to all all black tiles
         for pos, tile in list(self._tiles.items()):
             if tile.get_color() == Color.BLACK:
@@ -104,13 +104,12 @@ class HexGrid:
         for tile in to_flip:
             tile.toggle_color()
 
-    def _should_flip(self, tile, pos):
+    def _should_flip(self, tile, pos) -> bool:
         count = self._count_adj_black_tiles(pos)
-        if (tile.get_color() == Color.BLACK and (count == 0 or count > 2)) or (
-            tile.get_color() == Color.WHITE and count == 2
-        ):
-            return True
-        return False
+        return bool(
+            (tile.get_color() == Color.BLACK and (count == 0 or count > 2))
+            or (tile.get_color() == Color.WHITE and count == 2)
+        )
 
     def _count_adj_black_tiles(self, pos):
         count = 0
@@ -120,7 +119,7 @@ class HexGrid:
                 count += 1
         return count
 
-    def _create_tile_at(self, pos):
+    def _create_tile_at(self, pos) -> None:
         assert pos not in self._tiles
         self._tiles[pos] = HexTile()
 
@@ -137,7 +136,8 @@ def parse(line):
             directions.append(Direction(line[i : i + 2]))
             i += 2
         else:
-            raise Exception("invalid input")
+            msg = "invalid input"
+            raise Exception(msg)
     return directions
 
 

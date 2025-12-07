@@ -26,7 +26,7 @@ def parse_ticket(ticket_str):
 
 def parse_input(txt):
     fields_str, my_ticket, nearby_tickets = txt.split("\n\n")
-    fields = {name: ranges for name, ranges in [parse_field(f) for f in fields_str.splitlines()]}
+    fields = dict([parse_field(f) for f in fields_str.splitlines()])
     my_ticket = parse_ticket(my_ticket.splitlines()[1])
     nearby_tickets = {parse_ticket(t) for t in nearby_tickets.splitlines()[1:]}
     return fields, my_ticket, nearby_tickets
@@ -43,7 +43,7 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
     # for each valid ticket
     for t in {t for t in nearby_tickets if is_valid_ticket(t, fields)[0]}:
         # for each value on the ticket and list of possible fields at the location of that value
-        for ticket_value, possibile_fields in zip(t, position_possibile_fields):
+        for ticket_value, possibile_fields in zip(t, position_possibile_fields, strict=True):
             for f in set(possibile_fields):
                 # if the value is not valid for one of the possible fields, remove it as a possibility
                 if not any(ticket_value in r for r in fields[f]):
@@ -65,7 +65,9 @@ def get_actual_fields(fields, my_ticket, nearby_tickets):
 def part_2(txt):
     fields, my_ticket, nearby_tickets = parse_input(txt)
     actual_fields = get_actual_fields(fields, my_ticket, nearby_tickets)
-    departure_values = [val for val, field_name in zip(my_ticket, actual_fields) if "departure" in field_name]
+    departure_values = [
+        val for val, field_name in zip(my_ticket, actual_fields, strict=True) if "departure" in field_name
+    ]
     return functools.reduce(operator.mul, departure_values, 1)
 
 

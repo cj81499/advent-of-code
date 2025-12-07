@@ -3,14 +3,15 @@ from collections.abc import Iterator
 
 
 class Board:
-    def __init__(self, grid: list[list[int]]):
+    def __init__(self, grid: list[list[int]]) -> None:
         self._grid = grid
         self._marks = [[False for _ in row] for row in grid]
         self._last_draw: int = -1
 
     def mark_number(self, draw: int) -> None:
         if self.is_won():
-            raise ValueError("cannot mark number after game is won")
+            msg = "cannot mark number after game is won"
+            raise ValueError(msg)
         self._last_draw = draw
         for i, row in enumerate(self._grid):
             for j, n in enumerate(row):
@@ -18,13 +19,16 @@ class Board:
                     self._marks[i][j] = True
 
     def is_won(self) -> bool:
-        return any(all(marks) for marks in self._marks) or any(all(marks) for marks in zip(*self._marks))
+        return any(all(marks) for marks in self._marks) or any(all(marks) for marks in zip(*self._marks, strict=True))
 
     def score(self) -> int:
         if not self.is_won():
-            raise ValueError("cannot get score until game is won")
+            msg = "cannot get score until game is won"
+            raise ValueError(msg)
         unmarked_numbers = (
-            n for n, marked in zip(itertools.chain(*self._grid), itertools.chain(*self._marks)) if not marked
+            n
+            for n, marked in zip(itertools.chain(*self._grid), itertools.chain(*self._marks), strict=True)
+            if not marked
         )
         return sum(unmarked_numbers) * self._last_draw
 

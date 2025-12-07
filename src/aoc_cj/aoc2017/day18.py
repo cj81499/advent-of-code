@@ -8,7 +8,7 @@ class RcvException(Exception):
 
 
 class Program:
-    def __init__(self, instructions):
+    def __init__(self, instructions) -> None:
         self._instructions = instructions
         self._ip = 0
         self._registers = defaultdict(int)
@@ -17,37 +17,37 @@ class Program:
     def _val(self, arg):
         return self._registers[arg] if arg.isalpha() else int(arg)
 
-    def snd(self):
+    def snd(self) -> None:
         assert len(self._args) == 1
         self._last_sent = self._val(self._args[0])
 
-    def set(self):
+    def set(self) -> None:
         x, y = self._args
         self._registers[x] = self._val(y)
 
-    def add(self):
+    def add(self) -> None:
         x, y = self._args
         self._registers[x] += self._val(y)
 
-    def mul(self):
+    def mul(self) -> None:
         x, y = self._args
         self._registers[x] *= self._val(y)
 
-    def mod(self):
+    def mod(self) -> None:
         x, y = self._args
         self._registers[x] %= self._val(y)
 
-    def rcv(self):
+    def rcv(self) -> None:
         assert len(self._args) == 1
         if self._val(self._args[0]) != 0:
             raise RcvException(self._last_sent)
 
-    def jgz(self):
+    def jgz(self) -> None:
         x, y = self._args
         if self._val(x) > 0:
             self._ip += self._val(y) - 1
 
-    def perform_instruction(self):
+    def perform_instruction(self) -> None:
         cmd, *self._args = self.current_instruction
         getattr(self, cmd)()
         self._ip += 1
@@ -58,18 +58,18 @@ class Program:
 
 
 class ProgramB(Program):
-    def __init__(self, instructions, pid):
+    def __init__(self, instructions, pid) -> None:
         super().__init__(instructions)
         self._registers["p"] = pid
         self._q = deque()
         self.send_count = 0
 
-    def snd(self):
+    def snd(self) -> None:
         assert len(self._args) == 1
         self._reciever._q.append(self._val(self._args[0]))
         self.send_count += 1
 
-    def rcv(self):
+    def rcv(self) -> None:
         assert len(self._args) == 1
         # if we can't recieve, don't do anything.
         if self.is_waiting():
@@ -77,7 +77,7 @@ class ProgramB(Program):
             return
         self._registers[self._args[0]] = self._q.popleft()
 
-    def set_reciever(self, reciever):
+    def set_reciever(self, reciever) -> None:
         self._reciever = reciever
 
     def is_waiting(self):

@@ -5,7 +5,7 @@ from collections import deque
 
 
 class Node:
-    def __init__(self, to: "Location"):
+    def __init__(self, to: "Location") -> None:
         self.to = to
 
     def adjacent_nodes(self):
@@ -13,12 +13,12 @@ class Node:
 
 
 class StartNode(Node):
-    def __init__(self, start: "Location"):
+    def __init__(self, start: "Location") -> None:
         super().__init__(start)
 
 
 class MoveNode(Node):
-    def __init__(self, from_: Node, direction: "Direction"):
+    def __init__(self, from_: Node, direction: "Direction") -> None:
         super().__init__(from_.to.add(direction))
         self.from_ = from_
         self.direction = direction
@@ -65,17 +65,17 @@ class CavePiece:
     cave: "Cave"
     loc: Location
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.cave_string
 
 
 class Wall(CavePiece):
-    def __init__(self, cave: "Cave", loc: Location):
+    def __init__(self, cave: "Cave", loc: Location) -> None:
         super().__init__("#", cave, loc)
 
 
 class Open(CavePiece):
-    def __init__(self, cave: "Cave", loc: Location):
+    def __init__(self, cave: "Cave", loc: Location) -> None:
         super().__init__(".", cave, loc)
 
 
@@ -83,12 +83,14 @@ class Unit(CavePiece):
     DEFAULT_ATTACK_POWER = 3
     DEFAULT_HIT_POINTS = 200
 
-    def __init__(self, board_string: str, cave: "Cave", loc: Location, attack_power: int = DEFAULT_ATTACK_POWER):
+    def __init__(
+        self, board_string: str, cave: "Cave", loc: Location, attack_power: int = DEFAULT_ATTACK_POWER
+    ) -> None:
         super().__init__(board_string, cave, loc)
         self.attack_power = attack_power
         self.hit_points = Unit.DEFAULT_HIT_POINTS
 
-    def deal_damage(self, other: "Unit"):
+    def deal_damage(self, other: "Unit") -> None:
         other.hit_points -= self.attack_power
         if other.is_dead():
             other.die()
@@ -99,10 +101,10 @@ class Unit(CavePiece):
     def is_alive(self):
         return self.hit_points > 0
 
-    def die(self):
+    def die(self) -> None:
         self.cave.remove_unit_at(self.loc)
 
-    def turn(self):
+    def turn(self) -> None:
         assert self.cave.at(self.loc) == self
 
         # Each unit begins its turn by identifying all possible targets (Target units).
@@ -135,7 +137,7 @@ class Unit(CavePiece):
         if self.in_range_of_target():
             self.attack()
 
-    def move(self, in_range: set[Location]):
+    def move(self, in_range: set[Location]) -> None:
         to_explore = deque(StartNode(self.loc).adjacent_nodes())
         explored = set()
 
@@ -153,7 +155,7 @@ class Unit(CavePiece):
         if selected_move_node is not None:
             self.cave.move_unit(self.loc, selected_move_node.move_direction())
 
-    def attack(self):
+    def attack(self) -> None:
         min_hp = float("inf")
         min_hp_targets = []
         for target in self.adjacent_targets():
@@ -186,17 +188,17 @@ class Unit(CavePiece):
 
 
 class Goblin(Unit):
-    def __init__(self, cave: "Cave", loc: Location):
+    def __init__(self, cave: "Cave", loc: Location) -> None:
         super().__init__("G", cave, loc)
 
 
 class Elf(Unit):
-    def __init__(self, cave: "Cave", loc: Location, attack_power: int):
+    def __init__(self, cave: "Cave", loc: Location, attack_power: int) -> None:
         super().__init__("E", cave, loc, attack_power)
 
 
 class CavePieceFactory:
-    def __init__(self, elf_attack_power: int):
+    def __init__(self, elf_attack_power: int) -> None:
         self.elf_attack_power = elf_attack_power
 
     def get_cave_piece(self, c: str, cave: "Cave", loc: Location):
@@ -210,7 +212,7 @@ class CavePieceFactory:
 
 
 class Cave:
-    def __init__(self, txt: str, elf_attack_power: int = Unit.DEFAULT_ATTACK_POWER):
+    def __init__(self, txt: str, elf_attack_power: int = Unit.DEFAULT_ATTACK_POWER) -> None:
         self._rep = {}
         lines = txt.splitlines()
         self.height = len(lines)
@@ -222,7 +224,7 @@ class Cave:
                 piece = bpf.get_cave_piece(c, self, loc)
                 self._rep[loc] = piece
 
-    def __str__(self):
+    def __str__(self) -> str:
         rows = []
         for y in range(self.height):
             row = []
@@ -233,7 +235,7 @@ class Cave:
             rows.append("".join(row))
         return "\n".join(rows)
 
-    def move_unit(self, src: Location, direction: Direction):
+    def move_unit(self, src: Location, direction: Direction) -> None:
         unit = self.at(src)
         assert isinstance(unit, Unit)
         destination = src.add(direction)
@@ -257,7 +259,7 @@ class Cave:
         units = (cp for cp in self._rep.values() if isinstance(cp, Unit))
         return sum(unit.hit_points for unit in units)
 
-    def round(self):
+    def round(self) -> None:
         turn_order = []
         for y in range(self.height):
             for x in range(self.width):
@@ -272,7 +274,7 @@ class Cave:
     def at(self, loc: Location):
         return self._rep.get(loc)
 
-    def remove_unit_at(self, loc: Location):
+    def remove_unit_at(self, loc: Location) -> None:
         self._rep[loc] = Open(self, loc)
 
     def elf_count(self):
@@ -291,6 +293,7 @@ def part_2(txt):
         final_elves = c.elf_count()
         if initial_elves == final_elves:
             return result
+    return None
 
 
 if __name__ == "__main__":

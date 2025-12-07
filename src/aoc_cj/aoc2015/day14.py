@@ -56,7 +56,7 @@ def race_reindeers(reindeers: set[Reindeer]) -> Generator[Mapping[Reindeer, Rein
 
 
 def part_1(txt: str, *, duration: int = 2503) -> int:
-    reindeers = {Reindeer.parse(l) for l in txt.splitlines()}
+    reindeers = set(map(Reindeer.parse, txt.splitlines()))
     race_simulation = race_reindeers(reindeers)
     final_state = mi.nth(race_simulation, duration)  # get simulation state after duration seconds
     assert final_state is not None, "simulation could go on forever"
@@ -64,7 +64,7 @@ def part_1(txt: str, *, duration: int = 2503) -> int:
 
 
 def part_2(txt: str, *, duration: int = 2503) -> int:
-    reindeers = {Reindeer.parse(l) for l in txt.splitlines()}
+    reindeers = set(map(Reindeer.parse, txt.splitlines()))
     race_simulation = race_reindeers(reindeers)
     points = {r.name: 0 for r in reindeers}
     for _ in range(duration + 1):

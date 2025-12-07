@@ -10,7 +10,7 @@ EXAMPLE_INPUT_4 = "^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS)
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_0, 3),
         (EXAMPLE_INPUT_1, 10),
@@ -19,5 +19,5 @@ EXAMPLE_INPUT_4 = "^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS)
         (EXAMPLE_INPUT_4, 31),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected

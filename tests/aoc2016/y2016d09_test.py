@@ -4,7 +4,7 @@ import aoc_cj.aoc2016.day09 as d
 
 
 @pytest.mark.parametrize(
-    "compressed, length",
+    ("compressed", "length"),
     [
         ("ADVENT", 6),
         ("A(1x5)BC", 7),
@@ -19,7 +19,7 @@ def test_part_1(compressed: str, length: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "compressed, length",
+    ("compressed", "length"),
     [
         ("(3x3)XYZ", len("XYZXYZXYZ")),
         ("X(8x2)(3x3)ABCY", len("XABCABCABCABCABCABCY")),

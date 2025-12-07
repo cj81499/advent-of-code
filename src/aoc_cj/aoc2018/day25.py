@@ -2,23 +2,23 @@ import itertools
 
 
 class Point:
-    def __init__(self, s: str):
+    def __init__(self, s: str) -> None:
         self.pos = tuple(int(x) for x in s.split(","))
 
     def __hash__(self):
         return hash(self.pos)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str(self.pos)
 
     def dist(self, other):
-        return sum(abs(x1 - x2) for x1, x2 in zip(self.pos, other.pos))
+        return sum(abs(x1 - x2) for x1, x2 in zip(self.pos, other.pos, strict=True))
 
 
 class Constellation:
     number = 0
 
-    def __init__(self, point):
+    def __init__(self, point) -> None:
         self.number = Constellation.number
         Constellation.number += 1
         self.points = {point}
@@ -26,7 +26,7 @@ class Constellation:
     def __hash__(self):
         return hash(self.number)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.number}-{self.points}"
 
     def join(self, other):

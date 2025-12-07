@@ -13,11 +13,11 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-@pytest.mark.skip("solution passes on actual input, but not test input")
+@pytest.mark.skip("solution passes on actual example, but not test example")
 def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 35
 
 
-@pytest.mark.skip("solution passes on actual input, but not test input")
+@pytest.mark.skip("solution passes on actual example, but not test example")
 def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 3351

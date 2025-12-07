@@ -7,13 +7,13 @@ REGEX = re.compile(r"([a-z]*) \((\d+)\)( -> (.*)|)")
 
 
 class TreeNode:
-    def __init__(self, name: str, weight: int):
+    def __init__(self, name: str, weight: int) -> None:
         self.name = name
         self.weight = weight
         self.children: list[TreeNode] = []
         self.parent = None
 
-    def add_child(self, child: "TreeNode"):
+    def add_child(self, child: "TreeNode") -> None:
         assert child.parent is None
         child.parent = self
         self.children.append(child)
@@ -33,7 +33,7 @@ def build_tree(txt: str) -> TreeNode:
     for line in txt.splitlines():
         name, num, _, children_str = REGEX.match(line).groups()
         nodes[name] = TreeNode(name, int(num))
-        children[name] = tuple() if children_str is None else tuple(children_str.split(", "))
+        children[name] = () if children_str is None else tuple(children_str.split(", "))
 
     for name, children_tuple in children.items():
         for child in children_tuple:

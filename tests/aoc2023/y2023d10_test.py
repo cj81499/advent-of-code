@@ -71,24 +71,24 @@ L7JLJL-JLJLJL--JLJ.L
 
 
 @pytest.mark.parametrize(
-    ("example_input", "expected"),
-    (
+    ("example_example", "expected"),
+    [
         (EXAMPLE_INPUT_1, 4),
         (EXAMPLE_INPUT_2, 8),
-    ),
+    ],
 )
-def test_part_1(example_input: str, expected: int) -> None:
-    assert d.part_1(example_input) == expected
+def test_part_1(example_example: str, expected: int) -> None:
+    assert d.part_1(example_example) == expected
 
 
 @pytest.mark.parametrize(
-    ("example_input", "expected"),
-    (
+    ("example_example", "expected"),
+    [
         (EXAMPLE_INPUT_3, 4),
         (EXAMPLE_INPUT_4, 4),
         (EXAMPLE_INPUT_5, 8),
         (EXAMPLE_INPUT_6, 10),
-    ),
+    ],
 )
-def test_part_2(example_input: str, expected: int) -> None:
-    assert d.part_2(example_input) == expected
+def test_part_2(example_example: str, expected: int) -> None:
+    assert d.part_2(example_example) == expected

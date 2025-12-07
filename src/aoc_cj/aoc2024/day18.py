@@ -21,7 +21,7 @@ class NoPathFoundError(Exception):
 
 
 def part_1(txt: str, max_dim: int = 70, simulate: int = 1024) -> int:
-    byte_positions = [x + y * 1j for x, y in (util.ints(l) for l in txt.splitlines())]
+    byte_positions = [x + y * 1j for x, y in map(util.ints, txt.splitlines())]
     start = 0j
     goal = max_dim + max_dim * 1j
     blocked = set(itertools.islice(byte_positions, simulate))
@@ -39,17 +39,15 @@ def explore(max_dim: int, start: complex, goal: complex, blocked: set[complex]) 
         if pos == goal:
             return item.cost
         for adj_pos in util.adj_4(pos):
-            # if position in bounds
-            if 0 <= adj_pos.real <= max_dim and 0 <= adj_pos.imag <= max_dim:
-                # if position is not blocked
-                if adj_pos not in blocked:
-                    heapq.heappush(to_explore, HeapItem(cost=item.cost + 1, value=adj_pos))
+            # if position in bounds and is not blocked
+            if 0 <= adj_pos.real <= max_dim and 0 <= adj_pos.imag <= max_dim and adj_pos not in blocked:
+                heapq.heappush(to_explore, HeapItem(cost=item.cost + 1, value=adj_pos))
         seen.add(pos)
     raise NoPathFoundError
 
 
 def part_2(txt: str, max_dim: int = 70) -> str:
-    byte_positions = [x + y * 1j for x, y in (util.ints(l) for l in txt.splitlines())]
+    byte_positions = [x + y * 1j for x, y in map(util.ints, txt.splitlines())]
     start = 0j
     goal = max_dim + max_dim * 1j
 

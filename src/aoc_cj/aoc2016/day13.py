@@ -3,7 +3,7 @@ from collections import deque
 
 def is_open(x: int, y: int, fav_num: int) -> bool:
     n = x * x + 3 * x + 2 * x * y + y + y * y + fav_num
-    num_ones = bin(n).count("1")
+    num_ones = (n).bit_count()
     return num_ones % 2 == 0
 
 

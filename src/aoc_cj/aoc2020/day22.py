@@ -4,7 +4,7 @@ import more_itertools as mi
 
 
 class Deck:
-    def __init__(self, n, cards):
+    def __init__(self, n, cards) -> None:
         self.n = n
         self.cards = collections.deque(cards)
 
@@ -15,16 +15,16 @@ class Deck:
         cards = (int(x) for x in cards)
         return Deck(n, cards)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Player {self.n}'s deck: {', '.join(str(x) for x in self.cards)}"
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.cards)
 
     def draw(self):
         return self.cards.popleft()
 
-    def put_on_bottom(self, *cards):
+    def put_on_bottom(self, *cards) -> None:
         self.cards.extend(cards)
 
     def score(self):
@@ -38,7 +38,7 @@ class Deck:
 
 
 class CombatGame:
-    def __init__(self, decks):
+    def __init__(self, decks) -> None:
         assert len(decks) == 2
         self.decks = [d.copy() for d in decks]
 
@@ -47,7 +47,7 @@ class CombatGame:
         decks = [Deck.parse(d) for d in game_str.split("\n\n")]
         return cls(decks)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{type(self)}({self.decks})"
 
     def winner_score(self):
@@ -58,15 +58,16 @@ class CombatGame:
         for d in self.decks:
             if len(d) != 0:
                 return d
+        return None
 
-    def play(self):
+    def play(self) -> None:
         while not self._is_done():
             self._round()
 
     def _is_done(self):
         return any(len(d) == 0 for d in self.decks)
 
-    def _round(self):
+    def _round(self) -> None:
         draw_deck_pairs = [(d.draw(), d) for d in self.decks]
         _winning_draw, winning_deck = max(draw_deck_pairs)
         to_put_on_bottom = sorted((n for n, _deck in draw_deck_pairs), reverse=True)
@@ -76,7 +77,7 @@ class CombatGame:
 class RecursiveCombatGame(CombatGame):
     game_n = 1
 
-    def __init__(self, decks):
+    def __init__(self, decks) -> None:
         super().__init__(decks)
         self.seen = set()
         self.loop = False
@@ -84,10 +85,10 @@ class RecursiveCombatGame(CombatGame):
         RecursiveCombatGame.game_n += 1
         self._round_n = 1
 
-    def play(self):
+    def play(self) -> None:
         super().play()
 
-    def _round(self):
+    def _round(self) -> None:
         r = repr(self)
         if r in self.seen:
             self.loop = True

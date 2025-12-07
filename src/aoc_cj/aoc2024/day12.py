@@ -61,7 +61,7 @@ class Region:
             in_region_count = sum((p_in_region, below_in_region, right_in_region, bottom_right_in_region))
             if in_region_count in (1, 3):
                 corner_count += 1
-            elif in_region_count == 2 and p_in_region != right_in_region and p_in_region != below_in_region:
+            elif in_region_count == 2 and p_in_region not in (right_in_region, below_in_region):
                 corner_count += 2
 
         return corner_count

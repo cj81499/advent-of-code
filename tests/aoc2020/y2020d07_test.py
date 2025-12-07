@@ -28,7 +28,7 @@ dark violet bags contain no other bags.
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("bright white", True),
         ("muted yellow", True),
@@ -41,16 +41,16 @@ dark violet bags contain no other bags.
         ("dotted black", False),
     ],
 )
-def test_can_hold_shiny_gold(input, expected):
-    assert expected == d.can_hold_shiny_gold(RULES_0, input)
+def test_can_hold_shiny_gold(example: str, expected) -> None:
+    assert expected == d.can_hold_shiny_gold(RULES_0, example)
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT_0) == 4
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("faded blue", 0),
         ("dotted black", 0),
@@ -58,10 +58,10 @@ def test_part_1():
         ("dark olive", 7),
     ],
 )
-def test_number_of_bags_inside_of(input, expected):
-    assert expected == d.number_of_bags_inside_of(RULES_0, input)
+def test_number_of_bags_inside_of(example: str, expected) -> None:
+    assert expected == d.number_of_bags_inside_of(RULES_0, example)
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT_0) == 32
     assert d.part_2(EXAMPLE_INPUT_1) == 126

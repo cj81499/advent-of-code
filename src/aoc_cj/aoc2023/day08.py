@@ -35,7 +35,8 @@ def navigate(
         elif move == "R":
             pos = network[pos][1]
         else:
-            assert False, f"move must be 'L' or 'R' but was {move}"
+            msg = f"move must be 'L' or 'R' but was {move}"
+            raise AssertionError(msg)
         steps += 1
     return steps
 

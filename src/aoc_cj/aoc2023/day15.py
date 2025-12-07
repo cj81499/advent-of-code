@@ -1,3 +1,4 @@
+import dataclasses
 import re
 
 import more_itertools as mi
@@ -17,9 +18,6 @@ def hash_algorithm(s: str) -> int:
 
 def part_1(txt: str) -> int:
     return sum(hash_algorithm(step) for step in txt.split(","))
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -55,7 +53,8 @@ def hashmap_algorithm(s: str) -> list[list[Lens]]:
             else:
                 box.append(lens)
         else:
-            assert False, "unreachable"
+            msg = "unreachable"
+            raise AssertionError(msg)
 
     return boxes
 

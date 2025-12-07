@@ -7,23 +7,23 @@ EXAMPLE_INPUT = """
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ((0, 127, "F", "B", "FBFBBFF"), 44),
         ((0, 7, "L", "R", "RLR"), 5),
     ],
 )
-def test_binary_search(input, expected):
-    assert expected == d.binary_search(*input)
+def test_binary_search(example: str, expected) -> None:
+    assert expected == d.binary_search(*example)
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("BFFFBBFRRR", 567),
         ("FFFBBBFRRR", 119),
         ("BBFFBBFRLL", 820),
     ],
 )
-def test_part_1(input, expected):
-    assert expected == d.seat_id(input)
+def test_part_1(example: str, expected) -> None:
+    assert expected == d.seat_id(example)

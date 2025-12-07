@@ -12,7 +12,8 @@ def part_2(s: str) -> int:
         floor += 1 if x == "(" else -1
         if floor == -1:
             return i + 1
-    raise ValueError("bad input")
+    msg = "bad input"
+    raise ValueError(msg)
 
 
 if __name__ == "__main__":

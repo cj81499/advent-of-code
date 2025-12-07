@@ -16,7 +16,7 @@ PRIMES = {
 
 @pytest.mark.parametrize(
     ("n", "min_n", "max_n", "expected"),
-    (
+    [
         (-3, -2, 2, -2),
         (-2, -2, 2, -2),
         (-1, -2, 2, -1),
@@ -24,7 +24,7 @@ PRIMES = {
         (1, -2, 2, 1),
         (2, -2, 2, 2),
         (3, -2, 2, 2),
-    ),
+    ],
 )
 def test_clamp(n: int, min_n: int, max_n: int, expected: int) -> None:
     assert util.clamp(n, min_n, max_n) == expected

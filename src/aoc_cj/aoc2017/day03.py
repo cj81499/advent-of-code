@@ -6,7 +6,7 @@ def part_1(txt):
     memory = set()
     x, y = 0, 0
     dx, dy = 0, 1
-    for i in range(1, n):
+    for _i in range(1, n):
         memory.add((x, y))
 
         # rotate heading if we can move after rotating ccw

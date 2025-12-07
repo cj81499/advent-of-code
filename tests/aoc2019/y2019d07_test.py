@@ -4,7 +4,7 @@ import aoc_cj.aoc2019.day07 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("""3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0""".replace("\n", ""), 43210),
         (
@@ -19,12 +19,12 @@ import aoc_cj.aoc2019.day07 as d
         ),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (
             """3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,
@@ -39,5 +39,5 @@ def test_part_1(input, expected):
         ),
     ],
 )
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected) -> None:
+    assert d.part_2(example) == expected

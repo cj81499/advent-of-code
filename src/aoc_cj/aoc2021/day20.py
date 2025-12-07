@@ -42,8 +42,8 @@ def enhance(image_enhancement_algorithm: str, lit_pixels: Pixels) -> Pixels:
     new_default = not df()
     new_lit_pixels: Pixels = defaultdict(lambda: new_default)
 
-    min_x, max_x = mi.minmax(x for x, y in lit_pixels.keys())
-    min_y, max_y = mi.minmax(y for x, y in lit_pixels.keys())
+    min_x, max_x = mi.minmax(x for x, y in lit_pixels)
+    min_y, max_y = mi.minmax(y for x, y in lit_pixels)
 
     # the "litness" of any (x, y) outside of this range will be lit in allignment with `new_default`
     for x, y in itertools.product(range(min_x - 1, max_x + 2), range(min_y - 1, max_y + 2)):

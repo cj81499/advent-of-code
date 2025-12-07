@@ -14,11 +14,11 @@ def simulate(cups, moves):
 
     # simulate
     current = cups[0]
-    for i in range(moves):
+    for _i in range(moves):
         # pick up 3 cups
         picked_up = []
         to_pick_up = current
-        for j in range(3):
+        for _j in range(3):
             picked_up.append(arr[to_pick_up])
             to_pick_up = picked_up[-1]
         # make current point past picked up cups.

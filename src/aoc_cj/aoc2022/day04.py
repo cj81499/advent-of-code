@@ -19,9 +19,6 @@ class SectionAssignment:
         return item.start in self and item.end in self
 
 
-import dataclasses
-
-
 @dataclasses.dataclass
 class SectionAssignmentPair:
     left: SectionAssignment

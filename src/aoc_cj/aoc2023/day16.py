@@ -1,3 +1,4 @@
+import dataclasses
 import functools
 import itertools
 from collections import deque
@@ -7,9 +8,6 @@ UP = -1j
 DOWN = 1j
 LEFT = -1
 RIGHT = 1
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -44,9 +42,6 @@ class Grid:
             seen.add(light)
             to_explore.extend(light.advance(self[light]))
         return frozenset(l.pos for l in seen)
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)

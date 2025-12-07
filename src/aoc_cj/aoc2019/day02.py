@@ -19,6 +19,7 @@ def part_2(txt: str):
         p.run()
         if p[0] == 19690720:
             return 100 * noun + verb
+    return None
 
 
 if __name__ == "__main__":

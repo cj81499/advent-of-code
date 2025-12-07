@@ -6,19 +6,19 @@ OPPOSITE_DIRECTION = {"N": "S", "W": "E", "S": "N", "E": "W"}
 
 class Facility:
     class Room:
-        def __init__(self, data=".", dist=0):
+        def __init__(self, data=".", dist=0) -> None:
             self.dist = dist
             self.middle = str(data)[0]
             self.doors = {"N": False, "W": False, "S": False, "E": False}
 
-        def add_door(self, direction):
+        def add_door(self, direction) -> None:
             self.doors[direction] = True
 
-        def _door_str(self, direction):
+        def _door_str(self, direction) -> str:
             return ("-" if direction in "NS" else "|") if self.doors[direction] else "?"
 
-        def __str__(self):
-            s = (
+        def __str__(self) -> str:
+            return (
                 "#"
                 + self._door_str("N")
                 + "#,"
@@ -29,9 +29,8 @@ class Facility:
                 + self._door_str("S")
                 + "#"
             )
-            return s
 
-    def __init__(self, regex):
+    def __init__(self, regex) -> None:
         self.regex = deque(list(regex))
         self.min_x = 0
         self.max_x = 0
@@ -41,7 +40,7 @@ class Facility:
 
         self.fill_in_map()
 
-    def update_mins_and_maxes(self, pos):
+    def update_mins_and_maxes(self, pos) -> None:
         x, y = pos
         self.min_x = min(self.min_x, x)
         self.max_x = max(self.max_x, x)
@@ -55,7 +54,7 @@ class Facility:
         self.update_mins_and_maxes(new_pos)
         return new_pos
 
-    def addRoom(self, pos, dir_of_movement):
+    def addRoom(self, pos, dir_of_movement) -> None:
         x, y = pos
         dx, dy = DIRECTIONS[dir_of_movement]
         prev_pos = (x - dx, y - dy)
@@ -97,7 +96,8 @@ class Facility:
     @staticmethod
     def parse_dir_str(q):
         if q[0] not in "NSWE":
-            raise AssertionError("dir-str must start with a direction")
+            msg = "dir-str must start with a direction"
+            raise AssertionError(msg)
         dir_str = deque()
         while q[0] in "NSWE":
             dir_str.append(q.popleft())  # add dir to dir-str
@@ -106,14 +106,16 @@ class Facility:
     @staticmethod
     def parse_paren(q):
         if q[0] != "(":
-            raise AssertionError('paren must start with "("')
+            msg = 'paren must start with "("'
+            raise AssertionError(msg)
 
         q.popleft()  # remove "("
         while q[0] in "NSWE":
             paren = Facility.parse_chunk_list(q)
 
         if q[0] != ")":
-            raise AssertionError('paren must end with "("')
+            msg = 'paren must end with "("'
+            raise AssertionError(msg)
         q.popleft()  # remove "("
         return paren
 
@@ -139,21 +141,23 @@ class Facility:
     @staticmethod
     def parse_regex(q):
         if q[0] != "^":
-            raise AssertionError('regex must start with " ^ "')
+            msg = 'regex must start with " ^ "'
+            raise AssertionError(msg)
         q.popleft()  # remove "^"
         regex = Facility.parse_chunk_list(q)
         if q[0] != "$":
-            raise AssertionError('regex must end with "$"')
+            msg = 'regex must end with "$"'
+            raise AssertionError(msg)
         q.popleft()  # remove "$"
         return regex
 
-    def fill_in_map(self):
+    def fill_in_map(self) -> None:
         pos = (0, 0)
         self.f[pos] = Facility.Room("X")
         parsed_regex = Facility.parse_regex(self.regex)
         self._explore_chunk_list([pos], parsed_regex)
 
-    def __str__(self):
+    def __str__(self) -> str:
         s = "#" + "?#" * (self.max_x - self.min_x + 1) + "\n"
         for y in range(self.min_y, self.max_y + 1):
             middle = []

@@ -32,7 +32,7 @@ class Type(enum.Enum):
     WET = 1
     NARROW = 2
 
-    def __str__(self):
+    def __str__(self) -> str:
         return Type._STR_MAP[self]
 
 
@@ -44,7 +44,7 @@ Type._STR_MAP = {
 
 
 class Region:
-    def __init__(self, x, y, cave_system):
+    def __init__(self, x, y, cave_system) -> None:
         self.x = x
         self.y = y
         self.cave_system = cave_system
@@ -70,7 +70,7 @@ class Region:
     def can_use(self, item):
         return item.value != self.type.value
 
-    def __str__(self):
+    def __str__(self) -> str:
         if (self.x, self.y) == CaveSystem.MOUTH:
             return "M"
         if (self.x, self.y) == self.cave_system.target:
@@ -81,7 +81,7 @@ class Region:
 class CaveSystem:
     MOUTH = (0, 0)
 
-    def __init__(self, depth, target):
+    def __init__(self, depth, target) -> None:
         self.depth = depth
         self.target = target
         self.grid: dict[tuple[int, int], Region] = {}
@@ -98,7 +98,7 @@ class CaveSystem:
         target = tuple(map(int, target.split(",")))
         return CaveSystem(int(depth), target)
 
-    def __str__(self, size=None):
+    def __str__(self, size=None) -> str:
         if size is None:
             size = (self.target[0] + 5, self.target[1] + 5)
 

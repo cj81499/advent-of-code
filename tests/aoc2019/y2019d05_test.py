@@ -6,32 +6,33 @@ import pytest
 from aoc_cj.aoc2019.intcode_computer import IntcodeProgram
 
 
-def helper(program, input, expected):
+def helper(program, example, expected) -> None:
     p = IntcodeProgram.parse(program)
-    p.write_input(input)
+    p.write_input(example)
     p.run()
-    assert len(p.outputs) == 1 and p.outputs[0] == expected
+    assert len(p.outputs) == 1
+    assert p.outputs[0] == expected
 
 
 @pytest.mark.parametrize("n", range(10))
-def test_input_output(n):
+def test_example_output(n) -> None:
     helper("3,0,4,0,99", n, n)
 
 
-def test_parameter_modes():
+def test_parameter_modes() -> None:
     p = IntcodeProgram.parse("1002,4,3,4,33")
     p.run()
     assert ",".join(map(str, p.memory)) == "1002,4,3,4,99"
 
 
-def test_negative_int():
+def test_negative_int() -> None:
     p = IntcodeProgram.parse("1101,100,-1,4,0")
     p.run()
     assert p[4] == 99
 
 
 @pytest.mark.parametrize(
-    "n, program_op_pair",
+    ("n", "program_op_pair"),
     itertools.product(
         range(10),
         (
@@ -42,13 +43,13 @@ def test_negative_int():
         ),
     ),
 )
-def test_compare_eight(n, program_op_pair):
+def test_compare_eight(n, program_op_pair) -> None:
     program, op = program_op_pair
     helper(program, n, 1 if op(n, 8) else 0)
 
 
 @pytest.mark.parametrize(
-    "n, program",
+    ("n", "program"),
     itertools.product(
         range(10),
         (
@@ -57,7 +58,7 @@ def test_compare_eight(n, program_op_pair):
         ),
     ),
 )
-def test_jumps(n, program):
+def test_jumps(n, program) -> None:
     helper(program, n, 0 if n == 0 else 1)
 
 
@@ -69,5 +70,5 @@ LARGER_EXAMPLE = """
 
 
 @pytest.mark.parametrize("n", range(10))
-def test_larger_example(n):
+def test_larger_example(n) -> None:
     helper(LARGER_EXAMPLE, n, 999 if n < 8 else (1000 if n == 8 else 1001))

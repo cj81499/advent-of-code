@@ -15,17 +15,17 @@ def part_1(txt: str):
 
 
 def screen_corners(screen):
-    min_x = min(x for x, y in screen.keys())
-    max_x = max(x for x, y in screen.keys())
-    min_y = min(y for x, y in screen.keys())
-    max_y = max(y for x, y in screen.keys())
+    min_x = min(x for x, y in screen)
+    max_x = max(x for x, y in screen)
+    min_y = min(y for x, y in screen)
+    max_y = max(y for x, y in screen)
     return min_x, max_x, min_y, max_y
 
 
 DISPLAY_CHAR_MAP = {0: " ", 1: "█", 2: "#", 3: "─", 4: "o"}
 
 
-def display(screen, score):
+def display(screen, score) -> str:
     min_x, max_x, min_y, max_y = screen_corners(screen)
     rows = []
     for y in range(min_y, max_y + 1):

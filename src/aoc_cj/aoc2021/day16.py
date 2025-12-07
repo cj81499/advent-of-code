@@ -71,7 +71,8 @@ class OperatorPacket(Packet):
             assert len(self.children) == 2
             a, b = self.children
             return 1 if a.evaluate() == b.evaluate() else 0
-        assert False, "unreachable"
+        msg = "unreachable"
+        raise AssertionError(msg)
 
     def __post_init__(self) -> None:
         assert self.type_id != 4

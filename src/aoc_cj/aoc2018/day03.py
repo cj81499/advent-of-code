@@ -37,7 +37,7 @@ def part_1(txt):
     return sum(len(c) > 1 for p, c in grid.items())
 
 
-def no_overlap(grid, claim):
+def no_overlap(grid, claim) -> bool:
     for y in range(claim.height):
         for x in range(claim.width):
             if len(grid[(claim.x + x, claim.y + y)]) > 1:

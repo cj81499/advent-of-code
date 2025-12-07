@@ -7,10 +7,10 @@ OPPOSITES = {1: 2, 2: 1, 3: 4, 4: 3}
 
 
 def corners(grid):
-    min_x = min(p.real for p in grid.keys())
-    max_x = max(p.real for p in grid.keys())
-    min_y = min(p.imag for p in grid.keys())
-    max_y = max(p.imag for p in grid.keys())
+    min_x = min(p.real for p in grid)
+    max_x = max(p.real for p in grid)
+    min_y = min(p.imag for p in grid)
+    max_y = max(p.imag for p in grid)
     return min_x, max_x, min_y, max_y
 
 
@@ -26,14 +26,13 @@ def display(grid, pos=None):
                 c = "D"
             row.append(c)
         rows.append("".join(row))
-    screen_str = "\n".join(rows)
-    return screen_str
+    return "\n".join(rows)
 
 
 DISPLAY_CHAR_MAP = {0: "#", 1: ".", 2: "O"}
 
 
-def explore(p: IntcodeProgram, grid: dict, pos: complex = 0 + 0j):
+def explore(p: IntcodeProgram, grid: dict, pos: complex = 0 + 0j) -> None:
     for command in range(1, 5):
         delta = MOVES[command]
         new_pos = pos + delta

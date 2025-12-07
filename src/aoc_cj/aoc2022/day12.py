@@ -18,7 +18,8 @@ def part_1(txt: str, part: Literal[1, 2] = 1) -> int:
             return ord("a") - ord("a")  # 0
         if c == "E":
             return ord("z") - ord("a")  # 26
-        assert c.isalpha() and c.islower()
+        assert c.isalpha()
+        assert c.islower()
         return ord(c) - ord("a")
 
     def can_move(current: complex, destination: complex) -> bool:

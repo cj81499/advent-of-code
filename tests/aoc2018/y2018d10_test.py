@@ -46,9 +46,9 @@ EXAMPLE_OUTPUT = """
 """.replace(".", " ").strip("\n")
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == "\n" + EXAMPLE_OUTPUT
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 3

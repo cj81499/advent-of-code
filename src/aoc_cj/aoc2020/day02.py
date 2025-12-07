@@ -12,7 +12,7 @@ def part_1(txt: str) -> int:
 
 
 def check_pass_1(num_1, num_2, letter, paswd):
-    return num_1 <= sum(map(lambda c: c == letter, paswd)) <= num_2
+    return num_1 <= sum(c == letter for c in paswd) <= num_2
 
 
 def part_2(txt: str) -> int:

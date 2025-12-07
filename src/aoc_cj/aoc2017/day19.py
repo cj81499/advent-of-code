@@ -14,7 +14,7 @@ class Direction(enum.Enum):
 
 
 def add_pos(p, direction: Direction):
-    return tuple(sum(x) for x in zip(p, direction.value))
+    return tuple(sum(x) for x in zip(p, direction.value, strict=True))
 
 
 def helper(txt: str):

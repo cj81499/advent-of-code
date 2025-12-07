@@ -22,7 +22,8 @@ def simulate(txt: str, a: int = 0) -> dict[str, int]:
             if registers[ins[1].strip(",")] == 1:
                 ip += int(ins[2]) - 1
         else:
-            raise Exception("unknown opcode")
+            msg = "unknown opcode"
+            raise Exception(msg)
         ip += 1
     return registers
 

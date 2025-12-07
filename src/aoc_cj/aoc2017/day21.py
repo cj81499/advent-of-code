@@ -45,7 +45,7 @@ def parse_rules(txt: str) -> Rules:
 def part_1(txt: str, iterations: int = 5) -> int:
     rules = parse_rules(txt)
     grid = np.array([[*line] for line in INITIAL.splitlines()])
-    for i in range(iterations):
+    for _i in range(iterations):
         n = 2 if len(grid) % 2 == 0 else 3
         split_count = len(grid) // n
         grid = np.vstack(

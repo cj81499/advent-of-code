@@ -27,7 +27,7 @@ U 20
 
 @pytest.mark.parametrize(
     ("lead_knot", "trail_knot", "expected"),
-    (
+    [
         # same position. should not move.
         (d.ORIGIN, d.ORIGIN, d.ORIGIN),
         # 1 away in 1 direction (adjacent). should not move.
@@ -54,7 +54,7 @@ U 20
         (2 * d.LEFT + d.DOWN, d.ORIGIN, d.LEFT + d.DOWN),
         (2 * d.RIGHT + d.UP, d.ORIGIN, d.RIGHT + d.UP),
         (2 * d.RIGHT + d.DOWN, d.ORIGIN, d.RIGHT + d.DOWN),
-    ),
+    ],
 )
 def test_pull(lead_knot: complex, trail_knot: complex, expected: complex) -> None:
     assert d.pull(lead_knot, trail_knot) == expected
@@ -66,10 +66,10 @@ def test_part_1() -> None:
 
 @pytest.mark.parametrize(
     ("example", "expected"),
-    (
+    [
         (EXAMPLE_INPUT_1, 1),
         (EXAMPLE_INPUT_2, 36),
-    ),
+    ],
 )
 def test_part_2(example: str, expected: int) -> None:
     assert d.part_2(example) == expected

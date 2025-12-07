@@ -30,7 +30,8 @@ simulate_dial = functools.partial(itertools.accumulate, func=lambda a, b: (a + b
 
 
 def solve(get_moves: Callable[[Rotation], Iterable[int]], txt: str) -> int:
-    moves = mi.flatten(get_moves(Rotation.parse(l)) for l in txt.splitlines())
+    rotations = map(Rotation.parse, txt.splitlines())
+    moves = mi.flatten(map(get_moves, rotations))
     return sum(pos == 0 for pos in simulate_dial(moves))
 
 
@@ -39,7 +40,4 @@ part_2 = functools.partial(solve, lambda r: itertools.repeat(-1 if r.direction =
 
 
 if __name__ == "__main__":
-    import aocd
-
-    print(f"part_1: {part_1(aocd.data)}")
-    print(f"part_2: {part_2(aocd.data)}")
+    pass

@@ -67,7 +67,7 @@ def handle_move(p: IntcodeProgram, direction: str | None, ship_map: dict, prev_l
     return location
 
 
-def explore(p: IntcodeProgram, ship_map, location):
+def explore(p: IntcodeProgram, ship_map, location) -> None:
     doors = get_doors(ship_map, location)
     for direction in doors:
         if doors[direction] is None:
@@ -131,6 +131,7 @@ def part_1(txt: str):
             # if we're in a new location, it worked!
             if not result.startswith(f"== {TARGET_ROOM} =="):
                 return next(int(x) for x in result.split() if x.isnumeric())
+    return None
 
 
 if __name__ == "__main__":

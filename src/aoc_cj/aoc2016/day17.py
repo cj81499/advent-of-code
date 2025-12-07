@@ -3,9 +3,11 @@ import itertools
 from collections import deque
 from collections.abc import Generator
 
+import more_itertools as mi
+
 
 def is_open(passcode: str, path: str) -> tuple[bool, ...]:
-    hd = hashlib.md5(f"{passcode}{path}".encode()).hexdigest()
+    hd = hashlib.md5(f"{passcode}{path}".encode()).hexdigest()  # noqa: S324
     return tuple(not x.isnumeric() and x != "a" for x in hd[:4])
 
 
@@ -14,14 +16,14 @@ MOVES = {"U": -1j, "D": 1j, "L": -1, "R": 1}
 
 
 def paths(passcode: str) -> Generator[str]:
-    GOAL = complex(GRID_SIZE - 1, GRID_SIZE - 1)
+    goal = complex(GRID_SIZE - 1, GRID_SIZE - 1)
     q = deque[tuple[complex, str]]()
     q.append((0 + 0j, ""))
     while len(q) > 0:
         pos, path = q.popleft()
         if not (0 <= pos.real < GRID_SIZE and 0 <= pos.imag < GRID_SIZE):
             continue
-        if pos == GOAL:
+        if pos == goal:
             yield path
         else:
             for direction in itertools.compress("UDLR", is_open(passcode, path)):
@@ -30,11 +32,8 @@ def paths(passcode: str) -> Generator[str]:
                 q.append((next_pos, next_path))
 
 
-def part_1(txt: str) -> str | None:
-    try:
-        return next(paths(txt))
-    except StopIteration:
-        return None
+def part_1(txt: str) -> str:
+    return mi.one(paths(txt))
 
 
 def part_2(txt: str) -> int:

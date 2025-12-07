@@ -11,7 +11,7 @@ class ProgramTerminatedException(Exception):
 
 
 class IntcodeProgram:
-    def __init__(self, program: list[int]):
+    def __init__(self, program: list[int]) -> None:
         self._memory = defaultdict(int, dict(enumerate(program)))
         self._ip = 0
         self.terminated = False
@@ -19,21 +19,22 @@ class IntcodeProgram:
         self.outputs = deque()
         self._relative_base = 0
 
-    def write_input(self, n: int):
+    def write_input(self, n: int) -> None:
         self._input_queue.append(n)
 
     @staticmethod
     def parse(program: str):
         return IntcodeProgram([*map(int, program.split(","))])
 
-    def run(self, max_steps=None):  # max_steps is useful for debugging infinite loops
+    def run(self, max_steps=None) -> None:  # max_steps is useful for debugging infinite loops
         steps = itertools.count()
         while not self.terminated and not self.is_waiting_for_input():
             if max_steps is not None and next(steps) > max_steps:
-                raise Exception("too many steps")
+                msg = "too many steps"
+                raise Exception(msg)
             self.run_next()
 
-    def run_next(self):
+    def run_next(self) -> None:
         if self.terminated:
             raise ProgramTerminatedException
         if self.is_waiting_for_input():
@@ -84,60 +85,60 @@ class IntcodeProgram:
     def _parameter_mode(self, n: int):
         return self[self._ip] // 10 ** (n + 1) % 10
 
-    def _add(self):
+    def _add(self) -> None:
         p1, p2, p3 = self._parameters(3)
         self[p3] = self[p1] + self[p2]
         self._ip += 4
 
-    def _multiply(self):
+    def _multiply(self) -> None:
         p1, p2, p3 = self._parameters(3)
         self[p3] = self[p1] * self[p2]
         self._ip += 4
 
-    def _input(self):
+    def _input(self) -> None:
         self[self._parameter(1)] = self._input_queue.popleft()
         self._ip += 2
 
-    def _output(self):
+    def _output(self) -> None:
         self.outputs.append(self[self._parameter(1)])
         self._ip += 2
 
-    def _jump_if_true(self):
+    def _jump_if_true(self) -> None:
         p1, p2 = self._parameters(2)
         if self[p1] != 0:
             self._ip = self[p2]
         else:
             self._ip += 3
 
-    def _jump_if_false(self):
+    def _jump_if_false(self) -> None:
         p1, p2 = self._parameters(2)
         if self[p1] == 0:
             self._ip = self[p2]
         else:
             self._ip += 3
 
-    def _less_than(self):
+    def _less_than(self) -> None:
         p1, p2, p3 = self._parameters(3)
         self[p3] = 1 if self[p1] < self[p2] else 0
         self._ip += 4
 
-    def _equals(self):
+    def _equals(self) -> None:
         p1, p2, p3 = self._parameters(3)
         self[p3] = 1 if self[p1] == self[p2] else 0
         self._ip += 4
 
-    def _adjust_relative_base(self):
+    def _adjust_relative_base(self) -> None:
         self._relative_base += self[self._parameter(1)]
         self._ip += 2
 
-    def _halt(self):
+    def _halt(self) -> None:
         self.terminated = True
 
     def __getitem__(self, i: int):
         assert i >= 0
         return self._memory[i]
 
-    def __setitem__(self, i: int, item: int):
+    def __setitem__(self, i: int, item: int) -> None:
         assert i >= 0
         self._memory[i] = item
 

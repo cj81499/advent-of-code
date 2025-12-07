@@ -89,7 +89,7 @@ EXAMPLE_INPUT_B4 = """
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_A0, 8),
         (EXAMPLE_INPUT_A1, 86),
@@ -98,12 +98,12 @@ EXAMPLE_INPUT_B4 = """
         (EXAMPLE_INPUT_A4, 81),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_B1, 8),
         (EXAMPLE_INPUT_B2, 24),
@@ -111,5 +111,5 @@ def test_part_1(input, expected):
         (EXAMPLE_INPUT_B4, 72),
     ],
 )
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected) -> None:
+    assert d.part_2(example) == expected

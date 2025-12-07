@@ -1,5 +1,5 @@
 class Food:
-    def __init__(self, food_str):
+    def __init__(self, food_str) -> None:
         self.ingredients, self.allergens = food_str.strip(")").split(" (contains ")
         self.ingredients = set(self.ingredients.split())
         self.allergens = set(self.allergens.split(", "))
@@ -21,9 +21,7 @@ def get_alergens_to_ingredients(foods):
                 alerg_to_ingrs[a] = alerg_to_ingrs[a].difference(solved)
 
     # dict[str, set[str]] -> dict[str, str]
-    a_to_i = {alerg: ingrs.pop() for alerg, ingrs in alerg_to_ingrs.items()}
-
-    return a_to_i
+    return {alerg: ingrs.pop() for alerg, ingrs in alerg_to_ingrs.items()}
 
 
 def part_1(txt):

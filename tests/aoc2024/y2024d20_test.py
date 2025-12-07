@@ -43,10 +43,10 @@ EXPECTED_SAVINGS_2 = {
 
 @pytest.mark.parametrize(
     ("min_savings", "max_cheat_duration", "expected_savings_counts"),
-    (
+    [
         (1, 2, EXPECTED_SAVINGS_1),
         (50, 20, EXPECTED_SAVINGS_2),
-    ),
+    ],
 )
 def test_cheat_generator(min_savings: int, max_cheat_duration: int, expected_savings_counts: dict[int, int]) -> None:
     cheats = d.cheat_generator(EXAMPLE_INPUT, max_cheat_duration=max_cheat_duration)

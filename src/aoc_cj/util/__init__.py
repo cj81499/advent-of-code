@@ -32,7 +32,7 @@ def adj_8(p: complex) -> Generator[complex]:
 
 
 def clamp(n: int, min_n: int, max_n: int) -> int:
-    assert min_n <= max_n
+    assert min_n <= max_n, f"{min_n=} must be at most {max_n}"
     return max(min_n, min(n, max_n))
 
 
@@ -50,10 +50,7 @@ def is_prime(n: int) -> bool:
     if n % 2 == 0 or n % 3 == 0:
         return False
     # all primes > 3 are of the form 6n +/- 1
-    for f in range(5, math.ceil(math.sqrt(n)) + 1, 6):
-        if n % f == 0 or n % (f + 2) == 0:
-            return False
-    return True
+    return all(not (n % f == 0 or n % (f + 2) == 0) for f in range(5, math.ceil(math.sqrt(n)) + 1, 6))
 
 
 def create_regex_parser[T](p: str | re.Pattern[str], f: Callable[[str], T]) -> Callable[[str], Generator[T]]:

@@ -22,8 +22,8 @@ EXAMPLE_INPUT = """
 @pytest.mark.parametrize(
     ("example", "expected"),
     (
-        l.strip().split()
-        for l in """
+        line.strip().split()
+        for line in """
 1=-0-2     1747
  12111      906
   2=0=      198
@@ -47,8 +47,8 @@ def test_snafu_to_base_10(example: str, expected: str) -> None:
 @pytest.mark.parametrize(
     ("example", "expected"),
     (
-        l.strip().split()
-        for l in """
+        line.strip().split()
+        for line in """
         1              1
         2              2
         3             1=

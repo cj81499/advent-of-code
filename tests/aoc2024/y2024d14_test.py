@@ -20,13 +20,13 @@ p=9,5 v=-3,-3
 
 @pytest.mark.parametrize(
     ("after", "expected"),
-    (
+    [
         (1, complex(4, 1)),
         (2, complex(6, 5)),
         (3, complex(8, 2)),
         (4, complex(10, 6)),
         (5, complex(1, 3)),
-    ),
+    ],
 )
 def test_robot_move(after: int, expected: complex) -> None:
     r = d.Robot(p=complex(2, 4), v=complex(2, -3))
@@ -35,7 +35,7 @@ def test_robot_move(after: int, expected: complex) -> None:
 
 @pytest.mark.parametrize(
     ("p", "expected"),
-    (
+    [
         (6 + 0j, d.Quadrant.TOP_RIGHT),
         (9 + 0j, d.Quadrant.TOP_RIGHT),
         (0 + 2j, d.Quadrant.TOP_LEFT),
@@ -46,7 +46,7 @@ def test_robot_move(after: int, expected: complex) -> None:
         (4 + 5j, d.Quadrant.BOTTOM_LEFT),
         (1 + 6j, d.Quadrant.BOTTOM_LEFT),
         (6 + 6j, d.Quadrant.BOTTOM_RIGHT),
-    ),
+    ],
 )
 def test_quadrant(p: complex, expected: d.Quadrant | None) -> None:
     assert d.quadrant(p, width=11, height=7) == expected

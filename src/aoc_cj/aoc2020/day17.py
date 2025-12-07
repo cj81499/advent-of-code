@@ -8,7 +8,7 @@ INACTIVE = "."
 def neighbors(pos):
     for delta in itertools.product(*itertools.repeat((-1, 0, 1), len(pos))):
         if not all(x == 0 for x in delta):
-            yield tuple(x + dx for x, dx in zip(pos, delta))
+            yield tuple(x + dx for x, dx in zip(pos, delta, strict=True))
 
 
 def simulate(txt, dimensions):
@@ -48,12 +48,12 @@ def simulate(txt, dimensions):
 
 
 def minmax_tuple(tuples):
-    return tuple(min(x) for x in zip(*tuples)), tuple(max(x) for x in zip(*tuples))
+    return tuple(min(x) for x in zip(*tuples, strict=True)), tuple(max(x) for x in zip(*tuples, strict=True))
 
 
 def expand_points(mins, maxes):
     assert len(mins) == len(maxes)
-    return itertools.product(*(range(start - 1, stop + 2) for start, stop in zip(mins, maxes)))
+    return itertools.product(*(range(start - 1, stop + 2) for start, stop in zip(mins, maxes, strict=True)))
 
 
 def part_1(txt):

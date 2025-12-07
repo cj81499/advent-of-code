@@ -40,11 +40,8 @@ def is_valid_password(txt: str) -> bool:
         return False
 
     # Passwords must contain at least two different, non-overlapping pairs of letters, like aa, bb, or zz.
-    pair_count = len(set(a for a, b in itertools.pairwise(txt) if a == b))
-    if pair_count < 2:
-        return False
-
-    return True
+    pair_count = len({a for a, b in itertools.pairwise(txt) if a == b})
+    return not pair_count < 2
 
 
 def part_1(txt: str) -> str:

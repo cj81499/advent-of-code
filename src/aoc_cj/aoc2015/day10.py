@@ -1,7 +1,10 @@
 import itertools
-from collections.abc import Iterable
+from typing import TYPE_CHECKING
 
 import more_itertools as mi
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 
 def look_and_say(txt: str, *, rounds: int) -> str:

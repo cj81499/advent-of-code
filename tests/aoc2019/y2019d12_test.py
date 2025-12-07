@@ -18,22 +18,22 @@ EXAMPLE_1 = """
 
 
 @pytest.mark.parametrize(
-    "input_val, step_count, expected",
+    ("example", "step_count", "expected"),
     [
         (EXAMPLE_0, 10, 179),
         (EXAMPLE_1, 100, 1940),
     ],
 )
-def test_energy(input_val, step_count: int, expected: int) -> None:
-    assert d.part_1(input_val, step_count) == expected
+def test_energy(example: str, step_count: int, expected: int) -> None:
+    assert d.part_1(example, step_count) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, required_steps",
+    ("example", "required_steps"),
     [
         (EXAMPLE_0, 2772),
         (EXAMPLE_1, 4686774924),
     ],
 )
-def test_part_2(input_val, required_steps: int) -> None:
-    assert d.part_2(input_val) == required_steps
+def test_part_2(example: str, required_steps: int) -> None:
+    assert d.part_2(example) == required_steps

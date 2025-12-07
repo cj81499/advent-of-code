@@ -4,30 +4,30 @@ import aoc_cj.aoc2018.day11 as d
 
 
 @pytest.mark.parametrize(
-    "input,expected",
+    ("example", "expected"),
     [
         ("18", "33,45"),
         ("42", "21,61"),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.slow
 @pytest.mark.parametrize(
-    "input,expected",
+    ("example", "expected"),
     [
         ("18", "90,269,16"),
         ("42", "232,251,12"),
     ],
 )
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected) -> None:
+    assert d.part_2(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input,expected",
+    ("example", "expected"),
     [
         ((3, 5, 8), 4),
         ((122, 79, 57), -5),
@@ -35,5 +35,5 @@ def test_part_2(input, expected):
         ((101, 153, 71), 4),
     ],
 )
-def test_power_level(input, expected):
-    assert d.power_level(*input) == expected
+def test_power_level(example: str, expected) -> None:
+    assert d.power_level(*example) == expected

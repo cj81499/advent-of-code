@@ -20,9 +20,9 @@ def _parse_graph(txt: str) -> "nx.Graph[str]":
 
 
 def _parse_line(line: str) -> tuple[str, str]:
-    l, sep, r = line.partition("-")
+    left, sep, right = line.partition("-")
     assert sep == "-"
-    return l, r
+    return left, right
 
 
 if __name__ == "__main__":

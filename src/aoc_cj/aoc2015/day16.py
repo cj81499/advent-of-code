@@ -26,12 +26,12 @@ def part_2(txt: str) -> int:
 def helper(txt: str, part_2: bool = False) -> int:
     aunts = parse_aunts(txt)
 
-    for qual in TARGET_QUALITIES:
-        n = TARGET_QUALITIES[qual]
+    for qual, n in TARGET_QUALITIES.items():
         aunts = [s for s in aunts if check_aunt(s, qual, n, part_2)]
 
     if len(aunts) != 1:
-        raise AssertionError("bad input")
+        msg = "bad input"
+        raise AssertionError(msg)
 
     return aunts[0]["SUE_ID"]
 

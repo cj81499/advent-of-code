@@ -5,7 +5,7 @@ import re
 class Point:
     _PARSE_REGEX = re.compile(r"position=< *(-?\d+), +(-?\d+)> velocity=< *(-?\d+), +(-?\d+)>")
 
-    def __init__(self, x, y, dx, dy):
+    def __init__(self, x, y, dx, dy) -> None:
         self.x = x
         self.y = y
         self.dx = dx
@@ -17,7 +17,7 @@ class Point:
         nums = map(int, match.groups())
         return Point(*nums)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Point(pos({self.x},{self.y}), vel({self.dx},{self.dy}))"
 
     def after(self, s=1):
@@ -27,7 +27,7 @@ class Point:
 
 
 class Cluster:
-    def __init__(self, points):
+    def __init__(self, points) -> None:
         self.points = points
         self._min_x = min(self.points, key=lambda p: p.x).x
         self._max_x = max(self.points, key=lambda p: p.x).x
@@ -46,7 +46,7 @@ class Cluster:
         new_points = [p.after(s) for p in self.points]
         return Cluster(new_points)
 
-    def __str__(self):
+    def __str__(self) -> str:
         point_locations = {(p.x, p.y) for p in self.points}
         rows = []
         for y in range(self._min_y, self._max_y + 1):
@@ -64,9 +64,10 @@ def find_optimal(initial_cluster):
         if cluster.area > prev.area:
             return prev, t - 1
         prev = cluster
+    return None
 
 
-def part_1(txt):
+def part_1(txt) -> str:
     cluster = Cluster.parse(txt)
     return f"\n{find_optimal(cluster)[0]}"
 

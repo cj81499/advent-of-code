@@ -24,7 +24,7 @@ CN -> C
 """.strip()
 
 
-def test_step():
+def test_step() -> None:
     polymer, rules = d.parse(EXAMPLE_INPUT)
     assert polymer == "NNCB"
     for start, end in itertools.pairwise(
@@ -39,9 +39,9 @@ def test_step():
         assert d.step(start, rules) == end
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 1588
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 2188189693529

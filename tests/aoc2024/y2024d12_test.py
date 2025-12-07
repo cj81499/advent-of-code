@@ -49,26 +49,26 @@ AAAAAA
 
 
 @pytest.mark.parametrize(
-    ("input", "expected"),
-    (
+    ("example", "expected"),
+    [
         (EXAMPLE_INPUT, 140),
         (EXAMPLE_INPUT2, 772),
         (EXAMPLE_INPUT3, 1930),
-    ),
+    ],
 )
-def test_part_1(input: str, expected: int) -> None:
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    ("input", "expected"),
-    (
+    ("example", "expected"),
+    [
         (EXAMPLE_INPUT, 80),
         (EXAMPLE_INPUT2, 436),
         (EXAMPLE_INPUT3, 1206),
         (EXAMPLE_INPUT4, 236),
         (EXAMPLE_INPUT5, 368),
-    ),
+    ],
 )
-def test_part_2(input: str, expected: int) -> None:
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

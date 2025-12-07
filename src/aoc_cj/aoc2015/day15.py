@@ -10,7 +10,7 @@ class Ingredient:
     def __init__(self, ingredient_str: str) -> None:
         self.name, properties_str = ingredient_str.split(": ")
         properties: list[str] = properties_str.split(", ")
-        self.properties = {name: int(value) for name, value in map(lambda p: p.split(), properties)}
+        self.properties = {name: int(value) for name, value in (p.split() for p in properties)}
 
     @override
     def __repr__(self) -> str:

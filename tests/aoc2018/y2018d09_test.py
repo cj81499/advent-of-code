@@ -4,7 +4,7 @@ import aoc_cj.aoc2018.day09 as d
 
 
 @pytest.mark.parametrize(
-    "players, last_marble_value, expected",
+    ("players", "last_marble_value", "expected"),
     [
         (9, 25, 32),
         (10, 1618, 8317),
@@ -14,5 +14,5 @@ import aoc_cj.aoc2018.day09 as d
         (30, 5807, 37305),
     ],
 )
-def test_run(players, last_marble_value, expected):
+def test_run(players, last_marble_value, expected) -> None:
     assert d.run(players, last_marble_value) == expected

@@ -29,7 +29,8 @@ def dance(programs, moves, repetitions):
             elif move_type == "p":
                 programs = partner(programs, move[1], move[3])
             else:
-                raise Exception("unknown move")
+                msg = "unknown move"
+                raise Exception(msg)
     return "".join(programs)
 
 

@@ -6,13 +6,12 @@ def part_1(txt: str) -> int:
     gamma_rate = 0
     epsilon_rate = 0
 
-    for column in zip(*txt.splitlines()):
+    for column in zip(*txt.splitlines(), strict=True):
         c = Counter(column)
         gamma_rate = (gamma_rate << 1) | int(most_common(c))
         epsilon_rate = (epsilon_rate << 1) | int(least_common(c))
 
-    power_consumption = gamma_rate * epsilon_rate
-    return power_consumption
+    return gamma_rate * epsilon_rate
 
 
 def part_2(txt: str) -> int:
@@ -21,8 +20,7 @@ def part_2(txt: str) -> int:
     oxygen_generator_rating = bitwise_filter(numbers, most_common)
     c02_scrubber_rating = bitwise_filter(numbers, least_common)
 
-    life_support_rating = oxygen_generator_rating * c02_scrubber_rating
-    return life_support_rating
+    return oxygen_generator_rating * c02_scrubber_rating
 
 
 def most_common(c: Counter[str]) -> str:

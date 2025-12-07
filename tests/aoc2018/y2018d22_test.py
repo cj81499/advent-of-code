@@ -6,7 +6,7 @@ target: 10,10
 """.strip()
 
 
-def test_example():
+def test_example() -> None:
     depth = 510
     target = (10, 10)
     cave_system = d.CaveSystem(depth, target)
@@ -38,7 +38,7 @@ def test_example():
     assert str(cave_system) == EXAMPLE_CAVE_SYSTEM_STR
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 114
 
 
@@ -62,5 +62,5 @@ M=.|=.|.|=.|=|=.
 """.strip()
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 45

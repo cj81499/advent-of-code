@@ -1,3 +1,5 @@
+import dataclasses
+
 r"""
 I refactored my original solution expecting this "computer" to be reused
 (since that's been the case in previous years).
@@ -7,7 +9,6 @@ Unfortunately for me, it was not reused.
 ¯\_(ツ)_/¯
 """
 
-import dataclasses
 from collections.abc import Callable, Iterable
 from typing import ClassVar
 
@@ -91,7 +92,7 @@ def part_2(txt: str) -> str:
 
     chars = []
     # crt has 6 rows and 40 cols
-    for row_idx in range(6):
+    for _row_idx in range(6):
         for col_idx in range(40):
             is_lit = abs(col_idx - computer.cycle()) < 2
             chars.append("#" if is_lit else ".")
@@ -104,4 +105,4 @@ if __name__ == "__main__":
     import aocd
 
     print(f"part_1: {part_1(aocd.data)}")
-    print(f"part_2:\n{part_2(aocd.data)}")
+    print(f"part_2: {part_2(aocd.data)}")
