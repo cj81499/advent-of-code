@@ -30,6 +30,7 @@ dev = [
   "pre-commit>=4.3.0",
   "pytest>=8.4.2",
   "pytest-cov>=7.0.0",
+  "pytest-watcher>=0.4.3",
   "ruff>=0.14.3",
   "tombi>=0.7.0",
   "types-networkx>=3.5.0.20251104",
@@ -123,6 +124,11 @@ ignore_missing_imports = true
 addopts = ["-m", "not slow"]
 markers = ["slow: marks tests as slow"]
 strict_xfail = true
+
+[tool.pytest-watcher]
+now = true
+clear = true
+patterns = ["*.py", "pyproject.toml"]
 
 [tool.ruff]
 line-length = 120
