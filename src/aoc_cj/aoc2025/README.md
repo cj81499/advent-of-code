@@ -10,7 +10,7 @@
 | 06  | [Trash Compactor](https://adventofcode.com/2025/day/6)     |   :star:   |   :star:   | :white_check_mark: |
 | 07  | [?](https://adventofcode.com/2025/day/7)                   | :question: | :question: |     :question:     |
 | 08  | [Playground](https://adventofcode.com/2025/day/8)          |   :star:   |   :star:   | :white_check_mark: |
-| 09  | [?](https://adventofcode.com/2025/day/9)                   | :question: | :question: |     :question:     |
+| 09  | [Movie Theater](https://adventofcode.com/2025/day/9)       |   :star:   |   :star:   | :white_check_mark: |
 | 10  | [?](https://adventofcode.com/2025/day/10)                  | :question: | :question: |     :question:     |
 | 11  | [?](https://adventofcode.com/2025/day/11)                  | :question: | :question: |     :question:     |
 | 12  | [?](https://adventofcode.com/2025/day/12)                  | :question: | :question: |     :question:     |
@@ -19,6 +19,7 @@
 
 ```text
 Day   -Part 1-   -Part 2-
+  9   07:39:49   08:48:10
   8   07:07:48   07:14:51
   6   04:08:11   04:23:53
   5   02:28:26   02:57:32
