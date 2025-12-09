@@ -35,5 +35,8 @@
   "python.testing.unittestEnabled": false,
   "python.defaultInterpreterPath": ".venv/bin/python",
   "mypy-type-checker.importStrategy": "fromEnvironment",
-  "files.trimTrailingWhitespaceInRegexAndStrings": false
+  "files.trimTrailingWhitespaceInRegexAndStrings": false,
+  "search.exclude": {
+    "uv.lock": true
+  }
 }
