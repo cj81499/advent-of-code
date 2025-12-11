@@ -28,7 +28,7 @@
 | 24  | [It Hangs in the Balance](https://adventofcode.com/2015/day/24)               | :star: | :star: | :white_check_mark: |
 | 25  | [Let It Snow](https://adventofcode.com/2015/day/25)                           | :star: | :star: | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2015/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

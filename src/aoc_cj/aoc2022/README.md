@@ -28,7 +28,7 @@
 | 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           | :star: | :star: | :white_check_mark: |
 | 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          | :star: |  :x:   | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2022/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

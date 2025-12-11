@@ -28,7 +28,7 @@
 | 24  | [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24)         | :star: | :star: | :white_check_mark: |
 | 25  | [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25)           | :star: | :star: | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2018/leaderboard/self -->
 
 ```text
       -------Part 1--------   --------Part 2--------

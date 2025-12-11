@@ -28,7 +28,7 @@
 | 24  | [Crossed Wires](https://adventofcode.com/2024/day/24)          | :question: | :question: |     :question:     |
 | 25  | [Code Chronicle](https://adventofcode.com/2024/day/25)         |   :star:   | :question: | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2024/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

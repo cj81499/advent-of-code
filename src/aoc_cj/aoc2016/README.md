@@ -28,7 +28,7 @@
 | 24  | [Air Duct Spelunking](https://adventofcode.com/2016/day/24)                    | :star: | :star: | :white_check_mark: |
 | 25  | [Clock Signal](https://adventofcode.com/2016/day/25)                           | :star: | :star: |      :shrug:       |
 
-## Results
+## Results <!-- https://adventofcode.com/2016/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

@@ -15,7 +15,7 @@
 | 11  | [Reactor](https://adventofcode.com/2025/day/11)            |   :star:   |   :star:   | :white_check_mark: |
 | 12  | [?](https://adventofcode.com/2025/day/12)                  | :question: | :question: |     :question:     |
 
-## Results
+## Results <!-- https://adventofcode.com/2025/leaderboard/self -->
 
 ```text
 Day   -Part 1-   -Part 2-
