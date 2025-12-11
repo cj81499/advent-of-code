@@ -106,7 +106,7 @@ AFTER_FIVE_2 = """
 
 @pytest.mark.parametrize(
     ("initial", "steps", "expected", "corners_stuck_on"),
-    (
+    [
         # part 1
         (INITIAL_1, 1, AFTER_ONE_1, False),
         (INITIAL_1, 2, AFTER_TWO_1, False),
@@ -118,13 +118,13 @@ AFTER_FIVE_2 = """
         (INITIAL_2, 3, AFTER_THREE_2, True),
         (INITIAL_2, 4, AFTER_FOUR_2, True),
         (INITIAL_2, 5, AFTER_FIVE_2, True),
-    ),
+    ],
 )
-def test_simulation(initial: str, steps: int, expected: str, corners_stuck_on: bool) -> None:
+def test_simulation(*, initial: str, steps: int, expected: str, corners_stuck_on: bool) -> None:
     simulation = d.lightshow(initial, corners_stuck_on=corners_stuck_on)
     result = mi.nth(simulation, steps)
     assert result is not None, "simulation goes forever"
-    assert ["".join(row) for row in result] == [line for line in expected.splitlines()]
+    assert ["".join(row) for row in result] == list(expected.splitlines())
 
 
 def test_part_1() -> None:

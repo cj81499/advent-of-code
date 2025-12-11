@@ -38,15 +38,14 @@ def part_1(txt: str) -> int:
                     possible_new_pos = p + DIRECTIONS[c]
                     if possible_new_pos not in start or WALL not in start[possible_new_pos]:
                         new_grid[possible_new_pos].add(c)
-                    else:
-                        if c == "^":
-                            new_grid[complex(p.real, max_y)].add(c)
-                        elif c == "v":
-                            new_grid[complex(p.real, min_y)].add(c)
-                        elif c == "<":
-                            new_grid[complex(max_x, p.imag)].add(c)
-                        elif c == ">":
-                            new_grid[complex(min_x, p.imag)].add(c)
+                    elif c == "^":
+                        new_grid[complex(p.real, max_y)].add(c)
+                    elif c == "v":
+                        new_grid[complex(p.real, min_y)].add(c)
+                    elif c == "<":
+                        new_grid[complex(max_x, p.imag)].add(c)
+                    elif c == ">":
+                        new_grid[complex(min_x, p.imag)].add(c)
 
         return new_grid
 
@@ -66,7 +65,8 @@ def part_1(txt: str) -> int:
                 if next_state not in h:
                     heapq.heappush(h, next_state)
 
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 def part_2(txt: str) -> int:
@@ -94,15 +94,14 @@ def part_2(txt: str) -> int:
                     possible_new_pos = p + DIRECTIONS[c]
                     if possible_new_pos not in start or WALL not in start[possible_new_pos]:
                         new_grid[possible_new_pos].add(c)
-                    else:
-                        if c == "^":
-                            new_grid[complex(p.real, max_y)].add(c)
-                        elif c == "v":
-                            new_grid[complex(p.real, min_y)].add(c)
-                        elif c == "<":
-                            new_grid[complex(max_x, p.imag)].add(c)
-                        elif c == ">":
-                            new_grid[complex(min_x, p.imag)].add(c)
+                    elif c == "^":
+                        new_grid[complex(p.real, max_y)].add(c)
+                    elif c == "v":
+                        new_grid[complex(p.real, min_y)].add(c)
+                    elif c == "<":
+                        new_grid[complex(max_x, p.imag)].add(c)
+                    elif c == ">":
+                        new_grid[complex(min_x, p.imag)].add(c)
 
         return new_grid
 
@@ -121,15 +120,15 @@ def part_2(txt: str) -> int:
                     next_state = (time + 1, (adj.real, adj.imag))
                     if next_state not in h:
                         heapq.heappush(h, next_state)
-        assert False, "unreachable"
+        msg = "unreachable"
+        raise AssertionError(msg)
 
     start = complex(1, 0)
     goal = complex(max_x, max_y + 1)
 
     time = explore(start=start, goal=goal)  # start -> goal
     time = explore(start=goal, goal=start, start_time=time)  # goal -> start (elf forgot his snacks)
-    time = explore(start=start, goal=goal, start_time=time)  # start -> goal (again...)
-    return time
+    return explore(start=start, goal=goal, start_time=time)  # start -> goal (again...)
 
 
 if __name__ == "__main__":

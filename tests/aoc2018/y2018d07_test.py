@@ -11,9 +11,9 @@ Step F must be finished before step E can begin.
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == "CABDFE"
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT, num_workers=2, base_duration=0) == 15

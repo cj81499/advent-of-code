@@ -9,11 +9,11 @@ REQUIRED_KEYS = 64
 
 def n_repeat_character(s: str, n: int) -> str | None:
     """Return the first character in `s` that occurs `n` (or more) times in a row, or `None` if no such character exists."""
-    return mi.first((c for c, l in mi.run_length.encode(s) if l >= n), default=None)
+    return mi.first((c for c, length in mi.run_length.encode(s) if length >= n), default=None)
 
 
 def standard_hash(to_hash: str) -> str:
-    return hashlib.md5(to_hash.encode()).hexdigest()
+    return hashlib.md5(to_hash.encode()).hexdigest()  # noqa: S324
 
 
 def key_stretch_hash(to_hash: str) -> str:

@@ -6,11 +6,11 @@ J = int | str | dict[str, "J"] | list["J"]
 def sum_of_all_numbers(input_json: J, *, ignore_red: bool = False) -> int:
     if isinstance(input_json, int):
         return input_json
-    elif isinstance(input_json, dict):
+    if isinstance(input_json, dict):
         if ignore_red and "red" in input_json.values():
             return 0
         return sum(sum_of_all_numbers(x, ignore_red=ignore_red) for x in input_json.values())
-    elif isinstance(input_json, list):
+    if isinstance(input_json, list):
         return sum(sum_of_all_numbers(x, ignore_red=ignore_red) for x in input_json)
     return 0
 

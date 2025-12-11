@@ -27,7 +27,7 @@ def weird_math_1_helper(tokens):
         token = tokens.popleft()
         if token == ")":
             break
-        elif token in ("*", "+"):
+        if token in ("*", "+"):
             op = token
         else:
             n = weird_math_1_helper(tokens) if token == "(" else token
@@ -52,7 +52,7 @@ def weird_math_2_helper(tokens):
         token = tokens.popleft()
         if token == ")":
             break
-        elif token == "*":
+        if token == "*":
             sums.append(ans)
             ans = None
             op = None
@@ -72,11 +72,11 @@ def weird_math_2(problem):
     return weird_math_2_helper(collections.deque(tokenize(problem)))
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     return sum(weird_math_1(line) for line in txt.splitlines())
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     return sum(weird_math_2(line) for line in txt.splitlines())
 
 

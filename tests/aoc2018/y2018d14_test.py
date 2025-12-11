@@ -4,7 +4,7 @@ import aoc_cj.aoc2018.day14 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("9", "5158916779"),
         ("5", "0124515891"),
@@ -12,12 +12,12 @@ import aoc_cj.aoc2018.day14 as d
         ("2018", "5941429882"),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("51589", 9),
         ("01245", 5),
@@ -25,5 +25,5 @@ def test_part_1(input, expected):
         ("59414", 2018),
     ],
 )
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected) -> None:
+    assert d.part_2(example) == expected

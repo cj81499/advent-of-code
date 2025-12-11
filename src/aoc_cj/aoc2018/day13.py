@@ -1,10 +1,9 @@
+import dataclasses
+
 import more_itertools as mi
 
 ARROW_TO_DIRECTION = {"^": (0, -1), "v": (0, 1), "<": (-1, 0), ">": (1, 0)}
 DIRECTION_TO_ARROW = {v: k for k, v in ARROW_TO_DIRECTION.items()}
-
-
-import dataclasses
 
 
 @dataclasses.dataclass
@@ -15,10 +14,10 @@ class Cart:
     dy: int
     intersection_count = 0
 
-    def turn_right(self):
+    def turn_right(self) -> None:
         self.dx, self.dy = -self.dy, self.dx
 
-    def turn_left(self):
+    def turn_left(self) -> None:
         self.dx, self.dy = self.dy, -self.dx
 
     def arrow(self):
@@ -49,7 +48,7 @@ class Cart:
 
 
 class Simulation:
-    def __init__(self, lines):
+    def __init__(self, lines) -> None:
         self.track = {}
         self.carts = {}
         self.height = len(lines)
@@ -91,7 +90,7 @@ class Simulation:
         self.carts = new_carts
         return crashes, self.carts
 
-    def __str__(self):
+    def __str__(self) -> str:
         s = ""
         for y in range(self.height):
             for x in range(self.width):

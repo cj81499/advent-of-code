@@ -1,3 +1,4 @@
+import dataclasses
 import functools
 from collections import deque
 from collections.abc import Generator
@@ -8,9 +9,6 @@ UP = -1j
 DOWN = +1j
 LEFT = -1
 RIGHT = +1
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True, order=True)
@@ -57,9 +55,6 @@ class GridPosition:
         )
 
 
-import dataclasses
-
-
 @dataclasses.dataclass(frozen=True, order=True)
 class TopLeftCorner:
     pos: GridPosition
@@ -75,9 +70,6 @@ class TopLeftCorner:
 
     def right(self) -> "TopLeftCorner":
         return TopLeftCorner(self.pos.right())
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True, order=True)
@@ -129,7 +121,8 @@ class Grid:
                     yield adj_p
             return
 
-        assert False, f"unexpected value in pipe: '{pipe_type}'"
+        msg = f"unexpected value in pipe: '{pipe_type}'"
+        raise AssertionError(msg)
 
     @functools.cached_property
     def _max_x(self) -> int:

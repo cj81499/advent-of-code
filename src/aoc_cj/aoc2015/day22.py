@@ -27,9 +27,6 @@ SPELLS = [
 SPELLS.reverse()
 
 
-import dataclasses
-
-
 @dataclasses.dataclass(frozen=True)
 class Unit:
     name: str

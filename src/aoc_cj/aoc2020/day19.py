@@ -1,8 +1,8 @@
 class Option:
-    def __init__(self, option_str):
+    def __init__(self, option_str) -> None:
         self.parts = [int(o) if o.isnumeric() else o.strip('"') for o in option_str.split()]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Option(parts={self.parts})"
 
     @staticmethod
@@ -20,19 +20,20 @@ class Option:
                 for m2 in Option._matches_helper(message[m1:], rules, rest):
                     yield m1 + m2
         else:
-            raise Exception("unreachable")
+            msg = "unreachable"
+            raise Exception(msg)
 
     def _matches(self, message, rules):
         return Option._matches_helper(message, rules, [*self.parts])
 
 
 class Rule:
-    def __init__(self, rule_str):
+    def __init__(self, rule_str) -> None:
         n, options = rule_str.split(": ")
         self.n = int(n)
         self.options = [Option(o) for o in options.split(" | ")]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Rule(n={self.n}, options={self.options})"
 
     def _matches(self, message, rules):

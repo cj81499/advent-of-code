@@ -20,18 +20,13 @@ def bag_rules(txt: str):
     return rules
 
 
-def can_hold_shiny_gold(rules, color):
+def can_hold_shiny_gold(rules, color) -> bool:
     if color not in rules:
         return False
     rule = rules[color]
     if rule is None:
         return False
-    for n, bag_color in rule:
-        if bag_color == "shiny gold":
-            return True
-        elif can_hold_shiny_gold(rules, bag_color):
-            return True
-    return False
+    return any(bag_color == "shiny gold" or can_hold_shiny_gold(rules, bag_color) for n, bag_color in rule)
 
 
 def part_1(txt: str):

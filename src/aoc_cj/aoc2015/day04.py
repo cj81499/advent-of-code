@@ -1,20 +1,19 @@
+import functools
 import hashlib
 import itertools
 
 
-def find_hash(secret_key: str, zeros: int = 5) -> int:
+def find_hash(secret_key: str, zeros: int) -> int:
     zeros_str = "0" * zeros
     return next(
-        i for i in itertools.count() if hashlib.md5(f"{secret_key}{i}".encode()).hexdigest().startswith(zeros_str)
+        i
+        for i in itertools.count()
+        if hashlib.md5(f"{secret_key}{i}".encode()).hexdigest().startswith(zeros_str)  # noqa: S324
     )
 
 
-def part_1(secret_key: str) -> int:
-    return find_hash(secret_key)
-
-
-def part_2(secret_key: str) -> int:
-    return find_hash(secret_key, zeros=6)
+part_1 = functools.partial(find_hash, zeros=5)
+part_2 = functools.partial(find_hash, zeros=6)
 
 
 if __name__ == "__main__":

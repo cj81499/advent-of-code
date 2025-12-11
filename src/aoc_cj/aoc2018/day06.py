@@ -3,11 +3,11 @@ import itertools
 
 
 def man_dist(p1, p2):
-    return sum(abs(a - b) for a, b in zip(p1, p2))
+    return sum(abs(a - b) for a, b in zip(p1, p2, strict=True))
 
 
 def corners(points):
-    xs, ys = zip(*points)
+    xs, ys = zip(*points, strict=True)
     return min(xs), max(xs), min(ys), max(ys)
 
 
@@ -37,7 +37,7 @@ def part_1(txt):
         if len(nearest) == 1:
             areas[nearest[0]] += 1
             # if we're on an edge, this is an inf area point
-            if x == min_x or x == max_x or y == min_y or y == max_y:
+            if y in (min_y, max_y) or x in (min_x, max_x):
                 inf_area_points.add(nearest[0])
 
     # remove inf area points from areas

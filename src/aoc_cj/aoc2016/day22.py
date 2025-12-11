@@ -1,3 +1,4 @@
+import dataclasses
 import itertools
 import re
 from typing import NamedTuple
@@ -8,9 +9,6 @@ import more_itertools as mi
 class Point(NamedTuple):
     x: int
     y: int
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -41,12 +39,12 @@ class Node:
 
 
 def part_1(txt: str) -> int:
-    nodes = [Node.parse(l) for l in txt.splitlines() if l.startswith(Node.PREFIX)]
+    nodes = [Node.parse(line) for line in txt.splitlines() if line.startswith(Node.PREFIX)]
     return sum(a.used != 0 and a.used <= b.avail for a, b in itertools.permutations(nodes, 2))
 
 
 def part_2(txt: str) -> int:
-    grid = {(n := Node.parse(l)).point: n for l in txt.splitlines() if l.startswith(Node.PREFIX)}
+    grid = {(n := Node.parse(line)).point: n for line in txt.splitlines() if line.startswith(Node.PREFIX)}
     max_x, _max_y = max(grid)
 
     # use empty node to move data where we want

@@ -32,11 +32,11 @@ def test_part_1() -> None:
 
 
 @pytest.mark.parametrize(
-    ("example_input", "expected"),
-    (
+    ("example_example", "expected"),
+    [
         (EXAMPLE_INPUT, 94),
         (EXAMPLE_INPUT_2, 71),
-    ),
+    ],
 )
-def test_part_2(example_input: str, expected: int) -> None:
-    assert d.part_2(example_input) == expected
+def test_part_2(example_example: str, expected: int) -> None:
+    assert d.part_2(example_example) == expected

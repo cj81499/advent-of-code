@@ -1,7 +1,7 @@
 from collections import deque
 
 NAUGHTY_SUBSTRINGS = {"ab", "cd", "pq", "xy"}
-VOWELS = {x for x in "aeiou"}
+VOWELS = set("aeiou")
 
 
 def is_nice1(s: str) -> bool:

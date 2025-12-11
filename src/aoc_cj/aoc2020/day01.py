@@ -5,6 +5,7 @@ def part_1(txt):
         remaining = 2020 - n
         if remaining in nums:
             return n * remaining
+    return None
 
 
 def part_2(txt):
@@ -15,6 +16,7 @@ def part_2(txt):
             remaining = 2020 - (x + y)
             if remaining in nums:
                 return x * y * remaining
+    return None
 
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+import dataclasses
 import functools
 import re
 from collections import deque
@@ -18,9 +19,6 @@ def range_difference(r1: range, r2: range) -> Generator[range]:
         yield range(r1.start, min(r1.stop, r2.start))
     if r1.stop > r2.stop:
         yield range(max(r1.start, r2.stop), r1.stop)
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -46,9 +44,6 @@ class MappingRange:
 
     def convert_unchecked(self, value: int) -> int:
         return value - self.source_range_start + self.destination_range_start
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)

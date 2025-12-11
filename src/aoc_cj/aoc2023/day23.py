@@ -25,7 +25,8 @@ def part_1(txt: str) -> int:
                 if new_grid_val != "#":
                     yield new_pos
         else:
-            assert False, f"unrecognized grid val: '{current_grid_val}'"
+            msg = f"unrecognized grid val: '{current_grid_val}'"
+            raise AssertionError(msg)
 
     return solve(txt, next_positions)
 
@@ -77,7 +78,8 @@ def part_2(txt: str) -> int:
                 if new_grid_val != "#":
                     yield new_pos
         else:
-            assert False, f"unrecognized grid val: '{current_grid_val}'"
+            msg = f"unrecognized grid val: '{current_grid_val}'"
+            raise AssertionError(msg)
 
     return solve(txt, next_positions)
 

@@ -1,3 +1,4 @@
+import dataclasses
 import functools
 import itertools
 import re
@@ -10,9 +11,6 @@ UNKNOWN = "?"
 
 OPERATIONAL_PREFIX_PATTERN = re.compile(rf"^[{OPERATIONAL}]+")
 DAMAGED_OR_UNKNOWN_PREFIX_PATTERN = re.compile(rf"^[{DAMAGED}{UNKNOWN}]+")
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)
@@ -76,7 +74,8 @@ class Row:
 
             return Row(new_contents, self.damaged_spring_groups[1:]).count_arrangements()
 
-        assert False, "unreachable"
+        msg = "unreachable"
+        raise AssertionError(msg)
 
 
 def part_1(txt: str) -> int:

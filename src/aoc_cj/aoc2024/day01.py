@@ -3,7 +3,7 @@ import collections
 
 def parse(txt: str) -> tuple[tuple[int, ...], tuple[int, ...]]:
     ints_by_line = (tuple(int(x) for x in line.split()) for line in txt.splitlines())
-    transpose: zip[tuple[int, ...]] = zip(*ints_by_line)
+    transpose: zip[tuple[int, ...]] = zip(*ints_by_line, strict=True)
     tup = tuple(transpose)
     assert len(tup) == 2
     return tup
@@ -11,7 +11,7 @@ def parse(txt: str) -> tuple[tuple[int, ...], tuple[int, ...]]:
 
 def part_1(txt: str) -> int:
     left_col, right_col = parse(txt)
-    return sum(abs(l - r) for l, r in zip(sorted(sorted(left_col)), sorted(sorted(right_col))))
+    return sum(abs(l - r) for l, r in zip(sorted(left_col), sorted(right_col), strict=True))
 
 
 def part_2(txt: str) -> int:

@@ -1,25 +1,25 @@
 FIFTY_BILLION = 50_000_000_000
 
 
-def part_1(txt: str):
+def part_1(txt: str) -> int:
     return simulate_plant_growth(txt)
 
 
-def part_2(txt: str):
+def part_2(txt: str) -> int:
     return simulate_plant_growth(txt, generations=FIFTY_BILLION)
 
 
-def view(pots, center):
+def view(pots: set[int], center):
     return "".join(("#" if i in pots else ".") for i in range(center - 2, center + 3))
 
 
-def next_pots(pots, rules):
+def next_pots(pots: set[int], rules: set[str]) -> set[int]:
     return {c for c in range(min(pots) - 2, max(pots) + 3) if view(pots, c) in rules}
 
 
-def simulate_plant_growth(txt: str, generations=20):
+def simulate_plant_growth(txt: str, generations: int = 20) -> int:
     initial_state, rules = txt.split("\n\n")
-    initial_state = initial_state.lstrip("initial state:")
+    initial_state = initial_state.removeprefix("initial state:")
     initial_state = {i for i, c in enumerate(initial_state) if c == "#"}
     # set of rules that produce pots
     rules = {k for k, v in (line.split(" => ") for line in rules.splitlines()) if v == "#"}

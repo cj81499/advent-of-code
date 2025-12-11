@@ -38,7 +38,7 @@ AFTER_2 = """
 """.strip()
 
 
-def test_step():
+def test_step() -> None:
     initial_grid = d.parse(INITIAL)
     after_1_grid = d.parse(AFTER_1)
     after_2_grid = d.parse(AFTER_2)
@@ -46,9 +46,9 @@ def test_step():
     assert d.step(after_1_grid)[1] == after_2_grid
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 1656
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 195

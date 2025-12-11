@@ -6,7 +6,8 @@ def select_house(presents: list[int], min_presents: int) -> int:
         if n > min_presents and i > 0:
             return i
 
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 def presents_for_houses(min_presents: int, present_multiplier: int, *, house_limit: int | None = None) -> list[int]:

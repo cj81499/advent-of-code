@@ -4,7 +4,7 @@ import aoc_cj.aoc2019.day02 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("1,9,10,3,2,3,11,0,99,30,40,50", "3500,9,10,70,2,3,11,0,99,30,40,50"),
         ("1,0,0,0,99", "2,0,0,0,99"),
@@ -13,7 +13,7 @@ import aoc_cj.aoc2019.day02 as d
         ("1,1,1,4,99,5,6,0,99", "30,1,1,4,2,5,6,0,99"),
     ],
 )
-def test_part_1(input, expected):
-    p = d.IntcodeProgram.parse(input)
+def test_part_1(example: str, expected) -> None:
+    p = d.IntcodeProgram.parse(example)
     p.run()
     assert ",".join(map(str, p.memory)) == expected

@@ -18,14 +18,10 @@ def apply_instruction(screen: Screen, instruction: str) -> None:
         for x, y in itertools.product(range(A), range(B)):
             screen[y][x] = ON
     elif instruction.startswith("rotate row y="):
-        new_row = []
-        for x in range(len(screen[0])):
-            new_row.append(screen[A][(x - B) % len(screen[0])])
+        new_row = [screen[A][(x - B) % len(screen[0])] for x in range(len(screen[0]))]
         screen[A] = new_row
     elif instruction.startswith("rotate column x="):
-        new_col = []
-        for y in range(len(screen)):
-            new_col.append(screen[(y - B) % len(screen)][A])
+        new_col = [screen[(y - B) % len(screen)][A] for y in range(len(screen))]
         for y in range(len(screen)):
             screen[y][A] = new_col[y]
 

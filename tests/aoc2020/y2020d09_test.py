@@ -24,9 +24,9 @@ EXAMPLE_INPUT = """
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT, preamble_size=5) == 127
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT, preamble_size=5) == 62

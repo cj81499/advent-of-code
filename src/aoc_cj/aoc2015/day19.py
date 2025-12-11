@@ -1,3 +1,4 @@
+import dataclasses
 import itertools
 import re
 
@@ -5,9 +6,6 @@ import lark
 import more_itertools as mi
 
 ELEMENT_PATTERN = re.compile(r"[A-Z][a-z]*")
-
-
-import dataclasses
 
 
 @dataclasses.dataclass(frozen=True)

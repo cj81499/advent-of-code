@@ -54,27 +54,22 @@ EXAMPLE_INPUT2 = """
 
 
 @pytest.mark.parametrize(
-    ("input", "expected"),
-    (
+    ("example", "expected"),
+    [
         (EXAMPLE_INPUT, 10092),
         (EXAMPLE_INPUT1, 2028),
-    ),
+    ],
 )
-def test_part_1(input: str, expected: int) -> None:
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
-def test_part_2() -> None:
-    s = """
-#######
-#...#.#
-#.....#
-#..OO@#
-#..O..#
-#.....#
-#######
-
-<vv<<^^<<^^
-""".strip()
-    d.part_2(s)
-    assert d.part_2(EXAMPLE_INPUT) == 9021
+@pytest.mark.parametrize(
+    ("example", "expected"),
+    [
+        (EXAMPLE_INPUT, 9021),
+        (EXAMPLE_INPUT2, ...),
+    ],
+)
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

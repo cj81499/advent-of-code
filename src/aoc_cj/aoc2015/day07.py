@@ -35,8 +35,8 @@ def _signal_on(wire: str, wires: Mapping[str, str]) -> int:
 def parse_wires(txt: str) -> dict[str, str]:
     wires = {}
     for line in txt.splitlines():
-        l, r = line.split(" -> ")
-        wires[r] = l
+        left, right = line.split(" -> ")
+        wires[right] = left
     return wires
 
 

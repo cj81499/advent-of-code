@@ -12,7 +12,7 @@ def part_2(txt: str) -> int:
     lines = txt.splitlines()
     assert len(lines) % 3 == 0
     return sum(
-        sum(is_valid_triangle(n) for n in zip(la, lb, lc))
+        sum(is_valid_triangle(n) for n in zip(la, lb, lc, strict=True))
         for la, lb, lc in (map(nums, c) for c in mi.ichunked(lines, 3))
     )
 

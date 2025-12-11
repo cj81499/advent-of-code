@@ -18,7 +18,7 @@ def phase(digits):
     next_list = []
     for i in range(len(digits)):
         pattern = pattern_helper(i)
-        val = abs(sum(p * d for p, d in zip(pattern, digits))) % 10
+        val = abs(sum(p * d for p, d in zip(pattern, digits, strict=False))) % 10
         next_list.append(val)
     return next_list
 

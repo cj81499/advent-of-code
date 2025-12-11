@@ -26,8 +26,8 @@ class Particle:
         vel = self.vel
         pos = self.pos
         for _step in range(steps):
-            vel = tuple(v + a for v, a in zip(vel, self.acc))
-            pos = tuple(p + v for p, v in zip(pos, vel))
+            vel = tuple(v + a for v, a in zip(vel, self.acc, strict=True))
+            pos = tuple(p + v for p, v in zip(pos, vel, strict=True))
         return Particle(pos, vel, self.acc)
 
 

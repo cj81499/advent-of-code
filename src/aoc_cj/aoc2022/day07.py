@@ -9,16 +9,10 @@ TOTAL_DISK_SPACE = 70000000
 REQUIRED_AVAILABLE_SPACE = 30000000
 
 
-import dataclasses
-
-
 @dataclasses.dataclass
 class File:
     name: str
     size: int
-
-
-import dataclasses
 
 
 @dataclasses.dataclass
@@ -53,7 +47,8 @@ def get_dir_sizes(txt: str) -> list[int]:
                     size, filename = line.split()
                     dir.children.append(File(filename, int(size)))
         else:
-            assert False, f"unrecognized command: '{cmd}'"
+            msg = f"unrecognized command: '{cmd}'"
+            raise AssertionError(msg)
     return [d.size for d in dirs.values()]
 
 

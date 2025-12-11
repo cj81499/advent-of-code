@@ -71,7 +71,8 @@ class OperatorPacket(Packet):
             assert len(self.children) == 2
             a, b = self.children
             return 1 if a.evaluate() == b.evaluate() else 0
-        assert False, "unreachable"
+        msg = "unreachable"
+        raise AssertionError(msg)
 
     def __post_init__(self) -> None:
         assert self.type_id != 4
@@ -127,7 +128,7 @@ def hex_to_binary(hex: str) -> Iterator[Binary]:
         for _ in range(4):
             bit = (nibble & 0b1000) >> 3
             assert bit in {0, 1}
-            yield cast(Binary, bit)
+            yield cast("Binary", bit)
             nibble <<= 1
 
 

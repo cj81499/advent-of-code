@@ -57,8 +57,7 @@ def part_2(txt: str) -> int:
         for next_card in itertools.islice(cards, i + 1, i + 1 + current.card.match_count()):
             next_card.copy_count += current.copy_count
 
-    total_card_count = sum(cc.copy_count for cc in cards)
-    return total_card_count
+    return sum(cc.copy_count for cc in cards)
 
 
 if __name__ == "__main__":

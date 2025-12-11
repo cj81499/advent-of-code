@@ -5,8 +5,12 @@ Grid = dict[Point, str]
 
 
 def step(grid: Grid, width: int, height: int) -> Grid:
-    move_right = lambda x, y: ((x + 1) % width, y)
-    move_down = lambda x, y: (x, (y + 1) % height)
+    def move_right(x, y):
+        return ((x + 1) % width, y)
+
+    def move_down(x, y):
+        return (x, (y + 1) % height)
+
     return partial_step(partial_step(grid, move_right, ">"), move_down, "v")
 
 

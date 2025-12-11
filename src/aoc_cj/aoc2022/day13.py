@@ -17,23 +17,24 @@ def compare(left: L, right: L) -> CompareResult:
     if isinstance(left, int) and isinstance(right, int):
         if left < right:
             return CompareResult.CORRECT
-        elif left > right:
+        if left > right:
             return CompareResult.INCORRECT
         return CompareResult.EQ
-    elif not isinstance(left, int) and not isinstance(right, int):
-        for l, r in zip(left, right):
+    if not isinstance(left, int) and not isinstance(right, int):
+        for l, r in zip(left, right, strict=False):
             if (compare_result := compare(l, r)) != CompareResult.EQ:
                 return compare_result
         if len(left) < len(right):
             return CompareResult.CORRECT
-        elif len(left) > len(right):
+        if len(left) > len(right):
             return CompareResult.INCORRECT
         return CompareResult.EQ
-    elif isinstance(left, int) and not isinstance(right, int):
+    if isinstance(left, int) and not isinstance(right, int):
         return compare([left], right)
-    elif isinstance(right, int) and not isinstance(left, int):
+    if isinstance(right, int) and not isinstance(left, int):
         return compare(left, [right])
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 def part_1(txt: str) -> int:

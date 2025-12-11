@@ -57,22 +57,22 @@ EXAMPLE_OUTPUT_5 = "[[[[6,6],[7,6]],[[7,7],[7,0]]],[[[7,7],[7,7]],[[7,8],[9,9]]]
 
 @pytest.mark.parametrize(
     ("before", "after"),
-    (
+    [
         ("[[[[[9,8],1],2],3],4]", "[[[[0,9],2],3],4]"),
         ("[7,[6,[5,[4,[3,2]]]]]", "[7,[6,[5,[7,0]]]]"),
         ("[[6,[5,[4,[3,2]]]],1]", "[[6,[5,[7,0]]],3]"),
         ("[[3,[2,[1,[7,3]]]],[6,[5,[4,[3,2]]]]]", "[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]"),
         ("[[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]]", "[[3,[2,[8,0]]],[9,[5,[7,0]]]]"),
-    ),
+    ],
 )
-def test_explode(before: str, after: str):
+def test_explode(before: str, after: str) -> None:
     before_tree = d.parse(before)
     assert str(before_tree) == before
     before_tree.reduce_once()
     assert str(before_tree) == after
 
 
-def test_add():
+def test_add() -> None:
     lhs = d.parse("[[[[4,3],4],4],[7,[[8,4],9]]]")
     rhs = d.parse("[1,1]")
     result = lhs.add(rhs)
@@ -82,21 +82,21 @@ def test_add():
 
 @pytest.mark.parametrize(
     ("lines", "expected"),
-    (
+    [
         (EXAMPLE_INPUT_1, "[[[[1,1],[2,2]],[3,3]],[4,4]]"),
         (EXAMPLE_INPUT_2, "[[[[3,0],[5,3]],[4,4]],[5,5]]"),
         (EXAMPLE_INPUT_3, "[[[[5,0],[7,4]],[5,5]],[6,6]]"),
         (EXAMPLE_INPUT_4, "[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]"),
         (EXAMPLE_INPUT_5, EXAMPLE_OUTPUT_5),
-    ),
+    ],
 )
-def test_sum_lines(lines: str, expected: str):
+def test_sum_lines(lines: str, expected: str) -> None:
     assert str(d.sum_lines(lines.splitlines())) == expected
 
 
 @pytest.mark.parametrize(
     ("inp", "magnitude"),
-    (
+    [
         ("[[1,2],[[3,4],5]]", 143),
         ("[[[[0,7],4],[[7,8],[6,0]]],[8,1]]", 1384),
         ("[[[[1,1],[2,2]],[3,3]],[4,4]]", 445),
@@ -104,15 +104,15 @@ def test_sum_lines(lines: str, expected: str):
         ("[[[[5,0],[7,4]],[5,5]],[6,6]]", 1137),
         ("[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]", 3488),
         (EXAMPLE_OUTPUT_5, 4140),
-    ),
+    ],
 )
-def test_magnitude(inp: str, magnitude: int):
+def test_magnitude(inp: str, magnitude: int) -> None:
     assert d.parse(inp).magnitude() == magnitude
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT_5) == 4140
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT_5) == 3993

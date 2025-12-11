@@ -11,7 +11,7 @@ COMPARISONS = {
 }
 
 
-def perform_cmd(registers, cmd):
+def perform_cmd(registers, cmd) -> None:
     reg, mode, amount, _, lhs, op, rhs = cmd.split()
     if COMPARISONS[op](registers[lhs], int(rhs)):
         amount = int(amount)

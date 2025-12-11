@@ -75,7 +75,7 @@ EXAMPLE_4 = """
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_0, 8),
         (EXAMPLE_1, 33),
@@ -84,8 +84,8 @@ EXAMPLE_4 = """
         (EXAMPLE_4, 210),
     ],
 )
-def test_part_1(input_val, expected: int) -> None:
-    assert d.part_1(input_val) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 def test_get_asteroids() -> None:

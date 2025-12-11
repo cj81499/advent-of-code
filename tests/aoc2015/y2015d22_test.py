@@ -14,11 +14,11 @@ Damage: 8
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_INPUT_0, 226),
         (EXAMPLE_INPUT_1, 641),
     ],
 )
-def test_part_1(input: str, expected: int) -> None:
-    assert d.part_1(input, player_hp=10, player_mana=250) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example, player_hp=10, player_mana=250) == expected

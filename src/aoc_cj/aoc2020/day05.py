@@ -9,9 +9,11 @@ def binary_search(lo, hi, lo_ele, hi_ele, iterable):
         elif c == hi_ele:
             lo = mid + 1
         else:
-            raise Exception("invalid element in iterable")
+            msg = "invalid element in iterable"
+            raise Exception(msg)
     if lo != hi:
-        raise Exception("search did not converge")
+        msg = "search did not converge"
+        raise Exception(msg)
     return lo
 
 
@@ -34,6 +36,7 @@ def part_2(txt):
     for i in itertools.count(min(ids)):  # start counting at the first id
         if i not in ids:
             return i
+    return None
 
 
 if __name__ == "__main__":

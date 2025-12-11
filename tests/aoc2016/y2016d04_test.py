@@ -11,7 +11,7 @@ ROOMS = (ROOM_1, ROOM_2, ROOM_3, ROOM_4)
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         (ROOM_1, True),
         (ROOM_2, True),
@@ -19,8 +19,8 @@ ROOMS = (ROOM_1, ROOM_2, ROOM_3, ROOM_4)
         (ROOM_4, False),
     ],
 )
-def test_is_real_room(input: str, expected: bool) -> None:
-    assert d.is_real_room(input) is expected
+def test_is_real_room(*, example: str, expected: bool) -> None:
+    assert d.is_real_room(example) is expected
 
 
 def test_part_1() -> None:

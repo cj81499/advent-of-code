@@ -13,5 +13,5 @@ v.v..>>v.v
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 58

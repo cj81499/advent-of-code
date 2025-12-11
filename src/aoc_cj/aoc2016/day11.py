@@ -26,7 +26,7 @@ def helper(txt: str, *, extra_items: bool = False) -> int:
             return steps
         q.extend((steps + 1, s) for s in next_states(state))
         seen.add(state)
-    assert False
+    raise AssertionError
 
 
 def parse(txt: str, *, extra_items: bool = False) -> tuple[tuple[int, int], ...]:
@@ -61,8 +61,7 @@ def next_states(state: State) -> set[State]:
     for items in itertools.combinations(movable_items, r=2):
         next_states.update(next_states_helper(state, items))
 
-    safe_states = {s for s in next_states if is_safe(s)}
-    return safe_states
+    return {s for s in next_states if is_safe(s)}
 
 
 def next_states_helper(state: State, items_to_move: Sequence[tuple[int, int]]) -> Generator[State]:

@@ -2,7 +2,7 @@ import dataclasses
 import enum
 import re
 from collections import Counter, defaultdict
-from typing import override
+from typing import assert_never, override
 
 
 class Action(enum.Enum):
@@ -27,7 +27,8 @@ class Instruction:
     def parse(instruction: str) -> "Instruction":
         match = Instruction._PARSE_REGEX.match(instruction)
         if not match:
-            raise ValueError("invalid instruction")
+            msg = "invalid instruction"
+            raise ValueError(msg)
         action, start_x, start_y, end_x, end_y = match.groups()
         return Instruction(Action(action), (int(start_x), int(start_y)), (int(end_x), int(end_y)))
 
@@ -49,7 +50,7 @@ def part_1(txt: str) -> int:
                 elif instruction.action is Action.TOGGLE:
                     grid[(x, y)] = not grid[(x, y)]
                 else:
-                    raise Exception("unknown action")
+                    assert_never(instruction.action)
 
     return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 
@@ -67,7 +68,7 @@ def part_2(txt: str) -> int:
                 elif instruction.action is Action.TOGGLE:
                     grid[(x, y)] += 2
                 else:
-                    raise Exception("unknown action")
+                    assert_never(instruction.action)
 
     return sum(grid[(x, y)] for x in range(1000) for y in range(1000))
 

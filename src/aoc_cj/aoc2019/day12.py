@@ -9,22 +9,22 @@ def part_1(txt: str, step_count: int = 1000) -> int:
     lines = txt.splitlines()
 
     positions, velocities = pos_vel(lines)
-    for p, v in zip(positions, velocities):
+    for p, v in zip(positions, velocities, strict=True):
         simulate(p, v, step_count)
-    return sum(nrg(moon) for moon in zip(zip(*positions), zip(*velocities)))
+    return sum(nrg(moon) for moon in zip(zip(*positions, strict=True), zip(*velocities, strict=True), strict=True))
 
 
 def part_2(txt: str) -> int:
     lines = txt.splitlines()
 
     positions, velocities = pos_vel(lines)
-    steps_by_coord = (simulate(p, v) for p, v in zip(positions, velocities))
+    steps_by_coord = (simulate(p, v) for p, v in zip(positions, velocities, strict=True))
     return lcm(*steps_by_coord)
 
 
 def pos_vel(lines: list[str]) -> tuple[list[list[int]], list[list[int]]]:
     numbers = [(int(s) for s in re.findall(r"-?\d+", line)) for line in lines]
-    positions = list[list[int]](map(list, zip(*numbers)))
+    positions = list[list[int]](map(list, zip(*numbers, strict=True)))
     velocities = [[0] * len(numbers) for _ in range(3)]  # 3 for x, y, z
     return positions, velocities
 

@@ -77,7 +77,8 @@ def part_2(txt: str, *, width: int = 101, height: int = 103) -> int:  # pragma: 
         if max_group_size > 50:
             return t
 
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 if __name__ == "__main__":

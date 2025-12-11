@@ -99,25 +99,25 @@ off x=-93533..-4276,y=-16170..68771,z=-104985..-24507
 
 
 @pytest.mark.parametrize(
-    ("input", "expected"),
-    (
+    ("example", "expected"),
+    [
         (EXAMPLE_INPUT_1, 39),
         (EXAMPLE_INPUT_2, 590784),
-    ),
+    ],
 )
-def test_part_1(input: str, expected: int) -> None:
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    ("input", "expected"),
-    (
+    ("example", "expected"),
+    [
         (EXAMPLE_INPUT_1, 39),
         (EXAMPLE_INPUT_3, 2758514936282235),
-    ),
+    ],
 )
-def test_part_2(input: str, expected: int) -> None:
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected
 
 
 CUBOID_0 = d.Cuboid(0, 0, 0, 0, 0, 0)
@@ -143,7 +143,7 @@ CUBOID_11 = d.Cuboid(2, 3, 1, 1, 1, 1)
 
 @pytest.mark.parametrize(
     ("c", "expected"),
-    (
+    [
         (CUBOID_0, 1),
         (CUBOID_1, 2),
         (CUBOID_2, 3),
@@ -155,15 +155,15 @@ CUBOID_11 = d.Cuboid(2, 3, 1, 1, 1, 1)
         (CUBOID_8, 36),
         (CUBOID_9, 16),
         (CUBOID_10, 12),
-    ),
+    ],
 )
-def test_cuboid_volume(c: d.Cuboid, expected: int):
+def test_cuboid_volume(c: d.Cuboid, expected: int) -> None:
     assert c.volume() == expected
 
 
 @pytest.mark.parametrize(
     ("c1", "c2", "expected"),
-    (
+    [
         (CUBOID_0, CUBOID_0, CUBOID_0),
         (CUBOID_0, CUBOID_1, CUBOID_0),
         (CUBOID_0, CUBOID_2, CUBOID_0),
@@ -184,15 +184,15 @@ def test_cuboid_volume(c: d.Cuboid, expected: int):
         (CUBOID_9, CUBOID_10, CUBOID_11),
         (CUBOID_9, CUBOID_11, CUBOID_11),
         (CUBOID_10, CUBOID_11, CUBOID_11),
-    ),
+    ],
 )
-def test_cuboid_intersection(c1: d.Cuboid, c2: d.Cuboid, expected: d.Cuboid):
+def test_cuboid_intersection(c1: d.Cuboid, c2: d.Cuboid, expected: d.Cuboid) -> None:
     assert c1.intersection(c2) == expected
 
 
 @pytest.mark.parametrize(
     ("c1", "c2", "expected_volume"),
-    (
+    [
         # subtracting a cuboid from itself should have no volume
         (CUBOID_0, CUBOID_0, 0),
         (CUBOID_1, CUBOID_1, 0),
@@ -203,8 +203,8 @@ def test_cuboid_intersection(c1: d.Cuboid, c2: d.Cuboid, expected: d.Cuboid):
         (CUBOID_6, CUBOID_5, 0),
         (CUBOID_9, CUBOID_10, CUBOID_9.volume() - CUBOID_11.volume()),
         (CUBOID_10, CUBOID_9, CUBOID_10.volume() - CUBOID_11.volume()),
-    ),
+    ],
 )
-def test_cuboid_subtract(c1: d.Cuboid, c2: d.Cuboid, expected_volume: int):
+def test_cuboid_subtract(c1: d.Cuboid, c2: d.Cuboid, expected_volume: int) -> None:
     result = c1.subtract(c2)
     assert sum(c.volume() for c in result) == expected_volume

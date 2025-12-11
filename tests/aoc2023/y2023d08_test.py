@@ -37,14 +37,14 @@ XXX = (XXX, XXX)
 
 
 @pytest.mark.parametrize(
-    ("example_input", "expected"),
-    (
+    ("example_example", "expected"),
+    [
         (EXAMPLE_INPUT_1, 2),
         (EXAMPLE_INPUT_2, 6),
-    ),
+    ],
 )
-def test_part_1(example_input: str, expected: int) -> None:
-    assert d.part_1(example_input) == expected
+def test_part_1(example_example: str, expected: int) -> None:
+    assert d.part_1(example_example) == expected
 
 
 def test_part_2() -> None:

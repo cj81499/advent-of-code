@@ -22,10 +22,10 @@ def test_part_1() -> None:
 
 @pytest.mark.parametrize(
     ("expand_by", "expected"),
-    (
+    [
         (10, 1030),
         (100, 8410),
-    ),
+    ],
 )
 def test_part_2(expand_by: int, expected: int) -> None:
     assert d.part_2(EXAMPLE_INPUT, expand_by=expand_by) == expected

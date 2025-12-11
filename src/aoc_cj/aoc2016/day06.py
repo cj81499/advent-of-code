@@ -11,7 +11,7 @@ def part_2(txt: str) -> str:
 
 def error_correct_message(txt: str, *, modified: bool = False) -> str:
     message = []
-    for chars in zip(*txt.splitlines()):
+    for chars in zip(*txt.splitlines(), strict=True):
         counts = Counter(chars)
         most_common, *_, least_common = counts.most_common()
         message.append((least_common if modified else most_common)[0])

@@ -49,7 +49,8 @@ def part_2(txt: str) -> int:
         if flashes == num_octopuses:
             return i
 
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 if __name__ == "__main__":

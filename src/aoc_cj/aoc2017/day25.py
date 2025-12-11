@@ -24,7 +24,7 @@ class State:
 
 
 class TurningMachine:
-    def __init__(self, start_state: str, states: list[State]):
+    def __init__(self, start_state: str, states: list[State]) -> None:
         self._tape = defaultdict[int, int](int)
         self._states = {s.letter: s for s in states}
         self._state = self._states[start_state]

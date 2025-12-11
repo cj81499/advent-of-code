@@ -38,7 +38,10 @@ def part_1(txt: str) -> int:
 
     initial = _State(pos=start, facing=Facing.EAST)
     to_explore = deque(((0, initial),))
-    valid_pos = lambda p: p not in walls
+
+    def valid_pos(p):
+        return p not in walls
+
     cheapest: dict[_State, int] = {}
     while to_explore:
         cost, state = to_explore.popleft()
@@ -62,11 +65,14 @@ def part_2(txt: str) -> int:
     initial_state = _State(pos=start, facing=Facing.EAST)
     to_explore = deque[tuple[int, _State, _State]]()
     to_explore.append((0, initial_state, initial_state))
-    valid_pos = lambda p: p not in walls
+
+    def valid_pos(p):
+        return p not in walls
+
     cheapest: dict[_State, _CheapTracker] = {}
     while to_explore:
         cost, state, prev_state = to_explore.popleft()
-        best = cheapest.get(state, None)
+        best = cheapest.get(state)
         # if we've found a new best
         if best is None or cost < best.cost:
             seen_on_way = cheapest[prev_state].seen if prev_state in cheapest else set()

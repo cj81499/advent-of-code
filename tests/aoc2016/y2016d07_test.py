@@ -4,7 +4,7 @@ import aoc_cj.aoc2016.day07 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("abba[mnop]qrst", True),
         ("abcd[bddb]xyyx", False),
@@ -12,12 +12,12 @@ import aoc_cj.aoc2016.day07 as d
         ("ioxxoj[asdfgh]zxcvbn", True),
     ],
 )
-def test_supports_tls(input: str, expected: int) -> None:
-    assert d.supports_tls(input) is expected
+def test_supports_tls(example: str, expected: int) -> None:
+    assert d.supports_tls(example) is expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("aba[bab]xyz", True),
         ("xyx[xyx]xyx", False),
@@ -25,5 +25,5 @@ def test_supports_tls(input: str, expected: int) -> None:
         ("zazbz[bzb]cdb", True),
     ],
 )
-def test_supports_ssl(input: str, expected: int) -> None:
-    assert d.supports_ssl(input) is expected
+def test_supports_ssl(example: str, expected: int) -> None:
+    assert d.supports_ssl(example) is expected

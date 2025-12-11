@@ -35,10 +35,11 @@ class Monkey:
 
             if op == "+":
                 return val1 + val2
-            elif op == "*":
+            if op == "*":
                 return val1 * val2
 
-            assert False, "unreachable"
+            msg = "unreachable"
+            raise AssertionError(msg)
 
         return Monkey(
             deque(int(n) for n in item.split(", ")),
@@ -60,10 +61,7 @@ class Monkey:
             item = relief_strategy(item)
 
             # test worry level
-            if item % self.test == 0:
-                throw_to = self.true_monkey
-            else:
-                throw_to = self.false_monkey
+            throw_to = self.true_monkey if item % self.test == 0 else self.false_monkey
 
             # throw
             monkeys[throw_to].items.append(item)

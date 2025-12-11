@@ -4,7 +4,7 @@ import aoc_cj.aoc2020.day18 as d
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("1 + 2 * 3 + 4 * 5 + 6", 71),
         ("1 + (2 * 3) + (4 * (5 + 6))", 51),
@@ -14,12 +14,12 @@ import aoc_cj.aoc2020.day18 as d
         ("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2", 13632),
     ],
 )
-def test_part_1(input, expected):
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("1 + 2 * 3 + 4 * 5 + 6", 231),
         ("1 + (2 * 3) + (4 * (5 + 6))", 51),
@@ -29,5 +29,5 @@ def test_part_1(input, expected):
         ("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2", 23340),
     ],
 )
-def test_part_2(input, expected):
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

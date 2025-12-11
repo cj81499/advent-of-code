@@ -8,7 +8,7 @@ def part_1(txt: str):
     for phase_setting_seq in itertools.permutations(range(5)):
         amplifiers = [IntcodeProgram.parse(txt) for _ in range(5)]
         prev = 0
-        for a, n in zip(amplifiers, phase_setting_seq):
+        for a, n in zip(amplifiers, phase_setting_seq, strict=True):
             a.write_input(n)
             a.write_input(prev)
             a.run()
@@ -21,7 +21,7 @@ def part_2(txt: str):
     m = 0
     for phase_setting_seq in itertools.permutations(range(5, 10)):
         amplifiers = [IntcodeProgram.parse(txt) for _ in range(5)]
-        for a, n in zip(amplifiers, phase_setting_seq):
+        for a, n in zip(amplifiers, phase_setting_seq, strict=True):
             a.write_input(n)
         prev = 0
         while not amplifiers[-1].terminated:

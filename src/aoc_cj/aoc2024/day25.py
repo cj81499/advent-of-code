@@ -4,7 +4,7 @@ import more_itertools as mi
 
 
 def height(key_or_lock: list[str]) -> tuple[int, ...]:
-    columns: zip[tuple[str, ...]] = zip(*key_or_lock[1:-1])
+    columns: zip[tuple[str, ...]] = zip(*key_or_lock[1:-1], strict=True)
     return tuple(col.count("#") for col in columns)
 
 

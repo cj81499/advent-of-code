@@ -47,7 +47,7 @@ def add_self_to_prefs(prefs: Preferences) -> Preferences:
     """Add an apathetic individual named "Me" to prefs"""
     for attendee in prefs:
         prefs[attendee]["Me"] = 0
-    prefs["Me"] = {neighbor: 0 for neighbor in prefs}
+    prefs["Me"] = dict.fromkeys(prefs, 0)
     return prefs
 
 

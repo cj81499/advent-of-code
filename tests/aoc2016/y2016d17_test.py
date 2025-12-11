@@ -8,7 +8,7 @@ def test_is_open() -> None:
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("hijkl", None),
         ("ihgpwlah", "DDRRRD"),
@@ -16,17 +16,17 @@ def test_is_open() -> None:
         ("ulqzkmiv", "DRURDRUDDLLDLUURRDULRLDUUDDDRR"),
     ],
 )
-def test_part_1(input: str, expected: str | None) -> None:
-    assert d.part_1(input) == expected
+def test_part_1(example: str, expected: str | None) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("ihgpwlah", 370),
         ("kglvqrro", 492),
         ("ulqzkmiv", 830),
     ],
 )
-def test_part_2(input: str, expected: int) -> None:
-    assert d.part_2(input) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

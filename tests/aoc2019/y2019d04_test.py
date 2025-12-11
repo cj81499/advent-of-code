@@ -4,7 +4,7 @@ import aoc_cj.aoc2019.day04 as d
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (1, [1]),
         (123, [1, 2, 3]),
@@ -12,12 +12,12 @@ import aoc_cj.aoc2019.day04 as d
         (65789543, [6, 5, 7, 8, 9, 5, 4, 3]),
     ],
 )
-def test_get_digits(input_val: int, expected: list[int]) -> None:
-    assert d.get_digits(input_val) == expected
+def test_get_digits(example: int, expected: list[int]) -> None:
+    assert d.get_digits(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (122345, True),  # 2
         (123456, False),
@@ -28,12 +28,12 @@ def test_get_digits(input_val: int, expected: list[int]) -> None:
         (349284629237592147855230897132461234098, True),  # 5
     ],
 )
-def test_adj_repeat(input_val: int, expected: bool) -> None:
-    assert d.adj_repeat(d.get_digits(input_val)) == expected
+def test_adj_repeat(*, example: int, expected: bool) -> None:
+    assert d.adj_repeat(d.get_digits(example)) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (111123, True),
         (135679, True),
@@ -42,29 +42,29 @@ def test_adj_repeat(input_val: int, expected: bool) -> None:
         (654321, False),
     ],
 )
-def test_increasing_digits(input_val: int, expected: bool) -> None:
-    assert d.increasing_digits(d.get_digits(input_val)) == expected
+def test_increasing_digits(*, example: int, expected: bool) -> None:
+    assert d.increasing_digits(d.get_digits(example)) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (112233, True),
         (223450, False),  # decreasing pair (50)
         (123789, False),  # no double
     ],
 )
-def test_part_1(input_val: int, expected: bool) -> None:
-    assert d.is_valid_part_1(d.get_digits(input_val)) == expected
+def test_part_1(*, example: int, expected: bool) -> None:
+    assert d.is_valid_part_1(d.get_digits(example)) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (112233, True),
         (123444, False),  # triple 4
         (111122, True),
     ],
 )
-def test_part_2(input_val: int, expected: bool) -> None:
-    assert d.is_valid_part_2(d.get_digits(input_val)) == expected
+def test_part_2(*, example: int, expected: bool) -> None:
+    assert d.is_valid_part_2(d.get_digits(example)) == expected

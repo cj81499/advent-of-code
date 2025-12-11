@@ -62,9 +62,6 @@ def go_shopping(gold: float) -> Generator[tuple[Item, ...]]:
                 yield purchase_no_none
 
 
-import dataclasses
-
-
 @dataclasses.dataclass
 class Unit:
     hit_points: int

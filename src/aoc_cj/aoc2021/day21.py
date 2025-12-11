@@ -26,7 +26,8 @@ def part_1(txt: str) -> int:
         roll_count += 3
         if active_player.score >= 1000:
             return inactive_player.score * roll_count
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 @dataclasses.dataclass(frozen=True)

@@ -70,7 +70,7 @@ def get_inner_portals(grid, portals):
     max_x = int(max(p.real for p in grid))
     max_y = int(max(p.imag for p in grid))
 
-    def is_inner(pos):
+    def is_inner(pos) -> bool:
         r, i = pos.real, pos.imag
         return not (r == 2 or i == 2 or r == max_x - 2 or i == max_y - 2)
 
@@ -94,7 +94,7 @@ def parse(txt):
                     portals.setdefault(up_val + c, []).append(p - 2j if grid.get(p - 2j) == "." else p + 1j)
                 elif left_val.isalpha():
                     portals.setdefault(left_val + c, []).append(p - 2 if grid.get(p - 2) == "." else p + 1)
-    assert all(len(pos) == (1 if name == "AA" or name == "ZZ" else 2) for name, pos in portals.items())
+    assert all(len(pos) == (1 if name in {"AA", "ZZ"} else 2) for name, pos in portals.items())
     start = portals.pop("AA")[0]
     end = portals.pop("ZZ")[0]
     new_portals = {}

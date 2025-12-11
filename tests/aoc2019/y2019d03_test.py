@@ -19,24 +19,24 @@ U98,R91,D20,R16,D67,R40,U7,R15,U6,R7
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_0, 6),
         (EXAMPLE_1, 159),
         (EXAMPLE_2, 135),
     ],
 )
-def test_part_1(input_val, expected: int) -> None:
-    assert d.part_1(input_val) == expected
+def test_part_1(example: str, expected: int) -> None:
+    assert d.part_1(example) == expected
 
 
 @pytest.mark.parametrize(
-    "input_val, expected",
+    ("example", "expected"),
     [
         (EXAMPLE_0, 30),
         (EXAMPLE_1, 610),
         (EXAMPLE_2, 410),
     ],
 )
-def test_part_2(input_val, expected: int) -> None:
-    assert d.part_2(input_val) == expected
+def test_part_2(example: str, expected: int) -> None:
+    assert d.part_2(example) == expected

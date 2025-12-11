@@ -10,7 +10,7 @@ class NodeState(enum.Enum):
 
 
 class VirusGrid:
-    def __init__(self, grid: str):
+    def __init__(self, grid: str) -> None:
         lines = grid.splitlines()
         self.grid = defaultdict(
             lambda: NodeState.CLEAN, {(x, y): NodeState(c) for y, line in enumerate(lines) for x, c in enumerate(line)}
@@ -26,14 +26,14 @@ class VirusGrid:
         return self.grid[self.pos]
 
     @current_node.setter
-    def current_node(self, new_state):
+    def current_node(self, new_state) -> None:
         self.grid[self.pos] = new_state
 
-    def simulate(self, burst_count):
+    def simulate(self, burst_count) -> None:
         for _ in range(burst_count):
             self.burst()
 
-    def burst(self):
+    def burst(self) -> None:
         dx, dy = self.dir
         if self.current_node == NodeState.INFECTED:
             self.dir = (-dy, dx)
@@ -44,14 +44,14 @@ class VirusGrid:
             self.infection_count += 1
         self._move()
 
-    def _move(self):
+    def _move(self) -> None:
         x, y = self.pos
         dx, dy = self.dir
         self.pos = (x + dx, y + dy)
 
 
 class VirusGridB(VirusGrid):
-    def burst(self):
+    def burst(self) -> None:
         dx, dy = self.dir
         if self.current_node == NodeState.CLEAN:
             self.dir = (dy, -dx)

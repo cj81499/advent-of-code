@@ -14,9 +14,10 @@ class Location:
         assert isinstance(other, Location)
         if other.name in self.distances:
             return self.distances[other.name]
-        elif self.name in other.distances:
+        if self.name in other.distances:
             return other.distances[self.name]
-        assert False, "unreachable"
+        msg = "unreachable"
+        raise AssertionError(msg)
 
     @override
     def __repr__(self) -> str:
@@ -27,12 +28,12 @@ def find_paths(lines: list[str]) -> tuple[float, int]:
     # Save locations and the distances between them
     locations: dict[str, Location] = {}
     for line in lines:
-        locA, _, locB, _, dist = line.split()
+        location_a, _, location_b, _, dist = line.split()
         dist = int(dist)
-        locations.setdefault(locA, Location(locA))
-        locations.setdefault(locB, Location(locB))
+        locations.setdefault(location_a, Location(location_a))
+        locations.setdefault(location_b, Location(location_b))
         # We only need to save the distance info to one location object.
-        locations[locA].set_dist_between(locB, dist)
+        locations[location_a].set_dist_between(location_b, dist)
 
     min_dist = float("inf")
     max_dist = 0

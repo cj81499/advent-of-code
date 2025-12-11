@@ -6,9 +6,9 @@ Player 2 starting position: 8
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT) == 739785
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT) == 444356092776315

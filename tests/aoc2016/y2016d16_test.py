@@ -3,12 +3,12 @@ import pytest
 import aoc_cj.aoc2016.day16 as d
 
 EXAMPLE_INPUT = """
-sample input
+sample example
 """.strip()
 
 
 @pytest.mark.parametrize(
-    "input, expected",
+    ("example", "expected"),
     [
         ("1", "100"),
         ("0", "001"),
@@ -16,8 +16,8 @@ sample input
         ("111100001010", "1111000010100101011110000"),
     ],
 )
-def test_step(input: str, expected: str) -> None:
-    assert d.step(input) == expected
+def test_step(example: str, expected: str) -> None:
+    assert d.step(example) == expected
 
 
 def test_checksum() -> None:

@@ -45,13 +45,13 @@ start-RW
 """.strip()
 
 
-def test_part_1():
+def test_part_1() -> None:
     assert d.part_1(EXAMPLE_INPUT_1) == 10
     assert d.part_1(EXAMPLE_INPUT_2) == 19
     assert d.part_1(EXAMPLE_INPUT_3) == 226
 
 
-def test_part_2():
+def test_part_2() -> None:
     assert d.part_2(EXAMPLE_INPUT_1) == 36
     assert d.part_2(EXAMPLE_INPUT_2) == 103
     assert d.part_2(EXAMPLE_INPUT_3) == 3509

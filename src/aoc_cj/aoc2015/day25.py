@@ -26,7 +26,8 @@ PARSE_REGEX = re.compile(r".* row (\d+), column (\d+).")
 def part_1(txt: str) -> int:
     match = PARSE_REGEX.match(txt)
     if not match:
-        raise ValueError("bad input")
+        msg = "bad input"
+        raise ValueError(msg)
     row, col = map(int, match.groups())
     return code_at(col, row)
 

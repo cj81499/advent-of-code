@@ -17,8 +17,8 @@ iyr:2011 ecl:brn hgt:59in
 """.strip()
 
 
-def test_part_1():
-    assert 2 == d.part_1(EXAMPLE_INPUT)
+def test_part_1() -> None:
+    assert d.part_1(EXAMPLE_INPUT) == 2
 
 
 EXAMPLE_INPUT_B_INVALID = """
@@ -53,7 +53,7 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 """.strip()
 
 
-def test_part_2():
+def test_part_2() -> None:
     for passport in EXAMPLE_INPUT_B_INVALID.split("\n\n"):
         assert d.is_valid_2(passport) is False
 

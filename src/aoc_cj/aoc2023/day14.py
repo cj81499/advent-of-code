@@ -1,5 +1,6 @@
 import itertools
-from collections.abc import Mapping, Set
+from collections.abc import Mapping
+from collections.abc import Set as AbstractSet
 
 Rocks = Mapping[complex, str]
 
@@ -59,7 +60,7 @@ def part_1(txt: str) -> int:
     return total_load(tilt(rocks, -1j))
 
 
-def total_load2(o_rocks: Set[complex], max_y: int) -> int:
+def total_load2(o_rocks: AbstractSet[complex], max_y: int) -> int:
     max_load = max_y + 1
     tot = 0
     for r in o_rocks:

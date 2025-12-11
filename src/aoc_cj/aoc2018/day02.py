@@ -12,8 +12,9 @@ def part_1(txt):
 
 def part_2(txt):
     for s1, s2 in itertools.product(txt.splitlines(), repeat=2):
-        if sum(a != b for a, b in zip(s1, s2)) == 1:
-            return "".join(a for a, b in zip(s1, s2) if a == b)
+        if sum(a != b for a, b in zip(s1, s2, strict=True)) == 1:
+            return "".join(a for a, b in zip(s1, s2, strict=True) if a == b)
+    return None
 
 
 if __name__ == "__main__":

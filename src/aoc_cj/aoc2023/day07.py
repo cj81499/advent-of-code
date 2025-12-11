@@ -82,14 +82,12 @@ class HandB(Hand):
 
 def part_1(txt: str) -> int:
     hands = sorted(map(Hand.parse, txt.splitlines()))
-    total_winnings = sum(h.bid * rank for rank, h in enumerate(hands, start=1))
-    return total_winnings
+    return sum(h.bid * rank for rank, h in enumerate(hands, start=1))
 
 
 def part_2(txt: str) -> int:
     hands = sorted(map(HandB.parse, txt.splitlines()))
-    total_winnings = sum(h.bid * rank for rank, h in enumerate(hands, start=1))
-    return total_winnings
+    return sum(h.bid * rank for rank, h in enumerate(hands, start=1))
 
 
 if __name__ == "__main__":

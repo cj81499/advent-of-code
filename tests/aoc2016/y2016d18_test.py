@@ -27,11 +27,11 @@ EXAMPLE_MAP_2 = """
 
 
 @pytest.mark.parametrize(
-    "first_row, expected",
-    (
+    ("first_row", "expected"),
+    [
         (EXAMPLE_INPUT_1, EXAMPLE_MAP_1),
         (EXAMPLE_INPUT_2, EXAMPLE_MAP_2),
-    ),
+    ],
 )
 def test_next_row(first_row: str, expected: str) -> None:
     prev = first_row
