@@ -28,7 +28,7 @@
 | 24  | [Never Tell Me The Odds](https://adventofcode.com/2023/day/24)         |   :star:   |   :star:   | :white_check_mark: |
 | 25  | [Snowverload](https://adventofcode.com/2023/day/25)                    |   :star:   |    :x:     | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2023/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

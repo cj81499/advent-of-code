@@ -28,7 +28,7 @@
 | 24  | [Electromagnetic Moat](https://adventofcode.com/2017/day/24)                   | :star: | :star: | :white_check_mark: |
 | 25  | [The Halting Problem](https://adventofcode.com/2017/day/25)                    | :star: | :star: | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2017/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

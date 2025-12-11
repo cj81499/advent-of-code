@@ -28,7 +28,7 @@
 | 24  | [Lobby Layout](https://adventofcode.com/2020/day/24)            | :star: | :star: | :white_check_mark: |
 | 25  | [Combo Breaker](https://adventofcode.com/2020/day/25)           | :star: | :star: | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2020/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

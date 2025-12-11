@@ -28,7 +28,7 @@
 | 24  | [Arithmetic Logic Unit](https://adventofcode.com/2021/day/24)   |  :x:   |  :x:   |        :x:         |
 | 25  | [Sea Cucumber](https://adventofcode.com/2021/day/25)            | :star: |  :x:   | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2021/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------

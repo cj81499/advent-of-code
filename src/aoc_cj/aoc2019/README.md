@@ -28,7 +28,7 @@
 | 24  | [Planet of Discord](https://adventofcode.com/2019/day/24)                 | :star: | :star: | :white_check_mark: |
 | 25  | [Cryostasis](https://adventofcode.com/2019/day/25)                        | :star: |  :x:   | :white_check_mark: |
 
-## Results
+## Results <!-- https://adventofcode.com/2019/leaderboard/self -->
 
 ```text
       --------Part 1--------   --------Part 2--------
