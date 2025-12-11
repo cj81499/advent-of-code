@@ -124,7 +124,7 @@ def test_simulation(initial: str, steps: int, expected: str, corners_stuck_on: b
     simulation = d.lightshow(initial, corners_stuck_on=corners_stuck_on)
     result = mi.nth(simulation, steps)
     assert result is not None, "simulation goes forever"
-    assert ["".join(row) for row in result] == [line for line in expected.splitlines()]
+    assert "\n".join("".join(row) for row in result) == expected
 
 
 def test_part_1() -> None:

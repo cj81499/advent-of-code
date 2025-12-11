@@ -15,13 +15,13 @@ class Database:
         fresh_ranges, available_ids = txt.split("\n\n")
         return cls(
             fresh_ranges=frozenset(map(util.parse_range, fresh_ranges.splitlines())),
-            available_ids=frozenset(int(l) for l in available_ids.splitlines()),
+            available_ids=frozenset(map(int, available_ids.splitlines())),
         )
 
 
 def part_1(txt: str) -> int:
     d = Database.parse(txt)
-    return sum(1 for id in d.available_ids if any(id in r for r in d.fresh_ranges))
+    return sum(1 for id_ in d.available_ids if any(id_ in r for r in d.fresh_ranges))
 
 
 def part_2(txt: str) -> int:
@@ -33,7 +33,7 @@ def merge_ranges(ranges: Iterable[range]) -> Generator[range]:
     sorted_ranges = sorted(ranges, key=lambda r: (r.start, r.stop, r.step))
     if len(sorted_ranges) <= 0:
         return
-    current = range(0, 0)  # empty range
+    current = range(0)  # empty range
     for r in sorted_ranges:
         if r.start in current:
             current = range(current.start, max(current.stop, r.stop))

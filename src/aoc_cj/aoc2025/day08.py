@@ -41,7 +41,8 @@ def part_2(txt: str) -> int:
         if mi.all_equal(circuits.values()):
             return p1[0] * p2[0]
 
-    assert False, "unreachable"
+    msg = "unreachable"
+    raise AssertionError(msg)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+extend = "../../pyproject.toml"
+
+[lint]
+ignore = [
+  "A002",
+  "PT006",
+  "SLF001",
+  "PT018",
+  "FBT001",
+]
+
+[lint.isort]
+known-first-party = ["aoc_cj"]
