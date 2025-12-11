@@ -58,7 +58,7 @@ exclude_also = [
 ]
 partial_branches = [
   "pragma: no branch",
-  'for .* in itertools\.count\(\):',
+  'for .* in itertools\.count\(.*\):',
 ]
 
 [tool.mypy]  # https://mypy.readthedocs.io/en/stable/config_file.html

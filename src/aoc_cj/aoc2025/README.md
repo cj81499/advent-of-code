@@ -11,7 +11,7 @@
 | 07  | [Laboratories](https://adventofcode.com/2025/day/7)        |   :star:   |   :star:   | :white_check_mark: |
 | 08  | [Playground](https://adventofcode.com/2025/day/8)          |   :star:   |   :star:   | :white_check_mark: |
 | 09  | [Movie Theater](https://adventofcode.com/2025/day/9)       |   :star:   |   :star:   | :white_check_mark: |
-| 10  | [?](https://adventofcode.com/2025/day/10)                  | :question: | :question: |     :question:     |
+| 10  | [Factory](https://adventofcode.com/2025/day/10)            |   :star:   |   :star:   | :white_check_mark: |
 | 11  | [Reactor](https://adventofcode.com/2025/day/11)            |   :star:   |   :star:   | :white_check_mark: |
 | 12  | [?](https://adventofcode.com/2025/day/12)                  | :question: | :question: |     :question:     |
 
@@ -20,6 +20,7 @@
 ```text
 Day   -Part 1-   -Part 2-
  11   00:12:23   00:15:40
+ 10       >24h       >24h
   9   07:39:49   08:48:10
   8   07:07:48   07:14:51
   7   16:26:08   16:46:26
