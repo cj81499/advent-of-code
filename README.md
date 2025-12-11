@@ -16,8 +16,13 @@ uv sync
 uv run pre-commit install
 ```
 
-Make sure that [aocd](https://github.com/wimglenn/advent-of-code-data) knows where to find your session token.
-My personal preference is to put it in `~/.config/aocd/token`.
+Make sure that [`aocd`](https://github.com/wimglenn/advent-of-code-data) knows
+about your session token by putting it in `~/.config/aocd/token`.
+You can "scrape" it from your browser's cookie storage by running:
+
+```sh
+uv run --with browser-cookie3 aocd-token
+```
 
 ### Test
 
