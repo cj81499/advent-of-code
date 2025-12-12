@@ -1,19 +1,23 @@
 import collections
 import itertools
+from collections.abc import Collection, Generator, Iterable
+from typing import Final, Literal
 
-ACTIVE = "#"
-INACTIVE = "."
+ACTIVE: Final = "#"
+INACTIVE: Final = "."
+
+type Point = tuple[int, ...]
 
 
-def neighbors(pos):
+def neighbors(pos: Point) -> Generator[Point]:
     for delta in itertools.product(*itertools.repeat((-1, 0, 1), len(pos))):
         if not all(x == 0 for x in delta):
             yield tuple(x + dx for x, dx in zip(pos, delta))
 
 
-def simulate(txt, dimensions):
+def simulate(txt: str, dimensions: int) -> int:
     # initialize space
-    space = collections.defaultdict(lambda: INACTIVE)
+    space = collections.defaultdict[Point, Literal[".", "#"]](lambda: INACTIVE)
     space.update(
         {
             (x, y, *itertools.repeat(0, dimensions - 2)): c
@@ -27,14 +31,14 @@ def simulate(txt, dimensions):
         # get min and max coordinates
         mins, maxes = minmax_tuple(set(space))
         # count active neighbors for each position
-        active_neighbors = collections.defaultdict(int)
+        active_neighbors = collections.defaultdict[Point, int](int)
         for p in expand_points(mins, maxes):
             if space[p] == ACTIVE:
                 for n in neighbors(p):
                     active_neighbors[n] += 1
 
         # calculate the contents of the new space
-        new_space = collections.defaultdict(lambda: INACTIVE)
+        new_space = collections.defaultdict[Point, Literal[".", "#"]](lambda: INACTIVE)
         new_space.update(
             {
                 p: ACTIVE
@@ -44,23 +48,23 @@ def simulate(txt, dimensions):
         )
         space = new_space
 
-    return sum(v == ACTIVE for v in new_space.values())
+    return sum(v == ACTIVE for v in space.values())
 
 
-def minmax_tuple(tuples):
-    return tuple(min(x) for x in zip(*tuples)), tuple(max(x) for x in zip(*tuples))
+def minmax_tuple(points: Collection[Point]) -> tuple[Point, Point]:
+    return tuple(min(x) for x in zip(*points)), tuple(max(x) for x in zip(*points))
 
 
-def expand_points(mins, maxes):
+def expand_points(mins: Point, maxes: Point) -> Iterable[tuple[int, ...]]:
     assert len(mins) == len(maxes)
     return itertools.product(*(range(start - 1, stop + 2) for start, stop in zip(mins, maxes)))
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     return simulate(txt, 3)
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     return simulate(txt, 4)
 
 
