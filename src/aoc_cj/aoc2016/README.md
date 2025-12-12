@@ -26,7 +26,7 @@
 | 22  | [Grid Computing](https://adventofcode.com/2016/day/22)                         | :star: | :star: | :white_check_mark: |
 | 23  | [Safe Cracking](https://adventofcode.com/2016/day/23)                          | :star: | :star: | :white_check_mark: |
 | 24  | [Air Duct Spelunking](https://adventofcode.com/2016/day/24)                    | :star: | :star: | :white_check_mark: |
-| 25  | [Clock Signal](https://adventofcode.com/2016/day/25)                           | :star: | :star: |      :shrug:       |
+| 25  | [Clock Signal](https://adventofcode.com/2016/day/25)                           | :star: | :star: |     :question:     |
 
 ## Results <!-- https://adventofcode.com/2016/leaderboard/self -->
 

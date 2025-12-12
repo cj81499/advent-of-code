@@ -22,7 +22,7 @@
 | 18  | [Settlers of The North Pole](https://adventofcode.com/2018/day/18)           | :star: | :star: | :white_check_mark: |
 | 19  | [Go With The Flow](https://adventofcode.com/2018/day/19)                     | :star: | :star: | :white_check_mark: |
 | 20  | [A Regular Map](https://adventofcode.com/2018/day/20)                        | :star: | :star: | :white_check_mark: |
-| 21  | [Chronal Conversion](https://adventofcode.com/2018/day/21)                   | :star: | :star: |      :shrug:       |
+| 21  | [Chronal Conversion](https://adventofcode.com/2018/day/21)                   | :star: | :star: |     :question:     |
 | 22  | [Mode Maze](https://adventofcode.com/2018/day/22)                            | :star: | :star: | :white_check_mark: |
 | 23  | [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) | :star: | :star: | :white_check_mark: |
 | 24  | [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24)         | :star: | :star: | :white_check_mark: |
