@@ -1,24 +1,25 @@
 # Advent of Code 2025
 
-| Day | Title                                                      |     1      |     2      |       Tests        |
-| :-: | ---------------------------------------------------------- | :--------: | :--------: | :----------------: |
-| 01  | [Secret Entrance](https://adventofcode.com/2025/day/1)     |   :star:   |   :star:   | :white_check_mark: |
-| 02  | [Gift Shop](https://adventofcode.com/2025/day/2)           |   :star:   |   :star:   | :white_check_mark: |
-| 03  | [Lobby](https://adventofcode.com/2025/day/3)               |   :star:   |   :star:   | :white_check_mark: |
-| 04  | [Printing Department](https://adventofcode.com/2025/day/4) |   :star:   |   :star:   | :white_check_mark: |
-| 05  | [Cafeteria](https://adventofcode.com/2025/day/5)           |   :star:   |   :star:   | :white_check_mark: |
-| 06  | [Trash Compactor](https://adventofcode.com/2025/day/6)     |   :star:   |   :star:   | :white_check_mark: |
-| 07  | [Laboratories](https://adventofcode.com/2025/day/7)        |   :star:   |   :star:   | :white_check_mark: |
-| 08  | [Playground](https://adventofcode.com/2025/day/8)          |   :star:   |   :star:   | :white_check_mark: |
-| 09  | [Movie Theater](https://adventofcode.com/2025/day/9)       |   :star:   |   :star:   | :white_check_mark: |
-| 10  | [Factory](https://adventofcode.com/2025/day/10)            |   :star:   |   :star:   | :white_check_mark: |
-| 11  | [Reactor](https://adventofcode.com/2025/day/11)            |   :star:   |   :star:   | :white_check_mark: |
-| 12  | [?](https://adventofcode.com/2025/day/12)                  | :question: | :question: |     :question:     |
+| Day | Title                                                       |   1    |   2    |       Tests        |
+| :-: | ----------------------------------------------------------- | :----: | :----: | :----------------: |
+| 01  | [Secret Entrance](https://adventofcode.com/2025/day/1)      | :star: | :star: | :white_check_mark: |
+| 02  | [Gift Shop](https://adventofcode.com/2025/day/2)            | :star: | :star: | :white_check_mark: |
+| 03  | [Lobby](https://adventofcode.com/2025/day/3)                | :star: | :star: | :white_check_mark: |
+| 04  | [Printing Department](https://adventofcode.com/2025/day/4)  | :star: | :star: | :white_check_mark: |
+| 05  | [Cafeteria](https://adventofcode.com/2025/day/5)            | :star: | :star: | :white_check_mark: |
+| 06  | [Trash Compactor](https://adventofcode.com/2025/day/6)      | :star: | :star: | :white_check_mark: |
+| 07  | [Laboratories](https://adventofcode.com/2025/day/7)         | :star: | :star: | :white_check_mark: |
+| 08  | [Playground](https://adventofcode.com/2025/day/8)           | :star: | :star: | :white_check_mark: |
+| 09  | [Movie Theater](https://adventofcode.com/2025/day/9)        | :star: | :star: | :white_check_mark: |
+| 10  | [Factory](https://adventofcode.com/2025/day/10)             | :star: | :star: | :white_check_mark: |
+| 11  | [Reactor](https://adventofcode.com/2025/day/11)             | :star: | :star: | :white_check_mark: |
+| 12  | [Christmas Tree Farm](https://adventofcode.com/2025/day/12) | :star: | :star: |     :question:     |
 
 ## Results <!-- https://adventofcode.com/2025/leaderboard/self -->
 
 ```text
 Day   -Part 1-   -Part 2-
+ 12   10:14:58   10:15:36
  11   00:12:23   00:15:40
  10       >24h       >24h
   9   07:39:49   08:48:10
