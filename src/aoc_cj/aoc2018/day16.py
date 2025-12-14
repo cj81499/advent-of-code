@@ -66,7 +66,7 @@ def update_registers(r: Registers, i: int, new_val: int) -> Registers:
     return (*r[:i], new_val, *r[i + 1 :])
 
 
-def run_cmd(opcode_name: str, registers: Registers, instruction: Instruction[object]) -> Registers:
+def run_cmd(opcode_name: str, registers: Registers, instruction: Instruction[int]) -> Registers:
     a, b, c = instruction.a, instruction.b, instruction.c
     return update_registers(registers, c, OPERATIONS[opcode_name](registers, a, b))
 

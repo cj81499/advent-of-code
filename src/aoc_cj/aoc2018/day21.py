@@ -1,24 +1,29 @@
 from aoc_cj.aoc2018 import day16
 
 
-def part_1(txt):
+def part_1(txt: str) -> int:
     ip, *lines = txt.splitlines()
     ip = int(ip[4:])
+    instructions = tuple(map(day16.Instruction.parse_str, lines))
 
-    registers = [0, 0, 0, 0, 0, 0]
-    while registers[ip] >= 0 and registers[ip] < len(lines):
-        cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
-        day16.run_cmd(cmd, registers, a, b, c)
+    registers: day16.Registers = (0, 0, 0, 0, 0, 0)
+
+    while True:
+        # cmd, a, b, c = (x if len(str(x)) == 4 else int(x) for x in lines[registers[ip]].split())
+        instruction = instructions[registers[ip]]
+        registers = day16.run_cmd(instruction.opcode, registers, instruction)
         if registers[ip] == 28:
-            return max(registers)
-        registers[ip] += 1
+            break
+    return max(registers)
 
 
-def part_2(txt):
+def part_2(txt: str) -> int:
     ip, *lines = txt.splitlines()
     ip = int(ip[4:])
 
     cmds = [[x if len(str(x)) == 4 else int(x) for x in line.split()] for line in lines]
+    instructions = tuple(map(day16.Instruction.parse_str, txt.splitlines()))
+    print(instructions)
 
     seen = set()
     last = None
@@ -29,10 +34,12 @@ def part_2(txt):
         if registers[ip] == 28:
             m = max(registers)
             if m in seen:
+                assert last is not None
                 return last
             seen.add(m)
             last = m
         registers[ip] += 1
+    raise AssertionError("unreachable")
 
 
 if __name__ == "__main__":
