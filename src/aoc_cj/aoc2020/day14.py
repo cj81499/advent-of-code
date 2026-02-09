@@ -3,7 +3,7 @@ def part_1(txt):
 
 
 def part_2(txt):
-    return solver(txt, lambda m, a: (addresses(apply_mask(m, bin36(a), v2=True))), lambda m, v: v)
+    return solver(txt, lambda m, a: addresses(apply_mask(m, bin36(a), v2=True)), lambda m, v: v)
 
 
 def solver(txt, addrs_fn, val_fn):
