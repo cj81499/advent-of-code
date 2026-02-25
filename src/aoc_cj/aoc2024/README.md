@@ -18,7 +18,7 @@
 | 14  | [Restroom Redoubt](https://adventofcode.com/2024/day/14)       |   :star:   |   :star:   | :white_check_mark: |
 | 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)         |   :star:   |   :star:   | :white_check_mark: |
 | 16  | [Reindeer Maze](https://adventofcode.com/2024/day/16)          |   :star:   |   :star:   | :white_check_mark: |
-| 17  | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | :question: | :question: |     :question:     |
+| 17  | [Chronospatial Computer](https://adventofcode.com/2024/day/17) |   :star:   | :question: | :white_check_mark: |
 | 18  | [RAM Run](https://adventofcode.com/2024/day/18)                |   :star:   |   :star:   | :white_check_mark: |
 | 19  | [Linen Layout](https://adventofcode.com/2024/day/19)           |   :star:   |   :star:   | :white_check_mark: |
 | 20  | [Race Condition](https://adventofcode.com/2024/day/20)         |   :star:   |   :star:   | :white_check_mark: |
@@ -39,6 +39,7 @@ Day       Time   Rank  Score       Time   Rank  Score
  20   00:39:15   2009      0   00:56:24   1258      0
  19   00:10:57   1444      0   00:14:34   1129      0
  18   00:20:57   2438      0   00:26:54   2052      0
+ 17   00:58:00   4338      0          -      -      -
  16   01:06:42   4058      0   01:52:17   3208      0
  15   00:56:48   4717      0   20:32:43  20377      0
  14   13:37:54  27290      0   13:47:27  22823      0
