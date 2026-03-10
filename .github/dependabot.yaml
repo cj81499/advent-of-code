@@ -16,3 +16,11 @@ updates:
       interval: "daily"
     cooldown:
       default-days: 7
+
+  # Check for pre-commit dependency upgrades
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
