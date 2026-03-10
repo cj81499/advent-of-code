@@ -18,9 +18,8 @@ updates:
       default-days: 7
 
   # Check for pre-commit dependency upgrades
+  # NOTE: cooldown is not supported
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
       interval: "daily"
-    cooldown:
-      default-days: 7
