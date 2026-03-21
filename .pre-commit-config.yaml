@@ -1,6 +1,6 @@
 # See https://pre-commit.com for more information
 default_language_version:
-  ruby: '3.2.2'
+  ruby: '4.0.2'
   node: lts
 
 # https://pre-commit.com/#supported-git-hooks
