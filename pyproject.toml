@@ -35,7 +35,7 @@ dev = [
   "ruff>=0.14.3",
   "tombi>=0.9.16",
   "types-networkx>=3.5.0.20251104",
-  "types-shapely>=2.1.0.20250917",
+  "types-shapely>=2.1.0.20260408",
 ]
 
 [build-system]
