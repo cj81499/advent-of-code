@@ -27,7 +27,7 @@ cj81499 = "aoc_cj:solve"
 
 [dependency-groups]
 dev = [
-  "mypy>=1.20.1",
+  "mypy>=1.20.2",
   "pre-commit>=4.3.0",
   "pytest>=9.0.3",
   "pytest-cov>=7.0.0",
