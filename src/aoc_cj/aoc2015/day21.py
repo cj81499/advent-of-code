@@ -44,11 +44,11 @@ Defense +2   40     0       2
 Defense +3   80     0       3
 """.strip()
 
-WEAPONS, ARMOR, RINGS = SHOP.split("\n\n")
-WEAPONS = {Item.parse(line) for line in WEAPONS.splitlines()[1:]}
+_SHOP_CHUNKS = SHOP.split("\n\n")
+WEAPONS = set(map(Item.parse, _SHOP_CHUNKS[0].splitlines()[1:]))
 # add None b/c armor and rings are optional
-ARMOR = {None, *(Item.parse(line) for line in ARMOR.splitlines()[1:])}
-RINGS = {None, *(Item.parse(line) for line in RINGS.splitlines()[1:])}
+ARMOR = {None} | set(map(Item.parse, _SHOP_CHUNKS[1].splitlines()[1:]))
+RINGS = {None} | set(map(Item.parse, _SHOP_CHUNKS[2].splitlines()[1:]))
 
 
 def go_shopping(gold: float) -> Generator[tuple[Item, ...]]:
