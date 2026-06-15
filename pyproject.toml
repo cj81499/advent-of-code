@@ -33,7 +33,7 @@ dev = [
   "pytest-cov>=7.0.0",
   "pytest-watcher>=0.4.3",
   "ruff>=0.15.15",
-  "tombi>=1.1.1",
+  "tombi>=1.1.2",
   "types-networkx>=3.6.1.20260518",
   "types-shapely>=2.1.0.20260603",
 ]
