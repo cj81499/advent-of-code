@@ -124,6 +124,8 @@ ignore_missing_imports = true
 [tool.pytest]
 # skip slow tests by default
 addopts = ["-m", "not slow"]
+# treat warnings as errors
+filterwarnings = ["error"]
 markers = ["slow: marks tests as slow"]
 strict_xfail = true
 
