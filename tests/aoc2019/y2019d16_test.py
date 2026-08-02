@@ -8,7 +8,7 @@ initial = 12345678
 
 
 @pytest.mark.parametrize(
-    "before, after", itertools.pairwise(("12345678", "48226158", "34040438", "03415518", "01029498"))
+    "before, after", list(itertools.pairwise(("12345678", "48226158", "34040438", "03415518", "01029498")))
 )
 def test_phase(before, after):
     assert d.phase(d.digits(before)) == d.digits(after)

@@ -21,7 +21,7 @@ EXAMPLE_INPUT = """
 
 @pytest.mark.parametrize(
     ("example", "expected"),
-    (
+    [
         l.strip().split()
         for l in """
 1=-0-2     1747
@@ -38,7 +38,7 @@ EXAMPLE_INPUT = """
     1=        3
    122       37
 """.strip("\n").splitlines()
-    ),
+    ],
 )
 def test_snafu_to_base_10(example: str, expected: str) -> None:
     assert d.snafu_to_base_10(example) == int(expected)
@@ -46,7 +46,7 @@ def test_snafu_to_base_10(example: str, expected: str) -> None:
 
 @pytest.mark.parametrize(
     ("example", "expected"),
-    (
+    [
         l.strip().split()
         for l in """
         1              1
@@ -65,7 +65,7 @@ def test_snafu_to_base_10(example: str, expected: str) -> None:
     12345        1-0---0
 314159265  1121-1110-1=0
 """.strip("\n").splitlines()
-    ),
+    ],
 )
 def test_base_10_to_snafu(example: str, expected: str) -> None:
     assert d.base_10_to_snafu(int(example)) == expected

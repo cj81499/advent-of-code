@@ -53,12 +53,12 @@ def smudged_reflection_score(arr: NDArrayChar) -> int:
 
 
 def part_1(txt: str) -> int:
-    patterns = [np.char.array([[*line] for line in tp.splitlines()]) for tp in txt.split("\n\n")]
+    patterns = [np.array([[*line] for line in tp.splitlines()], np.str_) for tp in txt.split("\n\n")]
     return sum(reflection_score(p) for p in patterns)
 
 
 def part_2(txt: str) -> int:
-    patterns = [np.char.array([[*line] for line in tp.splitlines()]) for tp in txt.split("\n\n")]
+    patterns = [np.array([[*line] for line in tp.splitlines()], np.str_) for tp in txt.split("\n\n")]
     return sum(smudged_reflection_score(p) for p in patterns)
 
 
