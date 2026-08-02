@@ -68,7 +68,7 @@ def test_str_to_bugs():
     )
 
 
-@pytest.mark.parametrize("before, after", itertools.pairwise((INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4)))
+@pytest.mark.parametrize("before, after", list(itertools.pairwise((INITIAL, AFTER_1, AFTER_2, AFTER_3, AFTER_4))))
 def test_step(before, after):
     print(f"{before=}, {after=}")
     before = d.str_to_bugs(before)
