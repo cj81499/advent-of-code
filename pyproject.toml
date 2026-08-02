@@ -116,11 +116,6 @@ pretty = true
 # Miscellaneous
 warn_unused_configs = true
 
-[[tool.mypy.overrides]]
-# aocd doesn't provide types https://github.com/wimglenn/advent-of-code-data/issues/78
-module = ["aocd"]
-ignore_missing_imports = true
-
 [tool.pytest]
 # skip slow tests by default
 addopts = ["-m", "not slow"]
