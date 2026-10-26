@@ -21,7 +21,11 @@ about your session token by putting it in `~/.config/aocd/token`.
 You can "scrape" it from your browser's cookie storage by running:
 
 ```sh
+# Print token to stdout
 uv run --with browser-cookie3 aocd-token
+
+# Write token to ~/.config/aocd/token
+uv run --with browser-cookie3 aocd-token > ~/.config/aocd/token
 ```
 
 ### Test
