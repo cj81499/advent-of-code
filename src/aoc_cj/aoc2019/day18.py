@@ -1,77 +1,156 @@
-import itertools
+import dataclasses
+import heapq
+import math
 from collections import deque
+
+import more_itertools as mi
 
 from aoc_cj import util
 
-
-def parse(txt: str):
-    grid = {complex(x, y): c for y, line in enumerate(txt.splitlines()) for x, c in enumerate(line)}
-
-    start_pos = next(p for p, c in grid.items() if c == "@")
-    num_keys = sum(1 for c in grid.values() if c.islower())
-    return grid, start_pos, num_keys
+type Grid = dict[complex, str]
 
 
-def next_states_1(grid, state):
-    steps, pos, collected = state
-    q = deque()
-    q.append((pos, steps))
-    seen = set()
-    while len(q) > 0:
-        pos, steps = q.popleft()
-        if pos in seen:
-            continue
-        val: str = grid.get(pos)
-        if val in ".@" or val.lower() in collected:
-            q.extend((pos + delta, steps + 1) for delta in (-1j, 1, 1j, -1))
-        elif val != "#" and val.islower():
-            yield (steps, pos, frozenset((*collected, val)))
-        seen.add(pos)
+@dataclasses.dataclass(order=True, frozen=True)
+class HeapEntry:
+    pos: tuple[complex, ...] = dataclasses.field(compare=False)
+    dist: int = 0
+    collected: frozenset[str] = dataclasses.field(compare=False, default_factory=frozenset)
 
 
-def next_states_2(grid, state):
-    steps, positions, collected = state
-    for i, pos in enumerate(positions):
-        for s in next_states_1(grid, (steps, pos, collected)):
-            new_steps, new_pos, new_collected = s
-            new_positions = list(positions)
-            new_positions[i] = new_pos
-            yield (new_steps, tuple(new_positions), new_collected)
+def bfs_from(src: complex, grid: Grid) -> dict[complex, tuple[int, set[str]]]:
+    q = deque([(src, 0)])
+    seen: set[complex] = {src}
+    found: dict[complex, tuple[int, set[str]]] = {}
+    doors_on_path: dict[complex, set[str]] = {src: set()}
 
-
-def search(initial, num_keys, grid, next_states=next_states_1):
-    q = util.PriorityQueue()
-    q.push(0, initial)
-    seen = set()
     while q:
-        state = q.pop()
-        steps, pos, collected = state
-        if len(collected) == num_keys:
-            return steps
-        if (pos, collected) in seen:
+        p, dist = q.popleft()
+        cur_doors = doors_on_path[p]
+        ch = grid.get(p, "#")
+        if ch.islower() and p != src:
+            found[p] = (dist, set(cur_doors))
+
+        for nb in util.adj_4(p):
+            if nb in seen:
+                continue
+            c = grid.get(nb, "#")
+            if c == "#":
+                continue
+            seen.add(nb)
+            nd = set(cur_doors)
+            if c.isupper():
+                nd.add(c)
+            doors_on_path[nb] = nd
+            q.append((nb, dist + 1))
+
+    return found
+
+
+def part_1(txt: str) -> int:
+    grid = {complex(x, y): c for y, row in enumerate(txt.splitlines()) for x, c in enumerate(row)}
+    key_positions = {c: pos for pos, c in grid.items() if c.islower()}
+    start_pos = mi.one(pos for pos, c in grid.items() if c == "@")
+
+    # map positions (start + keys) to reachable keys with distance and required doors
+    nodes = {
+        pos: {key_pos: (dist, req_doors) for key_pos, (dist, req_doors) in bfs_from(pos, grid).items()}
+        for pos in (*key_positions.values(), start_pos)
+    }
+
+    total_keys = frozenset(key_positions.keys())
+
+    # Dijkstra over state (pos, collected_keys)
+    # store single position in a 1-tuple to keep HeapEntry.pos consistent type
+    heap = [HeapEntry((start_pos,), 0, frozenset())]
+    seen_states: dict[tuple[tuple[complex, ...], frozenset[str]], int] = {((start_pos,), frozenset()): 0}
+
+    while heap:
+        entry = heapq.heappop(heap)
+        if seen_states.get((entry.pos, entry.collected), math.inf) < entry.dist:
             continue
-        for s in next_states(grid, state):
-            q.push(s[0], s)
-        seen.add((pos, collected))
-    return -1
+        if entry.collected == total_keys:
+            return entry.dist
+
+        # entry.pos is a 1-tuple holding the single position for part_1
+        cur_pos = entry.pos[0]
+        for target_pos, (dstep, required_doors) in nodes[cur_pos].items():
+            key_ch = grid[target_pos]
+            if key_ch in entry.collected:
+                continue
+
+            if not all(door.lower() in entry.collected for door in required_doors):
+                continue
+
+            new_collected = frozenset(set(entry.collected) | {key_ch})
+            nd = entry.dist + dstep
+            state = ((target_pos,), new_collected)
+            if nd < seen_states.get(state, 10**18):
+                seen_states[state] = nd
+                heapq.heappush(heap, HeapEntry((target_pos,), nd, new_collected))
+
+    raise ValueError("no solution")
 
 
-def part_1(txt: str):
-    grid, start_pos, num_keys = parse(txt)
-    initial = (0, start_pos, frozenset())
-    return search(initial, num_keys, grid)
+def part_2(txt: str) -> int:
+    # build grid
+    grid = {complex(x, y): c for y, row in enumerate(txt.splitlines()) for x, c in enumerate(row)}
+    # find original start and key positions
+    start = mi.one(pos for pos, c in grid.items() if c == "@")
+    key_positions = {c: pos for pos, c in grid.items() if c.islower()}
 
+    # modify map for 4-robot scenario: replace start and its adjacents with walls,
+    # place robots at the four diagonals
+    deltas = [(-1 - 1j), (1 - 1j), (-1 + 1j), (1 + 1j)]
+    # set center and 4-adjacent to walls
+    grid[start] = "#"
+    for d in (1, -1, 1j, -1j):
+        grid[start + d] = "#"
 
-def part_2(txt: str):
-    grid, start_pos, num_keys = parse(txt)
+    robot_positions = []
+    for d in deltas:
+        pos = start + d
+        robot_positions.append(pos)
+        grid[pos] = "@"
 
-    # update the cave entrance
-    replace = "@#@\n###\n@#@".splitlines()
-    for x, y in itertools.product(range(3), repeat=2):
-        grid[start_pos + complex(x - 1, y - 1)] = replace[y][x]
+    # build nodes from each robot start and each key
+    sources = [*key_positions.values(), *robot_positions]
+    nodes = {pos: {kpos: (dist, doorset) for kpos, (dist, doorset) in bfs_from(pos, grid).items()} for pos in sources}
 
-    initial = (0, tuple(start_pos + delta for delta in (-1 - 1j, 1 - 1j, 1 + 1j, -1 + 1j)), frozenset())
-    return search(initial, num_keys, grid, next_states_2)
+    total_keys = frozenset(key_positions.keys())
+
+    # Dijkstra over ((pos1,pos2,pos3,pos4), collected_keys)
+    heap = [HeapEntry(tuple(robot_positions), 0, frozenset())]
+    seen_states: dict[tuple[tuple[complex, ...], frozenset[str]], int] = {(tuple(robot_positions), frozenset()): 0}
+
+    while heap:
+        entry = heapq.heappop(heap)
+        dist, positions, collected = entry.dist, entry.pos, entry.collected
+        if seen_states.get((positions, collected), math.inf) < dist:
+            continue
+        if collected == total_keys:
+            return dist
+
+        # for each robot, consider reachable keys
+        for i, robot_pos in enumerate(positions):
+            for target_pos, (dstep, required_doors) in nodes.get(robot_pos, {}).items():
+                key_ch = grid[target_pos]
+                if key_ch in collected:
+                    continue
+
+                if not all(door.lower() in collected for door in required_doors):
+                    continue
+
+                new_collected = frozenset(set(collected) | {key_ch})
+                nd = dist + dstep
+                new_positions = list(positions)
+                new_positions[i] = target_pos
+                new_positions_t = tuple(new_positions)
+                state = (new_positions_t, new_collected)
+                if nd < seen_states.get(state, 10**18):
+                    seen_states[state] = nd
+                    heapq.heappush(heap, HeapEntry(new_positions_t, nd, new_collected))
+
+    raise ValueError("no solution")
 
 
 if __name__ == "__main__":
